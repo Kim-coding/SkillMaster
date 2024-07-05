@@ -75,7 +75,7 @@ public class PlayerAI : MonoBehaviour
 
     private void MoveAlongPath()
     {
-        if (path != null && currentPathIndex < path.Count)
+        if (path != null && currentPathIndex < path.Count && currentTarget != null)
         {
             if (Vector3.Distance(transform.position, currentTarget.position) <= attackRange)
                 return;
@@ -93,5 +93,6 @@ public class PlayerAI : MonoBehaviour
     private void Attack(Transform target)
     {
         Debug.Log("플레이어 : 공격상태 " + target.name);
+        //Battle상태로 전환
     }
 }

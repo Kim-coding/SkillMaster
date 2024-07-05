@@ -21,15 +21,4 @@ public class GameMgr : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
-    public void HandleMonsterSpawned(GameObject monster)
-    {
-        sceneMgr.mainScene.monster.AddMonsters(monster);
-    }
-
-    public void HandleMonsterDestroyed(GameObject monster)
-    {
-        sceneMgr.mainScene.monster.RemoveMonsters(monster);
-    }
-
 }
