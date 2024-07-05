@@ -10,5 +10,6 @@ public class Attack
         Damage = damage;
         Critical = critical;
         //Type = type;
+
     }
 }

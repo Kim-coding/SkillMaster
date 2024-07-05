@@ -3,6 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
+public enum Digit
+{
+    A = 1, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z
+}
+
 
 public class BigInteger
 {
@@ -33,6 +38,10 @@ public class BigInteger
 
         int length = s.Length;
         int startIndex = s.Length - 3;
+        if (length < 3)
+        {
+            startIndex = 0;
+        }
         int count = (int)Math.Ceiling((double)s.Length / 3);
 
         for (int i = 0; i < count; i++)
@@ -208,6 +217,7 @@ public class BigInteger
 
         Promotion();
 
+        factor = numberList.Count;
     }
 
     private void Promotion()
@@ -239,7 +249,7 @@ public class BigInteger
     }
 
 
-    public string ToString()
+    public override string ToString()
     {
         int i = 0;
         StringBuilder sb = new StringBuilder();
@@ -257,5 +267,47 @@ public class BigInteger
             i++;
         }
         return sb.ToString();
+    }
+
+    public string ToStringShort()
+    {
+        StringBuilder sb = new StringBuilder();
+        sb.Append(numberList[numberList.Count - 1]);
+
+        if (factor >= 2)
+        {
+            sb.Append(".");
+            string paddedNumber = numberList[numberList.Count - 2].ToString().PadLeft(3, '0');
+            sb.Append(paddedNumber);
+        }
+
+        StringBuilder digit = new StringBuilder();
+        int d = factor - 1;
+        if (d > 0)
+        {
+            while (d >= 0)
+            {
+                int remainder = d % 26; // 나머지를 계산 (0-25 범위)
+                if (remainder == 0)
+                {
+                    if (d != 0)
+                    {
+                        digit.Insert(0, Digit.Z); // Z로 매핑
+                    }
+                    d = (d / 26) - 1; // 다음 자리수로 이동 (-1은 0 기반 인덱스를 고려한 조정)
+                }
+                else
+                {
+                    digit.Insert(0, (Digit)remainder); // 나머지를 알파벳으로 변환하여 앞에 추가
+                    d = d / 26; // 다음 자리수로 이동
+                }
+            }
+            if (digit.Length > 0)
+            {
+                sb.Append(digit);
+            }
+        }
+        return sb.ToString();
+
     }
 }
