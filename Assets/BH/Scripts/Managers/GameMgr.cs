@@ -8,7 +8,6 @@ public class GameMgr : MonoBehaviour
 
     public SceneMgr sceneMgr;
     public PlayerMgr playerMgr;
-    public MonsterMgr monsterMgr;
 
     private void Awake()
     {
@@ -22,14 +21,29 @@ public class GameMgr : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
-    public void AddMonster(GameObject monster)
+    private void Start()
     {
-        playerMgr.AddMonster(monster);
+        sceneMgr.mainScene.spawner.OnMonsterSpawned += HandleMonsterSpawned;
+        sceneMgr.mainScene.spawner.OnMonsterDestroyed += HandleMonsterDestroyed;
     }
 
-    public void RemoveMonster(GameObject monster)
+    private void OnDestroy()
     {
-        playerMgr.RemoveMonster(monster);
+        if (sceneMgr != null && sceneMgr.mainScene != null && sceneMgr.mainScene.spawner != null)
+        {
+            sceneMgr.mainScene.spawner.OnMonsterSpawned -= HandleMonsterSpawned;
+            sceneMgr.mainScene.spawner.OnMonsterDestroyed -= HandleMonsterDestroyed;
+        }
     }
+
+    private void HandleMonsterSpawned(GameObject monster)
+    {
+        sceneMgr.mainScene.monster.AddMonsters(monster);
+    }
+
+    private void HandleMonsterDestroyed(GameObject monster)
+    {
+        sceneMgr.mainScene.monster.RemoveMonsters(monster);
+    }
+
 }

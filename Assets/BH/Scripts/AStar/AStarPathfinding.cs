@@ -13,7 +13,10 @@ public class AStarPathfinding : MonoBehaviour
 
     private void Update()
     {
-        FindPath(seeker.position, target.position);
+        if(target != null)
+        {
+            FindPath(seeker.position, target.position);
+        }
     }
 
     public Grid GetGrid()
