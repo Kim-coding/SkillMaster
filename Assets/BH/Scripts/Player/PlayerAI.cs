@@ -2,60 +2,53 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEditor.Experimental.GraphView;
 
 public class PlayerAI : MonoBehaviour
 {
-    public float range = 5f;
-    private float pathUpdateInterval = 0.2f;
-    public float attackRange = 1.5f;
-    private float pathUpdateTimer = 0f;
-    private AStarPathfinding pathfinding;
-    private List<Node> path;
-    private int currentPathIndex = 0;
-    private Transform currentTarget;
+    public PlayerMgr playerMgr;
+    public PlayerSkills playerSkills;
 
-    private void Start()
+    public float attackRange = 1.5f;
+    public float speed = 1f;
+
+    public List<Node> path;
+    public int currentPathIndex = 0;
+    public Transform currentTarget;
+
+    private AStarPathfinding pathfinding;
+    private StateMachine stateMachine;
+    public StateMachine PlayerStateMachine => stateMachine;
+    private void Awake()
     {
         pathfinding = GetComponentInParent<AStarPathfinding>();
+        stateMachine = new StateMachine(this);
+        stateMachine.Initialize(new IdleState(this));
     }
 
     private void Update()
     {
-        pathUpdateTimer += Time.deltaTime;
-
-        if (pathUpdateTimer >= pathUpdateInterval)
-        {
-            pathUpdateTimer = 0f;
-            UpdatePath();
-        }
-
-        MoveAlongPath();
+        stateMachine.Update();
     }
-
-    private void UpdatePath()
+    public void SetTarget(Transform target)
     {
-        currentTarget = FindClosestMonster();
-
+        currentTarget = target;
+    }
+    public void UpdatePath()
+    {
         if (currentTarget != null)
         {
-            if (Vector3.Distance(transform.position, currentTarget.position) <= attackRange)
-            {
-                Attack(currentTarget);
-            }
-            else
-            {
-                pathfinding.FindPath(transform.position, currentTarget.position);
-                path = pathfinding.GetPath();
-                currentPathIndex = 0;
-            }
+            pathfinding.FindPath(transform.position, currentTarget);
+            path = pathfinding.GetPath();
+            currentPathIndex = 0;
         }
     }
 
-    private Transform FindClosestMonster()
+    public Transform FindClosestMonster()
     {
         float closestDistance = Mathf.Infinity;
         Transform closestMonster = null;
-        GameObject[] monsters = GameMgr.Instance.sceneMgr.mainScene.GetMonsters();
+        GameObject[] monsters = playerMgr.RequestMonsters();
 
         foreach (GameObject monster in monsters)
         {
@@ -73,26 +66,47 @@ public class PlayerAI : MonoBehaviour
         return closestMonster;
     }
 
-    private void MoveAlongPath()
+    public bool IsInAttackRange()
     {
-        if (path != null && currentPathIndex < path.Count && currentTarget != null)
+        return Vector3.Distance(transform.position, currentTarget.position) <= attackRange;
+    }
+
+    private void ChangeState(IState newState)
+    {
+        stateMachine.ChangState(newState);
+    }
+
+    public void CheckAndChangeState()
+    {
+        if (currentTarget == null || !currentTarget.gameObject.activeInHierarchy)
         {
-            if (Vector3.Distance(transform.position, currentTarget.position) <= attackRange)
-                return;
-
-            Vector3 targetPosition = path[currentPathIndex].worldPosition;
-            transform.position = Vector3.MoveTowards(transform.position, targetPosition, Time.deltaTime);
-
-            if (Vector3.Distance(transform.position, targetPosition) < 0.1f)
+            if (!(stateMachine.currentState is IdleState))
             {
-                currentPathIndex++;
+                ChangeState(new IdleState(this));
+            }
+        }
+        else if (IsInAttackRange())
+        {
+            if (!(stateMachine.currentState is BattleState))
+            {
+                ChangeState(new BattleState(this));
+            }
+        }
+        else
+        {
+            if (!(stateMachine.currentState is WalkState))
+            {
+                ChangeState(new WalkState(this));
             }
         }
     }
 
-    private void Attack(Transform target)
+    public void Attack(Skill skill)
     {
-        Debug.Log("플레이어 : 공격상태 " + target.name);
-        //Battle상태로 전환
+        if (currentTarget != null && playerSkills.CanUseSkill(skill))
+        {
+            Vector3 direction = (currentTarget.position - transform.position).normalized;
+            playerSkills.UseSkill(skill, transform.position, direction);
+        }
     }
 }

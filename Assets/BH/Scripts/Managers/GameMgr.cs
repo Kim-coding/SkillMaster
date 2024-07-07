@@ -21,4 +21,9 @@ public class GameMgr : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    public GameObject[] GetMonsters()
+    {
+        return sceneMgr.mainScene.GetMonsters();
+    }
 }
