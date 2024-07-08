@@ -106,7 +106,7 @@ public class PlayerAI : MonoBehaviour
         if (currentTarget != null && playerSkills.CanUseSkill(skill))
         {
             Vector3 direction = (currentTarget.position - transform.position).normalized;
-            playerSkills.UseSkill(skill, transform.position, direction);
+            playerSkills.UseSkill(skill, transform.position, direction, gameObject);
         }
     }
 }
