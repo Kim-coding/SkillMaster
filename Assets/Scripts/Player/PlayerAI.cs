@@ -101,7 +101,7 @@ public class PlayerAI : MonoBehaviour
         }
     }
 
-    public void OnAttack(Skill skill)
+    public void OnAttack(GameObject skill)
     {
         if (currentTarget != null)
         {
