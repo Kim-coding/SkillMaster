@@ -13,7 +13,6 @@ public class AttackDefinition
     {
         BigInteger damage = new BigInteger();
         damage.Init(PState.AttackPower);
-        Debug.Log(PState.AttackPower);
         bool critical = false;
         // 최소데미지 ~ 최대데미지 판정 !! 필수
        //damage += Random.Range(miniDamage, maxDamage);

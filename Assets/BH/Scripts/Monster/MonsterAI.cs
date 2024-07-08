@@ -12,11 +12,13 @@ public class MonsterAI : MonoBehaviour
     public float targetUpdataTime = 0.5f;
     public float attackRange;
 
-    public int health = 100;
+    public BigInteger health;
 
     private void Awake()
     {
         players = GameObject.FindGameObjectsWithTag("Player");
+        health = new BigInteger();
+        health.Init(100);
     }
 
     private void Start()
@@ -40,10 +42,12 @@ public class MonsterAI : MonoBehaviour
         {
             if (Vector3.Distance(transform.position, target.transform.position) <= attackRange)
             {
+                gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
                 return;
             }
             else
             {
+                gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
                 Move();
             }
         }
@@ -79,16 +83,7 @@ public class MonsterAI : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, target.transform.position, Time.deltaTime);
     }
 
-    public void TakeDamage(int damage)
-    {
-        health -= damage;
-        if (health <= 0)
-        {
-            Die();
-        }
-    }
-
-    private void Die()
+    public void Die()
     {
         Debug.Log("몬스터 사망");
         gameObject.SetActive(false); // 몬스터 비활성화 또는 파괴

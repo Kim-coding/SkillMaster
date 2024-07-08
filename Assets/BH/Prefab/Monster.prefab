@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5537128661384799848}
   - component: {fileID: -5534374576891167262}
   - component: {fileID: 5441368518107167588}
+  - component: {fileID: -4880551860086738742}
   m_Layer: 0
   m_Name: Monster
   m_TagString: Monster
@@ -103,7 +104,6 @@ MonoBehaviour:
   target: {fileID: 59351692744629341, guid: 16326b6c1eaf94e4c9e37c895e46167f, type: 3}
   targetUpdataTime: 0.5
   attackRange: 1
-  health: 100
 --- !u!61 &5537128661384799848
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -133,7 +133,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -189,3 +189,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damagePrefab: {fileID: 8160097050526071945, guid: 278cd926fa1fc374aaaf1dcd335f2bed, type: 3}
+--- !u!114 &-4880551860086738742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4831553660578189742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f29e94d58002b594aadb939e6c2ab03d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -7,7 +7,7 @@ public class DamageDisplay : MonoBehaviour, IAttackable
 {
     public TextMeshPro damagePrefab;
 
-    public void OnAttack(GameObject attacker, Attack attack)
+    public void OnAttack(GameObject attacker, GameObject defender, Attack attack)
     {
         var damagePos = transform.position;
         damagePos.y += 1f;

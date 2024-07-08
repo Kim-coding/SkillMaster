@@ -14,8 +14,11 @@ public class SkillProjectile : MonoBehaviour
             MonsterAI monster = collision.gameObject.GetComponent<MonsterAI>();
             if (monster != null)
             {
-                monster.TakeDamage(damage);
-                monster.GetComponent<IAttackable>().OnAttack(attacker.gameObject, attack);
+                var monsterComponents = collision.GetComponents<IAttackable>();
+                foreach (var monsterComponent in monsterComponents)
+                {
+                    monsterComponent.OnAttack(attacker.gameObject, collision.gameObject, attack);
+                }
             }
             Destroy(gameObject);
         }
