@@ -16,12 +16,6 @@ public class MonsterAI : MonoBehaviour
     public MonsterStat monsterStat;
     public MonsterAttack monsterAttack;
 
-
-    private void OnDisable()
-    {
-        GameMgr.Instance.sceneMgr.mainScene.spawner.DestroyMonster(gameObject.GetComponent<MonsterAI>());
-    }
-
     private void Awake()
     {
         players = GameObject.FindGameObjectsWithTag("Player");

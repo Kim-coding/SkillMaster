@@ -4,8 +4,28 @@ using UnityEngine;
 
 public class Monster : MonoBehaviour
 {
-    private MonsterPool pool;
+    private static MonsterPool monsterPool;
+    public MonsterAI monsterPrefab;
+    public Transform poolParent;
     private List<GameObject> monsters = new List<GameObject>();
+
+    private void Awake()
+    {
+        if (monsterPool == null)
+        {
+            InitializeMonsterPool();
+        }
+    }
+
+    private void InitializeMonsterPool()
+    {
+        monsterPool = new MonsterPool(monsterPrefab, poolParent);
+    }
+
+    public MonsterPool GetMonsterPool()
+    {
+        return monsterPool;
+    }
 
     public void AddMonsters(GameObject monster)
     {

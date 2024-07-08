@@ -6,17 +6,15 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     public MainScene Scene;
-    public MonsterAI monsterPrefab;
-    public Transform parent;
     private MonsterPool monsterPool;
 
     private void Start()
     {
-        monsterPool = new MonsterPool(monsterPrefab, parent);
+        monsterPool = GameMgr.Instance.GetMonsterPool();
     }
     public void SpawnMonster()
     {
-        BoxCollider box = parent.GetComponent<BoxCollider>();
+        BoxCollider box = GameMgr.Instance.sceneMgr.mainScene.monster.poolParent.GetComponent<BoxCollider>();
 
         if (box != null)
         {

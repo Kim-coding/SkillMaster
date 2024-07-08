@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using DG.Tweening;
-using UnityEditor.Experimental.GraphView;
 
 public class PlayerAI : MonoBehaviour
 {

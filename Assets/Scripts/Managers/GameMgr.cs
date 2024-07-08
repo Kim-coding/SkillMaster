@@ -22,6 +22,10 @@ public class GameMgr : MonoBehaviour
         }
 
     }
+    public MonsterPool GetMonsterPool()
+    {
+        return sceneMgr.mainScene.monster.GetMonsterPool();
+    }
 
     public GameObject[] GetMonsters()
     {
