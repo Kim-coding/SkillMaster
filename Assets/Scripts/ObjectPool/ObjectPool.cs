@@ -18,8 +18,7 @@ public class ObjectPool<T> where T : MonoBehaviour
         for (int i = 0; i < initialCapacity; i++)
         {
             T obj = GameObject.Instantiate(prefab, parentTransform);
-            obj.gameObject.SetActive(false);
-            pool.Enqueue(obj);
+            //obj.gameObject.SetActive(false);
         }
     }
 
@@ -47,7 +46,7 @@ public class ObjectPool<T> where T : MonoBehaviour
         }
         else
         {
-            obj.gameObject.SetActive(false);
+            //obj.gameObject.SetActive(false);
             OnReturn(obj);
             pool.Enqueue(obj);
         }
