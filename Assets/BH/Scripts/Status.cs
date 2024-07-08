@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class Status
 {
-    public float AttackPower;
+    public int AttackPower;
     public int defense;
     public int health;
 

@@ -34,12 +34,17 @@ public class PlayerSkills : MonoBehaviour
     }
     public void UseSkill(Skill skill, Vector3 position, Vector3 direction, GameObject attacker)
     {
-        GameObject skillInstance = Instantiate(skill.skillPrefab, position, Quaternion.identity);
-        Rigidbody2D rb = skillInstance.GetComponent<Rigidbody2D>();
-        if (rb != null)
+        if (CanUseSkill(skill))
         {
-            rb.velocity = direction.normalized * 10f;
+            GameObject skillInstance = Instantiate(skill.skillPrefab, position, Quaternion.identity);
+            Rigidbody2D rb = skillInstance.GetComponent<Rigidbody2D>();
+            skillInstance.GetComponent<SkillProjectile>().attacker = gameObject;
+            skillInstance.GetComponent<SkillProjectile>().attack = new FireMagic().CreateAttack(GameMgr.Instance.playerMgr.playerStat, null);
+            if (rb != null)
+            {
+                rb.velocity = direction.normalized * 10f;
+            }
+            skillCooldowns[skill.skillName] = skill.cooldown;
         }
-        skillCooldowns[skill.skillName] = skill.cooldown;
     }
 }
