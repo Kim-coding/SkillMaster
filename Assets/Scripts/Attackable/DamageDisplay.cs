@@ -14,10 +14,16 @@ public class DamageDisplay : MonoBehaviour, IAttackable
 
         var textPrefab = Instantiate(damagePrefab, damagePos, Quaternion.identity);
 
-        textPrefab.text = attack.Damage.ToString();
+        textPrefab.text = attack.Damage.ToStringShort();
+
+        if(defender.GetComponent<PlayerAI>() != null )
+        {
+            textPrefab.fontSize = 3;
+        }
+
         if (attack.Critical)
         {
-            textPrefab.text = attack.Damage.ToString() + "!!!";
+            textPrefab.text = attack.Damage.ToStringShort() + "!!!";
             textPrefab.color = Color.yellow;
         }
         else

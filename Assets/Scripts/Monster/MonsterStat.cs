@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class MonsterStat : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public BigInteger health;
+    public string damage;
+    public void Init()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        health = new BigInteger();
+        health.Init(100);
+        damage = "250";
     }
 }

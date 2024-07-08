@@ -1,4 +1,4 @@
-public class Attack
+public struct Attack
 {
     public BigInteger Damage { get; set; }
     public bool Critical { get; set; }
@@ -10,6 +10,5 @@ public class Attack
         Damage = damage;
         Critical = critical;
         //Type = type;
-
     }
 }

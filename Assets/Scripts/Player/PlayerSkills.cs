@@ -13,7 +13,7 @@ public class PlayerSkills : MonoBehaviour
         GameObject skillInstance = Instantiate(skill, position, Quaternion.identity);
         Rigidbody2D rb = skillInstance.GetComponent<Rigidbody2D>();
         skillInstance.GetComponent<SkillProjectile>().attacker = gameObject;
-        skillInstance.GetComponent<SkillProjectile>().attack = new FireMagic().CreateAttack(GameMgr.Instance.playerMgr.playerStat, null);
+        skillInstance.GetComponent<SkillProjectile>().attack = new FireMagic().CreateAttack(GameMgr.Instance.playerMgr.playerStat);
         if (rb != null)
         {
             rb.velocity = direction.normalized * 10f;

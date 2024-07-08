@@ -13,7 +13,7 @@ public class BattleState : IState
 
     public void Enter()
     {
-        Debug.Log("Enter BattleState");
+        //Debug.Log("Enter BattleState");
     }
 
     public void Update()
@@ -32,7 +32,7 @@ public class BattleState : IState
 
     public void Exit()
     {
-        Debug.Log("Exit BattleState");
+        //Debug.Log("Exit BattleState");
     }
 
     private void Attack()

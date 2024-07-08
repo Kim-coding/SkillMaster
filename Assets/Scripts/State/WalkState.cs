@@ -13,7 +13,7 @@ public class WalkState : IState
 
     public void Enter()
     {
-        Debug.Log("Enter WalkState");
+        //Debug.Log("Enter WalkState");
         player.UpdatePath();
     }
 
@@ -36,7 +36,7 @@ public class WalkState : IState
 
     public void Exit()
     {
-        Debug.Log("Exit WalkState");
+        //Debug.Log("Exit WalkState");
     }
 
     private void MoveAlongPath()
