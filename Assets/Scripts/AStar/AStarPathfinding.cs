@@ -4,11 +4,11 @@ using UnityEngine;
 public class AStarPathfinding : MonoBehaviour
 {
     public Transform seeker, target;
-    private Grid grid;
+    private CustomGrid grid;
 
     private void Awake()
     {
-        grid = GetComponent<Grid>();
+        grid = GetComponent<CustomGrid>();
     }
 
     private void Update()
@@ -19,7 +19,7 @@ public class AStarPathfinding : MonoBehaviour
         }
     }
 
-    public Grid GetGrid()
+    public CustomGrid GetGrid()
     {
         return grid;
     }

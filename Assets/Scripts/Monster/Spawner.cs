@@ -6,26 +6,36 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     public MainScene Scene;
-    public GameObject monsterPrefab;
+    public MonsterAI monsterPrefab;
     public Transform parent;
+    private MonsterPool monsterPool;
+
+    private void Start()
+    {
+        monsterPool = new MonsterPool(monsterPrefab, parent);
+    }
     public void SpawnMonster()
     {
         BoxCollider box = parent.GetComponent<BoxCollider>();
 
         if (box != null)
         {
-            GameObject monster = Instantiate(monsterPrefab, transform.position, transform.rotation, parent.transform);
-            Scene.AddMonsters(monster);
+            //GameObject monster = Instantiate(monsterPrefab.gameObject, transform.position, transform.rotation, parent.transform);
+            MonsterAI monster = monsterPool.Get();
+            monster.transform.position = transform.position;
+            monster.transform.rotation = transform.rotation;
+            Scene.AddMonsters(monster.gameObject);
         }
         else
         {
             Debug.LogError("Parent object does not have a BoxCollider component.");
         }
     }
-    public void DestroyMonster(GameObject monster)
+
+    public void DestroyMonster(MonsterAI monster)
     {
-        Scene.RemoveMonsters(monster);
-        Destroy(monster);
+        Scene.RemoveMonsters(monster.gameObject);
+        monsterPool.Return(monster);
     }
 
     private void Update()

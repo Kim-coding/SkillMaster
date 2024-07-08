@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Monster : MonoBehaviour
 {
+    private MonsterPool pool;
     private List<GameObject> monsters = new List<GameObject>();
 
     public void AddMonsters(GameObject monster)
