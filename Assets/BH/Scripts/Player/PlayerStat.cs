@@ -7,7 +7,7 @@ public class PlayerStat : Status
 {
     private void Start()
     {
-        AttackPower = 0;
+        AttackPower = 1;
         defense = 0;
         health = 0;
     }

@@ -8,6 +8,13 @@ public static class Define
 
     }
 
+    public enum AttackType
+    {
+        None = -1,
+        Bullet,
+        Boom,
+    }
+
 
     public enum RangeType
     {
