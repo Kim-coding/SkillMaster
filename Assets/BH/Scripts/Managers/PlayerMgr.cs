@@ -11,6 +11,7 @@ public class PlayerMgr : MonoBehaviour
     {
         gameMgr = GameMgr.Instance;
         playerStat = new PlayerStat();
+        playerStat.Init();
     }
 
     public GameObject[] RequestMonsters()

@@ -40,7 +40,6 @@ public class MonsterAI : MonoBehaviour
         {
             if (Vector3.Distance(transform.position, target.transform.position) <= attackRange)
             {
-                Debug.Log("몬스터 : 공격상태");
                 return;
             }
             else

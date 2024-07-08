@@ -20,6 +20,7 @@ public class GameMgr : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
     }
 
     public GameObject[] GetMonsters()

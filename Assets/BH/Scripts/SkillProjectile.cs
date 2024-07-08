@@ -10,7 +10,7 @@ public class SkillProjectile : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Monster"))
         {
-            Debug.Log("공격");
+            //Debug.Log("공격");
             MonsterAI monster = collision.gameObject.GetComponent<MonsterAI>();
             if (monster != null)
             {
