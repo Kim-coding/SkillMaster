@@ -9,24 +9,32 @@ public class AttackDefinition
 
 
 
-    public Attack CreateAttack(PlayerStat PState, /*몬스터 스탯*/ Status MStage)
+    public Attack CreateAttack(PlayerStat PState)
     {
         BigInteger damage = new BigInteger();
         damage.Init(PState.AttackPower);
-        bool critical = false;
-        // 최소데미지 ~ 최대데미지 판정 !! 필수
-       //damage += Random.Range(miniDamage, maxDamage);
-       // bool isCritical = Random.value < criticalChance;
-
-      //  if (isCritical)
+        // 최소데미지 ~ 최대데미지 판정
+       float damageRange = Random.Range(0.7f, 1.2f);
+        damage.Multiple(damageRange);
+        bool isCritical = Random.value < PState.criticalPercent;
+         if (isCritical)
         {
-       //     damage *= criticalMultiplier;
+            damage.Multiple(PState.criticalMultiple);
         }
 
-      //  if (dStage != null)
-        {
-       //     damage -= dStage.armor;
-        }
-        return new Attack(damage , critical);
+        return new Attack(damage , isCritical);
     }
+
+
+    public Attack CreateAttack(MonsterStat MStage)
+    {
+        BigInteger damage = new BigInteger();
+        damage.Init(MStage.damage);
+        // 최소데미지 ~ 최대데미지 판정
+        float damageRange = Random.Range(0.7f, 1.2f);
+        damage.Multiple(damageRange);
+        bool isCritical = false;
+        return new Attack(damage, isCritical);
+    }
+
 }

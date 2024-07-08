@@ -9,14 +9,14 @@ public enum Digit
 }
 
 
-public class BigInteger
+public struct BigInteger
 {
-    public List<int> numberList = new List<int>();
-    public int factor = 0;
-    private int element = 0;
+    public List<int> numberList;// = new List<int>();
+    public int factor;// = 0;
+    private int element;// = 0;
     public void Init(int n)
     {
-
+        numberList = new List<int>();
         while (n >= 1000)
         {
             numberList.Add(n % 1000);
@@ -30,6 +30,8 @@ public class BigInteger
 
     public void Init(string s)
     {
+        numberList = new List<int>();
+
         if (string.IsNullOrEmpty(s))
         {
             Clear();

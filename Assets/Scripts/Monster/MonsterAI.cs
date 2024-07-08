@@ -9,21 +9,24 @@ public class MonsterAI : MonoBehaviour
     public GameObject target;
 
     private float timer = 0;
+    private float attackTimer = 0;
     public float targetUpdataTime = 0.5f;
     public float attackRange;
 
-    public BigInteger health;
+    public MonsterStat monsterStat;
+    public MonsterAttack monsterAttack;
 
     private void Awake()
     {
         players = GameObject.FindGameObjectsWithTag("Player");
-        health = new BigInteger();
-        health.Init(100);
+        monsterStat = GetComponent<MonsterStat>();
+        monsterStat.Init();
+        monsterAttack = new MonsterAttack();
     }
 
     private void Start()
     {
-        if(players.Length != 0)
+        if (players.Length != 0)
         {
             FindTarget();
         }
@@ -32,10 +35,12 @@ public class MonsterAI : MonoBehaviour
     private void Update()
     {
         timer += Time.deltaTime;
-        if(timer >= targetUpdataTime)
+        attackTimer += Time.deltaTime;
+        if (timer >= targetUpdataTime)
         {
-            FindTarget();
             timer = 0;
+            FindTarget();
+
         }
 
         if (target != null && target.activeInHierarchy)
@@ -43,12 +48,22 @@ public class MonsterAI : MonoBehaviour
             if (Vector3.Distance(transform.position, target.transform.position) <= attackRange)
             {
                 gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+                if (attackTimer >= 1f)
+                {
+                    var attackables = target.GetComponents<IAttackable>();
+                    foreach (var attackable in attackables)
+                    {
+                        attackable.OnAttack(gameObject, target, monsterAttack.CreateAttack(monsterStat));
+                    }
+                    attackTimer = 0;
+                }
                 return;
             }
             else
             {
                 gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
                 Move();
+                attackTimer = 0;
             }
         }
         else
@@ -83,9 +98,4 @@ public class MonsterAI : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, target.transform.position, Time.deltaTime);
     }
 
-    public void Die()
-    {
-        Debug.Log("몬스터 사망");
-        gameObject.SetActive(false); // 몬스터 비활성화 또는 파괴
-    }
 }

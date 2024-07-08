@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2317470674643800826}
   - component: {fileID: 321329754882501616}
   - component: {fileID: 1328023870914477473}
+  - component: {fileID: 8009800250787176428}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -118,7 +119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skills:
-  - {fileID: 11400000, guid: 809c918b52d8d54428e9f39057779cae, type: 2}
+  - {fileID: 4963378613635296669, guid: d486403f547034e4bb743086ed6c80e7, type: 3}
 --- !u!58 &1328023870914477473
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -154,3 +155,16 @@ CircleCollider2D:
   m_Offset: {x: 0.00000047683716, y: -0.0000009536743}
   serializedVersion: 2
   m_Radius: 0.7
+--- !u!114 &8009800250787176428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 59351692744629341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44be476a3be0b2f41ac2fe9022f81ec0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damagePrefab: {fileID: 0}

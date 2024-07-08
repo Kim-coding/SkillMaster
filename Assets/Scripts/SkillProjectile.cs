@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class SkillProjectile : MonoBehaviour
 {
-    public int damage = 10;
     public GameObject attacker;
     public Attack attack;
 
