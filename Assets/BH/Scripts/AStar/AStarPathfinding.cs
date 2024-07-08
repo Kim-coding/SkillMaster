@@ -15,7 +15,7 @@ public class AStarPathfinding : MonoBehaviour
     {
         if(target != null)
         {
-            FindPath(seeker.position, target.position);
+            FindPath(seeker.position, target);
         }
     }
 
@@ -24,8 +24,10 @@ public class AStarPathfinding : MonoBehaviour
         return grid;
     }
 
-    public void FindPath(Vector3 startPos, Vector3 targetPos)
+    public void FindPath(Vector3 startPos, Transform currenttarget)
     {
+        target = currenttarget;
+        Vector3 targetPos = target.position;
         Node startNode = grid.NodeFromWorldPoint(startPos);
         Node targetNode = grid.NodeFromWorldPoint(targetPos);
 

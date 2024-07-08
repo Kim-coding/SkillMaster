@@ -12,7 +12,8 @@ public class MonsterAI : MonoBehaviour
     public float targetUpdataTime = 0.5f;
     public float attackRange;
 
-    //float deltaTime = 0f; // fps 체크용
+    public int health = 100;
+
     private void Awake()
     {
         players = GameObject.FindGameObjectsWithTag("Player");
@@ -51,13 +52,6 @@ public class MonsterAI : MonoBehaviour
         {
             target = null;
         }
-
-
-        //deltaTime += (Time.unscaledDeltaTime - deltaTime) * 0.1f;
-        //float fps = 1.0f / deltaTime;
-
-        //Debug.Log($"fps: {fps}");
-
     }
 
     private void FindTarget()
@@ -84,5 +78,20 @@ public class MonsterAI : MonoBehaviour
     private void Move()
     {
         transform.position = Vector3.MoveTowards(transform.position, target.transform.position, Time.deltaTime);
+    }
+
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+        if (health <= 0)
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        Debug.Log("몬스터 사망");
+        gameObject.SetActive(false); // 몬스터 비활성화 또는 파괴
     }
 }

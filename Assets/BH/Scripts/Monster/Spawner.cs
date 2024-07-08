@@ -5,19 +5,26 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    public event Action<GameObject> OnMonsterSpawned;
-    public event Action<GameObject> OnMonsterDestroyed;
+    public MainScene Scene;
     public GameObject monsterPrefab;
     public Transform parent;
-    public void SpawnMonster(GameObject monsterPrefab)
+    public void SpawnMonster()
     {
-        GameObject monster = Instantiate(monsterPrefab, transform.position, transform.rotation, parent);
-        OnMonsterSpawned?.Invoke(monster);
-    }
+        BoxCollider box = parent.GetComponent<BoxCollider>();
 
+        if (box != null)
+        {
+            GameObject monster = Instantiate(monsterPrefab, transform.position, transform.rotation, parent.transform);
+            Scene.AddMonsters(monster);
+        }
+        else
+        {
+            Debug.LogError("Parent object does not have a BoxCollider component.");
+        }
+    }
     public void DestroyMonster(GameObject monster)
     {
-        OnMonsterDestroyed?.Invoke(monster);
+        Scene.RemoveMonsters(monster);
         Destroy(monster);
     }
 
@@ -25,7 +32,7 @@ public class Spawner : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            SpawnMonster(monsterPrefab);
+            SpawnMonster();
         }
     }
 }

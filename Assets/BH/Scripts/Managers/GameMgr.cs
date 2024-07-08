@@ -21,29 +21,9 @@ public class GameMgr : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    private void Start()
-    {
-        sceneMgr.mainScene.spawner.OnMonsterSpawned += HandleMonsterSpawned;
-        sceneMgr.mainScene.spawner.OnMonsterDestroyed += HandleMonsterDestroyed;
-    }
 
-    private void OnDestroy()
+    public GameObject[] GetMonsters()
     {
-        if (sceneMgr != null && sceneMgr.mainScene != null && sceneMgr.mainScene.spawner != null)
-        {
-            sceneMgr.mainScene.spawner.OnMonsterSpawned -= HandleMonsterSpawned;
-            sceneMgr.mainScene.spawner.OnMonsterDestroyed -= HandleMonsterDestroyed;
-        }
+        return sceneMgr.mainScene.GetMonsters();
     }
-
-    private void HandleMonsterSpawned(GameObject monster)
-    {
-        sceneMgr.mainScene.monster.AddMonsters(monster);
-    }
-
-    private void HandleMonsterDestroyed(GameObject monster)
-    {
-        sceneMgr.mainScene.monster.RemoveMonsters(monster);
-    }
-
 }

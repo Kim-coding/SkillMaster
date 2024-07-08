@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 6496946428098163311}
   - component: {fileID: 660948233740584256}
   - component: {fileID: 4316966190918739768}
-  - component: {fileID: 3825296645552640367}
+  - component: {fileID: 5537128661384799848}
+  - component: {fileID: -5534374576891167262}
   m_Layer: 0
   m_Name: Monster
   m_TagString: Monster
@@ -101,7 +102,8 @@ MonoBehaviour:
   target: {fileID: 59351692744629341, guid: 16326b6c1eaf94e4c9e37c895e46167f, type: 3}
   targetUpdataTime: 0.5
   attackRange: 1
---- !u!61 &3825296645552640367
+  health: 100
+--- !u!61 &5537128661384799848
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -145,4 +147,31 @@ BoxCollider2D:
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0.1
+  m_EdgeRadius: 0
+--- !u!50 &-5534374576891167262
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4831553660578189742}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 9999
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
