@@ -32,17 +32,14 @@ public class PlayerSkills : MonoBehaviour
     {
         return skillCooldowns[skill.skillName] <= 0;
     }
-    public void UseSkill(Skill skill, Vector3 position, Vector3 direction)
+    public void UseSkill(Skill skill, Vector3 position, Vector3 direction, GameObject attacker)
     {
-        if (CanUseSkill(skill))
+        GameObject skillInstance = Instantiate(skill.skillPrefab, position, Quaternion.identity);
+        Rigidbody2D rb = skillInstance.GetComponent<Rigidbody2D>();
+        if (rb != null)
         {
-            GameObject skillInstance = Instantiate(skill.skillPrefab, position, Quaternion.identity);
-            Rigidbody2D rb = skillInstance.GetComponent<Rigidbody2D>();
-            if (rb != null)
-            {
-                rb.velocity = direction.normalized * 10f;
-            }
-            skillCooldowns[skill.skillName] = skill.cooldown;
+            rb.velocity = direction.normalized * 10f;
         }
+        skillCooldowns[skill.skillName] = skill.cooldown;
     }
 }

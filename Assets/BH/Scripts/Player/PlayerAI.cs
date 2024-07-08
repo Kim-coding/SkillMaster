@@ -101,12 +101,12 @@ public class PlayerAI : MonoBehaviour
         }
     }
 
-    public void Attack(Skill skill)
+    public void OnAttack(Skill skill)
     {
-        if (currentTarget != null && playerSkills.CanUseSkill(skill))
+        if (currentTarget != null)
         {
             Vector3 direction = (currentTarget.position - transform.position).normalized;
-            playerSkills.UseSkill(skill, transform.position, direction);
+            playerSkills.UseSkill(skill, transform.position, direction, gameObject);
         }
     }
 }
