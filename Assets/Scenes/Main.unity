@@ -796,6 +796,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8801e3c9d7df5744b2c0b77de8aaef5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  monsterPrefab: {fileID: 4316966190918739768, guid: 2ce039dac8e6be74e9ad8f16b8cb87c9, type: 3}
+  poolParent: {fileID: 1880426546}
 --- !u!114 &1423913455
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -864,8 +866,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneMgr: {fileID: 1423913457}
   playerMgr: {fileID: 1423913458}
-  monsterPrefab: {fileID: 4316966190918739768, guid: 2ce039dac8e6be74e9ad8f16b8cb87c9, type: 3}
-  poolParent: {fileID: 1880426546}
 --- !u!4 &1423913460
 Transform:
   m_ObjectHideFlags: 0
