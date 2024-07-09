@@ -27,7 +27,7 @@ public class WalkState : IState
             player.UpdatePath();
         }
 
-        MoveAlongPath();
+        player.MoveAlongPath();
         if(player.IsInAttackRange())
         {
             player.CheckAndChangeState();
@@ -39,20 +39,5 @@ public class WalkState : IState
         //Debug.Log("Exit WalkState");
     }
 
-    private void MoveAlongPath()
-    {
-        if (player.path != null && player.currentPathIndex < player.path.Count && player.currentTarget != null)
-        {
-            if (Vector3.Distance(player.transform.position, player.currentTarget.position) <= player.attackRange)
-                return;
-
-            Vector3 targetPosition = player.path[player.currentPathIndex].worldPosition;
-            player.transform.position = Vector3.MoveTowards(player.transform.position, targetPosition, Time.deltaTime * player.speed);
-
-            if (Vector3.Distance(player.transform.position, targetPosition) < 0.1f)
-            {
-                player.currentPathIndex++;
-            }
-        }
-    }
+    
 }
