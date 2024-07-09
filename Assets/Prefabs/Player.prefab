@@ -102,8 +102,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
+  attackSpeed: 0
   attackRange: 0
-  defense: 0
+  defence: 0
+  playerHealthRecovery: 
   playerCriticalPercent: 0
   playerCriticalMultiple: 0
 --- !u!114 &2317470674643800826
@@ -121,6 +123,7 @@ MonoBehaviour:
   characterStat: {fileID: 6420949590111000807}
   playerMgr: {fileID: 0}
   playerSkills: {fileID: 321329754882501616}
+  playerBaseStat: {fileID: 11400000, guid: b25770531267086468b15f9088e73660, type: 2}
   currentTarget: {fileID: 0}
 --- !u!114 &321329754882501616
 MonoBehaviour:

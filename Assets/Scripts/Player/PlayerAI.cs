@@ -7,9 +7,11 @@ public class PlayerAI : MonoBehaviour
     public CharacterStat characterStat;
     public PlayerMgr playerMgr;
     public PlayerSkills playerSkills;
+    public PlayerBaseStat playerBaseStat;
 
     private float attackRange;
     private float speed;
+    private float attackSpeed;
 
     private List<Node> path;
     private int currentPathIndex = 0;
@@ -18,14 +20,19 @@ public class PlayerAI : MonoBehaviour
     private AStarPathfinding pathfinding;
     private StateMachine stateMachine;
     public StateMachine PlayerStateMachine => stateMachine;
-    private void Start()
+
+
+    private void Awake()
     {
         pathfinding = GetComponentInParent<AStarPathfinding>();
         stateMachine = new StateMachine(this);
+    }
+    private void Start()
+    {
         stateMachine.Initialize(new IdleState(this));
-        characterStat.Init();
-        speed = characterStat.speed;
-        attackRange = characterStat.attackRange;
+        speed = playerBaseStat.speed;
+        attackRange = playerBaseStat.attackRange;
+        attackSpeed = playerBaseStat.attackSpeed;
     }
 
     private void Update()
