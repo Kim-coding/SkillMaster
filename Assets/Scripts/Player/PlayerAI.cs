@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerAI : MonoBehaviour
 {
-    private PlayerStat playerStat = new PlayerStat();
+    public CharacterStat characterStat;
     public PlayerMgr playerMgr;
     public PlayerSkills playerSkills;
 
@@ -20,13 +20,12 @@ public class PlayerAI : MonoBehaviour
     public StateMachine PlayerStateMachine => stateMachine;
     private void Awake()
     {
-        playerStat = GameMgr.Instance.playerMgr.playerStat;
         pathfinding = GetComponentInParent<AStarPathfinding>();
         stateMachine = new StateMachine(this);
         stateMachine.Initialize(new IdleState(this));
 
-        speed = playerStat.speed;
-        attackRange = playerStat.attackRange;
+        speed = characterStat.speed;
+        attackRange = characterStat.attackRange;
     }
 
     private void Update()

@@ -7,7 +7,8 @@ public class PlayerStat
 {
     public string playerAttackPower;
     public string playerHealth;
-
+    public float speed;
+    public float attackRange;
     public float playerCriticalPercent;
     public float playerCriticalMultiple;
     public void Init()
@@ -16,6 +17,8 @@ public class PlayerStat
         playerHealth = "1000";
         playerCriticalPercent = 50f / 100f;
         playerCriticalMultiple = 2f;
+        speed = 1f;
+        attackRange = 2f;
     }
 
 }

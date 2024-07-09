@@ -6,7 +6,7 @@ public class CharacterStat : Status
 {
     PlayerStat playerStat = new PlayerStat();
 
-    private void Awake()
+    private void Start()
     {
         playerStat = GameMgr.Instance.playerMgr.playerStat;
     }

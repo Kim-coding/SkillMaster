@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6732668799704300791}
   - component: {fileID: 3611454589139036858}
+  - component: {fileID: 6420949590111000807}
   - component: {fileID: 2317470674643800826}
   - component: {fileID: 321329754882501616}
   - component: {fileID: 1328023870914477473}
@@ -88,6 +89,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &6420949590111000807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 59351692744629341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b3492884ad1bec4aa25b1ddf4ce2cdb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
+  attackRange: 0
+  defense: 0
+  playerCriticalPercent: 0
+  playerCriticalMultiple: 0
 --- !u!114 &2317470674643800826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -100,11 +118,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1af6b679bee1bf54fbb65a240e65a7d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  characterStat: {fileID: 6420949590111000807}
   playerMgr: {fileID: 0}
   playerSkills: {fileID: 321329754882501616}
-  attackRange: 2
-  speed: 1
-  currentPathIndex: 0
   currentTarget: {fileID: 0}
 --- !u!114 &321329754882501616
 MonoBehaviour:
@@ -167,4 +183,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44be476a3be0b2f41ac2fe9022f81ec0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damagePrefab: {fileID: 0}
+  damagePrefab: {fileID: 8160097050526071945, guid: 278cd926fa1fc374aaaf1dcd335f2bed, type: 3}
