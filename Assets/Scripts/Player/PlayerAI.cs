@@ -8,8 +8,8 @@ public class PlayerAI : MonoBehaviour
     public PlayerMgr playerMgr;
     public PlayerSkills playerSkills;
 
-    private float attackRange = 1.5f;
-    private float speed = 1f;
+    private float attackRange;
+    private float speed;
 
     private List<Node> path;
     private int currentPathIndex = 0;
@@ -18,12 +18,12 @@ public class PlayerAI : MonoBehaviour
     private AStarPathfinding pathfinding;
     private StateMachine stateMachine;
     public StateMachine PlayerStateMachine => stateMachine;
-    private void Awake()
+    private void Start()
     {
         pathfinding = GetComponentInParent<AStarPathfinding>();
         stateMachine = new StateMachine(this);
         stateMachine.Initialize(new IdleState(this));
-
+        characterStat.Init();
         speed = characterStat.speed;
         attackRange = characterStat.attackRange;
     }
@@ -66,7 +66,8 @@ public class PlayerAI : MonoBehaviour
         float closestDistance = Mathf.Infinity;
         Transform closestMonster = null;
         GameObject[] monsters = playerMgr.RequestMonsters();
-
+        if(monsters == null)
+        { return null; }    
         foreach (GameObject monster in monsters)
         {
             if (monster.activeInHierarchy)

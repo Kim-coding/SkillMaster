@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public class PlayerStat
+public class PlayerStat : MonoBehaviour
 {
     public string playerAttackPower;
     public string playerHealth;
@@ -17,8 +17,6 @@ public class PlayerStat
         playerHealth = "1000";
         playerCriticalPercent = 50f / 100f;
         playerCriticalMultiple = 2f;
-        speed = 1f;
-        attackRange = 2f;
-    }
+}   
 
 }

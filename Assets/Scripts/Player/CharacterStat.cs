@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class CharacterStat : Status
 {
-    PlayerStat playerStat = new PlayerStat();
+    PlayerStat currentPlayerStat;
 
-    private void Start()
+    private void Awake()
     {
-        playerStat = GameMgr.Instance.playerMgr.playerStat;
+        currentPlayerStat = GameMgr.Instance.playerMgr.playerStat;
     }
 
     public float playerCriticalPercent;
@@ -16,9 +16,9 @@ public class CharacterStat : Status
 
     public void Init()
     {
-        health = new BigInteger(playerStat.playerHealth);
-        attackPower = new BigInteger(playerStat.playerAttackPower);
-        playerCriticalPercent = playerStat.playerCriticalPercent;
-        playerCriticalMultiple = playerStat.playerCriticalMultiple;
+        health = new BigInteger(currentPlayerStat.playerHealth);
+        attackPower = new BigInteger(currentPlayerStat.playerAttackPower);
+        playerCriticalPercent = currentPlayerStat.playerCriticalPercent;
+        playerCriticalMultiple = currentPlayerStat.playerCriticalMultiple;
     }
 }

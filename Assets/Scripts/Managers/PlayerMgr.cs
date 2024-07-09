@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerMgr : MonoBehaviour
@@ -12,10 +13,9 @@ public class PlayerMgr : MonoBehaviour
     public TextMeshProUGUI goldUI;
     public TextMeshProUGUI diamondUI;
 
-    private void Start()
+    public void Init()
     {
         gameMgr = GameMgr.Instance;
-        playerStat = new PlayerStat();
         currency = new PlayerCurrency();
         currency.Init();
         playerStat.Init();
@@ -24,6 +24,8 @@ public class PlayerMgr : MonoBehaviour
 
     public GameObject[] RequestMonsters()
     {
+        if (gameMgr == null)
+        { return null; }
         return gameMgr.GetMonsters();
     }
 

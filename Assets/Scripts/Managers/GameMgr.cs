@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameMgr : MonoBehaviour
@@ -20,6 +21,8 @@ public class GameMgr : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        playerMgr.Init();
 
     }
     public MonsterPool GetMonsterPool()

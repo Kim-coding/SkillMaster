@@ -14,7 +14,7 @@ public class MonsterDamageTake : MonoBehaviour, IAttackable
 
     public void OnAttack(GameObject attacker, GameObject defender, Attack attack)
     {
-        monster.monsterStat.health.Minus(attack.Damage); // 데미지 감소 곱해서 빼야함
+        monster.monsterStat.health -= attack.Damage; // 데미지 감소 곱해서 빼야함
         //Debug.Log(monster.health.ToString());
         if (monster.monsterStat.health.factor == 1 && monster.monsterStat.health.numberList[0] <= 0)
         {

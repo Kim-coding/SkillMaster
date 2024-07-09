@@ -88,7 +88,15 @@ public struct BigInteger
     }
     public BigInteger(BigInteger original)
     {
-        numberList = new List<int>(original.numberList); // List<int>는 복사 생성자를 사용하여 새로운 인스턴스 생성
+        if (original.numberList == null)
+        {
+            numberList = new List<int> { 0 };
+
+        }
+        else
+        {
+            numberList = new List<int>(original.numberList);
+        }
         factor = original.factor;
         element = original.element;
     }
