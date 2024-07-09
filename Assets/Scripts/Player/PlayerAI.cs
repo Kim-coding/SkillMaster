@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class PlayerAI : MonoBehaviour
 {
+    private PlayerStat playerStat = new PlayerStat();
     public PlayerMgr playerMgr;
     public PlayerSkills playerSkills;
 
-    public float attackRange = 1.5f;
-    public float speed = 1f;
+    private float attackRange = 1.5f;
+    private float speed = 1f;
 
-    public List<Node> path;
-    public int currentPathIndex = 0;
+    private List<Node> path;
+    private int currentPathIndex = 0;
     public Transform currentTarget;
 
     private AStarPathfinding pathfinding;
@@ -19,9 +20,13 @@ public class PlayerAI : MonoBehaviour
     public StateMachine PlayerStateMachine => stateMachine;
     private void Awake()
     {
+        playerStat = GameMgr.Instance.playerMgr.playerStat;
         pathfinding = GetComponentInParent<AStarPathfinding>();
         stateMachine = new StateMachine(this);
         stateMachine.Initialize(new IdleState(this));
+
+        speed = playerStat.speed;
+        attackRange = playerStat.attackRange;
     }
 
     private void Update()
@@ -41,7 +46,22 @@ public class PlayerAI : MonoBehaviour
             currentPathIndex = 0;
         }
     }
+    public void MoveAlongPath()
+    {
+        if (path != null && currentPathIndex < path.Count && currentTarget != null)
+        {
+            if (Vector3.Distance(transform.position, currentTarget.position) <= attackRange)
+                return;
 
+            Vector3 targetPosition = path[currentPathIndex].worldPosition;
+            transform.position = Vector3.MoveTowards(transform.position, targetPosition, Time.deltaTime * speed);
+
+            if (Vector3.Distance(transform.position, targetPosition) < 0.1f)
+            {
+                currentPathIndex++;
+            }
+        }
+    }
     public Transform FindClosestMonster()
     {
         float closestDistance = Mathf.Infinity;
