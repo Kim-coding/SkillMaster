@@ -33,3 +33,16 @@ public static class Define
 
 
 }
+
+public static class DataTableIds
+{
+    public static readonly string stage = "StageTable";
+
+    public static readonly string monster = "MonsterTable";
+    
+    public static readonly string boss = "BossTable";
+    
+    public static readonly string merge = "MergeTable";
+    
+    public static readonly string skill = "SkillTable";
+}
