@@ -2,14 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MonsterStat : MonoBehaviour
+public class MonsterStat : Status
 {
-    public BigInteger health;
-    public string damage;
     public void Init()
     {
-        health = new BigInteger();
-        health.Init(100);
-        damage = "250";
+        health = new BigInteger(100);
+        attackPower = new BigInteger(250);
     }
 }

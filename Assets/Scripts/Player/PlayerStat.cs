@@ -3,17 +3,19 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public class PlayerStat : Status
+public class PlayerStat
 {
-    public float criticalPercent;
-    public float criticalMultiple;
+    public string playerAttackPower;
+    public string playerHealth;
+
+    public float playerCriticalPercent;
+    public float playerCriticalMultiple;
     public void Init()
     {
-        AttackPower = "100000000000000000";
-        defense = 0;
-        health = 0;
-        criticalPercent = 50f / 100f;
-        criticalMultiple = 2f;
+        playerAttackPower = "100000000000000000";
+        playerHealth = "1000";
+        playerCriticalPercent = 50f / 100f;
+        playerCriticalMultiple = 2f;
     }
 
 }

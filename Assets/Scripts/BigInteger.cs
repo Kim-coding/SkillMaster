@@ -28,6 +28,106 @@ public struct BigInteger
     }
 
 
+    public BigInteger(int n)
+    {
+        numberList = new List<int>();
+        while (n >= 1000)
+        {
+            numberList.Add(n % 1000);
+            n /= 1000;
+        }
+        numberList.Add(n % 1000);
+        factor = numberList.Count;
+        element = 0; // element 필드 초기화
+    }
+
+    public BigInteger(string s)
+    {
+        if (string.IsNullOrEmpty(s))
+        {
+            numberList = null;
+            element = 0;
+            factor = 0;
+            return;
+        }
+        numberList = new List<int>();
+
+        int length = s.Length;
+        int startIndex = s.Length - 3;
+        if (length < 3)
+        {
+            startIndex = 0;
+        }
+        int count = (int)Math.Ceiling((double)s.Length / 3);
+
+        for (int i = 0; i < count; i++)
+        {
+            int substringLength = Math.Min(3, length);
+            if (!int.TryParse(s.Substring(startIndex, substringLength), out element))
+            {
+                numberList = null;
+                element = 0;
+                factor = 0;
+                Clear();
+                Debug.Log("Fail Int Parsing!!");
+                return;
+            }
+
+            numberList.Add(element);
+            length -= substringLength;
+            startIndex -= 3;
+            if (startIndex < 0)
+            {
+                startIndex = 0;
+            }
+
+        }
+        factor = numberList.Count;
+        element = 0; // element 필드 초기화
+
+    }
+    public BigInteger(BigInteger original)
+    {
+        numberList = new List<int>(original.numberList); // List<int>는 복사 생성자를 사용하여 새로운 인스턴스 생성
+        factor = original.factor;
+        element = original.element;
+    }
+
+
+    public static BigInteger operator +(BigInteger left, BigInteger right)
+    {
+        left.Plus(right);
+        return left;
+    }
+    public static BigInteger operator +(BigInteger left, int right)
+    {
+        BigInteger newRight = new BigInteger(right);
+        left.Plus(newRight);
+        return left;
+    }
+
+    public static BigInteger operator -(BigInteger left, BigInteger right)
+    {
+        left.Minus(right);
+        return left;
+    }
+
+    public static BigInteger operator -(BigInteger left, int right)
+    {
+        BigInteger newRight = new BigInteger(right);
+        left.Minus(newRight);
+        return left;
+    }
+
+    public static BigInteger operator *(BigInteger left, float right)
+    {
+        left.Multiple(right);
+        return left;
+    }
+
+
+
+
     public void Init(string s)
     {
         numberList = new List<int>();
