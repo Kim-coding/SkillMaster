@@ -8,6 +8,7 @@ public abstract class Status : MonoBehaviour
     public BigInteger health;
     public BigInteger maxHealth;
     public float speed;
+    public float attackSpeed;
     public float attackRange;
-    public int defense;
+
 }

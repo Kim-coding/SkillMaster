@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MonsterStat : Status
 {
+    public BigInteger dropGold;
     public void Init()
     {
         health = new BigInteger(100);
