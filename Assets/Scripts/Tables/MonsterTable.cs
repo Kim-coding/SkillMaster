@@ -14,7 +14,7 @@ public class MonsterData
     public int Stage {  get; private set; }
     public int health {  get; private set; }
     public float Speed { get; private set; }
-
+    public int Damage { get; private set; }
     //µî
 
 }
