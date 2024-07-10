@@ -93,6 +93,7 @@ public class PlayerAI : MonoBehaviour
 
     public bool IsInAttackRange()
     {
+        if(currentTarget == null) return false;
         return Vector3.Distance(transform.position, currentTarget.position) <= attackRange;
     }
 
