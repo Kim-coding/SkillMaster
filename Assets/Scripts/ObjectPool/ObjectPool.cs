@@ -5,8 +5,9 @@ public class ObjectPool<T> where T : MonoBehaviour
 {
     private readonly T prefab;
     private readonly Transform parentTransform;
-    private readonly Queue<T> pool;
+    public readonly Queue<T> pool;
     private readonly int maxCapacity;
+    public int MaxCapacity { get { return maxCapacity; } }
 
     public ObjectPool(T prefab, Transform parentTransform, int initialCapacity = 10, int maxCapacity = 100)
     {
@@ -34,6 +35,10 @@ public class ObjectPool<T> where T : MonoBehaviour
         {
             obj = GameObject.Instantiate(prefab, parentTransform);
         }
+        if (obj == null || obj.gameObject == null)
+        {
+            return null;
+        }
         obj.gameObject.SetActive(true);
         OnGet(obj);
         return obj;
@@ -43,6 +48,7 @@ public class ObjectPool<T> where T : MonoBehaviour
     {
         if (pool.Count >= maxCapacity)
         {
+            pool.Enqueue(obj);
             GameObject.Destroy(obj.gameObject);
         }
         else

@@ -7,6 +7,8 @@ public class Spawner : MonoBehaviour
 {
     public MainScene Scene;
     private MonsterPool monsterPool;
+    float timer;
+    float duration = 1f;
 
     private void Start()
     {
@@ -14,6 +16,11 @@ public class Spawner : MonoBehaviour
     }
     public void SpawnMonster()
     {
+        if ( monsterPool.pool.Count >= monsterPool.MaxCapacity)
+        {
+            return;
+        }
+
         BoxCollider box = GameMgr.Instance.sceneMgr.mainScene.monster.poolParent.GetComponent<BoxCollider>();
 
         if (box != null)
@@ -38,9 +45,13 @@ public class Spawner : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+        timer += Time.deltaTime;
+        if(timer > duration )
         {
+            timer = 0;
             SpawnMonster();
+
         }
+
     }
 }

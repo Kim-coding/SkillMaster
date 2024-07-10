@@ -79,6 +79,10 @@ public class PlayerAI : MonoBehaviour
         {
             if (monster.activeInHierarchy)
             {
+                if(monster == null)
+                {
+                    continue;
+                }
                 float distanceToMonster = Vector3.Distance(transform.position, monster.transform.position);
                 if (distanceToMonster < closestDistance)
                 {

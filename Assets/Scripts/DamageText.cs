@@ -11,7 +11,7 @@ public class DamageText : MonoBehaviour
     {
         timer += Time.deltaTime;
         var pos = transform.position;
-        pos.y += 0.01f;
+        pos.y += 0.001f;
         transform.position = pos;
 
         if (timer > duration)
