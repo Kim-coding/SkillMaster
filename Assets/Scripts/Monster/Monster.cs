@@ -30,18 +30,15 @@ public class Monster : MonoBehaviour
     public void AddMonsters(GameObject monster)
     {
         monsters.Add(monster);
-        Debug.Log($"Add : {monsters.Count}");
     }
 
     public void RemoveMonsters(GameObject monster)
     {
         monsters.Remove(monster);
-        Debug.Log($"Remove : {monsters.Count}");
     }
 
     public GameObject[] GetMonsters()
     {
-        //Debug.Log(monsters.ToArray().Length);
         return monsters.ToArray();
     }
 }
