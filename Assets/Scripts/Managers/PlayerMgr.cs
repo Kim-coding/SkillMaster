@@ -10,6 +10,8 @@ public class PlayerMgr : MonoBehaviour
     public PlayerStat playerStat;
     public PlayerCurrency currency;
 
+    public List<SkillBallController> skillBallControllers = new List<SkillBallController>();
+
     public TextMeshProUGUI goldUI;
     public TextMeshProUGUI diamondUI;
 

@@ -28,7 +28,7 @@ public class DamageDisplay : MonoBehaviour, IAttackable
         }
         else
         {
-            textPrefab.color = Color.red;
+            textPrefab.color = Color.white;
         }
     }
 }
