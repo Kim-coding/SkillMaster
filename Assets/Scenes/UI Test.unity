@@ -1533,7 +1533,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 731365348}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1458089214}
+        m_TargetAssemblyTypeName: WindowMgr, Assembly-CSharp
+        m_MethodName: DungeonWindowOpen
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &731365348
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1613,7 +1625,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 16.410004, y: -105.13837}
+  m_AnchoredPosition: {x: 16.410156, y: -105.13843}
   m_SizeDelta: {x: 250, y: 86.711426}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1102606861
@@ -1749,7 +1761,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1143115583}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1458089214}
+        m_TargetAssemblyTypeName: WindowMgr, Assembly-CSharp
+        m_MethodName: PickUpWindowOpen
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1143115583
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2297,7 +2321,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1395254486}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1458089214}
+        m_TargetAssemblyTypeName: WindowMgr, Assembly-CSharp
+        m_MethodName: InvenWindowOpen
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1395254486
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2655,6 +2691,7 @@ GameObject:
   - component: {fileID: 1458089212}
   - component: {fileID: 1458089211}
   - component: {fileID: 1458089213}
+  - component: {fileID: 1458089214}
   m_Layer: 5
   m_Name: UI Window
   m_TagString: Untagged
@@ -2696,7 +2733,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2747,6 +2784,23 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &1458089214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1458089209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47b04e7fd5a71a743aaaaf32522d4335, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mergeWindow: {fileID: 334062742}
+  enhanceWindow: {fileID: 18185118}
+  invenWindow: {fileID: 1813656373}
+  dungeonWindow: {fileID: 1195710797}
+  pickUpWindow: {fileID: 329263579}
 --- !u!1 &1460805574
 GameObject:
   m_ObjectHideFlags: 0
@@ -3687,7 +3741,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1997352865}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1458089214}
+        m_TargetAssemblyTypeName: WindowMgr, Assembly-CSharp
+        m_MethodName: MergeWindowOpen
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1997352865
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4078,7 +4144,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2125335318}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1458089214}
+        m_TargetAssemblyTypeName: WindowMgr, Assembly-CSharp
+        m_MethodName: EnhanceWindowOpen
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2125335318
 MonoBehaviour:
   m_ObjectHideFlags: 0
