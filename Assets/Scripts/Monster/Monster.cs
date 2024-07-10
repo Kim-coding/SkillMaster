@@ -5,7 +5,7 @@ using UnityEngine;
 public class Monster : MonoBehaviour
 {
     private static MonsterPool monsterPool;
-    public MonsterAI monsterPrefab;
+    public MonsterAI[] monsterPrefabs;
     public Transform poolParent;
     private List<GameObject> monsters = new List<GameObject>();
 
@@ -19,7 +19,7 @@ public class Monster : MonoBehaviour
 
     private void InitializeMonsterPool()
     {
-        monsterPool = new MonsterPool(monsterPrefab, poolParent);
+        monsterPool = new MonsterPool(monsterPrefabs[0], poolParent);
     }
 
     public MonsterPool GetMonsterPool()
@@ -30,15 +30,18 @@ public class Monster : MonoBehaviour
     public void AddMonsters(GameObject monster)
     {
         monsters.Add(monster);
+        Debug.Log($"Add : {monsters.Count}");
     }
 
     public void RemoveMonsters(GameObject monster)
     {
         monsters.Remove(monster);
+        Debug.Log($"Remove : {monsters.Count}");
     }
 
     public GameObject[] GetMonsters()
     {
+        //Debug.Log(monsters.ToArray().Length);
         return monsters.ToArray();
     }
 }

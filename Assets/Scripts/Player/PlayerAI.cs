@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class PlayerAI : MonoBehaviour
 {
@@ -21,7 +22,6 @@ public class PlayerAI : MonoBehaviour
     private StateMachine stateMachine;
     public StateMachine PlayerStateMachine => stateMachine;
 
-
     private void Awake()
     {
         pathfinding = GetComponentInParent<AStarPathfinding>();
@@ -41,7 +41,11 @@ public class PlayerAI : MonoBehaviour
     }
     public void SetTarget(Transform target)
     {
-        currentTarget = target;
+        if (currentTarget != target)
+        {
+            currentTarget = target;
+            UpdatePath();
+        }
     }
     public void UpdatePath()
     {
@@ -77,12 +81,8 @@ public class PlayerAI : MonoBehaviour
         { return null; }    
         foreach (GameObject monster in monsters)
         {
-            if (monster.activeInHierarchy)
+            if (monster != null && monster.activeInHierarchy)
             {
-                if(monster == null)
-                {
-                    continue;
-                }
                 float distanceToMonster = Vector3.Distance(transform.position, monster.transform.position);
                 if (distanceToMonster < closestDistance)
                 {
@@ -133,10 +133,15 @@ public class PlayerAI : MonoBehaviour
 
     public void OnAttack(GameObject skill)
     {
-        if (currentTarget != null)
+        if (currentTarget != null && IsInAttackRange())
         {
             Vector3 direction = (currentTarget.position - transform.position).normalized;
             playerSkills.UseSkill(skill, transform.position, direction, gameObject);
+        }
+        else
+        {
+            currentTarget = FindClosestMonster();
+            CheckAndChangeState();
         }
     }
 }

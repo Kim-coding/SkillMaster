@@ -26,6 +26,7 @@ public class ObjectPool<T> where T : MonoBehaviour
 
     public T Get()
     {
+        Debug.Log(pool.Count);
         T obj;
         if (pool.Count > 0)
         {

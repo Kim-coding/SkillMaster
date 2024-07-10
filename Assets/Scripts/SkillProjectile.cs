@@ -5,6 +5,9 @@ public class SkillProjectile : MonoBehaviour
     public GameObject attacker;
     public Attack attack;
 
+    private float timer = 0f;
+    private float duration = 1f;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Monster"))
@@ -19,6 +22,15 @@ public class SkillProjectile : MonoBehaviour
                     monsterComponent.OnAttack(attacker.gameObject, collision.gameObject, attack);
                 }
             }
+            Destroy(gameObject);
+        }
+    }
+
+    void Update()
+    {
+        timer += Time.deltaTime;
+        if (timer > duration)
+        {
             Destroy(gameObject);
         }
     }
