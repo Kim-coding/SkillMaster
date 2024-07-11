@@ -53,7 +53,7 @@ public class WindowMgr : MonoBehaviour
         RectTransform rectTransform = window.GetComponent<RectTransform>();
         window.SetActive(true);
         rectTransform.anchoredPosition = new Vector2(0, -Screen.height); // 시작 위치 아래로 설정
-        rectTransform.DOAnchorPos(Vector2.zero, 1f);//.SetEase(Ease.OutFlash); // 반동 효과로 중앙으로 이동
+        rectTransform.DOAnchorPos(Vector2.zero, 0.3f);//.SetEase(Ease.OutFlash); // 반동 효과로 중앙으로 이동
     }
 
     public void MergeWindowOpen()
