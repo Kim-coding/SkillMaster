@@ -136,7 +136,7 @@ public class PlayerAI : MonoBehaviour
         if (currentTarget != null && IsInAttackRange())
         {
             Vector3 direction = (currentTarget.position - transform.position).normalized;
-            playerSkills.UseSkill(skill, transform.position, direction, gameObject);
+            playerSkills.UseSkill(skill, transform.position, direction);
         }
         else
         {

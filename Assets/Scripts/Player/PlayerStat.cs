@@ -25,7 +25,7 @@ public class PlayerStat
 
     public void Init()
     {
-        playerAttackPower = "100000000000000000";
+        playerAttackPower = "30";
         playerHealth = "1000";
         playerCriticalPercent = 50f / 100f;
         playerCriticalMultiple = 2f;

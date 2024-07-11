@@ -302,27 +302,64 @@ public struct BigInteger
         int lastIndex = numberList.Count - 1;
 
         var newFirstFloat = numberList[lastIndex] * f;
-        numberList[lastIndex] = (int)newFirstFloat;
-        newFirstFloat -= numberList[lastIndex];
-        newFirstFloat *= 1000;
 
-        if (numberList.Count > 1)
+        if (f >= 1)
         {
-            int secondIndex = numberList.Count - 2;
-            var newSecondFloat = numberList[secondIndex] * f;
-            newSecondFloat += newFirstFloat;
-            numberList[secondIndex] = (int)MathF.Ceiling(newSecondFloat);
-            if (numberList[secondIndex] > 1000)
+            numberList[lastIndex] = (int)newFirstFloat;
+            newFirstFloat -= numberList[lastIndex];
+            newFirstFloat *= 100;
+
+
+            if (numberList.Count > 1)
             {
-                int carry = numberList[secondIndex] / 1000;
-                numberList[lastIndex] += carry;
-                numberList[secondIndex] = numberList[secondIndex] % 1000;
+                int secondIndex = numberList.Count - 2;
+                var newSecondFloat = numberList[secondIndex] * f;
+                newSecondFloat += newFirstFloat;
+                numberList[secondIndex] = (int)MathF.Ceiling(newSecondFloat);
+                if (numberList[secondIndex] > 1000)
+                {
+                    int carry = numberList[secondIndex] / 1000;
+                    numberList[lastIndex] += carry;
+                    numberList[secondIndex] = numberList[secondIndex] % 1000;
+                }
             }
+            else
+            {
+                newFirstFloat = Mathf.RoundToInt(newFirstFloat);
+                numberList[lastIndex] += (int)newFirstFloat;
+            }
+
         }
         else
         {
-            newFirstFloat = Mathf.RoundToInt(newFirstFloat);
-            numberList[lastIndex] += (int)newFirstFloat;
+            if (numberList.Count > 1)
+            {
+                newFirstFloat *= 1000;
+                float newSecondFloat = numberList[lastIndex - 1] * f;
+                newSecondFloat += newFirstFloat;
+                numberList[lastIndex - 1] = (int)newSecondFloat;
+                if (numberList[lastIndex - 1] / 1000 > 0)
+                {
+                    numberList[lastIndex] = numberList[lastIndex - 1] / 1000;
+                    numberList[lastIndex - 1] = numberList[lastIndex - 1] % 1000;
+                }
+                else
+                {
+                    numberList[lastIndex - 1] = numberList[lastIndex - 1] % 1000;
+                    numberList.Remove(numberList[lastIndex]);
+                    factor = numberList.Count;
+                }
+
+            }
+            else
+            {
+                numberList[lastIndex] = (int)newFirstFloat;
+                if (numberList[lastIndex] == 0)
+                {
+                    Clear();
+                }
+            }
+            return;
         }
 
         Promotion();

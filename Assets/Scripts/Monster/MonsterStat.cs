@@ -8,6 +8,6 @@ public class MonsterStat : Status
     public void Init()
     {
         health = new BigInteger(100);
-        attackPower = new BigInteger(250);
+        attackPower = new BigInteger(250);    
     }
 }
