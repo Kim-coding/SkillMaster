@@ -18,13 +18,25 @@ public class SkillSpawner : MonoBehaviour
         parentTransform = mergeWindow.transform.GetComponent<RectTransform>();
 
     }
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Space)) {
+            RandomVector();
+            var ball =Instantiate(prefabSkillBall, parentTransform);
+            var rt = ball.GetComponent<RectTransform>();
+
+            rt.anchoredPosition = maxY;
+        }
+    }
+
+
     public void SpawnSkill()
     {
 
         var newSkill = Instantiate(prefabSkillBall, parentTransform);
 
         var rt = newSkill.GetComponent<RectTransform>();
-        rt.anchoredPosition = RandomVector() ;
+        rt.anchoredPosition = RandomVector();
 
         var newSkillControler = newSkill.GetComponent<SkillBallController>();
         newSkillControler.casing(this);

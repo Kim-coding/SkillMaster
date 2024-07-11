@@ -68,38 +68,29 @@ public class SkillBallController : MonoBehaviour, IPointerDownHandler, IPointerU
             Vector3 mousePos = Input.mousePosition;
             mousePos.z = 0;
 
-            // 마우스 위치를 부모의 로컬 좌표로 변환
-            Vector2 localPoint;
-            RectTransformUtility.ScreenPointToLocalPointInRectangle(mergeWindow.GetComponent<RectTransform>(), mousePos, Camera.main, out localPoint);
-
-            // 로컬 좌표를 클램핑
-            Vector3 clampedPosition = ClampPositionInParent(localPoint);
+            Vector3 clampedPosition = ClampPositionInParent(mousePos);
 
             // areaRect의 위치 변경
-            areaRect.localPosition = clampedPosition;
+            areaRect.position = clampedPosition;
         }
     }
 
-    private void Update()
-    {
-        Vector3 mousePos = Input.mousePosition;
-        Vector2 localPoint;
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(mergeWindow.GetComponent<RectTransform>(), mousePos, Camera.main, out localPoint);
-
-        Debug.Log(mousePos.x + "/" + localPoint.x);
-
-    }
-
-
-
     private Vector3 ClampPositionInParent(Vector3 position)
     {
-        float clampedX = Mathf.Clamp(position.x, skillSpawner.minX.x, skillSpawner.maxY.x);
+        GameObject virtualObject = new GameObject("virtualObject");
+        RectTransform virtualObjectRect = virtualObject.AddComponent<RectTransform>();
+        virtualObjectRect.transform.SetParent(mergeWindow.GetComponent<RectTransform>(), false);
 
-        Debug.Log(position.x);
-        Debug.Log(skillSpawner.minX.x);
+        virtualObjectRect.anchoredPosition = skillSpawner.minX;
+        Vector3 localPointX = new Vector3(virtualObjectRect.position.x, virtualObjectRect.position.y, 0);
 
-        float clampedY = Mathf.Clamp(position.y, skillSpawner.minX.y, skillSpawner.maxY.y);
+        virtualObjectRect.anchoredPosition = skillSpawner.maxY;
+        Vector3 localPointY = new Vector3(virtualObjectRect.position.x, virtualObjectRect.position.y, 0);
+
+        float clampedX = Mathf.Clamp(position.x, localPointX.x, localPointY.x);
+        float clampedY = Mathf.Clamp(position.y, localPointX.y, localPointY.y);
+
+        Debug.Log(position.x + "/" + localPointX.x + "/" + localPointY.x);
 
         return new Vector3(clampedX, clampedY, position.z);
     }
