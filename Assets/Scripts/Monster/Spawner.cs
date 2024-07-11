@@ -85,7 +85,7 @@ public class Spawner : MonoBehaviour
         {
             monsterPool = GameMgr.Instance.GetMonsterPool();
         }
-        GameMgr.Instance.uiMgr.MonsterSliderUpdate();
+        
         monsterPool.Return(monster);
         OnMonsterDeath();
     }

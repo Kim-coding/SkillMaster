@@ -10,6 +10,7 @@ public class Destructed : MonoBehaviour, IDestructible
         GameMgr.Instance.sceneMgr.mainScene.RemoveMonsters(gameObject);
         gameObject.SetActive(false); // 몬스터 비활성화 또는 파괴
         GameMgr.Instance.sceneMgr.mainScene.spawner.DestroyMonster(gameObject.GetComponent<MonsterAI>());
+        GameMgr.Instance.uiMgr.MonsterSliderUpdate();
 
     }
 }
