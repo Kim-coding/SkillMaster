@@ -12,15 +12,16 @@ GameObject:
   - component: {fileID: 2578584884348673703}
   - component: {fileID: 2498219312119838529}
   - component: {fileID: 687591824297593071}
+  - component: {fileID: 7454287526471470266}
   - component: {fileID: 1625479185938590850}
   - component: {fileID: -8176549774457506176}
   - component: {fileID: -4407290600039218660}
   - component: {fileID: 7007716861827583203}
-  - component: {fileID: 6589112466126548429}
   - component: {fileID: -7751084758280996394}
+  - component: {fileID: -2263757533002577063}
   m_Layer: 0
   m_Name: Boss
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -133,8 +134,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 59351692744629341, guid: 16326b6c1eaf94e4c9e37c895e46167f, type: 3}
   targetUpdataTime: 0.5
-  attackRange: 0
   monsterStat: {fileID: 0}
+--- !u!114 &7454287526471470266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1605052194642255169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89a7d85bd2790ef43b5a2d8a0b76771e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1625479185938590850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -187,18 +199,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b4b8e809e806d04db0129c432211a69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &6589112466126548429
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1605052194642255169}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 137fce291cb49234991a1f9879ff3b5b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &-7751084758280996394
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211,3 +211,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44f4e9e2589d7e549a131f9be650f68d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!58 &-2263757533002577063
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1605052194642255169}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.41438076

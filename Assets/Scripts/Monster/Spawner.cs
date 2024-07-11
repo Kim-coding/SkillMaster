@@ -5,11 +5,13 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    public MainScene Scene;
+    public MainScene scene;
     private MonsterPool monsterPool;
 
     public Transform[] spawnPoints;
     public int startSpawnMonsterCount = 25;
+
+    private Transform BossParent;
 
     private int deathCount = 0;
     private const int deathThreshold = 3;
@@ -26,7 +28,6 @@ public class Spawner : MonoBehaviour
 
     public void InitialSpawn()
     {
-        if (GameMgr.Instance.sceneMgr.mainScene.IsBossBattle()) return;
         int monstersPerZoneMin = 3;
         int monstersPerZoneMax = 4;
 
@@ -55,7 +56,7 @@ public class Spawner : MonoBehaviour
             MonsterAI monster = monsterPool.Get();
             monster.transform.position = zone.position;
             monster.transform.rotation = Quaternion.identity;
-            Scene.AddMonsters(monster.gameObject);
+            scene.AddMonsters(monster.gameObject);
         }
     }
 
@@ -74,7 +75,8 @@ public class Spawner : MonoBehaviour
 
     public GameObject BossSpawn(GameObject bossPrefab, Transform spawnPoint)
     {
-        return Instantiate(bossPrefab, spawnPoint.position, Quaternion.identity);
+        BossParent = scene.monster.poolParent;
+        return Instantiate(bossPrefab, spawnPoint.position, Quaternion.identity, BossParent);
     }
 
     public void DestroyMonster(MonsterAI monster)
