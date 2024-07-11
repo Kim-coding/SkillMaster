@@ -79,8 +79,6 @@ public class Spawner : MonoBehaviour
 
     public void DestroyMonster(MonsterAI monster)
     {
-        if (GameMgr.Instance.sceneMgr.mainScene.IsBossBattle()) return;
-
         if (monsterPool == null)
         {
             monsterPool = GameMgr.Instance.GetMonsterPool();

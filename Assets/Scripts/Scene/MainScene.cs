@@ -45,8 +45,8 @@ public class MainScene : MonoBehaviour
 
     public void SpawnBoss()  //보스 몬스터 소환
     {
-        bossStage = true;
         currentBoss = spawner.BossSpawn(BossMonsterPrefab, bossSpawnPoint);
+        bossStage = true;
         //spawner.BossSpawn(Stage.BossMonsterPrefab, bossSpawnPoint);
     }
 

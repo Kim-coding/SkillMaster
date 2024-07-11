@@ -33,6 +33,8 @@ public class UIMgr : MonoBehaviour
 
     public void MonsterSliderUpdate()
     {
+        if (GameMgr.Instance.sceneMgr.mainScene.IsBossBattle()) return;
+
         if (monsterSlider.value < monsterSlider.maxValue)
         {
             monsterSlider.value += 1;

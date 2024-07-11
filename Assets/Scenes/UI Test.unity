@@ -3530,6 +3530,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawner: {fileID: 1423913462}
   monster: {fileID: 1423913454}
+  BossMonsterPrefab: {fileID: 1605052194642255169, guid: 9a445daf56e69d34bb641bce0692cb3e, type: 3}
+  bossSpawnPoint: {fileID: 421622222}
 --- !u!114 &1423913456
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -11,7 +11,7 @@ public class MonsterAI : MonoBehaviour
     private float timer = 0;
     private float attackTimer = 0;
     public float targetUpdataTime = 0.5f;
-    public float attackRange;
+    private float attackRange;
 
     public MonsterStat monsterStat;
     public MonsterAttack monsterAttack;
@@ -22,6 +22,7 @@ public class MonsterAI : MonoBehaviour
         monsterStat = GetComponent<MonsterStat>();
         monsterStat.Init();
         monsterAttack = new MonsterAttack();
+        attackRange = monsterStat.attackRange;
     }
 
     private void Start()
