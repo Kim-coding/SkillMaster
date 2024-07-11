@@ -68,26 +68,9 @@ public class Spawner : MonoBehaviour
         }
     }
 
-    public void SpawnMonster()
+    public void BossSpawn()
     {
-        if ( monsterPool.pool.Count >= monsterPool.MaxCapacity)
-        {
-            return;
-        }
-
-        BoxCollider box = GameMgr.Instance.sceneMgr.mainScene.monster.poolParent.GetComponent<BoxCollider>();
-
-        if (box != null)
-        {
-            MonsterAI monster = monsterPool.Get();
-            monster.transform.position = transform.position;
-            monster.transform.rotation = transform.rotation;
-            Scene.AddMonsters(monster.gameObject);
-        }
-        else
-        {
-            Debug.LogError("Parent object does not have a BoxCollider component.");
-        }
+        
     }
 
     public void DestroyMonster(MonsterAI monster)
@@ -99,10 +82,5 @@ public class Spawner : MonoBehaviour
         GameMgr.Instance.uiMgr.MonsterSliderUpdate();
         monsterPool.Return(monster);
         OnMonsterDeath();
-    }
-
-    private void Update()
-    {
-
     }
 }
