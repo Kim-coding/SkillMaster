@@ -29,7 +29,8 @@ public static class RectTransformExtensions
 
 public class SkillBallController : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDragHandler
 {
-    public SkillSpawner skillSpawner;
+    private SkillSpawner skillSpawner;
+    [HideInInspector]
     public GameObject mergeWindow;
 
     private int tier;
@@ -45,12 +46,8 @@ public class SkillBallController : MonoBehaviour, IPointerDownHandler, IPointerU
     private void Start()
     {
         areaRect = GetComponent<RectTransform>();
-    }
-
-    public void casing(SkillSpawner s)
-    {
-        skillSpawner = s;
-        mergeWindow = s.mergeWindow;
+        skillSpawner = GameMgr.Instance.uiMgr.skillSpawner;
+        mergeWindow = skillSpawner.mergeWindow;
     }
 
     public void Set(int t)
@@ -67,30 +64,16 @@ public class SkillBallController : MonoBehaviour, IPointerDownHandler, IPointerU
         {
             Vector3 mousePos = Input.mousePosition;
             mousePos.z = 0;
-
             Vector3 clampedPosition = ClampPositionInParent(mousePos);
-
-            // areaRect의 위치 변경
             areaRect.position = clampedPosition;
         }
     }
 
     private Vector3 ClampPositionInParent(Vector3 position)
     {
-        GameObject virtualObject = new GameObject("virtualObject");
-        RectTransform virtualObjectRect = virtualObject.AddComponent<RectTransform>();
-        virtualObjectRect.transform.SetParent(mergeWindow.GetComponent<RectTransform>(), false);
 
-        virtualObjectRect.anchoredPosition = skillSpawner.minX;
-        Vector3 localPointX = new Vector3(virtualObjectRect.position.x, virtualObjectRect.position.y, 0);
-
-        virtualObjectRect.anchoredPosition = skillSpawner.maxY;
-        Vector3 localPointY = new Vector3(virtualObjectRect.position.x, virtualObjectRect.position.y, 0);
-
-        float clampedX = Mathf.Clamp(position.x, localPointX.x, localPointY.x);
-        float clampedY = Mathf.Clamp(position.y, localPointX.y, localPointY.y);
-
-        Debug.Log(position.x + "/" + localPointX.x + "/" + localPointY.x);
+        float clampedX = Mathf.Clamp(position.x, skillSpawner.localPointX.x, skillSpawner.localPointY.x);
+        float clampedY = Mathf.Clamp(position.y, skillSpawner.localPointX.y, skillSpawner.localPointY.y);
 
         return new Vector3(clampedX, clampedY, position.z);
     }
@@ -121,6 +104,7 @@ public class SkillBallController : MonoBehaviour, IPointerDownHandler, IPointerU
                 //합쳐지는 이펙트
                 GameMgr.Instance.playerMgr.skillBallControllers.Remove(gameObject.GetComponent<SkillBallController>());
                 GameMgr.Instance.playerMgr.skillBallControllers.Remove(other.gameObject.GetComponent<SkillBallController>());
+                GameMgr.Instance.uiMgr.SkillCountUpdate();
                 Destroy(gameObject);
                 Destroy(other.gameObject);
                 break;

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public class PlayerStat : MonoBehaviour
+public class PlayerStat
 {
     public string playerAttackPower;
     public int defence;
