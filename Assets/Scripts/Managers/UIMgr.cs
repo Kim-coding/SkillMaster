@@ -39,9 +39,16 @@ public class UIMgr : MonoBehaviour
         }
         else if (monsterSlider.value == monsterSlider.maxValue)
         {
-            bossSpawnButton.gameObject.SetActive(true);
+            GameMgr.Instance.OnBossSpawn();
+            monsterSlider.value = 0;
         }
     }
+
+    public void ResetMonsterSlider()
+    {
+        monsterSlider.value = 0;
+    }
+
 
     public void SkillCountUpdate()
     {

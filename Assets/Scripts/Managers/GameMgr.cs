@@ -35,4 +35,19 @@ public class GameMgr : MonoBehaviour
     {
         return sceneMgr.mainScene.GetMonsters();
     }
+
+    public void OnBossDefeated()
+    {
+        uiMgr.ResetMonsterSlider();
+        sceneMgr.mainScene.RestartStage();
+    }
+
+    public void OnBossSpawn()
+    {
+        uiMgr.bossSpawnButton.gameObject.SetActive(false);
+        
+        sceneMgr.mainScene.RemoveAllMonsters();
+        
+        sceneMgr.mainScene.SpawnBoss();
+    }
 }
