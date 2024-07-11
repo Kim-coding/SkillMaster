@@ -3493,6 +3493,7 @@ GameObject:
   - component: {fileID: 1423913454}
   - component: {fileID: 1423913462}
   - component: {fileID: 1423913463}
+  - component: {fileID: 1423913464}
   m_Layer: 0
   m_Name: Mgrs
   m_TagString: Untagged
@@ -3555,6 +3556,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainScene: {fileID: 1423913455}
   dungeonScene: {fileID: 1423913456}
+  damageTextMgr: {fileID: 1423913464}
 --- !u!114 &1423913458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3641,6 +3643,19 @@ MonoBehaviour:
   goldUI: {fileID: 5086343}
   diamondUI: {fileID: 256428876}
   skillcount: {fileID: 25228791}
+--- !u!114 &1423913464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1423913453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7322ac1470892949a78ba2a116cc68e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageTextPrefab: {fileID: 5582367580439983707, guid: 278cd926fa1fc374aaaf1dcd335f2bed, type: 3}
 --- !u!1 &1446826467
 GameObject:
   m_ObjectHideFlags: 0
