@@ -9,6 +9,7 @@ public class GameMgr : MonoBehaviour
 
     public SceneMgr sceneMgr;
     public PlayerMgr playerMgr;
+    public UIMgr uiMgr;
 
     private void Awake()
     {

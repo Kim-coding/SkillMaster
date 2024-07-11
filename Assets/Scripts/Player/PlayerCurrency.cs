@@ -12,19 +12,19 @@ public class PlayerCurrency
     {
         gold.Init(0);
         diamond.Init(0);
-        GameMgr.Instance.playerMgr.textUpdate();
+        GameMgr.Instance.uiMgr.AllUIUpdate(gold,diamond);
     }
   
     public void AddGold(BigInteger g)
     {
         gold.Plus(g);
-        GameMgr.Instance.playerMgr.textUpdate();
+        GameMgr.Instance.uiMgr.GoldTextUpdate(gold);
 
     }
     public void AddDia(BigInteger d)
     {
         diamond.Plus(d);
-        GameMgr.Instance.playerMgr.textUpdate();
+        GameMgr.Instance.uiMgr.DiaTextUpdate(diamond);
     }
 
 }

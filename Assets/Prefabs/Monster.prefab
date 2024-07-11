@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: -4880551860086738742}
   - component: {fileID: 1083383522710451013}
   - component: {fileID: -4706407626423623546}
+  - component: {fileID: -4615519480749428121}
   m_Layer: 0
   m_Name: Monster
   m_TagString: Monster
@@ -163,7 +164,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.85, y: 0.85}
   m_EdgeRadius: 0
 --- !u!50 &-5534374576891167262
 Rigidbody2D:
@@ -242,5 +243,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
+  attackSpeed: 0
   attackRange: 0
-  defense: 0
+--- !u!114 &-4615519480749428121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4831553660578189742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 137fce291cb49234991a1f9879ff3b5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
