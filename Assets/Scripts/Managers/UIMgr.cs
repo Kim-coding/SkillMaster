@@ -6,10 +6,13 @@ using UnityEngine.UI;
 
 public class UIMgr : MonoBehaviour
 {
+    public SkillSpawner skillSpawner;
     public Slider monsterSlider;
     public Button bossSpawnButton;
     public TextMeshProUGUI goldUI;
     public TextMeshProUGUI diamondUI;
+
+    public TextMeshProUGUI skillcount;
 
     public void AllUIUpdate(BigInteger g, BigInteger d)
     {
@@ -38,5 +41,10 @@ public class UIMgr : MonoBehaviour
         {
             bossSpawnButton.gameObject.SetActive(true);
         }
+    }
+
+    public void SkillCountUpdate()
+    {
+        skillcount.text = "º“»Ø\n" + GameMgr.Instance.playerMgr.skillBallControllers.Count + "/" + GameMgr.Instance.playerMgr.playerEnhance.maxSpawnCount;
     }
 }

@@ -8,6 +8,7 @@ public class PlayerMgr : MonoBehaviour
 {
     private GameMgr gameMgr;
     public PlayerStat playerStat;
+    public PlayerEnhance playerEnhance;
     public PlayerCurrency currency;
 
     public List<SkillBallController> skillBallControllers = new List<SkillBallController>();
@@ -19,8 +20,11 @@ public class PlayerMgr : MonoBehaviour
     {
         gameMgr = GameMgr.Instance;
         currency = new PlayerCurrency();
+        playerStat = new PlayerStat();
+        playerEnhance = new PlayerEnhance();
         currency.Init();
         playerStat.Init();
+        playerEnhance.Init();
     }
 
     public GameObject[] RequestMonsters()
