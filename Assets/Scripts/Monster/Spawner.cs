@@ -9,8 +9,6 @@ public class Spawner : MonoBehaviour
     private MonsterPool monsterPool;
 
     public Transform[] spawnPoints;
-    public int startSpawnMonsterCount = 25;
-
     private Transform BossParent;
 
     private int deathCount = 0;
@@ -28,6 +26,7 @@ public class Spawner : MonoBehaviour
 
     public void InitialSpawn()
     {
+        int startSpawnMonsterCount = 25;
         int monstersPerZoneMin = 3;
         int monstersPerZoneMax = 4;
 

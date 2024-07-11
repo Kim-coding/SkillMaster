@@ -22,10 +22,8 @@ public class UIMgr : MonoBehaviour
     public TextMeshProUGUI diamondUI;
     public TextMeshProUGUI stageUI;
 
-
     public TextMeshProUGUI skillcount;
     private int stageCount = 1;
-
     public void AllUIUpdate(BigInteger g, BigInteger d)
     {
         bossSpawnButton.gameObject.SetActive(false);

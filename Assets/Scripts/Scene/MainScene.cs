@@ -38,12 +38,12 @@ public class MainScene : MonoBehaviour
         GameObject[] monsters = GetMonsters();
         foreach (GameObject monster in monsters)
         {
-            if (monster.GetComponent<MonsterAI>())
+            if (monster != null && monster.TryGetComponent<MonsterAI>(out var monsterAI))
             {
                 if (!IsBossBattle())
                 {
-                    monster.gameObject.SetActive(false);
-                    monsterPool.Return(monster.GetComponent<MonsterAI>());
+                    monsterAI.gameObject.SetActive(false);
+                    monsterPool.Return(monsterAI);
                 }
             }
         }
