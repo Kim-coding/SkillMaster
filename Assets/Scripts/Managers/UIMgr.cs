@@ -6,13 +6,21 @@ using UnityEngine.UI;
 
 public class UIMgr : MonoBehaviour
 {
-    public SkillSpawner skillSpawner;
+    public UiWindow uiWindow;
+    public UiMerge uiMerge;
+    public UiEnhance uiEnhance;
+
+
+
+    /// <summary>
+    /// 밑에것들 정리 필요
+    /// </summary>
+
     public Slider monsterSlider;
     public Button bossSpawnButton;
     public TextMeshProUGUI goldUI;
     public TextMeshProUGUI diamondUI;
 
-    public TextMeshProUGUI skillcount;
 
     public void AllUIUpdate(BigInteger g, BigInteger d)
     {
@@ -52,8 +60,4 @@ public class UIMgr : MonoBehaviour
     }
 
 
-    public void SkillCountUpdate()
-    {
-        skillcount.text = "소환\n" + GameMgr.Instance.playerMgr.skillBallControllers.Count + "/" + GameMgr.Instance.playerMgr.playerEnhance.maxSpawnCount;
-    }
 }

@@ -18,11 +18,12 @@ public class CharacterStat : Status
 
     private void Awake()
     {
+        GameMgr.Instance.playerMgr.characters.Add(this);
         currentPlayerStat = GameMgr.Instance.playerMgr.playerStat;
-        Init();
+        PlayerStatUpdate();
     }
 
-    public void Init()
+    public void PlayerStatUpdate()
     {
         health = new BigInteger(currentPlayerStat.playerHealth);
         attackPower = new BigInteger(currentPlayerStat.playerAttackPower);
