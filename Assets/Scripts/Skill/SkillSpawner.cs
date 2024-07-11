@@ -83,7 +83,7 @@ public class SkillSpawner : MonoBehaviour
         var newSkillControler = newSkill.GetComponent<SkillBallController>();
         newSkillControler.Set(1);
         GameMgr.Instance.playerMgr.skillBallControllers.Add(newSkillControler);
-        GameMgr.Instance.uiMgr.SkillCountUpdate();
+        GameMgr.Instance.uiMgr.uiMerge.SkillCountUpdate();
     }
 
     public void MergeSkill(int t, Vector3 pos)

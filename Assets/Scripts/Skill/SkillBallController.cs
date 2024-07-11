@@ -46,7 +46,7 @@ public class SkillBallController : MonoBehaviour, IPointerDownHandler, IPointerU
     private void Start()
     {
         areaRect = GetComponent<RectTransform>();
-        skillSpawner = GameMgr.Instance.uiMgr.skillSpawner;
+        skillSpawner = GameMgr.Instance.uiMgr.uiMerge.skillSpawner;
         mergeWindow = skillSpawner.mergeWindow;
     }
 
@@ -104,7 +104,7 @@ public class SkillBallController : MonoBehaviour, IPointerDownHandler, IPointerU
                 //합쳐지는 이펙트
                 GameMgr.Instance.playerMgr.skillBallControllers.Remove(gameObject.GetComponent<SkillBallController>());
                 GameMgr.Instance.playerMgr.skillBallControllers.Remove(other.gameObject.GetComponent<SkillBallController>());
-                GameMgr.Instance.uiMgr.SkillCountUpdate();
+                GameMgr.Instance.uiMgr.uiMerge.SkillCountUpdate();
                 Destroy(gameObject);
                 Destroy(other.gameObject);
                 break;

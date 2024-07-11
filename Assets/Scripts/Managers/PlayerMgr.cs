@@ -7,6 +7,9 @@ using UnityEngine;
 public class PlayerMgr : MonoBehaviour
 {
     private GameMgr gameMgr;
+
+    public List<CharacterStat> characters = new List<CharacterStat>(); // 플레이어 캐릭터들 접근
+
     public PlayerStat playerStat;
     public PlayerEnhance playerEnhance;
     public PlayerCurrency currency;
