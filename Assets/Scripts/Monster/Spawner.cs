@@ -24,8 +24,9 @@ public class Spawner : MonoBehaviour
         InitialSpawn();
     }
 
-    private void InitialSpawn()
+    public void InitialSpawn()
     {
+        if (GameMgr.Instance.sceneMgr.mainScene.IsBossBattle()) return;
         int monstersPerZoneMin = 3;
         int monstersPerZoneMax = 4;
 
@@ -43,6 +44,7 @@ public class Spawner : MonoBehaviour
 
     public void SpawnMonsters(Transform zone, int count)
     {
+        if (GameMgr.Instance.sceneMgr.mainScene.IsBossBattle()) return;
         if (monsterPool.pool.Count >= monsterPool.MaxCapacity)
         {
             return;
@@ -59,6 +61,8 @@ public class Spawner : MonoBehaviour
 
     public void OnMonsterDeath()
     {
+        if (GameMgr.Instance.sceneMgr.mainScene.IsBossBattle()) return;
+
         deathCount++;
         if (deathCount >= deathThreshold)
         {
@@ -68,13 +72,15 @@ public class Spawner : MonoBehaviour
         }
     }
 
-    public void BossSpawn()
+    public GameObject BossSpawn(GameObject bossPrefab, Transform spawnPoint)
     {
-        
+        return Instantiate(bossPrefab, spawnPoint.position, Quaternion.identity);
     }
 
     public void DestroyMonster(MonsterAI monster)
     {
+        if (GameMgr.Instance.sceneMgr.mainScene.IsBossBattle()) return;
+
         if (monsterPool == null)
         {
             monsterPool = GameMgr.Instance.GetMonsterPool();
