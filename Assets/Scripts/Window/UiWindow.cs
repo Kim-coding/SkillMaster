@@ -43,8 +43,8 @@ public class UiWindow : MonoBehaviour
 
         if (windows.ContainsKey(window))
         {
-            //windows[window].SetActive(true);
-            AnimateWindow(windows[window]);
+            windows[window].SetActive(true);
+            //AnimateWindow(windows[window]);
         }
     }
 
@@ -53,7 +53,7 @@ public class UiWindow : MonoBehaviour
         RectTransform rectTransform = window.GetComponent<RectTransform>();
         window.SetActive(true);
         rectTransform.anchoredPosition = new Vector2(0, -Screen.height); // 시작 위치 아래로 설정
-        rectTransform.DOAnchorPos(Vector2.zero, 0.3f);//.SetEase(Ease.OutFlash); // 반동 효과로 중앙으로 이동
+        rectTransform.DOAnchorPos(Vector2.zero, 0.3f);//.SetEase(Ease.OutBounce); // 반동 효과
     }
 
     public void MergeWindowOpen()
