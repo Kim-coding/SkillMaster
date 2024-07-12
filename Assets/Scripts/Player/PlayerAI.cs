@@ -41,6 +41,12 @@ public class PlayerAI : MonoBehaviour
         attackRange = playerBaseStat.baseAttackRange;
         attackSpeed = playerBaseStat.baseAttackSpeed;
     }
+    public void DebugStatSetting(float dSpeed, float dAttackSpeed, float dAttackRange)
+    {
+        speed = dSpeed;
+        attackSpeed = dAttackSpeed;
+        attackRange = dAttackRange;
+    }
 
     private void OnDestroy()
     {

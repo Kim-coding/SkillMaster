@@ -15,6 +15,8 @@ public class MonsterAI : MonoBehaviour
 
     public MonsterStat monsterStat;
     public MonsterAttack monsterAttack;
+    [HideInInspector]
+    public bool onDeath = false;
 
     private void Awake()
     {
@@ -33,44 +35,52 @@ public class MonsterAI : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        onDeath = false;
+    }
+
     private void Update()
     {
-        timer += Time.deltaTime;
-        attackTimer += Time.deltaTime;
-        if (timer >= targetUpdataTime)
-        {
-            timer = 0;
-            FindTarget();
-
-        }
-
-        if (target != null && target.activeInHierarchy)
-        {
-            if (Vector3.Distance(transform.position, target.transform.position) <= attackRange)
+        if (onDeath)
+        { return; }
+            timer += Time.deltaTime;
+            attackTimer += Time.deltaTime;
+            if (timer >= targetUpdataTime)
             {
-                gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
-                if (attackTimer >= 1f)
+                timer = 0;
+                FindTarget();
+
+            }
+
+            if (target != null && target.activeInHierarchy)
+            {
+                if (Vector3.Distance(transform.position, target.transform.position) <= attackRange)
                 {
-                    var attackables = target.GetComponents<IAttackable>();
-                    foreach (var attackable in attackables)
+                    gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+                    if (attackTimer >= 1f)
                     {
-                        attackable.OnAttack(gameObject, target, monsterAttack.CreateAttack(monsterStat));
+                        var attackables = target.GetComponents<IAttackable>();
+                        foreach (var attackable in attackables)
+                        {
+                            attackable.OnAttack(gameObject, target, monsterAttack.CreateAttack(monsterStat));
+                        }
+                        attackTimer = 0;
                     }
+                    return;
+                }
+                else
+                {
+                    gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+                    Move();
                     attackTimer = 0;
                 }
-                return;
             }
             else
             {
-                gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-                Move();
-                attackTimer = 0;
+                target = null;
             }
-        }
-        else
-        {
-            target = null;
-        }
+        
     }
 
     private void FindTarget()
