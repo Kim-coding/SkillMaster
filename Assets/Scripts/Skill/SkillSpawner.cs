@@ -90,6 +90,8 @@ public class SkillSpawner : MonoBehaviour
         GameMgr.Instance.playerMgr.skillBallControllers.Add(newSkillControler);
         GameMgr.Instance.playerMgr.playerEnhance.currentSpawnSkillCount--;
         GameMgr.Instance.uiMgr.uiMerge.SkillCountUpdate();
+        if (GameMgr.Instance.playerMgr.skillBallControllers.Count == maxReserveSkillCount || GameMgr.Instance.playerMgr.playerEnhance.currentSpawnSkillCount <= 0)
+        { GameMgr.Instance.uiMgr.uiMerge.SpawnButtonUpdate(false); }
     }
 
     public void MergeSkill(int t, Vector3 pos)
@@ -98,6 +100,7 @@ public class SkillSpawner : MonoBehaviour
         var newSkillControler = newSkill.GetComponent<SkillBallController>();
         newSkillControler.Set(t);
         GameMgr.Instance.playerMgr.skillBallControllers.Add(newSkillControler);
+        { GameMgr.Instance.uiMgr.uiMerge.SpawnButtonUpdate(true); }
     }
 
     private Vector3 RandomVector()

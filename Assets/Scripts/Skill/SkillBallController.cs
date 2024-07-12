@@ -39,6 +39,7 @@ public class SkillBallController : MonoBehaviour, IPointerDownHandler, IPointerU
     private float effectX;
     private float effectY;
     public TextMeshProUGUI tierText;
+    public Transform pos;
 
     private RectTransform areaRect;   
     private bool isButtonPressed;

@@ -45,6 +45,6 @@ public class DebugMode : MonoBehaviour
         attackSpeedText.text = attackSpeedValue.ToString();
         attackRangeText.text = attackRangeValue.ToString();
 
-        player.DebugStatSetting(speedValue, attackSpeedValue, attackRangeValue);
+        GameMgr.Instance.playerMgr.playerStat.DebugStatSetting(speedValue, attackSpeedValue, attackRangeValue);
     }
 }

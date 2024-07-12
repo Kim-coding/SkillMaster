@@ -18,9 +18,9 @@ public class CharacterStat : Status
     [HideInInspector]
     public float playerCriticalMultiple;
 
-   
 
-    
+
+
     //스피드, 공격범위, 공격속도는 스크립터블 오브젝트로 컨트롤 
     //base stat 6종 (공 방 체 체회 치확 치피) 포함
 
@@ -33,14 +33,15 @@ public class CharacterStat : Status
 
     public void PlayerStatUpdate()
     {
-        health = new BigInteger(currentPlayerStat.playerHealth);
+        maxHealth = new BigInteger(currentPlayerStat.playerMaxHealth);
         attackPower = new BigInteger(currentPlayerStat.playerAttackPower);
+        defence = currentPlayerStat.defence;
+        playerHealthRecovery = currentPlayerStat.playerHealthRecovery;
         playerCriticalPercent = currentPlayerStat.playerCriticalPercent;
         playerCriticalMultiple = currentPlayerStat.playerCriticalMultiple;
-    }
 
-    public void SetBaseStat()
-    {
-
+        speed = currentPlayerStat.speed;
+        attackSpeed = currentPlayerStat.attackSpeed;
+        attackRange = currentPlayerStat.attackRange;
     }
 }

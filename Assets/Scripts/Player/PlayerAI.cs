@@ -6,21 +6,18 @@ using static UnityEngine.GraphicsBuffer;
 public class PlayerAI : MonoBehaviour
 {
     public CharacterStat characterStat;
-    public PlayerBaseStat playerBaseStat;
 
     public PlayerMgr playerMgr;
     public PlayerSkills playerSkills;
 
-    private float attackRange;
-    private float speed;
-    public float attackSpeed;
-
     private List<Node> path;
     private int currentPathIndex = 0;
+    [HideInInspector]
     public Transform currentTarget;
 
     private AStarPathfinding pathfinding;
     private StateMachine stateMachine;
+    [HideInInspector]
     public StateMachine PlayerStateMachine => stateMachine;
 
     private void Awake()
@@ -31,26 +28,6 @@ public class PlayerAI : MonoBehaviour
     private void Start()
     {
         stateMachine.Initialize(new IdleState(this));
-        StatSetting();
-        playerBaseStat.onSettingChange += StatSetting;
-    }
-
-    private void StatSetting()
-    {
-        speed = playerBaseStat.baseSpeed;
-        attackRange = playerBaseStat.baseAttackRange;
-        attackSpeed = playerBaseStat.baseAttackSpeed;
-    }
-    public void DebugStatSetting(float dSpeed, float dAttackSpeed, float dAttackRange)
-    {
-        speed = dSpeed;
-        attackSpeed = dAttackSpeed;
-        attackRange = dAttackRange;
-    }
-
-    private void OnDestroy()
-    {
-        playerBaseStat.onSettingChange -= StatSetting;
     }
 
     private void Update()
@@ -78,11 +55,11 @@ public class PlayerAI : MonoBehaviour
     {
         if (path != null && currentPathIndex < path.Count && currentTarget != null)
         {
-            if (Vector3.Distance(transform.position, currentTarget.position) <= attackRange)
+            if (Vector3.Distance(transform.position, currentTarget.position) <= characterStat.attackRange)
                 return;
 
             Vector3 targetPosition = path[currentPathIndex].worldPosition;
-            transform.position = Vector3.MoveTowards(transform.position, targetPosition, Time.deltaTime * speed);
+            transform.position = Vector3.MoveTowards(transform.position, targetPosition, Time.deltaTime * characterStat.speed);
 
             if (Vector3.Distance(transform.position, targetPosition) < 0.1f)
             {
@@ -116,7 +93,7 @@ public class PlayerAI : MonoBehaviour
     public bool IsInAttackRange()
     {
         if(currentTarget == null) return false;
-        return Vector3.Distance(transform.position, currentTarget.position) <= attackRange;
+        return Vector3.Distance(transform.position, currentTarget.position) <= characterStat.attackRange;
     }
 
     private void ChangeState(IState newState)

@@ -18,7 +18,7 @@ public class BattleState : IState
     public void Update()
     {
         attackTimer += Time.deltaTime;
-        if(attackTimer > player.attackSpeed)
+        if(attackTimer > player.characterStat.attackSpeed)
         {
             Attack();
             attackTimer = 0f;
