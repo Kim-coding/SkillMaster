@@ -10,7 +10,12 @@ public class SkillSpawner : MonoBehaviour
     public GameObject prefabSkillBall;
 
     [HideInInspector]
-    public int maxSpawnCount;
+    public int maxReserveSkillCount;
+
+    [HideInInspector]
+    public int maxSpawnSkillCount;
+    [HideInInspector]
+    public int currentSpawnSkillCount;
 
     [HideInInspector]
     public RectTransform parentTransform;
@@ -37,7 +42,7 @@ public class SkillSpawner : MonoBehaviour
     private void Start()
     {
         parentTransform = mergeWindow.transform.GetComponent<RectTransform>();
-        maxSpawnCount = GameMgr.Instance.playerMgr.playerEnhance.maxSpawnCount;
+        maxReserveSkillCount = GameMgr.Instance.playerMgr.playerEnhance.maxReserveSkillCount;
     }
 
     private void Setting()
@@ -70,7 +75,7 @@ public class SkillSpawner : MonoBehaviour
 
     public void SpawnSkill()
     {
-        if(GameMgr.Instance.playerMgr.skillBallControllers.Count == maxSpawnCount)
+        if(GameMgr.Instance.playerMgr.skillBallControllers.Count == maxReserveSkillCount || GameMgr.Instance.playerMgr.playerEnhance.currentSpawnSkillCount <= 0)
         {
             return;
         }
@@ -83,6 +88,7 @@ public class SkillSpawner : MonoBehaviour
         var newSkillControler = newSkill.GetComponent<SkillBallController>();
         newSkillControler.Set(1);
         GameMgr.Instance.playerMgr.skillBallControllers.Add(newSkillControler);
+        GameMgr.Instance.playerMgr.playerEnhance.currentSpawnSkillCount--;
         GameMgr.Instance.uiMgr.uiMerge.SkillCountUpdate();
     }
 

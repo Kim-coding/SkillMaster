@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class PlayerEnhance
 {
-    public int maxSpawnCount;
+    public int maxReserveSkillCount;
+    public int maxSpawnSkillCount;
+    public int currentSpawnSkillCount;
 
     public int attackPowerLevel;
     public int attackPowerPercent;
@@ -19,7 +21,9 @@ public class PlayerEnhance
     {
         //세이브 로드시 가져와야 함
 
-        maxSpawnCount = 15;
+        maxReserveSkillCount = 20;
+        maxSpawnSkillCount = 14;
+        currentSpawnSkillCount = maxSpawnSkillCount;
         GameMgr.Instance.uiMgr.uiMerge.SkillCountUpdate();
 
         attackPowerLevel = 0;
