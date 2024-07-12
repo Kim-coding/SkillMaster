@@ -1604,6 +1604,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2518084821943621877, guid: 04cd82b079fad8741b801f088f055c7b, type: 3}
   m_PrefabInstance: {fileID: 161442954}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &161442956 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1128378529613519049, guid: 04cd82b079fad8741b801f088f055c7b, type: 3}
+  m_PrefabInstance: {fileID: 161442954}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &169332865
 GameObject:
   m_ObjectHideFlags: 0
@@ -7143,10 +7154,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 679731721}
-  speed: 0.125
+  moveDuration: 0.3
+  zoomDuration: 0.3
   YPosition: 3
-  distances: []
-  CameraButton: {fileID: 0}
+  distances:
+  - 6.25
+  - 7
+  - 7.5
+  CameraButton: {fileID: 161442956}
 --- !u!1 &1521525971
 GameObject:
   m_ObjectHideFlags: 0
