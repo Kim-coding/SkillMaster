@@ -6,13 +6,14 @@ using static UnityEngine.GraphicsBuffer;
 public class PlayerAI : MonoBehaviour
 {
     public CharacterStat characterStat;
+    public PlayerBaseStat playerBaseStat;
+
     public PlayerMgr playerMgr;
     public PlayerSkills playerSkills;
-    public PlayerBaseStat playerBaseStat;
 
     private float attackRange;
     private float speed;
-    private float attackSpeed;
+    public float attackSpeed;
 
     private List<Node> path;
     private int currentPathIndex = 0;
@@ -30,9 +31,20 @@ public class PlayerAI : MonoBehaviour
     private void Start()
     {
         stateMachine.Initialize(new IdleState(this));
-        speed = playerBaseStat.speed;
-        attackRange = playerBaseStat.attackRange;
-        attackSpeed = playerBaseStat.attackSpeed;
+        StatSetting();
+        playerBaseStat.onSettingChange += StatSetting;
+    }
+
+    private void StatSetting()
+    {
+        speed = playerBaseStat.baseSpeed;
+        attackRange = playerBaseStat.baseAttackRange;
+        attackSpeed = playerBaseStat.baseAttackSpeed;
+    }
+
+    private void OnDestroy()
+    {
+        playerBaseStat.onSettingChange -= StatSetting;
     }
 
     private void Update()

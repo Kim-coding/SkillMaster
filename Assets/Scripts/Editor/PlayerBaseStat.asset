@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2358c4c382edc44cb285e42b0405a36, type: 3}
   m_Name: PlayerBaseStat
   m_EditorClassIdentifier: 
-  speed: 10
-  attackSpeed: 0.05
-  attackRange: 1.28
+  speed: 5
+  attackSpeed: 0.5
+  attackRange: 3

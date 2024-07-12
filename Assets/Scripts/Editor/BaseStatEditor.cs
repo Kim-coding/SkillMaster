@@ -1,20 +1,21 @@
 using UnityEditor;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 [CustomEditor(typeof(PlayerBaseStat))]
 public class BaseStatEditor : Editor
 {
-    SerializedProperty Speed;
-    SerializedProperty AttackSpeed;
-    SerializedProperty AttackRange;
+    SerializedProperty baseSpeed;
+    SerializedProperty baseAttackSpeed;
+    SerializedProperty baseAttackRange;
 
 
     void OnEnable()
     {
         // SerializedProperty 초기화
-        Speed = serializedObject.FindProperty("speed");
-        AttackSpeed = serializedObject.FindProperty("attackSpeed");
-        AttackRange = serializedObject.FindProperty("attackRange");
+        baseSpeed = serializedObject.FindProperty("baseSpeed");
+        baseAttackSpeed = serializedObject.FindProperty("baseAttackSpeed");
+        baseAttackRange = serializedObject.FindProperty("baseAttackRange");
     }
     public override void OnInspectorGUI()
     {
@@ -37,19 +38,33 @@ public class BaseStatEditor : Editor
         EditorGUILayout.BeginVertical();
         EditorGUILayout.Space(10);
 
-        EditorGUILayout.Slider(Speed, 0f, 10f, new GUIContent("이동 속도"));
+        EditorGUILayout.Slider(baseSpeed, 0f, 10f, new GUIContent("이동 속도"));
         DrawDescriptionLabel("플레이어 캐릭터의 기본 이동 속도");
 
-        EditorGUILayout.Slider(AttackSpeed, 0f, 10f, new GUIContent("공격 속도"));
+        EditorGUILayout.Slider(baseAttackSpeed, 0f, 10f, new GUIContent("공격 속도"));
         DrawDescriptionLabel("플레이어 캐릭터의 기본 공격 속도");
 
-        EditorGUILayout.Slider(AttackRange, 0f, 10f, new GUIContent("공격 범위"));
+        EditorGUILayout.Slider(baseAttackRange, 0f, 10f, new GUIContent("공격 범위"));
         DrawDescriptionLabel("플레이어 캐릭터의 기본 공격 범위");
         EditorGUILayout.EndVertical();
 
 
         // 변경 사항 적용
         serializedObject.ApplyModifiedProperties();
+
+        PlayerBaseStat stat = (PlayerBaseStat)target;
+
+        if (GUILayout.Button("적용"))
+        {
+            stat.NotifySettingsChange();
+            EditorUtility.SetDirty(stat);
+        }
+
+
+        EditorGUILayout.Space(20);
+
+        EditorGUILayout.LabelField("플레이어의 기본 Hp / Hp회복 / 공격력 / 방어력 / 치명타확률 / 치명타배율 설정", style);
+
     }
 
     void DrawDescriptionLabel(string description)

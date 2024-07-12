@@ -4,7 +4,6 @@ public class BattleState : IState
 {
     private PlayerAI player;
     private float attackTimer = 0f;
-    private float attackIntervar;
 
     public BattleState(PlayerAI player)
     {
@@ -13,14 +12,13 @@ public class BattleState : IState
 
     public void Enter()
     {
-        attackIntervar = player.playerBaseStat.attackSpeed;
         //Debug.Log("Enter BattleState");
     }
 
     public void Update()
     {
         attackTimer += Time.deltaTime;
-        if(attackTimer > attackIntervar)
+        if(attackTimer > player.attackSpeed)
         {
             Attack();
             attackTimer = 0f;
