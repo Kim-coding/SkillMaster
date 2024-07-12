@@ -44,6 +44,7 @@ public class MainScene : MonoBehaviour
                 {
                     monsterAI.gameObject.SetActive(false);
                     monsterPool.Return(monsterAI);
+                    RemoveMonsters(monsterAI.gameObject);
                 }
             }
         }
@@ -59,9 +60,9 @@ public class MainScene : MonoBehaviour
 
     public void RestartStage() //스테이지 재시작
     {
+        RemoveMonsters(currentBoss);
         if(currentBoss != null)
         {
-            RemoveMonsters(currentBoss);
             Destroy(currentBoss);
         }
         bossStage = false;

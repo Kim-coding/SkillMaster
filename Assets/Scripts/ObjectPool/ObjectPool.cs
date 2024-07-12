@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class ObjectPool<T> where T : MonoBehaviour
@@ -19,6 +20,11 @@ public class ObjectPool<T> where T : MonoBehaviour
         for (int i = 0; i < initialCapacity; i++)
         {
             T obj = GameObject.Instantiate(prefab, parentTransform);
+            if (obj == null || obj.gameObject == null)
+            {
+                Debug.LogError("Failed to instantiate a valid prefab.");
+                continue;
+            }
             obj.gameObject.SetActive(false);
             pool.Enqueue(obj);
         }
@@ -37,6 +43,7 @@ public class ObjectPool<T> where T : MonoBehaviour
         }
         if (obj == null || obj.gameObject == null)
         {
+            Debug.LogError("Failed to get a valid monster from the pool.");
             return null;
         }
         obj.gameObject.SetActive(true);
@@ -46,17 +53,8 @@ public class ObjectPool<T> where T : MonoBehaviour
 
     public void Return(T obj)
     {
-        if (pool.Count >= maxCapacity)
-        {
-            pool.Enqueue(obj);
-            GameObject.Destroy(obj.gameObject);
-        }
-        else
-        {
-            //obj.gameObject.SetActive(false);
-            OnReturn(obj);
-            pool.Enqueue(obj);
-        }
+        OnReturn(obj);
+        pool.Enqueue(obj);
     }
 
     protected virtual void OnGet(T obj)

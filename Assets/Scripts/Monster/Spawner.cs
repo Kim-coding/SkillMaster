@@ -20,12 +20,17 @@ public class Spawner : MonoBehaviour
     private void Start()
     {
         monsterPool = GameMgr.Instance.GetMonsterPool();
-
+        if (monsterPool == null)
+        {
+            Debug.LogError("Monster pool is not initialized properly.");
+            return;
+        }
         InitialSpawn();
     }
 
     public void InitialSpawn()
     {
+        deathCount = 0;
         int startSpawnMonsterCount = 25;
         int monstersPerZoneMin = 3;
         int monstersPerZoneMax = 4;
@@ -53,6 +58,11 @@ public class Spawner : MonoBehaviour
         for (int i = 0; i < count; i++)
         {
             MonsterAI monster = monsterPool.Get();
+            if (monster == null)
+            {
+                Debug.LogError("Monster retrieved from pool is null!");
+                continue;
+            }
             monster.transform.position = zone.position;
             monster.transform.rotation = Quaternion.identity;
             scene.AddMonsters(monster.gameObject);
@@ -84,8 +94,15 @@ public class Spawner : MonoBehaviour
         {
             monsterPool = GameMgr.Instance.GetMonsterPool();
         }
-        
-        monsterPool.Return(monster);
-        OnMonsterDeath();
+
+        if (monster != null)
+        {
+            monsterPool.Return(monster);
+            OnMonsterDeath();
+        }
+        else
+        {
+            Debug.LogError("Attempted to destroy a null monster.");
+        }
     }
 }
