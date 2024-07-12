@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Spawner : MonoBehaviour
@@ -14,8 +12,7 @@ public class Spawner : MonoBehaviour
     private int deathCount = 0;
     private const int deathThreshold = 3;
 
-    //float timer;
-    //float duration = 1f;
+    public float spawnRange;
 
     private void Start()
     {
@@ -63,7 +60,8 @@ public class Spawner : MonoBehaviour
                 Debug.LogError("Monster retrieved from pool is null!");
                 continue;
             }
-            monster.transform.position = zone.position;
+            Vector2 randomPosition = UnityEngine.Random.insideUnitCircle * spawnRange;
+            monster.transform.position = zone.position + new Vector3(randomPosition.x, randomPosition.y, 0);
             monster.transform.rotation = Quaternion.identity;
             scene.AddMonsters(monster.gameObject);
         }

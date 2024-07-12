@@ -6817,6 +6817,7 @@ MonoBehaviour:
   - {fileID: 1765709077}
   - {fileID: 1817729860}
   - {fileID: 84649001}
+  spawnRange: 3
 --- !u!114 &1423913463
 MonoBehaviour:
   m_ObjectHideFlags: 0
