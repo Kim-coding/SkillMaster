@@ -10,6 +10,7 @@ public class GameMgr : MonoBehaviour
     public SceneMgr sceneMgr;
     public PlayerMgr playerMgr;
     public UIMgr uiMgr;
+    public DebugMode debugMode;
 
     private void Awake()
     {
@@ -26,6 +27,15 @@ public class GameMgr : MonoBehaviour
         playerMgr.Init();
 
     }
+    private void Update()
+    {
+      if(Input.GetKeyUp(KeyCode.Escape))
+        {
+
+            debugMode.gameObject.SetActive(!debugMode.isActiveAndEnabled);
+        }   
+    }
+
     public MonsterPool GetMonsterPool()
     {
         return sceneMgr.mainScene.monster.GetMonsterPool();
@@ -39,8 +49,8 @@ public class GameMgr : MonoBehaviour
     public void OnBossDefeated()
     {
         uiMgr.ResetMonsterSlider();
-        uiMgr.AddStage();
         sceneMgr.mainScene.RestartStage();
+        uiMgr.AddStage();
     }
 
     public void OnBossSpawn()
