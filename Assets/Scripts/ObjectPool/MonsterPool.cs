@@ -12,7 +12,12 @@ public class MonsterPool : ObjectPool<MonsterAI>
     protected override void OnGet(MonsterAI obj)
     {
         //몬스터 풀 초기화 작업
-
+        if (obj == null)
+        {
+            Debug.LogError("MonsterAI object is null in OnGet.");
+            return;
+        }
+        
         base.OnGet(obj);        
     }
 
@@ -20,12 +25,22 @@ public class MonsterPool : ObjectPool<MonsterAI>
     {
         // 몬스터 정리 작업
 
+        if (obj == null || obj.gameObject == null)
+        {
+            Debug.LogError("Attempted to return a null monster to the pool.");
+            return;
+        }
+
         base.OnReturn(obj);
 
         if (obj.TryGetComponent<Rigidbody>(out var rb))
         {
             rb.velocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
+        }
+        if(obj.isActiveAndEnabled == true)
+        {
+            obj.gameObject.SetActive(false);
         }
     }
 

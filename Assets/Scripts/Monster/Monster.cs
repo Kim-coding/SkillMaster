@@ -37,6 +37,7 @@ public class Monster : MonoBehaviour
         monsters.Remove(monster);
     }
 
+
     public GameObject[] GetMonsters()
     {
         return monsters.ToArray();

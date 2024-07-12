@@ -20,8 +20,10 @@ public class UIMgr : MonoBehaviour
     public Button bossSpawnButton;
     public TextMeshProUGUI goldUI;
     public TextMeshProUGUI diamondUI;
+    public TextMeshProUGUI stageUI;
 
-
+    public TextMeshProUGUI skillcount;
+    private int stageCount = 1;
     public void AllUIUpdate(BigInteger g, BigInteger d)
     {
         bossSpawnButton.gameObject.SetActive(false);
@@ -47,16 +49,20 @@ public class UIMgr : MonoBehaviour
         {
             monsterSlider.value += 1;
         }
-        else if (monsterSlider.value == monsterSlider.maxValue)
+        else if (monsterSlider.value >= monsterSlider.maxValue)
         {
             GameMgr.Instance.OnBossSpawn();
-            monsterSlider.value = 0;
         }
     }
 
     public void ResetMonsterSlider()
     {
         monsterSlider.value = 0;
+    }
+    public void AddStage()
+    {
+        stageCount++;
+        stageUI.text = $"Stage {stageCount}";
     }
 
 

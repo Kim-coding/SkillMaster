@@ -11,6 +11,12 @@ public class MainScene : MonoBehaviour
     //public Stage stage;  // 스폰 되어야 하는 몬스터 등을 가지고 있게 해야함
     private GameObject currentBoss;
     private bool bossStage = false;
+    private MonsterPool monsterPool;
+
+    private void Start()
+    {
+        monsterPool = GameMgr.Instance.GetMonsterPool();
+    }
 
     public GameObject[] GetMonsters()
     {
@@ -32,12 +38,13 @@ public class MainScene : MonoBehaviour
         GameObject[] monsters = GetMonsters();
         foreach (GameObject monster in monsters)
         {
-            if (monster.TryGetComponent<MonsterAI>(out var monsterAI))
+            if (monster != null && monster.TryGetComponent<MonsterAI>(out var monsterAI))
             {
                 if (!IsBossBattle())
                 {
                     monsterAI.gameObject.SetActive(false);
-                    spawner.DestroyMonster(monsterAI);
+                    monsterPool.Return(monsterAI);
+                    RemoveMonsters(monsterAI.gameObject);
                 }
             }
         }
@@ -45,13 +52,15 @@ public class MainScene : MonoBehaviour
 
     public void SpawnBoss()  //보스 몬스터 소환
     {
-        currentBoss = spawner.BossSpawn(BossMonsterPrefab, bossSpawnPoint);
         bossStage = true;
+        currentBoss = spawner.BossSpawn(BossMonsterPrefab, bossSpawnPoint);
+        AddMonsters(currentBoss);
         //spawner.BossSpawn(Stage.BossMonsterPrefab, bossSpawnPoint);
     }
 
     public void RestartStage() //스테이지 재시작
     {
+        RemoveMonsters(currentBoss);
         if(currentBoss != null)
         {
             Destroy(currentBoss);

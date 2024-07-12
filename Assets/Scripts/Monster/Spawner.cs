@@ -5,11 +5,11 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    public MainScene Scene;
+    public MainScene scene;
     private MonsterPool monsterPool;
 
     public Transform[] spawnPoints;
-    public int startSpawnMonsterCount = 25;
+    private Transform BossParent;
 
     private int deathCount = 0;
     private const int deathThreshold = 3;
@@ -20,13 +20,18 @@ public class Spawner : MonoBehaviour
     private void Start()
     {
         monsterPool = GameMgr.Instance.GetMonsterPool();
-
+        if (monsterPool == null)
+        {
+            Debug.LogError("Monster pool is not initialized properly.");
+            return;
+        }
         InitialSpawn();
     }
 
     public void InitialSpawn()
     {
-        if (GameMgr.Instance.sceneMgr.mainScene.IsBossBattle()) return;
+        deathCount = 0;
+        int startSpawnMonsterCount = 25;
         int monstersPerZoneMin = 3;
         int monstersPerZoneMax = 4;
 
@@ -53,9 +58,14 @@ public class Spawner : MonoBehaviour
         for (int i = 0; i < count; i++)
         {
             MonsterAI monster = monsterPool.Get();
+            if (monster == null)
+            {
+                Debug.LogError("Monster retrieved from pool is null!");
+                continue;
+            }
             monster.transform.position = zone.position;
             monster.transform.rotation = Quaternion.identity;
-            Scene.AddMonsters(monster.gameObject);
+            scene.AddMonsters(monster.gameObject);
         }
     }
 
@@ -74,7 +84,8 @@ public class Spawner : MonoBehaviour
 
     public GameObject BossSpawn(GameObject bossPrefab, Transform spawnPoint)
     {
-        return Instantiate(bossPrefab, spawnPoint.position, Quaternion.identity);
+        BossParent = scene.monster.poolParent;
+        return Instantiate(bossPrefab, spawnPoint.position, Quaternion.identity, BossParent);
     }
 
     public void DestroyMonster(MonsterAI monster)
@@ -83,8 +94,15 @@ public class Spawner : MonoBehaviour
         {
             monsterPool = GameMgr.Instance.GetMonsterPool();
         }
-        
-        monsterPool.Return(monster);
-        OnMonsterDeath();
+
+        if (monster != null)
+        {
+            monsterPool.Return(monster);
+            OnMonsterDeath();
+        }
+        else
+        {
+            Debug.LogError("Attempted to destroy a null monster.");
+        }
     }
 }
