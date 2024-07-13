@@ -307,11 +307,10 @@ public struct BigInteger
         {
             numberList[lastIndex] = (int)newFirstFloat;
             newFirstFloat -= numberList[lastIndex];
-            newFirstFloat *= 100;
-
 
             if (numberList.Count > 1)
             {
+                newFirstFloat *= 1000;
                 int secondIndex = numberList.Count - 2;
                 var newSecondFloat = numberList[secondIndex] * f;
                 newSecondFloat += newFirstFloat;

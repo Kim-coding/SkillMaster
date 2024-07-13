@@ -16,9 +16,15 @@ public class FireMagic : AttackDefinition
         }
         BigInteger damage = new BigInteger(PState.attackPower);
         // 최소데미지 ~ 최대데미지 판정
-        //Debug.Log(damage.ToString());
+
         float damageRange = Random.Range(0.7f, 1.2f);
         damage *= damageRange;
+        //Debug.Log(damage.ToString());
+        if (damage.factor == 1 && damage.numberList[damage.factor-1] == 0)
+        {
+            damage.numberList[damage.factor - 1] = 1;
+        } // 데미지 0은 안되게 최소 보정
+
         bool isCritical = Random.value < PState.playerCriticalPercent;
         if (isCritical)
         {
