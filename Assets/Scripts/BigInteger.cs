@@ -133,7 +133,107 @@ public struct BigInteger
         return left;
     }
 
+    public static bool operator >(BigInteger left, BigInteger right)
+    {
+        if (left.factor > right.factor)
+        {
+            return true;
+        }
+        else if(left.factor < right.factor)
+        {
+            return false;
+        }
 
+        int i = left.factor - 1;
+        while (i >= 0)
+        {
+            if (left.numberList[i] > right.numberList[i])
+            {
+                return true;
+            }
+
+            i--;
+        }
+        return false;
+    }
+
+    public static bool operator >=(BigInteger left, BigInteger right)
+    {
+        if (left.factor > right.factor)
+        {
+            return true;
+        }
+        else if (left.factor < right.factor)
+        {
+            return false;
+        }
+
+        int i = left.factor - 1;
+        while (i >= 0)
+        {
+            if (left.numberList[i] > right.numberList[i])
+            {
+                return true;
+            }
+            else if (left.numberList[i] < right.numberList[i])
+            {
+                return false;
+            }
+            i--;
+        }
+        return true;
+    }
+
+    public static bool operator <(BigInteger left, BigInteger right)
+    {
+        if (left.factor < right.factor)
+        {
+            return true;
+        }
+        else if (left.factor > right.factor)
+        {
+            return false;
+        }
+
+        int i = left.factor - 1;
+        while (i >= 0)
+        {
+            if (left.numberList[i] < right.numberList[i])
+            {
+                return true;
+            }
+
+            i--;
+        }
+        return false;
+    }
+
+    public static bool operator <=(BigInteger left, BigInteger right)
+    {
+        if (left.factor < right.factor)
+        {
+            return true;
+        }
+        else if (left.factor > right.factor)
+        {
+            return false;
+        }
+
+        int i = left.factor - 1;
+        while (i >= 0)
+        {
+            if (left.numberList[i] < right.numberList[i])
+            {
+                return true;
+            }
+            else if (left.numberList[i] > right.numberList[i])
+            {
+                return false;
+            }
+            i--;
+        }
+        return true;
+    }
 
 
     public void Init(string s)
@@ -422,9 +522,14 @@ public struct BigInteger
 
         if (factor >= 2)
         {
-            sb.Append(".");
-            string paddedNumber = numberList[numberList.Count - 2].ToString().PadLeft(3, '0');
-            sb.Append(paddedNumber);
+            string paddedNumber = (numberList[numberList.Count - 2] / 100).ToString();
+            if (paddedNumber != "0")
+            {
+                sb.Append(".");
+                sb.Append(paddedNumber);
+            }
+            //string paddedNumber = numberList[numberList.Count - 2].ToString().PadLeft(3, '0');
+            //sb.Append(paddedNumber);  .001 처럼 소수점 세자리까지 표현
         }
 
         StringBuilder digit = new StringBuilder();
