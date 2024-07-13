@@ -19,11 +19,22 @@ public class PlayerCurrency
     {
         gold.Plus(g);
         GameMgr.Instance.uiMgr.GoldTextUpdate(gold);
-
     }
+    public void RemoveGold(BigInteger g)
+    {
+        gold.Minus(g);
+        GameMgr.Instance.uiMgr.GoldTextUpdate(gold);
+    }
+
     public void AddDia(BigInteger d)
     {
         diamond.Plus(d);
+        GameMgr.Instance.uiMgr.DiaTextUpdate(diamond);
+    }
+
+    public void RemoveDia(BigInteger d)
+    {
+        diamond.Minus(d);
         GameMgr.Instance.uiMgr.DiaTextUpdate(diamond);
     }
 

@@ -7,8 +7,8 @@ public class MonsterStat : Status
     public BigInteger dropGold;
     public void Init()
     {
-        health = new BigInteger(100);
-        attackPower = new BigInteger(250);
+        health = new BigInteger(10);
+        attackPower = new BigInteger(2);
         attackRange = 1;
     }
 }

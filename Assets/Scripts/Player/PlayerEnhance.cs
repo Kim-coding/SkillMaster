@@ -36,6 +36,12 @@ public class PlayerEnhance
 
     public void AddAttackPower()
     {
+        if (attackPowerCost > GameMgr.Instance.playerMgr.currency.gold)
+        {
+            return;
+        }
+        GameMgr.Instance.playerMgr.currency.RemoveGold(attackPowerCost);
+
         attackPowerLevel++;
         attackPowerCost = new BigInteger(100 + 100 * attackPowerLevel);
         GameMgr.Instance.uiMgr.uiEnhance.TextUpdate();
