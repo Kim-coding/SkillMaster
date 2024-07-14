@@ -6866,10 +6866,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e7b420c036a4e24a93e4f73b33b2100, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goldPrefab: {fileID: 4346459211152638759, guid: ab32a3a1ca25d324991065a4b3edd9d6, type: 3}
-  mainCamera: {fileID: 1460805576}
   uiTarget: {fileID: 5086342}
-  updateInterval: 0.15
+  goldPrefab: {fileID: 7860945450302306057, guid: ab32a3a1ca25d324991065a4b3edd9d6, type: 3}
+  uiCanvas: {fileID: 360789204}
 --- !u!1 &1446826467
 GameObject:
   m_ObjectHideFlags: 0
