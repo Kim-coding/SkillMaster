@@ -51,7 +51,7 @@ public class PlayerMgr : MonoBehaviour
         playerStat = new PlayerStat();
         playerEnhance = new PlayerEnhance();
         currency.Init();
-        playerStat.Init(1,1,1,1,10f,2f, playerBaseStat.baseSpeed, playerBaseStat.baseAttackSpeed, playerBaseStat.baseAttackRange);
+        StatSetting();
         playerEnhance.Init();
 
         playerBaseStat.onSettingChange += StatSetting;
@@ -72,6 +72,15 @@ public class PlayerMgr : MonoBehaviour
 
     private void StatSetting()
     {
-        playerStat.Init(1, 1, 1, 1, 10f, 2f, playerBaseStat.baseSpeed, playerBaseStat.baseAttackSpeed, playerBaseStat.baseAttackRange);
+        playerStat.Init(
+            playerBaseStat.basePlayerAttackPower,
+            playerBaseStat.basePlayerMaxHealth,
+            playerBaseStat.basePlayerDefence,
+            playerBaseStat.basePlayerHealthRecovery,
+            playerBaseStat.basePlayerCriticalPercent,
+            playerBaseStat.basePlayerCriticalMultiple,
+            playerBaseStat.baseSpeed,
+            playerBaseStat.baseAttackSpeed,
+            playerBaseStat.baseAttackRange);
     }
 }

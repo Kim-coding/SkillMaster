@@ -545,6 +545,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6aa41d29c69424749b5ccf6dc1abb626, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enhanceName: {fileID: 8767567838197042457}
   nextLevelText: {fileID: 8480090896158379606}
   nextPercentText: {fileID: 382962921688169663}
   nextCostText: {fileID: 6714269200534554401}

@@ -9,6 +9,13 @@ public class BaseStatEditor : Editor
     SerializedProperty baseAttackSpeed;
     SerializedProperty baseAttackRange;
 
+    SerializedProperty basePlayerAttackPower;
+    SerializedProperty basePlayerDefence;
+    SerializedProperty basePlayerMaxHealth;
+    SerializedProperty basePlayerHealthRecovery;
+    SerializedProperty basePlayerCriticalPercent;
+    SerializedProperty basePlayerCriticalMultiple;
+
 
     void OnEnable()
     {
@@ -16,6 +23,13 @@ public class BaseStatEditor : Editor
         baseSpeed = serializedObject.FindProperty("baseSpeed");
         baseAttackSpeed = serializedObject.FindProperty("baseAttackSpeed");
         baseAttackRange = serializedObject.FindProperty("baseAttackRange");
+
+        basePlayerAttackPower = serializedObject.FindProperty("basePlayerAttackPower");
+        basePlayerDefence = serializedObject.FindProperty("basePlayerDefence");
+        basePlayerMaxHealth = serializedObject.FindProperty("basePlayerMaxHealth");
+        basePlayerHealthRecovery = serializedObject.FindProperty("basePlayerHealthRecovery");
+        basePlayerCriticalPercent = serializedObject.FindProperty("basePlayerCriticalPercent");
+        basePlayerCriticalMultiple = serializedObject.FindProperty("basePlayerCriticalMultiple");
     }
     public override void OnInspectorGUI()
     {
@@ -48,22 +62,40 @@ public class BaseStatEditor : Editor
         DrawDescriptionLabel("플레이어 캐릭터의 기본 공격 범위");
         EditorGUILayout.EndVertical();
 
+        EditorGUILayout.Space(20);
+        EditorGUILayout.LabelField("플레이어의 기본 Hp / Hp회복 / 공격력 / 방어력 / 치명타확률 / 치명타배율 설정", style);
+        EditorGUILayout.Space(10);
+
+
+        EditorGUILayout.PropertyField(basePlayerAttackPower, new GUIContent("기본 공격력"));
+        DrawDescriptionLabel("플레이어 캐릭터의 기본 공격력");
+
+        EditorGUILayout.PropertyField(basePlayerDefence, new GUIContent("기본 방어력"));
+        DrawDescriptionLabel("플레이어 캐릭터의 기본 방어력");
+
+        EditorGUILayout.PropertyField(basePlayerMaxHealth, new GUIContent("기본 최대 체력"));
+        DrawDescriptionLabel("플레이어 캐릭터의 기본 최대 체력");
+
+        EditorGUILayout.PropertyField(basePlayerHealthRecovery, new GUIContent("기본 체력 회복력"));
+        DrawDescriptionLabel("플레이어 캐릭터의 기본 체력 회복력");
+
+        EditorGUILayout.PropertyField(basePlayerCriticalPercent, new GUIContent("기본 치명타 확률"));
+        DrawDescriptionLabel("플레이어 캐릭터의 기본 치명타 확률");
+
+        EditorGUILayout.PropertyField(basePlayerCriticalMultiple, new GUIContent("기본 치명타 배율"));
+        DrawDescriptionLabel("플레이어 캐릭터의 기본 치명타 배율");
 
         // 변경 사항 적용
         serializedObject.ApplyModifiedProperties();
 
         PlayerBaseStat stat = (PlayerBaseStat)target;
+        EditorGUILayout.Space(20);
 
         if (GUILayout.Button("적용"))
         {
             stat.NotifySettingsChange();
             EditorUtility.SetDirty(stat);
         }
-
-
-        EditorGUILayout.Space(20);
-
-        EditorGUILayout.LabelField("플레이어의 기본 Hp / Hp회복 / 공격력 / 방어력 / 치명타확률 / 치명타배율 설정", style);
 
     }
 
