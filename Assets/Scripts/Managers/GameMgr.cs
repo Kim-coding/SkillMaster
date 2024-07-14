@@ -11,6 +11,7 @@ public class GameMgr : MonoBehaviour
     public PlayerMgr playerMgr;
     public UIMgr uiMgr;
     public DebugMode debugMode;
+    public GoldManager goldManager;
 
     private void Awake()
     {
@@ -25,7 +26,6 @@ public class GameMgr : MonoBehaviour
         }
 
         playerMgr.Init();
-
     }
     private void Update()
     {

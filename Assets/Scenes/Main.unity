@@ -6683,6 +6683,7 @@ GameObject:
   - component: {fileID: 1423913462}
   - component: {fileID: 1423913463}
   - component: {fileID: 1423913464}
+  - component: {fileID: 1423913465}
   m_Layer: 0
   m_Name: Mgrs
   m_TagString: Untagged
@@ -6780,6 +6781,7 @@ MonoBehaviour:
   playerMgr: {fileID: 1423913458}
   uiMgr: {fileID: 1423913463}
   debugMode: {fileID: 18388298}
+  goldManager: {fileID: 1423913465}
 --- !u!4 &1423913460
 Transform:
   m_ObjectHideFlags: 0
@@ -6852,6 +6854,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageTextPrefab: {fileID: 5582367580439983707, guid: 278cd926fa1fc374aaaf1dcd335f2bed, type: 3}
+--- !u!114 &1423913465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1423913453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e7b420c036a4e24a93e4f73b33b2100, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goldPrefab: {fileID: 4346459211152638759, guid: ab32a3a1ca25d324991065a4b3edd9d6, type: 3}
+  mainCamera: {fileID: 1460805576}
+  uiTarget: {fileID: 5086342}
+  updateInterval: 0.15
 --- !u!1 &1446826467
 GameObject:
   m_ObjectHideFlags: 0
