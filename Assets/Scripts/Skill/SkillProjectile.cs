@@ -12,15 +12,10 @@ public class SkillProjectile : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Monster"))
         {
-            //Debug.Log("АјАн");
-            MonsterAI monster = collision.gameObject.GetComponent<MonsterAI>();
-            if (monster != null)
+            var monsterComponents = collision.GetComponents<IAttackable>();
+            foreach (var monsterComponent in monsterComponents)
             {
-                var monsterComponents = collision.GetComponents<IAttackable>();
-                foreach (var monsterComponent in monsterComponents)
-                {
-                    monsterComponent.OnAttack(attacker.gameObject, collision.gameObject, attack);
-                }
+                monsterComponent.OnAttack(attacker.gameObject, collision.gameObject, attack);
             }
             Destroy(gameObject);
         }
