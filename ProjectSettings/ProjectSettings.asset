@@ -821,11 +821,11 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 0
   windowsGamepadBackendHint: 0
-  cloudProjectId: f3fc554e-98d6-4a65-8fd3-344ce0678bd9
+  cloudProjectId: b15e1806-5dde-4d8a-9bc2-a1798ab71527
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
   projectName: SkillMaster
-  organizationId: kgacollege
+  organizationId: uracil99
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}
