@@ -13,12 +13,14 @@ public class UiWindow : MonoBehaviour
     public GameObject dungeonWindow;
     public GameObject pickUpWindow;
 
-    public Button WindowButton;
+    public Button toggleWindowButton;
 
     private Dictionary<Windows, GameObject> windows;
     private Windows? currentOpenWindow = null;
     private Windows? previousWindow = null;
     private bool isAnimating = false;
+
+    private Vector2 buttonPosition;
 
     private void Start()
     {
@@ -38,7 +40,9 @@ public class UiWindow : MonoBehaviour
         mergeWindow.SetActive(true);
         currentOpenWindow = Windows.Merge;
 
-        WindowButton.onClick.AddListener(OnWindowButtonClick);
+        buttonPosition = toggleWindowButton.GetComponent<RectTransform>().anchoredPosition;
+
+        toggleWindowButton.onClick.AddListener(OnWindowButtonClick);
     }
 
     private void OnWindowButtonClick()
@@ -88,8 +92,10 @@ public class UiWindow : MonoBehaviour
     {
         GameObject windowObj = windows[window];
         RectTransform rectTransform = windowObj.GetComponent<RectTransform>();
+        RectTransform buttonRectTransform = toggleWindowButton.GetComponent<RectTransform>();
         windowObj.SetActive(true);
-        rectTransform.anchoredPosition = new Vector2(0, -Screen.height); 
+        rectTransform.anchoredPosition = new Vector2(0, -Screen.height);
+        var buttonPos = new Vector2(buttonPosition.x, buttonRectTransform.rect.height);
         isAnimating = true;
         rectTransform.DOAnchorPos(Vector2.zero, 0.3f).OnComplete(() =>
         {
@@ -97,18 +103,22 @@ public class UiWindow : MonoBehaviour
             currentOpenWindow = window;
             isAnimating = false;
         });
+        buttonRectTransform.DOAnchorPos(buttonPos, 0.3f);
+        buttonRectTransform.DOScaleY(1, 0.3f);
     }
-    private void AnimateCloseWindow(GameObject window, TweenCallback onComplete = null)
+    private void AnimateCloseWindow(GameObject window)
     {
         RectTransform rectTransform = window.GetComponent<RectTransform>();
+        RectTransform buttonRectTransform = toggleWindowButton.GetComponent<RectTransform>();
         var targetPos = new Vector2(0, -Screen.height);
-        isAnimating = true;
+        var buttonPos = new Vector2(buttonPosition.x, -rectTransform.rect.height);
         rectTransform.DOAnchorPos(targetPos, 0.3f).OnComplete(() =>
         {
             window.SetActive(false);
             isAnimating = false;
-            onComplete?.Invoke();
         });
+        buttonRectTransform.localScale = new Vector3(1, -1, 1);
+        buttonRectTransform.DOAnchorPos(buttonPos, 0.15f);
     }
 
     private void AnimateCloseCurrentWindow()
