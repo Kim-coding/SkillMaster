@@ -18,7 +18,7 @@ public class Enhance : MonoBehaviour
     public void TextUpdate(int nextLevel,int currentPercent, int nextPercent , BigInteger cost)
     {
         nextLevelText.text = nextLevel.ToString();
-        nextPercentText.text = $"{currentPercent}% -> {nextPercent}%";
+        nextPercentText.text = $"{currentPercent} -> {nextPercent}";
         nextCostText.text = cost.ToStringShort();
     }
 
@@ -27,6 +27,15 @@ public class Enhance : MonoBehaviour
         nextLevelText.text = nextLevel.ToString();
         currentPercent = Mathf.Round(currentPercent * 100f)/100f;
         nextPercent = Mathf.Round(nextPercent * 100f)/100f;
+        nextPercentText.text = $"{currentPercent} -> {nextPercent}";
+        nextCostText.text = cost.ToStringShort();
+    }
+
+    public void PercentTextUpdate(int nextLevel, float currentPercent, float nextPercent, BigInteger cost)
+    {
+        nextLevelText.text = nextLevel.ToString();
+        currentPercent = Mathf.Round(currentPercent * 100f) / 100f;
+        nextPercent = Mathf.Round(nextPercent * 100f) / 100f;
         nextPercentText.text = $"{currentPercent}% -> {nextPercent}%";
         nextCostText.text = cost.ToStringShort();
     }

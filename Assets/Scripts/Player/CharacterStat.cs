@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterStat : Status
+public class CharacterStat : Status, IDamageable
 {
     PlayerStat currentPlayerStat;
 
@@ -18,6 +18,8 @@ public class CharacterStat : Status
     [HideInInspector]
     public float playerCriticalMultiple;
 
+    public BigInteger Health { get; set; }
+    public bool Ondeath { get; set; }
 
 
 
@@ -29,7 +31,11 @@ public class CharacterStat : Status
         GameMgr.Instance.playerMgr.characters.Add(this);
         currentPlayerStat = GameMgr.Instance.playerMgr.playerStat;
         PlayerStatUpdate();
+
+        Health = new BigInteger(maxHealth);
+        Ondeath = false;
     }
+
 
     public void PlayerStatUpdate()
     {

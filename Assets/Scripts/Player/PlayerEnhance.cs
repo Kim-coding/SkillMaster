@@ -91,7 +91,16 @@ public class PlayerEnhance
         attackRangeValue = 1; //TO-DO 테이블에서
         attackRangeCost = new BigInteger(100 + 100 * attackRangeLevel); //TO-DO 식 넣어두어야함
 
-        GameMgr.Instance.uiMgr.uiEnhance.TextUpdate();
+        GameMgr.Instance.uiMgr.uiEnhance.Init();
+        GameMgr.Instance.uiMgr.uiEnhance.TextUpdate(EnhanceType.AttackPower);
+        GameMgr.Instance.uiMgr.uiEnhance.TextUpdate(EnhanceType.Defence);
+        GameMgr.Instance.uiMgr.uiEnhance.TextUpdate(EnhanceType.MaxHealth);
+        GameMgr.Instance.uiMgr.uiEnhance.TextUpdate(EnhanceType.Recovery);
+        GameMgr.Instance.uiMgr.uiEnhance.TextUpdate(EnhanceType.CriticalMultiple);
+        GameMgr.Instance.uiMgr.uiEnhance.TextUpdate(EnhanceType.CriticalPercent);
+        GameMgr.Instance.uiMgr.uiEnhance.TextUpdate(EnhanceType.AttackSpeed);
+        GameMgr.Instance.uiMgr.uiEnhance.TextUpdate(EnhanceType.Speed);
+        GameMgr.Instance.uiMgr.uiEnhance.TextUpdate(EnhanceType.AttackRange);
 
     }
 
@@ -105,7 +114,7 @@ public class PlayerEnhance
 
         attackPowerLevel++;
         attackPowerCost = new BigInteger(100 + 100 * attackPowerLevel); //TO-DO cost 식
-        GameMgr.Instance.uiMgr.uiEnhance.TextUpdate();
+        GameMgr.Instance.uiMgr.uiEnhance.TextUpdate(EnhanceType.AttackPower);
         GameMgr.Instance.playerMgr.playerStat.playerStatUpdate();
     }
 
@@ -119,7 +128,7 @@ public class PlayerEnhance
 
         defenceLevel++;
         defenceCost = new BigInteger(100 + 100 * defenceLevel); //TO-DO cost 식
-        GameMgr.Instance.uiMgr.uiEnhance.TextUpdate();
+        GameMgr.Instance.uiMgr.uiEnhance.TextUpdate(EnhanceType.Defence);
         GameMgr.Instance.playerMgr.playerStat.playerStatUpdate();
     }
 
@@ -133,7 +142,7 @@ public class PlayerEnhance
 
         maxHealthLevel++;
         maxHealthCost = new BigInteger(100 + 100 * maxHealthLevel); //TO-DO cost 식
-        GameMgr.Instance.uiMgr.uiEnhance.TextUpdate();
+        GameMgr.Instance.uiMgr.uiEnhance.TextUpdate(EnhanceType.MaxHealth);
         GameMgr.Instance.playerMgr.playerStat.playerStatUpdate();
     }
 
@@ -147,7 +156,7 @@ public class PlayerEnhance
 
         recoveryLevel++;
         recoveryCost = new BigInteger(100 + 100 * recoveryLevel); //TO-DO cost 식
-        GameMgr.Instance.uiMgr.uiEnhance.TextUpdate();
+        GameMgr.Instance.uiMgr.uiEnhance.TextUpdate(EnhanceType.Recovery);
         GameMgr.Instance.playerMgr.playerStat.playerStatUpdate();
     }
 
@@ -161,7 +170,7 @@ public class PlayerEnhance
 
         criticalPercentLevel++;
         criticalPercentCost = new BigInteger(100 + 100 * criticalPercentLevel); //TO-DO cost 식
-        GameMgr.Instance.uiMgr.uiEnhance.TextUpdate();
+        GameMgr.Instance.uiMgr.uiEnhance.TextUpdate(EnhanceType.CriticalPercent);
         GameMgr.Instance.playerMgr.playerStat.playerStatUpdate();
     }
 
@@ -175,7 +184,7 @@ public class PlayerEnhance
 
         criticalMultipleLevel++;
         criticalMultipleCost = new BigInteger(100 + 100 * criticalMultipleLevel); //TO-DO cost 식
-        GameMgr.Instance.uiMgr.uiEnhance.TextUpdate();
+        GameMgr.Instance.uiMgr.uiEnhance.TextUpdate(EnhanceType.CriticalMultiple);
         GameMgr.Instance.playerMgr.playerStat.playerStatUpdate();
     }
 
@@ -189,7 +198,7 @@ public class PlayerEnhance
 
         attackSpeedLevel++;
         attackSpeedCost = new BigInteger(100 + 100 * attackSpeedLevel); //TO-DO cost 식
-        GameMgr.Instance.uiMgr.uiEnhance.TextUpdate();
+        GameMgr.Instance.uiMgr.uiEnhance.TextUpdate(EnhanceType.AttackSpeed);
         GameMgr.Instance.playerMgr.playerStat.playerStatUpdate();
     }
 
@@ -203,7 +212,7 @@ public class PlayerEnhance
 
         speedLevel++;
         speedCost = new BigInteger(100 + 100 * speedLevel); //TO-DO cost 식
-        GameMgr.Instance.uiMgr.uiEnhance.TextUpdate();
+        GameMgr.Instance.uiMgr.uiEnhance.TextUpdate(EnhanceType.Speed);
         GameMgr.Instance.playerMgr.playerStat.playerStatUpdate();
     }
 
@@ -217,7 +226,7 @@ public class PlayerEnhance
 
         attackRangeLevel++;
         attackRangeCost = new BigInteger(100 + 100 * attackRangeLevel); //TO-DO cost 식
-        GameMgr.Instance.uiMgr.uiEnhance.TextUpdate();
+        GameMgr.Instance.uiMgr.uiEnhance.TextUpdate(EnhanceType.AttackRange);
         GameMgr.Instance.playerMgr.playerStat.playerStatUpdate();
     }
 

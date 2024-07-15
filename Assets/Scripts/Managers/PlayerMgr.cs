@@ -42,6 +42,13 @@ public class PlayerMgr : MonoBehaviour
                 GameMgr.Instance.uiMgr.uiMerge.SkillCountUpdate();
             }
         }
+
+
+        if(Input.GetKeyDown(KeyCode.Space)) {
+        
+            Debug.Log(currency.gold.ToString());
+            Debug.Log(playerEnhance.attackPowerCost.ToString());
+        }
     }
 
     public void Init()

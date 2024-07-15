@@ -9,7 +9,7 @@ public class DropCurrency : MonoBehaviour, IDestructible
 
     public void OnDestruction(GameObject attacker)
     {
-        string g = "10";
+        string g = "100";
         gold.Init(g);
         GameMgr.Instance.playerMgr.currency.AddGold(gold);
     }

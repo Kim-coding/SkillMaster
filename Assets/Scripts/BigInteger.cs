@@ -151,6 +151,10 @@ public struct BigInteger
             {
                 return true;
             }
+            if (left.numberList[i] < right.numberList[i])
+            {
+                return false;
+            }
 
             i--;
         }
@@ -201,6 +205,10 @@ public struct BigInteger
             if (left.numberList[i] < right.numberList[i])
             {
                 return true;
+            }
+            if (left.numberList[i] > right.numberList[i])
+            {
+                return false;
             }
 
             i--;

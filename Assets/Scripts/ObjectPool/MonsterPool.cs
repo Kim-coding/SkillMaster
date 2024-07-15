@@ -17,7 +17,7 @@ public class MonsterPool : ObjectPool<MonsterAI>
             Debug.LogError("MonsterAI object is null in OnGet.");
             return;
         }
-        
+        obj.monsterStat.Init();
         base.OnGet(obj);        
     }
 

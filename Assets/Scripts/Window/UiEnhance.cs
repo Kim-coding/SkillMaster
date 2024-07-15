@@ -43,64 +43,99 @@ public class UiEnhance : MonoBehaviour
     }
 
 
-    public void TextUpdate() //TO-DO enum 만들어서 매개변수로 받아서 그거만 업뎃하자
+    public void Init()
     {
-        p_E = GameMgr.Instance.playerMgr.playerEnhance; //TO-DO 매번 업데이트가 아니라 다른데서 해줘야함
-
-        attackPowerUpgrade.TextUpdate(
-            p_E.attackPowerLevel,
-            p_E.attackPowerLevel * p_E.attackPowerValue,
-           (p_E.attackPowerLevel + 1) * p_E.attackPowerValue,
-            p_E.attackPowerCost);
-
-        defenceUpgrade.TextUpdate(
-            p_E.defenceLevel,
-            p_E.defenceLevel * p_E.defenceValue,
-           (p_E.defenceLevel + 1) * p_E.defenceValue,
-            p_E.defenceCost);
-
-        maxHealthUpgrade.TextUpdate(
-            p_E.maxHealthLevel,
-            p_E.maxHealthLevel * p_E.maxHealthValue,
-           (p_E.maxHealthLevel + 1) * p_E.maxHealthValue,
-            p_E.maxHealthCost);
-
-        recoveryUpgrade.TextUpdate(
-            p_E.recoveryLevel,
-            p_E.recoveryLevel * p_E.recoveryValue,
-           (p_E.recoveryLevel + 1) * p_E.recoveryValue,
-            p_E.recoveryCost);
-
-        criticalPercentUpgrade.TextUpdate(
-           p_E.criticalPercentLevel,
-           p_E.criticalPercentLevel * p_E.criticalPercentValue,
-          (p_E.criticalPercentLevel + 1) * p_E.criticalPercentValue,
-           p_E.criticalPercentCost);
-
-        criticalMultipleUpgrade.TextUpdate(
-           p_E.criticalMultipleLevel,
-           p_E.criticalMultipleLevel * p_E.criticalMultipleValue,
-          (p_E.criticalMultipleLevel + 1) * p_E.criticalMultipleValue,
-           p_E.criticalMultipleCost);
+        p_E = GameMgr.Instance.playerMgr.playerEnhance;
+    }
 
 
-        attackSpeedUpgrade.TextUpdate(
-           p_E.attackSpeedLevel,
-           p_E.attackSpeedLevel * p_E.attackSpeedValue,
-          (p_E.attackSpeedLevel + 1) * p_E.attackSpeedValue,
-           p_E.attackSpeedCost);
-
-        speedUpgrade.TextUpdate(
-           p_E.speedLevel,
-           p_E.speedLevel * p_E.speedValue,
-          (p_E.speedLevel + 1) * p_E.speedValue,
-           p_E.speedCost);
-
-        attackRangeUpgrade.TextUpdate(
-           p_E.attackRangeLevel,
-           p_E.attackRangeLevel * p_E.attackRangeValue,
-          (p_E.attackRangeLevel + 1) * p_E.attackRangeValue,
-           p_E.attackRangeCost);
-
+    public void TextUpdate(EnhanceType enhanceType)
+    {
+        switch (enhanceType)
+        {
+            case EnhanceType.None:
+                break;
+            case EnhanceType.AttackPower:
+                {
+                    attackPowerUpgrade.TextUpdate(
+                        p_E.attackPowerLevel,
+                        p_E.attackPowerLevel * p_E.attackPowerValue,
+                        (p_E.attackPowerLevel + 1) * p_E.attackPowerValue,
+                        p_E.attackPowerCost);
+                }
+                break;
+            case EnhanceType.Defence:
+                {
+                    defenceUpgrade.TextUpdate(
+                        p_E.defenceLevel,
+                        p_E.defenceLevel * p_E.defenceValue,
+                       (p_E.defenceLevel + 1) * p_E.defenceValue,
+                        p_E.defenceCost);
+                }
+                break;
+            case EnhanceType.MaxHealth:
+                {
+                    maxHealthUpgrade.TextUpdate(
+                        p_E.maxHealthLevel,
+                        p_E.maxHealthLevel * p_E.maxHealthValue,
+                        (p_E.maxHealthLevel + 1) * p_E.maxHealthValue,
+                        p_E.maxHealthCost);
+                }
+                break;
+            case EnhanceType.Recovery:
+                {
+                    recoveryUpgrade.TextUpdate(
+                        p_E.recoveryLevel,
+                        p_E.recoveryLevel * p_E.recoveryValue,
+                        (p_E.recoveryLevel + 1) * p_E.recoveryValue,
+                        p_E.recoveryCost);
+                }
+                break;
+            case EnhanceType.CriticalPercent:
+                {
+                    criticalPercentUpgrade.PercentTextUpdate(
+                        p_E.criticalPercentLevel,
+                        p_E.criticalPercentLevel * p_E.criticalPercentValue,
+                        (p_E.criticalPercentLevel + 1) * p_E.criticalPercentValue,
+                        p_E.criticalPercentCost);
+                }
+                break;
+            case EnhanceType.CriticalMultiple:
+                {
+                    criticalMultipleUpgrade.TextUpdate(
+                       p_E.criticalMultipleLevel,
+                       p_E.criticalMultipleLevel * p_E.criticalMultipleValue,
+                      (p_E.criticalMultipleLevel + 1) * p_E.criticalMultipleValue,
+                       p_E.criticalMultipleCost);
+                }
+                break;
+            case EnhanceType.AttackSpeed:
+                {
+                    attackSpeedUpgrade.TextUpdate(
+                        p_E.attackSpeedLevel,
+                        p_E.attackSpeedLevel * p_E.attackSpeedValue,
+                        (p_E.attackSpeedLevel + 1) * p_E.attackSpeedValue,
+                        p_E.attackSpeedCost);
+                }
+                break;
+            case EnhanceType.Speed:
+                {
+                    speedUpgrade.TextUpdate(
+                       p_E.speedLevel,
+                       p_E.speedLevel * p_E.speedValue,
+                      (p_E.speedLevel + 1) * p_E.speedValue,
+                       p_E.speedCost);
+                }
+                break;
+            case EnhanceType.AttackRange:
+                {
+                    attackRangeUpgrade.TextUpdate(
+                        p_E.attackRangeLevel,
+                        p_E.attackRangeLevel * p_E.attackRangeValue,
+                        (p_E.attackRangeLevel + 1) * p_E.attackRangeValue,
+                        p_E.attackRangeCost);
+                }
+                break;
+        }
     }
 }

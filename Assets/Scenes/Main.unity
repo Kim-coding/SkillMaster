@@ -5608,6 +5608,14 @@ PrefabInstance:
       propertyPath: playerMgr
       value: 
       objectReference: {fileID: 1423913458}
+    - target: {fileID: 2423509726654897795, guid: 16326b6c1eaf94e4c9e37c895e46167f, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5412202094937564536, guid: 16326b6c1eaf94e4c9e37c895e46167f, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6420949590111000807, guid: 16326b6c1eaf94e4c9e37c895e46167f, type: 3}
       propertyPath: speed
       value: 2
@@ -5664,11 +5672,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7712102424566903448, guid: 16326b6c1eaf94e4c9e37c895e46167f, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8009800250787176428, guid: 16326b6c1eaf94e4c9e37c895e46167f, type: 3}
       propertyPath: damagePrefab
       value: 
       objectReference: {fileID: 8160097050526071945, guid: 278cd926fa1fc374aaaf1dcd335f2bed, type: 3}
-    m_RemovedComponents: []
+    - target: {fileID: 8063255497126510937, guid: 16326b6c1eaf94e4c9e37c895e46167f, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: -1747265281567791845, guid: 16326b6c1eaf94e4c9e37c895e46167f, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -7195,6 +7212,7 @@ GameObject:
   - component: {fileID: 1458089211}
   - component: {fileID: 1458089213}
   - component: {fileID: 1458089214}
+  - component: {fileID: 1458089216}
   m_Layer: 5
   m_Name: UI Window
   m_TagString: Untagged
@@ -7304,6 +7322,48 @@ MonoBehaviour:
   invenWindow: {fileID: 1813656373}
   dungeonWindow: {fileID: 1195710797}
   pickUpWindow: {fileID: 329263579}
+--- !u!23 &1458089216
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1458089209}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &1460805574
 GameObject:
   m_ObjectHideFlags: 0
