@@ -14,8 +14,10 @@ GameObject:
   - component: {fileID: 2317470674643800826}
   - component: {fileID: 321329754882501616}
   - component: {fileID: 1328023870914477473}
+  - component: {fileID: 2181139708190909767}
   - component: {fileID: 8009800250787176428}
   - component: {fileID: -1747265281567791845}
+  - component: {fileID: 380547891140792630}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -123,6 +125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterStat: {fileID: 6420949590111000807}
+  hpBar: {fileID: 4893003634163355276}
   playerMgr: {fileID: 0}
   playerSkills: {fileID: 321329754882501616}
   currentTarget: {fileID: 0}
@@ -175,6 +178,18 @@ CircleCollider2D:
   m_Offset: {x: 0.00000047683716, y: -0.0000009536743}
   serializedVersion: 2
   m_Radius: 0.7
+--- !u!114 &2181139708190909767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 59351692744629341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 204a48687284ffb4ea8be4ad1bd3c69a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &8009800250787176428
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -198,6 +213,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f29e94d58002b594aadb939e6c2ab03d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &380547891140792630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 59351692744629341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10c23ea8a32c6964bbda735cbbf5cb8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &560981223906939372
@@ -411,7 +438,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_TargetDisplay: 0
 --- !u!114 &750352403554284189
 MonoBehaviour:

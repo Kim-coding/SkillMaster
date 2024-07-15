@@ -60,7 +60,7 @@ public class MainScene : MonoBehaviour
 
     public void RestartStage() //스테이지 재시작
     {
-        RemoveMonsters(currentBoss);
+        RemoveAllMonsters();
         if(currentBoss != null)
         {
             Destroy(currentBoss);

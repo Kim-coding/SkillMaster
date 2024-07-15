@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using static UnityEngine.GraphicsBuffer;
 
 public class PlayerAI : MonoBehaviour
 {
     public CharacterStat characterStat;
+    public Image hpBar;
+
 
     public PlayerMgr playerMgr;
     public PlayerSkills playerSkills;
@@ -28,6 +31,11 @@ public class PlayerAI : MonoBehaviour
     private void Start()
     {
         stateMachine.Initialize(new IdleState(this));
+    }
+
+    public void UpdateHpBar(float f)
+    {
+        hpBar.fillAmount = f;
     }
 
     private void Update()
