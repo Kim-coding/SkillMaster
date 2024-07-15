@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Playables;
 
-public class MonsterAI : MonoBehaviour
+public class BossAI : MonoBehaviour
 {
     private GameObject[] players;
     public GameObject target;
@@ -12,17 +12,17 @@ public class MonsterAI : MonoBehaviour
     private float attackTimer = 0;
     public float targetUpdataTime = 0.5f;
 
-    public MonsterStat monsterStat;
-    public MonsterAttack monsterAttack;
+    public BossStat bossStat;
+    public BossAttack bossAttack;
     [HideInInspector]
     public bool onDeath = false;
 
     private void Awake()
     {
         players = GameObject.FindGameObjectsWithTag("Player");
-        monsterStat = GetComponent<MonsterStat>();
-        monsterStat.Init();
-        monsterAttack = new MonsterAttack();
+        bossStat = GetComponent<BossStat>();
+        bossStat.Init();
+        bossAttack = new BossAttack();
     }
 
     private void Start()
@@ -53,15 +53,15 @@ public class MonsterAI : MonoBehaviour
 
             if (target != null && target.activeInHierarchy)
             {
-                if (Vector3.Distance(transform.position, target.transform.position) <= monsterStat.attackRange)
+                if (Vector3.Distance(transform.position, target.transform.position) <= bossStat.attackRange)
                 {
                     gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
-                    if (attackTimer >= monsterStat.attackSpeed)
+                    if (attackTimer >= bossStat.attackSpeed)
                     {
                         var attackables = target.GetComponents<IAttackable>();
                         foreach (var attackable in attackables)
                         {
-                            attackable.OnAttack(gameObject, target, monsterAttack.CreateAttack(monsterStat));
+                            attackable.OnAttack(gameObject, target, bossAttack.CreateAttack(bossStat));
                         }
                         attackTimer = 0;
                     }
@@ -104,7 +104,7 @@ public class MonsterAI : MonoBehaviour
 
     private void Move()
     {
-        transform.position = Vector3.MoveTowards(transform.position, target.transform.position, monsterStat.speed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, target.transform.position, bossStat.speed * Time.deltaTime);
     }
 
 }

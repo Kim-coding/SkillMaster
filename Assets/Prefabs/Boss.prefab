@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 720502760704380448}
   - component: {fileID: 2578584884348673703}
   - component: {fileID: 2498219312119838529}
-  - component: {fileID: 687591824297593071}
+  - component: {fileID: 7218275368446507586}
+  - component: {fileID: -2139755242599818989}
   - component: {fileID: 7454287526471470266}
-  - component: {fileID: 1625479185938590850}
   - component: {fileID: -8176549774457506176}
   - component: {fileID: -4407290600039218660}
   - component: {fileID: -7751084758280996394}
@@ -119,7 +119,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &687591824297593071
+--- !u!114 &7218275368446507586
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -128,12 +128,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 1605052194642255169}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b9c88376ded7ad4b80b2d0d0f61e9b4, type: 3}
+  m_Script: {fileID: 11500000, guid: 6a7ad7f02927bda40b7967fc699156d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 59351692744629341, guid: 16326b6c1eaf94e4c9e37c895e46167f, type: 3}
   targetUpdataTime: 0.5
-  monsterStat: {fileID: 0}
+  bossStat: {fileID: 0}
+  onDeath: 0
+--- !u!114 &-2139755242599818989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1605052194642255169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 825176bf12a783e41a9e1bbbac910b91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
+  attackSpeed: 0
+  attackRange: 0
 --- !u!114 &7454287526471470266
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,21 +162,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89a7d85bd2790ef43b5a2d8a0b76771e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1625479185938590850
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1605052194642255169}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c3f05a8e474c93428340528572f3ff9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 0
-  attackSpeed: 0
-  attackRange: 0
 --- !u!114 &-8176549774457506176
 MonoBehaviour:
   m_ObjectHideFlags: 0

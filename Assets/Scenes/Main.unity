@@ -5702,6 +5702,10 @@ PrefabInstance:
       propertyPath: playerMgr
       value: 
       objectReference: {fileID: 1423913458}
+    - target: {fileID: 5805357081950139696, guid: 16326b6c1eaf94e4c9e37c895e46167f, type: 3}
+      propertyPath: m_SortingOrder
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6420949590111000807, guid: 16326b6c1eaf94e4c9e37c895e46167f, type: 3}
       propertyPath: speed
       value: 2

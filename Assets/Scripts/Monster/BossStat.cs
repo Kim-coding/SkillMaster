@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MonsterStat : Status ,IDamageable
+public class BossStat : Status ,IDamageable
 {
     public BigInteger dropGold;
     public BigInteger Health { get; set; }
@@ -11,10 +11,10 @@ public class MonsterStat : Status ,IDamageable
     public void Init()
     {
         Ondeath = false;
-        Health = new BigInteger(10);
-        attackPower = new BigInteger(2);
-        attackSpeed = 2f;
-        speed = 1f;
-        attackRange = 1;
+        Health = new BigInteger(200);
+        attackPower = new BigInteger(10);
+        attackSpeed = 1f;
+        speed = 3f;
+        attackRange = 3f;
     }
 }
