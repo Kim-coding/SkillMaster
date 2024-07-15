@@ -16,6 +16,8 @@ public class CameraMove : MonoBehaviour
     private float initialOrthographicSize;
     private Vector3 initialPosition;
 
+    public bool isToggle = false;
+
     private void Start()
     {
         cam = GetComponent<Camera>();
@@ -30,7 +32,14 @@ public class CameraMove : MonoBehaviour
 
     private void FixedUpdate()
     {
-        MoveCamera();
+        if(!isToggle)
+        {
+            MoveCamera();
+        }
+        else
+        {
+            CloseMoveCamera();
+        }
     }
 
     public void ChangeCameraDistance()
@@ -39,7 +48,14 @@ public class CameraMove : MonoBehaviour
         float targetOrthographicSize = distances[currentDistanceIndex];
 
         cam.DOOrthoSize(targetOrthographicSize, zoomDuration);
-        MoveCamera();
+        if (!isToggle)
+        {
+            MoveCamera();
+        }
+        else
+        {
+            CloseMoveCamera();
+        }
     }
 
     private void MoveCamera()
@@ -55,5 +71,12 @@ public class CameraMove : MonoBehaviour
         Vector3 dir = player.transform.position;
         dir.y -= YPosition * (targetOrthographicSize / initialOrthographicSize);
         return new Vector3(dir.x, dir.y, initialPosition.z);
+    }
+    private void CloseMoveCamera()
+    {
+        Vector3 dir = player.transform.position;
+        Vector3 desiredPosition = dir;
+        desiredPosition.z = initialPosition.z;
+        transform.position = Vector3.Lerp(transform.position, desiredPosition, moveDuration);
     }
 }
