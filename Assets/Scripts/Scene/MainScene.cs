@@ -60,6 +60,7 @@ public class MainScene : MonoBehaviour
 
     public void RestartStage() //스테이지 재시작
     {
+        GameMgr.Instance.uiMgr.ResetMonsterSlider();
         RemoveAllMonsters();
         if(currentBoss != null)
         {

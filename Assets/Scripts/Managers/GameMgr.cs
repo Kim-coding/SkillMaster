@@ -48,7 +48,6 @@ public class GameMgr : MonoBehaviour
 
     public void OnBossDefeated()
     {
-        uiMgr.ResetMonsterSlider();
         sceneMgr.mainScene.RestartStage();
         uiMgr.AddStage();
     }
