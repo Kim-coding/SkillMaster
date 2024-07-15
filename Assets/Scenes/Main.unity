@@ -7532,7 +7532,8 @@ MonoBehaviour:
   invenWindow: {fileID: 1813656373}
   dungeonWindow: {fileID: 1195710797}
   pickUpWindow: {fileID: 329263579}
-  WindowButton: {fileID: 128838917}
+  CameraMove: {fileID: 1460805578}
+  toggleWindowButton: {fileID: 128838917}
 --- !u!1 &1460805574
 GameObject:
   m_ObjectHideFlags: 0
@@ -7647,6 +7648,7 @@ MonoBehaviour:
   - 7
   - 7.5
   CameraButton: {fileID: 161442956}
+  isToggle: 0
 --- !u!1 &1521525971
 GameObject:
   m_ObjectHideFlags: 0

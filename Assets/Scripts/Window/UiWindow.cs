@@ -12,6 +12,7 @@ public class UiWindow : MonoBehaviour
     public GameObject invenWindow;
     public GameObject dungeonWindow;
     public GameObject pickUpWindow;
+    public CameraMove CameraMove;
 
     public Button toggleWindowButton;
 
@@ -90,6 +91,7 @@ public class UiWindow : MonoBehaviour
 
     private void AnimateOpenWindow(Windows window)
     {
+        CameraMove.isToggle = false;
         GameObject windowObj = windows[window];
         RectTransform rectTransform = windowObj.GetComponent<RectTransform>();
         RectTransform buttonRectTransform = toggleWindowButton.GetComponent<RectTransform>();
@@ -108,6 +110,7 @@ public class UiWindow : MonoBehaviour
     }
     private void AnimateCloseWindow(GameObject window)
     {
+        CameraMove.isToggle = true;
         RectTransform rectTransform = window.GetComponent<RectTransform>();
         RectTransform buttonRectTransform = toggleWindowButton.GetComponent<RectTransform>();
         var targetPos = new Vector2(0, -Screen.height);
