@@ -12,7 +12,42 @@ public enum AttackType
     Bullet,
     Boom,
 }
+public enum SkillShapeType
+{
+    Circular,
+    Linear,
+}
 
+
+public enum SkillType
+{
+    LinearRangeAttack,
+    LinearProjectile,
+    LeapAttack,
+    OrbitingProjectile,
+    ScelectAreaLinear,
+    ScelectAreaProjectile,
+    GrowingShockwave,
+    DonutDot,
+    ChainAttack,
+    AreaSingleHit,
+    AreaDot,
+}
+
+public enum DamageType
+{
+    Dot,
+    Penetrate,
+    OneShot
+}
+
+public enum SpecialType
+{
+    Chaining, 
+    Growth, 
+    Movement, 
+    Follow,
+}
 
 public enum RangeType
 {

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PlayerBaseStat
   m_EditorClassIdentifier: 
   baseSpeed: 3
-  baseAttackSpeed: 0.2
+  baseAttackSpeed: 2
   baseAttackRange: 2.1
   basePlayerAttackPower: 1
   basePlayerDefence: 1

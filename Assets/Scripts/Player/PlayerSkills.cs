@@ -6,23 +6,39 @@ public class PlayerSkills : MonoBehaviour
 {
     public List<GameObject> skills;
     public FireMagic fireMagic;
+    private PlayerAI playerAI;
 
     private void Awake()
     {
         fireMagic = new FireMagic();
+        playerAI = GetComponent<PlayerAI>();
     }
 
-    public void UseSkill(GameObject skill, Vector3 position, Vector3 direction)
+    public void UseSkill(GameObject skill, GameObject launchPoint, Transform target, float range, float width)
     {
+        var attack = fireMagic.CreateAttack(playerAI.characterStat);
+        //CreateSkill(skill,SkillType.ScelectAreaLinear,launchPoint, target, range, width, attack);
+        CreateSkill(skill,SkillType.ScelectAreaLinear, launchPoint, target, range, width, attack);
 
-        GameObject skillInstance = Instantiate(skill, position, Quaternion.identity);
-        Rigidbody2D rb = skillInstance.GetComponent<Rigidbody2D>();
-        skillInstance.GetComponent<SkillProjectile>().attacker = gameObject;
-        skillInstance.GetComponent<SkillProjectile>().attack = fireMagic.CreateAttack(gameObject.GetComponent<CharacterStat>());
-        if (rb != null)
+
+    }
+    public GameObject CreateSkill(GameObject skillPrefab, SkillType type, GameObject launchPoint, Transform target, float range, float width, Attack attack)
+    {
+        GameObject skillObject = Instantiate(skillPrefab);
+        switch (type)
         {
-            rb.velocity = direction.normalized * 10f;
+            case SkillType.LinearRangeAttack:
+                var linearSkill = skillObject.AddComponent<LinearRangeAttackSkill>();
+                linearSkill.ApplyShape(skillObject, launchPoint.transform.position, target.position, range, width);
+                linearSkill.ApplyDamageType(launchPoint, attack, DamageType.OneShot, SkillShapeType.Linear);
+                break;
+            case SkillType.ScelectAreaLinear:
+                var skill = skillObject.AddComponent<ScelectAreaLinearAttack>();
+                skill.ApplyShape(skillObject, launchPoint.transform.position, target.position, range, width);
+                skill.ApplyDamageType(launchPoint, attack, DamageType.OneShot, SkillShapeType.Linear);
+                break;
+                // 기타 스킬 타입 생성
         }
-        
+        return skillObject;
     }
 }

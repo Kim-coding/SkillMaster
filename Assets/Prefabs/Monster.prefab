@@ -81,7 +81,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
@@ -107,8 +107,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 59351692744629341, guid: 16326b6c1eaf94e4c9e37c895e46167f, type: 3}
   targetUpdataTime: 0.5
-  attackRange: 1
   monsterStat: {fileID: 0}
+  onDeath: 0
 --- !u!114 &9089909014751631358
 MonoBehaviour:
   m_ObjectHideFlags: 0
