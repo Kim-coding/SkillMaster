@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScelectAreaLinearAttack : MonoBehaviour,ISkillShape,IDamageType
+public class ScelectAreaLinearAttack : MonoBehaviour,ISkillShape,IDamageType, ISkill
 {
     int skillID;
     public GameObject skillObject;
@@ -11,7 +11,7 @@ public class ScelectAreaLinearAttack : MonoBehaviour,ISkillShape,IDamageType
     public DamageType damageType;
 
 
-    float duration = 1f;
+    float duration = 0.5f;
     float timer = 0f;
 
     public void Initialize()

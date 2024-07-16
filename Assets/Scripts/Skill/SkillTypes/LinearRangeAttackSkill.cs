@@ -1,7 +1,7 @@
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
-public class LinearRangeAttackSkill : MonoBehaviour, ISkillShape, IDamageType
+public class LinearRangeAttackSkill : MonoBehaviour, ISkillShape, IDamageType, ISkill
 {
     int skillID;
     public GameObject skillObject;
@@ -10,7 +10,7 @@ public class LinearRangeAttackSkill : MonoBehaviour, ISkillShape, IDamageType
     public DamageType damageType;
 
 
-    float duration = 1f;
+    float duration = 0.5f;
     float timer = 0f;
 
     public void Initialize()
