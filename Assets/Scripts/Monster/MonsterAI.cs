@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Playables;
 
@@ -17,12 +18,18 @@ public class MonsterAI : MonoBehaviour
     [HideInInspector]
     public bool onDeath = false;
 
+    private Rigidbody2D rb;
+    private Animator animator;
+
+
     private void Awake()
     {
         players = GameObject.FindGameObjectsWithTag("Player");
         monsterStat = GetComponent<MonsterStat>();
         monsterStat.Init();
         monsterAttack = new MonsterAttack();
+        rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     private void Start()
@@ -55,7 +62,7 @@ public class MonsterAI : MonoBehaviour
             {
                 if (Vector3.Distance(transform.position, target.transform.position) <= monsterStat.attackRange)
                 {
-                    gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+                    rb.bodyType = RigidbodyType2D.Kinematic;
                     if (attackTimer >= monsterStat.attackSpeed)
                     {
                         var attackables = target.GetComponents<IAttackable>();
@@ -69,8 +76,9 @@ public class MonsterAI : MonoBehaviour
                 }
                 else
                 {
-                    gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+                    rb.bodyType = RigidbodyType2D.Dynamic;
                     Move();
+                Rotation();
                     attackTimer = 0;
                 }
             }
@@ -105,6 +113,12 @@ public class MonsterAI : MonoBehaviour
     private void Move()
     {
         transform.position = Vector3.MoveTowards(transform.position, target.transform.position, monsterStat.speed * Time.deltaTime);
+    }
+    private void Rotation()
+    {
+        Vector3 rot = (target.transform.position - transform.position).normalized;
+        animator.SetFloat("InputX", rot.x);
+        animator.SetFloat("InputY", rot.y);
     }
 
 }

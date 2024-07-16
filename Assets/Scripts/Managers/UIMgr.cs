@@ -10,7 +10,7 @@ public class UIMgr : MonoBehaviour
     public UiMerge uiMerge;
     public UiEnhance uiEnhance;
 
-
+    public Button guideQuestButton;
 
     /// <summary>
     /// 밑에것들 정리 필요
@@ -24,6 +24,7 @@ public class UIMgr : MonoBehaviour
 
     public TextMeshProUGUI skillcount;
     private int stageCount = 1;
+
 
     public void AllUIUpdate(BigInteger g, BigInteger d)
     {

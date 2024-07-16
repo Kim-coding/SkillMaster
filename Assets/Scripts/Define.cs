@@ -73,9 +73,6 @@ public enum EnhanceType
     Recovery,
     CriticalPercent,
     CriticalMultiple,
-    AttackSpeed,
-    Speed,
-    AttackRange,
 }
 
 
@@ -90,4 +87,6 @@ public static class DataTableIds
     public static readonly string merge = "MergeTable";
 
     public static readonly string skill = "SkillTable";
+
+    public static readonly string quest = "QuestTable";
 }
