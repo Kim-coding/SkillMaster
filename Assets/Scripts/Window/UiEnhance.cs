@@ -14,9 +14,6 @@ public class UiEnhance : MonoBehaviour
     public Enhance criticalPercentUpgrade;
     public Enhance criticalMultipleUpgrade;
 
-    public Enhance attackSpeedUpgrade;
-    public Enhance speedUpgrade;
-    public Enhance attackRangeUpgrade;
 
     private void Start()
     {
@@ -33,12 +30,6 @@ public class UiEnhance : MonoBehaviour
         criticalMultipleUpgrade.GetComponent<Button>().onClick.AddListener(GameMgr.Instance.playerMgr.playerEnhance.AddCriticalMultiple);
         criticalMultipleUpgrade.Init("치명타 배률 강화");
 
-        attackSpeedUpgrade.GetComponent<Button>().onClick.AddListener(GameMgr.Instance.playerMgr.playerEnhance.AddAttackSpeed);
-        attackSpeedUpgrade.Init("공격 속도 강화");
-        speedUpgrade.GetComponent<Button>().onClick.AddListener(GameMgr.Instance.playerMgr.playerEnhance.AddSpeed);
-        speedUpgrade.Init("이동 속도 강화");
-        attackRangeUpgrade.GetComponent<Button>().onClick.AddListener(GameMgr.Instance.playerMgr.playerEnhance.AddAttackRange);
-        attackRangeUpgrade.Init("사거리 강화");
 
     }
 
@@ -109,33 +100,7 @@ public class UiEnhance : MonoBehaviour
                        p_E.criticalMultipleCost);
                 }
                 break;
-            case EnhanceType.AttackSpeed:
-                {
-                    attackSpeedUpgrade.TextUpdate(
-                        p_E.attackSpeedLevel,
-                        p_E.attackSpeedLevel * p_E.attackSpeedValue,
-                        (p_E.attackSpeedLevel + 1) * p_E.attackSpeedValue,
-                        p_E.attackSpeedCost);
-                }
-                break;
-            case EnhanceType.Speed:
-                {
-                    speedUpgrade.TextUpdate(
-                       p_E.speedLevel,
-                       p_E.speedLevel * p_E.speedValue,
-                      (p_E.speedLevel + 1) * p_E.speedValue,
-                       p_E.speedCost);
-                }
-                break;
-            case EnhanceType.AttackRange:
-                {
-                    attackRangeUpgrade.TextUpdate(
-                        p_E.attackRangeLevel,
-                        p_E.attackRangeLevel * p_E.attackRangeValue,
-                        (p_E.attackRangeLevel + 1) * p_E.attackRangeValue,
-                        p_E.attackRangeCost);
-                }
-                break;
+
         }
     }
 }

@@ -34,17 +34,6 @@ public class PlayerEnhance
     public float criticalMultipleValue;
     public BigInteger criticalMultipleCost;
 
-    public int attackSpeedLevel;
-    public float attackSpeedValue;
-    public BigInteger attackSpeedCost;
-
-    public int speedLevel;
-    public float speedValue;
-    public BigInteger speedCost;
-
-    public int attackRangeLevel;
-    public float attackRangeValue;
-    public BigInteger attackRangeCost;
 
     public void Init()
     {
@@ -79,17 +68,6 @@ public class PlayerEnhance
         criticalMultipleValue = 1; //TO-DO 테이블에서
         criticalMultipleCost = new BigInteger(100 + 100 * criticalMultipleLevel); //TO-DO 식 넣어두어야함
 
-        attackSpeedLevel = 0;
-        attackSpeedValue = 1; //TO-DO 테이블에서
-        attackSpeedCost = new BigInteger(100 + 100 * attackSpeedLevel); //TO-DO 식 넣어두어야함
-
-        speedLevel = 0;
-        speedValue = 1; //TO-DO 테이블에서
-        speedCost = new BigInteger(100 + 100 * speedLevel); //TO-DO 식 넣어두어야함
-
-        attackRangeLevel = 0;
-        attackRangeValue = 1; //TO-DO 테이블에서
-        attackRangeCost = new BigInteger(100 + 100 * attackRangeLevel); //TO-DO 식 넣어두어야함
 
         GameMgr.Instance.uiMgr.uiEnhance.Init();
         GameMgr.Instance.uiMgr.uiEnhance.TextUpdate(EnhanceType.AttackPower);
@@ -98,9 +76,6 @@ public class PlayerEnhance
         GameMgr.Instance.uiMgr.uiEnhance.TextUpdate(EnhanceType.Recovery);
         GameMgr.Instance.uiMgr.uiEnhance.TextUpdate(EnhanceType.CriticalMultiple);
         GameMgr.Instance.uiMgr.uiEnhance.TextUpdate(EnhanceType.CriticalPercent);
-        GameMgr.Instance.uiMgr.uiEnhance.TextUpdate(EnhanceType.AttackSpeed);
-        GameMgr.Instance.uiMgr.uiEnhance.TextUpdate(EnhanceType.Speed);
-        GameMgr.Instance.uiMgr.uiEnhance.TextUpdate(EnhanceType.AttackRange);
 
     }
 
@@ -188,46 +163,5 @@ public class PlayerEnhance
         GameMgr.Instance.playerMgr.playerStat.playerStatUpdate();
     }
 
-    public void AddAttackSpeed()
-    {
-        if (attackSpeedCost > GameMgr.Instance.playerMgr.currency.gold)
-        {
-            return;
-        }
-        GameMgr.Instance.playerMgr.currency.RemoveGold(attackSpeedCost);
-
-        attackSpeedLevel++;
-        attackSpeedCost = new BigInteger(100 + 100 * attackSpeedLevel); //TO-DO cost 식
-        GameMgr.Instance.uiMgr.uiEnhance.TextUpdate(EnhanceType.AttackSpeed);
-        GameMgr.Instance.playerMgr.playerStat.playerStatUpdate();
-    }
-
-    public void AddSpeed()
-    {
-        if (speedCost > GameMgr.Instance.playerMgr.currency.gold)
-        {
-            return;
-        }
-        GameMgr.Instance.playerMgr.currency.RemoveGold(speedCost);
-
-        speedLevel++;
-        speedCost = new BigInteger(100 + 100 * speedLevel); //TO-DO cost 식
-        GameMgr.Instance.uiMgr.uiEnhance.TextUpdate(EnhanceType.Speed);
-        GameMgr.Instance.playerMgr.playerStat.playerStatUpdate();
-    }
-
-    public void AddAttackRange()
-    {
-        if (attackRangeCost > GameMgr.Instance.playerMgr.currency.gold)
-        {
-            return;
-        }
-        GameMgr.Instance.playerMgr.currency.RemoveGold(attackRangeCost);
-
-        attackRangeLevel++;
-        attackRangeCost = new BigInteger(100 + 100 * attackRangeLevel); //TO-DO cost 식
-        GameMgr.Instance.uiMgr.uiEnhance.TextUpdate(EnhanceType.AttackRange);
-        GameMgr.Instance.playerMgr.playerStat.playerStatUpdate();
-    }
 
 }

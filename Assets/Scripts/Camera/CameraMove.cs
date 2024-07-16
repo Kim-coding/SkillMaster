@@ -3,9 +3,12 @@ using UnityEngine;
 using UnityEngine.UI;
 using Cinemachine;
 using System.ComponentModel;
+using Unity.VisualScripting;
 
 public class CameraMove : MonoBehaviour
 {
+
+    public GameObject player;
 
     public float moveDuration = 0.5f; // 카메라 이동 시간
     public float zoomDuration = 0.5f; // 카메라 줌 시간
@@ -25,12 +28,51 @@ public class CameraMove : MonoBehaviour
     public CinemachineVirtualCamera topCameraMiddle;
     public CinemachineVirtualCamera topCameraFar;
 
+    bool onBossView = false;
+    float bossViewTimer = 0f;
+    float bossViewDuration = 2f;
 
     private void Start()
     {
         CameraButton.onClick.AddListener(ChangeCameraDistance);
         toggleWindowButton.onClick.AddListener(() => { isToggle = !isToggle; ChangeCameraDistance(); });
         ChangeCameraDistance();
+        SetTarget(player);
+    }
+
+    private void Update()
+    {
+        if (onBossView)
+        {
+            bossViewTimer += Time.deltaTime;
+        }
+
+        if(bossViewTimer > bossViewDuration)
+        {
+            bossViewTimer = 0;
+            onBossView = false;
+            SetTarget();
+        }
+    }
+
+    public void SetTarget()
+    {
+        centerCameraNear.Follow = player.transform;
+        centerCameraMiddle.Follow = player.transform;
+        centerCameraFar.Follow = player.transform;
+        topCameraNear.Follow = player.transform;
+        topCameraMiddle.Follow = player.transform;
+        topCameraFar.Follow = player.transform;
+    }
+    public void SetTarget(GameObject target)
+    {
+        onBossView = true;
+        centerCameraNear.Follow = target.transform;
+        centerCameraMiddle.Follow = target.transform;
+        centerCameraFar.Follow = target.transform;
+        topCameraNear.Follow = target.transform;
+        topCameraMiddle.Follow = target.transform;
+        topCameraFar.Follow = target.transform;
     }
 
     public void ChangeCameraDistance()
