@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 1083383522710451013}
   - component: {fileID: -4706407626423623546}
   - component: {fileID: -4615519480749428121}
+  - component: {fileID: -332843248117968204}
   m_Layer: 0
   m_Name: Monster
   m_TagString: Monster
@@ -36,7 +37,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.072, y: -0.343, z: 0}
-  m_LocalScale: {x: 0.036683533, y: 0.036683533, z: 0.036683533}
+  m_LocalScale: {x: 0.06, y: 0.06, z: 0.06}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -82,8 +83,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 87ff3ff0171f5194aa8882bb06af639a, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -107,8 +108,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 59351692744629341, guid: 16326b6c1eaf94e4c9e37c895e46167f, type: 3}
   targetUpdataTime: 0.5
-  attackRange: 1
   monsterStat: {fileID: 0}
+  onDeath: 0
 --- !u!114 &9089909014751631358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,7 +157,7 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.5, y: 0}
     oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
@@ -192,7 +193,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 7
 --- !u!114 &5441368518107167588
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -257,3 +258,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 137fce291cb49234991a1f9879ff3b5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &-332843248117968204
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4831553660578189742}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 65a2afc3fba0a414a9f941210d137b04, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
