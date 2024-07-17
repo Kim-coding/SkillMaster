@@ -2,14 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScelectAreaLinearAttack : MonoBehaviour,ISkillShape,IDamageType, ISkill
+public class ScelectAreaLinearAttack : MonoBehaviour,ISkillShape,IDamageType, ISkillComponent, ISkill
 {
-    int skillID;
+    //int skillID;
     public GameObject skillObject;
     public GameObject attacker;
     public Attack attack;
     public DamageType damageType;
-
 
     float duration = 0.5f;
     float timer = 0f;
@@ -17,7 +16,7 @@ public class ScelectAreaLinearAttack : MonoBehaviour,ISkillShape,IDamageType, IS
     public void Initialize()
     {
         timer = 0f;
-        skillID = 0;
+        //skillID = 0;
         skillObject = null;
         //초기화 시 필요한 나머지 작업
     }
@@ -34,7 +33,7 @@ public class ScelectAreaLinearAttack : MonoBehaviour,ISkillShape,IDamageType, IS
 
         float angle = Mathf.Atan2(rot.y, rot.x) * Mathf.Rad2Deg + 90;
         skillObject.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
-        skillObject.transform.position = launchPoint + rot * (range / 2);
+        skillObject.transform.position = target;
     }
 
     public void ApplyDamageType(GameObject attacker, Attack attack, DamageType damageType, SkillShapeType shapeType) //스킬의 데미지 속성을 설정

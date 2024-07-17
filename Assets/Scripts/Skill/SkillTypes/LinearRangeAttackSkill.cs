@@ -1,9 +1,9 @@
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
-public class LinearRangeAttackSkill : MonoBehaviour, ISkillShape, IDamageType, ISkill
+public class LinearRangeAttackSkill : MonoBehaviour, ISkillShape, IDamageType, ISkillComponent, ISkill
 {
-    int skillID;
+    //int skillID;
     public GameObject skillObject;
     public GameObject attacker;
     public Attack attack;
@@ -16,7 +16,7 @@ public class LinearRangeAttackSkill : MonoBehaviour, ISkillShape, IDamageType, I
     public void Initialize()
     {
         timer = 0f;
-        skillID = 0;
+        //skillID = 0;
         skillObject = null;
         //초기화 시 필요한 나머지 작업
     }

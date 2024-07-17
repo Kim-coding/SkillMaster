@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerSkills : MonoBehaviour
 {
-    public List<GameObject> skills;
+    public List<GameObject> skills;  // 프리팹 (이펙트)
+    public List<SkillType> skillTypeList;   // 내가 가지고 있는 스킬 종류 
     public FireMagic fireMagic;
     private PlayerAI playerAI;
 
@@ -24,7 +26,7 @@ public class PlayerSkills : MonoBehaviour
     public GameObject CreateSkill(GameObject skillPrefab, SkillType type, GameObject launchPoint, Transform target, float range, float width, Attack attack)
     {
         GameObject skillObject = Instantiate(skillPrefab);
-        ISkill skillComponent = null;
+        ISkillComponent skillComponent = null;
         switch (type)
         {
             case SkillType.LinearRangeAttack:
@@ -36,8 +38,12 @@ public class PlayerSkills : MonoBehaviour
             case SkillType.AreaSingleHit:
                 skillComponent = skillObject.AddComponent<AreaSingleHitSkill>();
                 break;
+            case SkillType.DonutDot:
+                skillComponent = skillObject.AddComponent<DonutDotSkill>();
+                break;
                 // 기타 스킬 타입 생성
         }
+        //skillTypeList.Remove(type);
 
         if(skillComponent != null)
         {
@@ -47,7 +53,7 @@ public class PlayerSkills : MonoBehaviour
         return skillObject;
     }
 
-    private void InitializeSkill(ISkill skillComponent, GameObject skillObject, GameObject launchPoint, Transform target, float range, float width, Attack attack)
+    private void InitializeSkill(ISkillComponent skillComponent, GameObject skillObject, GameObject launchPoint, Transform target, float range, float width, Attack attack)
     {
         skillComponent.ApplyShape(skillObject, launchPoint.transform.position, target.position, range, width);
         skillComponent.ApplyDamageType(launchPoint, attack, DamageType.OneShot, SkillShapeType.Linear);

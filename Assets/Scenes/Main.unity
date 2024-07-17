@@ -6009,6 +6009,26 @@ PrefabInstance:
       propertyPath: skills.Array.data[0]
       value: 
       objectReference: {fileID: 7542266623136808606, guid: a5be68472b022c94d8ec3c1381b8c314, type: 3}
+    - target: {fileID: 321329754882501616, guid: 16326b6c1eaf94e4c9e37c895e46167f, type: 3}
+      propertyPath: skillTypeList.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 321329754882501616, guid: 16326b6c1eaf94e4c9e37c895e46167f, type: 3}
+      propertyPath: skillTypeList.Array.data[0]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 321329754882501616, guid: 16326b6c1eaf94e4c9e37c895e46167f, type: 3}
+      propertyPath: skillTypeList.Array.data[1]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 321329754882501616, guid: 16326b6c1eaf94e4c9e37c895e46167f, type: 3}
+      propertyPath: skillTypeList.Array.data[2]
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 321329754882501616, guid: 16326b6c1eaf94e4c9e37c895e46167f, type: 3}
+      propertyPath: skillTypeList.Array.data[3]
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 1328023870914477473, guid: 16326b6c1eaf94e4c9e37c895e46167f, type: 3}
       propertyPath: m_Radius
       value: 0.5
@@ -6021,6 +6041,10 @@ PrefabInstance:
       propertyPath: playerMgr
       value: 
       objectReference: {fileID: 1423913458}
+    - target: {fileID: 3611454589139036858, guid: 16326b6c1eaf94e4c9e37c895e46167f, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5805357081950139696, guid: 16326b6c1eaf94e4c9e37c895e46167f, type: 3}
       propertyPath: m_SortingOrder
       value: 5
@@ -6502,7 +6526,7 @@ Transform:
   m_GameObject: {fileID: 1285886103}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.8715322, y: 1, z: -0.39367384}
+  m_LocalPosition: {x: -1.8715322, y: 2.66, z: -0.39367384}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
