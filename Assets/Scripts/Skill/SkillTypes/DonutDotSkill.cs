@@ -15,8 +15,11 @@ public class DonutDotSkill : MonoBehaviour, ISkillShape, IDamageType, ISkillComp
     float duration = 2f;
     float timer = 0f;
 
-    private GameObject innerCircle;
-    private GameObject outerCircle;
+    public float innerRadius = 0.8f;
+    public int innerNumSegments = 100;
+
+    public float outerRadius = 1.5f;
+    public int outerNumSegments = 100;
 
     public void Initialize()
     {
@@ -28,6 +31,10 @@ public class DonutDotSkill : MonoBehaviour, ISkillShape, IDamageType, ISkillComp
 
     private void Start()
     {
+        GameObject parent = GameObject.FindGameObjectWithTag("Ground");
+        gameObject.transform.SetParent(parent.transform);
+        gameObject.transform.localScale = new Vector3(1, 1, 1);
+        DrawCircle();
         StartCoroutine(ApplyDotDamage());
     }
     public void ApplyShape(GameObject skillObject, Vector3 launchPoint, Vector3 target, float range, float width)
@@ -37,72 +44,44 @@ public class DonutDotSkill : MonoBehaviour, ISkillShape, IDamageType, ISkillComp
         if (circleSprite != null)
         {
             skillObject.GetComponent<SpriteRenderer>().sprite = circleSprite;
+            skillObject.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0);
         }
 
-        //CircleCollider2D innerCollider = gameObject.AddComponent<CircleCollider2D>();
-        //innerCollider.isTrigger = true;
-        //innerCollider.radius = 0.15f; // 작은 반지름 설정
 
-        CircleCollider2D outerCollider = gameObject.AddComponent<CircleCollider2D>();
-        outerCollider.isTrigger = true;
-        outerCollider.radius = 0.75f; // 큰 반지름 설정
-        /*outerCollider.gameObject.AddComponent<RingCollider>().Initialize(innerCollider, this);*/ // 링콜라이더 설정 
-     ////////임시 설정////////////////////////////
-        outerCircle = new GameObject("OuterCircle");
-        SpriteRenderer outerRenderer = outerCircle.AddComponent<SpriteRenderer>();
-        Sprite outerSprite = Resources.Load<Sprite>("OuterCircleSprite");
-        if (outerSprite != null)
-        {
-            outerRenderer.sprite = outerSprite;
-            outerRenderer.color = Color.red;
-        }
-        else
-        {
-            Debug.LogError("Outer circle sprite not found!");
-        }
-
-        outerCircle.transform.SetParent(transform);
-        outerCircle.transform.localScale = new Vector2(outerCollider.radius * 2, outerCollider.radius * 2);
-
-        // 내부 원 스프라이트 설정
-        innerCircle = new GameObject("InnerCircle");
-        innerCircle.AddComponent<InnerCircleTrigger>().Initialize(this);
-        CircleCollider2D innerCollider = innerCircle.AddComponent<CircleCollider2D>();
-        innerCollider.isTrigger = true;
-        innerCollider.radius = 0.2f; // 작은 반지름 설정
-        SpriteRenderer innerRenderer = innerCircle.AddComponent<SpriteRenderer>();
-        Sprite innerSprite = Resources.Load<Sprite>("InnerCircleSprite");
-        if (innerSprite != null)
-        {
-            innerRenderer.sprite = innerSprite;
-            innerRenderer.color = Color.gray;
-        }
-        else
-        {
-            Debug.LogError("Inner circle sprite not found!");
-        }
-        innerCircle.transform.SetParent(transform);
-        innerCircle.transform.localScale = new Vector2(innerCollider.radius * 2, innerCollider.radius * 2);
-
-        outerRenderer.sortingOrder = 1;
-        innerRenderer.sortingOrder = 2;
-        outerCollider.gameObject.AddComponent<RingCollider>().Initialize(innerCollider, this);
-        ///////////////////////////////////////////////////
         skillObject.transform.position = launchPoint;
         skillObject.transform.localScale = new Vector2(range, range);
     }
+    void DrawCircle()
+    {
+        LineRenderer innerLineRenderer = GetComponent<LineRenderer>();
+        innerLineRenderer.positionCount = outerNumSegments + 1;
+        innerLineRenderer.useWorldSpace = false;
 
+        float deltaTheta = (2f * Mathf.PI) / outerNumSegments;
+        float theta = 0f;
+
+        for (int i = 0; i < outerNumSegments + 1; i++)
+        {
+            float x = outerRadius * Mathf.Cos(theta);
+            float y = outerRadius * Mathf.Sin(theta);
+            Vector3 pos = new Vector3(x, y, 0);
+            innerLineRenderer.SetPosition(i, pos);
+            theta += deltaTheta;
+        }
+    }
     public void ApplyDamageType(GameObject attacker, Attack attack, DamageType damageType, SkillShapeType shapeType)
     {
         this.attacker = attacker;
         this.attack = attack;
         this.damageType = damageType;
     }
-    private int count = 0;
+
     private IEnumerator ApplyDotDamage()
     {
-        if (monsters.Count > 0)
+        while (true)
         {
+            UpdateMonsterList();
+            Debug.Log(monsters.Count);
             foreach (MonsterAI monster in monsters)
             {
                 if (monster != null)
@@ -111,76 +90,26 @@ public class DonutDotSkill : MonoBehaviour, ISkillShape, IDamageType, ISkillComp
                     dotDamage.attacker = attacker;
                     dotDamage.attack = attack;
                     monster.ApplyDotDamage(dotDamage);
-                    count++;
                 }
             }
-            Debug.Log(count);
-        }
-        yield return new WaitForSeconds(1f);
 
-        
+            yield return new WaitForSeconds(0.5f);
+        }
     }
 
-    public void OnTriggerEnter2D(Collider2D collision)
+    private void UpdateMonsterList()
     {
-        if (collision.gameObject.CompareTag("Monster"))
+        monsters.Clear();
+
+        GameObject[] allMonsters = GameMgr.Instance.GetMonsters();
+        foreach (var m in allMonsters)
         {
-            MonsterAI monster = collision.gameObject.GetComponent<MonsterAI>();
-            if (monster != null)
+            var monster = m.GetComponent<MonsterAI>();
+            float distance = Vector2.Distance(attacker.transform.position, monster.transform.position);
+            if (distance < outerRadius && distance > innerRadius)
             {
-                AddMonster(monster);
-            }
-        }
-    }
-
-    public void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Monster"))
-        {
-            MonsterAI monster = collision.gameObject.GetComponent<MonsterAI>();
-            if (monster != null)
-            {
-                Debug.Log("Exit");
-                RemoveMonster(monster);
-            }
-        }
-    }
-    public void AddMonster(MonsterAI monster)
-    {
-        if (!monsters.Contains(monster))
-        {
-            monsters.Add(monster);
-        }
-    }
-
-    public void RemoveMonster(MonsterAI monster)
-    {
-        if (monsters.Contains(monster))
-        {
-            monsters.Remove(monster);
-            Debug.Log("Remove");
-        }
-    }
-
-    public void OnInnerTriggerEnter(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Monster"))
-        {
-            MonsterAI monster = collision.gameObject.GetComponent<MonsterAI>();
-            if (monster != null)
-            {
-                RemoveMonster(monster);
-            }
-        }
-    }
-    public void OnInnerTriggerExit(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Monster"))
-        {
-            MonsterAI monster = collision.gameObject.GetComponent<MonsterAI>();
-            if (monster != null)
-            {
-                AddMonster(monster);
+                monsters.Add(monster);
+                Debug.Log(distance);
             }
         }
     }
@@ -188,7 +117,7 @@ public class DonutDotSkill : MonoBehaviour, ISkillShape, IDamageType, ISkillComp
     public void Update()
     {
         timer += Time.deltaTime;
-        if(timer >= duration)
+        if (timer >= duration)
         {
             timer = 0f;
             Destroy(gameObject);
