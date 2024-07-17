@@ -15,8 +15,13 @@ public interface ISpecialEffect
     void ApplyEffect(SpecialType specialType);
 }
 
-public interface ISkill
+public interface ISkillComponent
 {
     void ApplyShape(GameObject skillObject, Vector3 launchPosition, Vector3 targetPosition, float range, float width);
     void ApplyDamageType(GameObject attacker, Attack attack, DamageType damageType, SkillShapeType shapeType);
+}
+
+public interface ISkill
+{
+    void Initialize();
 }

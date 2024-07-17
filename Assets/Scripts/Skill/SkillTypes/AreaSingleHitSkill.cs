@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AreaSingleHitSkill : MonoBehaviour, ISkillShape, IDamageType, ISkill
+public class AreaSingleHitSkill : MonoBehaviour, ISkillShape, IDamageType, ISkillComponent, ISkill
 {
-    int skillID;
+    //int skillID;
     public GameObject skillObject;
     public GameObject attacker;
     public Attack attack;
@@ -17,7 +17,7 @@ public class AreaSingleHitSkill : MonoBehaviour, ISkillShape, IDamageType, ISkil
     public void Initialize()
     {
         timer = 0f;
-        skillID = 0;
+        //skillID = 0;
         skillObject = null;
         //초기화 시 필요한 나머지 작업
     }
@@ -25,7 +25,16 @@ public class AreaSingleHitSkill : MonoBehaviour, ISkillShape, IDamageType, ISkil
     public void ApplyShape(GameObject skillObject, Vector3 launchPoint, Vector3 target, float range, float width)
     {
         this.skillObject = skillObject;
-        skillObject.transform.localScale = new Vector2(range, width);
+        Sprite circleSprite = Resources.Load<Sprite>("Circle");
+        if (circleSprite != null)
+        {
+            skillObject.GetComponent<SpriteRenderer>().sprite = circleSprite;
+        }
+        else
+        {
+            Debug.LogError("Circle sprite not found!");
+        }
+        skillObject.transform.localScale = new Vector2(range, range);
 
         skillObject.AddComponent<CircleCollider2D>().isTrigger = true;
         skillObject.transform.position = launchPoint;

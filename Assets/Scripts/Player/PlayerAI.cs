@@ -133,13 +133,25 @@ public class PlayerAI : MonoBehaviour
             }
         }
     }
-
+    private int count = 0;
+    private int maxCount;
     public void OnAttack(GameObject skill)
     {
+        maxCount = maxCount = playerSkills.skillTypeList.Count - 1;
         if (currentTarget != null && IsInAttackRange())
         {
             Vector3 direction = (currentTarget.position - transform.position).normalized;
-            playerSkills.UseSkill(skill, SkillType.AreaSingleHit , gameObject, currentTarget, 3, 1);
+
+            var skillType = playerSkills.skillTypeList[count];
+            playerSkills.UseSkill(skill, skillType, gameObject, currentTarget, 3, 1);
+            if(count < maxCount)
+            {
+                count++;
+            }
+            else
+            {
+                count = 0;
+            }
         }
         else
         {
