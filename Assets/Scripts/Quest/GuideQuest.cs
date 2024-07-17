@@ -13,7 +13,7 @@ public class GuideQuest
     public QuestData currentQuest;
     public int currentTargetValue;
 
-    private List<Action> eventSubscribers = new List<Action>();
+    private Action currentEventHandler;
     public void Init()
     {
         questID = 60001; //TO-DO 저장데이터
@@ -21,8 +21,6 @@ public class GuideQuest
         currentQuest = DataTableMgr.Get<QuestTable>(DataTableIds.quest).GetID(questID);
         GameMgr.Instance.uiMgr.uiGuideQuest.currentQuest = currentQuest;
         currentTargetValue = 0; //TO-DO 저장데이터
-        eventSubscribers.Add(QuestValueUpdate);
-        eventSubscribers.Add(QuestGetGoldUpdate);
         RegisterQuestEvents();
         CheckQuestCompletion();
         UiUpdate();
@@ -44,7 +42,6 @@ public class GuideQuest
         GameMgr.Instance.uiMgr.uiGuideQuest.currentQuest = currentQuest;
         currentTargetValue = 0; //TO-DO 조건 확인하고 초기화}
         RegisterQuestEvents();
-        CheckQuestCompletion();
         UiUpdate();
     }
 
@@ -53,11 +50,14 @@ public class GuideQuest
         switch (currentQuest.Division)
         {
             case 1:
-                AddEvent(QuestType.Stage, StageComparisonValue);
-                StageComparisonValue();
+                currentEventHandler = () => ComparisonValue(QuestType.Stage);
+                AddEvent(QuestType.Stage, currentEventHandler);
+                ComparisonValue(QuestType.Stage);
                 break;
             case 2:
-                AddEvent(QuestType.AttackEnhance, QuestValueUpdate);
+                currentEventHandler = () => ComparisonValue(QuestType.AttackEnhance);
+                AddEvent(QuestType.AttackEnhance, currentEventHandler);
+                ComparisonValue(QuestType.AttackEnhance);
                 break;
             case 3:
                 AddEvent(QuestType.MonsterKill, QuestValueUpdate);
@@ -86,15 +86,51 @@ public class GuideQuest
     }
 
 
-    public void StageComparisonValue()
+    //public void StageComparisonValue()
+    //{
+    //    currentTargetValue = GameMgr.Instance.playerMgr.playerInfo.stageClear;
+    //    if (currentTargetValue > currentQuest.Targetvalue)
+    //    {
+    //        currentTargetValue = currentQuest.Targetvalue;
+    //    }
+    //    CheckQuestCompletion();
+    //    UiUpdate();
+    //}
+
+    public void ComparisonValue(QuestType quest)
     {
-        if (GameMgr.Instance.playerMgr.playerInfo.stageClear >= GameMgr.Instance.sceneMgr.mainScene.stageCount)
+        switch(quest)
         {
-            currentTargetValue++;
+            case QuestType.Stage:
+                currentTargetValue = GameMgr.Instance.playerMgr.playerInfo.stageClear;
+                break;
+            case QuestType.AttackEnhance:
+                currentTargetValue = GameMgr.Instance.playerMgr.playerEnhance.attackPowerLevel;
+                break;
+            case QuestType.DefenceEnhance:
+                currentTargetValue = GameMgr.Instance.playerMgr.playerEnhance.defenceLevel;
+                break;
+            case QuestType.MaxHealthEnhance:
+                currentTargetValue = GameMgr.Instance.playerMgr.playerEnhance.maxHealthLevel;
+                break;
+            case QuestType.RecoveryEnhance:
+                currentTargetValue = GameMgr.Instance.playerMgr.playerEnhance.recoveryLevel;
+                break;
+            case QuestType.CriticalPercentEnhance:
+                currentTargetValue = GameMgr.Instance.playerMgr.playerEnhance.criticalPercentLevel;
+                break;
+            case QuestType.CriticalMultipleEnhance:
+                currentTargetValue = GameMgr.Instance.playerMgr.playerEnhance.criticalMultipleLevel;
+                break;
+        }
+        if (currentTargetValue >= currentQuest.Targetvalue)
+        {
+            currentTargetValue = currentQuest.Targetvalue;
         }
         CheckQuestCompletion();
         UiUpdate();
     }
+
 
     public void UiUpdate()
     {
@@ -109,8 +145,8 @@ public class GuideQuest
 
     private void RemoveEvent()
     {
-        EventMgr.StopListening(QuestType.Stage, StageComparisonValue);
-        EventMgr.StopListening(QuestType.AttackEnhance, QuestValueUpdate);
+        EventMgr.StopListening(QuestType.Stage, currentEventHandler);
+        EventMgr.StopListening(QuestType.AttackEnhance, currentEventHandler);
         EventMgr.StopListening(QuestType.MonsterKill, QuestValueUpdate);
         EventMgr.StopListening(QuestType.MergeSkill, QuestValueUpdate);
         EventMgr.StopListening(QuestType.GetGold, QuestGetGoldUpdate);

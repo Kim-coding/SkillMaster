@@ -11,8 +11,8 @@ public class BossStat : Status ,IDamageable
     public void Init()
     {
         Ondeath = false;
-        Health = new BigInteger(200);
-        attackPower = new BigInteger(10);
+        Health = new BigInteger(100);
+        attackPower = new BigInteger(5);
         attackSpeed = 1f;
         speed = 3f;
         attackRange = 3f;

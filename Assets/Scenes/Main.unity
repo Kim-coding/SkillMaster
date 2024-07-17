@@ -10114,7 +10114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b2433589087d974c9e6296190d2fce0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  displayGridGizmos: 1
+  displayGridGizmos: 0
   unwalkableMask:
     serializedVersion: 2
     m_Bits: 0
