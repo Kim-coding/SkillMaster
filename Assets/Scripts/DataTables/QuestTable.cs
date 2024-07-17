@@ -9,11 +9,14 @@ using UnityEngine;
 
 public class QuestData
 {
-    public int ID {  get; private set; }
-    public int Condition { get; private set; } // 대충 퀘스트 조건 종류
-    public int BossID {  get; private set; }  // 퀘스트 완료조건
-    public float TimeLimit { get; private set; } // 보상
-    public int MonsterLavel { get; private set; } // 보상 수치 
+    public int QuestID {  get; set; }
+    public int Division {  get; set; }
+    public string Textid { get; set; } // 대충 퀘스트 조건 종류
+    public int Targetvalue {  get; set; }  // 퀘스트 완료조건
+    public string reward { get; set; } // 보상
+    public int rewardvalue { get;  set; } // 보상 수치 
+    public string rewardicon { get; set; } // ?
+    public int nextQuest { get; set; } // ?
 
 }
 
@@ -45,7 +48,7 @@ public class QuestTable : DataTable
             var records = csvReader.GetRecords<QuestData>();
             foreach (var record in records)
             {
-                questTable.Add(record.ID, record);
+                questTable.Add(record.QuestID, record);
             }
         }
     }

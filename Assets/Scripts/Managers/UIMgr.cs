@@ -9,8 +9,7 @@ public class UIMgr : MonoBehaviour
     public UiWindow uiWindow;
     public UiMerge uiMerge;
     public UiEnhance uiEnhance;
-
-    public Button guideQuestButton;
+    public UiGuideQuest uiGuideQuest;
 
     /// <summary>
     /// 밑에것들 정리 필요
@@ -23,7 +22,7 @@ public class UIMgr : MonoBehaviour
     public TextMeshProUGUI stageUI;
 
     public TextMeshProUGUI skillcount;
-    private int stageCount = 1;
+    public int stageCount = 1;
 
 
     public void AllUIUpdate(BigInteger g, BigInteger d)
@@ -61,9 +60,9 @@ public class UIMgr : MonoBehaviour
     {
         monsterSlider.value = 0;
     }
-    public void AddStage()
+    public void StageUpdate(int s)
     {
-        stageCount++;
+        stageCount = s;
         stageUI.text = $"Stage {stageCount}";
     }
 

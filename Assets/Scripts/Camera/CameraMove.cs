@@ -17,7 +17,6 @@ public class CameraMove : MonoBehaviour
     public Button CameraButton;
 
     private int currentDistanceIndex = 0;
-    public Button toggleWindowButton;
     [HideInInspector]
     public bool isToggle = true;
 
@@ -35,8 +34,7 @@ public class CameraMove : MonoBehaviour
     private void Start()
     {
         CameraButton.onClick.AddListener(ChangeCameraDistance);
-        toggleWindowButton.onClick.AddListener(() => { isToggle = !isToggle; ChangeCameraDistance(); });
-        ChangeCameraDistance();
+        CurrentCameraView();
         SetTarget(player);
     }
 
@@ -78,7 +76,11 @@ public class CameraMove : MonoBehaviour
     public void ChangeCameraDistance()
     {
         currentDistanceIndex = (currentDistanceIndex + 1) % distances.Length;
+        CurrentCameraView();
+    }
 
+    public void CurrentCameraView()
+    {
         centerCameraNear.gameObject.SetActive(false);
         centerCameraMiddle.gameObject.SetActive(false);
         centerCameraFar.gameObject.SetActive(false);

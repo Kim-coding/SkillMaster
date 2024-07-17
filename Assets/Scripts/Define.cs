@@ -75,6 +75,21 @@ public enum EnhanceType
     CriticalMultiple,
 }
 
+public enum QuestType
+{
+    None = -1,
+    Stage = 1,
+    MonsterKill,
+    MergeSkill,
+    GetGold,
+    AttackEnhance,
+    DefenceEnhance,
+    MaxHealthEnhance,
+    RecoveryEnhance,
+    CriticalPercentEnhance,
+    CriticalMultipleEnhance,
+}
+
 
 public static class DataTableIds
 {

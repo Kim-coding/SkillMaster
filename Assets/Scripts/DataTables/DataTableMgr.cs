@@ -10,9 +10,13 @@ public static class DataTableMgr
 
     static DataTableMgr()
     {
-        MonsterTable monsterTable = new MonsterTable();
-        monsterTable.Load(DataTableIds.monster);
-        tables.Add(DataTableIds.monster, monsterTable);
+        //MonsterTable monsterTable = new MonsterTable();
+        //monsterTable.Load(DataTableIds.monster);
+        //tables.Add(DataTableIds.monster, monsterTable);
+
+        QuestTable questTable = new QuestTable();
+        questTable.Load(DataTableIds.quest);
+        tables.Add(DataTableIds.quest, questTable);
     }
 
     private static DataTable CreateDataTable(string id)

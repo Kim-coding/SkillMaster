@@ -1,0 +1,7 @@
+﻿PropertyID,ProjectileSizeX,ProjectileSizeY,ProjectileValue,ProjectileColdown,HitMonsterValue,ATValueRadius,AtminRadius,AtmaxRadius
+70001,20,20,1,0,0,0,0,0
+70002,5,3,1,0,0,0,0,0
+70003,0,0,0,0,6,0,0,0
+70004,0,0,0,0,0,1,0,1
+70005,0,0,0,0,0,1,1,1
+70006,5,5,2,1,0,0,0,0

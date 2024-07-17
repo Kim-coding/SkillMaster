@@ -1,7 +1,0 @@
-﻿Quest ID,Division,Target,Target value,reward1,reward1 value,reward2,reward2 value,preQuset
-60001,1,3001,1,gold,100,diamond,10,0
-60002,2,1001,10,gold,200,diamond,15,6001
-60003,3,2001,20,gold,300,diamond,20,6002
-60004,4,4002,2,gold,400,diamond,25,6003
-60005,2,1002,10,gold,500,diamond,30,6004
-…,…,,…,…,…,…,…,…

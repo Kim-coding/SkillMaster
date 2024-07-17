@@ -52,7 +52,7 @@ public class GameMgr : MonoBehaviour
     public void OnBossDefeated()
     {
         sceneMgr.mainScene.RestartStage();
-        uiMgr.AddStage();
+        sceneMgr.mainScene.AddStage();
     }
 
     public void OnBossSpawn()

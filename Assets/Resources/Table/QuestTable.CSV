@@ -1,0 +1,6 @@
+﻿QuestID,Division,Textid,Targetvalue,reward,rewardvalue,rewardicon,nextQuest
+60001,1,스테이지1클리어,1,gold,100,diamondicon.jpg,60002
+60002,2,공격력강화,10,gold,200,goldicon.jpg,60003
+60003,3,몬스터처치,20,gold,300,goldicon.jpg,60004
+60004,4,스킬합성,2,gold,400,goldicon.jpg,60005
+60005,2,방어력강화,10,gold,500,goldicon.jpg,60006

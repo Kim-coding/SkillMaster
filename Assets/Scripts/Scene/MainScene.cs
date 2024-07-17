@@ -13,6 +13,8 @@ public class MainScene : MonoBehaviour
     private bool bossStage = false;
     private MonsterPool monsterPool;
 
+    public int stageCount = 1;
+
     private void Start()
     {
         monsterPool = GameMgr.Instance.GetMonsterPool();
@@ -31,6 +33,13 @@ public class MainScene : MonoBehaviour
     public void RemoveMonsters(GameObject m)
     {
         monster.RemoveMonsters(m);
+    }
+
+    public void AddStage()
+    {
+        stageCount++;
+        GameMgr.Instance.uiMgr.StageUpdate(stageCount);
+        EventMgr.TriggerEvent(QuestType.Stage);
     }
 
     public void RemoveAllMonsters()  //보스전 진입 전 모든 몬스터 정리

@@ -91,6 +91,8 @@ public class PlayerEnhance
         attackPowerCost = new BigInteger(100 + 100 * attackPowerLevel); //TO-DO cost 식
         GameMgr.Instance.uiMgr.uiEnhance.TextUpdate(EnhanceType.AttackPower);
         GameMgr.Instance.playerMgr.playerStat.playerStatUpdate();
+        EventMgr.TriggerEvent(QuestType.AttackEnhance);
+
     }
 
     public void AddDefence()
@@ -105,6 +107,7 @@ public class PlayerEnhance
         defenceCost = new BigInteger(100 + 100 * defenceLevel); //TO-DO cost 식
         GameMgr.Instance.uiMgr.uiEnhance.TextUpdate(EnhanceType.Defence);
         GameMgr.Instance.playerMgr.playerStat.playerStatUpdate();
+        EventMgr.TriggerEvent(QuestType.DefenceEnhance);
     }
 
     public void AddMaxHealth()
@@ -119,6 +122,7 @@ public class PlayerEnhance
         maxHealthCost = new BigInteger(100 + 100 * maxHealthLevel); //TO-DO cost 식
         GameMgr.Instance.uiMgr.uiEnhance.TextUpdate(EnhanceType.MaxHealth);
         GameMgr.Instance.playerMgr.playerStat.playerStatUpdate();
+        EventMgr.TriggerEvent(QuestType.MaxHealthEnhance);
     }
 
     public void AddRecovery()
@@ -133,6 +137,7 @@ public class PlayerEnhance
         recoveryCost = new BigInteger(100 + 100 * recoveryLevel); //TO-DO cost 식
         GameMgr.Instance.uiMgr.uiEnhance.TextUpdate(EnhanceType.Recovery);
         GameMgr.Instance.playerMgr.playerStat.playerStatUpdate();
+        EventMgr.TriggerEvent(QuestType.RecoveryEnhance);
     }
 
     public void AddCriticalPercent()
@@ -147,6 +152,7 @@ public class PlayerEnhance
         criticalPercentCost = new BigInteger(100 + 100 * criticalPercentLevel); //TO-DO cost 식
         GameMgr.Instance.uiMgr.uiEnhance.TextUpdate(EnhanceType.CriticalPercent);
         GameMgr.Instance.playerMgr.playerStat.playerStatUpdate();
+        EventMgr.TriggerEvent(QuestType.CriticalPercentEnhance);
     }
 
     public void AddCriticalMultiple()
@@ -161,6 +167,8 @@ public class PlayerEnhance
         criticalMultipleCost = new BigInteger(100 + 100 * criticalMultipleLevel); //TO-DO cost 식
         GameMgr.Instance.uiMgr.uiEnhance.TextUpdate(EnhanceType.CriticalMultiple);
         GameMgr.Instance.playerMgr.playerStat.playerStatUpdate();
+        EventMgr.TriggerEvent(QuestType.CriticalMultipleEnhance);
+
     }
 
 

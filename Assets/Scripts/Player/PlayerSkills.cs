@@ -19,8 +19,6 @@ public class PlayerSkills : MonoBehaviour
         var attack = fireMagic.CreateAttack(playerAI.characterStat);
         //CreateSkill(skill,SkillType.ScelectAreaLinear,launchPoint, target, range, width, attack);
         CreateSkill(skill,SkillType.ScelectAreaLinear, launchPoint, target, range, width, attack);
-
-
     }
     public GameObject CreateSkill(GameObject skillPrefab, SkillType type, GameObject launchPoint, Transform target, float range, float width, Attack attack)
     {

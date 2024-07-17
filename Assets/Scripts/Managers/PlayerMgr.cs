@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -14,6 +15,7 @@ public class PlayerMgr : MonoBehaviour
     public PlayerBaseStat playerBaseStat;
     public PlayerEnhance playerEnhance;
     public PlayerCurrency currency;
+    public PlayerInfomation playerInfo;
 
     public List<SkillBallController> skillBallControllers = new List<SkillBallController>();
 
@@ -49,6 +51,7 @@ public class PlayerMgr : MonoBehaviour
             Debug.Log(currency.gold.ToString());
             Debug.Log(playerEnhance.attackPowerCost.ToString());
         }
+
     }
 
     public void Init()
@@ -57,9 +60,11 @@ public class PlayerMgr : MonoBehaviour
         currency = new PlayerCurrency();
         playerStat = new PlayerStat();
         playerEnhance = new PlayerEnhance();
+        playerInfo = new PlayerInfomation();
         currency.Init();
         StatSetting();
         playerEnhance.Init();
+        playerInfo.Init();
 
         playerBaseStat.onSettingChange += StatSetting;
     }

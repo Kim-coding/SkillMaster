@@ -51,10 +51,14 @@ public class UiWindow : MonoBehaviour
         if(currentOpenWindow != null)
         {
             AnimateCloseCurrentWindow();
+            CameraMove.isToggle = false;
+            CameraMove.CurrentCameraView();
         }
         else if(previousWindow != null)
         {
             AnimateOpenWindow((Windows)previousWindow);
+            CameraMove.isToggle = true;
+            CameraMove.CurrentCameraView();
         }
     }
 
@@ -71,6 +75,8 @@ public class UiWindow : MonoBehaviour
             }
             windows[window].SetActive(true);
             currentOpenWindow = window;
+            CameraMove.isToggle = true;
+            CameraMove.CurrentCameraView();
         }
         else
         {
@@ -91,7 +97,8 @@ public class UiWindow : MonoBehaviour
 
     private void AnimateOpenWindow(Windows window)
     {
-        CameraMove.isToggle = false;
+        CameraMove.isToggle = true;
+        CameraMove.CurrentCameraView();
         GameObject windowObj = windows[window];
         RectTransform rectTransform = windowObj.GetComponent<RectTransform>();
         RectTransform buttonRectTransform = toggleWindowButton.GetComponent<RectTransform>();
@@ -110,7 +117,8 @@ public class UiWindow : MonoBehaviour
     }
     private void AnimateCloseWindow(GameObject window)
     {
-        CameraMove.isToggle = true;
+        CameraMove.isToggle = false;
+        CameraMove.CurrentCameraView();
         RectTransform rectTransform = window.GetComponent<RectTransform>();
         RectTransform buttonRectTransform = toggleWindowButton.GetComponent<RectTransform>();
         var targetPos = new Vector2(0, -Screen.height);
