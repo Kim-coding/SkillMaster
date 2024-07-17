@@ -37,9 +37,9 @@ public class MainScene : MonoBehaviour
 
     public void AddStage()
     {
+        EventMgr.TriggerEvent(QuestType.Stage);
         stageCount++;
         GameMgr.Instance.uiMgr.StageUpdate(stageCount);
-        EventMgr.TriggerEvent(QuestType.Stage);
     }
 
     public void RemoveAllMonsters()  //보스전 진입 전 모든 몬스터 정리
