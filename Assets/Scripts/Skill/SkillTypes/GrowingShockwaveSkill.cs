@@ -11,7 +11,7 @@ public class GrowingShockwaveSkill : MonoBehaviour, ISkillShape, IDamageType, IS
     public Attack attack;
     public DamageType damageType;
 
-    private List<MonsterAI> attackedMonsters = new List<MonsterAI>();
+    private List<GameObject> attackedMonsters = new List<GameObject>();
 
     float duration = 2f;
     float timer = 0f;
@@ -64,15 +64,20 @@ public class GrowingShockwaveSkill : MonoBehaviour, ISkillShape, IDamageType, IS
     private void UpdateMonsterList()
     {
         GameObject[] allMonsters = GameMgr.Instance.GetMonsters();
-        foreach (var m in allMonsters)
+        foreach (var monster in allMonsters)
         {
-            var monster = m.GetComponent<MonsterAI>();
-            float distance = Vector2.Distance(attacker.transform.position, monster.transform.position);
-            if (distance < currentOuterRadius && distance > currentInnerRadius && !attackedMonsters.Contains(monster))
+            if (monster != null)
             {
-                attackedMonsters.Add(monster);
-                var attackable = monster.GetComponent<IAttackable>();
-                attackable.OnAttack(attacker, monster.gameObject, attack);
+                float distance = Vector2.Distance(attacker.transform.position, monster.transform.position);
+                if (distance < currentOuterRadius && distance > currentInnerRadius && !attackedMonsters.Contains(monster))
+                {
+                    attackedMonsters.Add(monster);
+                    var attackable = monster.GetComponent<IAttackable>();
+                    if (attackable != null)
+                    {
+                        attackable.OnAttack(attacker, monster, attack);
+                    }
+                }
             }
         }
     }
@@ -83,7 +88,6 @@ public class GrowingShockwaveSkill : MonoBehaviour, ISkillShape, IDamageType, IS
         if(timer > duration)
         {
             timer = 0;
-            attackedMonsters.Clear();
             Destroy(gameObject);
         }
         else

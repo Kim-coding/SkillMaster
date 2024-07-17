@@ -44,10 +44,11 @@ public class PlayerSkills : MonoBehaviour
             case SkillType.GrowingShockwave:
                 skillComponent = skillObject.AddComponent<GrowingShockwaveSkill>();
                 break;
+            case SkillType.LinearProjectile:
+                skillComponent = skillObject.AddComponent<LinearProjectileSkill>();
+                break;
                 // 기타 스킬 타입 생성
         }
-        //skillTypeList.Remove(type);
-
         if(skillComponent != null)
         {
             InitializeSkill(skillComponent, skillObject, launchPoint, target, range, width, attack);

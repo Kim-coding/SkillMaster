@@ -21,12 +21,6 @@ public class MonsterAI : MonoBehaviour
     private Rigidbody2D rb;
     private Animator animator;
 
-    public void ApplyDotDamage(DotDamage dotDamage)
-    {
-        StartCoroutine(dotDamage.Apply(this.gameObject));
-    }
-
-
     private void Awake()
     {
         players = GameObject.FindGameObjectsWithTag("Player");

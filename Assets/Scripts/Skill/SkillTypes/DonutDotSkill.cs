@@ -10,7 +10,7 @@ public class DonutDotSkill : MonoBehaviour, ISkillShape, IDamageType, ISkillComp
     public Attack attack;
     public DamageType damageType;
 
-    private List<MonsterAI> monsters = new List<MonsterAI>(); //일정 간격으로 monsters 갱신.
+    private List<GameObject> monsters = new List<GameObject>(); //일정 간격으로 monsters 갱신.
 
     float duration = 1f;
     float timer = 0f;
@@ -55,14 +55,14 @@ public class DonutDotSkill : MonoBehaviour, ISkillShape, IDamageType, ISkillComp
         {
             UpdateMonsterList();
             Debug.Log(monsters.Count);
-            foreach (MonsterAI monster in monsters)
+            foreach (var monster in monsters)
             {
                 if (monster != null)
                 {
                     DotDamage dotDamage = monster.gameObject.AddComponent<DotDamage>();
                     dotDamage.attacker = attacker;
                     dotDamage.attack = attack;
-                    monster.ApplyDotDamage(dotDamage);
+                    dotDamage.Apply(monster);
                 }
             }
 
@@ -75,14 +75,15 @@ public class DonutDotSkill : MonoBehaviour, ISkillShape, IDamageType, ISkillComp
         monsters.Clear();
 
         GameObject[] allMonsters = GameMgr.Instance.GetMonsters();
-        foreach (var m in allMonsters)
+        foreach (var monster in allMonsters)
         {
-            var monster = m.GetComponent<MonsterAI>();
-            float distance = Vector2.Distance(attacker.transform.position, monster.transform.position);
-            if (distance < outerRadius && distance > innerRadius)
+            if (monster != null)
             {
-                monsters.Add(monster);
-                Debug.Log(distance);
+                float distance = Vector2.Distance(attacker.transform.position, monster.transform.position);
+                if (distance < outerRadius && distance > innerRadius)
+                {
+                    monsters.Add(monster);
+                }
             }
         }
     }

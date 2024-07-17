@@ -2,15 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LeapAttackSkill : MonoBehaviour
+public class LeapAttackSkill : MonoBehaviour, ISkillShape, IDamageType, ISkillComponent, ISkill // 도약 공격 ( 원형, 범위, 1회성, 이동)
 {
-    // Start is called before the first frame update
-    void Start()
+    //int skillID;
+    public GameObject skillObject;
+    public GameObject attacker;
+    public Attack attack;
+    public DamageType damageType;
+
+    public void Initialize()
     {
-        
+        throw new System.NotImplementedException();
+    }
+    public void ApplyShape(GameObject skillObject, Vector3 launchPosition, Vector3 targetPosition, float range, float width)
+    {
+        throw new System.NotImplementedException();
     }
 
-    // Update is called once per frame
+    public void ApplyDamageType(GameObject attacker, Attack attack, DamageType damageType, SkillShapeType shapeType)
+    {
+        throw new System.NotImplementedException();
+    }
+
     void Update()
     {
         
