@@ -12,14 +12,11 @@ public class DonutDotSkill : MonoBehaviour, ISkillShape, IDamageType, ISkillComp
 
     private List<MonsterAI> monsters = new List<MonsterAI>(); //일정 간격으로 monsters 갱신.
 
-    float duration = 2f;
+    float duration = 1f;
     float timer = 0f;
 
-    public float innerRadius = 0.8f;
-    public int innerNumSegments = 100;
-
+    public float innerRadius = 1.2f;
     public float outerRadius = 1.5f;
-    public int outerNumSegments = 100;
 
     public void Initialize()
     {
@@ -31,43 +28,19 @@ public class DonutDotSkill : MonoBehaviour, ISkillShape, IDamageType, ISkillComp
 
     private void Start()
     {
-        GameObject parent = GameObject.FindGameObjectWithTag("Ground");
-        gameObject.transform.SetParent(parent.transform);
-        gameObject.transform.localScale = new Vector3(1, 1, 1);
-        DrawCircle();
         StartCoroutine(ApplyDotDamage());
     }
     public void ApplyShape(GameObject skillObject, Vector3 launchPoint, Vector3 target, float range, float width)
     {
         this.skillObject = skillObject;
-        Sprite circleSprite = Resources.Load<Sprite>("Circle");
-        if (circleSprite != null)
+        Sprite innerCircleSprite = Resources.Load<Sprite>("Circle");
+        if (innerCircleSprite != null)
         {
-            skillObject.GetComponent<SpriteRenderer>().sprite = circleSprite;
-            skillObject.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0);
+            this.skillObject.GetComponent<SpriteRenderer>().sprite = innerCircleSprite;
         }
 
-
-        skillObject.transform.position = launchPoint;
-        skillObject.transform.localScale = new Vector2(range, range);
-    }
-    void DrawCircle()
-    {
-        LineRenderer innerLineRenderer = GetComponent<LineRenderer>();
-        innerLineRenderer.positionCount = outerNumSegments + 1;
-        innerLineRenderer.useWorldSpace = false;
-
-        float deltaTheta = (2f * Mathf.PI) / outerNumSegments;
-        float theta = 0f;
-
-        for (int i = 0; i < outerNumSegments + 1; i++)
-        {
-            float x = outerRadius * Mathf.Cos(theta);
-            float y = outerRadius * Mathf.Sin(theta);
-            Vector3 pos = new Vector3(x, y, 0);
-            innerLineRenderer.SetPosition(i, pos);
-            theta += deltaTheta;
-        }
+        this.skillObject.transform.position = launchPoint;
+        this.skillObject.transform.localScale = new Vector2(innerRadius, innerRadius);
     }
     public void ApplyDamageType(GameObject attacker, Attack attack, DamageType damageType, SkillShapeType shapeType)
     {

@@ -41,6 +41,9 @@ public class PlayerSkills : MonoBehaviour
             case SkillType.DonutDot:
                 skillComponent = skillObject.AddComponent<DonutDotSkill>();
                 break;
+            case SkillType.GrowingShockwave:
+                skillComponent = skillObject.AddComponent<GrowingShockwaveSkill>();
+                break;
                 // 기타 스킬 타입 생성
         }
         //skillTypeList.Remove(type);

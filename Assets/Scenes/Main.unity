@@ -6182,7 +6182,7 @@ PrefabInstance:
       objectReference: {fileID: 7542266623136808606, guid: a5be68472b022c94d8ec3c1381b8c314, type: 3}
     - target: {fileID: 321329754882501616, guid: 16326b6c1eaf94e4c9e37c895e46167f, type: 3}
       propertyPath: skillTypeList.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 321329754882501616, guid: 16326b6c1eaf94e4c9e37c895e46167f, type: 3}
       propertyPath: skillTypeList.Array.data[0]
@@ -6199,6 +6199,10 @@ PrefabInstance:
     - target: {fileID: 321329754882501616, guid: 16326b6c1eaf94e4c9e37c895e46167f, type: 3}
       propertyPath: skillTypeList.Array.data[3]
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 321329754882501616, guid: 16326b6c1eaf94e4c9e37c895e46167f, type: 3}
+      propertyPath: skillTypeList.Array.data[4]
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1328023870914477473, guid: 16326b6c1eaf94e4c9e37c895e46167f, type: 3}
       propertyPath: m_Radius
