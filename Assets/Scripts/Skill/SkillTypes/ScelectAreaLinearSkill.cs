@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ScelectAreaLinearAttack : MonoBehaviour,ISkillShape,IDamageType, ISkillComponent, ISkill
 {
-    //int skillID;
+    public string skillID = "ScelectAreaLinearAttack";
     public GameObject skillObject;
     public GameObject attacker;
     public Attack attack;
