@@ -22,11 +22,31 @@ public class UiGuideQuest : MonoBehaviour
     {
         if (a)
         {
+            guideQuestButton.onClick.RemoveAllListeners();
             guideQuestButton.onClick.AddListener(GameMgr.Instance.rewardMgr.guideQuest.NextQuest);
         }
         else
         {
             guideQuestButton.onClick.RemoveListener(GameMgr.Instance.rewardMgr.guideQuest.NextQuest);
+            switch (currentQuest.Division)
+            {
+                case 1:
+                case 2:
+                    break;
+                case 3:
+                case 4:
+                    guideQuestButton.onClick.AddListener(GameMgr.Instance.uiMgr.uiWindow.MergeWindowOpen);
+                    break;
+                case 5:
+                case 6:
+                case 7:
+                case 8:
+                case 9:
+                case 10:
+                case 11:
+                    guideQuestButton.onClick.AddListener(GameMgr.Instance.uiMgr.uiWindow.EnhanceWindowOpen);
+                    break;
+            }
         }
     }
 }
