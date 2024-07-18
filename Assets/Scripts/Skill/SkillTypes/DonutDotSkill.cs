@@ -33,7 +33,7 @@ public class DonutDotSkill : MonoBehaviour, ISkillShape, IDamageType, ISkillComp
     {
         applyCoroutine = StartCoroutine(ApplyDotDamage());
     }
-    public void ApplyShape(GameObject skillObject, Vector3 launchPoint, Vector3 target, float range, float width)
+    public void ApplyShape(GameObject skillObject, Vector3 launchPoint, GameObject target, float range, float width)
     {
         this.skillObject = skillObject;
         Sprite innerCircleSprite = Resources.Load<Sprite>("OuterCircleSprite");

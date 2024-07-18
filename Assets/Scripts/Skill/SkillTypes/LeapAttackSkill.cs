@@ -14,7 +14,7 @@ public class LeapAttackSkill : MonoBehaviour, ISkillShape, IDamageType, ISkillCo
     {
         throw new System.NotImplementedException();
     }
-    public void ApplyShape(GameObject skillObject, Vector3 launchPosition, Vector3 targetPosition, float range, float width)
+    public void ApplyShape(GameObject skillObject, Vector3 launchPosition, GameObject targetPosition, float range, float width)
     {
         throw new System.NotImplementedException();
     }

@@ -22,7 +22,7 @@ public class AreaSingleHitSkill : MonoBehaviour, ISkillShape, IDamageType, ISkil
         //초기화 시 필요한 나머지 작업
     }
 
-    public void ApplyShape(GameObject skillObject, Vector3 launchPoint, Vector3 target, float range, float width)
+    public void ApplyShape(GameObject skillObject, Vector3 launchPoint, GameObject target, float range, float width)
     {
         this.skillObject = skillObject;
         Sprite circleSprite = Resources.Load<Sprite>("Circle");

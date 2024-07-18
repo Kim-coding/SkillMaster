@@ -22,7 +22,7 @@ public class LinearProjectileSkill : MonoBehaviour, ISkillShape, IDamageType, IS
         skillObject = null;
     }
 
-    public void ApplyShape(GameObject skillObject, Vector3 launchPoint, Vector3 target, float range, float width)
+    public void ApplyShape(GameObject skillObject, Vector3 launchPoint, GameObject target, float range, float width)
     {
         this.skillObject = skillObject;
         Sprite circleSprite = Resources.Load<Sprite>("Circle");
@@ -37,7 +37,7 @@ public class LinearProjectileSkill : MonoBehaviour, ISkillShape, IDamageType, IS
         skillObject.transform.position = launchPoint;
         skillObject.transform.localScale = new Vector2(width, width);
 
-        direction = (target - launchPoint).normalized;
+        direction = (target.transform.position - launchPoint).normalized;
     }
 
     public void ApplyDamageType(GameObject attacker, Attack attack, DamageType damageType, SkillShapeType shapeType)

@@ -40,10 +40,10 @@ public class GrowingShockwaveSkill : MonoBehaviour, ISkillShape, IDamageType, IS
         currentOuterRadius = initialOuterRadius;
     }
 
-    public void ApplyShape(GameObject skillObject, Vector3 launchPoint, Vector3 target, float range, float width)
+    public void ApplyShape(GameObject skillObject, Vector3 launchPoint, GameObject target, float range, float width)
     {
         this.skillObject = skillObject;
-        Sprite circleSprite = Resources.Load<Sprite>("Circle");
+        Sprite circleSprite = Resources.Load<Sprite>("OuterCircleSprite");
         if (circleSprite != null)
         {
             skillObject.GetComponent<SpriteRenderer>().sprite = circleSprite;

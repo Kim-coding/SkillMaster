@@ -16,14 +16,14 @@ public class PlayerSkills : MonoBehaviour
         playerAI = GetComponent<PlayerAI>();
     }
 
-    public void UseSkill(GameObject skill, SkillType skillType, GameObject launchPoint, Transform target, float range, float width)
+    public void UseSkill(GameObject skill, SkillType skillType, GameObject launchPoint, GameObject target, float range, float width)
     {
         var attack = fireMagic.CreateAttack(playerAI.characterStat);
         CreateSkill(skill, skillType, launchPoint, target, range, width, attack);
 
 
     }
-    public GameObject CreateSkill(GameObject skillPrefab, SkillType type, GameObject launchPoint, Transform target, float range, float width, Attack attack)
+    public GameObject CreateSkill(GameObject skillPrefab, SkillType type, GameObject launchPoint, GameObject target, float range, float width, Attack attack)
     {
         GameObject skillObject = Instantiate(skillPrefab);
         ISkillComponent skillComponent = null;
@@ -47,6 +47,9 @@ public class PlayerSkills : MonoBehaviour
             case SkillType.LinearProjectile:
                 skillComponent = skillObject.AddComponent<LinearProjectileSkill>();
                 break;
+            case SkillType.ChainAttack:
+                skillComponent = skillObject.AddComponent<ChainAttackSkill>();
+                break;
                 // 기타 스킬 타입 생성
         }
         if(skillComponent != null)
@@ -57,9 +60,9 @@ public class PlayerSkills : MonoBehaviour
         return skillObject;
     }
 
-    private void InitializeSkill(ISkillComponent skillComponent, GameObject skillObject, GameObject launchPoint, Transform target, float range, float width, Attack attack)
+    private void InitializeSkill(ISkillComponent skillComponent, GameObject skillObject, GameObject launchPoint, GameObject target, float range, float width, Attack attack)
     {
-        skillComponent.ApplyShape(skillObject, launchPoint.transform.position, target.position, range, width);
+        skillComponent.ApplyShape(skillObject, launchPoint.transform.position, target, range, width);
         skillComponent.ApplyDamageType(launchPoint, attack, DamageType.OneShot, SkillShapeType.Linear);
     }
 }
