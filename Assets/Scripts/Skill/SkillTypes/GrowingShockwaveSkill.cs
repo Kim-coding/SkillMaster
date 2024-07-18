@@ -70,10 +70,6 @@ public class GrowingShockwaveSkill : MonoBehaviour, ISkillShape, IDamageType, IS
                 float distance = Vector2.Distance(skillObject.transform.position, monster.transform.position);
                 if (distance < currentOuterRadius && distance > currentInnerRadius && !attackedMonsters.Contains(monster))
                 {
-                    if(monster.GetComponent<MonsterAI>() != null)
-                    {
-                        monster.GetComponent<MonsterAI>().DebugSkill(skillID);
-                    }
                     attackedMonsters.Add(monster);
                     var attackables = monster.GetComponents<IAttackable>();
                     foreach(var attackable in attackables)

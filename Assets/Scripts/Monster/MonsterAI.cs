@@ -7,8 +7,6 @@ using UnityEngine.Playables;
 
 public class MonsterAI : MonoBehaviour
 {
-    public string skill;
-
     private GameObject[] players;
     public GameObject target;
 
@@ -121,10 +119,5 @@ public class MonsterAI : MonoBehaviour
         Vector3 rot = (target.transform.position - transform.position).normalized;
         animator.SetFloat("InputX", rot.x);
         animator.SetFloat("InputY", rot.y);
-    }
-
-    public void DebugSkill(string text)
-    {
-        skill = text;   
     }
 }
