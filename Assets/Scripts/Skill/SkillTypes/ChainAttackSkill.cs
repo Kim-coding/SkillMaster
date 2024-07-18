@@ -11,6 +11,9 @@ public class ChainAttackSkill : MonoBehaviour, ISkillShape, IDamageType, ISkillC
     public Attack attack;
     public DamageType damageType;
 
+    private float timer = 0f;
+    private float duration = 2f;
+
     private int maxChains = 3;
     private int currentChainCount = 0;
 
@@ -26,8 +29,11 @@ public class ChainAttackSkill : MonoBehaviour, ISkillShape, IDamageType, ISkillC
         currentChainCount = 0;
         hitMonsters.Clear();
         ClearLineRenderers();
-        DrawLine(attacker, currentTarget);
-        StartChainAttack(currentTarget);
+        if (currentTarget != null)
+        {
+            DrawLine(attacker, currentTarget);
+            StartChainAttack(currentTarget);
+        }
     }
 
     public void Initialize()
@@ -69,7 +75,7 @@ public class ChainAttackSkill : MonoBehaviour, ISkillShape, IDamageType, ISkillC
 
     private IEnumerator ChainAttack(GameObject target)
     {
-        if (currentChainCount >= maxChains || target == null || hitMonsters.Contains(target))
+        if (currentChainCount >= maxChains || target == null || hitMonsters.Contains(target) || !target.activeInHierarchy)
             yield break;
         
         hitMonsters.Add(target);
@@ -78,7 +84,10 @@ public class ChainAttackSkill : MonoBehaviour, ISkillShape, IDamageType, ISkillC
         yield return new WaitForSeconds(0.5f);
 
         List<GameObject> newTargets = GetNewTarget(target, 2);
-
+        if(newTargets == null)
+        {
+            ChainCoroutineStop();
+        }
         currentChainCount++;
 
 
@@ -97,12 +106,6 @@ public class ChainAttackSkill : MonoBehaviour, ISkillShape, IDamageType, ISkillC
         {
             ChainCoroutineStop();
         }
-
-        if (!target.activeInHierarchy)
-        {
-            ChainCoroutineStop();
-        }
-
     }
 
     private void ApplyDamage (GameObject target)
@@ -116,6 +119,11 @@ public class ChainAttackSkill : MonoBehaviour, ISkillShape, IDamageType, ISkillC
 
     private List<GameObject> GetNewTarget(GameObject currentTarget, int count)
     {
+        if (currentTarget == null)
+        {
+            return new List<GameObject>();
+        }
+
         List<GameObject> newTargets = new List<GameObject>();
         var allMonsters = GameMgr.Instance.GetMonsters();
 
@@ -184,5 +192,14 @@ public class ChainAttackSkill : MonoBehaviour, ISkillShape, IDamageType, ISkillC
         }
 
         Destroy(gameObject);
+    }
+
+    private void Update()
+    {
+        timer += Time.deltaTime;
+        if(timer > duration)
+        {
+            Destroy(gameObject);
+        }
     }
 }
