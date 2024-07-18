@@ -15,6 +15,12 @@ public class Spawner : MonoBehaviour
 
     public float spawnRange;
 
+    private float timer = 0f;
+    private float duration = 0.5f;
+
+    private bool isSpawn = false;
+    private bool isDeathCount = false;
+
     private void Start()
     {
         monsterPool = GameMgr.Instance.GetMonsterPool();
@@ -75,9 +81,27 @@ public class Spawner : MonoBehaviour
         deathCount++;
         if (deathCount >= deathThreshold)
         {
-            deathCount = 0;
-            int randomZoneIndex = UnityEngine.Random.Range(0, spawnPoints.Length);
-            SpawnMonsters(spawnPoints[randomZoneIndex], 3);
+            isDeathCount = true;
+            if(isSpawn)
+            {
+                isSpawn = false;
+                isDeathCount = false;
+                deathCount -= 3;
+                int randomZoneIndex = UnityEngine.Random.Range(0, spawnPoints.Length);
+                SpawnMonsters(spawnPoints[randomZoneIndex], 3);
+            }
+        }
+    }
+    private void Update()
+    {
+        if(isDeathCount)
+        {
+            timer += Time.deltaTime;
+            if(timer > duration)
+            {
+                isSpawn = true;
+                timer = 0;
+            }
         }
     }
 
