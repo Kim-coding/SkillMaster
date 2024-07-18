@@ -9,7 +9,7 @@ public class AreaDotSkill : MonoBehaviour, ISkillShape, IDamageType //원형 범위 
         throw new System.NotImplementedException();
     }
 
-    public void ApplyShape(GameObject skillObject, Vector3 launchPoint, Vector3 target, float range, float width)
+    public void ApplyShape(GameObject skillObject, Vector3 launchPoint, GameObject target, float range, float width)
     {
         throw new System.NotImplementedException();
     }

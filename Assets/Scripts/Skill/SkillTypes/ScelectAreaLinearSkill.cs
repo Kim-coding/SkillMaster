@@ -21,7 +21,7 @@ public class ScelectAreaLinearAttack : MonoBehaviour,ISkillShape,IDamageType, IS
         //초기화 시 필요한 나머지 작업
     }
 
-    public void ApplyShape(GameObject skillObject, Vector3 launchPoint, Vector3 target, float range, float width) //스킬의 형태와 위치를 설정
+    public void ApplyShape(GameObject skillObject, Vector3 launchPoint, GameObject target, float range, float width) //스킬의 형태와 위치를 설정
     {
         this.skillObject = skillObject;
         skillObject.transform.localScale = new Vector3(range, width, 1);
@@ -29,11 +29,11 @@ public class ScelectAreaLinearAttack : MonoBehaviour,ISkillShape,IDamageType, IS
         skillObject.AddComponent<BoxCollider2D>();
         skillObject.GetComponent<BoxCollider2D>().isTrigger = true;
 
-        var rot = (target - launchPoint).normalized;
+        var rot = (target.transform.position - launchPoint).normalized;
 
         float angle = Mathf.Atan2(rot.y, rot.x) * Mathf.Rad2Deg + 90;
         skillObject.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
-        skillObject.transform.position = target;
+        skillObject.transform.position = target.transform.position;
     }
 
     public void ApplyDamageType(GameObject attacker, Attack attack, DamageType damageType, SkillShapeType shapeType) //스킬의 데미지 속성을 설정
