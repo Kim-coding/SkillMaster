@@ -159,7 +159,7 @@ public class PlayerAI : MonoBehaviour
             Vector3 direction = (currentTarget.position - transform.position).normalized;
 
             var skillType = playerSkills.skillTypeList[count];
-            playerSkills.UseSkill(skill, skillType, gameObject, currentTarget, 3, 1);
+            playerSkills.UseSkill(skill, skillType, gameObject, currentTarget.gameObject, 3, 1);
             if(count < maxCount)
             {
                 count++;
