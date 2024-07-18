@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEngine.GraphicsBuffer;
 
 public class PlayerAI : MonoBehaviour
 {
@@ -23,10 +22,16 @@ public class PlayerAI : MonoBehaviour
     [HideInInspector]
     public StateMachine PlayerStateMachine => stateMachine;
 
+    public Animator animator;
+
     private void Awake()
     {
         pathfinding = GetComponentInParent<AStarPathfinding>();
         stateMachine = new StateMachine(this);
+        if (animator == null)
+        {
+            animator = GetComponentInChildren<Animator>();
+        }
     }
     private void Start()
     {
@@ -41,6 +46,17 @@ public class PlayerAI : MonoBehaviour
     private void Update()
     {
         stateMachine.Update();
+
+        if (currentTarget != null) {
+            if ((currentTarget.transform.position - transform.position).x <= 0)
+            {
+                transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y);
+            }
+            else
+            {
+                transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x) * -1, transform.localScale.y);
+            }
+        }
     }
     public void SetTarget(Transform target)
     {

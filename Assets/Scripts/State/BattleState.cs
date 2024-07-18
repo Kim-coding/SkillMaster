@@ -39,6 +39,7 @@ public class BattleState : IState
         if(player.playerSkills.skills.Count > 0)
         {
             player.OnAttack(player.playerSkills.skills[0]);
+            player.animator.SetTrigger("Attack");
         }
     }
 }
