@@ -19,8 +19,8 @@ public class DotDamage : MonoBehaviour
 
         while (elapsedTime < Duration)
         {
-            var attackable = target.GetComponent<IAttackable>();
-            if (attackable != null)
+            var attackables = target.GetComponents<IAttackable>();
+            foreach(var attackable in attackables)
             {
                 attackable.OnAttack(attacker, target, attack);
             }

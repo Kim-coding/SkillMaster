@@ -72,8 +72,8 @@ public class GrowingShockwaveSkill : MonoBehaviour, ISkillShape, IDamageType, IS
                 if (distance < currentOuterRadius && distance > currentInnerRadius && !attackedMonsters.Contains(monster))
                 {
                     attackedMonsters.Add(monster);
-                    var attackable = monster.GetComponent<IAttackable>();
-                    if (attackable != null)
+                    var attackables = monster.GetComponents<IAttackable>();
+                    foreach(var attackable in attackables)
                     {
                         attackable.OnAttack(attacker, monster, attack);
                     }
