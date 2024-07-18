@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AreaSingleHitSkill : MonoBehaviour, ISkillShape, IDamageType, ISkillComponent, ISkill
 {
-    //int skillID;
+    public string skillID = "AreaSingleHitSkill";
     public GameObject skillObject;
     public GameObject attacker;
     public Attack attack;

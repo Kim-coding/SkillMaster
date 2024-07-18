@@ -12,7 +12,7 @@ public interface IDamageType //스킬의 데미지 속성을 설정
 
 public interface ISpecialEffect
 {
-    void ApplyEffect(SpecialType specialType);
+    void ApplySpecialEffect(SpecialType specialType, int count);
 }
 
 public interface ISkillComponent

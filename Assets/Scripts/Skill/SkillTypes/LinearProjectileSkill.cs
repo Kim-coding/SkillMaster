@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LinearProjectileSkill : MonoBehaviour, ISkillShape, IDamageType, ISkillComponent, ISkill //직선 투사체 공격
 {
-    //int skillID;
+    public string skillID = "LinearProjectileSkill";
     public GameObject skillObject;
     public GameObject attacker;
     public Attack attack;
@@ -53,7 +53,6 @@ public class LinearProjectileSkill : MonoBehaviour, ISkillShape, IDamageType, IS
         {
             var monsterComponent = collision.GetComponent<IAttackable>();
             monsterComponent.OnAttack(attacker.gameObject, collision.gameObject, attack);
-            Destroy(gameObject);
         }
     }
 

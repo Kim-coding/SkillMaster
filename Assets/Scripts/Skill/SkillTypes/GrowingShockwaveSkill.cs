@@ -5,7 +5,7 @@ using UnityEngine;
 public class GrowingShockwaveSkill : MonoBehaviour, ISkillShape, IDamageType, ISkillComponent, ISkill  //충격파 ( 도넛, 1회성, 성장형 )
 {
 
-    //int skillID;
+    public string skillID = "GrowingShockwaveSkill";
     public GameObject skillObject;
     public GameObject attacker;
     public Attack attack;
@@ -16,8 +16,7 @@ public class GrowingShockwaveSkill : MonoBehaviour, ISkillShape, IDamageType, IS
     float duration = 2f;
     float timer = 0f;
 
-    float growingSpeed = 2f;   // 성장 속도
-    //float growthValue = 0.1f;  // 성장치
+    float growingSpeed = 1f;   // 성장 속도
 
     float initialInnerRadius = 0.5f;  // 시작 내원 반지름
     float initialOuterRadius = 1.0f;  // 시작 외원 반지름
@@ -51,7 +50,7 @@ public class GrowingShockwaveSkill : MonoBehaviour, ISkillShape, IDamageType, IS
         }
 
         skillObject.transform.position = launchPoint;
-        skillObject.transform.localScale = new Vector2(currentInnerRadius, currentInnerRadius);
+        skillObject.transform.localScale = new Vector2(currentOuterRadius*2, currentOuterRadius * 2);
     }
 
     public void ApplyDamageType(GameObject attacker, Attack attack, DamageType damageType, SkillShapeType shapeType)
@@ -68,9 +67,13 @@ public class GrowingShockwaveSkill : MonoBehaviour, ISkillShape, IDamageType, IS
         {
             if (monster != null)
             {
-                float distance = Vector2.Distance(attacker.transform.position, monster.transform.position);
+                float distance = Vector2.Distance(skillObject.transform.position, monster.transform.position);
                 if (distance < currentOuterRadius && distance > currentInnerRadius && !attackedMonsters.Contains(monster))
                 {
+                    if(monster.GetComponent<MonsterAI>() != null)
+                    {
+                        monster.GetComponent<MonsterAI>().DebugSkill(skillID);
+                    }
                     attackedMonsters.Add(monster);
                     var attackables = monster.GetComponents<IAttackable>();
                     foreach(var attackable in attackables)
@@ -88,6 +91,7 @@ public class GrowingShockwaveSkill : MonoBehaviour, ISkillShape, IDamageType, IS
         if(timer > duration)
         {
             timer = 0;
+            attackedMonsters.Clear();
             Destroy(gameObject);
         }
         else
@@ -95,7 +99,7 @@ public class GrowingShockwaveSkill : MonoBehaviour, ISkillShape, IDamageType, IS
             currentInnerRadius += growingSpeed * Time.deltaTime;
             currentOuterRadius += growingSpeed * Time.deltaTime;
 
-            skillObject.transform.localScale = new Vector2(currentInnerRadius, currentInnerRadius);
+            skillObject.transform.localScale = new Vector2(currentOuterRadius * 2, currentOuterRadius * 2);
 
             UpdateMonsterList();
         }

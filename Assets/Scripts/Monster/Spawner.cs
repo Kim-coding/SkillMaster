@@ -6,6 +6,7 @@ public class Spawner : MonoBehaviour
     public MainScene scene;
     private MonsterPool monsterPool;
 
+    private int startSpawnMonsterCount;
     public Transform[] spawnPoints;
     private Transform BossParent;
 
@@ -28,8 +29,8 @@ public class Spawner : MonoBehaviour
     public void InitialSpawn()
     {
         deathCount = 0;
-        int startSpawnMonsterCount = 25;
-        int monstersPerZoneMin = 3;
+        startSpawnMonsterCount = 25; //TO-DO : 테이블 연동 
+        int monstersPerZoneMin = 3; // 최대수 / 8
         int monstersPerZoneMax = 4;
 
         foreach (var zone in spawnPoints) 

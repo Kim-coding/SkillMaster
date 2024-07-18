@@ -1,11 +1,14 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEditor;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.Playables;
 
 public class MonsterAI : MonoBehaviour
 {
+    public string skill;
+
     private GameObject[] players;
     public GameObject target;
 
@@ -120,4 +123,8 @@ public class MonsterAI : MonoBehaviour
         animator.SetFloat("InputY", rot.y);
     }
 
+    public void DebugSkill(string text)
+    {
+        skill = text;   
+    }
 }

@@ -4,19 +4,22 @@ using UnityEngine;
 
 public class DonutDotSkill : MonoBehaviour, ISkillShape, IDamageType, ISkillComponent, ISkill
 {
-    //int skillID;
+    public string skillID = "DonutDotSkill";
     public GameObject skillObject;
     public GameObject attacker;
     public Attack attack;
     public DamageType damageType;
 
-    private List<GameObject> monsters = new List<GameObject>(); //일정 간격으로 monsters 갱신.
+    public List<GameObject> monsters = new List<GameObject>(); //일정 간격으로 monsters 갱신.
 
     float duration = 1f;
     float timer = 0f;
 
-    public float innerRadius = 1.2f;
+    public float innerRadius = 0.8f;
     public float outerRadius = 1.5f;
+
+    private Coroutine applyCoroutine;
+    private Coroutine dotDamageCoroutine;
 
     public void Initialize()
     {
@@ -28,19 +31,19 @@ public class DonutDotSkill : MonoBehaviour, ISkillShape, IDamageType, ISkillComp
 
     private void Start()
     {
-        StartCoroutine(ApplyDotDamage());
+        applyCoroutine = StartCoroutine(ApplyDotDamage());
     }
     public void ApplyShape(GameObject skillObject, Vector3 launchPoint, Vector3 target, float range, float width)
     {
         this.skillObject = skillObject;
-        Sprite innerCircleSprite = Resources.Load<Sprite>("Circle");
+        Sprite innerCircleSprite = Resources.Load<Sprite>("OuterCircleSprite");
         if (innerCircleSprite != null)
         {
             this.skillObject.GetComponent<SpriteRenderer>().sprite = innerCircleSprite;
         }
 
         this.skillObject.transform.position = launchPoint;
-        this.skillObject.transform.localScale = new Vector2(innerRadius, innerRadius);
+        this.skillObject.transform.localScale = new Vector2(outerRadius * 2, outerRadius * 2);
     }
     public void ApplyDamageType(GameObject attacker, Attack attack, DamageType damageType, SkillShapeType shapeType)
     {
@@ -54,19 +57,30 @@ public class DonutDotSkill : MonoBehaviour, ISkillShape, IDamageType, ISkillComp
         while (true)
         {
             UpdateMonsterList();
-            Debug.Log(monsters.Count);
             foreach (var monster in monsters)
             {
                 if (monster != null)
                 {
-                    DotDamage dotDamage = monster.gameObject.AddComponent<DotDamage>();
-                    dotDamage.attacker = attacker;
-                    dotDamage.attack = attack;
-                    dotDamage.Apply(monster);
+                    if(gameObject.GetComponent<DotDamage>() == null)
+                    {
+                        var dotDamage = gameObject.AddComponent<DotDamage>();
+                        dotDamage.attacker = attacker;
+                        dotDamage.attack = attack;
+                        dotDamage.SetSkill(this);
+                        dotDamageCoroutine = StartCoroutine(dotDamage.Apply(monster));
+                    }
+                    else
+                    {
+                        var dotDamage = gameObject.GetComponent<DotDamage>();
+                        dotDamage.attacker = attacker;
+                        dotDamage.attack = attack;
+                        dotDamage.SetSkill(this);
+                        dotDamageCoroutine = StartCoroutine(dotDamage.Apply(monster));
+                    }
                 }
             }
 
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(1f);
         }
     }
 
@@ -94,7 +108,21 @@ public class DonutDotSkill : MonoBehaviour, ISkillShape, IDamageType, ISkillComp
         if (timer >= duration)
         {
             timer = 0f;
+            if (applyCoroutine != null)
+            {
+                StopCoroutine(applyCoroutine);
+                applyCoroutine = null;
+            }
+            if(dotDamageCoroutine != null)
+            {
+                StopCoroutine(dotDamageCoroutine);
+                dotDamageCoroutine = null;
+            }
             Destroy(gameObject);
+        }
+        else
+        {
+            gameObject.transform.position = attacker.transform.position;
         }
     }
 }
