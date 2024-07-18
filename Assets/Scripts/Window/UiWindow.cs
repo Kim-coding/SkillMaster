@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
-using UnityEditor.PackageManager.UI;
-
 public class UiWindow : MonoBehaviour
 {
     public GameObject mergeWindow;

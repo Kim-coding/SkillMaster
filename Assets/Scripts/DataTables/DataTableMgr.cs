@@ -17,6 +17,10 @@ public static class DataTableMgr
         QuestTable questTable = new QuestTable();
         questTable.Load(DataTableIds.quest);
         tables.Add(DataTableIds.quest, questTable);
+
+        StringTable stringTable = new StringTable();
+        stringTable.Load(DataTableIds.String);
+        tables.Add(DataTableIds.String, stringTable);
     }
 
     private static DataTable CreateDataTable(string id)
