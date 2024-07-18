@@ -77,13 +77,14 @@ public class PlayerEnhance
 
 
         GameMgr.Instance.uiMgr.uiEnhance.Init();
-        GameMgr.Instance.uiMgr.uiEnhance.TextUpdate(EnhanceType.AttackPower);
-        GameMgr.Instance.uiMgr.uiEnhance.TextUpdate(EnhanceType.Defence);
-        GameMgr.Instance.uiMgr.uiEnhance.TextUpdate(EnhanceType.MaxHealth);
-        GameMgr.Instance.uiMgr.uiEnhance.TextUpdate(EnhanceType.Recovery);
-        GameMgr.Instance.uiMgr.uiEnhance.TextUpdate(EnhanceType.CriticalMultiple);
-        GameMgr.Instance.uiMgr.uiEnhance.TextUpdate(EnhanceType.CriticalPercent);
-        GameMgr.Instance.uiMgr.uiEnhance.TextUpdate(EnhanceType.Gold);
+        GameMgr.Instance.uiMgr.uiEnhance.AttackTextUpdate();
+        GameMgr.Instance.uiMgr.uiEnhance.DefenceTextUpdate();
+        GameMgr.Instance.uiMgr.uiEnhance.MaxHealthTextUpdate();
+        GameMgr.Instance.uiMgr.uiEnhance.RecoveryTextUpdate();
+        GameMgr.Instance.uiMgr.uiEnhance.CriticalPercentTextUpdate();
+        GameMgr.Instance.uiMgr.uiEnhance.CriticalMultipleTextUpdate();
+        GameMgr.Instance.uiMgr.uiEnhance.GoldIncreaseTextUpdate();
+
 
     }
 
@@ -97,7 +98,7 @@ public class PlayerEnhance
 
         attackPowerLevel++;
         attackPowerCost = new BigInteger(100 + 100 * attackPowerLevel); //TO-DO cost 식
-        GameMgr.Instance.uiMgr.uiEnhance.TextUpdate(EnhanceType.AttackPower);
+       // GameMgr.Instance.uiMgr.uiEnhance.TextUpdate(EnhanceType.AttackPower);
         GameMgr.Instance.playerMgr.playerStat.playerStatUpdate();
         EventMgr.TriggerEvent(QuestType.AttackEnhance);
 
@@ -113,7 +114,6 @@ public class PlayerEnhance
 
         defenceLevel++;
         defenceCost = new BigInteger(100 + 100 * defenceLevel); //TO-DO cost 식
-        GameMgr.Instance.uiMgr.uiEnhance.TextUpdate(EnhanceType.Defence);
         GameMgr.Instance.playerMgr.playerStat.playerStatUpdate();
         EventMgr.TriggerEvent(QuestType.DefenceEnhance);
     }
@@ -128,7 +128,6 @@ public class PlayerEnhance
 
         maxHealthLevel++;
         maxHealthCost = new BigInteger(100 + 100 * maxHealthLevel); //TO-DO cost 식
-        GameMgr.Instance.uiMgr.uiEnhance.TextUpdate(EnhanceType.MaxHealth);
         GameMgr.Instance.playerMgr.playerStat.playerStatUpdate();
         EventMgr.TriggerEvent(QuestType.MaxHealthEnhance);
     }
@@ -143,7 +142,6 @@ public class PlayerEnhance
 
         recoveryLevel++;
         recoveryCost = new BigInteger(100 + 100 * recoveryLevel); //TO-DO cost 식
-        GameMgr.Instance.uiMgr.uiEnhance.TextUpdate(EnhanceType.Recovery);
         GameMgr.Instance.playerMgr.playerStat.playerStatUpdate();
         EventMgr.TriggerEvent(QuestType.RecoveryEnhance);
     }
@@ -158,7 +156,6 @@ public class PlayerEnhance
 
         criticalPercentLevel++;
         criticalPercentCost = new BigInteger(100 + 100 * criticalPercentLevel); //TO-DO cost 식
-        GameMgr.Instance.uiMgr.uiEnhance.TextUpdate(EnhanceType.CriticalPercent);
         GameMgr.Instance.playerMgr.playerStat.playerStatUpdate();
         EventMgr.TriggerEvent(QuestType.CriticalPercentEnhance);
     }
@@ -173,7 +170,6 @@ public class PlayerEnhance
 
         criticalMultipleLevel++;
         criticalMultipleCost = new BigInteger(100 + 100 * criticalMultipleLevel); //TO-DO cost 식
-        GameMgr.Instance.uiMgr.uiEnhance.TextUpdate(EnhanceType.CriticalMultiple);
         GameMgr.Instance.playerMgr.playerStat.playerStatUpdate();
         EventMgr.TriggerEvent(QuestType.CriticalMultipleEnhance);
 
@@ -188,7 +184,6 @@ public class PlayerEnhance
 
         goldLevel++;
         goldCost = new BigInteger(100 + 100 * goldLevel); //TO-DO cost 식
-        GameMgr.Instance.uiMgr.uiEnhance.TextUpdate(EnhanceType.Gold);
         EventMgr.TriggerEvent(QuestType.GoldEnhance);
 
     }

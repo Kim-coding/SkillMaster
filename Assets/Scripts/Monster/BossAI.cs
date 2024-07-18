@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Playables;
 
-public class BossAI : MonoBehaviour
+public class BossAI : MonoBehaviour, IAnimation
 {
     private GameObject[] players;
     public GameObject target;
@@ -17,12 +17,16 @@ public class BossAI : MonoBehaviour
     [HideInInspector]
     public bool onDeath = false;
 
+    private Animator animator;
+    public Animator Animator { get => animator; }
+
     private void Awake()
     {
         players = GameObject.FindGameObjectsWithTag("Player");
         bossStat = GetComponent<BossStat>();
         bossStat.Init();
         bossAttack = new BossAttack();
+        // animator = GetComponent<Animator>();
     }
 
     private void Start()

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerAI : MonoBehaviour
+public class PlayerAI : MonoBehaviour , IAnimation
 {
     public CharacterStat characterStat;
     public Image hpBar;
@@ -23,7 +23,9 @@ public class PlayerAI : MonoBehaviour
     [HideInInspector]
     public StateMachine PlayerStateMachine => stateMachine;
 
-    public Animator animator;
+    public Animator Animator { get => animator;}
+
+    private Animator animator;
 
     private void Awake()
     {
@@ -176,4 +178,5 @@ public class PlayerAI : MonoBehaviour
             CheckAndChangeState();
         }
     }
+
 }

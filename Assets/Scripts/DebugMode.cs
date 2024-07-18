@@ -45,6 +45,12 @@ public class DebugMode : MonoBehaviour
         attackSpeedText.text = attackSpeedValue.ToString();
         attackRangeText.text = attackRangeValue.ToString();
 
+
+        if(Input.GetKeyDown(KeyCode.S))
+        {
+            GameMgr.Instance.playerMgr.currency.AddGold(new BigInteger(1000000000));
+        }
+
         GameMgr.Instance.playerMgr.playerStat.DebugStatSetting(speedValue, attackSpeedValue, attackRangeValue);
     }
 }

@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class MonsterAI : MonoBehaviour
+public class MonsterAI : MonoBehaviour, IAnimation
 {
     private GameObject[] players;
     public GameObject target;
@@ -18,6 +18,7 @@ public class MonsterAI : MonoBehaviour
 
     private Rigidbody2D rb;
     private Animator animator;
+    public Animator Animator { get => animator; }
 
     private void Awake()
     {

@@ -20,14 +20,13 @@ public class UiGuideQuest : MonoBehaviour
 
     public void UiButtonUpdate(bool a)
     {
+        guideQuestButton.onClick.RemoveAllListeners();
         if (a)
         {
-            guideQuestButton.onClick.RemoveAllListeners();
             guideQuestButton.onClick.AddListener(GameMgr.Instance.rewardMgr.guideQuest.NextQuest);
         }
         else
         {
-            guideQuestButton.onClick.RemoveListener(GameMgr.Instance.rewardMgr.guideQuest.NextQuest);
             switch (currentQuest.Division)
             {
                 case 1:

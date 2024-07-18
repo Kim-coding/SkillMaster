@@ -29,9 +29,15 @@ public class GuideQuest
 
     public void CheckQuestCompletion()
     {
-        if (currentQuest.Targetvalue > currentTargetValue) { return; }
-        GameMgr.Instance.uiMgr.uiGuideQuest.UiButtonUpdate(true);
-        RemoveEvent();
+        if (currentQuest.Targetvalue > currentTargetValue)
+        {
+            GameMgr.Instance.uiMgr.uiGuideQuest.UiButtonUpdate(false);
+        }
+        else
+        {
+            GameMgr.Instance.uiMgr.uiGuideQuest.UiButtonUpdate(true);
+            RemoveEvent();
+        }
     }
 
     public void NextQuest()
@@ -42,6 +48,7 @@ public class GuideQuest
         GameMgr.Instance.uiMgr.uiGuideQuest.currentQuest = currentQuest;
         currentTargetValue = 0; //TO-DO 조건 확인하고 초기화}
         RegisterQuestEvents();
+        CheckQuestCompletion();
         UiUpdate();
     }
 
@@ -169,7 +176,6 @@ public class GuideQuest
     public void UiUpdate()
     {
         GameMgr.Instance.uiMgr.uiGuideQuest.UiUpdate(currentTargetValue);
-
     }
 
     private void AddEvent(QuestType questType, Action subscriber)
