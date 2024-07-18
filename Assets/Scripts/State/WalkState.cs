@@ -15,6 +15,7 @@ public class WalkState : IState
     {
         //Debug.Log("Enter WalkState");
         player.UpdatePath();
+        player.animator.SetBool("Moving", true);
     }
 
     public void Update()
@@ -36,8 +37,9 @@ public class WalkState : IState
 
     public void Exit()
     {
+        player.animator.SetBool("Moving", false);
         //Debug.Log("Exit WalkState");
     }
 
-    
+
 }

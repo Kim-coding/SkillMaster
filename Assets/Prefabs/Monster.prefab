@@ -106,7 +106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b9c88376ded7ad4b80b2d0d0f61e9b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 59351692744629341, guid: 16326b6c1eaf94e4c9e37c895e46167f, type: 3}
+  target: {fileID: 5936838196064874823, guid: bd0b10f85c768234f81a78ecec3afada, type: 3}
   targetUpdataTime: 0.5
   monsterStat: {fileID: 0}
   onDeath: 0

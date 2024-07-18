@@ -14,7 +14,7 @@ public class UiGuideQuest : MonoBehaviour
 
     public void UiUpdate(int currentValue)
     {
-        questName.text = currentQuest.Textid.ToString();
+        questName.text = currentQuest.StringId.ToString();
         questCount.text = currentValue.ToString() + " / " + currentQuest.Targetvalue.ToString();
     }
 
