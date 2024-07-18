@@ -6190,23 +6190,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 321329754882501616, guid: 16326b6c1eaf94e4c9e37c895e46167f, type: 3}
       propertyPath: skillTypeList.Array.data[1]
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 321329754882501616, guid: 16326b6c1eaf94e4c9e37c895e46167f, type: 3}
       propertyPath: skillTypeList.Array.data[2]
-      value: 9
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 321329754882501616, guid: 16326b6c1eaf94e4c9e37c895e46167f, type: 3}
       propertyPath: skillTypeList.Array.data[3]
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 321329754882501616, guid: 16326b6c1eaf94e4c9e37c895e46167f, type: 3}
-      propertyPath: skillTypeList.Array.data[4]
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 321329754882501616, guid: 16326b6c1eaf94e4c9e37c895e46167f, type: 3}
+      propertyPath: skillTypeList.Array.data[4]
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 321329754882501616, guid: 16326b6c1eaf94e4c9e37c895e46167f, type: 3}
       propertyPath: skillTypeList.Array.data[5]
-      value: 1
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 321329754882501616, guid: 16326b6c1eaf94e4c9e37c895e46167f, type: 3}
       propertyPath: skillTypeList.Array.data[6]

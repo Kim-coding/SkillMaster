@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class LinearRangeAttackSkill : MonoBehaviour, ISkillShape, IDamageType, ISkillComponent, ISkill
 {
-    //int skillID;
+    public string skillID = "LinearRangeAttackSkill"; 
     public GameObject skillObject;
     public GameObject attacker;
     public Attack attack;
