@@ -8,6 +8,7 @@ public class PlayerAI : MonoBehaviour
     public CharacterStat characterStat;
     public Image hpBar;
 
+    public GameObject animationPrefab;
 
     public PlayerMgr playerMgr;
     public PlayerSkills playerSkills;
@@ -50,11 +51,11 @@ public class PlayerAI : MonoBehaviour
         if (currentTarget != null) {
             if ((currentTarget.transform.position - transform.position).x <= 0)
             {
-                transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y);
+                animationPrefab.transform.localScale = new Vector3(Mathf.Abs(animationPrefab.transform.localScale.x), animationPrefab.transform.localScale.y);
             }
             else
             {
-                transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x) * -1, transform.localScale.y);
+                animationPrefab.transform.localScale = new Vector3(Mathf.Abs(animationPrefab.transform.localScale.x) * -1, animationPrefab.transform.localScale.y);
             }
         }
     }

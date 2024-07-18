@@ -37,7 +37,7 @@ public class GuideQuest
     public void NextQuest()
     {
         GameMgr.Instance.uiMgr.uiGuideQuest.UiButtonUpdate(false);
-        questID = currentQuest.nextQuest;
+        questID = currentQuest.Next_Quest;
         currentQuest = DataTableMgr.Get<QuestTable>(DataTableIds.quest).GetID(questID);
         GameMgr.Instance.uiMgr.uiGuideQuest.currentQuest = currentQuest;
         currentTargetValue = 0; //TO-DO 조건 확인하고 초기화}

@@ -7318,7 +7318,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skills:
   - {fileID: 7542266623136808606, guid: a5be68472b022c94d8ec3c1381b8c314, type: 3}
-  skillTypeList: 000000000400000009000000070000000600000001000000
+  skillTypeList: 00000000040000000900000007000000060000000100000008000000
 --- !u!114 &1327260321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7352,6 +7352,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterStat: {fileID: 1327260321}
   hpBar: {fileID: 362571880}
+  animationPrefab: {fileID: 1822135372}
   playerMgr: {fileID: 1423913458}
   playerSkills: {fileID: 1327260320}
   currentTarget: {fileID: 0}
@@ -10379,6 +10380,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1327260316}
   m_SourcePrefab: {fileID: 100100000, guid: bd0b10f85c768234f81a78ecec3afada, type: 3}
+--- !u!1 &1822135372 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5745796484760671861, guid: bd0b10f85c768234f81a78ecec3afada, type: 3}
+  m_PrefabInstance: {fileID: 1822135371}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1832185094
 GameObject:
   m_ObjectHideFlags: 0
