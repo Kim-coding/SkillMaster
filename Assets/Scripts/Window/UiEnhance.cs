@@ -13,6 +13,7 @@ public class UiEnhance : MonoBehaviour
     public Enhance recoveryUpgrade;
     public Enhance criticalPercentUpgrade;
     public Enhance criticalMultipleUpgrade;
+    public Enhance goldUpgrade;
 
 
     private void Start()
@@ -30,7 +31,8 @@ public class UiEnhance : MonoBehaviour
         criticalMultipleUpgrade.GetComponent<Button>().onClick.AddListener(GameMgr.Instance.playerMgr.playerEnhance.AddCriticalMultiple);
         criticalMultipleUpgrade.Init("Ä¡¸íÅ¸ ¹è·ü °­È­");
 
-
+        goldUpgrade.GetComponent<Button>().onClick.AddListener(GameMgr.Instance.playerMgr.playerEnhance.AddGoldIncrease);
+        goldUpgrade.Init("°ñµå È¹µæ °­È­");
     }
 
 
@@ -100,7 +102,15 @@ public class UiEnhance : MonoBehaviour
                        p_E.criticalMultipleCost);
                 }
                 break;
-
+            case EnhanceType.Gold:
+                {
+                    goldUpgrade.TextUpdate(
+                       p_E.goldLevel,
+                       p_E.goldLevel * p_E.goldValue,
+                      (p_E.goldLevel + 1) * p_E.goldValue,
+                       p_E.goldCost);
+                }
+                break;
         }
     }
 }

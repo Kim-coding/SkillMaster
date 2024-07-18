@@ -73,6 +73,7 @@ public enum EnhanceType
     Recovery,
     CriticalPercent,
     CriticalMultiple,
+    Gold,
 }
 
 public enum QuestType
@@ -80,14 +81,15 @@ public enum QuestType
     None = -1,
     Stage = 1,
     MonsterKill,
-    MergeSkill,
-    GetGold,
+    MaxSkillLevel,
+    MergeSkillCount,
     AttackEnhance,
-    DefenceEnhance,
     MaxHealthEnhance,
-    RecoveryEnhance,
+    DefenceEnhance,
     CriticalPercentEnhance,
     CriticalMultipleEnhance,
+    RecoveryEnhance,
+    GoldEnhance,
 }
 
 

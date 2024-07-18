@@ -102,7 +102,8 @@ public class SkillSpawner : MonoBehaviour
         GameMgr.Instance.playerMgr.skillBallControllers.Add(newSkillControler);
         { GameMgr.Instance.uiMgr.uiMerge.SpawnButtonUpdate(true); }
 
-        EventMgr.TriggerEvent(QuestType.MergeSkill);
+        EventMgr.TriggerEvent(QuestType.MergeSkillCount);
+        GameMgr.Instance.playerMgr.playerInfo.MaxSkillLevelUpdate(t);
     }
 
     private Vector3 RandomVector()
