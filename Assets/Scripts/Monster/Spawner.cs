@@ -16,7 +16,7 @@ public class Spawner : MonoBehaviour
     public float spawnRange;
 
     private float timer = 0f;
-    private float duration = 0.5f;
+    private float duration = 0.2f;
 
     private bool isSpawn = false;
     private bool isDeathCount = false;
