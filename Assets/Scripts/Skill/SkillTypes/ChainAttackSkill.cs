@@ -13,7 +13,9 @@ public class ChainAttackSkill : MonoBehaviour, ISkillShape, IDamageType, ISkillC
     private float timer = 0f;
     private float duration = 1.5f;
 
-    private int maxChains = 3;
+    private int findTarget = 2;  //°ø°Ý È½¼ö
+
+    private int maxChains = 3;   
     private int currentChainCount = 0;
 
     private HashSet<GameObject> hitMonsters = new HashSet<GameObject>();
@@ -99,14 +101,15 @@ public class ChainAttackSkill : MonoBehaviour, ISkillShape, IDamageType, ISkillC
 
             yield return new WaitForSeconds(0.1f);
             List<GameObject> newTargets = new List<GameObject> { };
-            if (currentChainCount < maxChains)
+            if (currentChainCount == 0)
             {
-                newTargets = GetNewTarget(target, 2);
+                newTargets = GetNewTarget(target, findTarget);
             }
-            else
+            else if(currentChainCount < maxChains)
             {
-                Debug.Log("currentChainCount >= maxChains");
+                newTargets = GetNewTarget(target, 1);
             }
+
             currentChainCount++;
 
             foreach (var newTarget in newTargets)
@@ -118,7 +121,7 @@ public class ChainAttackSkill : MonoBehaviour, ISkillShape, IDamageType, ISkillC
                 }
             }
 
-            if (currentChainCount >= maxChains || !target.activeInHierarchy)
+            if (currentChainCount >= maxChains)
             {
                 break;
             }
