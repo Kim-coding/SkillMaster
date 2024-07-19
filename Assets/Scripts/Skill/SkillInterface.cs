@@ -16,3 +16,9 @@ public interface ISkill
 {
     void Initialize();
 }
+
+public interface IDotMonsters
+{
+    bool IsMonsterInList(GameObject monster);
+    void UpdateMonsterList();
+}
