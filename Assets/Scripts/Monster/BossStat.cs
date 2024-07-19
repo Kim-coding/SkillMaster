@@ -7,7 +7,7 @@ public class BossStat : Status ,IDamageable
     public BigInteger dropGold;
     public BigInteger Health { get; set; }
     public bool Ondeath { get; set; }
-
+    public int Defence { get; set; }
     public void Init()
     {
         Ondeath = false;
@@ -16,5 +16,6 @@ public class BossStat : Status ,IDamageable
         attackSpeed = 1f;
         speed = 3f;
         attackRange = 3f;
+        Defence = 0;
     }
 }

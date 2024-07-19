@@ -11,7 +11,9 @@ public class DamageDisplay : MonoBehaviour, IAttackable
     {
         var damagePos = transform.position;
         damagePos.y += 1f;
-
+        var characterHealth = gameObject.GetComponent<IDamageable>();
+        var defenceValue = 1 / (1 + characterHealth.Defence * 0.005f);
+        attack.Damage *= defenceValue;
         string text = attack.Damage.ToStringShort();
         Color color = attack.Critical ? Color.yellow : Color.white;
         float fontSize = defender.GetComponent<PlayerAI>() != null ? 10f : 5f;

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MonsterAI : MonoBehaviour, IAnimation
 {
+    private int monsterID;
     private GameObject[] players;
     public GameObject target;
 
