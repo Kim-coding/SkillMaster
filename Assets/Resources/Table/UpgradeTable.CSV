@@ -1,7 +1,10 @@
-﻿10001,공격력,2,0,5.7,500,100,50,10,6000,Pictoicon_Attack.Png,120012
-10002,방어력,1,1,0,0,100,50,10,5000,Pictoicon_Armor.Png,120013
-10003,체력,1,10,0,0,100,50,10,5000,Pictoicon_Life.Png,120014
-10004,치명타확률,2,0.0001,0,0,500,100,10,5000,Pictoicon_Critical.Png,120015
-10005,치명타데미지,2,0.001,0,0,500,100,10,5000,Pictoicon_Boom.Png,120016
-10006,골드 획득 증가,1,100,0,0,100,50,10,300,Pictoicon_Moneybag.Png,120017
-10007,체력 회복,1,5,0,0,100,50,10,1000,Pictoicon_Life_Add.Png,120018
+﻿강화 ID,리스트,증가량 구분,증가량 ,증가 구간 범위,나누는 값,소모 골드 초기값,소모 골드 증가량,골드 증가 구간 범위,최대 레벨,아이콘,스트링ID
+UpgradeID,list,UpgradeDivision,Increase,Increaserange,DivValue,Gold,GoldRange,GoldincreaseValue,MaxLv,UpgradeIcon,StringID
+int,int,int,float,float,int,float,float,float,int,string,int
+10001,공격력,2,0,5.7,500,100,50,10,6000,Pictoicon_Attack.Png,120012
+10002,방어력,1,1,-1,-1,100,50,10,5000,Pictoicon_Armor.Png,120013
+10003,체력,1,10,-1,-1,100,50,10,5000,Pictoicon_Life.Png,120014
+10004,치명타확률,2,0.0001,-1,-1,500,100,10,5000,Pictoicon_Critical.Png,120015
+10005,치명타데미지,2,0.001,-1,-1,500,100,10,5000,Pictoicon_Boom.Png,120016
+10006,골드 획득 증가,2,0.01,-1,-1,100,50,10,300,Pictoicon_Moneybag.Png,120017
+10007,체력 회복,1,5,-1,-1,100,50,10,1000,Pictoicon_Life_Add.Png,120018
