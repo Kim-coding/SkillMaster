@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LeapAttackSkill : MonoBehaviour, ISkillShape, IDamageType, ISkillComponent, ISkill
+public class LeapAttackSkill : MonoBehaviour, ISkillComponent, ISkill
 {
     public GameObject skillObject;
     public GameObject attacker;
@@ -11,11 +11,19 @@ public class LeapAttackSkill : MonoBehaviour, ISkillShape, IDamageType, ISkillCo
 
     private Vector3 initialPosition;
     private Vector3 targetPosition;
-    private float leapHeight = 5f;
+    private float leapHeight = 1f;
     private float leapDuration = 0.5f;
-    private float attackRadius = 3f;
+    private float attackRadius = 2f;
 
-    private bool isLeaping = false;
+    private float timer = 0f;
+    private float duration = 1f;
+
+    private int attackNumber = 10;  // 공격 횟수 TO-DO 테이블로 받아와야 하는 정보
+
+    private void Start()
+    {
+        StartCoroutine(Leap());
+    }
 
     public void Initialize()
     {
@@ -25,10 +33,19 @@ public class LeapAttackSkill : MonoBehaviour, ISkillShape, IDamageType, ISkillCo
     public void ApplyShape(GameObject skillObject, Vector3 launchPosition, GameObject target, float range, float width)
     {
         this.skillObject = skillObject;
-        skillObject.AddComponent<CircleCollider2D>();
+        Sprite circleSprite = Resources.Load<Sprite>("Circle");
+        if (circleSprite != null)
+        {
+            this.skillObject.GetComponent<SpriteRenderer>().sprite = circleSprite;
+        }
+        this.skillObject.AddComponent<CircleCollider2D>().isTrigger = false;
+
+        this.skillObject.transform.position = target.transform.position;
+        this.skillObject.transform.localScale = new Vector2(attackRadius *2 , attackRadius* 2);
+
         initialPosition = launchPosition;
         targetPosition = target.transform.position;
-        StartCoroutine(Leap());
+        
     }
 
     public void ApplyDamageType(GameObject attacker, Attack attack, DamageType damageType, SkillShapeType shapeType)
@@ -40,57 +57,73 @@ public class LeapAttackSkill : MonoBehaviour, ISkillShape, IDamageType, ISkillCo
 
     private IEnumerator Leap()
     {
-        isLeaping = true;
-
-        // Step 1: Move upwards
-        Vector3 peakPosition = initialPosition + Vector3.up * leapHeight;
-        float elapsedTime = 0f;
-        while (elapsedTime < leapDuration / 2)
+        for(int i = 0; i < attackNumber; i++)
         {
-            attacker.transform.position = Vector3.Lerp(initialPosition, peakPosition, (elapsedTime / (leapDuration / 2)));
-            elapsedTime += Time.deltaTime;
+            Vector3 peakPosition = initialPosition + Vector3.up * leapHeight;
+            Vector3 targetPeakPosition = targetPosition + Vector3.up * leapHeight;
+            float elapsedTime = 0f;
+            while (elapsedTime < leapDuration / 2)
+            {
+                attacker.transform.position = Vector3.Lerp(initialPosition, peakPosition, (elapsedTime / (leapDuration / 2)));
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+
+            Vector3 targetAbovePosition = new Vector3(targetPosition.x, targetPeakPosition.y, targetPosition.z);
+            attacker.transform.position = targetAbovePosition;
             yield return null;
+
+            elapsedTime = 0f;
+            while (elapsedTime < leapDuration / 2)
+            {
+                attacker.transform.position = Vector3.Lerp(targetAbovePosition, targetPosition, (elapsedTime / (leapDuration / 5)));
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+
+            ApplyAttack();
+
+            yield return new WaitForSeconds(0.3f);
+            initialPosition = attacker.transform.position;
+            SetRandomTarget();
         }
-
-        // Step 2: Move to target's above position
-        Vector3 targetAbovePosition = new Vector3(targetPosition.x, peakPosition.y, targetPosition.z);
-        elapsedTime = 0f;
-        while (elapsedTime < leapDuration / 2)
-        {
-            attacker.transform.position = Vector3.Lerp(peakPosition, targetAbovePosition, (elapsedTime / (leapDuration / 2)));
-            elapsedTime += Time.deltaTime;
-            yield return null;
-        }
-
-        // Step 3: Move downwards to target position
-        elapsedTime = 0f;
-        while (elapsedTime < leapDuration / 2)
-        {
-            attacker.transform.position = Vector3.Lerp(targetAbovePosition, targetPosition, (elapsedTime / (leapDuration / 2)));
-            elapsedTime += Time.deltaTime;
-            yield return null;
-        }
-
-        ApplyAreaAttack(targetPosition);
-
-        isLeaping = false;
+        Destroy(gameObject);
     }
 
-    private void ApplyAreaAttack(Vector3 position)
+
+    private void ApplyAttack()
     {
-        Collider[] hitColliders = Physics.OverlapSphere(position, attackRadius);
-        foreach (var hitCollider in hitColliders)
+        var allMonsters = GameMgr.Instance.GetMonsters();
+        foreach(var monster in allMonsters)
         {
-            var attackable = hitCollider.GetComponent<IAttackable>();
-            if (attackable != null)
+            var attackables = monster.GetComponents<IAttackable>();
+            var distanc = Vector2.Distance(skillObject.transform.position, monster.transform.position);
+            if(attackRadius >= distanc)
             {
-                attackable.OnAttack(attacker, hitCollider.gameObject, attack);
+                foreach(var attackable in attackables)
+                {
+                    attackable.OnAttack(attacker, monster, attack);
+                }
             }
         }
     }
-
+    private void SetRandomTarget()
+    {
+        var allMonsters = GameMgr.Instance.GetMonsters();
+        if (allMonsters.Length > 0)
+        {
+            int randomIndex = Random.Range(0, allMonsters.Length);
+            attacker.GetComponent<PlayerAI>().currentTarget = allMonsters[randomIndex].transform;
+            targetPosition = allMonsters[randomIndex].transform.position;
+            skillObject.transform.position = targetPosition;
+        }
+    }
     void Update()
     {
-        // Optionally, add update logic if needed
+        timer += Time.deltaTime;
+        if(timer > duration)
+        {
+            //Destroy(gameObject);
+        }
     }
 }

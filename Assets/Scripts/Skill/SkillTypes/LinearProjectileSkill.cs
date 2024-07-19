@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LinearProjectileSkill : MonoBehaviour, ISkillShape, IDamageType, ISkillComponent, ISkill //직선 투사체 공격
+public class LinearProjectileSkill : MonoBehaviour, ISkillComponent, ISkill //직선 투사체 공격
 {
     public string skillID = "LinearProjectileSkill";
     public GameObject skillObject;

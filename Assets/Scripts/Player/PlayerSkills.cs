@@ -50,6 +50,9 @@ public class PlayerSkills : MonoBehaviour
             case SkillType.ChainAttack:
                 skillComponent = skillObject.AddComponent<ChainAttackSkill>();
                 break;
+            case SkillType.LeapAttack:
+                skillComponent = skillObject.AddComponent<LeapAttackSkill>();
+                break;
                 // 기타 스킬 타입 생성
         }
         if(skillComponent != null)

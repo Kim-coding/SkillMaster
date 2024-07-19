@@ -47,43 +47,43 @@ public class MonsterAI : MonoBehaviour, IAnimation
     {
         if (onDeath)
         { return; }
-            timer += Time.deltaTime;
-            attackTimer += Time.deltaTime;
-            if (timer >= targetUpdataTime)
-            {
-                timer = 0;
-                FindTarget();
+        timer += Time.deltaTime;
+        attackTimer += Time.deltaTime;
+        if (timer >= targetUpdataTime)
+        {
+            timer = 0;
+            FindTarget();
 
-            }
+        }
 
-            if (target != null && target.activeInHierarchy)
+        if (target != null && target.activeInHierarchy)
+        {
+            if (Vector3.Distance(transform.position, target.transform.position) <= monsterStat.attackRange)
             {
-                if (Vector3.Distance(transform.position, target.transform.position) <= monsterStat.attackRange)
+                rb.bodyType = RigidbodyType2D.Kinematic;
+                if (attackTimer >= monsterStat.attackSpeed)
                 {
-                    rb.bodyType = RigidbodyType2D.Kinematic;
-                    if (attackTimer >= monsterStat.attackSpeed)
+                    var attackables = target.GetComponents<IAttackable>();
+                    foreach (var attackable in attackables)
                     {
-                        var attackables = target.GetComponents<IAttackable>();
-                        foreach (var attackable in attackables)
-                        {
-                            attackable.OnAttack(gameObject, target, monsterAttack.CreateAttack(monsterStat));
-                        }
-                        attackTimer = 0;
+                        attackable.OnAttack(gameObject, target, monsterAttack.CreateAttack(monsterStat));
                     }
-                    return;
-                }
-                else
-                {
-                    rb.bodyType = RigidbodyType2D.Dynamic;
-                    Move();
-                Rotation();
                     attackTimer = 0;
                 }
+                return;
             }
             else
             {
-                target = null;
+                rb.bodyType = RigidbodyType2D.Dynamic;
+                Move();
+                Rotation();
+                attackTimer = 0;
             }
+        }
+        else
+        {
+            target = null;
+        }
         
     }
 

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AreaSingleHitSkill : MonoBehaviour, ISkillShape, IDamageType, ISkillComponent, ISkill
+public class AreaSingleHitSkill : MonoBehaviour, ISkillComponent, ISkill
 {
     public string skillID = "AreaSingleHitSkill";
     public GameObject skillObject;

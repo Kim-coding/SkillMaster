@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChainAttackSkill : MonoBehaviour, ISkillShape, IDamageType, ISkillComponent, ISkill, ISpecialEffect
+public class ChainAttackSkill : MonoBehaviour, ISkillComponent, ISkill, ISpecialEffect
 {
     public string skillID = "AreaSingleHitSkill";
     public GameObject skillObject;
@@ -10,15 +10,11 @@ public class ChainAttackSkill : MonoBehaviour, ISkillShape, IDamageType, ISkillC
     public Attack attack;
     public DamageType damageType;
 
-    private float timer = 0f;
-    private float duration = 1.5f;
+    private int attackNumber = 2;  //TO-DO : 공격 횟수, 테이블 받아오기 //Initialize에 매개변수로 받아와야 함
 
-    private int findTarget = 2;  //공격 횟수
+    private int maxChains = 5;     //TO-DO : 피격 몬스터 수, 테이블 받아오기
 
-    private int maxChains = 3;   
-    private int currentChainCount = 0;
-
-    private HashSet<GameObject> hitMonsters = new HashSet<GameObject>();
+    private HashSet<GameObject> hitMonsters = new HashSet<GameObject>(); //피격 몬스터 수 체크
 
     private Coroutine chainCoroutine;
     private GameObject currentTarget;
@@ -27,7 +23,6 @@ public class ChainAttackSkill : MonoBehaviour, ISkillShape, IDamageType, ISkillC
 
     void Start()
     {
-        currentChainCount = 0;
         hitMonsters.Clear();
         ClearLineRenderers();
 
@@ -35,7 +30,6 @@ public class ChainAttackSkill : MonoBehaviour, ISkillShape, IDamageType, ISkillC
         {
             DrawLine(attacker, currentTarget);
             ApplyDamage(currentTarget);
-            duration = 1;
         }
         else if (currentTarget != null)
         {
@@ -46,7 +40,9 @@ public class ChainAttackSkill : MonoBehaviour, ISkillShape, IDamageType, ISkillC
 
     public void Initialize()
     {
-        currentChainCount = 0;
+        //duration
+        //attackNumber
+        //maxChains
         hitMonsters.Clear();
         ClearLineRenderers();
     }
@@ -87,7 +83,7 @@ public class ChainAttackSkill : MonoBehaviour, ISkillShape, IDamageType, ISkillC
         Queue<GameObject> targets = new Queue<GameObject>();
         targets.Enqueue(initialTarget);
 
-        while (targets.Count > 0 && currentChainCount < maxChains)
+        while (targets.Count > 0 && hitMonsters.Count < maxChains)
         {
             GameObject target = targets.Dequeue();
 
@@ -100,17 +96,16 @@ public class ChainAttackSkill : MonoBehaviour, ISkillShape, IDamageType, ISkillC
             ApplyDamage(target);
 
             yield return new WaitForSeconds(0.1f);
+            ClearLineRenderers();
             List<GameObject> newTargets = new List<GameObject> { };
-            if (currentChainCount == 0)
+            if (hitMonsters.Count == 1)
             {
-                newTargets = GetNewTarget(target, findTarget);
+                newTargets = GetNewTarget(target, attackNumber);
             }
-            else if(currentChainCount < maxChains)
+            else if(hitMonsters.Count < maxChains)
             {
                 newTargets = GetNewTarget(target, 1);
             }
-
-            currentChainCount++;
 
             foreach (var newTarget in newTargets)
             {
@@ -121,7 +116,7 @@ public class ChainAttackSkill : MonoBehaviour, ISkillShape, IDamageType, ISkillC
                 }
             }
 
-            if (currentChainCount >= maxChains)
+            if (hitMonsters.Count >= maxChains)
             {
                 break;
             }
@@ -152,8 +147,7 @@ public class ChainAttackSkill : MonoBehaviour, ISkillShape, IDamageType, ISkillC
         List<GameObject> sortedMonsters = new List<GameObject>();
         foreach (var monster in allMonsters)
         {
-            if (monster != null && !hitMonsters.Contains(monster) &&
-                Vector2.Distance(currentTarget.transform.position, monster.transform.position) < 3f)
+            if (monster != null && !hitMonsters.Contains(monster))
             {
                 sortedMonsters.Add(monster);
             }
@@ -221,15 +215,6 @@ public class ChainAttackSkill : MonoBehaviour, ISkillShape, IDamageType, ISkillC
         }
 
         Destroy(gameObject);
-    }
-
-    private void Update()
-    {
-        timer += Time.deltaTime;
-        if (timer > duration)
-        {
-            Destroy(gameObject);
-        }
     }
 
     private void OnDisable()

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DonutDotSkill : MonoBehaviour, ISkillShape, IDamageType, ISkillComponent, ISkill
+public class DonutDotSkill : MonoBehaviour, ISkillComponent, ISkill
 {
     public string skillID = "DonutDotSkill";
     public GameObject skillObject;
