@@ -22,7 +22,7 @@ public class DotDamage : MonoBehaviour
 
         while (elapsedTime < Duration)
         {
-            if (!skill.monsters.Contains(target))
+            if (!skill.monsters.Contains(target) || target == null)
             {
                 yield break;
             }

@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Threading;
 using UnityEngine;
 
 public class ChainAttackSkill : MonoBehaviour, ISkillShape, IDamageType, ISkillComponent, ISkill, ISpecialEffect
@@ -11,7 +10,12 @@ public class ChainAttackSkill : MonoBehaviour, ISkillShape, IDamageType, ISkillC
     public Attack attack;
     public DamageType damageType;
 
-    private int maxChains = 3;
+    private float timer = 0f;
+    private float duration = 1.5f;
+
+    private int findTarget = 2;  //°ø°Ý È½¼ö
+
+    private int maxChains = 3;   
     private int currentChainCount = 0;
 
     private HashSet<GameObject> hitMonsters = new HashSet<GameObject>();
@@ -19,15 +23,25 @@ public class ChainAttackSkill : MonoBehaviour, ISkillShape, IDamageType, ISkillC
     private Coroutine chainCoroutine;
     private GameObject currentTarget;
 
-    private List<LineRenderer> lineRenderers = new List<LineRenderer>();
+    private List<GameObject> lineRenderers = new List<GameObject>();
 
     void Start()
     {
         currentChainCount = 0;
         hitMonsters.Clear();
         ClearLineRenderers();
-        DrawLine(attacker, currentTarget);
-        StartChainAttack(currentTarget);
+
+        if (GameMgr.Instance.sceneMgr.mainScene.IsBossBattle())
+        {
+            DrawLine(attacker, currentTarget);
+            ApplyDamage(currentTarget);
+            duration = 1;
+        }
+        else if (currentTarget != null)
+        {
+            DrawLine(attacker, currentTarget);
+            StartChainAttack(currentTarget);
+        }
     }
 
     public void Initialize()
@@ -36,6 +50,7 @@ public class ChainAttackSkill : MonoBehaviour, ISkillShape, IDamageType, ISkillC
         hitMonsters.Clear();
         ClearLineRenderers();
     }
+
     public void ApplyShape(GameObject skillObject, Vector3 launchPoint, GameObject target, float range, float width)
     {
         currentTarget = target;
@@ -67,48 +82,58 @@ public class ChainAttackSkill : MonoBehaviour, ISkillShape, IDamageType, ISkillC
         chainCoroutine = StartCoroutine(ChainAttack(target));
     }
 
-    private IEnumerator ChainAttack(GameObject target)
+    private IEnumerator ChainAttack(GameObject initialTarget)
     {
-        if (currentChainCount >= maxChains || target == null || hitMonsters.Contains(target))
-            yield break;
-        
-        hitMonsters.Add(target);
-        ApplyDamage(target);
+        Queue<GameObject> targets = new Queue<GameObject>();
+        targets.Enqueue(initialTarget);
 
-        yield return new WaitForSeconds(0.5f);
-
-        List<GameObject> newTargets = GetNewTarget(target, 2);
-
-        currentChainCount++;
-
-
-        if (newTargets.Count > 0 && currentChainCount < maxChains)
+        while (targets.Count > 0 && currentChainCount < maxChains)
         {
+            GameObject target = targets.Dequeue();
+
+            if (target == null || !target.activeInHierarchy || hitMonsters.Contains(target))
+            {
+                continue;
+            }
+
+            hitMonsters.Add(target);
+            ApplyDamage(target);
+
+            yield return new WaitForSeconds(0.1f);
+            List<GameObject> newTargets = new List<GameObject> { };
+            if (currentChainCount == 0)
+            {
+                newTargets = GetNewTarget(target, findTarget);
+            }
+            else if(currentChainCount < maxChains)
+            {
+                newTargets = GetNewTarget(target, 1);
+            }
+
+            currentChainCount++;
+
             foreach (var newTarget in newTargets)
             {
-                if (newTarget != null)
+                if (newTarget != null && newTarget.activeInHierarchy)
                 {
-                    DrawLine(target,newTarget);
-                    StartCoroutine(ChainAttack(newTarget));
+                    DrawLine(target, newTarget);
+                    targets.Enqueue(newTarget);
                 }
             }
-        }
-        else if (currentChainCount >= maxChains)
-        {
-            ChainCoroutineStop();
+
+            if (currentChainCount >= maxChains)
+            {
+                break;
+            }
         }
 
-        if (!target.activeInHierarchy)
-        {
-            ChainCoroutineStop();
-        }
-
+        ChainCoroutineStop();
     }
 
-    private void ApplyDamage (GameObject target)
+    private void ApplyDamage(GameObject target)
     {
         var attackables = target.GetComponents<IAttackable>();
-        foreach(var attackable in attackables)
+        foreach (var attackable in attackables)
         {
             attackable.OnAttack(attacker, target, attack);
         }
@@ -116,6 +141,11 @@ public class ChainAttackSkill : MonoBehaviour, ISkillShape, IDamageType, ISkillC
 
     private List<GameObject> GetNewTarget(GameObject currentTarget, int count)
     {
+        if (currentTarget == null)
+        {
+            return new List<GameObject>();
+        }
+
         List<GameObject> newTargets = new List<GameObject>();
         var allMonsters = GameMgr.Instance.GetMonsters();
 
@@ -131,6 +161,10 @@ public class ChainAttackSkill : MonoBehaviour, ISkillShape, IDamageType, ISkillC
 
         sortedMonsters.Sort((a, b) =>
         {
+            if (a == null || b == null)
+            {
+                return 0;
+            }
             float distanceA = Vector2.Distance(currentTarget.transform.position, a.transform.position);
             float distanceB = Vector2.Distance(currentTarget.transform.position, b.transform.position);
             return distanceA.CompareTo(distanceB);
@@ -138,7 +172,10 @@ public class ChainAttackSkill : MonoBehaviour, ISkillShape, IDamageType, ISkillC
 
         for (int i = 0; i < count && i < sortedMonsters.Count; i++)
         {
-            newTargets.Add(sortedMonsters[i]);
+            if (sortedMonsters[i] != null && sortedMonsters[i].activeInHierarchy)
+            {
+                newTargets.Add(sortedMonsters[i]);
+            }
         }
         return newTargets;
     }
@@ -158,8 +195,8 @@ public class ChainAttackSkill : MonoBehaviour, ISkillShape, IDamageType, ISkillC
         lineRenderer.positionCount = 2;
         lineRenderer.SetPosition(0, from.transform.position);
         lineRenderer.SetPosition(1, to.transform.position);
-
-        lineRenderers.Add(lineRenderer);
+        lineObj.transform.SetParent(transform);
+        lineRenderers.Add(lineObj);
     }
 
     private void ClearLineRenderers()
@@ -168,7 +205,7 @@ public class ChainAttackSkill : MonoBehaviour, ISkillShape, IDamageType, ISkillC
         {
             if (lineRenderer != null)
             {
-                Destroy(lineRenderer.gameObject);
+                Destroy(lineRenderer);
             }
         }
         lineRenderers.Clear();
@@ -184,5 +221,23 @@ public class ChainAttackSkill : MonoBehaviour, ISkillShape, IDamageType, ISkillC
         }
 
         Destroy(gameObject);
+    }
+
+    private void Update()
+    {
+        timer += Time.deltaTime;
+        if (timer > duration)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private void OnDisable()
+    {
+        ChainCoroutineStop();
+    }
+    private void OnDestroy()
+    {
+        ChainCoroutineStop();
     }
 }
