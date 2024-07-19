@@ -43,7 +43,7 @@ public class CharacterStat : Status, IDamageable
 
     private void Update()
     {
-        if (Ondeath)
+        if (Ondeath || playerHealthRecovery == "0")
         {
             return;
         }
