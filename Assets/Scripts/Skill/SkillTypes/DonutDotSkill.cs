@@ -66,7 +66,7 @@ public class DonutDotSkill : MonoBehaviour, ISkillComponent, ISkill
                         var dotDamage = gameObject.AddComponent<DotDamage>();
                         dotDamage.attacker = attacker;
                         dotDamage.attack = attack;
-                        dotDamage.SetSkill(this);
+                        dotDamage.SetMonsters(monsters);
                         dotDamageCoroutine = StartCoroutine(dotDamage.Apply(monster));
                     }
                     else
@@ -74,7 +74,7 @@ public class DonutDotSkill : MonoBehaviour, ISkillComponent, ISkill
                         var dotDamage = gameObject.GetComponent<DotDamage>();
                         dotDamage.attacker = attacker;
                         dotDamage.attack = attack;
-                        dotDamage.SetSkill(this);
+                        dotDamage.SetMonsters(monsters);
                         dotDamageCoroutine = StartCoroutine(dotDamage.Apply(monster));
                     }
                 }

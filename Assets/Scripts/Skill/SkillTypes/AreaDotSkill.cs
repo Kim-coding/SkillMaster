@@ -1,124 +1,124 @@
-//using System.Collections;
-//using System.Collections.Generic;
-//using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-//public class AreaDotSkill : MonoBehaviour, ISkillComponent, ISkill //원형 범위 도트 공격
-//{
-//    public string skillID = "AreaDotSkill";
-//    public GameObject skillObject;
-//    public GameObject attacker;
-//    public Attack attack;
-//    public DamageType damageType;
+public class AreaDotSkill : MonoBehaviour, ISkillComponent, ISkill //원형 범위 도트 공격
+{
+    public string skillID = "AreaDotSkill";
+    public GameObject skillObject;
+    public GameObject attacker;
+    public Attack attack;
+    public DamageType damageType;
 
-//    private float Radius;
+    private float Radius;
 
-//    float duration = 1.0f;
-//    float timer = 0f;
+    float duration = 1.0f;
+    float timer = 0f;
 
-//    public List<GameObject> monsters = new List<GameObject>();
-//    private Coroutine dotDamageCoroutine;
-//    private Coroutine applyCoroutine;
+    public List<GameObject> monsters = new List<GameObject>();
+    private Coroutine dotDamageCoroutine;
+    private Coroutine applyCoroutine;
 
-//    private void Start()
-//    {
-//        applyCoroutine = StartCoroutine(ApplyDotDamage());
-//    }
+    private void Start()
+    {
+        applyCoroutine = StartCoroutine(ApplyDotDamage());
+    }
 
-//    public void Initialize()
-//    {
-//        throw new System.NotImplementedException();
-//    }
+    public void Initialize()
+    {
+        throw new System.NotImplementedException();
+    }
 
-//    public void ApplyShape(GameObject skillObject, Vector3 launchPoint, GameObject target, float range, float width)
-//    {
-//        this.skillObject = skillObject;
-//        Sprite circleSprite = Resources.Load<Sprite>("Circle");
-//        if (circleSprite != null)
-//        {
-//            this.skillObject.GetComponent<SpriteRenderer>().sprite = circleSprite;
-//        }
-//        Radius = range;
-//        this.skillObject.transform.localScale = new Vector2(Radius * 2, Radius * 2);
+    public void ApplyShape(GameObject skillObject, Vector3 launchPoint, GameObject target, float range, float width)
+    {
+        this.skillObject = skillObject;
+        Sprite circleSprite = Resources.Load<Sprite>("Circle");
+        if (circleSprite != null)
+        {
+            this.skillObject.GetComponent<SpriteRenderer>().sprite = circleSprite;
+        }
+        Radius = range;
+        this.skillObject.transform.localScale = new Vector2(Radius * 2, Radius * 2);
 
-//        this.skillObject.AddComponent<CircleCollider2D>().isTrigger = true;
-//        this.skillObject.transform.position = launchPoint;
-//    }
+        this.skillObject.AddComponent<CircleCollider2D>().isTrigger = true;
+        this.skillObject.transform.position = launchPoint;
+    }
 
-//    public void ApplyDamageType(GameObject attacker, Attack attack, DamageType damageType, SkillShapeType shapeType)
-//    {
-//        this.attacker = attacker;
-//        this.attack = attack;
-//        this.damageType = damageType;
-//    }
+    public void ApplyDamageType(GameObject attacker, Attack attack, DamageType damageType, SkillShapeType shapeType)
+    {
+        this.attacker = attacker;
+        this.attack = attack;
+        this.damageType = damageType;
+    }
 
-//    private IEnumerator ApplyDotDamage()
-//    {
-//        while (true)
-//        {
-//            UpdateMonsterList();
-//            foreach (var monster in monsters)
-//            {
-//                if (monster != null)
-//                {
-//                    if (gameObject.GetComponent<DotDamage>() == null)
-//                    {
-//                        var dotDamage = gameObject.AddComponent<DotDamage>();
-//                        dotDamage.attacker = attacker;
-//                        dotDamage.attack = attack;
-//                        dotDamage.SetSkill(this);
-//                        dotDamageCoroutine = StartCoroutine(dotDamage.Apply(monster));
-//                    }
-//                    else
-//                    {
-//                        var dotDamage = gameObject.GetComponent<DotDamage>();
-//                        dotDamage.attacker = attacker;
-//                        dotDamage.attack = attack;
-//                        dotDamage.SetSkill(this);
-//                        dotDamageCoroutine = StartCoroutine(dotDamage.Apply(monster));
-//                    }
-//                }
-//            }
+    private IEnumerator ApplyDotDamage()
+    {
+        while (true)
+        {
+            UpdateMonsterList();
+            foreach (var monster in monsters)
+            {
+                if (monster != null)
+                {
+                    if (gameObject.GetComponent<DotDamage>() == null)
+                    {
+                        var dotDamage = gameObject.AddComponent<DotDamage>();
+                        dotDamage.attacker = attacker;
+                        dotDamage.attack = attack;
+                        dotDamage.SetMonsters(monsters);
+                        dotDamageCoroutine = StartCoroutine(dotDamage.Apply(monster));
+                    }
+                    else
+                    {
+                        var dotDamage = gameObject.GetComponent<DotDamage>();
+                        dotDamage.attacker = attacker;
+                        dotDamage.attack = attack;
+                        dotDamage.SetMonsters(monsters);
+                        dotDamageCoroutine = StartCoroutine(dotDamage.Apply(monster));
+                    }
+                }
+            }
 
-//            yield return new WaitForSeconds(1f);
-//        }
-//    }
+            yield return new WaitForSeconds(1f);
+        }
+    }
 
-//    private void UpdateMonsterList()
-//    {
-//        monsters.Clear();
+    private void UpdateMonsterList()
+    {
+        monsters.Clear();
 
-//        GameObject[] allMonsters = GameMgr.Instance.GetMonsters();
-//        foreach (var monster in allMonsters)
-//        {
-//            if (monster != null)
-//            {
-//                float distance = Vector2.Distance(attacker.transform.position, monster.transform.position);
-//                if (distance < Radius)
-//                {
-//                    monsters.Add(monster);
-//                }
-//            }
-//        }
-//    }
+        GameObject[] allMonsters = GameMgr.Instance.GetMonsters();
+        foreach (var monster in allMonsters)
+        {
+            if (monster != null)
+            {
+                float distance = Vector2.Distance(attacker.transform.position, monster.transform.position);
+                if (distance < Radius)
+                {
+                    monsters.Add(monster);
+                }
+            }
+        }
+    }
 
-//    private void Update()
-//    {
-//        timer += Time.deltaTime;
-//        if (timer >= duration)
-//        {
-//            timer = 0f;
-//            if (applyCoroutine != null)
-//            {
-//                StopCoroutine(applyCoroutine);
-//                applyCoroutine = null;
-//            }
-//            if (dotDamageCoroutine != null)
-//            {
-//                StopCoroutine(dotDamageCoroutine);
-//                dotDamageCoroutine = null;
-//            }
-//            Destroy(gameObject);
-//        }
-//    }
+    private void Update()
+    {
+        timer += Time.deltaTime;
+        if (timer >= duration)
+        {
+            timer = 0f;
+            if (applyCoroutine != null)
+            {
+                StopCoroutine(applyCoroutine);
+                applyCoroutine = null;
+            }
+            if (dotDamageCoroutine != null)
+            {
+                StopCoroutine(dotDamageCoroutine);
+                dotDamageCoroutine = null;
+            }
+            Destroy(gameObject);
+        }
+    }
 
-//}
+}

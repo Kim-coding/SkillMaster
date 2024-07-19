@@ -53,10 +53,12 @@ public class PlayerSkills : MonoBehaviour
             case SkillType.LeapAttack:
                 skillComponent = skillObject.AddComponent<LeapAttackSkill>();
                 break;
-            //case SkillType.AreaDot:
-            //    skillComponent = skillObject.AddComponent<AreaDotSkill>();
-
-            //    break;
+            case SkillType.AreaDot:
+                skillComponent = skillObject.AddComponent<AreaDotSkill>();
+                break;
+            case SkillType.ScelectAreaProjectile:
+                skillComponent = skillObject.AddComponent<ScelectAreaProjectileSkill>();
+                break;
                 // 기타 스킬 타입 생성
         }
         if(skillComponent != null)
