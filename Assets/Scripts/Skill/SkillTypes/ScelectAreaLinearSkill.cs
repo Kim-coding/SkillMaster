@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScelectAreaLinearAttack : MonoBehaviour,ISkillShape,IDamageType, ISkillComponent, ISkill
+public class ScelectAreaLinearAttack : MonoBehaviour, ISkillComponent, ISkill
 {
     public string skillID = "ScelectAreaLinearAttack";
     public GameObject skillObject;

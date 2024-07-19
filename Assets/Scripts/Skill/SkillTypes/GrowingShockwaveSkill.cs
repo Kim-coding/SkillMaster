@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GrowingShockwaveSkill : MonoBehaviour, ISkillShape, IDamageType, ISkillComponent, ISkill  //충격파 ( 도넛, 1회성, 성장형 )
+public class GrowingShockwaveSkill : MonoBehaviour, ISkillComponent, ISkill  //충격파 ( 도넛, 1회성, 성장형 )
 {
 
     public string skillID = "GrowingShockwaveSkill";

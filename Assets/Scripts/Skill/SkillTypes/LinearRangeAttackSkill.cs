@@ -1,7 +1,7 @@
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
-public class LinearRangeAttackSkill : MonoBehaviour, ISkillShape, IDamageType, ISkillComponent, ISkill
+public class LinearRangeAttackSkill : MonoBehaviour, ISkillComponent, ISkill
 {
     public string skillID = "LinearRangeAttackSkill"; 
     public GameObject skillObject;
