@@ -48,7 +48,6 @@ public class CharacterStat : Status, IDamageable
             return;
         }
         recoveryTimer += Time.deltaTime;
-
         if (recoveryTimer > playerRecoveryDuration)
         {
             recoveryTimer = 0f;

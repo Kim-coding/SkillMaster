@@ -24,13 +24,16 @@ public class DebugMode : MonoBehaviour
     public float attackRangeValue;
     public TextMeshProUGUI attackRangeText;
 
-    public float recoveryDuration;
+    public Slider recoveryDurationSlider;
+    public float recoveryDurationValue;
+    public TextMeshProUGUI recoveryDurationText;
 
     private void Awake()
     {
         speedSlider.value = playerStat.baseSpeed;
         attackSpeedSlider.value = playerStat.baseAttackSpeed;
         attackRangeSlider.value = playerStat.baseAttackRange;
+        recoveryDurationSlider.value = playerStat.baseRecoveryDuration;
     }
 
     void Update()
@@ -42,10 +45,12 @@ public class DebugMode : MonoBehaviour
         speedValue = Mathf.Round(speedSlider.value * 100f) / 100f;
         attackSpeedValue = Mathf.Round(attackSpeedSlider.value * 100f) / 100f;
         attackRangeValue = Mathf.Round(attackRangeSlider.value * 100f) / 100f;
+        recoveryDurationValue = Mathf.Round(recoveryDurationSlider.value * 100f) / 100f;
 
         speedText.text = speedValue.ToString();
         attackSpeedText.text = attackSpeedValue.ToString();
         attackRangeText.text = attackRangeValue.ToString();
+        recoveryDurationText.text = recoveryDurationValue.ToString();
 
 
         if(Input.GetKeyDown(KeyCode.S))
@@ -53,6 +58,6 @@ public class DebugMode : MonoBehaviour
             GameMgr.Instance.playerMgr.currency.AddGold(new BigInteger(1000000000));
         }
 
-        GameMgr.Instance.playerMgr.playerStat.DebugStatSetting(speedValue, attackSpeedValue, attackRangeValue, recoveryDuration);
+        GameMgr.Instance.playerMgr.playerStat.DebugStatSetting(speedValue, attackSpeedValue, attackRangeValue, recoveryDurationValue);
     }
 }

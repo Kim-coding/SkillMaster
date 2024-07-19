@@ -15,9 +15,10 @@ MonoBehaviour:
   baseSpeed: 3
   baseAttackSpeed: 0.5
   baseAttackRange: 2.1
+  baseRecoveryDuration: 5
   basePlayerAttackPower: 1
   basePlayerDefence: 1
   basePlayerMaxHealth: 100
-  basePlayerHealthRecovery: 0
+  basePlayerHealthRecovery: 1
   basePlayerCriticalPercent: 1
   basePlayerCriticalMultiple: 1.01

@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-public class DamageText : MonoBehaviour
+public class DisplayText : MonoBehaviour
 {
     private float timer = 0f;
     private float duration = 1f;
@@ -32,6 +32,7 @@ public class DamageText : MonoBehaviour
 
         if (timer > duration)
         {
+            timer = 0f;
             GameMgr.Instance.sceneMgr.damageTextMgr.ReturnDamageText(this);
             gameObject.SetActive(false);
         }

@@ -114,7 +114,7 @@ public class MonsterAI : MonoBehaviour, IAnimation
     }
     private void Rotation()
     {
-        Vector3 rot = (target.transform.position - transform.position).normalized;
+        Vector2 rot = (target.transform.position - transform.position).normalized;
         animator.SetFloat("InputX", rot.x);
         animator.SetFloat("InputY", rot.y);
     }
