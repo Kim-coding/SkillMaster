@@ -43,6 +43,8 @@ public class SkillSpawner : MonoBehaviour
     {
         parentTransform = mergeWindow.transform.GetComponent<RectTransform>();
         maxReserveSkillCount = GameMgr.Instance.playerMgr.playerEnhance.maxReserveSkillCount;
+        Canvas.ForceUpdateCanvases();
+        Setting();
     }
 
     private void Setting()
@@ -108,7 +110,6 @@ public class SkillSpawner : MonoBehaviour
 
     private Vector3 RandomVector()
     {
-        Setting();
         float randomX = Random.Range(bottomLeftOffset.x + bottomLeftDesiredPosition.x, topRightOffset.x + topRightDesiredPosition.x);
         float randomY = Random.Range(bottomLeftOffset.y + bottomLeftDesiredPosition.y, topRightOffset.y + topRightDesiredPosition.y);
         return new Vector3(randomX, randomY, 0);
