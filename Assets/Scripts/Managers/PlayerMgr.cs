@@ -93,6 +93,8 @@ public class PlayerMgr : MonoBehaviour
             playerBaseStat.basePlayerCriticalMultiple,
             playerBaseStat.baseSpeed,
             playerBaseStat.baseAttackSpeed,
-            playerBaseStat.baseAttackRange);
+            playerBaseStat.baseAttackRange,
+            playerBaseStat.baseRecoveryDuration
+            );
     }
 }

@@ -9,15 +9,13 @@ using UnityEngine;
 
 public class StageData
 {
-    public int ID {  get; private set; }
-    public int Stage {  get; private set; }
-    public int Condition { get; private set; } //보스 등장 조건 : 처치 수
-    public int BossID {  get; private set; }
-    public int Monster1 { get; private set; }
-    public int Monster2 { get; private set; }
-    public float TimeLimit { get; private set; }
-    public int MonsterLavel { get; private set; }
-
+    public int StageID {  get; set; }
+    public int huntvalue {  get; set; }
+    public int appearMonster { get; set; } //보스 등장 조건 : 처치 수
+    public float timelimit {  get; set; }
+    public int appearBossMonster { get; set; }
+    public int MonsterMaxValue { get; set; }
+    public int StageLv { get; set; }
 }
 
 public class StageTable : DataTable
@@ -48,7 +46,7 @@ public class StageTable : DataTable
             var records = csvReader.GetRecords<StageData>();
             foreach (var record in records)
             {
-                stageTable.Add(record.ID, record);
+                stageTable.Add(record.StageID, record);
             }
         }
     }

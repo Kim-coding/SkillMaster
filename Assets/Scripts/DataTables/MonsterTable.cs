@@ -9,12 +9,14 @@ public class MonsterData
 {
     public static readonly string FormatMonsterPath = "Monster/{0}";
 
-    public int ID { get; private set; }
-    public int MonsterName { get; private set; }
-    public int Stage {  get; private set; }
-    public int health {  get; private set; }
-    public float Speed { get; private set; }
-    public int Damage { get; private set; }
+    public int Monsterid { get; set; }
+    public string Damage { get; set; }
+    public string Health {  get; set; }
+    public string GoldValue {  get; set; }
+    public string Reward { get; set; }
+    public int RewardValue { get; set; }
+    public string Asset1 { get; set; }
+    public string Asset2 { get; set; }
     //µî
 
 }
@@ -48,7 +50,7 @@ public class MonsterTable : DataTable
             var records = csvReader.GetRecords<MonsterData>();
             foreach (var record in records)
             {
-                monsterTable.Add(record.ID, record);
+                monsterTable.Add(record.Monsterid, record);
             }
         }
     }

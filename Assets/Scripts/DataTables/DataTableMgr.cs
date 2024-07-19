@@ -10,10 +10,6 @@ public static class DataTableMgr
 
     static DataTableMgr()
     {
-        //MonsterTable monsterTable = new MonsterTable();
-        //monsterTable.Load(DataTableIds.monster);
-        //tables.Add(DataTableIds.monster, monsterTable);
-
         QuestTable questTable = new QuestTable();
         questTable.Load(DataTableIds.quest);
         tables.Add(DataTableIds.quest, questTable);
@@ -21,6 +17,30 @@ public static class DataTableMgr
         StringTable stringTable = new StringTable();
         stringTable.Load(DataTableIds.String);
         tables.Add(DataTableIds.String, stringTable);
+
+        UpgradeTable upgradeTable = new UpgradeTable();
+        upgradeTable.Load(DataTableIds.upgrade);
+        tables.Add(DataTableIds.upgrade, upgradeTable);
+
+        SkillTable skillTable = new SkillTable();
+        skillTable.Load(DataTableIds.skill);
+        tables.Add(DataTableIds.skill, skillTable);
+
+        SkillDownTable skillDownTable = new SkillDownTable();
+        skillDownTable.Load(DataTableIds.skillDown);
+        tables.Add(DataTableIds.skillDown, skillDownTable);
+
+        BossTable bossTable = new BossTable();
+        bossTable.Load(DataTableIds.boss);
+        tables.Add(DataTableIds.boss, bossTable);
+
+        MonsterTable monsterTable = new MonsterTable();
+        monsterTable.Load(DataTableIds.monster);
+        tables.Add(DataTableIds.monster, monsterTable);
+
+        StageTable stageTable = new StageTable();
+        stageTable.Load(DataTableIds.stage);
+        tables.Add(DataTableIds.stage, stageTable);
     }
 
     private static DataTable CreateDataTable(string id)

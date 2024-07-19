@@ -24,6 +24,8 @@ public class DebugMode : MonoBehaviour
     public float attackRangeValue;
     public TextMeshProUGUI attackRangeText;
 
+    public float recoveryDuration;
+
     private void Awake()
     {
         speedSlider.value = playerStat.baseSpeed;
@@ -51,6 +53,6 @@ public class DebugMode : MonoBehaviour
             GameMgr.Instance.playerMgr.currency.AddGold(new BigInteger(1000000000));
         }
 
-        GameMgr.Instance.playerMgr.playerStat.DebugStatSetting(speedValue, attackSpeedValue, attackRangeValue);
+        GameMgr.Instance.playerMgr.playerStat.DebugStatSetting(speedValue, attackSpeedValue, attackRangeValue, recoveryDuration);
     }
 }

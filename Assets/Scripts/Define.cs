@@ -107,6 +107,12 @@ public static class DataTableIds
 
     public static readonly string skill = "SkillTable";
 
+    public static readonly string skillDown = "SkillDownTable";
+
     public static readonly string quest = "QuestTable";
+
+    public static readonly string upgrade = "UpgradeTable";
+
+
 
 }

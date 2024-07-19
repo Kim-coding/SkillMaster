@@ -7,6 +7,8 @@ public class PlayerBaseStat : ScriptableObject
     public float baseAttackSpeed;
     public float baseAttackRange;
 
+    public float baseRecoveryDuration;
+
     public int basePlayerAttackPower;
     public int basePlayerDefence;
     public int basePlayerMaxHealth;

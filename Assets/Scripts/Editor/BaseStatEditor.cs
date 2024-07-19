@@ -9,6 +9,8 @@ public class BaseStatEditor : Editor
     SerializedProperty baseAttackSpeed;
     SerializedProperty baseAttackRange;
 
+    SerializedProperty baseRecoveryDuration;
+
     SerializedProperty basePlayerAttackPower;
     SerializedProperty basePlayerDefence;
     SerializedProperty basePlayerMaxHealth;
@@ -23,6 +25,8 @@ public class BaseStatEditor : Editor
         baseSpeed = serializedObject.FindProperty("baseSpeed");
         baseAttackSpeed = serializedObject.FindProperty("baseAttackSpeed");
         baseAttackRange = serializedObject.FindProperty("baseAttackRange");
+
+        baseRecoveryDuration = serializedObject.FindProperty("baseRecoveryDuration");
 
         basePlayerAttackPower = serializedObject.FindProperty("basePlayerAttackPower");
         basePlayerDefence = serializedObject.FindProperty("basePlayerDefence");
@@ -39,7 +43,7 @@ public class BaseStatEditor : Editor
         style.wordWrap = true;
         EditorGUILayout.Space();
         // 설명 텍스트 표시
-        EditorGUILayout.LabelField("플레이어의 기본 이동속도 / 공격속도 / 공격 범위 설정", style);
+        EditorGUILayout.LabelField("기본 속성 초기값 설정", style);
 
 
         // 설명 텍스트
@@ -60,10 +64,13 @@ public class BaseStatEditor : Editor
 
         EditorGUILayout.Slider(baseAttackRange, 0f, 10f, new GUIContent("공격 범위"));
         DrawDescriptionLabel("플레이어 캐릭터의 기본 공격 범위");
+
+        EditorGUILayout.Slider(baseRecoveryDuration, 0f, 10f, new GUIContent("회복 쿨타임"));
+        DrawDescriptionLabel("플레이어 캐릭터의 회복 쿨타임");
         EditorGUILayout.EndVertical();
 
         EditorGUILayout.Space(20);
-        EditorGUILayout.LabelField("플레이어의 기본 Hp / Hp회복 / 공격력 / 방어력 / 치명타확률 / 치명타배율 설정", style);
+        EditorGUILayout.LabelField("스탯 초기값 설정", style);
         EditorGUILayout.Space(10);
 
 

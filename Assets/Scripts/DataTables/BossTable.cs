@@ -1,19 +1,20 @@
 using CsvHelper;
-using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class BossData
 {
-    public int ID { get; private set; }
-    public string BossName { get; private set; }
-    public int Health { get; private set; }
-    public int Damage { get; private set; }
-    public int Gold { get; private set; }
+    public int Monsterid { get; set; }
+    public string Damage { get; set; }
+    public string Health { get; set; }
+    public string GoldValue { get; set; }
+    public int DiaValue { get; set; }
+    public int Reward1 { get; set; }
+    public int Reward1Value { get; set; }
+    public string Asset { get; set; }
 }
 
 public class BossTable : DataTable
@@ -44,7 +45,7 @@ public class BossTable : DataTable
             var records = csvReader.GetRecords<BossData>();
             foreach (var record in records)
             {
-                bossTable.Add(record.ID, record);
+                bossTable.Add(record.Monsterid, record);
             }
         }
     }

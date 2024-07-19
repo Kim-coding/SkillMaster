@@ -22,6 +22,9 @@ public class PlayerStat
     public float attackSpeed;
     public float basePlayerAttackSpeed;
 
+    public float recoveryDuration;
+    public float basePlayerRecoveryDuration;
+
     public float playerCriticalPercent;
     public float basePlayerCriticalPercent;
     public float playerCriticalMultiple;
@@ -31,7 +34,7 @@ public class PlayerStat
     // 외형??
     //강화 수치같은것도 여기서 합산 해야될것 같다.
 
-    public void Init(int baseAttackPower, int baseMaxHealth, int baseDefence,int baseRecovery, float baseCriPer, float baseCirMulti, float baseSpeed, float baseAttackSpeed, float baseAttackRange)
+    public void Init(int baseAttackPower, int baseMaxHealth, int baseDefence,int baseRecovery, float baseCriPer, float baseCirMulti, float baseSpeed, float baseAttackSpeed, float baseAttackRange, float baseRecoveryDuration)
     {
         basePlayerAttackPower = baseAttackPower;
         basePlayerMaxHealth = baseMaxHealth;
@@ -44,14 +47,17 @@ public class PlayerStat
         basePlayerSpeed = baseSpeed;
         basePlayerAttackSpeed = baseAttackSpeed;
         basePlayerAttackRange = baseAttackRange;
+
+        basePlayerRecoveryDuration = baseRecoveryDuration;
         playerStatUpdate();
     }
 
-    public void DebugStatSetting(float dSpeed, float dAttackSpeed, float dAttackRange)
+    public void DebugStatSetting(float dSpeed, float dAttackSpeed, float dAttackRange, float dRecoveryDuration)
     {
         basePlayerSpeed = dSpeed;
         basePlayerAttackSpeed = dAttackSpeed;
         basePlayerAttackRange = dAttackRange;
+        basePlayerRecoveryDuration = dRecoveryDuration;
         playerStatUpdate();
     }
 
@@ -69,6 +75,8 @@ public class PlayerStat
         speed = basePlayerSpeed; // @@
         attackSpeed = basePlayerAttackSpeed; // @@
         attackRange = basePlayerAttackRange; // @@
+
+        recoveryDuration = basePlayerRecoveryDuration;
 
         foreach (var character in GameMgr.Instance.playerMgr.characters)
         {
