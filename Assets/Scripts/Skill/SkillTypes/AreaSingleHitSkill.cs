@@ -30,10 +30,7 @@ public class AreaSingleHitSkill : MonoBehaviour, ISkillComponent, ISkill
         {
             skillObject.GetComponent<SpriteRenderer>().sprite = circleSprite;
         }
-        else
-        {
-            Debug.LogError("Circle sprite not found!");
-        }
+
         skillObject.transform.localScale = new Vector2(range, range);
 
         skillObject.AddComponent<CircleCollider2D>().isTrigger = true;
