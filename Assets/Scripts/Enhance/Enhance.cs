@@ -6,7 +6,7 @@ using UnityEngine;
 public class Enhance : MonoBehaviour
 {
     public TextMeshProUGUI enhanceName;
-    public TextMeshProUGUI nextLevelText;
+    public TextMeshProUGUI levelText;
     public TextMeshProUGUI nextPercentText;
     public TextMeshProUGUI nextCostText;
 
@@ -15,25 +15,25 @@ public class Enhance : MonoBehaviour
         enhanceName.text = name;
     }
 
-    public void TextUpdate(int nextLevel,int currentPercent, int nextPercent , BigInteger cost)
+    public void TextUpdate(int Level,int currentPercent, int nextPercent , BigInteger cost)
     {
-        nextLevelText.text = nextLevel.ToString();
+        levelText.text = Level.ToString();
         nextPercentText.text = $"{currentPercent} -> {nextPercent}";
         nextCostText.text = cost.ToStringShort();
     }
 
-    public void TextUpdate(int nextLevel, float currentPercent, float nextPercent, BigInteger cost)
+    public void TextUpdate(int Level, float currentPercent, float nextPercent, BigInteger cost)
     {
-        nextLevelText.text = nextLevel.ToString();
+        levelText.text = Level.ToString();
         currentPercent = Mathf.Round(currentPercent * 100f)/100f;
         nextPercent = Mathf.Round(nextPercent * 100f)/100f;
         nextPercentText.text = $"{currentPercent} -> {nextPercent}";
         nextCostText.text = cost.ToStringShort();
     }
 
-    public void PercentTextUpdate(int nextLevel, float currentPercent, float nextPercent, BigInteger cost)
+    public void PercentTextUpdate(int Level, float currentPercent, float nextPercent, BigInteger cost)
     {
-        nextLevelText.text = nextLevel.ToString();
+        levelText.text = Level.ToString();
         currentPercent = Mathf.Round(currentPercent * 100f) / 100f;
         nextPercent = Mathf.Round(nextPercent * 100f) / 100f;
         nextPercentText.text = $"{currentPercent}% -> {nextPercent}%";

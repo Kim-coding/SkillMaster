@@ -9,7 +9,7 @@ public class GoldMgr : MonoBehaviour
     public GameObject goldPrefab;
     public Canvas uiCanvas;
 
-    public void CreateAndMoveGold(Vector3 startPosition, float duration)
+    public void CreateAndMoveGold(Vector3 startPosition, float duration, string value)
     {
         GameObject goldObject = Instantiate(goldPrefab, uiCanvas.transform);
         RectTransform goldRectTransform = goldObject.GetComponent<RectTransform>();
@@ -17,6 +17,6 @@ public class GoldMgr : MonoBehaviour
         goldRectTransform.anchoredPosition = startPosition;
 
         GoldMovement goldMovement = goldObject.GetComponent<GoldMovement>();
-        goldMovement.Initialize(uiTarget, duration);
+        goldMovement.Initialize(uiTarget, duration, value);
     }
 }

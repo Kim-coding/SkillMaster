@@ -17,6 +17,15 @@ public class UpgradeData
     public int MaxLv { get; set; }
     public string UpgradeIcon { get; set; }
     public int StringID { get; set; }
+    public string GetStringID
+    {
+        get
+        {
+            return DataTableMgr.Get<StringTable>(DataTableIds.String).GetID(StringID);
+        }
+    }
+
+
 }
 
 public class UpgradeTable : DataTable

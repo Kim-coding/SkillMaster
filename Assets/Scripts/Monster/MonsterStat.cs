@@ -4,18 +4,25 @@ using UnityEngine;
 
 public class MonsterStat : Status ,IDamageable
 {
-    public BigInteger dropGold;
+    private int monsterId;
+
+    public string dropGold;
     public BigInteger Health { get; set; }
     public bool Ondeath { get; set; }
     public int Defence { get; set; }
     public void Init()
     {
         Ondeath = false;
-        Health = new BigInteger(10);
-        attackPower = new BigInteger(5);
+        Health = new BigInteger(DataTableMgr.Get<MonsterTable>(DataTableIds.monster).GetID(monsterId).Health);
+        attackPower = new BigInteger(DataTableMgr.Get<MonsterTable>(DataTableIds.monster).GetID(monsterId).Damage);
         attackSpeed = 2f;
         speed = 1f;
         attackRange = 1;
         Defence = 0;
+        dropGold = DataTableMgr.Get<MonsterTable>(DataTableIds.monster).GetID(monsterId).GoldValue;
+    }
+    public void SetID(int a)
+    {
+        monsterId = a;
     }
 }

@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class DamageDisplay : MonoBehaviour, IAttackable
+public class DamageDisplay : MonoBehaviour
 {
     public TextMeshPro damagePrefab;
 
-    public void OnAttack(GameObject attacker, GameObject defender, Attack attack)
+    public void DisplayText(Attack attack)
     {
         var damagePos = transform.position;
         damagePos.y += 1f;
@@ -16,11 +16,11 @@ public class DamageDisplay : MonoBehaviour, IAttackable
         attack.Damage *= defenceValue;
         string text = attack.Damage.ToStringShort();
         Color color = attack.Critical ? Color.yellow : Color.white;
-        float fontSize = defender.GetComponent<PlayerAI>() != null ? 10f : 5f;
+        float fontSize = 5f;
 
         if (attack.Critical)
         {
-            text += "!!!";
+            text += "\nCRITICAl";
         }
 
         GameMgr.Instance.sceneMgr.damageTextMgr.ShowDamageText(damagePos, text, color, fontSize);

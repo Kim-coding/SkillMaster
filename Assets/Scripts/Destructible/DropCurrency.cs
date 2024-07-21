@@ -13,6 +13,12 @@ public class DropCurrency : MonoBehaviour, IDestructible
         // UI 캔버스 좌표로 변환
         RectTransformUtility.ScreenPointToLocalPointInRectangle(GameMgr.Instance.goldManager.uiCanvas.transform as RectTransform, screenPosition, null, out Vector2 uiPosition);
         // 골드 생성 및 이동 호출
-        GameMgr.Instance.goldManager.CreateAndMoveGold(uiPosition, moveDuration);
+        if (gameObject.GetComponent<MonsterAI>() == null)
+        {
+            return;
+        } //TO-DO 보스 보상
+        var goldValue = gameObject.GetComponent<MonsterAI>().monsterStat.dropGold;
+
+        GameMgr.Instance.goldManager.CreateAndMoveGold(uiPosition, moveDuration,goldValue);
     }
 }

@@ -29,6 +29,7 @@ public class GameMgr : MonoBehaviour
 
         playerMgr.Init();
         rewardMgr.Init();
+        sceneMgr.mainScene.Init();
     }
     private void Update()
     {

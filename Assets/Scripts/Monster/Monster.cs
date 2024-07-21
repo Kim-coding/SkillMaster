@@ -7,7 +7,7 @@ public class Monster : MonoBehaviour
     private static MonsterPool monsterPool;
     public MonsterAI[] monsterPrefabs;
     public Transform poolParent;
-    private List<GameObject> monsters = new List<GameObject>();
+    public List<GameObject> monsters = new List<GameObject>();
 
     private void Awake()
     {

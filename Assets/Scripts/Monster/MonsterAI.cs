@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading;
 using TMPro;
 using UnityEngine;
 
@@ -25,6 +26,8 @@ public class MonsterAI : MonoBehaviour, IAnimation
     {
         players = GameObject.FindGameObjectsWithTag("Player");
         monsterStat = GetComponent<MonsterStat>();
+        monsterStat.SetID(DataTableMgr.Get<StageTable>(DataTableIds.stage).GetID
+    (GameMgr.Instance.sceneMgr.mainScene.stageId).appearMonster);
         monsterStat.Init();
         monsterAttack = new MonsterAttack();
         rb = GetComponent<Rigidbody2D>();
@@ -41,7 +44,9 @@ public class MonsterAI : MonoBehaviour, IAnimation
 
     private void OnEnable()
     {
-        onDeath = false;
+        monsterStat.SetID(DataTableMgr.Get<StageTable>(DataTableIds.stage).GetID
+(GameMgr.Instance.sceneMgr.mainScene.stageId).appearMonster);
+        monsterStat.Init();
     }
 
     private void Update()
@@ -86,6 +91,10 @@ public class MonsterAI : MonoBehaviour, IAnimation
             target = null;
         }
         
+        if(Input.GetKeyDown(KeyCode.Z))
+        {
+            Debug.Log(monsterStat.dropGold);
+        }
     }
 
     private void FindTarget()

@@ -27,9 +27,6 @@ public class CharacterStat : Status, IDamageable
     public int Defence { get; set; }
 
 
-    //스피드, 공격범위, 공격속도, 회복쿨타임은 스크립터블 오브젝트로 컨트롤 
-    //base stat 6종 (공 방 체 체회 치확 치피) 포함
-
     private void Awake()
     {
         GameMgr.Instance.playerMgr.characters.Add(this);

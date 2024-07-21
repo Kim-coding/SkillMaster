@@ -18,7 +18,7 @@ public class UiGuideQuest : MonoBehaviour
         {
             gameObject.SetActive(false);
         }
-        questName.text = DataTableMgr.Get<StringTable>(DataTableIds.String).GetID(currentQuest.StringId).Text;     
+        questName.text = (DataTableMgr.Get<QuestTable>(DataTableIds.quest).GetID(currentQuest.QuestID).GetStringID);
         questCount.text = currentValue.ToString() + " / " + currentQuest.Targetvalue.ToString();
     }
 

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class MonsterPool : ObjectPool<MonsterAI>
@@ -17,6 +18,8 @@ public class MonsterPool : ObjectPool<MonsterAI>
             Debug.LogError("MonsterAI object is null in OnGet.");
             return;
         }
+    //    obj.monsterStat.SetID(DataTableMgr.Get<StageTable>(DataTableIds.stage).GetID
+    //(GameMgr.Instance.sceneMgr.mainScene.stageId).appearMonster);
         obj.monsterStat.Init();
         base.OnGet(obj);        
     }

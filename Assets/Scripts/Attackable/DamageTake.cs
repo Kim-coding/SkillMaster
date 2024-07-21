@@ -12,6 +12,7 @@ public class DamageTake : MonoBehaviour, IAttackable
         var defenceValue = 1 / ( 1 + characterHealth.Defence * 0.005f);
         attack.Damage *= defenceValue;
         characterHealth.Health -= attack.Damage;
+        gameObject.GetComponent<DamageDisplay>().DisplayText(attack);
         //Debug.Log(monster.health.ToString());
         if (characterHealth.Health.factor == 1 && characterHealth.Health.numberList[0] <= 0 && !characterHealth.Ondeath)
         {
