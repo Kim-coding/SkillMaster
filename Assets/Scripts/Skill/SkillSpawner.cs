@@ -45,6 +45,10 @@ public class SkillSpawner : MonoBehaviour
         maxReserveSkillCount = GameMgr.Instance.playerMgr.playerEnhance.maxReserveSkillCount;
         Canvas.ForceUpdateCanvases();
         Setting();
+        if(GameMgr.Instance.playerMgr.skillBallControllers.Count == 0)
+        {
+            SpawnSkill();
+        }
     }
 
     private void Setting()
@@ -88,7 +92,7 @@ public class SkillSpawner : MonoBehaviour
         rt.anchoredPosition = RandomVector();
 
         var newSkillControler = newSkill.GetComponent<SkillBallController>();
-        newSkillControler.Set(1);
+        newSkillControler.Set(40001);
         GameMgr.Instance.playerMgr.skillBallControllers.Add(newSkillControler);
         GameMgr.Instance.playerMgr.playerEnhance.currentSpawnSkillCount--;
         GameMgr.Instance.uiMgr.uiMerge.SkillCountUpdate();
@@ -96,13 +100,14 @@ public class SkillSpawner : MonoBehaviour
         { GameMgr.Instance.uiMgr.uiMerge.SpawnButtonUpdate(false); }
     }
 
-    public void MergeSkill(int t, Vector3 pos)
+    public void MergeSkill(int skill_ID, Vector3 pos, int t)
     {
         var newSkill = Instantiate(prefabSkillBall, pos, Quaternion.identity, parentTransform);
         var newSkillControler = newSkill.GetComponent<SkillBallController>();
-        newSkillControler.Set(t);
+        newSkillControler.Set(skill_ID);
         GameMgr.Instance.playerMgr.skillBallControllers.Add(newSkillControler);
-        { GameMgr.Instance.uiMgr.uiMerge.SpawnButtonUpdate(true); }
+
+        GameMgr.Instance.uiMgr.uiMerge.SpawnButtonUpdate(true);
 
         EventMgr.TriggerEvent(QuestType.MergeSkillCount);
         GameMgr.Instance.playerMgr.playerInfo.MaxSkillLevelUpdate(t);

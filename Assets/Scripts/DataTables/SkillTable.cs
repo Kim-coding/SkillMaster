@@ -18,6 +18,8 @@ public class SkillData
     public float AtkArangeY { get; set; }
     public int SkillLv { get; set; }
     public int SkillPropertyID { get; set; }
+    public string SkillEffect {  get; set; }
+    public string Skillicon {  get; set; }
 }
 
 public class SkillTable : DataTable

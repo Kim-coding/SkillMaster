@@ -156,14 +156,25 @@ public class PlayerAI : MonoBehaviour , IAnimation
     private int maxCount;
     public void OnAttack(GameObject skill)
     {
-        maxCount = maxCount = playerSkills.skillTypeList.Count - 1;
+        playerSkills.SetList();
+        maxCount = playerSkills.castingList.Count;
+        
         if (currentTarget != null && IsInAttackRange())
         {
-            Vector3 direction = (currentTarget.position - transform.position).normalized;
+            if (playerSkills.castingList.Count == 0)
+            {
+                return;
+            }
 
-            var skillType = playerSkills.skillTypeList[count];
+            if (count >= maxCount)
+            {
+                count = 0; // 리스트 범위를 초과하면 0으로 초기화
+            }
+
+            var skillType = playerSkills.castingList[count].skillType;
             playerSkills.UseSkill(skill, skillType, gameObject, currentTarget.gameObject, 3, 1);
-            if(count < maxCount)
+
+            if(count < maxCount - 1)
             {
                 count++;
             }
@@ -171,6 +182,7 @@ public class PlayerAI : MonoBehaviour , IAnimation
             {
                 count = 0;
             }
+
         }
         else
         {

@@ -46,6 +46,11 @@ public class PlayerMgr : MonoBehaviour
         }
     }
 
+    public List<SkillBallController> GetList()
+    {
+        return skillBallControllers;
+    }
+
     public void Init()
     {
         gameMgr = GameMgr.Instance;

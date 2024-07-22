@@ -11,6 +11,7 @@ public class SkillDownData
     public float ProjectileSizeY { get; set; }
     public int ProjectileValue { get; set; }
     public float ProjectileSpeed { get; set; }
+    public int Attacknumber { get; set; }
     public float SkillColdown { get; set; }
     public int Projectileangle { get; set; }
     public int HitMonsterValue { get; set; }
