@@ -10,11 +10,11 @@ public class DotDamage : MonoBehaviour
 
     public GameObject attacker {  get; set; }
     public Attack attack { get; set; }
-    private DonutDotSkill skill;
+    public List<GameObject> monsters = new List<GameObject>();
 
-    public void SetSkill(DonutDotSkill skill)
+    public void SetMonsters(List<GameObject> monsters)
     {
-        this.skill = skill;
+        this.monsters = monsters;
     }
     public IEnumerator Apply(GameObject target)
     {
@@ -22,7 +22,7 @@ public class DotDamage : MonoBehaviour
 
         while (elapsedTime < Duration)
         {
-            if (!skill.monsters.Contains(target) || target == null)
+            if (!monsters.Contains(target) || target == null)
             {
                 yield break;
             }

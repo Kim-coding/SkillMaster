@@ -409,7 +409,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fpsText: {fileID: 1987198435}
-  player: {fileID: 0}
+  player: {fileID: 1327260322}
   playerStat: {fileID: 11400000, guid: b25770531267086468b15f9088e73660, type: 2}
   speedSlider: {fileID: 743108335}
   speedValue: 0
@@ -7706,7 +7706,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skills:
   - {fileID: 7542266623136808606, guid: a5be68472b022c94d8ec3c1381b8c314, type: 3}
-  skillTypeList: 00000000010000000400000006000000070000000800000009000000
+  skillTypeList: 03000000
 --- !u!114 &1327260321
 MonoBehaviour:
   m_ObjectHideFlags: 0
