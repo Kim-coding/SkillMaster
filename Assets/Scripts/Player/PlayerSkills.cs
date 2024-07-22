@@ -37,10 +37,10 @@ public class PlayerSkills : MonoBehaviour
                 skillComponent = skillObject.AddComponent<LinearProjectileSkill>();
                 break;
             case 3:
-                skillComponent = skillObject.AddComponent<LeapAttackSkill>();
+                skillComponent = skillObject.AddComponent<AreaDotSkill>();
                 break;
             case 4:
-                skillComponent = skillObject.AddComponent<OrbitingProjectileSkill>();
+                skillComponent = skillObject.AddComponent<AreaSingleHitSkill>();
                 break;
             case 5:
                 skillComponent = skillObject.AddComponent<ScelectAreaLinearAttack>();
@@ -49,19 +49,19 @@ public class PlayerSkills : MonoBehaviour
                 skillComponent = skillObject.AddComponent<ScelectAreaProjectileSkill>();
                 break;
             case 7:
-                skillComponent = skillObject.AddComponent<GrowingShockwaveSkill>();
+                skillComponent = skillObject.AddComponent<OrbitingProjectileSkill>();
                 break;
             case 8:
-                skillComponent = skillObject.AddComponent<DonutDotSkill>();
-                break;
-            case 9:
                 skillComponent = skillObject.AddComponent<ChainAttackSkill>();
                 break;
+            case 9:
+                skillComponent = skillObject.AddComponent<DonutDotSkill>();
+                break;
             case 10:
-                skillComponent = skillObject.AddComponent<AreaSingleHitSkill>();
+                skillComponent = skillObject.AddComponent<GrowingShockwaveSkill>();
                 break;
             case 11:
-                skillComponent = skillObject.AddComponent<AreaDotSkill>();
+                skillComponent = skillObject.AddComponent<LeapAttackSkill>();
                 break;
                 // 기타 스킬 타입 생성
         }

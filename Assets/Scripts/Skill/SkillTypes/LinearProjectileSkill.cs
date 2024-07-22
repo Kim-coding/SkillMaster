@@ -9,7 +9,8 @@ public class LinearProjectileSkill : MonoBehaviour, ISkillComponent, ISkill //Á÷
     public GameObject attacker;
     public Attack attack;
     public DamageType damageType;
-
+    private int attackNumber;
+    private float projectileangle;
     float duration = 1.0f;
     float timer = 0f;
 
