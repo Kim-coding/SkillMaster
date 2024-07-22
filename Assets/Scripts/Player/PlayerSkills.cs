@@ -59,6 +59,9 @@ public class PlayerSkills : MonoBehaviour
             case SkillType.ScelectAreaProjectile:
                 skillComponent = skillObject.AddComponent<ScelectAreaProjectileSkill>();
                 break;
+            case SkillType.OrbitingProjectile:
+                skillComponent = skillObject.AddComponent<OrbitingProjectileSkill>();
+                break;
                 // 기타 스킬 타입 생성
         }
         if(skillComponent != null)

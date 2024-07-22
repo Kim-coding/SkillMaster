@@ -10,7 +10,7 @@ public class AreaDotSkill : MonoBehaviour, ISkillComponent, ISkill //¿øÇü ¹üÀ§ µ
     public Attack attack;
     public DamageType damageType;
 
-    private float Radius;
+    private float radius;
 
     float duration = 1.0f;
     float timer = 0f;
@@ -37,8 +37,8 @@ public class AreaDotSkill : MonoBehaviour, ISkillComponent, ISkill //¿øÇü ¹üÀ§ µ
         {
             this.skillObject.GetComponent<SpriteRenderer>().sprite = circleSprite;
         }
-        Radius = range;
-        this.skillObject.transform.localScale = new Vector2(Radius * 2, Radius * 2);
+        radius = range;
+        this.skillObject.transform.localScale = new Vector2(radius * 2, radius * 2);
 
         this.skillObject.AddComponent<CircleCollider2D>().isTrigger = true;
         this.skillObject.transform.position = launchPoint;
@@ -93,7 +93,7 @@ public class AreaDotSkill : MonoBehaviour, ISkillComponent, ISkill //¿øÇü ¹üÀ§ µ
             if (monster != null)
             {
                 float distance = Vector2.Distance(attacker.transform.position, monster.transform.position);
-                if (distance < Radius)
+                if (distance < radius)
                 {
                     monsters.Add(monster);
                 }

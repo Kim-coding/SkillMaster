@@ -18,11 +18,12 @@ public class LeapAttackSkill : MonoBehaviour, ISkillComponent, ISkill
     private float timer = 0f;
     private float duration = 1f;
 
-    private int attackNumber = 10;  // 공격 횟수 TO-DO 테이블로 받아와야 하는 정보
+    private int attackNumber = 1;  // 공격 횟수 TO-DO 테이블로 받아와야 하는 정보
+    private Coroutine attackCoroutine;
 
     private void Start()
     {
-        StartCoroutine(Leap());
+        attackCoroutine = StartCoroutine(Leap());
     }
 
     public void Initialize()
@@ -38,7 +39,7 @@ public class LeapAttackSkill : MonoBehaviour, ISkillComponent, ISkill
         {
             this.skillObject.GetComponent<SpriteRenderer>().sprite = circleSprite;
         }
-        this.skillObject.AddComponent<CircleCollider2D>().isTrigger = false;
+        this.skillObject.AddComponent<CircleCollider2D>().isTrigger = true;
 
         this.skillObject.transform.position = target.transform.position;
         this.skillObject.transform.localScale = new Vector2(attackRadius *2 , attackRadius* 2);
@@ -87,9 +88,8 @@ public class LeapAttackSkill : MonoBehaviour, ISkillComponent, ISkill
             initialPosition = attacker.transform.position;
             SetRandomTarget();
         }
-        Destroy(gameObject);
+        Stop();
     }
-
 
     private void ApplyAttack()
     {
@@ -118,12 +118,22 @@ public class LeapAttackSkill : MonoBehaviour, ISkillComponent, ISkill
             skillObject.transform.position = targetPosition;
         }
     }
+
+    private void Stop()
+    {
+        if (attackCoroutine != null)
+        {
+            StopCoroutine(attackCoroutine);
+        }
+        Destroy(gameObject);
+    }
+
     void Update()
     {
         timer += Time.deltaTime;
         if(timer > duration)
         {
-            //Destroy(gameObject);
+             //Stop();
         }
     }
 }
