@@ -11,6 +11,7 @@ public class SkillData
 
     public int Skill_ID { get; set; }
     public int Type { get; set; }
+    public float Skill_Damage { get; set; }
     public float AttackSpeed { get; set; }
     public float DamageColdown {  get; set; }
     public float SkillArange { get; set; }
@@ -18,8 +19,8 @@ public class SkillData
     public float AtkArangeY { get; set; }
     public int SkillLv { get; set; }
     public int SkillPropertyID { get; set; }
-    public string SkillEffect {  get; set; }
-    public string Skillicon {  get; set; }
+    //public string SkillEffect {  get; set; }
+    //public string Skillicon {  get; set; }
 }
 
 public class SkillTable : DataTable
