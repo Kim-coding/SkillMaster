@@ -38,7 +38,7 @@ public class UiGuideQuest : MonoBehaviour
                     break;
                 case 3:
                 case 4:
-                    guideQuestButton.onClick.AddListener(GameMgr.Instance.uiMgr.uiWindow.MergeWindowOpen);
+                    guideQuestButton.onClick.AddListener(GameMgr.Instance.uiMgr.uiWindow.AnimateCloseCurrentWindow);
                     break;
                 case 5:
                 case 6:

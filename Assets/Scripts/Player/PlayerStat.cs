@@ -75,9 +75,9 @@ public class PlayerStat
             GameMgr.Instance.playerMgr.playerEnhance.defenceLevel *
             GameMgr.Instance.playerMgr.playerEnhance.defenceValue;
 
-        playerHealthRecovery = new BigInteger(basePlayerHealthRecovery) +
+        playerHealthRecovery = (new BigInteger(basePlayerHealthRecovery) +
                             (new BigInteger(GameMgr.Instance.playerMgr.playerEnhance.recoveryValue) *
-                            GameMgr.Instance.playerMgr.playerEnhance.recoveryLevel).ToString();
+                            GameMgr.Instance.playerMgr.playerEnhance.recoveryLevel)).ToString();
 
         playerCriticalPercent = basePlayerCriticalPercent +
                         GameMgr.Instance.playerMgr.playerEnhance.criticalPercentLevel *

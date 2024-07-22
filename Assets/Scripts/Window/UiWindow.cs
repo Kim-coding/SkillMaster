@@ -19,13 +19,14 @@ public class UiWindow : MonoBehaviour
     private Windows? previousWindow = null;
     private bool isAnimating = false;
 
+    private bool OnMergeWindow = true;
+
     private Vector2 buttonPosition;
 
     private void Start()
     {
         windows = new Dictionary<Windows, GameObject>()
         {
-            {Windows.Merge, mergeWindow },
             {Windows.Enhance, enhanceWindow},
             {Windows.Inven, invenWindow },
             {Windows.Dungeon, dungeonWindow },
@@ -36,8 +37,6 @@ public class UiWindow : MonoBehaviour
         {
             win.Value.SetActive(false);
         }
-        mergeWindow.SetActive(true);
-        currentOpenWindow = Windows.Merge;
 
         buttonPosition = toggleWindowButton.GetComponent<RectTransform>().anchoredPosition;
 
@@ -46,15 +45,15 @@ public class UiWindow : MonoBehaviour
 
     private void OnWindowButtonClick()
     {
-        if(currentOpenWindow != null)
+        if(OnMergeWindow)
         {
-            AnimateCloseCurrentWindow();
+            AnimateCloseMergeWindow();
             CameraMove.isToggle = false;
             CameraMove.CurrentCameraView();
         }
-        else if(previousWindow != null)
+        else
         {
-            AnimateOpenWindow((Windows)previousWindow);
+            AnimateOpenMergeWindow();
             CameraMove.isToggle = true;
             CameraMove.CurrentCameraView();
         }
@@ -63,7 +62,10 @@ public class UiWindow : MonoBehaviour
     public void Open(Windows window)
     {
         if(isAnimating || (currentOpenWindow == window && windows[window].activeSelf))
+        {
+            AnimateCloseWindow(windows[window]);
             return;
+        }
 
         if (currentOpenWindow != null)
         {
@@ -73,8 +75,6 @@ public class UiWindow : MonoBehaviour
             }
             windows[window].SetActive(true);
             currentOpenWindow = window;
-            CameraMove.isToggle = true;
-            CameraMove.CurrentCameraView();
         }
         else
         {
@@ -95,14 +95,10 @@ public class UiWindow : MonoBehaviour
 
     private void AnimateOpenWindow(Windows window)
     {
-        CameraMove.isToggle = true;
-        CameraMove.CurrentCameraView();
         GameObject windowObj = windows[window];
         RectTransform rectTransform = windowObj.GetComponent<RectTransform>();
-        RectTransform buttonRectTransform = toggleWindowButton.GetComponent<RectTransform>();
         windowObj.SetActive(true);
         rectTransform.anchoredPosition = new Vector2(0, -Screen.height);
-        var buttonPos = new Vector2(buttonPosition.x, buttonRectTransform.rect.height);
         isAnimating = true;
         rectTransform.DOAnchorPos(Vector2.zero, 0.3f).OnComplete(() =>
         {
@@ -110,27 +106,64 @@ public class UiWindow : MonoBehaviour
             currentOpenWindow = window;
             isAnimating = false;
         });
+    }
+
+
+    private void AnimateCloseWindow(GameObject window)
+    {
+        currentOpenWindow = null;
+        RectTransform rectTransform = window.GetComponent<RectTransform>();
+        var targetPos = new Vector2(0, -Screen.height);
+        rectTransform.DOAnchorPos(targetPos, 0.3f).OnComplete(() =>
+        {
+            window.SetActive(false);
+            isAnimating = false;
+        });
+    }
+
+
+
+    private void AnimateOpenMergeWindow()
+    {
+        OnMergeWindow = true;
+        CameraMove.isToggle = true;
+        CameraMove.CurrentCameraView();
+        RectTransform rectTransform = mergeWindow.GetComponent<RectTransform>();
+        RectTransform buttonRectTransform = toggleWindowButton.GetComponent<RectTransform>();
+        mergeWindow.SetActive(true);
+        rectTransform.anchoredPosition = new Vector2(0, -Screen.height);
+        var buttonPos = new Vector2(buttonPosition.x, buttonRectTransform.rect.height);
+        isAnimating = true;
+        rectTransform.DOAnchorPos(Vector2.zero, 0.3f).OnComplete(() =>
+        {
+            isAnimating = false;
+        });
         buttonRectTransform.DOAnchorPos(buttonPos, 0.3f);
         buttonRectTransform.DOScaleY(1, 0.3f);
     }
-    private void AnimateCloseWindow(GameObject window)
+
+
+    private void AnimateCloseMergeWindow()
     {
+        OnMergeWindow =false;
         CameraMove.isToggle = false;
         CameraMove.CurrentCameraView();
-        RectTransform rectTransform = window.GetComponent<RectTransform>();
+        RectTransform rectTransform = mergeWindow.GetComponent<RectTransform>();
         RectTransform buttonRectTransform = toggleWindowButton.GetComponent<RectTransform>();
         var targetPos = new Vector2(0, -Screen.height);
         var buttonPos = new Vector2(buttonPosition.x, -rectTransform.rect.height);
         rectTransform.DOAnchorPos(targetPos, 0.3f).OnComplete(() =>
         {
-            window.SetActive(false);
+            mergeWindow.SetActive(false);
             isAnimating = false;
         });
         buttonRectTransform.localScale = new Vector3(1, -1, 1);
         buttonRectTransform.DOAnchorPos(buttonPos, 0.15f);
     }
 
-    private void AnimateCloseCurrentWindow()
+
+
+    public void AnimateCloseCurrentWindow()
     {
         if (currentOpenWindow != null)
         {
@@ -140,10 +173,6 @@ public class UiWindow : MonoBehaviour
         }
     }
 
-    public void MergeWindowOpen()
-    {
-        Open(Windows.Merge);
-    }
     public void EnhanceWindowOpen()
     {
         Open(Windows.Enhance);
