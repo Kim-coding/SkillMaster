@@ -5,6 +5,7 @@ using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 
 public static class RectTransformExtensions
@@ -55,7 +56,8 @@ public class SkillBallController : MonoBehaviour, IPointerDownHandler, IPointerU
     public string SkillEffect;
     public string Skillicon;
 
-
+    public int attackNumber;
+    public float Projectileangle;
     private void Start()
     {
         areaRect = GetComponent<RectTransform>();
@@ -68,7 +70,7 @@ public class SkillBallController : MonoBehaviour, IPointerDownHandler, IPointerU
     {
         this.skill_ID = skill_ID;
         var skillTable = DataTableMgr.Get<SkillTable>(DataTableIds.skill);
-        //var skillDownTable = DataTableMgr.Get<SkillDownTable>(DataTableIds.skillDown);
+        var skillDownTable = DataTableMgr.Get<SkillDownTable>(DataTableIds.skillDown);
 
         var skillData = skillTable.GetID(skill_ID);
         if (skillData != null)
@@ -87,7 +89,32 @@ public class SkillBallController : MonoBehaviour, IPointerDownHandler, IPointerU
 
             tierText.text = tier.ToString();
         }
-        //attackSpeed
+        Sprite iconSprite = Resources.Load<Sprite>($"SkillIcon/{Skillicon}");
+        Debug.Log(iconSprite);
+        if (iconSprite != null)
+        {
+            Image imageComponent = gameObject.GetComponent<Image>();
+            if (imageComponent != null)
+            {
+                imageComponent.sprite = iconSprite;
+            }
+            else
+            {
+                Debug.LogError("Image component not found on the game object.");
+            }
+        }
+        else
+        {
+            Debug.LogError($"Skill icon not found in Resources/SkillIcon/{Skillicon}");
+        }
+
+
+        var skillDownData = skillDownTable.GetID(skillPropertyID);
+        if (skillDownData != null)
+        {
+            attackNumber = skillDownData.Attacknumber;
+            Projectileangle = skillDownData.Projectileangle;
+        }
     }
 
     public void OnDrag(PointerEventData eventData)

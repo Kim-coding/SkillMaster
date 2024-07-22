@@ -22,7 +22,7 @@ public class OrbitingProjectileSkill : MonoBehaviour, ISkillComponent, ISkill
         // 필요 시 초기화 작업 수행
     }
 
-    public void ApplyShape(GameObject skillObject, Vector3 launchPoint, GameObject target, float range, float width)
+    public void ApplyShape(GameObject skillObject, Vector3 launchPoint, GameObject target, float range, float width, int attackNumber, float projectileangle)
     {
         this.skillObject = Instantiate(skillObject);
         this.skillObject.transform.localScale = new Vector2(width, width);

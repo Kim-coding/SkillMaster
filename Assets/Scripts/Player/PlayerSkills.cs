@@ -16,15 +16,15 @@ public class PlayerSkills : MonoBehaviour
         playerAI = GetComponent<PlayerAI>();
     }
 
-    public void UseSkill(GameObject skill, int skillType, GameObject launchPoint, GameObject target, float range, float width, BigInteger skillDamage)
+    public void UseSkill(GameObject skill, int skillType, GameObject launchPoint, GameObject target, float range, float width, BigInteger skillDamage, int attackNumber, float projectileangle)
     {
         fireMagic.SetDamage(skillDamage);
         var attack = fireMagic.CreateAttack(playerAI.characterStat);
-        CreateSkill(skill, skillType, launchPoint, target, range, width, attack);
+        CreateSkill(skill, skillType, launchPoint, target, range, width, attack, attackNumber, projectileangle);
 
 
     }
-    public GameObject CreateSkill(GameObject skillPrefab, int type, GameObject launchPoint, GameObject target, float range, float width, Attack attack)
+    public GameObject CreateSkill(GameObject skillPrefab, int type, GameObject launchPoint, GameObject target, float range, float width, Attack attack, int attackNumber, float projectileangle)
     {
         GameObject skillObject = Instantiate(skillPrefab);
         ISkillComponent skillComponent = null;
@@ -67,15 +67,15 @@ public class PlayerSkills : MonoBehaviour
         }
         if (skillComponent != null)
         {
-            InitializeSkill(skillComponent, skillObject, launchPoint, target, range, width, attack);
+            InitializeSkill(skillComponent, skillObject, launchPoint, target, range, width, attack,  attackNumber, projectileangle);
         }
 
         return skillObject;
     }
 
-    private void InitializeSkill(ISkillComponent skillComponent, GameObject skillObject, GameObject launchPoint, GameObject target, float range, float width, Attack attack)
+    private void InitializeSkill(ISkillComponent skillComponent, GameObject skillObject, GameObject launchPoint, GameObject target, float range, float width, Attack attack, int attackNumber, float projectileangle)
     {
-        skillComponent.ApplyShape(skillObject, launchPoint.transform.position, target, range, width);
+        skillComponent.ApplyShape(skillObject, launchPoint.transform.position, target, range, width, attackNumber, projectileangle);
         skillComponent.ApplyDamageType(launchPoint, attack, DamageType.OneShot, SkillShapeType.Linear);
     }
     public void SetList()

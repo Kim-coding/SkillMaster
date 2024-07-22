@@ -47,7 +47,7 @@ public class ChainAttackSkill : MonoBehaviour, ISkillComponent, ISkill, ISpecial
         ClearLineRenderers();
     }
 
-    public void ApplyShape(GameObject skillObject, Vector3 launchPoint, GameObject target, float range, float width)
+    public void ApplyShape(GameObject skillObject, Vector3 launchPoint, GameObject target, float range, float width, int attackNumber, float projectileangle)
     {
         currentTarget = target;
         this.skillObject = skillObject;
