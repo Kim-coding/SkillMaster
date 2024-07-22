@@ -82,8 +82,8 @@ public class SkillBallController : MonoBehaviour, IPointerDownHandler, IPointerU
             skillArange = skillData.SkillArange;
             atkArangeX = skillData.AtkArangeX;
             atkArangeY = skillData.AtkArangeY;
-            SkillEffect = skillData.SkillEffect;
-            Skillicon = skillData.Skillicon;
+            //SkillEffect = skillData.SkillEffect;
+            //Skillicon = skillData.Skillicon;
 
             tierText.text = tier.ToString();
         }
