@@ -6,6 +6,11 @@ using UnityEngine;
 
 public class FireMagic : AttackDefinition
 {
+    private BigInteger skillDamage = new BigInteger();
+    public void SetDamage(BigInteger skillDamage)
+    {
+        this.skillDamage = new BigInteger(skillDamage);
+    }
 
     public Attack CreateAttack(Status stat)
     {
@@ -15,6 +20,7 @@ public class FireMagic : AttackDefinition
             return new Attack(new BigInteger(0), false);
         }
         BigInteger damage = new BigInteger(PState.attackPower);
+        damage += skillDamage;
         // 최소데미지 ~ 최대데미지 판정
 
         float damageRange = Random.Range(0.7f, 1.2f);
