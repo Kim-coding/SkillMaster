@@ -546,7 +546,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enhanceName: {fileID: 8767567838197042457}
-  nextLevelText: {fileID: 8480090896158379606}
+  levelText: {fileID: 8480090896158379606}
   nextPercentText: {fileID: 382962921688169663}
   nextCostText: {fileID: 6714269200534554401}
 --- !u!1 &6217047172256683219

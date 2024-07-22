@@ -58,6 +58,18 @@ public class DebugMode : MonoBehaviour
             GameMgr.Instance.playerMgr.currency.AddGold(new BigInteger(1000000000));
         }
 
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+           var player = GameMgr.Instance.playerMgr.characters[0].GetComponent<CharacterStat>();
+
+            Debug.Log("ATT : " + player.attackPower.ToString());
+            Debug.Log("DEF : " + player.Defence.ToString());
+            Debug.Log("MHE : " + player.maxHealth.ToString());
+            Debug.Log("REC : " + player.playerHealthRecovery.ToString());
+            Debug.Log("CRP : " + player.playerCriticalPercent.ToString());
+            Debug.Log("CRM : " + player.playerCriticalMultiple.ToString());
+        }
+
         GameMgr.Instance.playerMgr.playerStat.DebugStatSetting(speedValue, attackSpeedValue, attackRangeValue, recoveryDurationValue);
     }
 }

@@ -6,4 +6,6 @@ public interface IDamageable
 {
     public BigInteger Health { get; set; }
     public bool Ondeath { get; set; }
+
+    public int Defence { get; set; }
 }

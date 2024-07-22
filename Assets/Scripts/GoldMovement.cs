@@ -3,7 +3,7 @@ using DG.Tweening;
 
 public class GoldMovement : MonoBehaviour
 {
-    private BigInteger gold = new BigInteger();
+    private BigInteger gold;
     private RectTransform uiTarget;
     private RectTransform rectTransform;
     private float moveDuration;
@@ -13,8 +13,9 @@ public class GoldMovement : MonoBehaviour
         rectTransform = GetComponent<RectTransform>();
     }
 
-    public void Initialize(RectTransform target, float duration)
+    public void Initialize(RectTransform target, float duration, string value)
     {
+        gold = new BigInteger(value);
         uiTarget = target;
         moveDuration = duration;
 
@@ -29,8 +30,6 @@ public class GoldMovement : MonoBehaviour
 
         rectTransform.DOAnchorPos(targetPosition, moveDuration).SetEase(Ease.InOutQuad).OnComplete(() =>
         {
-            string g = "100";
-            gold.Init(g);
             GameMgr.Instance.playerMgr.currency.AddGold(gold);
             Destroy(gameObject);
         });

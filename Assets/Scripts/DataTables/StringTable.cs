@@ -17,20 +17,13 @@ public class StringData
 
 public class StringTable : DataTable
 {
-    private Dictionary<int, StringData> stringTable = new Dictionary<int, StringData>();
+    private Dictionary<int, string> stringTable = new Dictionary<int, string>();
 
-    public List<StringData> stringDatas
+    public string GetID(int id)
     {
-        get
-        {
-            return stringTable.Values.ToList();
-        }
-    }
-
-    public StringData GetID(int id)
-    {
-        stringTable.TryGetValue(id, out var data);
-        return data;
+        if (!stringTable.ContainsKey(id))
+            return "Null ID";
+        return stringTable[id];
     }
     public override void Load(string path)
     {
@@ -43,7 +36,7 @@ public class StringTable : DataTable
             var records = csvReader.GetRecords<StringData>();
             foreach (var record in records)
             {
-                stringTable.Add(record.StringID, record);
+                stringTable.Add(record.StringID, record.Text);
             }
         }
     }

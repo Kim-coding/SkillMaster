@@ -9,7 +9,10 @@ public class DamageTake : MonoBehaviour, IAttackable
     public void OnAttack(GameObject attacker, GameObject defender, Attack attack)
     {
         var characterHealth =  gameObject.GetComponent<IDamageable>();
-        characterHealth.Health -= attack.Damage; // 데미지 감소 곱해서 빼야함
+        var defenceValue = 1 / ( 1 + characterHealth.Defence * 0.005f);
+        attack.Damage *= defenceValue;
+        characterHealth.Health -= attack.Damage;
+        gameObject.GetComponent<DamageDisplay>().DisplayText(attack);
         //Debug.Log(monster.health.ToString());
         if (characterHealth.Health.factor == 1 && characterHealth.Health.numberList[0] <= 0 && !characterHealth.Ondeath)
         {

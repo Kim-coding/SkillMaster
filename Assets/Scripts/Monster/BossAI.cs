@@ -5,6 +5,7 @@ using UnityEngine.Playables;
 
 public class BossAI : MonoBehaviour, IAnimation
 {
+    private int bossID;
     private GameObject[] players;
     public GameObject target;
 

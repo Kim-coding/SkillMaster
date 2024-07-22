@@ -66,11 +66,27 @@ public class PlayerStat
     {
         playerAttackPower = (basePlayerAttackPower + 
             (GameMgr.Instance.playerMgr.playerEnhance.attackPowerLevel * 1/*TO-DO 테이블에서 증가량으로 받아와 대체*/)).ToString();
-        playerMaxHealth = basePlayerMaxHealth.ToString(); // @@@@
-        defence = basePlayerDefence; // @@@@@
-        playerHealthRecovery = basePlayerHealthRecovery.ToString(); // @@@@@
-        playerCriticalPercent = basePlayerCriticalPercent; // + @@
-        playerCriticalMultiple = basePlayerCriticalMultiple; //+ @@
+        
+        playerMaxHealth = (new BigInteger(basePlayerMaxHealth) +
+            (new BigInteger(GameMgr.Instance.playerMgr.playerEnhance.maxHealthValue) *
+            GameMgr.Instance.playerMgr.playerEnhance.maxHealthLevel)).ToString();
+
+        defence = basePlayerDefence +
+            GameMgr.Instance.playerMgr.playerEnhance.defenceLevel *
+            GameMgr.Instance.playerMgr.playerEnhance.defenceValue;
+
+        playerHealthRecovery = new BigInteger(basePlayerHealthRecovery) +
+                            (new BigInteger(GameMgr.Instance.playerMgr.playerEnhance.recoveryValue) *
+                            GameMgr.Instance.playerMgr.playerEnhance.recoveryLevel).ToString();
+
+        playerCriticalPercent = basePlayerCriticalPercent +
+                        GameMgr.Instance.playerMgr.playerEnhance.criticalPercentLevel *
+                        GameMgr.Instance.playerMgr.playerEnhance.criticalPercentValue;
+
+        playerCriticalMultiple = basePlayerCriticalMultiple +
+                        GameMgr.Instance.playerMgr.playerEnhance.criticalMultipleLevel * 
+                        GameMgr.Instance.playerMgr.playerEnhance.criticalMultipleValue;
+
 
         speed = basePlayerSpeed; // @@
         attackSpeed = basePlayerAttackSpeed; // @@

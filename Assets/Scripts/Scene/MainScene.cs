@@ -13,7 +13,14 @@ public class MainScene : MonoBehaviour
     private bool bossStage = false;
     private MonsterPool monsterPool;
 
-    public int stageCount = 1;
+    public int stageCount;
+    public int stageId;
+
+    public void Init()
+    {
+        stageId = 30001; //TO-DO 저장된곳에서 가져오기
+        stageCount = DataTableMgr.Get<StageTable>(DataTableIds.stage).GetID(stageId).StageLv;
+    }
 
     private void Start()
     {
@@ -38,7 +45,19 @@ public class MainScene : MonoBehaviour
     public void AddStage()
     {
         EventMgr.TriggerEvent(QuestType.Stage);
-        stageCount++;
+        stageId++;
+        stageCount = DataTableMgr.Get<StageTable>(DataTableIds.stage).GetID(stageId).StageLv;
+        var monsters = monster.GetMonsters();
+        foreach (GameObject monsterai in monsters) 
+        {
+            if (monsterai.GetComponent<MonsterAI>() == null)
+            {
+                continue;
+            }
+            monsterai.GetComponent<MonsterAI>().monsterStat.SetID(DataTableMgr.Get<StageTable>(DataTableIds.stage).GetID
+           (GameMgr.Instance.sceneMgr.mainScene.stageId).appearMonster);
+            monsterai.GetComponent<MonsterAI>().monsterStat.Init();
+        }
         GameMgr.Instance.uiMgr.StageUpdate(stageCount);
     }
 

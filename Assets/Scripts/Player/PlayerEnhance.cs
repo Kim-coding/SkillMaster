@@ -35,7 +35,7 @@ public class PlayerEnhance
     public BigInteger recoveryCost;
 
     public int goldLevel;
-    public int goldValue;
+    public float goldValue;
     public BigInteger goldCost;
 
     public void Init()
@@ -49,32 +49,38 @@ public class PlayerEnhance
 
         attackPowerLevel = 0;
         attackPowerValue = 1; //TO-DO 테이블에서
-        attackPowerCost = new BigInteger(100 + 100 * attackPowerLevel); //TO-DO 식 넣어두어야함
+        attackPowerCost = new BigInteger(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10001).Gold)
+            + new BigInteger(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10003).GoldRange) * attackPowerLevel;
 
         maxHealthLevel = 0;
-        maxHealthValue = 1; //TO-DO 테이블에서
-        maxHealthCost = new BigInteger(100 + 100 * maxHealthLevel); //TO-DO 식 넣어두어야함
+        maxHealthValue = (int)DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10003).Increase;
+        maxHealthCost = new BigInteger(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10003).Gold)
+            + new BigInteger(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10003).GoldRange) * maxHealthLevel;
 
         defenceLevel = 0;
-        defenceValue = 1; //TO-DO 테이블에서
-        defenceCost = new BigInteger(100 + 100 * defenceLevel); //TO-DO 식 넣어두어야함
+        defenceValue = (int)DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10002).Increase;
+        defenceCost = new BigInteger(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10002).Gold)
+            + new BigInteger(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10002).GoldRange) * defenceLevel;
 
         criticalPercentLevel = 0;
-        criticalPercentValue = 1; //TO-DO 테이블에서
-        criticalPercentCost = new BigInteger(100 + 100 * criticalPercentLevel); //TO-DO 식 넣어두어야함
+        criticalPercentValue = DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10004).Increase;
+        criticalPercentCost = new BigInteger(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10004).Gold)
+            + new BigInteger(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10004).GoldRange) * criticalPercentLevel;
 
         criticalMultipleLevel = 0;
-        criticalMultipleValue = 1; //TO-DO 테이블에서
-        criticalMultipleCost = new BigInteger(100 + 100 * criticalMultipleLevel); //TO-DO 식 넣어두어야함
+        criticalMultipleValue = DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10005).Increase;
+        criticalMultipleCost = new BigInteger(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10005).Gold)
+            + new BigInteger(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10005).GoldRange) * criticalMultipleLevel;
 
         recoveryLevel = 0;
-        recoveryValue = 1; //TO-DO 테이블에서
-        recoveryCost = new BigInteger(100 + 100 * recoveryLevel); //TO-DO 식 넣어두어야함
+        recoveryValue = (int)DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10007).Increase;
+        recoveryCost = new BigInteger(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10007).Gold)
+           + new BigInteger(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10007).GoldRange) * recoveryLevel;
 
         goldLevel = 0;
-        goldValue = 1; //TO-DO 테이블에서
-        goldCost = new BigInteger(100 + 100 * goldLevel); //TO-DO 식 넣어두어야함
-
+        goldValue = DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10006).Increase;
+        goldCost = new BigInteger(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10006).Gold)
+           + new BigInteger(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10006).GoldRange) * goldLevel;
 
         GameMgr.Instance.uiMgr.uiEnhance.Init();
         GameMgr.Instance.uiMgr.uiEnhance.AttackTextUpdate();
@@ -97,8 +103,9 @@ public class PlayerEnhance
         GameMgr.Instance.playerMgr.currency.RemoveGold(attackPowerCost);
 
         attackPowerLevel++;
-        attackPowerCost = new BigInteger(100 + 100 * attackPowerLevel); //TO-DO cost 식
-       // GameMgr.Instance.uiMgr.uiEnhance.TextUpdate(EnhanceType.AttackPower);
+        attackPowerCost = new BigInteger(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10001).Gold)
+            + new BigInteger(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10003).GoldRange) * attackPowerLevel;
+        // GameMgr.Instance.uiMgr.uiEnhance.TextUpdate(EnhanceType.AttackPower);
         GameMgr.Instance.playerMgr.playerStat.playerStatUpdate();
         EventMgr.TriggerEvent(QuestType.AttackEnhance);
 
@@ -113,7 +120,8 @@ public class PlayerEnhance
         GameMgr.Instance.playerMgr.currency.RemoveGold(defenceCost);
 
         defenceLevel++;
-        defenceCost = new BigInteger(100 + 100 * defenceLevel); //TO-DO cost 식
+        defenceCost = new BigInteger(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10002).Gold)
+           + new BigInteger(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10002).GoldRange) * defenceLevel;
         GameMgr.Instance.playerMgr.playerStat.playerStatUpdate();
         EventMgr.TriggerEvent(QuestType.DefenceEnhance);
     }
@@ -127,7 +135,8 @@ public class PlayerEnhance
         GameMgr.Instance.playerMgr.currency.RemoveGold(maxHealthCost);
 
         maxHealthLevel++;
-        maxHealthCost = new BigInteger(100 + 100 * maxHealthLevel); //TO-DO cost 식
+        maxHealthCost = new BigInteger(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10003).Gold)
+          + new BigInteger(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10003).GoldRange) * maxHealthLevel;
         GameMgr.Instance.playerMgr.playerStat.playerStatUpdate();
         EventMgr.TriggerEvent(QuestType.MaxHealthEnhance);
     }
@@ -141,7 +150,8 @@ public class PlayerEnhance
         GameMgr.Instance.playerMgr.currency.RemoveGold(recoveryCost);
 
         recoveryLevel++;
-        recoveryCost = new BigInteger(100 + 100 * recoveryLevel); //TO-DO cost 식
+        recoveryCost = new BigInteger(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10007).Gold)
+         + new BigInteger(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10007).GoldRange) * recoveryLevel;
         GameMgr.Instance.playerMgr.playerStat.playerStatUpdate();
         EventMgr.TriggerEvent(QuestType.RecoveryEnhance);
     }
@@ -155,7 +165,8 @@ public class PlayerEnhance
         GameMgr.Instance.playerMgr.currency.RemoveGold(criticalPercentCost);
 
         criticalPercentLevel++;
-        criticalPercentCost = new BigInteger(100 + 100 * criticalPercentLevel); //TO-DO cost 식
+        criticalPercentCost = new BigInteger(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10004).Gold)
+          + new BigInteger(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10004).GoldRange) * criticalPercentLevel;
         GameMgr.Instance.playerMgr.playerStat.playerStatUpdate();
         EventMgr.TriggerEvent(QuestType.CriticalPercentEnhance);
     }
@@ -169,7 +180,8 @@ public class PlayerEnhance
         GameMgr.Instance.playerMgr.currency.RemoveGold(criticalMultipleCost);
 
         criticalMultipleLevel++;
-        criticalMultipleCost = new BigInteger(100 + 100 * criticalMultipleLevel); //TO-DO cost 식
+        criticalMultipleCost = new BigInteger(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10005).Gold)
+           + new BigInteger(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10005).GoldRange) * criticalMultipleLevel;
         GameMgr.Instance.playerMgr.playerStat.playerStatUpdate();
         EventMgr.TriggerEvent(QuestType.CriticalMultipleEnhance);
 
@@ -183,7 +195,8 @@ public class PlayerEnhance
         GameMgr.Instance.playerMgr.currency.RemoveGold(goldCost);
 
         goldLevel++;
-        goldCost = new BigInteger(100 + 100 * goldLevel); //TO-DO cost 식
+        goldCost = new BigInteger(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10006).Gold)
+         + new BigInteger(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10006).GoldRange) * goldLevel;
         EventMgr.TriggerEvent(QuestType.GoldEnhance);
 
     }

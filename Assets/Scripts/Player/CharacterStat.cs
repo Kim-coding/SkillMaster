@@ -8,8 +8,7 @@ public class CharacterStat : Status, IDamageable
 
     private float recoveryTimer = 0f;
 
-    [HideInInspector]
-    public int defence;
+
 
     [HideInInspector]
     public string playerHealthRecovery;
@@ -25,11 +24,8 @@ public class CharacterStat : Status, IDamageable
 
     public BigInteger Health { get; set; }
     public bool Ondeath { get; set; }
+    public int Defence { get; set; }
 
-
-
-    //스피드, 공격범위, 공격속도, 회복쿨타임은 스크립터블 오브젝트로 컨트롤 
-    //base stat 6종 (공 방 체 체회 치확 치피) 포함
 
     private void Awake()
     {
@@ -93,7 +89,7 @@ public class CharacterStat : Status, IDamageable
     {
         maxHealth = new BigInteger(currentPlayerStat.playerMaxHealth);
         attackPower = new BigInteger(currentPlayerStat.playerAttackPower);
-        defence = currentPlayerStat.defence;
+        Defence = currentPlayerStat.defence;
         playerHealthRecovery = currentPlayerStat.playerHealthRecovery;
         playerCriticalPercent = currentPlayerStat.playerCriticalPercent;
         playerCriticalMultiple = currentPlayerStat.playerCriticalMultiple;

@@ -7722,7 +7722,6 @@ MonoBehaviour:
   speed: 0
   attackSpeed: 0
   attackRange: 0
-  defence: 0
   playerHealthRecovery: 
   playerCriticalPercent: 0
   playerCriticalMultiple: 0
@@ -10837,6 +10836,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1880426546}
     m_Modifications:
+    - target: {fileID: 2680406241733825328, guid: bd0b10f85c768234f81a78ecec3afada, type: 3}
+      propertyPath: m_Type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2680406241733825328, guid: bd0b10f85c768234f81a78ecec3afada, type: 3}
+      propertyPath: m_FillAmount
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3853706561374643439, guid: bd0b10f85c768234f81a78ecec3afada, type: 3}
       propertyPath: m_Controller
       value: 

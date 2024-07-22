@@ -1,4 +1,5 @@
 using CsvHelper;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
@@ -16,6 +17,13 @@ public class QuestData
     public int Next_Quest { get; set; } // 다음 퀘스트 아이디
     public int StringId { get; set; } // 설명
     public int Level { get; set; } //레벨
+    public string GetStringID
+    {
+        get
+        {
+            return DataTableMgr.Get<StringTable>(DataTableIds.String).GetID(StringId);
+        }
+    }
 
 }
 
