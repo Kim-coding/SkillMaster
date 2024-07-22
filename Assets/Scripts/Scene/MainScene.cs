@@ -18,7 +18,7 @@ public class MainScene : MonoBehaviour
 
     public void Init()
     {
-        stageId = 30001; //TO-DO 저장된곳에서 가져오기
+        stageId = 50001; //TO-DO 저장된곳에서 가져오기
         stageCount = DataTableMgr.Get<StageTable>(DataTableIds.stage).GetID(stageId).StageLv;
     }
 

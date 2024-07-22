@@ -7706,7 +7706,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skills:
   - {fileID: 7542266623136808606, guid: a5be68472b022c94d8ec3c1381b8c314, type: 3}
-  skillTypeList: 03000000
+  skillTypeList: 000000000100000002000000030000000400000005000000060000000700000008000000090000000a000000
 --- !u!114 &1327260321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8517,6 +8517,7 @@ MonoBehaviour:
   monsterPrefabs:
   - {fileID: 4316966190918739768, guid: 2ce039dac8e6be74e9ad8f16b8cb87c9, type: 3}
   poolParent: {fileID: 1880426546}
+  monsters: []
 --- !u!114 &1423913455
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8534,6 +8535,7 @@ MonoBehaviour:
   BossMonsterPrefab: {fileID: 1605052194642255169, guid: 9a445daf56e69d34bb641bce0692cb3e, type: 3}
   bossSpawnPoint: {fileID: 421622222}
   stageCount: 1
+  stageId: 0
 --- !u!114 &1423913456
 MonoBehaviour:
   m_ObjectHideFlags: 0
