@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class BaseSkill : MonoBehaviour, ISkill, ISkillComponent
+public abstract class BaseSkill : MonoBehaviour, ISkill
 {
     public GameObject skillObject;
     public GameObject attacker;

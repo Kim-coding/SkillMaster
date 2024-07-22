@@ -54,7 +54,7 @@ public class GrowingShockwaveSkill : MonoBehaviour, ISkillComponent, ISkill  //Ã
     }
 
     public void ApplyDamageType(GameObject attacker, Attack attack, DamageType damageType, SkillShapeType shapeType)
-    {
+    {   
         this.attacker = attacker;
         this.attack = attack;
         this.damageType = damageType;

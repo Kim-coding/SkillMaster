@@ -16,8 +16,9 @@ public class PlayerSkills : MonoBehaviour
         playerAI = GetComponent<PlayerAI>();
     }
 
-    public void UseSkill(GameObject skill, int skillType, GameObject launchPoint, GameObject target, float range, float width)
+    public void UseSkill(GameObject skill, int skillType, GameObject launchPoint, GameObject target, float range, float width, BigInteger skillDamage)
     {
+        fireMagic.SetDamage(skillDamage);
         var attack = fireMagic.CreateAttack(playerAI.characterStat);
         CreateSkill(skill, skillType, launchPoint, target, range, width, attack);
 
