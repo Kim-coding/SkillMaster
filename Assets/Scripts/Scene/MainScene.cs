@@ -75,6 +75,10 @@ public class MainScene : MonoBehaviour
                     RemoveMonsters(monsterAI.gameObject);
                 }
             }
+            else
+            {
+                RemoveMonsters(monster.gameObject);
+            }
         }
     }
 
