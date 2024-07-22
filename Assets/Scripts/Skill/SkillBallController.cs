@@ -34,8 +34,7 @@ public class SkillBallController : MonoBehaviour, IPointerDownHandler, IPointerU
     public GameObject mergeWindow;
 
     private int tier;
-    private BigInteger attackPower;
-    private float attackSpeed;
+    
     private float effectX;
     private float effectY;
     public TextMeshProUGUI tierText;
@@ -44,6 +43,20 @@ public class SkillBallController : MonoBehaviour, IPointerDownHandler, IPointerU
     private RectTransform areaRect;   
     private bool isButtonPressed;
 
+    public int skill_ID;
+    public float attackSpeed;
+    private BigInteger attackPower;
+    public int skillType;
+    public float damageColdown;
+    public float skillArange;
+    public float atkArangeX;
+    public float atkArangeY;
+
+    public int skillPropertyID;
+    public string SkillEffect;
+    public string Skillicon;
+
+
     private void Start()
     {
         areaRect = GetComponent<RectTransform>();
@@ -51,11 +64,29 @@ public class SkillBallController : MonoBehaviour, IPointerDownHandler, IPointerU
         mergeWindow = skillSpawner.mergeWindow;
     }
 
-    public void Set(int t)
+    public void Set(int skill_ID)
     {
-        tier = t;
-        tierText.text = t.ToString();
-        //attackPower
+        this.skill_ID = skill_ID;
+        var skillTable = DataTableMgr.Get<SkillTable>(DataTableIds.skill);
+        //var skillDownTable = DataTableMgr.Get<SkillDownTable>(DataTableIds.skillDown);
+
+        var skillData = skillTable.GetID(skill_ID);
+        if (skillData != null)
+        {
+            tier = skillData.SkillLv;
+            skillPropertyID = skillData.SkillPropertyID;
+            attackSpeed = skillData.AttackSpeed;
+            skillType = skillData.Type;
+            //attackPower = skillData.attackPower;
+            damageColdown = skillData.DamageColdown;
+            skillArange = skillData.SkillArange;
+            atkArangeX = skillData.AtkArangeX;
+            atkArangeY = skillData.AtkArangeY;
+            SkillEffect = skillData.SkillEffect;
+            Skillicon = skillData.Skillicon;
+
+            tierText.text = tier.ToString();
+        }
         //attackSpeed
     }
 
@@ -101,7 +132,8 @@ public class SkillBallController : MonoBehaviour, IPointerDownHandler, IPointerU
             { continue; }
             if (gameObject.GetComponent<RectTransform>().Overlaps(other.GetComponent<RectTransform>()))
             {
-                skillSpawner.MergeSkill(tier + 1, (gameObject.transform.position + other.gameObject.transform.position)/2);
+                Vector3 mergePosition = (gameObject.transform.position + other.gameObject.transform.position) / 2;
+                skillSpawner.MergeSkill(skill_ID + 1, mergePosition, tier + 1);
                 //합쳐지는 이펙트
                 GameMgr.Instance.playerMgr.skillBallControllers.Remove(gameObject.GetComponent<SkillBallController>());
                 GameMgr.Instance.playerMgr.skillBallControllers.Remove(other.gameObject.GetComponent<SkillBallController>());

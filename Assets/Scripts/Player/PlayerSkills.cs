@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerSkills : MonoBehaviour
 {
     public List<GameObject> skills;  // 프리팹 (이펙트)
-    public List<SkillType> skillTypeList;   // 내가 가지고 있는 스킬 종류 
+    public List<SkillBallController> castingList;
     public FireMagic fireMagic;
     private PlayerAI playerAI;
 
@@ -16,55 +16,55 @@ public class PlayerSkills : MonoBehaviour
         playerAI = GetComponent<PlayerAI>();
     }
 
-    public void UseSkill(GameObject skill, SkillType skillType, GameObject launchPoint, GameObject target, float range, float width)
+    public void UseSkill(GameObject skill, int skillType, GameObject launchPoint, GameObject target, float range, float width)
     {
         var attack = fireMagic.CreateAttack(playerAI.characterStat);
         CreateSkill(skill, skillType, launchPoint, target, range, width, attack);
 
 
     }
-    public GameObject CreateSkill(GameObject skillPrefab, SkillType type, GameObject launchPoint, GameObject target, float range, float width, Attack attack)
+    public GameObject CreateSkill(GameObject skillPrefab, int type, GameObject launchPoint, GameObject target, float range, float width, Attack attack)
     {
         GameObject skillObject = Instantiate(skillPrefab);
         ISkillComponent skillComponent = null;
         switch (type)
         {
-            case SkillType.LinearRangeAttack:
+            case 1:
                 skillComponent = skillObject.AddComponent<LinearRangeAttackSkill>();
                 break;
-            case SkillType.ScelectAreaLinear:
-                skillComponent = skillObject.AddComponent<ScelectAreaLinearAttack>();
-                break;
-            case SkillType.AreaSingleHit:
-                skillComponent = skillObject.AddComponent<AreaSingleHitSkill>();
-                break;
-            case SkillType.DonutDot:
-                skillComponent = skillObject.AddComponent<DonutDotSkill>();
-                break;
-            case SkillType.GrowingShockwave:
-                skillComponent = skillObject.AddComponent<GrowingShockwaveSkill>();
-                break;
-            case SkillType.LinearProjectile:
+            case 2:
                 skillComponent = skillObject.AddComponent<LinearProjectileSkill>();
                 break;
-            case SkillType.ChainAttack:
-                skillComponent = skillObject.AddComponent<ChainAttackSkill>();
-                break;
-            case SkillType.LeapAttack:
+            case 3:
                 skillComponent = skillObject.AddComponent<LeapAttackSkill>();
                 break;
-            case SkillType.AreaDot:
-                skillComponent = skillObject.AddComponent<AreaDotSkill>();
+            case 4:
+                skillComponent = skillObject.AddComponent<OrbitingProjectileSkill>();
                 break;
-            case SkillType.ScelectAreaProjectile:
+            case 5:
+                skillComponent = skillObject.AddComponent<ScelectAreaLinearAttack>();
+                break;
+            case 6:
                 skillComponent = skillObject.AddComponent<ScelectAreaProjectileSkill>();
                 break;
-            case SkillType.OrbitingProjectile:
-                skillComponent = skillObject.AddComponent<OrbitingProjectileSkill>();
+            case 7:
+                skillComponent = skillObject.AddComponent<GrowingShockwaveSkill>();
+                break;
+            case 8:
+                skillComponent = skillObject.AddComponent<DonutDotSkill>();
+                break;
+            case 9:
+                skillComponent = skillObject.AddComponent<ChainAttackSkill>();
+                break;
+            case 10:
+                skillComponent = skillObject.AddComponent<AreaSingleHitSkill>();
+                break;
+            case 11:
+                skillComponent = skillObject.AddComponent<AreaDotSkill>();
                 break;
                 // 기타 스킬 타입 생성
         }
-        if(skillComponent != null)
+        if (skillComponent != null)
         {
             InitializeSkill(skillComponent, skillObject, launchPoint, target, range, width, attack);
         }
@@ -76,5 +76,9 @@ public class PlayerSkills : MonoBehaviour
     {
         skillComponent.ApplyShape(skillObject, launchPoint.transform.position, target, range, width);
         skillComponent.ApplyDamageType(launchPoint, attack, DamageType.OneShot, SkillShapeType.Linear);
+    }
+    public void SetList()
+    {
+        castingList = castingList = new List<SkillBallController>(GameMgr.Instance.playerMgr.skillBallControllers);
     }
 }
