@@ -2379,7 +2379,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mergeWindow: {fileID: 2091457409}
-  prefabSkillBall: {fileID: 7688646632312489079, guid: d07c0761f8c513e4298c252eee1fe7f9, type: 3}
+  prefabSkillBall: {fileID: 62847692040112244, guid: a0691e0a2f9fa364f8ece2a5dfc46ae8, type: 3}
   maxReserveSkillCount: 0
   maxSpawnSkillCount: 0
   currentSpawnSkillCount: 0

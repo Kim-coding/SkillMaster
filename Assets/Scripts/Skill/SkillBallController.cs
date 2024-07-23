@@ -58,6 +58,9 @@ public class SkillBallController : MonoBehaviour, IPointerDownHandler, IPointerU
 
     public int attackNumber;
     public float Projectileangle;
+
+    public Image skillIconImage;
+
     private void Start()
     {
         areaRect = GetComponent<RectTransform>();
@@ -93,15 +96,7 @@ public class SkillBallController : MonoBehaviour, IPointerDownHandler, IPointerU
         Debug.Log(iconSprite);
         if (iconSprite != null)
         {
-            Image imageComponent = gameObject.GetComponent<Image>();
-            if (imageComponent != null)
-            {
-                imageComponent.sprite = iconSprite;
-            }
-            else
-            {
-                Debug.LogError("Image component not found on the game object.");
-            }
+            skillIconImage.sprite = iconSprite;
         }
         else
         {
