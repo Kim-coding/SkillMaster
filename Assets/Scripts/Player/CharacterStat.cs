@@ -7,7 +7,7 @@ public class CharacterStat : Status, IDamageable
     PlayerStat currentPlayerStat;
 
     private float recoveryTimer = 0f;
-
+    public float cooldown;
 
 
     [HideInInspector]
@@ -59,29 +59,44 @@ public class CharacterStat : Status, IDamageable
 
             GameMgr.Instance.sceneMgr.damageTextMgr.ShowDamageText(displayPos, text, color, fontSize);
 
-            if (Health > maxHealth)
-            {
-                Health = new BigInteger(maxHealth);
-            }
-
-            var player = gameObject.GetComponent<PlayerAI>();
-            if (maxHealth.factor > recoveryValue.factor)
-            {
-                return;
-            }
-            else if (maxHealth.factor < recoveryValue.factor)
-            {
-                player.UpdateHpBar(1f);
-            }
-            else
-            {
-                float percent =
-                (float)Health.numberList[Health.factor - 1]
-                / maxHealth.numberList[maxHealth.factor - 1];
-                player.UpdateHpBar(percent);
-            }
+            UpdateHpBar();
 
         }
+    }
+
+
+    public void UpdateHpBar()
+    {
+        if (Health > maxHealth)
+        {
+            Health = new BigInteger(maxHealth);
+        }
+        var player = gameObject.GetComponent<PlayerAI>();
+
+        float percent = 0f;
+
+        if (maxHealth.factor - 1 > Health.factor)
+        {
+            percent = 0.1f;
+        }
+        else if(maxHealth.factor > Health.factor)
+        {
+            float max = maxHealth.numberList[maxHealth.factor - 1] * 1000 + maxHealth.numberList[maxHealth.factor - 2];
+            float health = Health.numberList[Health.factor - 1];
+            percent = health / max;
+        }
+        else if (maxHealth.factor < Health.factor)
+        {
+            percent = 1f;
+        }
+        else
+        {
+            percent =
+            (float)Health.numberList[Health.factor - 1]
+            / maxHealth.numberList[maxHealth.factor - 1];
+        }
+
+        player.UpdateHpBar(percent);
     }
 
 
@@ -95,9 +110,9 @@ public class CharacterStat : Status, IDamageable
         playerCriticalMultiple = currentPlayerStat.playerCriticalMultiple;
 
         speed = currentPlayerStat.speed;
-        attackSpeed = currentPlayerStat.attackSpeed;
+        cooldown = currentPlayerStat.cooldown;
         attackRange = currentPlayerStat.attackRange;
-
+        attackSpeed = currentPlayerStat.attackSpeed;
         playerRecoveryDuration = currentPlayerStat.recoveryDuration;
     }
 }

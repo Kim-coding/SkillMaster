@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 
 public class BattleState : IState
@@ -18,7 +19,7 @@ public class BattleState : IState
     public void Update()
     {
         attackTimer += Time.deltaTime;
-        if(attackTimer > player.characterStat.attackSpeed)
+        if(attackTimer > player.characterStat.cooldown)
         {
             Attack();
             attackTimer = 0f;
@@ -36,10 +37,28 @@ public class BattleState : IState
 
     private void Attack()
     {
-        if(player.playerSkills.skills.Count > 0)
+        player.playerSkills.SetList();
+        int skillType = player.playerSkills.castingList[0].skillType;
+        int[] attackMagicSkillTypes = { 1, 2, 5, 7, 9 };
+        int[] skillMagicSkillTypes = { 3, 4, 6, 11};
+        int[] attackNormalSkillTypes = { 8 , 10};
+
+        if (attackNormalSkillTypes.Contains(skillType))
         {
-            player.OnAttack(player.playerSkills.skills[0]);
-            player.Animator.SetTrigger("Attack");
+            player.Animator.SetTrigger("Attack_Normal");
         }
+        else if (attackMagicSkillTypes.Contains(skillType))
+        {
+            player.Animator.SetTrigger("Attack_Magic");
+        }
+        else
+        {
+            player.Animator.SetTrigger("Skill_Magic");
+        }
+    }
+
+    public void OnAttackAnimationComplete()
+    {
+        player.OnAttack(player.playerSkills.skills[0]);
     }
 }

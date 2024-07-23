@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2358c4c382edc44cb285e42b0405a36, type: 3}
   m_Name: PlayerBaseStat
   m_EditorClassIdentifier: 
-  baseSpeed: 3
+  baseSpeed: 10
+  baseCooldown: 0.5
+  baseAttackRange: 2
   baseAttackSpeed: 1
-  baseAttackRange: 2.1
   baseRecoveryDuration: 5
   basePlayerAttackPower: 1
   basePlayerDefence: 0

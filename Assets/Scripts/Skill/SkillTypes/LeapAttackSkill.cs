@@ -66,7 +66,7 @@ public class LeapAttackSkill : MonoBehaviour, ISkillComponent, ISkill
             while (elapsedTime < leapDuration / 2)
             {
                 attacker.transform.position = Vector3.Lerp(initialPosition, peakPosition, (elapsedTime / (leapDuration / 2)));
-                elapsedTime += Time.deltaTime;
+                elapsedTime += attacker.GetComponent<PlayerAI>().characterStat.attackSpeed * Time.deltaTime;
                 yield return null;
             }
 
@@ -78,7 +78,7 @@ public class LeapAttackSkill : MonoBehaviour, ISkillComponent, ISkill
             while (elapsedTime < leapDuration / 2)
             {
                 attacker.transform.position = Vector3.Lerp(targetAbovePosition, targetPosition, (elapsedTime / (leapDuration / 5)));
-                elapsedTime += Time.deltaTime;
+                elapsedTime += attacker.GetComponent<PlayerAI>().characterStat.attackSpeed * Time.deltaTime;
                 yield return null;
             }
 
