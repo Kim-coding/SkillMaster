@@ -1,5 +1,5 @@
 ﻿PropertyID,ProjectileSizeX,ProjectileSizeY,ProjectileValue,ProjectileSpeed,Attacknumber,SkillColdown,Projectileangle,HitMonsterValue,ATValueRadius,AtminRadius,AtmaxRadius
-70001,-1,-1,-1,-1,-1,-1,90,-1,-1,-1,-1
+70001,1,1,1,1,1,-1,90,-1,-1,-1,-1
 70002,0.5,0.5,1,5,1,-1,-1,-1,-1,-1,-1
 70003,-1,-1,-1,-1,-1,-1,-1,3,-1,-1,-1
 70004,-1,-1,-1,-1,-1,-1,180,-1,-1,-1,-1

@@ -56,9 +56,6 @@ public class SkillBallController : MonoBehaviour, IPointerDownHandler, IPointerU
     public string SkillEffect;
     public string Skillicon;
 
-    public int attackNumber;
-    public float Projectileangle;
-
     public Image skillIconImage;
 
     private void Start()
@@ -73,7 +70,6 @@ public class SkillBallController : MonoBehaviour, IPointerDownHandler, IPointerU
     {
         this.skill_ID = skill_ID;
         var skillTable = DataTableMgr.Get<SkillTable>(DataTableIds.skill);
-        var skillDownTable = DataTableMgr.Get<SkillDownTable>(DataTableIds.skillDown);
 
         var skillData = skillTable.GetID(skill_ID);
         if (skillData != null)
@@ -92,6 +88,7 @@ public class SkillBallController : MonoBehaviour, IPointerDownHandler, IPointerU
 
             tierText.text = tier.ToString();
         }
+
         Sprite iconSprite = Resources.Load<Sprite>($"SkillIcon/{Skillicon}");
         Debug.Log(iconSprite);
         if (iconSprite != null)
@@ -101,14 +98,6 @@ public class SkillBallController : MonoBehaviour, IPointerDownHandler, IPointerU
         else
         {
             Debug.LogError($"Skill icon not found in Resources/SkillIcon/{Skillicon}");
-        }
-
-
-        var skillDownData = skillDownTable.GetID(skillPropertyID);
-        if (skillDownData != null)
-        {
-            attackNumber = skillDownData.Attacknumber;
-            Projectileangle = skillDownData.Projectileangle;
         }
     }
 

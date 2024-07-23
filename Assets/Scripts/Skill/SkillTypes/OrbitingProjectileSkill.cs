@@ -13,8 +13,10 @@ public class OrbitingProjectileSkill : MonoBehaviour, ISkillComponent, ISkill
 
     private float radius = 2f;           // 발사체가 회전하는 원의 반지름
     private float moveSpeed = 100f;       // 발사체 회전 속도
-    private float attackAngle = 360f;    // 발사체 회전 각도
-    private int attackNumber = 3;        // 공격 횟수 : 발사체 수
+    private float Projectileangle;    // 발사체 회전 각도
+    private int attackNumber;        // 발사체 공격 횟수
+    private int ProjectileValue; // 발사체 개수
+
     private List<GameObject> projectiles = new List<GameObject>();
 
     public void Initialize()
@@ -22,10 +24,10 @@ public class OrbitingProjectileSkill : MonoBehaviour, ISkillComponent, ISkill
         // 필요 시 초기화 작업 수행
     }
 
-    public void ApplyShape(GameObject skillObject, Vector3 launchPoint, GameObject target, float range, float width, int attackNumber, float projectileangle)
+    public void ApplyShape(GameObject skillObject, Vector3 launchPoint, GameObject target, float range, float width, int skillPropertyID)
     {
-        this.skillObject = Instantiate(skillObject);
-        this.skillObject.transform.localScale = new Vector2(width, width);
+        this.skillObject = skillObject;
+        this.skillObject.transform.localScale = new Vector2(range, width);
         Sprite CircleSprite = Resources.Load<Sprite>("Circle");
         if (CircleSprite != null)
         {
@@ -34,8 +36,17 @@ public class OrbitingProjectileSkill : MonoBehaviour, ISkillComponent, ISkill
         
         this.skillObject.transform.position = launchPoint;
         skillObject.transform.position = launchPoint;
-        skillObject.GetComponent<SpriteRenderer>().color = new Color(0,0,0,0);
+        
         projectilePrefab = this.skillObject;
+
+        var skillDownTable = DataTableMgr.Get<SkillDownTable>(DataTableIds.skillDown);
+        var skillDownData = skillDownTable.GetID(skillPropertyID);
+        if (skillDownData != null)
+        {
+            attackNumber = skillDownData.Attacknumber;
+            ProjectileValue = skillDownData.ProjectileValue;
+            Projectileangle = skillDownData.Projectileangle;
+        }
     }
 
     public void ApplyDamageType(GameObject attacker, Attack attack, DamageType damageType, SkillShapeType shapeType)
@@ -49,31 +60,31 @@ public class OrbitingProjectileSkill : MonoBehaviour, ISkillComponent, ISkill
 
     private IEnumerator CreateOrbitProjectiles()
     {
-        for (int i = 0; i < attackNumber; i++)
+        for(int i = 0; i < attackNumber; i++)
         {
-            yield return new WaitForSeconds(0.5f);
+            for (int j = 0; j < ProjectileValue; j++)
+            {
+                GameObject projectile = Instantiate(skillObject, attacker.transform.position, Quaternion.identity);
+                Destroy(projectile.GetComponent<OrbitingProjectileSkill>());
 
-            GameObject projectile = Instantiate(projectilePrefab, attacker.transform.position, Quaternion.identity);
-            Destroy(projectile.GetComponent<OrbitingProjectileSkill>());
-            
-            ProjectileBehavior projectileBehavior = projectile.AddComponent<ProjectileBehavior>();
-            projectileBehavior.attacker = attacker;
-            projectileBehavior.attack = attack;
+                ProjectileBehavior projectileBehavior = projectile.AddComponent<ProjectileBehavior>();
+                projectileBehavior.attacker = attacker;
+                projectileBehavior.attack = attack;
 
-            projectile.transform.SetParent(null);
-            projectile.transform.SetParent(gameObject.transform);
-            projectile.transform.Translate(this.skillObject.transform.up * radius, Space.World);
-            projectile.AddComponent<CircleCollider2D>().isTrigger = true;
+                projectile.transform.Translate(skillObject.transform.up * radius, Space.World);
+                projectile.AddComponent<CircleCollider2D>().isTrigger = true;
 
-            projectiles.Add(projectile);
-            StartCoroutine(MoveOrbitProjectile(projectile));
+                projectiles.Add(projectile);
+                StartCoroutine(MoveOrbitProjectile(projectile));
+                yield return new WaitForSeconds(0.4f);
+            }
         }
     }
 
     private IEnumerator MoveOrbitProjectile(GameObject projectile)
     {
         float angle = 0f;
-        while (angle < attackAngle)
+        while (angle < Projectileangle)
         {
             angle += moveSpeed * Time.deltaTime;
             Vector3 offset = new Vector3(Mathf.Sin(angle * Mathf.Deg2Rad), Mathf.Cos(angle * Mathf.Deg2Rad)) * radius;
