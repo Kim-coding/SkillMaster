@@ -13,12 +13,14 @@ public class LeapAttackSkill : MonoBehaviour, ISkillComponent, ISkill
     private Vector3 targetPosition;
     private float leapHeight = 1f;
     private float leapDuration = 0.5f;
-    private float attackRadius = 2f;
+    private float attackRadius;
 
     private float timer = 0f;
     private float duration = 1f;
 
     private int attackNumber = 1;  // 공격 횟수 TO-DO 테이블로 받아와야 하는 정보
+    private float skillColdiwn = 0f;
+
     private Coroutine attackCoroutine;
 
     private void Start()
@@ -31,7 +33,7 @@ public class LeapAttackSkill : MonoBehaviour, ISkillComponent, ISkill
         
     }
 
-    public void ApplyShape(GameObject skillObject, Vector3 launchPosition, GameObject target, float range, float width, int attackNumber, float projectileangle)
+    public void ApplyShape(GameObject skillObject, Vector3 launchPosition, GameObject target, float range, float width, int skillPropertyID)
     {
         this.skillObject = skillObject;
         Sprite circleSprite = Resources.Load<Sprite>("Circle");
@@ -41,9 +43,21 @@ public class LeapAttackSkill : MonoBehaviour, ISkillComponent, ISkill
         }
         this.skillObject.AddComponent<CircleCollider2D>().isTrigger = true;
 
-        this.skillObject.transform.position = target.transform.position;
-        this.skillObject.transform.localScale = new Vector2(attackRadius *2 , attackRadius* 2);
+        var skillDownTable = DataTableMgr.Get<SkillDownTable>(DataTableIds.skillDown);
+        if(skillPropertyID > 0)
+        {
+            var skillDownData = skillDownTable.GetID(skillPropertyID);
+            if (skillDownData != null)
+            {
+                attackNumber = skillDownData.Attacknumber;
+                skillColdiwn = skillDownData.SkillColdown;
+            }
+        }
 
+        this.skillObject.transform.position = target.transform.position;
+        this.skillObject.transform.localScale = new Vector2(range * 2 , width * 2);
+
+        attackRadius = range;
         initialPosition = launchPosition;
         targetPosition = target.transform.position;
         
@@ -74,6 +88,12 @@ public class LeapAttackSkill : MonoBehaviour, ISkillComponent, ISkill
             attacker.transform.position = targetAbovePosition;
             yield return null;
 
+            Renderer renderer = skillObject.GetComponent<Renderer>();
+            if (renderer != null)
+            {
+                renderer.enabled = true;
+            }
+
             elapsedTime = 0f;
             while (elapsedTime < leapDuration / 2)
             {
@@ -84,7 +104,7 @@ public class LeapAttackSkill : MonoBehaviour, ISkillComponent, ISkill
 
             ApplyAttack();
 
-            yield return new WaitForSeconds(0.3f);
+            yield return new WaitForSeconds(skillColdiwn);
             initialPosition = attacker.transform.position;
             SetRandomTarget();
         }

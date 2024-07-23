@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScelectAreaProjectileSkill : MonoBehaviour, ISkillComponent, ISkill  //메테오 유사 스킬
+public class ScelectAreaProjectileSkill : MonoBehaviour, ISkillComponent, ISkill  //메테오 유사 스킬 (테이블 연결 미완)
 {
     public string skillID = "ScelectAreaProjectileSkill";
     public GameObject skillObject;
@@ -14,13 +14,20 @@ public class ScelectAreaProjectileSkill : MonoBehaviour, ISkillComponent, ISkill
     private float moveSpeed = 10f;
     private float attackRadius = 2f;
     private bool isMoving = false;
+    private float ProjectileSizeX = 1f;
+    private float ProjectileSizeY = 1f;
+    private int ProjectileValue;
 
+    private float attackArangeX;
+    private float attackArangeY;
+
+    private bool isMeteor = false;
     public void Initialize()
     {
         
     }
 
-    public void ApplyShape(GameObject skillObject, Vector3 launchPoint, GameObject target, float range, float width, int attackNumber, float projectileangle)
+    public void ApplyShape(GameObject skillObject, Vector3 launchPoint, GameObject target, float range, float width, int skillPropertyID)
     {
         this.skillObject = skillObject;
         Sprite circleSprite = Resources.Load<Sprite>("Circle");
@@ -30,8 +37,34 @@ public class ScelectAreaProjectileSkill : MonoBehaviour, ISkillComponent, ISkill
         }
         targetPoint = target.transform.position;
 
-        this.skillObject.transform.localScale = new Vector2(range, range);
-        this.skillObject.transform.position = new Vector3(targetPoint.x - range, targetPoint.y + range, targetPoint.z);
+        Renderer renderer = this.skillObject.GetComponent<Renderer>();
+        if (renderer != null)
+        {
+            renderer.enabled = true;
+        }
+
+        if (skillPropertyID > 0)
+        {
+            var skillDownTable = DataTableMgr.Get<SkillDownTable>(DataTableIds.skillDown);
+            var skillDownData = skillDownTable.GetID(skillPropertyID);
+            if (skillDownData != null)
+            {
+                ProjectileValue = skillDownData.ProjectileValue;
+                ProjectileSizeX = skillDownData.ProjectileSizeX;
+                ProjectileSizeY = skillDownData.ProjectileSizeY;
+            }
+            isMeteor = true;
+            this.skillObject.transform.localScale = new Vector2(ProjectileSizeX, ProjectileSizeY);
+        }
+        else
+        {
+            this.skillObject.transform.localScale = new Vector2(range, width);
+        }
+
+        attackArangeX = range;
+        attackArangeY = width;
+
+        this.skillObject.transform.position = new Vector3(targetPoint.x - attackArangeX, targetPoint.y + attackArangeX, targetPoint.z);
 
         isMoving = true;
     }
@@ -45,9 +78,13 @@ public class ScelectAreaProjectileSkill : MonoBehaviour, ISkillComponent, ISkill
 
     private void Update()
     {
-        if (isMoving)
+        if (isMoving && isMeteor)
         {
             MoveToTarget();
+        }
+        else
+        {
+            ApplyAttack();
         }
     }
 
@@ -59,6 +96,7 @@ public class ScelectAreaProjectileSkill : MonoBehaviour, ISkillComponent, ISkill
         if (Vector3.Distance(skillObject.transform.position, targetPoint) <= 0.1f)
         {
             isMoving = false;
+            skillObject.transform.localScale = new Vector2(attackArangeX, attackArangeY);
             ApplyAttack();
         }
     }
