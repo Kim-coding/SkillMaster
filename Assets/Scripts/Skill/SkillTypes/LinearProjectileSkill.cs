@@ -34,17 +34,20 @@ public class LinearProjectileSkill : MonoBehaviour, ISkillComponent, ISkill //Á÷
     {
         this.skillObject = skillObject;
 
-        var skillDownTable = DataTableMgr.Get<SkillDownTable>(DataTableIds.skillDown);
-        var skillDownData = skillDownTable.GetID(skillPropertyID);
-        if (skillDownData != null)
+        if(skillPropertyID > 0)
         {
-            attackNumber = skillDownData.Attacknumber;
-            ProjectileValue = skillDownData.ProjectileValue;
-            projectileangle = skillDownData.Projectileangle;
-            ProjectileSizeX = skillDownData.ProjectileSizeX;
-            ProjectileSizeY = skillDownData.ProjectileSizeY;
+            var skillDownTable = DataTableMgr.Get<SkillDownTable>(DataTableIds.skillDown);
+            var skillDownData = skillDownTable.GetID(skillPropertyID);
+            if (skillDownData != null)
+            {
+                attackNumber = skillDownData.Attacknumber;
+                ProjectileValue = skillDownData.ProjectileValue;
+                projectileangle = skillDownData.Projectileangle;
+                ProjectileSizeX = skillDownData.ProjectileSizeX;
+                ProjectileSizeY = skillDownData.ProjectileSizeY;
+            }
         }
-
+        
         skillObject.transform.position = launchPoint;
         this.launchPoint = launchPoint;
         this.target = target;

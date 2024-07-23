@@ -33,15 +33,18 @@ public class OrbitingProjectileSkill : MonoBehaviour, ISkillComponent, ISkill
         this.skillObject.transform.position = launchPoint;
         skillObject.transform.position = launchPoint;
         
-        var skillDownTable = DataTableMgr.Get<SkillDownTable>(DataTableIds.skillDown);
-        var skillDownData = skillDownTable.GetID(skillPropertyID);
-        if (skillDownData != null)
+        if(skillPropertyID > 0)
         {
-            attackNumber = skillDownData.Attacknumber;
-            ProjectileValue = skillDownData.ProjectileValue;
-            Projectileangle = skillDownData.Projectileangle;
-            ProjectileSizeX = skillDownData.ProjectileSizeX;
-            ProjectileSizeY = skillDownData.ProjectileSizeY;
+            var skillDownTable = DataTableMgr.Get<SkillDownTable>(DataTableIds.skillDown);
+            var skillDownData = skillDownTable.GetID(skillPropertyID);
+            if (skillDownData != null)
+            {
+                attackNumber = skillDownData.Attacknumber;
+                ProjectileValue = skillDownData.ProjectileValue;
+                Projectileangle = skillDownData.Projectileangle;
+                ProjectileSizeX = skillDownData.ProjectileSizeX;
+                ProjectileSizeY = skillDownData.ProjectileSizeY;
+            }
         }
     }
 

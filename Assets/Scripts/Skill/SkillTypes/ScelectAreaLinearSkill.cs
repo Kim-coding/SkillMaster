@@ -24,7 +24,12 @@ public class ScelectAreaLinearAttack : MonoBehaviour, ISkillComponent, ISkill
     public void ApplyShape(GameObject skillObject, Vector3 launchPoint, GameObject target, float range, float width, int skillPropertyID) //스킬의 형태와 위치를 설정
     {
         this.skillObject = skillObject;
-        skillObject.transform.localScale = new Vector3(range, width, 1);
+        Renderer renderer = this.skillObject.GetComponent<Renderer>();
+        if (renderer != null)
+        {
+            renderer.enabled = true;
+        }
+        skillObject.transform.localScale = new Vector2(range, width);
 
         skillObject.AddComponent<BoxCollider2D>();
         skillObject.GetComponent<BoxCollider2D>().isTrigger = true;

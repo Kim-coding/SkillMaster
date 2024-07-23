@@ -10,9 +10,9 @@ public class ChainAttackSkill : MonoBehaviour, ISkillComponent, ISkill, ISpecial
     public Attack attack;
     public DamageType damageType;
 
-    private int attackNumber = 2;  //TO-DO : 공격 횟수, 테이블 받아오기 //Initialize에 매개변수로 받아와야 함
+    private int attackNumber = 1;  //TO-DO : 공격 횟수, 테이블 받아오기 //Initialize에 매개변수로 받아와야 함
 
-    private int maxChains = 5;     //TO-DO : 피격 몬스터 수, 테이블 받아오기
+    private int maxChains = 3;     //TO-DO : 피격 몬스터 수, 테이블 받아오기
 
     private HashSet<GameObject> hitMonsters = new HashSet<GameObject>(); //피격 몬스터 수 체크
 
@@ -50,8 +50,23 @@ public class ChainAttackSkill : MonoBehaviour, ISkillComponent, ISkill, ISpecial
     public void ApplyShape(GameObject skillObject, Vector3 launchPoint, GameObject target, float range, float width, int skillPropertyID)
     {
         currentTarget = target;
+        Renderer renderer = skillObject.GetComponent<Renderer>();
+        if (renderer != null)
+        {
+            renderer.enabled = true;
+        }
         this.skillObject = skillObject;
         skillObject.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0);
+        if (skillPropertyID > 0)
+        {
+            var skillDownTable = DataTableMgr.Get<SkillDownTable>(DataTableIds.skillDown);
+            var skillDownData = skillDownTable.GetID(skillPropertyID);
+            if (skillDownData != null)
+            {
+                attackNumber = skillDownData.Attacknumber;
+                maxChains = skillDownData.HitMonsterValue;
+            }
+        }
     }
 
     public void ApplyDamageType(GameObject attacker, Attack attack, DamageType damageType, SkillShapeType shapeType)
