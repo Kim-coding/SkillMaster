@@ -2594,7 +2594,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mergeWindow: {fileID: 2091457409}
-  prefabSkillBall: {fileID: 62847692040112244, guid: a0691e0a2f9fa364f8ece2a5dfc46ae8, type: 3}
+  prefabSkillBall: {fileID: 8677752533633219280, guid: 5f68f82cf3285dd43aaaec36258d01e1, type: 3}
   maxReserveSkillCount: 0
   maxSpawnSkillCount: 0
   currentSpawnSkillCount: 0
@@ -18110,7 +18110,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.09062506}
   m_AnchorMax: {x: 1, y: 0.9293751}
-  m_AnchoredPosition: {x: 0, y: 0.48986816}
+  m_AnchoredPosition: {x: 0, y: 0.48999023}
   m_SizeDelta: {x: 0, y: -0.97998}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1813656375
