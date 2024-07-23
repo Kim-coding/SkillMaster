@@ -4,8 +4,9 @@ using UnityEngine;
 public class PlayerBaseStat : ScriptableObject
 {
     public float baseSpeed;
-    public float baseAttackSpeed;
+    public float baseCooldown;
     public float baseAttackRange;
+    public float baseAttackSpeed;
 
     public float baseRecoveryDuration;
 

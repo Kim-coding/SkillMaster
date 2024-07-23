@@ -19,6 +19,8 @@ public class PlayerStat
     public float basePlayerSpeed;
     public float attackRange;
     public float basePlayerAttackRange;
+    public float cooldown;
+    public float basePlayerCooldown;
     public float attackSpeed;
     public float basePlayerAttackSpeed;
 
@@ -34,7 +36,10 @@ public class PlayerStat
     // 외형??
     //강화 수치같은것도 여기서 합산 해야될것 같다.
 
-    public void Init(int baseAttackPower, int baseMaxHealth, int baseDefence,int baseRecovery, float baseCriPer, float baseCirMulti, float baseSpeed, float baseAttackSpeed, float baseAttackRange, float baseRecoveryDuration)
+    public void Init(int baseAttackPower, int baseMaxHealth, 
+        int baseDefence,int baseRecovery, float baseCriPer, 
+        float baseCirMulti, float baseSpeed, float baseCooldown, float baseAttackSpeed
+        , float baseAttackRange, float baseRecoveryDuration)
     {
         basePlayerAttackPower = baseAttackPower;
         basePlayerMaxHealth = baseMaxHealth;
@@ -45,6 +50,7 @@ public class PlayerStat
         basePlayerCriticalMultiple = baseCirMulti;
 
         basePlayerSpeed = baseSpeed;
+        basePlayerCooldown = baseCooldown;
         basePlayerAttackSpeed = baseAttackSpeed;
         basePlayerAttackRange = baseAttackRange;
 
@@ -52,9 +58,10 @@ public class PlayerStat
         playerStatUpdate();
     }
 
-    public void DebugStatSetting(float dSpeed, float dAttackSpeed, float dAttackRange, float dRecoveryDuration)
+    public void DebugStatSetting(float dSpeed, float dCooldown, float dAttackSpeed, float dAttackRange, float dRecoveryDuration)
     {
         basePlayerSpeed = dSpeed;
+        basePlayerCooldown = dCooldown;
         basePlayerAttackSpeed = dAttackSpeed;
         basePlayerAttackRange = dAttackRange;
         basePlayerRecoveryDuration = dRecoveryDuration;
@@ -89,8 +96,9 @@ public class PlayerStat
 
 
         speed = basePlayerSpeed; // @@
-        attackSpeed = basePlayerAttackSpeed; // @@
+        cooldown = basePlayerCooldown; // @@
         attackRange = basePlayerAttackRange; // @@
+        attackSpeed = basePlayerAttackSpeed; // @@
 
         recoveryDuration = basePlayerRecoveryDuration;
 

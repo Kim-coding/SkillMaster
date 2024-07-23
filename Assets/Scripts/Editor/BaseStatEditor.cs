@@ -6,8 +6,9 @@ using UnityEngine;
 public class BaseStatEditor : Editor
 {
     SerializedProperty baseSpeed;
-    SerializedProperty baseAttackSpeed;
+    SerializedProperty baseCooldown;
     SerializedProperty baseAttackRange;
+    SerializedProperty baseAttackSpeed;
 
     SerializedProperty baseRecoveryDuration;
 
@@ -23,8 +24,9 @@ public class BaseStatEditor : Editor
     {
         // SerializedProperty 초기화
         baseSpeed = serializedObject.FindProperty("baseSpeed");
-        baseAttackSpeed = serializedObject.FindProperty("baseAttackSpeed");
+        baseCooldown = serializedObject.FindProperty("baseCooldown");
         baseAttackRange = serializedObject.FindProperty("baseAttackRange");
+        baseAttackSpeed = serializedObject.FindProperty("baseAttackSpeed");
 
         baseRecoveryDuration = serializedObject.FindProperty("baseRecoveryDuration");
 
@@ -60,10 +62,15 @@ public class BaseStatEditor : Editor
         DrawDescriptionLabel("플레이어 캐릭터의 기본 이동 속도");
 
         EditorGUILayout.Slider(baseAttackSpeed, 0f, 10f, new GUIContent("공격 속도"));
-        DrawDescriptionLabel("플레이어 캐릭터의 기본 공격 속도");
+        DrawDescriptionLabel("플레이어 캐릭터의 공격 속도");
+        DrawDescriptionLabel("애니메이션의 시작부터 끝까지, 스킬 선딜레이를 뜻함");
+
+        EditorGUILayout.Slider(baseCooldown, 0f, 10f, new GUIContent("공격 쿨타임"));
+        DrawDescriptionLabel("플레이어 캐릭터의 공격 쿨타임");
+        DrawDescriptionLabel("스킬 시전 후 대기 시간, 스킬 후딜레이를 뜻함");
 
         EditorGUILayout.Slider(baseAttackRange, 0f, 10f, new GUIContent("공격 범위"));
-        DrawDescriptionLabel("플레이어 캐릭터의 기본 공격 범위");
+        DrawDescriptionLabel("플레이어 캐릭터의 공격 범위");
 
         EditorGUILayout.Slider(baseRecoveryDuration, 0f, 10f, new GUIContent("회복 쿨타임"));
         DrawDescriptionLabel("플레이어 캐릭터의 회복 쿨타임");

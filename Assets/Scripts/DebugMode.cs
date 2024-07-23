@@ -16,6 +16,10 @@ public class DebugMode : MonoBehaviour
     public float speedValue;
     public TextMeshProUGUI speedText;
 
+    public Slider cooldownSlider;
+    public float cooldownValue;
+    public TextMeshProUGUI cooldownText;
+
     public Slider attackSpeedSlider;
     public float attackSpeedValue;
     public TextMeshProUGUI attackSpeedText;
@@ -31,6 +35,7 @@ public class DebugMode : MonoBehaviour
     private void Awake()
     {
         speedSlider.value = playerStat.baseSpeed;
+        cooldownSlider.value = playerStat.baseCooldown;
         attackSpeedSlider.value = playerStat.baseAttackSpeed;
         attackRangeSlider.value = playerStat.baseAttackRange;
         recoveryDurationSlider.value = playerStat.baseRecoveryDuration;
@@ -43,11 +48,13 @@ public class DebugMode : MonoBehaviour
         fpsText.text = string.Format("{0:0.} FPS", fps);
 
         speedValue = Mathf.Round(speedSlider.value * 100f) / 100f;
+        cooldownValue = Mathf.Round(cooldownSlider.value * 100f) / 100f;
         attackSpeedValue = Mathf.Round(attackSpeedSlider.value * 100f) / 100f;
         attackRangeValue = Mathf.Round(attackRangeSlider.value * 100f) / 100f;
         recoveryDurationValue = Mathf.Round(recoveryDurationSlider.value * 100f) / 100f;
 
         speedText.text = speedValue.ToString();
+        cooldownText.text = cooldownValue.ToString();
         attackSpeedText.text = attackSpeedValue.ToString();
         attackRangeText.text = attackRangeValue.ToString();
         recoveryDurationText.text = recoveryDurationValue.ToString();
@@ -70,6 +77,6 @@ public class DebugMode : MonoBehaviour
             Debug.Log("CRM : " + player.playerCriticalMultiple.ToString());
         }
 
-        GameMgr.Instance.playerMgr.playerStat.DebugStatSetting(speedValue, attackSpeedValue, attackRangeValue, recoveryDurationValue);
+        GameMgr.Instance.playerMgr.playerStat.DebugStatSetting(speedValue, cooldownValue, attackSpeedValue ,attackRangeValue, recoveryDurationValue);
     }
 }

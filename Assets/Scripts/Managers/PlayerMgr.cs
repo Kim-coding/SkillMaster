@@ -89,6 +89,7 @@ public class PlayerMgr : MonoBehaviour
             playerBaseStat.basePlayerCriticalPercent,
             playerBaseStat.basePlayerCriticalMultiple,
             playerBaseStat.baseSpeed,
+            playerBaseStat.baseCooldown,
             playerBaseStat.baseAttackSpeed,
             playerBaseStat.baseAttackRange,
             playerBaseStat.baseRecoveryDuration

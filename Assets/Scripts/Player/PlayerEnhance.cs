@@ -138,7 +138,9 @@ public class PlayerEnhance
         maxHealthCost = new BigInteger(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10003).Gold)
           + new BigInteger(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10003).GoldRange) * maxHealthLevel;
         GameMgr.Instance.playerMgr.playerStat.playerStatUpdate();
+        GameMgr.Instance.playerMgr.characters[0].UpdateHpBar();
         EventMgr.TriggerEvent(QuestType.MaxHealthEnhance);
+
     }
 
     public void AddRecovery()

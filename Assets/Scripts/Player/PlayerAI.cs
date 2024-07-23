@@ -49,6 +49,7 @@ public class PlayerAI : MonoBehaviour , IAnimation
     private void Update()
     {
         stateMachine.Update();
+        animator.SetFloat("Multiplier", characterStat.attackSpeed);
 
         if (currentTarget != null) {
             if ((currentTarget.transform.position - transform.position).x <= 0)
@@ -156,7 +157,6 @@ public class PlayerAI : MonoBehaviour , IAnimation
     private int maxCount;
     public void OnAttack(GameObject skill)
     {
-        playerSkills.SetList();
         maxCount = playerSkills.castingList.Count;
         
         if (currentTarget != null && IsInAttackRange())
