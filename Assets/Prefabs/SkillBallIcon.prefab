@@ -149,10 +149,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mergeWindow: {fileID: 0}
-  tierText: {fileID: 6535013781628825401}
+  tierText: {fileID: 0}
   pos: {fileID: 0}
   skill_ID: 0
   attackSpeed: 0
+  skillDamage: 
   skillType: 0
   damageColdown: 0
   skillArange: 0
@@ -161,8 +162,6 @@ MonoBehaviour:
   skillPropertyID: 0
   SkillEffect: 
   Skillicon: 
-  attackNumber: 0
-  Projectileangle: 0
   skillIconImage: {fileID: 7395125000668257215}
 --- !u!1001 &6379542599337203019
 PrefabInstance:
@@ -269,17 +268,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5918772732045501179, guid: d07c0761f8c513e4298c252eee1fe7f9, type: 3}
   m_PrefabInstance: {fileID: 6379542599337203019}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6535013781628825401 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 160361952239155826, guid: d07c0761f8c513e4298c252eee1fe7f9, type: 3}
-  m_PrefabInstance: {fileID: 6379542599337203019}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &7395125000668257215 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4478956480766562036, guid: d07c0761f8c513e4298c252eee1fe7f9, type: 3}

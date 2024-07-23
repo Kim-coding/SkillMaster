@@ -46,7 +46,7 @@ public class SkillBallController : MonoBehaviour, IPointerDownHandler, IPointerU
 
     public int skill_ID;
     public float attackSpeed;
-    public BigInteger skillDamage;
+    public string skillDamage;
     public int skillType;
     public float damageColdown;
     public float skillArange;
@@ -63,7 +63,6 @@ public class SkillBallController : MonoBehaviour, IPointerDownHandler, IPointerU
         areaRect = GetComponent<RectTransform>();
         skillSpawner = GameMgr.Instance.uiMgr.uiMerge.skillSpawner;
         mergeWindow = skillSpawner.mergeWindow;
-        skillDamage = new BigInteger();
     }
 
     public void Set(int skill_ID)
@@ -78,7 +77,7 @@ public class SkillBallController : MonoBehaviour, IPointerDownHandler, IPointerU
             skillPropertyID = skillData.SkillPropertyID;
             attackSpeed = skillData.AttackSpeed;
             skillType = skillData.Type;
-            skillDamage = new BigInteger(skillData.Skill_damage); 
+            skillDamage = skillData.Skill_damage;
             damageColdown = skillData.DamageColdown;
             skillArange = skillData.SkillArange;
             atkArangeX = skillData.AtkArangeX;

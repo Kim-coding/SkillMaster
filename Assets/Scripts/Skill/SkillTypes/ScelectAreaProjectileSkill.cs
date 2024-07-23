@@ -21,6 +21,10 @@ public class ScelectAreaProjectileSkill : MonoBehaviour, ISkillComponent, ISkill
     private float attackArangeX;
     private float attackArangeY;
 
+    private float stayTimer;
+    private float stayDuration = 0.3f;
+
+
     private bool isMeteor = false;
     public void Initialize()
     {
@@ -58,7 +62,7 @@ public class ScelectAreaProjectileSkill : MonoBehaviour, ISkillComponent, ISkill
         }
         else
         {
-            this.skillObject.transform.localScale = new Vector2(range, width);
+            this.skillObject.transform.localScale = new Vector2(range * 2, width * 2);
         }
 
         attackArangeX = range;
@@ -84,7 +88,12 @@ public class ScelectAreaProjectileSkill : MonoBehaviour, ISkillComponent, ISkill
         }
         else
         {
-            ApplyAttack();
+            stayTimer += Time.deltaTime;
+            if (stayTimer >= stayDuration)
+            {
+                ApplyAttack();
+            }
+
         }
     }
 
@@ -96,7 +105,7 @@ public class ScelectAreaProjectileSkill : MonoBehaviour, ISkillComponent, ISkill
         if (Vector3.Distance(skillObject.transform.position, targetPoint) <= 0.1f)
         {
             isMoving = false;
-            skillObject.transform.localScale = new Vector2(attackArangeX, attackArangeY);
+            skillObject.transform.localScale = new Vector2(attackArangeX * 2, attackArangeY * 2);
             ApplyAttack();
         }
     }
