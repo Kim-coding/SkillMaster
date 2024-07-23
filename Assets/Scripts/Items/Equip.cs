@@ -18,8 +18,14 @@ public class Equip : Item
     {
         equipOption = new EquipOption();
     }
+    public void Init(Sprite icon, string path, string itemName)
+    {
+        this.icon = icon;
+        this.path = path;
+        this.itemName = itemName;
+    }
 
-    public void Init((OptionType, float) a, (OptionType, float) b, (OptionType, float) c, (OptionType, float) d)
+    public void SetEquipStat((OptionType, float) a, (OptionType, float) b, (OptionType, float) c, (OptionType, float) d)
     {
         equipOption.Init(a, b, c, d);
     }
