@@ -92,6 +92,28 @@ public enum QuestType
     GoldEnhance,
 }
 
+public enum EquipType
+{
+    None = -1,
+    Hair = 0,
+    Face,
+    Top,
+    Pants,
+    Cloak,
+    Weapon,
+}
+
+public enum RarerityType
+{
+    None = -1,
+    C = 0,
+    B,
+    A,
+    S,
+    SS,
+    SSS,
+}
+
 
 public static class DataTableIds
 {

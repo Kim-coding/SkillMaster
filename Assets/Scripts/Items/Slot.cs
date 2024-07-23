@@ -1,18 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class Slot : MonoBehaviour
+public class ItemSlot : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public int slotIndex {  get; set; }
+    public Button button;
+    public Image selectedBorder;
 
-    // Update is called once per frame
-    void Update()
+    public Image itemImage;
+    public Equip currentEquip = null;
+    public int customOrder;
+
+    public bool onSelected = false;
+
+
+    public void SetData(Equip equipData)
     {
-        
+        currentEquip = equipData;
+        itemImage.sprite = equipData.icon;
+
     }
 }
