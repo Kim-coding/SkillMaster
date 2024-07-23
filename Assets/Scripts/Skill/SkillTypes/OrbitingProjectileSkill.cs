@@ -9,13 +9,14 @@ public class OrbitingProjectileSkill : MonoBehaviour, ISkillComponent, ISkill
     public GameObject attacker;
     public Attack attack;
     public DamageType damageType;
-    public GameObject projectilePrefab;
 
-    private float radius = 2f;           // 발사체가 회전하는 원의 반지름
+    private float radius;           // 발사체가 회전하는 원의 반지름
     private float moveSpeed = 100f;       // 발사체 회전 속도
-    private float Projectileangle;    // 발사체 회전 각도
+    private int Projectileangle;    // 발사체 회전 각도
     private int attackNumber;        // 발사체 공격 횟수
-    private int ProjectileValue; // 발사체 개수
+    private int ProjectileValue;     // 발사체 개수
+    private float ProjectileSizeX;   // 발사체 크기 X
+    private float ProjectileSizeY;   // 발사체 크기 Y
 
     private List<GameObject> projectiles = new List<GameObject>();
 
@@ -27,18 +28,11 @@ public class OrbitingProjectileSkill : MonoBehaviour, ISkillComponent, ISkill
     public void ApplyShape(GameObject skillObject, Vector3 launchPoint, GameObject target, float range, float width, int skillPropertyID)
     {
         this.skillObject = skillObject;
-        this.skillObject.transform.localScale = new Vector2(range, width);
-        Sprite CircleSprite = Resources.Load<Sprite>("Circle");
-        if (CircleSprite != null)
-        {
-            this.skillObject.GetComponent<SpriteRenderer>().sprite = CircleSprite;
-        }
+        radius = range; 
         
         this.skillObject.transform.position = launchPoint;
         skillObject.transform.position = launchPoint;
         
-        projectilePrefab = this.skillObject;
-
         var skillDownTable = DataTableMgr.Get<SkillDownTable>(DataTableIds.skillDown);
         var skillDownData = skillDownTable.GetID(skillPropertyID);
         if (skillDownData != null)
@@ -46,6 +40,8 @@ public class OrbitingProjectileSkill : MonoBehaviour, ISkillComponent, ISkill
             attackNumber = skillDownData.Attacknumber;
             ProjectileValue = skillDownData.ProjectileValue;
             Projectileangle = skillDownData.Projectileangle;
+            ProjectileSizeX = skillDownData.ProjectileSizeX;
+            ProjectileSizeY = skillDownData.ProjectileSizeY;
         }
     }
 
@@ -60,24 +56,32 @@ public class OrbitingProjectileSkill : MonoBehaviour, ISkillComponent, ISkill
 
     private IEnumerator CreateOrbitProjectiles()
     {
-        for(int i = 0; i < attackNumber; i++)
+        for (int j = 0; j < ProjectileValue; j++)
         {
-            for (int j = 0; j < ProjectileValue; j++)
+            GameObject projectile = Instantiate(skillObject, attacker.transform.position, Quaternion.identity);
+            projectile.transform.localScale = new Vector2(ProjectileSizeX, ProjectileSizeY);
+            Sprite CircleSprite = Resources.Load<Sprite>("Circle");
+            if (CircleSprite != null)
             {
-                GameObject projectile = Instantiate(skillObject, attacker.transform.position, Quaternion.identity);
-                Destroy(projectile.GetComponent<OrbitingProjectileSkill>());
-
-                ProjectileBehavior projectileBehavior = projectile.AddComponent<ProjectileBehavior>();
-                projectileBehavior.attacker = attacker;
-                projectileBehavior.attack = attack;
-
-                projectile.transform.Translate(skillObject.transform.up * radius, Space.World);
-                projectile.AddComponent<CircleCollider2D>().isTrigger = true;
-
-                projectiles.Add(projectile);
-                StartCoroutine(MoveOrbitProjectile(projectile));
-                yield return new WaitForSeconds(0.4f);
+                projectile.GetComponent<SpriteRenderer>().sprite = CircleSprite;
             }
+            Renderer renderer = projectile.GetComponent<Renderer>();
+            if (renderer != null)
+            {
+                renderer.enabled = true;
+            }
+            Destroy(projectile.GetComponent<OrbitingProjectileSkill>());
+
+            ProjectileBehavior projectileBehavior = projectile.AddComponent<ProjectileBehavior>();
+            projectileBehavior.attacker = attacker;
+            projectileBehavior.attack = attack;
+
+            projectile.transform.Translate(skillObject.transform.up * radius, Space.World);
+            projectile.AddComponent<CircleCollider2D>().isTrigger = true;
+
+            projectiles.Add(projectile);
+            StartCoroutine(MoveOrbitProjectile(projectile));
+            yield return new WaitForSeconds(0.4f);
         }
     }
 
@@ -92,6 +96,7 @@ public class OrbitingProjectileSkill : MonoBehaviour, ISkillComponent, ISkill
             yield return null;
         }
         projectiles.Remove(projectile);
+        
         Destroy(projectile);
         if (projectiles.Count == 0)
         {

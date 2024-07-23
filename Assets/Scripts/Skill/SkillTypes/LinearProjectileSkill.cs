@@ -9,14 +9,21 @@ public class LinearProjectileSkill : MonoBehaviour, ISkillComponent, ISkill //流
     public GameObject attacker;
     public Attack attack;
     public DamageType damageType;
+    
     private int attackNumber;
-    private float projectileangle;
+    private int projectileangle;
+    private int ProjectileValue;
+    private float ProjectileSizeX;
+    private float ProjectileSizeY;
+
+    Vector3 launchPoint;
+    GameObject target;
+
     float duration = 1.0f;
     float timer = 0f;
 
     public float speed = 5f; // 捧荤眉 加档
 
-    private Vector3 direction;
     public void Initialize()
     {
         timer = 0f;
@@ -26,19 +33,57 @@ public class LinearProjectileSkill : MonoBehaviour, ISkillComponent, ISkill //流
     public void ApplyShape(GameObject skillObject, Vector3 launchPoint, GameObject target, float range, float width, int skillPropertyID)
     {
         this.skillObject = skillObject;
-        Sprite circleSprite = Resources.Load<Sprite>("Circle");
-        if (circleSprite != null)
+
+        var skillDownTable = DataTableMgr.Get<SkillDownTable>(DataTableIds.skillDown);
+        var skillDownData = skillDownTable.GetID(skillPropertyID);
+        if (skillDownData != null)
         {
-            skillObject.GetComponent<SpriteRenderer>().sprite = circleSprite;
+            attackNumber = skillDownData.Attacknumber;
+            ProjectileValue = skillDownData.ProjectileValue;
+            projectileangle = skillDownData.Projectileangle;
+            ProjectileSizeX = skillDownData.ProjectileSizeX;
+            ProjectileSizeY = skillDownData.ProjectileSizeY;
         }
 
-        skillObject.AddComponent<CircleCollider2D>();
-        skillObject.GetComponent<CircleCollider2D>().isTrigger = true;
-
         skillObject.transform.position = launchPoint;
-        skillObject.transform.localScale = new Vector2(width, width);
+        this.launchPoint = launchPoint;
+        this.target = target;
+    }
 
-        direction = (target.transform.position - launchPoint).normalized;
+    private void CreateProjectiles(Vector3 launchPoint, GameObject target)
+    {
+        for (int i = 0; i < ProjectileValue; i++)
+        {
+            for (int j = 0; j < attackNumber; j++)
+            {
+                GameObject projectile = Instantiate(skillObject);
+                projectile.transform.position = launchPoint;
+                projectile.transform.localScale = new Vector2(ProjectileSizeX, ProjectileSizeY);
+                Sprite circleSprite = Resources.Load<Sprite>("Circle");
+                if (circleSprite != null)
+                {
+                    projectile.GetComponent<SpriteRenderer>().sprite = circleSprite;
+                }
+                Destroy(projectile.GetComponent<LinearProjectileSkill>());
+                projectile.AddComponent<CircleCollider2D>().isTrigger = true;
+
+                ProjectileBehavior projectileBehavior = projectile.AddComponent<ProjectileBehavior>();
+                projectileBehavior.attacker = attacker;
+                projectileBehavior.attack = attack;
+
+                Vector3 direction;
+                if (projectileangle == -1)
+                {
+                    direction = (target.transform.position - launchPoint).normalized;
+                }
+                else
+                {
+                    float angle = -projectileangle / 2 + (projectileangle / (ProjectileValue - 1)) * i;
+                    direction = Quaternion.Euler(0, 0, angle) * (target.transform.position - launchPoint).normalized;
+                }
+                projectile.AddComponent<ProjectileMovement>().Initialize(direction, speed, duration, attacker, attack);
+            }
+        }
     }
 
     public void ApplyDamageType(GameObject attacker, Attack attack, DamageType damageType, SkillShapeType shapeType)
@@ -46,15 +91,8 @@ public class LinearProjectileSkill : MonoBehaviour, ISkillComponent, ISkill //流
         this.attacker = attacker;
         this.attack = attack;
         this.damageType = damageType;
-    }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Monster"))
-        {
-            var monsterComponent = collision.GetComponent<IAttackable>();
-            monsterComponent.OnAttack(attacker.gameObject, collision.gameObject, attack);
-        }
+        CreateProjectiles(launchPoint, target);
     }
 
     private void Update()
@@ -64,10 +102,6 @@ public class LinearProjectileSkill : MonoBehaviour, ISkillComponent, ISkill //流
         {
             timer = 0f;
             Destroy(gameObject);
-        }
-        else
-        {
-            transform.position += direction * speed * Time.deltaTime;
         }
     }
 }

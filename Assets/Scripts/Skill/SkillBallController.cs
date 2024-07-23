@@ -90,7 +90,6 @@ public class SkillBallController : MonoBehaviour, IPointerDownHandler, IPointerU
         }
 
         Sprite iconSprite = Resources.Load<Sprite>($"SkillIcon/{Skillicon}");
-        Debug.Log(iconSprite);
         if (iconSprite != null)
         {
             skillIconImage.sprite = iconSprite;

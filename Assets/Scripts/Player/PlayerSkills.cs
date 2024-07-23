@@ -27,6 +27,12 @@ public class PlayerSkills : MonoBehaviour
     public GameObject CreateSkill(GameObject skillPrefab, int type, GameObject launchPoint, GameObject target, float range, float width, Attack attack, int skillPropertyID)
     {
         GameObject skillObject = Instantiate(skillPrefab);
+        Renderer renderer = skillObject.GetComponent<Renderer>();
+        if (renderer != null)
+        {
+            renderer.enabled = false;
+        }
+
         ISkillComponent skillComponent = null;
         switch (type)
         {
