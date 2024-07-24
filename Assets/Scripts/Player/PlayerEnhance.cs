@@ -107,6 +107,7 @@ public class PlayerEnhance
             + new BigInteger(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10003).GoldRange) * attackPowerLevel;
         // GameMgr.Instance.uiMgr.uiEnhance.TextUpdate(EnhanceType.AttackPower);
         GameMgr.Instance.playerMgr.playerStat.playerStatUpdate();
+        GameMgr.Instance.soundMgr.PlaySFX("UpgradeButton");
         EventMgr.TriggerEvent(QuestType.AttackEnhance);
 
     }

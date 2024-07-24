@@ -14,8 +14,10 @@ public class SoundMgr : MonoBehaviour
         foreach (AudioClip clip in clips)
         {
             if (clip.name == clipName)
+            {
                 audioSource.PlayOneShot(clip);
-            break;
+                break;
+            }
         }
     }
     public void PlaySFX(AudioClip clip)
