@@ -15365,8 +15365,8 @@ MonoBehaviour:
   pickUpWindow: {fileID: 619789936}
   CameraMove: {fileID: 1460805578}
   toggleWindowButton: {fileID: 128838917}
-  UIGuideQuest: {fileID: 0}
-  UIMonsterSlider: {fileID: 0}
+  UIGuideQuest: {fileID: 1446826467}
+  UIMonsterSlider: {fileID: 1102606859}
 --- !u!1 &1460805574
 GameObject:
   m_ObjectHideFlags: 0
