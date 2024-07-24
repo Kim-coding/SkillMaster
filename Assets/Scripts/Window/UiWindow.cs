@@ -23,6 +23,11 @@ public class UiWindow : MonoBehaviour
 
     private Vector2 buttonPosition;
 
+    public GameObject UIGuideQuest;
+    public GameObject UIMonsterSlider;
+
+
+
     private void Start()
     {
         windows = new Dictionary<Windows, GameObject>()
@@ -67,6 +72,10 @@ public class UiWindow : MonoBehaviour
             return;
         }
 
+        if (window != Windows.Enhance)
+        {
+            groundUISort(true);
+        }
         if (currentOpenWindow != null)
         {
             foreach (var win in windows)
@@ -112,6 +121,7 @@ public class UiWindow : MonoBehaviour
     private void AnimateCloseWindow(GameObject window)
     {
         currentOpenWindow = null;
+        groundUISort(false);
         RectTransform rectTransform = window.GetComponent<RectTransform>();
         var targetPos = new Vector2(0, -Screen.height);
         rectTransform.DOAnchorPos(targetPos, 0.3f).OnComplete(() =>
@@ -188,5 +198,19 @@ public class UiWindow : MonoBehaviour
     public void PickUpWindowOpen()
     {
         Open(Windows.PickUp);
+    }
+
+    public void groundUISort(bool onUIopen)
+    {
+        if(onUIopen)
+        {
+            UIGuideQuest.transform.SetAsFirstSibling();
+            UIMonsterSlider.transform.SetAsFirstSibling();
+        }
+        else
+        {
+            UIGuideQuest.transform.SetAsLastSibling();
+            UIMonsterSlider.transform.SetAsLastSibling();
+        }
     }
 }

@@ -4148,8 +4148,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 161442955}
-  - {fileID: 1102606860}
   - {fileID: 688339761}
+  - {fileID: 1102606860}
   - {fileID: 18388297}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6730,8 +6730,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1446826468}
   - {fileID: 1458089210}
+  - {fileID: 1446826468}
   m_Father: {fileID: 360789205}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -15320,6 +15320,8 @@ MonoBehaviour:
   pickUpWindow: {fileID: 619789936}
   CameraMove: {fileID: 1460805578}
   toggleWindowButton: {fileID: 128838917}
+  UIGuideQuest: {fileID: 1446826467}
+  UIMonsterSlider: {fileID: 1102606859}
 --- !u!1 &1460805574
 GameObject:
   m_ObjectHideFlags: 0
