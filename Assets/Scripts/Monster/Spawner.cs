@@ -108,6 +108,7 @@ public class Spawner : MonoBehaviour
     public GameObject BossSpawn(GameObject bossPrefab, Transform spawnPoint)
     {
         BossParent = scene.monster.poolParent;
+        GameMgr.Instance.soundMgr.PlaySFX("Boss");
         return Instantiate(bossPrefab, spawnPoint.position, Quaternion.identity, BossParent);
     }
 

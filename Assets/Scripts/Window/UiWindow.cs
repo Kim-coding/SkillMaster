@@ -66,7 +66,9 @@ public class UiWindow : MonoBehaviour
 
     public void Open(Windows window)
     {
-        if(isAnimating || (currentOpenWindow == window && windows[window].activeSelf))
+        GameMgr.Instance.soundMgr.PlaySFX("Button");
+
+        if (isAnimating || (currentOpenWindow == window && windows[window].activeSelf))
         {
             AnimateCloseWindow(windows[window]);
             return;
