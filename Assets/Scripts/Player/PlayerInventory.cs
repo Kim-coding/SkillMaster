@@ -22,6 +22,39 @@ public class PlayerInventory
 
     public int maxSlots = 150;
 
+    public void Init()
+    {
+        //데이터 테이블 / 키값 받아오기
+        var iconimage = Resources.LoadAll<Sprite>("Equipment/Hair_C_1");
+        baseHair = new Equip(iconimage,"기본 머리");
+        baseHair.SetEquipItem(EquipType.Hair, RarerityType.C);
+        iconimage = Resources.LoadAll<Sprite>("Equipment/Eye_C_1");
+        baseFace = new Equip(iconimage, "기본 눈");
+        baseFace.SetEquipItem(EquipType.Face, RarerityType.C);
+        iconimage = Resources.LoadAll<Sprite>("Equipment/Cloth_C_1");
+        baseCloth = new Equip(iconimage, "기본 상의");
+        baseCloth.SetEquipItem(EquipType.Cloth, RarerityType.C);
+        iconimage = Resources.LoadAll<Sprite>("Equipment/Pant_A_2");
+        basePant = new Equip(iconimage, "기본 바지");
+        basePant.SetEquipItem(EquipType.Pants, RarerityType.C);
+        iconimage = Resources.LoadAll<Sprite>("Equipment/Weapon_C_1");
+        baseWeapon = new Equip(iconimage, "기본 무기");
+        baseWeapon.SetEquipItem(EquipType.Weapon, RarerityType.C);
+        iconimage = Resources.LoadAll<Sprite>("Equipment/Back_C_1");
+        baseCloak = new Equip(iconimage, "기본 망토");
+        baseCloak.SetEquipItem(EquipType.Cloak, RarerityType.C);
+
+        //저장 받아오기 없으면
+        playerHair = baseHair;
+        playerFace = baseFace;
+        playerCloth = baseCloth;
+        playerPant = basePant;
+        playerWeapon = baseWeapon;
+        playerCloak = baseCloak;
+
+    }
+
+
     public Equip EquipItem(Equip equip)
     {
         Equip currentEquip = new Equip();
@@ -85,8 +118,25 @@ public class PlayerInventory
         }
     }
 
-    public List<Equip> GetPlayerEquips()
+    public Equip GetPlayerEquips(EquipType type)
     {
-        return playerEquips;
+        switch (type)
+        {
+            case EquipType.None:
+                return null;
+            case EquipType.Hair:
+                return playerHair;
+            case EquipType.Face:
+                return playerFace;
+            case EquipType.Cloth:
+                return playerCloth;
+            case EquipType.Pants:
+                return playerPant;
+            case EquipType.Weapon:
+                return playerWeapon;
+            case EquipType.Cloak:
+                return playerCloak;
+        }
+        return null;
     }
 }

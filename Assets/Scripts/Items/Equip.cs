@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class Equip : Item
 {
     public Equip() { }
-    public Equip(Sprite[] icon, string path, string itemName) :
-         base(icon, path, itemName) { }
+    public Equip(Sprite[] icon, string itemName) :
+         base(icon, itemName) { }
 
     public EquipType equipType;
     public RarerityType rarerityType;
@@ -19,10 +19,9 @@ public class Equip : Item
     {
         equipOption = new EquipOption();
     }
-    public void Init(Sprite[] icon, string path, string itemName)
+    public void Init(Sprite[] icon, string itemName)
     {
         this.icon = icon;
-        this.path = path;
         this.itemName = itemName;
     }
 

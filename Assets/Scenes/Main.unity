@@ -3582,7 +3582,6 @@ MonoBehaviour:
   button: {fileID: 0}
   selectedBorder: {fileID: 0}
   itemImage: {fileID: 963546067}
-  currentEquip: {fileID: 0}
   customOrder: 0
   onSelected: 0
 --- !u!1 &321449165
@@ -4080,7 +4079,6 @@ MonoBehaviour:
   button: {fileID: 0}
   selectedBorder: {fileID: 0}
   itemImage: {fileID: 1607227579}
-  currentEquip: {fileID: 0}
   customOrder: 0
   onSelected: 0
 --- !u!1 &358903902
@@ -5323,7 +5321,6 @@ MonoBehaviour:
   button: {fileID: 0}
   selectedBorder: {fileID: 0}
   itemImage: {fileID: 242321924}
-  currentEquip: {fileID: 0}
   customOrder: 0
   onSelected: 0
 --- !u!1 &482628704
@@ -6634,7 +6631,6 @@ MonoBehaviour:
   button: {fileID: 0}
   selectedBorder: {fileID: 0}
   itemImage: {fileID: 1929554119}
-  currentEquip: {fileID: 0}
   customOrder: 0
   onSelected: 0
 --- !u!1 &650318198
@@ -9430,6 +9426,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 933220823}
   m_CullTransparentMesh: 1
+--- !u!114 &940627868 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2710905177450046921, guid: 81ba63d0722e0874d9ac59caf131914e, type: 3}
+  m_PrefabInstance: {fileID: 941611641796686422}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baea2e9758e554909b2367e396d9c5a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &963546065
 GameObject:
   m_ObjectHideFlags: 0
@@ -9916,7 +9923,6 @@ MonoBehaviour:
   button: {fileID: 0}
   selectedBorder: {fileID: 0}
   itemImage: {fileID: 1224936953}
-  currentEquip: {fileID: 0}
   customOrder: 0
   onSelected: 0
 --- !u!1 &1040160914
@@ -12123,7 +12129,6 @@ MonoBehaviour:
   button: {fileID: 0}
   selectedBorder: {fileID: 0}
   itemImage: {fileID: 430160082}
-  currentEquip: {fileID: 0}
   customOrder: 0
   onSelected: 0
 --- !u!1 &1213780094
@@ -15308,6 +15313,7 @@ MonoBehaviour:
   uiMerge: {fileID: 334062746}
   uiEnhance: {fileID: 18185122}
   uiGuideQuest: {fileID: 1446826472}
+  uiInventory: {fileID: 1658117471}
   monsterSlider: {fileID: 1102606861}
   bossSpawnButton: {fileID: 231454458}
   goldUI: {fileID: 5086343}
@@ -17155,6 +17161,13 @@ MonoBehaviour:
   sorting: {fileID: 0}
   currentToggle: {fileID: 0}
   inventoryPanel: {fileID: 1148116440}
+  spriteList: {fileID: 940627868}
+  hairSlot: {fileID: 466190886}
+  faceSlot: {fileID: 1212276509}
+  clothSlot: {fileID: 337208960}
+  pantSlot: {fileID: 1031323795}
+  weaponSlot: {fileID: 317484081}
+  cloakSlot: {fileID: 643381587}
 --- !u!1 &1664369004
 GameObject:
   m_ObjectHideFlags: 0

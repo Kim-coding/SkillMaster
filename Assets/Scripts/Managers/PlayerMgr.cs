@@ -16,6 +16,7 @@ public class PlayerMgr : MonoBehaviour
     public PlayerEnhance playerEnhance;
     public PlayerCurrency currency;
     public PlayerInfomation playerInfo;
+    public PlayerInventory playerinventory;
 
     public List<SkillBallController> skillBallControllers = new List<SkillBallController>();
 
@@ -58,10 +59,12 @@ public class PlayerMgr : MonoBehaviour
         playerStat = new PlayerStat();
         playerEnhance = new PlayerEnhance();
         playerInfo = new PlayerInfomation();
+        playerinventory = new PlayerInventory();
         currency.Init();
         StatSetting();
         playerEnhance.Init();
         playerInfo.Init();
+        playerinventory.Init();
 
         playerBaseStat.onSettingChange += StatSetting;
     }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting;
 
 public class UiInventory : MonoBehaviour
 {
@@ -35,7 +36,7 @@ public class UiInventory : MonoBehaviour
         x => x.equipType == EquipType.Weapon,
         x => x.equipType == EquipType.Hair,
         x => x.equipType == EquipType.Face,
-        x => x.equipType == EquipType.Top,
+        x => x.equipType == EquipType.Cloth,
         x => x.equipType == EquipType.Pants,
         x => x.equipType == EquipType.Cloak,
     };
@@ -52,22 +53,66 @@ public class UiInventory : MonoBehaviour
     private List<Equip> sortedList = new List<Equip>();
     private List<ItemSlot> selectedSlots = new List<ItemSlot>();
 
+    public SPUM_SpriteList spriteList;
 
-    private void UpdateItemSlots()
+    public ItemSlot hairSlot;
+    public ItemSlot faceSlot;
+    public ItemSlot clothSlot;
+    public ItemSlot pantSlot;
+    public ItemSlot weaponSlot;
+    public ItemSlot cloakSlot;
+
+
+    public void SortItemSlots()
     {
         // 정렬 필터링
+    }
+
+    public void UiSlotUpdate(EquipType type)
+    {
+        switch (type)
+        {
+            case EquipType.None:
+                break;
+            case EquipType.Hair:
+                hairSlot.SetData(GameMgr.Instance.playerMgr.playerinventory.playerHair);
+                spriteList._hairList[0].sprite = hairSlot.currentEquip.icon[0];
+                break;
+            case EquipType.Face:
+                faceSlot.SetData(GameMgr.Instance.playerMgr.playerinventory.playerFace);
+                spriteList._eyeList[0].sprite = faceSlot.currentEquip.icon[0];
+                spriteList._eyeList[1].sprite = faceSlot.currentEquip.icon[0];
+                spriteList._eyeList[2].sprite = faceSlot.currentEquip.icon[1];
+                spriteList._eyeList[3].sprite = faceSlot.currentEquip.icon[1];
+                break;
+            case EquipType.Cloth:
+                clothSlot.SetData(GameMgr.Instance.playerMgr.playerinventory.playerCloth);
+                spriteList._clothList[0].sprite = clothSlot.currentEquip.icon[0];
+                spriteList._clothList[1].sprite = clothSlot.currentEquip.icon[1];
+                spriteList._clothList[2].sprite = clothSlot.currentEquip.icon[2];
+                break;
+            case EquipType.Pants:
+                pantSlot.SetData(GameMgr.Instance.playerMgr.playerinventory.playerPant);
+                spriteList._pantList[0].sprite = pantSlot.currentEquip.icon[0];
+                spriteList._pantList[1].sprite = pantSlot.currentEquip.icon[1];
+                break;
+            case EquipType.Weapon:
+                weaponSlot.SetData(GameMgr.Instance.playerMgr.playerinventory.playerWeapon);
+                spriteList._weaponList[0].sprite = weaponSlot.currentEquip.icon[0];
+                break;
+            case EquipType.Cloak:
+                cloakSlot.SetData(GameMgr.Instance.playerMgr.playerinventory.playerCloak);
+                spriteList._backList[0].sprite = cloakSlot.currentEquip.icon[0];
+                break;
+        }
+
     }
 
     private void Awake()
     {
         //데이터 테이블 호출
         //키 호출
-
-        var iconimage = Resources.Load<Sprite>($"SPUM/SPUM_Sprites/Items/0_Hair/Hair_1");
-        var equip = new Equip(iconimage[0], "0_Hair/Hair_1", "헤어0");
-        equip.SetEquipItem(EquipType.Hair, RarerityType.S);
-        var newSlot = Instantiate(prefabSlot, inventoryPanel.transform);
-        newSlot.SetData(equip);
+        UiSlotUpdate(EquipType.Hair);
     }
 
     private void Update()
@@ -75,8 +120,8 @@ public class UiInventory : MonoBehaviour
         if(Input.GetKeyUp(KeyCode.N))
         {
             var random = Random.Range(1, 10);
-            var iconimage = Resources.Load<Sprite>(string.Format("SPUM/SPUM_Sprites/Items/0_Hair/Hair_{0}", random));
-            var equip = new Equip(iconimage, "0_Hair/Hair_" + random, "헤어" + random);
+            var iconimage = Resources.LoadAll<Sprite>(string.Format("SPUM/SPUM_Sprites/Items/0_Hair/Hair_{0}", random));
+            var equip = new Equip(iconimage, "헤어" + random);
             equip.SetEquipItem(EquipType.Hair, RarerityType.S);
             var newSlot = Instantiate(prefabSlot, inventoryPanel.transform);
             newSlot.SetData(equip);
