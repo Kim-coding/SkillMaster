@@ -63,8 +63,8 @@ public class UiInventory : MonoBehaviour
         //데이터 테이블 호출
         //키 호출
 
-        var iconimage = Resources.Load<Sprite>($"Icon_Helmet02");
-        var equip = new Equip(iconimage, "Icon_Helmet02", "투구");
+        var iconimage = Resources.Load<Sprite>($"SPUM/SPUM_Sprites/Items/0_Hair/Hair_1");
+        var equip = new Equip(iconimage, "0_Hair/Hair_1", "헤어0");
         equip.SetEquipItem(EquipType.Hair, RarerityType.S);
         var newSlot = Instantiate(prefabSlot, inventoryPanel.transform);
         newSlot.SetData(equip);
@@ -74,8 +74,9 @@ public class UiInventory : MonoBehaviour
     {
         if(Input.GetKeyUp(KeyCode.N))
         {
-            var iconimage = Resources.Load<Sprite>($"Icon_Helmet02");
-            var equip = new Equip(iconimage, "Icon_Helmet02", "투구");
+            var random = Random.Range(1, 10);
+            var iconimage = Resources.Load<Sprite>(string.Format("SPUM/SPUM_Sprites/Items/0_Hair/Hair_{0}", random));
+            var equip = new Equip(iconimage, "0_Hair/Hair_" + random, "헤어" + random);
             equip.SetEquipItem(EquipType.Hair, RarerityType.S);
             var newSlot = Instantiate(prefabSlot, inventoryPanel.transform);
             newSlot.SetData(equip);
