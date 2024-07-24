@@ -5,6 +5,7 @@ public class BattleState : IState
 {
     private PlayerAI player;
     private float attackTimer = 0f;
+    public bool onSkill = false;
 
     public BattleState(PlayerAI player)
     {
@@ -18,16 +19,26 @@ public class BattleState : IState
 
     public void Update()
     {
-        attackTimer += Time.deltaTime;
-        if(attackTimer > player.characterStat.cooldown)
+        if (!onSkill)
         {
-            Attack();
+            attackTimer += Time.deltaTime;
+        }
+
+        if(attackTimer > player.characterStat.cooldown && !onSkill)
+        {
             attackTimer = 0f;
+            Attack();
         }
         if (player.currentTarget == null || !player.currentTarget.gameObject.activeInHierarchy)
         {
             player.CheckAndChangeState();
         }
+
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            onSkill = false;
+        }
+        Debug.Log(onSkill.ToString() + attackTimer);
     }
 
     public void Exit()
@@ -37,6 +48,8 @@ public class BattleState : IState
 
     private void Attack()
     {
+        onSkill = true;
+        Debug.Log(onSkill.ToString());
         player.playerSkills.SetList();
         int skillType = player.playerSkills.castingList[0].skillType;
         int[] attackMagicSkillTypes = { 1, 2, 5, 7, 9 };

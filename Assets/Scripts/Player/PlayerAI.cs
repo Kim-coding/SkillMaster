@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerAI : MonoBehaviour , IAnimation
 {
+
     public CharacterStat characterStat;
     public Image hpBar;
 

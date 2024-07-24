@@ -27,7 +27,7 @@ public class BossAI : MonoBehaviour, IAnimation
         bossStat = GetComponent<BossStat>();
         bossStat.Init();
         bossAttack = new BossAttack();
-        // animator = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
     }
 
     private void Start()
@@ -53,20 +53,34 @@ public class BossAI : MonoBehaviour, IAnimation
             {
                 timer = 0;
                 FindTarget();
-
             }
 
-            if (target != null && target.activeInHierarchy)
+        if (target != null)
+        {
+            if ((target.transform.position - transform.position).x >= 0)
+            {
+                transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y);
+            }
+            else
+            {
+                transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x) * -1, transform.localScale.y);
+            }
+        }
+
+
+        if (target != null && target.activeInHierarchy)
             {
                 if (Vector3.Distance(transform.position, target.transform.position) <= bossStat.attackRange)
                 {
                     gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
                     if (attackTimer >= bossStat.attackSpeed)
                     {
+                        animator.SetTrigger("Attack");
                         var attackables = target.GetComponents<IAttackable>();
                         foreach (var attackable in attackables)
                         {
                             attackable.OnAttack(gameObject, target, bossAttack.CreateAttack(bossStat));
+                      
                         }
                         attackTimer = 0;
                     }

@@ -16,7 +16,6 @@ public class EquipSlot : MonoBehaviour
     {
         TryGetComponent<Button>(out button);
         button.onClick.AddListener(OnbuttonClick);
-        
     }
 
     public void SetData(Equip equipData)
