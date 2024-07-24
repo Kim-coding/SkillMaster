@@ -18,9 +18,15 @@ public class ItemSlot : MonoBehaviour
 
     public void SetData(Equip equipData)
     {
-        currentEquip = equipData;
-        itemImage.sprite = equipData.icon;
-        button.interactable = true;
+        if (equipData != null)
+        {
+            currentEquip = equipData;
+            itemImage.sprite = equipData.icon;
+            if (button != null)
+            {
+                button.interactable = true;
+            }
+        }
 
     }
 

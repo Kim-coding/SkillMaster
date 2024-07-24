@@ -97,7 +97,7 @@ public enum EquipType
     None = -1,
     Hair = 0,
     Face,
-    Top,
+    Cloth,
     Pants,
     Cloak,
     Weapon,

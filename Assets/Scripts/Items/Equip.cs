@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class Equip : Item
 {
-    public Equip(Sprite icon, string path, string itemName) :
+    public Equip() { }
+    public Equip(Sprite[] icon, string path, string itemName) :
          base(icon, path, itemName) { }
 
     public EquipType equipType;
@@ -18,7 +19,7 @@ public class Equip : Item
     {
         equipOption = new EquipOption();
     }
-    public void Init(Sprite icon, string path, string itemName)
+    public void Init(Sprite[] icon, string path, string itemName)
     {
         this.icon = icon;
         this.path = path;

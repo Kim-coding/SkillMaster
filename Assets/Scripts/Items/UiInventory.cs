@@ -64,7 +64,7 @@ public class UiInventory : MonoBehaviour
         //키 호출
 
         var iconimage = Resources.Load<Sprite>($"SPUM/SPUM_Sprites/Items/0_Hair/Hair_1");
-        var equip = new Equip(iconimage, "0_Hair/Hair_1", "헤어0");
+        var equip = new Equip(iconimage[0], "0_Hair/Hair_1", "헤어0");
         equip.SetEquipItem(EquipType.Hair, RarerityType.S);
         var newSlot = Instantiate(prefabSlot, inventoryPanel.transform);
         newSlot.SetData(equip);
