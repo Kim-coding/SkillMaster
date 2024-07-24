@@ -85,7 +85,7 @@ public class SkillSpawner : MonoBehaviour
         {
             return;
         }
-
+        GameMgr.Instance.soundMgr.PlaySFX("Button");
         var newSkill = Instantiate(prefabSkillBall, parentTransform);
 
         var rt = newSkill.GetComponent<RectTransform>();
