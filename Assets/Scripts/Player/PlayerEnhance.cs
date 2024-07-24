@@ -48,7 +48,7 @@ public class PlayerEnhance
         GameMgr.Instance.uiMgr.uiMerge.SkillCountUpdate();
 
         attackPowerLevel = 0;
-        attackPowerValue = 1; //TO-DO 테이블에서
+        attackPowerValue = (int)DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10001).Increase;
         attackPowerCost = new BigInteger(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10001).Gold)
             + new BigInteger(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10003).GoldRange) * attackPowerLevel;
 
