@@ -58,6 +58,10 @@ public class UiEnhance : MonoBehaviour
        p_BS.basePlayerAttackPower + p_E.attackPowerLevel * p_E.attackPowerValue,
        p_BS.basePlayerAttackPower + (p_E.attackPowerLevel + 1) * p_E.attackPowerValue,
        p_E.attackPowerCost);
+        //GameMgr.Instance.soundMgr.PlaySFX("UpgradeButton");
+        GameMgr.Instance.soundMgr.PlaySFX(GameMgr.Instance.soundMgr.clips[0]);
+        Debug.Log(GameMgr.Instance.soundMgr.clips[0].name);
+
     }
 
     public void DefenceTextUpdate()

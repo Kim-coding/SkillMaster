@@ -10,13 +10,17 @@ public class OrbitingProjectileSkill : MonoBehaviour, ISkillComponent, ISkill
     public Attack attack;
     public DamageType damageType;
 
+    private GameObject target;
+
     private float radius;           // 발사체가 회전하는 원의 반지름
-    private float moveSpeed = 100f;       // 발사체 회전 속도
+    private float moveSpeed = 360f;       // 발사체 회전 속도
     private int Projectileangle;    // 발사체 회전 각도
     private int attackNumber;        // 발사체 공격 횟수
     private int ProjectileValue;     // 발사체 개수
     private float ProjectileSizeX;   // 발사체 크기 X
     private float ProjectileSizeY;   // 발사체 크기 Y
+    private string skillEffect;
+    private GameObject skillEffectObject;
 
     private List<GameObject> projectiles = new List<GameObject>();
 
@@ -25,11 +29,12 @@ public class OrbitingProjectileSkill : MonoBehaviour, ISkillComponent, ISkill
         // 필요 시 초기화 작업 수행
     }
 
-    public void ApplyShape(GameObject skillObject, Vector3 launchPoint, GameObject target, float range, float width, int skillPropertyID)
+    public void ApplyShape(GameObject skillObject, Vector3 launchPoint, GameObject target, float range, float width, int skillPropertyID, string skillEffect)
     {
         this.skillObject = skillObject;
+        this.skillEffect = skillEffect;
         radius = range; 
-        
+        this.target = target;
         this.skillObject.transform.position = launchPoint;
         skillObject.transform.position = launchPoint;
         
@@ -46,6 +51,7 @@ public class OrbitingProjectileSkill : MonoBehaviour, ISkillComponent, ISkill
                 ProjectileSizeY = skillDownData.ProjectileSizeY;
             }
         }
+
     }
 
     public void ApplyDamageType(GameObject attacker, Attack attack, DamageType damageType, SkillShapeType shapeType)
@@ -53,6 +59,15 @@ public class OrbitingProjectileSkill : MonoBehaviour, ISkillComponent, ISkill
         this.attacker = attacker;
         this.attack = attack;
         this.damageType = damageType;
+
+        GameObject skillEffectPrefab = Resources.Load<GameObject>($"SkillEffects/{skillEffect}");
+        if (skillEffectPrefab != null)
+        {
+            skillEffectObject = Instantiate(skillEffectPrefab, attacker.transform.position, Quaternion.identity);
+            skillEffectObject.transform.localScale = new Vector2(10, -10);
+            
+            skillEffectObject.transform.SetParent(attacker.transform);
+        }
 
         StartCoroutine(CreateOrbitProjectiles());
     }
@@ -79,7 +94,7 @@ public class OrbitingProjectileSkill : MonoBehaviour, ISkillComponent, ISkill
             projectileBehavior.attacker = attacker;
             projectileBehavior.attack = attack;
 
-            projectile.transform.Translate(skillObject.transform.up * radius, Space.World);
+            //projectile.transform.Translate(attacker.transform.up * radius, Space.World);
             projectile.AddComponent<CircleCollider2D>().isTrigger = true;
 
             projectiles.Add(projectile);
@@ -105,6 +120,7 @@ public class OrbitingProjectileSkill : MonoBehaviour, ISkillComponent, ISkill
         {
             Destroy(skillObject);
             Destroy(gameObject);
+            Destroy(skillEffectObject);
         }
     }
 }

@@ -14,6 +14,7 @@ public class GameMgr : MonoBehaviour
     public GoldMgr goldManager;
     public CameraMove cam;
     public RewardMgr rewardMgr;
+    public SoundMgr soundMgr;
 
     private void Awake()
     {

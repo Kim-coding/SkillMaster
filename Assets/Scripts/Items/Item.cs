@@ -9,17 +9,15 @@ public enum ItemType
     Equip = 0,
     misc = 1
 }
-public abstract class Item : MonoBehaviour
+public abstract class Item
 {
-    public Sprite icon;
-    public string path;
+    public Sprite[] icon;
     public string itemName;
 
     public Item() { }
-    public Item(Sprite icon, string path, string itemName)
+    public Item(Sprite[] icon, string itemName)
     {
         this.icon = icon;
-        this.path = path;
         this.itemName = itemName;
     }
 }
