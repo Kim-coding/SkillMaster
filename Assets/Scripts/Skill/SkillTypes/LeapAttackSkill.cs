@@ -33,7 +33,7 @@ public class LeapAttackSkill : MonoBehaviour, ISkillComponent, ISkill
         
     }
 
-    public void ApplyShape(GameObject skillObject, Vector3 launchPosition, GameObject target, float range, float width, int skillPropertyID)
+    public void ApplyShape(GameObject skillObject, Vector3 launchPosition, GameObject target, float range, float width, int skillPropertyID, string skillEffect)
     {
         this.skillObject = skillObject;
         Sprite circleSprite = Resources.Load<Sprite>("Circle");

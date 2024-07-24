@@ -16,13 +16,13 @@ public class PlayerSkills : MonoBehaviour
         playerAI = GetComponent<PlayerAI>();
     }
 
-    public void UseSkill(GameObject skill, int skillType, GameObject launchPoint, GameObject target, float range, float width, string skillDamage, int skillPropertyID)
+    public void UseSkill(GameObject skill, int skillType, GameObject launchPoint, GameObject target, float range, float width, string skillDamage, int skillPropertyID, string skillEffect)
     {
         fireMagic.SetDamage(skillDamage);
         var attack = fireMagic.CreateAttack(playerAI.characterStat);
-        CreateSkill(skill, skillType, launchPoint, target, range, width, attack, skillPropertyID);
+        CreateSkill(skill, skillType, launchPoint, target, range, width, attack, skillPropertyID, skillEffect);
     }
-    public GameObject CreateSkill(GameObject skillPrefab, int type, GameObject launchPoint, GameObject target, float range, float width, Attack attack, int skillPropertyID)
+    public GameObject CreateSkill(GameObject skillPrefab, int type, GameObject launchPoint, GameObject target, float range, float width, Attack attack, int skillPropertyID, string skillEffect)
     {
         GameObject skillObject = Instantiate(skillPrefab);
         Renderer renderer = skillObject.GetComponent<Renderer>();
@@ -71,23 +71,15 @@ public class PlayerSkills : MonoBehaviour
         }
         if (skillComponent != null)
         {
-            InitializeSkill(skillComponent, skillObject, launchPoint, target, range, width, attack,  skillPropertyID);
-        }
-
-        GameObject skillEffectPrefab = Resources.Load<GameObject>("SkillEffects/Vertical_Slash_3_normal");
-        if (skillEffectPrefab != null)
-        {
-            Debug.Log("SkillEffect");
-            GameObject skillEffect = Instantiate(skillEffectPrefab, launchPoint.transform.position, Quaternion.identity);
-            skillEffect.transform.SetParent(skillObject.transform);
+            InitializeSkill(skillComponent, skillObject, launchPoint, target, range, width, attack,  skillPropertyID, skillEffect);
         }
 
         return skillObject;
     }
 
-    private void InitializeSkill(ISkillComponent skillComponent, GameObject skillObject, GameObject launchPoint, GameObject target, float range, float width, Attack attack, int skillPropertyID)
+    private void InitializeSkill(ISkillComponent skillComponent, GameObject skillObject, GameObject launchPoint, GameObject target, float range, float width, Attack attack, int skillPropertyID, string skillEffect)
     {
-        skillComponent.ApplyShape(skillObject, launchPoint.transform.position, target, range, width, skillPropertyID);
+        skillComponent.ApplyShape(skillObject, launchPoint.transform.position, target, range, width, skillPropertyID, skillEffect);
         skillComponent.ApplyDamageType(launchPoint, attack, DamageType.OneShot, SkillShapeType.Linear);
     }
     public void SetList()

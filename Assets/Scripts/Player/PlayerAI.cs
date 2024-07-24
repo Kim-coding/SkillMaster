@@ -176,8 +176,9 @@ public class PlayerAI : MonoBehaviour , IAnimation
             var skillX = playerSkills.castingList[count].atkArangeX;
             var skillY = playerSkills.castingList[count].atkArangeY;
             var skillPropertyID = playerSkills.castingList[count].skillPropertyID;
+            string skillEffect = playerSkills.castingList[count].SkillEffect;
 
-            playerSkills.UseSkill(skill, skillType, gameObject, currentTarget.gameObject, skillX, skillY, skillDamage, skillPropertyID);
+            playerSkills.UseSkill(skill, skillType, gameObject, currentTarget.gameObject, skillX, skillY, skillDamage, skillPropertyID, skillEffect);
 
             if(count < maxCount)
             {
