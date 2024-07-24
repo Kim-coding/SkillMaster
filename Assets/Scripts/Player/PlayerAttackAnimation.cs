@@ -10,7 +10,6 @@ public class PlayerAttackAnimation : MonoBehaviour
     public void OnAttackAnimationComplete()
     {
         player.PlayerStateMachine.battleState.OnAttackAnimationComplete();
-        player.PlayerStateMachine.battleState.onSkill = false;
-
+        player.onSkill = false;
     }
 }

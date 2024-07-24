@@ -27,6 +27,7 @@ public class PlayerAI : MonoBehaviour , IAnimation
     public Animator Animator { get => animator;}
 
     private Animator animator;
+    public bool onSkill = false;
 
     private void Awake()
     {
@@ -50,6 +51,10 @@ public class PlayerAI : MonoBehaviour , IAnimation
     private void Update()
     {
         stateMachine.Update();
+        if(characterStat.Ondeath)
+        {
+            stateMachine.ChangState(new IdleState(this));
+        }
         animator.SetFloat("Multiplier", characterStat.attackSpeed);
 
         if (currentTarget != null) {
