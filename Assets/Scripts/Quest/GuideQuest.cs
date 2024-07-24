@@ -43,6 +43,7 @@ public class GuideQuest
     public void NextQuest()
     {
         GameMgr.Instance.uiMgr.uiGuideQuest.UiButtonUpdate(false);
+        GameMgr.Instance.soundMgr.PlaySFX("QuestClear");
         questID = currentQuest.Next_Quest;
         currentQuest = DataTableMgr.Get<QuestTable>(DataTableIds.quest).GetID(questID);
         GameMgr.Instance.uiMgr.uiGuideQuest.currentQuest = currentQuest;
