@@ -76,7 +76,7 @@ public class OrbitingProjectileSkill : MonoBehaviour, ISkillComponent, ISkill
     {
         for (int j = 0; j < ProjectileValue; j++)
         {
-            GameObject projectile = Instantiate(skillObject, attacker.transform.position, Quaternion.identity);
+            GameObject projectile = Instantiate(skillObject, target.transform.position, Quaternion.identity);
             projectile.transform.localScale = new Vector2(ProjectileSizeX, ProjectileSizeY);
             Sprite CircleSprite = Resources.Load<Sprite>("Circle");
             if (CircleSprite != null)
@@ -94,27 +94,36 @@ public class OrbitingProjectileSkill : MonoBehaviour, ISkillComponent, ISkill
             projectileBehavior.attacker = attacker;
             projectileBehavior.attack = attack;
 
-            //projectile.transform.Translate(attacker.transform.up * radius, Space.World);
             projectile.AddComponent<CircleCollider2D>().isTrigger = true;
 
             projectiles.Add(projectile);
-            StartCoroutine(MoveOrbitProjectile(projectile));
+
+            Vector3 directionToTarget = (projectile.transform.position - attacker.transform.position).normalized;
+            float targetAngle = Mathf.Atan2(directionToTarget.y, directionToTarget.x) * Mathf.Rad2Deg;
+
+            if (targetAngle < 0)
+                targetAngle += 360f;
+
+            StartCoroutine(MoveOrbitProjectile(projectile, attacker.transform.position, targetAngle)); 
             yield return new WaitForSeconds(0.4f);
         }
     }
 
-    private IEnumerator MoveOrbitProjectile(GameObject projectile)
+    private IEnumerator MoveOrbitProjectile(GameObject projectile, Vector3 center, float targetAngle)
     {
-        float angle = 0f;
-        while (angle < Projectileangle)
+        float angle = targetAngle;
+        float endAngle = targetAngle - Projectileangle;
+
+        while (angle > endAngle)
         {
-            angle += moveSpeed * Time.deltaTime;
-            Vector3 offset = new Vector3(Mathf.Sin(angle * Mathf.Deg2Rad), Mathf.Cos(angle * Mathf.Deg2Rad)) * radius;
-            projectile.transform.position = attacker.transform.position + offset;
+            angle -= moveSpeed * Time.deltaTime;
+            float radian = angle * Mathf.Deg2Rad;
+            Vector3 offset = new Vector3(Mathf.Cos(radian), Mathf.Sin(radian)) * radius;
+            projectile.transform.position = center + offset;
             yield return null;
         }
         projectiles.Remove(projectile);
-        
+
         Destroy(projectile);
         if (projectiles.Count == 0)
         {

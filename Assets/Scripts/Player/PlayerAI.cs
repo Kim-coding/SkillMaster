@@ -15,7 +15,7 @@ public class PlayerAI : MonoBehaviour , IAnimation
 
     private List<Node> path;
     private int currentPathIndex = 0;
-    [HideInInspector]
+    //[HideInInspector]
     public Transform currentTarget;
 
     private AStarPathfinding pathfinding;
