@@ -123,7 +123,7 @@ public class UiWindow : MonoBehaviour
 
 
 
-    private void AnimateOpenMergeWindow()
+    public void AnimateOpenMergeWindow()
     {
         OnMergeWindow = true;
         CameraMove.isToggle = true;
@@ -143,7 +143,7 @@ public class UiWindow : MonoBehaviour
     }
 
 
-    private void AnimateCloseMergeWindow()
+    public void AnimateCloseMergeWindow()
     {
         OnMergeWindow =false;
         CameraMove.isToggle = false;
