@@ -81,11 +81,14 @@ public class SkillSpawner : MonoBehaviour
 
     public void SpawnSkill()
     {
-        if(GameMgr.Instance.playerMgr.skillBallControllers.Count == maxReserveSkillCount || GameMgr.Instance.playerMgr.playerEnhance.currentSpawnSkillCount <= 0)
+        if (GameMgr.Instance.playerMgr.skillBallControllers.Count == maxReserveSkillCount || GameMgr.Instance.playerMgr.playerEnhance.currentSpawnSkillCount <= 0)
         {
             return;
         }
-
+        if (GameMgr.Instance.playerMgr.skillBallControllers.Count != 0)
+        { 
+            GameMgr.Instance.soundMgr.PlaySFX("Button"); 
+        }
         var newSkill = Instantiate(prefabSkillBall, parentTransform);
 
         var rt = newSkill.GetComponent<RectTransform>();
