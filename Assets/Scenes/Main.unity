@@ -18335,6 +18335,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1880426546}
     m_Modifications:
+    - target: {fileID: 4269445523896851557, guid: bd0b10f85c768234f81a78ecec3afada, type: 3}
+      propertyPath: skills.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4269445523896851557, guid: bd0b10f85c768234f81a78ecec3afada, type: 3}
+      propertyPath: skills.Array.data[0]
+      value: 
+      objectReference: {fileID: 7542266623136808606, guid: a5be68472b022c94d8ec3c1381b8c314, type: 3}
+    - target: {fileID: 4269445523896851557, guid: bd0b10f85c768234f81a78ecec3afada, type: 3}
+      propertyPath: skills.Array.data[1]
+      value: 
+      objectReference: {fileID: 2136775385740452205, guid: 607a091d6561605479747c9ddd096b52, type: 3}
     - target: {fileID: 5936838196064874823, guid: bd0b10f85c768234f81a78ecec3afada, type: 3}
       propertyPath: m_Name
       value: Player

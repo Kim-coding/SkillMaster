@@ -74,6 +74,14 @@ public class PlayerSkills : MonoBehaviour
             InitializeSkill(skillComponent, skillObject, launchPoint, target, range, width, attack,  skillPropertyID);
         }
 
+        GameObject skillEffectPrefab = Resources.Load<GameObject>("SkillEffects/Vertical_Slash_3_normal");
+        if (skillEffectPrefab != null)
+        {
+            Debug.Log("SkillEffect");
+            GameObject skillEffect = Instantiate(skillEffectPrefab, launchPoint.transform.position, Quaternion.identity);
+            skillEffect.transform.SetParent(skillObject.transform);
+        }
+
         return skillObject;
     }
 
