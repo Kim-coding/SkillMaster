@@ -13728,8 +13728,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 25
+  m_fontSizeBase: 25
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -15103,6 +15103,7 @@ MonoBehaviour:
   goldManager: {fileID: 1423913465}
   cam: {fileID: 1460805578}
   rewardMgr: {fileID: 1423913466}
+  soundMgr: {fileID: 0}
 --- !u!4 &1423913460
 Transform:
   m_ObjectHideFlags: 0
@@ -15157,6 +15158,7 @@ MonoBehaviour:
   uiMerge: {fileID: 334062746}
   uiEnhance: {fileID: 18185122}
   uiGuideQuest: {fileID: 1446826472}
+  uiInventory: {fileID: 0}
   monsterSlider: {fileID: 1102606861}
   bossSpawnButton: {fileID: 231454458}
   goldUI: {fileID: 5086343}
