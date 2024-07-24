@@ -10,6 +10,9 @@ public class ChainAttackSkill : MonoBehaviour, ISkillComponent, ISkill, ISpecial
     public Attack attack;
     public DamageType damageType;
 
+    private float timer = 0f;
+    private float duration =  1f;
+
     private int attackNumber = 1;  //TO-DO : 공격 횟수, 테이블 받아오기 //Initialize에 매개변수로 받아와야 함
 
     private int maxChains = 3;     //TO-DO : 피격 몬스터 수, 테이블 받아오기
@@ -186,6 +189,7 @@ public class ChainAttackSkill : MonoBehaviour, ISkillComponent, ISkill, ISpecial
                 newTargets.Add(sortedMonsters[i]);
             }
         }
+
         return newTargets;
     }
 
@@ -230,6 +234,15 @@ public class ChainAttackSkill : MonoBehaviour, ISkillComponent, ISkill, ISpecial
         }
 
         Destroy(gameObject);
+    }
+
+    private void Update()
+    {
+        timer += Time.deltaTime;
+        if( timer > duration )
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void OnDisable()

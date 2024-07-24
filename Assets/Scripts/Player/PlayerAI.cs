@@ -172,22 +172,17 @@ public class PlayerAI : MonoBehaviour , IAnimation
             }
 
             var skillType = playerSkills.castingList[count].skillType;
-            var skillDamage = playerSkills.castingList[count].skillDamage;
+            string skillDamage = playerSkills.castingList[count].skillDamage;
             var skillX = playerSkills.castingList[count].atkArangeX;
             var skillY = playerSkills.castingList[count].atkArangeY;
             var skillPropertyID = playerSkills.castingList[count].skillPropertyID;
 
             playerSkills.UseSkill(skill, skillType, gameObject, currentTarget.gameObject, skillX, skillY, skillDamage, skillPropertyID);
 
-            if(count < maxCount - 1)
+            if(count < maxCount)
             {
                 count++;
             }
-            else
-            {
-                count = 0;
-            }
-
         }
         else
         {
