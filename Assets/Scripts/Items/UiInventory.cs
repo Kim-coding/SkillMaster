@@ -55,12 +55,12 @@ public class UiInventory : MonoBehaviour
 
     public SPUM_SpriteList spriteList;
 
-    public ItemSlot hairSlot;
-    public ItemSlot faceSlot;
-    public ItemSlot clothSlot;
-    public ItemSlot pantSlot;
-    public ItemSlot weaponSlot;
-    public ItemSlot cloakSlot;
+    public EquipSlot hairSlot;
+    public EquipSlot faceSlot;
+    public EquipSlot clothSlot;
+    public EquipSlot pantSlot;
+    public EquipSlot weaponSlot;
+    public EquipSlot cloakSlot;
 
 
     public void SortItemSlots()
@@ -113,6 +113,11 @@ public class UiInventory : MonoBehaviour
         //데이터 테이블 호출
         //키 호출
         UiSlotUpdate(EquipType.Hair);
+        UiSlotUpdate(EquipType.Face);
+        UiSlotUpdate(EquipType.Cloth);
+        UiSlotUpdate(EquipType.Pants);
+        UiSlotUpdate(EquipType.Weapon);
+        UiSlotUpdate(EquipType.Cloak);
     }
 
     private void Update()
@@ -127,4 +132,11 @@ public class UiInventory : MonoBehaviour
             newSlot.SetData(equip);
         }
     }
+
+    public void InstantiateSlot(Equip equip)
+    {
+        var newSlot = Instantiate(prefabSlot, inventoryPanel.transform);
+        newSlot.SetData(equip);
+    }
+
 }
