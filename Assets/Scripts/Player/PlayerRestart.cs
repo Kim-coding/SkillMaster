@@ -11,7 +11,7 @@ public class PlayerRestart : MonoBehaviour
         player.characterStat.Health = new BigInteger(player.characterStat.maxHealth);
         player.characterStat.Ondeath = false;
         player.UpdateHpBar(1f);
-
+        player.CheckAndChangeState();
         player.Animator.SetTrigger("Restart");
     }
 }
