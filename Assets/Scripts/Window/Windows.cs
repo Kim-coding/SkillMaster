@@ -5,3 +5,13 @@ public enum Windows
     Dungeon,
     PickUp,
 }
+
+public enum Guide_Windows
+{
+    Battle,
+    Skill,
+    Upgrade,
+    Gacha,
+    Equipment,
+    Quest,
+}
