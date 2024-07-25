@@ -86,6 +86,10 @@ public class MainScene : MonoBehaviour
     {
         bossStage = true;
         currentBoss = spawner.BossSpawn(BossMonsterPrefab, bossSpawnPoint);
+        var bossAi = currentBoss.GetComponent<BossAI>();
+        bossAi.bossStat.SetBossID(DataTableMgr.Get<StageTable>(DataTableIds.stage).GetID
+           (GameMgr.Instance.sceneMgr.mainScene.stageId).appearBossMonster);
+        bossAi.bossStat.Init();
         AddMonsters(currentBoss);
         GameMgr.Instance.cam.SetTarget(currentBoss.transform.GetChild(0).gameObject);
         GameMgr.Instance.soundMgr.PlaySFX("Boss");
