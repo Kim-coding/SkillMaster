@@ -83,7 +83,7 @@ public class LinearProjectileSkill : MonoBehaviour, ISkillComponent, ISkill //Á÷
                 }
                 else
                 {
-                    float angle = -projectileangle / 2 + (projectileangle / (ProjectileValue - 1)) * i;
+                    float angle = projectileangle / 2 + (projectileangle / (ProjectileValue - 1)) * i;
                     direction = Quaternion.Euler(0, 0, angle) * (target.transform.position - launchPoint).normalized;
                 }
                 projectile.AddComponent<ProjectileMovement>().Initialize(direction, speed, duration, attacker, attack);
