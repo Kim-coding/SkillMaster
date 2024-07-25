@@ -11,7 +11,7 @@ public class IdleState : IState
 
     public void Enter()
     {
-        Debug.Log("Enter IdleState");
+        //Debug.Log("Enter IdleState");
     }
 
     public void Update()

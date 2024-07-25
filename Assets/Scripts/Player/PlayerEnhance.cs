@@ -19,7 +19,7 @@ public class PlayerEnhance
     public BigInteger maxHealthCost;
 
     public int defenceLevel;
-    public int defenceValue;
+    public float defenceValue;
     public BigInteger defenceCost;
 
     public int criticalPercentLevel;
@@ -58,7 +58,7 @@ public class PlayerEnhance
             + new BigInteger(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10003).GoldRange) * maxHealthLevel;
 
         defenceLevel = 0;
-        defenceValue = (int)DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10002).Increase;
+        defenceValue = DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10002).Increase;
         defenceCost = new BigInteger(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10002).Gold)
             + new BigInteger(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10002).GoldRange) * defenceLevel;
 

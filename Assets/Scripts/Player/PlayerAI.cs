@@ -195,6 +195,10 @@ public class PlayerAI : MonoBehaviour , IAnimation
     public void Restart()
     {
         onSkill = false;
+        characterStat.Health = new BigInteger(characterStat.maxHealth);
+        characterStat.Ondeath = false;
+        UpdateHpBar(1f);
+        Animator.SetTrigger("Restart");
         currentTarget = FindClosestMonster();
         CheckAndChangeState();
     }

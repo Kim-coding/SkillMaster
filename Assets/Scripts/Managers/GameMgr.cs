@@ -31,6 +31,7 @@ public class GameMgr : MonoBehaviour
         playerMgr.Init();
         rewardMgr.Init();
         sceneMgr.mainScene.Init();
+        uiMgr.Init();
     }
     private void Update()
     {

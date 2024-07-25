@@ -16,6 +16,7 @@ public class MainScene : MonoBehaviour
     public int stageCount;
     public int stageId;
 
+    public ClearPopup clearPopup;
     public void Init()
     {
         stageId = 50001; //TO-DO 저장된곳에서 가져오기
@@ -44,6 +45,7 @@ public class MainScene : MonoBehaviour
 
     public void AddStage()
     {
+        clearPopup.gameObject.SetActive(true);
         EventMgr.TriggerEvent(QuestType.Stage);
         stageId++;
         stageCount = DataTableMgr.Get<StageTable>(DataTableIds.stage).GetID(stageId).StageLv;
