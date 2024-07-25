@@ -53,7 +53,7 @@ public class PlayerAI : MonoBehaviour , IAnimation
         stateMachine.Update();
         if(characterStat.Ondeath)
         {
-            stateMachine.ChangState(new IdleState(this));
+            stateMachine.ChangState(stateMachine.idleState);
         }
         animator.SetFloat("Multiplier", characterStat.attackSpeed);
 
@@ -141,21 +141,21 @@ public class PlayerAI : MonoBehaviour , IAnimation
         {
             if (!(stateMachine.currentState is IdleState))
             {
-                ChangeState(new IdleState(this));
+                ChangeState(stateMachine.idleState);
             }
         }
         else if (IsInAttackRange())
         {
             if (!(stateMachine.currentState is BattleState))
             {
-                ChangeState(new BattleState(this));
+                ChangeState(stateMachine.battleState);
             }
         }
         else
         {
             if (!(stateMachine.currentState is WalkState))
             {
-                ChangeState(new WalkState(this));
+                ChangeState(stateMachine.walkState);
             }
         }
     }
