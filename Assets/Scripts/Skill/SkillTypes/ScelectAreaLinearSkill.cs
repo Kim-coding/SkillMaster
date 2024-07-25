@@ -12,6 +12,9 @@ public class ScelectAreaLinearAttack : MonoBehaviour, ISkillComponent, ISkill
 
     float duration = 0.5f;
     float timer = 0f;
+    float angle;
+    private GameObject skillEffectObject;
+    private string skillEffect;
 
     public void Initialize()
     {
@@ -24,6 +27,8 @@ public class ScelectAreaLinearAttack : MonoBehaviour, ISkillComponent, ISkill
     public void ApplyShape(GameObject skillObject, Vector3 launchPoint, GameObject target, float range, float width, int skillPropertyID, string skillEffect) //스킬의 형태와 위치를 설정
     {
         this.skillObject = skillObject;
+        this.skillEffect = skillEffect;
+
         Renderer renderer = this.skillObject.GetComponent<Renderer>();
         if (renderer != null)
         {
@@ -31,12 +36,11 @@ public class ScelectAreaLinearAttack : MonoBehaviour, ISkillComponent, ISkill
         }
         skillObject.transform.localScale = new Vector2(range, width);
 
-        skillObject.AddComponent<BoxCollider2D>();
-        skillObject.GetComponent<BoxCollider2D>().isTrigger = true;
-
+        skillObject.AddComponent<BoxCollider2D>().isTrigger = true;
+        this.skillObject.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0);
         var rot = (target.transform.position - launchPoint).normalized;
 
-        float angle = Mathf.Atan2(rot.y, rot.x) * Mathf.Rad2Deg + 90;
+        angle = Mathf.Atan2(rot.y, rot.x) * Mathf.Rad2Deg + 90;
         skillObject.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
         skillObject.transform.position = target.transform.position;
     }
@@ -46,6 +50,15 @@ public class ScelectAreaLinearAttack : MonoBehaviour, ISkillComponent, ISkill
         this.attacker = attacker;
         this.attack = attack;
         this.damageType = damageType;
+
+        GameObject skillEffectPrefab = Resources.Load<GameObject>($"SkillEffects/{skillEffect}");
+        if (skillEffectPrefab != null)
+        {
+            skillEffectObject = Instantiate(skillEffectPrefab, skillObject.transform.position, Quaternion.identity);
+
+            skillEffectObject.transform.SetParent(skillObject.transform);
+
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

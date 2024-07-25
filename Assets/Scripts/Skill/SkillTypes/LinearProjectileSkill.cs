@@ -93,8 +93,8 @@ public class LinearProjectileSkill : MonoBehaviour, ISkillComponent, ISkill //Á÷
                 {
                     skillEffectObject = Instantiate(skillEffectPrefab, attacker.transform.position, Quaternion.identity);
                     var mainModule = skillEffectObject.GetComponent<ParticleSystem>().main;
-                    mainModule.startRotation = Mathf.Atan2(-direction.y, direction.x);
-
+                    float rotationAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+                    mainModule.startRotation = Mathf.Deg2Rad * rotationAngle;
                     skillEffectObject.transform.SetParent(projectile.transform);
 
                 }

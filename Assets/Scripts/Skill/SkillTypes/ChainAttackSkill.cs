@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ChainAttackSkill : MonoBehaviour, ISkillComponent, ISkill, ISpecialEffect
 {
-    public string skillID = "AreaSingleHitSkill";
+    public string skillID = "ChainAttackSkill";
     public GameObject skillObject;
     public GameObject attacker;
     public Attack attack;
@@ -13,9 +13,9 @@ public class ChainAttackSkill : MonoBehaviour, ISkillComponent, ISkill, ISpecial
     private float timer = 0f;
     private float duration =  1f;
 
-    private int attackNumber = 1;  //TO-DO : 공격 횟수, 테이블 받아오기 //Initialize에 매개변수로 받아와야 함
+    private int attackNumber = 1;
 
-    private int maxChains = 3;     //TO-DO : 피격 몬스터 수, 테이블 받아오기
+    private int maxChains = 3;
 
     private HashSet<GameObject> hitMonsters = new HashSet<GameObject>(); //피격 몬스터 수 체크
 
@@ -23,20 +23,23 @@ public class ChainAttackSkill : MonoBehaviour, ISkillComponent, ISkill, ISpecial
     private GameObject currentTarget;
 
     private List<GameObject> lineRenderers = new List<GameObject>();
+    private List<GameObject> chainEffects = new List<GameObject>();
+    private GameObject skillEffectObject;
+    private string skillEffect;
 
     void Start()
     {
         hitMonsters.Clear();
-        ClearLineRenderers();
+        ClearChainEffects();
 
         if (GameMgr.Instance.sceneMgr.mainScene.IsBossBattle())
         {
-            DrawLine(attacker, currentTarget);
+            StartChainEffect(attacker, currentTarget);
             ApplyDamage(currentTarget);
         }
         else if (currentTarget != null)
         {
-            DrawLine(attacker, currentTarget);
+            StartChainEffect(attacker, currentTarget);
             StartChainAttack(currentTarget);
         }
     }
@@ -47,12 +50,13 @@ public class ChainAttackSkill : MonoBehaviour, ISkillComponent, ISkill, ISpecial
         //attackNumber
         //maxChains
         hitMonsters.Clear();
-        ClearLineRenderers();
+        ClearChainEffects();
     }
 
     public void ApplyShape(GameObject skillObject, Vector3 launchPoint, GameObject target, float range, float width, int skillPropertyID, string skillEffect)
     {
         currentTarget = target;
+        this.skillEffect = skillEffect;
         Renderer renderer = skillObject.GetComponent<Renderer>();
         if (renderer != null)
         {
@@ -114,7 +118,7 @@ public class ChainAttackSkill : MonoBehaviour, ISkillComponent, ISkill, ISpecial
             ApplyDamage(target);
 
             yield return new WaitForSeconds(0.1f);
-            ClearLineRenderers();
+            ClearChainEffects();
             List<GameObject> newTargets = new List<GameObject> { };
             if (hitMonsters.Count == 1)
             {
@@ -129,7 +133,7 @@ public class ChainAttackSkill : MonoBehaviour, ISkillComponent, ISkill, ISpecial
             {
                 if (newTarget != null && newTarget.activeInHierarchy)
                 {
-                    DrawLine(target, newTarget);
+                    StartChainEffect(target, newTarget);
                     targets.Enqueue(newTarget);
                 }
             }
@@ -193,6 +197,29 @@ public class ChainAttackSkill : MonoBehaviour, ISkillComponent, ISkill, ISpecial
         return newTargets;
     }
 
+    private void StartChainEffect(GameObject from, GameObject to)
+    {
+        GameObject skillEffectPrefab = Resources.Load<GameObject>($"SkillEffects/{skillEffect}");
+        if (skillEffectPrefab != null)
+        {
+            GameObject chainEffect = Instantiate(skillEffectPrefab, from.transform.position, Quaternion.identity);
+            chainEffect.AddComponent<MoveEffect>().Initialize(from.transform.position, to.transform.position, 0.2f);
+            chainEffects.Add(chainEffect);
+        }
+    }
+
+    private void ClearChainEffects()
+    {
+        foreach (var effect in chainEffects)
+        {
+            if (effect != null)
+            {
+                Destroy(effect);
+            }
+        }
+        chainEffects.Clear();
+    }
+
     private void DrawLine(GameObject from, GameObject to)
     {
         if (from == null || to == null)
@@ -226,7 +253,7 @@ public class ChainAttackSkill : MonoBehaviour, ISkillComponent, ISkill, ISpecial
 
     private void ChainCoroutineStop()
     {
-        ClearLineRenderers();
+        ClearChainEffects();
 
         if (chainCoroutine != null)
         {
