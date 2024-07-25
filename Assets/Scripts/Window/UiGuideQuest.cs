@@ -10,7 +10,7 @@ public class UiGuideQuest : MonoBehaviour
     public TextMeshProUGUI questName;
     public TextMeshProUGUI questCount;
     public QuestData currentQuest;
-
+    public GameObject clearText;
 
     public void UiUpdate(int currentValue)
     {
@@ -28,9 +28,11 @@ public class UiGuideQuest : MonoBehaviour
         if (a)
         {
             guideQuestButton.onClick.AddListener(GameMgr.Instance.rewardMgr.guideQuest.NextQuest);
+            clearText.SetActive(true);
         }
         else
         {
+            clearText.SetActive(false);
             switch (currentQuest.Division)
             {
                 case 1:

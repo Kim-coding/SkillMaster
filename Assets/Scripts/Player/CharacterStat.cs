@@ -24,7 +24,7 @@ public class CharacterStat : Status, IDamageable
 
     public BigInteger Health { get; set; }
     public bool Ondeath { get; set; }
-    public int Defence { get; set; }
+    public float Defence { get; set; }
 
 
     private void Awake()

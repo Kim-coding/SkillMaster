@@ -26,11 +26,17 @@ public class UIMgr : MonoBehaviour
     public int stageCount = 1;
 
 
+    public void Init()
+    {
+        uiInventory.Init();
+    }
+
     public void AllUIUpdate(BigInteger g, BigInteger d)
     {
         bossSpawnButton.gameObject.SetActive(false);
         GoldTextUpdate(g);
         DiaTextUpdate(d);
+        
     }
 
     public void GoldTextUpdate(BigInteger gold)

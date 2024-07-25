@@ -9,7 +9,7 @@ public class MonsterStat : Status ,IDamageable
     public string dropGold;
     public BigInteger Health { get; set; }
     public bool Ondeath { get; set; }
-    public int Defence { get; set; }
+    public float Defence { get; set; }
     public void Init()
     {
         Ondeath = false;

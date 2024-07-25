@@ -13,7 +13,7 @@ public class BattleState : IState
 
     public void Enter()
     {
-        Debug.Log("Enter BattleState");
+        //Debug.Log("Enter BattleState");
     }
 
     public void Update()

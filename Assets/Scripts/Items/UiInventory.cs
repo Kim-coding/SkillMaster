@@ -131,6 +131,17 @@ public class UiInventory : MonoBehaviour
     {
         //데이터 테이블 호출
         //키 호출
+
+        AllSlotUpdate();
+    }
+
+    public void Init()
+    {
+        AllSlotUpdate();
+    }
+
+    public void AllSlotUpdate()
+    {
         UiSlotUpdate(EquipType.Hair);
         UiSlotUpdate(EquipType.Face);
         UiSlotUpdate(EquipType.Cloth);
@@ -138,6 +149,7 @@ public class UiInventory : MonoBehaviour
         UiSlotUpdate(EquipType.Weapon);
         UiSlotUpdate(EquipType.Cloak);
     }
+
 
     private void Update()
     {

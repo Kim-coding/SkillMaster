@@ -7,8 +7,8 @@ public class PlayerStat
 {
     public string playerAttackPower;
     public int basePlayerAttackPower;
-    public int defence;
-    public int basePlayerDefence;
+    public float defence;
+    public float basePlayerDefence;
 
     public string playerMaxHealth;
     public int basePlayerMaxHealth;
