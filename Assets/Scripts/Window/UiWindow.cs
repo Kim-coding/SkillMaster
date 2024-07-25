@@ -25,8 +25,7 @@ public class UiWindow : MonoBehaviour
 
     public GameObject UIGuideQuest;
     public GameObject UIMonsterSlider;
-
-
+    public GameObject UICameraButton;
 
     private void Start()
     {
@@ -208,11 +207,14 @@ public class UiWindow : MonoBehaviour
         {
             UIGuideQuest.transform.SetAsFirstSibling();
             UIMonsterSlider.transform.SetAsFirstSibling();
+            UICameraButton.transform.SetAsFirstSibling();
         }
         else
         {
             UIGuideQuest.transform.SetAsLastSibling();
             UIMonsterSlider.transform.SetAsLastSibling();
+            UICameraButton.transform.SetAsLastSibling();
+
         }
     }
 }

@@ -10,8 +10,9 @@ public class PlayerRestart : MonoBehaviour
         GameMgr.Instance.sceneMgr.mainScene.RestartStage();
         player.characterStat.Health = new BigInteger(player.characterStat.maxHealth);
         player.characterStat.Ondeath = false;
+        player.onSkill = false;
         player.UpdateHpBar(1f);
-
+        player.CheckAndChangeState();
         player.Animator.SetTrigger("Restart");
     }
 }
