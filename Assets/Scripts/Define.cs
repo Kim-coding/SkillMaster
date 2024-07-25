@@ -94,8 +94,8 @@ public enum QuestType
 
 public enum EquipType
 {
-    None = -1,
-    Hair = 0,
+    None = 0,
+    Hair = 1,
     Face,
     Cloth,
     Pants,
@@ -105,8 +105,8 @@ public enum EquipType
 
 public enum RarerityType
 {
-    None = -1,
-    C = 0,
+    None = 0,
+    C = 1,
     B,
     A,
     S,

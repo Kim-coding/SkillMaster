@@ -46,7 +46,10 @@ public class ItemSlot : MonoBehaviour
         currentEquip = null;
         itemImage = null;
     }
-
+    public void ButtonOff()
+    {
+        button.interactable = false;
+    }
     public void OnbuttonClick()
     {
         SetData(GameMgr.Instance.playerMgr.playerinventory.EquipItem(currentEquip));
