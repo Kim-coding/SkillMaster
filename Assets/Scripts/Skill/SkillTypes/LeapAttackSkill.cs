@@ -20,6 +20,8 @@ public class LeapAttackSkill : MonoBehaviour, ISkillComponent, ISkill
 
     private int attackNumber = 1;  // 공격 횟수 TO-DO 테이블로 받아와야 하는 정보
     private float skillColdiwn = 0f;
+    private GameObject skillEffectObject;
+    private string skillEffect;
 
     private Coroutine attackCoroutine;
 
@@ -36,10 +38,12 @@ public class LeapAttackSkill : MonoBehaviour, ISkillComponent, ISkill
     public void ApplyShape(GameObject skillObject, Vector3 launchPosition, GameObject target, float range, float width, int skillPropertyID, string skillEffect)
     {
         this.skillObject = skillObject;
+        this.skillEffect = skillEffect;
         Sprite circleSprite = Resources.Load<Sprite>("Circle");
         if (circleSprite != null)
         {
             this.skillObject.GetComponent<SpriteRenderer>().sprite = circleSprite;
+            this.skillObject.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0);
         }
         this.skillObject.AddComponent<CircleCollider2D>().isTrigger = true;
 
@@ -94,6 +98,14 @@ public class LeapAttackSkill : MonoBehaviour, ISkillComponent, ISkill
                 renderer.enabled = true;
             }
 
+            GameObject skillEffectPrefab = Resources.Load<GameObject>($"SkillEffects/{skillEffect}");
+            if (skillEffectPrefab != null)
+            {
+                skillEffectObject = Instantiate(skillEffectPrefab, attacker.transform.position, Quaternion.identity);
+
+                skillEffectObject.transform.SetParent(skillObject.transform);
+
+            }
             elapsedTime = 0f;
             while (elapsedTime < leapDuration / 2)
             {

@@ -23,7 +23,8 @@ public class LinearProjectileSkill : MonoBehaviour, ISkillComponent, ISkill //流
     float timer = 0f;
 
     public float speed = 5f; // 捧荤眉 加档
-
+    private GameObject skillEffectObject;
+    private string skillEffect;
     public void Initialize()
     {
         timer = 0f;
@@ -33,7 +34,7 @@ public class LinearProjectileSkill : MonoBehaviour, ISkillComponent, ISkill //流
     public void ApplyShape(GameObject skillObject, Vector3 launchPoint, GameObject target, float range, float width, int skillPropertyID, string skillEffect)
     {
         this.skillObject = skillObject;
-
+        this.skillEffect = skillEffect;
         if(skillPropertyID > 0)
         {
             var skillDownTable = DataTableMgr.Get<SkillDownTable>(DataTableIds.skillDown);
@@ -66,6 +67,7 @@ public class LinearProjectileSkill : MonoBehaviour, ISkillComponent, ISkill //流
                 if (circleSprite != null)
                 {
                     projectile.GetComponent<SpriteRenderer>().sprite = circleSprite;
+                    projectile.GetComponent<SpriteRenderer>().color = new Color(0,0,0,0);
                 }
                 Destroy(projectile.GetComponent<LinearProjectileSkill>());
                 projectile.AddComponent<CircleCollider2D>().isTrigger = true;
@@ -85,6 +87,18 @@ public class LinearProjectileSkill : MonoBehaviour, ISkillComponent, ISkill //流
                     direction = Quaternion.Euler(0, 0, angle) * (target.transform.position - launchPoint).normalized;
                 }
                 projectile.AddComponent<ProjectileMovement>().Initialize(direction, speed, duration, attacker, attack);
+
+                GameObject skillEffectPrefab = Resources.Load<GameObject>($"SkillEffects/{skillEffect}");
+                if (skillEffectPrefab != null)
+                {
+                    skillEffectObject = Instantiate(skillEffectPrefab, attacker.transform.position, Quaternion.identity);
+                    var mainModule = skillEffectObject.GetComponent<ParticleSystem>().main;
+                    float rotationAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+                    mainModule.startRotation = Mathf.Deg2Rad * rotationAngle;
+                    skillEffectObject.transform.SetParent(projectile.transform);
+
+                }
+
             }
         }
     }

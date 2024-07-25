@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.NetworkInformation;
 using UnityEngine;
 
 public class ScelectAreaProjectileSkill : MonoBehaviour, ISkillComponent, ISkill  //메테오 유사 스킬 (테이블 연결 미완)
@@ -14,18 +15,19 @@ public class ScelectAreaProjectileSkill : MonoBehaviour, ISkillComponent, ISkill
     private float moveSpeed = 10f;
     private float attackRadius = 2f;
     private bool isMoving = false;
-    private float ProjectileSizeX = 1f;
-    private float ProjectileSizeY = 1f;
-    private int ProjectileValue;
-
+    private float projectileSizeX = 1f;
+    private float projectileSizeY = 1f;
+    private int projectileValue;
+    private int attackNumber = 1;
     private float attackArangeX;
     private float attackArangeY;
 
     private float stayTimer;
-    private float stayDuration = 0.3f;
+    private float stayDuration = 0.2f;
 
+    private GameObject skillEffectObject;
+    private string skillEffect;
 
-    private bool isMeteor = false;
     public void Initialize()
     {
         
@@ -34,10 +36,12 @@ public class ScelectAreaProjectileSkill : MonoBehaviour, ISkillComponent, ISkill
     public void ApplyShape(GameObject skillObject, Vector3 launchPoint, GameObject target, float range, float width, int skillPropertyID, string skillEffect)
     {
         this.skillObject = skillObject;
+        this.skillEffect = skillEffect;
         Sprite circleSprite = Resources.Load<Sprite>("Circle");
         if (circleSprite != null)
         {
             this.skillObject.GetComponent<SpriteRenderer>().sprite = circleSprite;
+            this.skillObject.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0);
         }
         targetPoint = target.transform.position;
 
@@ -53,24 +57,37 @@ public class ScelectAreaProjectileSkill : MonoBehaviour, ISkillComponent, ISkill
             var skillDownData = skillDownTable.GetID(skillPropertyID);
             if (skillDownData != null)
             {
-                ProjectileValue = skillDownData.ProjectileValue;
-                ProjectileSizeX = skillDownData.ProjectileSizeX;
-                ProjectileSizeY = skillDownData.ProjectileSizeY;
+                projectileValue = skillDownData.ProjectileValue;
+                projectileSizeX = skillDownData.ProjectileSizeX;
+                projectileSizeY = skillDownData.ProjectileSizeY;
+                attackNumber = skillDownData.Attacknumber;
             }
-            isMeteor = true;
-            this.skillObject.transform.localScale = new Vector2(ProjectileSizeX, ProjectileSizeY);
+            if(projectileValue != -1)
+            {
+                isMoving = true;
+            }
+            this.skillObject.transform.localScale = new Vector2(projectileSizeX, projectileSizeY);
+            this.skillObject.transform.position = new Vector3(targetPoint.x - attackArangeX, targetPoint.y + attackArangeX, targetPoint.z);
         }
         else
         {
             this.skillObject.transform.localScale = new Vector2(range * 2, width * 2);
+            this.skillObject.transform.position = targetPoint;
+
+        }
+
+        GameObject skillEffectPrefab = Resources.Load<GameObject>($"SkillEffects/{skillEffect}");
+        if (skillEffectPrefab != null)
+        {
+            skillEffectObject = Instantiate(skillEffectPrefab, skillObject.transform.position, Quaternion.identity);
+
+            skillEffectObject.transform.SetParent(skillObject.transform);
+            skillEffectObject.transform.position = targetPoint;
+
         }
 
         attackArangeX = range;
         attackArangeY = width;
-
-        this.skillObject.transform.position = new Vector3(targetPoint.x - attackArangeX, targetPoint.y + attackArangeX, targetPoint.z);
-
-        isMoving = true;
     }
 
     public void ApplyDamageType(GameObject attacker, Attack attack, DamageType damageType, SkillShapeType shapeType)
@@ -82,7 +99,7 @@ public class ScelectAreaProjectileSkill : MonoBehaviour, ISkillComponent, ISkill
 
     private void Update()
     {
-        if (isMoving && isMeteor)
+        if (isMoving)
         {
             MoveToTarget();
         }
@@ -92,20 +109,59 @@ public class ScelectAreaProjectileSkill : MonoBehaviour, ISkillComponent, ISkill
             if (stayTimer >= stayDuration)
             {
                 ApplyAttack();
+                if (attackNumber > 1)
+                {
+                    GameObject nextTarget = FindClosestTarget(skillObject.transform.position);
+                    if (nextTarget != null)
+                    {
+                        targetPoint = nextTarget.transform.position;
+                        isMoving = true;
+                        stayTimer = 0;
+                        attackNumber--;
+                    }
+                    else
+                    {
+                        Destroy(gameObject);
+                    }
+                }
+                else
+                {
+                    Destroy(gameObject);
+                }
             }
-
         }
+    }
+
+    private GameObject FindClosestTarget(Vector3 currentPosition)
+    {
+        var allMonsters = GameMgr.Instance.GetMonsters();
+        GameObject closestTarget = null;
+        float closestDistance = float.MaxValue;
+
+        foreach (var monster in allMonsters)
+        {
+            float distance = Vector2.Distance(currentPosition, monster.transform.position);
+            if (distance < closestDistance && monster != null && monster.activeInHierarchy)
+            {
+                closestDistance = distance;
+                closestTarget = monster;
+            }
+        }
+
+        return closestTarget;
     }
 
     private void MoveToTarget()
     {
         float speed = moveSpeed * Time.deltaTime;
         skillObject.transform.position = Vector3.MoveTowards(skillObject.transform.position, targetPoint, speed);
+        skillEffectObject.transform.position = Vector3.MoveTowards(skillObject.transform.position, targetPoint, speed);
 
         if (Vector3.Distance(skillObject.transform.position, targetPoint) <= 0.1f)
         {
             isMoving = false;
             skillObject.transform.localScale = new Vector2(attackArangeX * 2, attackArangeY * 2);
+            skillEffectObject.transform.localScale = new Vector2(attackArangeX * 2, attackArangeY * 2);
             ApplyAttack();
         }
     }

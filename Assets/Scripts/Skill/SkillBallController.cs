@@ -135,6 +135,7 @@ public class SkillBallController : MonoBehaviour, IPointerDownHandler, IPointerU
     private void MergeCheck()
     {
         if (!isButtonPressed) { return; }
+        if (skill_ID == 40018) { return; }
         foreach (var other in GameMgr.Instance.playerMgr.skillBallControllers)
         {
             if(other.gameObject == gameObject || other == null || other.tier != tier)

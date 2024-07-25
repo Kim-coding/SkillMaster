@@ -60,15 +60,6 @@ public class OrbitingProjectileSkill : MonoBehaviour, ISkillComponent, ISkill
         this.attack = attack;
         this.damageType = damageType;
 
-        GameObject skillEffectPrefab = Resources.Load<GameObject>($"SkillEffects/{skillEffect}");
-        if (skillEffectPrefab != null)
-        {
-            skillEffectObject = Instantiate(skillEffectPrefab, attacker.transform.position, Quaternion.identity);
-            skillEffectObject.transform.localScale = new Vector2(10, -10);
-            
-            skillEffectObject.transform.SetParent(attacker.transform);
-        }
-
         StartCoroutine(CreateOrbitProjectiles());
     }
 
@@ -82,6 +73,7 @@ public class OrbitingProjectileSkill : MonoBehaviour, ISkillComponent, ISkill
             if (CircleSprite != null)
             {
                 projectile.GetComponent<SpriteRenderer>().sprite = CircleSprite;
+                projectile.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0);
             }
             Renderer renderer = projectile.GetComponent<Renderer>();
             if (renderer != null)
@@ -103,6 +95,19 @@ public class OrbitingProjectileSkill : MonoBehaviour, ISkillComponent, ISkill
 
             if (targetAngle < 0)
                 targetAngle += 360f;
+
+            GameObject skillEffectPrefab = Resources.Load<GameObject>($"SkillEffects/{skillEffect}");
+            if (skillEffectPrefab != null)
+            {
+                skillEffectObject = Instantiate(skillEffectPrefab, attacker.transform.position, Quaternion.identity);
+                var mainModule = skillEffectObject.GetComponent<ParticleSystem>().main;
+                mainModule.startRotation = Mathf.Deg2Rad * targetAngle;
+
+                skillEffectObject.transform.SetParent(attacker.transform);
+
+                float effectLifetime = (Projectileangle / 720f);
+                Destroy(skillEffectObject, effectLifetime);
+            }
 
             StartCoroutine(MoveOrbitProjectile(projectile, attacker.transform.position, targetAngle)); 
             yield return new WaitForSeconds(0.4f);
