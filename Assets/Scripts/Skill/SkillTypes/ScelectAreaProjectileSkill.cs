@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.NetworkInformation;
 using UnityEngine;
 
 public class ScelectAreaProjectileSkill : MonoBehaviour, ISkillComponent, ISkill  //메테오 유사 스킬 (테이블 연결 미완)
@@ -14,10 +15,10 @@ public class ScelectAreaProjectileSkill : MonoBehaviour, ISkillComponent, ISkill
     private float moveSpeed = 10f;
     private float attackRadius = 2f;
     private bool isMoving = false;
-    private float ProjectileSizeX = 1f;
-    private float ProjectileSizeY = 1f;
-    private int ProjectileValue;
-
+    private float projectileSizeX = 1f;
+    private float projectileSizeY = 1f;
+    private int projectileValue;
+    private int attackNumber = 1;
     private float attackArangeX;
     private float attackArangeY;
 
@@ -56,12 +57,16 @@ public class ScelectAreaProjectileSkill : MonoBehaviour, ISkillComponent, ISkill
             var skillDownData = skillDownTable.GetID(skillPropertyID);
             if (skillDownData != null)
             {
-                ProjectileValue = skillDownData.ProjectileValue;
-                ProjectileSizeX = skillDownData.ProjectileSizeX;
-                ProjectileSizeY = skillDownData.ProjectileSizeY;
+                projectileValue = skillDownData.ProjectileValue;
+                projectileSizeX = skillDownData.ProjectileSizeX;
+                projectileSizeY = skillDownData.ProjectileSizeY;
+                attackNumber = skillDownData.Attacknumber;
             }
-            isMoving = true;
-            this.skillObject.transform.localScale = new Vector2(ProjectileSizeX, ProjectileSizeY);
+            if(projectileValue != -1)
+            {
+                isMoving = true;
+            }
+            this.skillObject.transform.localScale = new Vector2(projectileSizeX, projectileSizeY);
             this.skillObject.transform.position = new Vector3(targetPoint.x - attackArangeX, targetPoint.y + attackArangeX, targetPoint.z);
         }
         else
@@ -104,8 +109,46 @@ public class ScelectAreaProjectileSkill : MonoBehaviour, ISkillComponent, ISkill
             if (stayTimer >= stayDuration)
             {
                 ApplyAttack();
+                if (attackNumber > 1)
+                {
+                    GameObject nextTarget = FindClosestTarget(skillObject.transform.position);
+                    if (nextTarget != null)
+                    {
+                        targetPoint = nextTarget.transform.position;
+                        isMoving = true;
+                        stayTimer = 0;
+                        attackNumber--;
+                    }
+                    else
+                    {
+                        Destroy(gameObject);
+                    }
+                }
+                else
+                {
+                    Destroy(gameObject);
+                }
             }
         }
+    }
+
+    private GameObject FindClosestTarget(Vector3 currentPosition)
+    {
+        var allMonsters = GameMgr.Instance.GetMonsters();
+        GameObject closestTarget = null;
+        float closestDistance = float.MaxValue;
+
+        foreach (var monster in allMonsters)
+        {
+            float distance = Vector2.Distance(currentPosition, monster.transform.position);
+            if (distance < closestDistance && monster != null && monster.activeInHierarchy)
+            {
+                closestDistance = distance;
+                closestTarget = monster;
+            }
+        }
+
+        return closestTarget;
     }
 
     private void MoveToTarget()
