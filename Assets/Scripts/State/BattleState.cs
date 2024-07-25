@@ -13,7 +13,7 @@ public class BattleState : IState
 
     public void Enter()
     {
-        //Debug.Log("Enter BattleState");
+        Debug.Log("Enter BattleState");
     }
 
     public void Update()
@@ -47,7 +47,6 @@ public class BattleState : IState
         }
         int skillType = player.playerSkills.castingList[0].skillType;
         player.onSkill = true;
-
         int[] attackMagicSkillTypes = { 1, 2, 5, 7, 9 };
         int[] skillMagicSkillTypes = { 3, 4, 6 };
         int[] attackNormalSkillTypes = { 8 , 10};

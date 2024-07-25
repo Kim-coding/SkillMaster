@@ -13,7 +13,7 @@ public class WalkState : IState
 
     public void Enter()
     {
-        //Debug.Log("Enter WalkState");
+        Debug.Log("Enter WalkState");
         player.UpdatePath();
         player.Animator.SetBool("Moving", true);
     }
