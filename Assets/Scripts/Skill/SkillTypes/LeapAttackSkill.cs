@@ -101,7 +101,8 @@ public class LeapAttackSkill : MonoBehaviour, ISkillComponent, ISkill
                 elapsedTime += attacker.GetComponent<PlayerAI>().characterStat.attackSpeed * Time.deltaTime;
                 yield return null;
             }
-
+            GameMgr.Instance.playerMgr.characters[0].GetComponent<PlayerAI>().onSkill = false;
+            Debug.Log(false);
             ApplyAttack();
 
             yield return new WaitForSeconds(skillColdiwn);
@@ -150,7 +151,7 @@ public class LeapAttackSkill : MonoBehaviour, ISkillComponent, ISkill
 
     void Update()
     {
-        timer += Time.deltaTime;
+        //timer += Time.deltaTime;
         if(timer > duration)
         {
              //Stop();

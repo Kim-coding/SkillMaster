@@ -169,27 +169,18 @@ public class PlayerAI : MonoBehaviour , IAnimation
         {
             if (playerSkills.castingList.Count == 0)
             {
+                onSkill = false;
                 return;
             }
 
-            if (count >= maxCount)
-            {
-                count = 0; // 리스트 범위를 초과하면 0으로 초기화
-            }
-
-            var skillType = playerSkills.castingList[count].skillType;
-            string skillDamage = playerSkills.castingList[count].skillDamage;
-            var skillX = playerSkills.castingList[count].atkArangeX;
-            var skillY = playerSkills.castingList[count].atkArangeY;
-            var skillPropertyID = playerSkills.castingList[count].skillPropertyID;
-            string skillEffect = playerSkills.castingList[count].SkillEffect;
+            var skillType = playerSkills.castingList[0].skillType;
+            string skillDamage = playerSkills.castingList[0].skillDamage;
+            var skillX = playerSkills.castingList[0].atkArangeX;
+            var skillY = playerSkills.castingList[0].atkArangeY;
+            var skillPropertyID = playerSkills.castingList[0].skillPropertyID;
+            string skillEffect = playerSkills.castingList[0].SkillEffect;
 
             playerSkills.UseSkill(skill, skillType, gameObject, currentTarget.gameObject, skillX, skillY, skillDamage, skillPropertyID, skillEffect);
-
-            if(count < maxCount)
-            {
-                count++;
-            }
         }
         else
         {

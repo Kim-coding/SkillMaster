@@ -84,6 +84,9 @@ public class PlayerSkills : MonoBehaviour
     }
     public void SetList()
     {
-        castingList = castingList = new List<SkillBallController>(GameMgr.Instance.playerMgr.skillBallControllers);
+        foreach(var skillObject in GameMgr.Instance.playerMgr.skillBallControllers) 
+        {
+            castingList.Add(skillObject);
+        }
     }
 }
