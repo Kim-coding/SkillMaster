@@ -160,33 +160,37 @@ public class PlayerAI : MonoBehaviour , IAnimation
         }
     }
     private int count = 0;
-    private int maxCount;
     public void OnAttack(GameObject skill)
     {
-        maxCount = playerSkills.castingList.Count;
-        
-        if (currentTarget != null && IsInAttackRange())
+
+        if (playerSkills.castingList.Count == 0)
         {
-            if (playerSkills.castingList.Count == 0)
-            {
-                onSkill = false;
-                return;
-            }
-
-            var skillType = playerSkills.castingList[0].skillType;
-            string skillDamage = playerSkills.castingList[0].skillDamage;
-            var skillX = playerSkills.castingList[0].atkArangeX;
-            var skillY = playerSkills.castingList[0].atkArangeY;
-            var skillPropertyID = playerSkills.castingList[0].skillPropertyID;
-            string skillEffect = playerSkills.castingList[0].SkillEffect;
-
-            playerSkills.UseSkill(skill, skillType, gameObject, currentTarget.gameObject, skillX, skillY, skillDamage, skillPropertyID, skillEffect);
+            onSkill = false;
+            return;
         }
-        else
+
+        if (currentTarget == null || !IsInAttackRange())
         {
             currentTarget = FindClosestMonster();
-            CheckAndChangeState();
         }
+        
+        if (currentTarget == null)
+        {
+            onSkill = false;
+            return;
+
+        }
+
+
+        var skillType = playerSkills.castingList[0].skillType;
+        string skillDamage = playerSkills.castingList[0].skillDamage;
+        var skillX = playerSkills.castingList[0].atkArangeX;
+        var skillY = playerSkills.castingList[0].atkArangeY;
+        var skillPropertyID = playerSkills.castingList[0].skillPropertyID;
+        string skillEffect = playerSkills.castingList[0].SkillEffect;
+
+        playerSkills.UseSkill(skill, skillType, gameObject, currentTarget.gameObject, skillX, skillY, skillDamage, skillPropertyID, skillEffect);
+    
     }
 
     public void Restart()

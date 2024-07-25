@@ -39,7 +39,10 @@ public class LeapAttackSkill : MonoBehaviour, ISkillComponent, ISkill
     {
 
     }
-
+    private void Start()
+    {
+        StartCoroutine(Leap());
+    }
     public void ApplyShape(GameObject skillObject, Vector3 launchPosition, GameObject target, float range, float width, int skillPropertyID, string skillEffect)
     {
         this.skillObject = skillObject;
@@ -79,53 +82,53 @@ public class LeapAttackSkill : MonoBehaviour, ISkillComponent, ISkill
         this.damageType = damageType;
     }
 
-    //private IEnumerator Leap()
-    //{
-    //    for (int i = 0; i < attackNumber; i++)
-    //    {
-    //        Vector3 peakPosition = initialPosition + Vector3.up * leapHeight;
-    //        Vector3 targetPeakPosition = targetPosition + Vector3.up * leapHeight;
-    //        float elapsedTime = 0f;
-    //        while (elapsedTime < leapDuration / 2)
-    //        {
-    //            attacker.transform.position = Vector3.Lerp(initialPosition, peakPosition, (elapsedTime / (leapDuration / 2)));
-    //            elapsedTime += attacker.GetComponent<PlayerAI>().characterStat.attackSpeed * Time.deltaTime;
-    //            yield return null;
-    //        }
+    private IEnumerator Leap()
+    {
+        for (int i = 0; i < attackNumber; i++)
+        {
+            Vector3 peakPosition = initialPosition + Vector3.up * leapHeight;
+            Vector3 targetPeakPosition = targetPosition + Vector3.up * leapHeight;
+            float elapsedTime = 0f;
+            while (elapsedTime < leapDuration / 2)
+            {
+                attacker.transform.position = Vector3.Lerp(initialPosition, peakPosition, (elapsedTime / (leapDuration / 2)));
+                elapsedTime += attacker.GetComponent<PlayerAI>().characterStat.attackSpeed * Time.deltaTime;
+                yield return null;
+            }
 
-    //        Vector3 targetAbovePosition = new Vector3(targetPosition.x, targetPeakPosition.y, targetPosition.z);
-    //        attacker.transform.position = targetAbovePosition;
-    //        yield return null;
+            Vector3 targetAbovePosition = new Vector3(targetPosition.x, targetPeakPosition.y, targetPosition.z);
+            attacker.transform.position = targetAbovePosition;
+            yield return null;
 
-    //        Renderer renderer = skillObject.GetComponent<Renderer>();
-    //        if (renderer != null)
-    //        {
-    //            renderer.enabled = true;
-    //        }
+            Renderer renderer = skillObject.GetComponent<Renderer>();
+            if (renderer != null)
+            {
+                renderer.enabled = true;
+            }
 
-    //        GameObject skillEffectPrefab = Resources.Load<GameObject>($"SkillEffects/{skillEffect}");
-    //        if (skillEffectPrefab != null)
-    //        {
-    //            skillEffectObject = Instantiate(skillEffectPrefab, attacker.transform.position, Quaternion.identity);
+            GameObject skillEffectPrefab = Resources.Load<GameObject>($"SkillEffects/{skillEffect}");
+            if (skillEffectPrefab != null)
+            {
+                skillEffectObject = Instantiate(skillEffectPrefab, attacker.transform.position, Quaternion.identity);
 
-    //            skillEffectObject.transform.SetParent(skillObject.transform);
+                skillEffectObject.transform.SetParent(skillObject.transform);
 
-    //        }
-    //        elapsedTime = 0f;
-    //        while (elapsedTime < leapDuration / 2)
-    //        {
-    //            attacker.transform.position = Vector3.Lerp(targetAbovePosition, targetPosition, (elapsedTime / (leapDuration / 5)));
-    //            elapsedTime += attacker.GetComponent<PlayerAI>().characterStat.attackSpeed * Time.deltaTime;
-    //            yield return null;
-    //        }
-    //        GameMgr.Instance.playerMgr.characters[0].GetComponent<PlayerAI>().onSkill = false;
-    //        ApplyAttack();
-    //        yield return new WaitForSeconds(skillColdiwn);
-    //        initialPosition = attacker.transform.position;
-    //        SetRandomTarget();
-    //    }
-    //    Stop();
-    //}
+            }
+            elapsedTime = 0f;
+            while (elapsedTime < leapDuration / 2)
+            {
+                attacker.transform.position = Vector3.Lerp(targetAbovePosition, targetPosition, (elapsedTime / (leapDuration / 5)));
+                elapsedTime += attacker.GetComponent<PlayerAI>().characterStat.attackSpeed * Time.deltaTime;
+                yield return null;
+            }
+            GameMgr.Instance.playerMgr.characters[0].GetComponent<PlayerAI>().onSkill = false;
+            ApplyAttack();
+            yield return new WaitForSeconds(skillColdiwn);
+            initialPosition = attacker.transform.position;
+            SetRandomTarget();
+        }
+        Stop();
+    }
 
     private void ApplyAttack()
     {
@@ -142,6 +145,8 @@ public class LeapAttackSkill : MonoBehaviour, ISkillComponent, ISkill
                 }
             }
         }
+        var playerAi = GameMgr.Instance.playerMgr.characters[0].GetComponent<PlayerAI>();
+        playerAi.onSkill = false;
     }
     private void SetRandomTarget()
     {
@@ -157,72 +162,74 @@ public class LeapAttackSkill : MonoBehaviour, ISkillComponent, ISkill
 
     private void Stop()
     {
+        StartCoroutine(Leap());
         Destroy(gameObject);
     }
 
-    void Update()
-    {
-        Vector3 peakPosition = initialPosition + Vector3.up * leapHeight;
-        Vector3 targetPeakPosition = targetPosition + Vector3.up * leapHeight;
-        Vector3 targetAbovePosition = new Vector3();
-        switch (currentState)
-        {
-            case LeapState.Start:
-                {
+    //void Update()
+    //{
+    //    Vector3 peakPosition = initialPosition + Vector3.up * leapHeight;
+    //    Vector3 targetPeakPosition = targetPosition + Vector3.up * leapHeight;
+    //    Vector3 targetAbovePosition = new Vector3();
+    //    Debug.Log(GameMgr.Instance.playerMgr.characters[0].GetComponent<PlayerAI>().onSkill);
+    //    switch (currentState)
+    //    {
+    //        case LeapState.Start:
+    //            {
 
-                    attacker.transform.position = Vector3.Lerp(initialPosition, peakPosition, (timer / (leapDuration / 2)));
-                    timer += attacker.GetComponent<PlayerAI>().characterStat.attackSpeed * Time.deltaTime;
-                    if (timer > (leapDuration / 2))
-                    {
-                        currentState = LeapState.floating;
-                        timer = 0;
-                    }
-                    break;
-                }
-            case LeapState.floating:
-                targetAbovePosition = new Vector3(targetPosition.x, targetPeakPosition.y, targetPosition.z);
-                attacker.transform.position = targetAbovePosition;
+    //                attacker.transform.position = Vector3.Lerp(initialPosition, peakPosition, (timer / (leapDuration / 2)));
+    //                timer += attacker.GetComponent<PlayerAI>().characterStat.attackSpeed * Time.deltaTime;
+    //                if (timer > (leapDuration / 2))
+    //                {
+    //                    currentState = LeapState.floating;
+    //                    timer = 0;
+    //                }
+    //                break;
+    //            }
+    //        case LeapState.floating:
+    //            targetAbovePosition = new Vector3(targetPosition.x, targetPeakPosition.y, targetPosition.z);
+    //            attacker.transform.position = targetAbovePosition;
 
-                Renderer renderer = skillObject.GetComponent<Renderer>();
-                if (renderer != null)
-                {
-                    renderer.enabled = true;
-                }
-                GameObject skillEffectPrefab = Resources.Load<GameObject>($"SkillEffects/{skillEffect}");
-                if (skillEffectPrefab != null)
-                {
-                    skillEffectObject = Instantiate(skillEffectPrefab, attacker.transform.position, Quaternion.identity);
+    //            Renderer renderer = skillObject.GetComponent<Renderer>();
+    //            if (renderer != null)
+    //            {
+    //                renderer.enabled = true;
+    //            }
+    //            GameObject skillEffectPrefab = Resources.Load<GameObject>($"SkillEffects/{skillEffect}");
+    //            if (skillEffectPrefab != null)
+    //            {
+    //                skillEffectObject = Instantiate(skillEffectPrefab, attacker.transform.position, Quaternion.identity);
 
-                    skillEffectObject.transform.SetParent(skillObject.transform);
+    //                skillEffectObject.transform.SetParent(skillObject.transform);
 
-                }
-                currentState = LeapState.press;
-                break;
-            case LeapState.press:
-                attacker.transform.position = Vector3.Lerp(targetAbovePosition, targetPosition, (timer / (leapDuration / 5)));
-                timer += attacker.GetComponent<PlayerAI>().characterStat.attackSpeed * Time.deltaTime;
-                if (timer > (leapDuration / 2))
-                {
-                    currentState = LeapState.end;
-                    timer = 0;
-                }
-                break;
-            case LeapState.end:
-                GameMgr.Instance.playerMgr.characters[0].GetComponent<PlayerAI>().onSkill = false;
-                Debug.Log(false);
-                ApplyAttack();
-                initialPosition = attacker.transform.position;
-                SetRandomTarget();
-                if(attackNumber > 1)
-                {
-                    attackNumber--;
-                    currentState = LeapState.Start;
-                }
-                else
-                {
-                    Stop();
-                }
-                break;
-        }
-    }
+    //            }
+    //            currentState = LeapState.press;
+    //            break;
+    //        case LeapState.press:
+    //            attacker.transform.position = Vector3.Lerp(targetAbovePosition, targetPosition, (timer / (leapDuration / 5)));
+    //            timer += attacker.GetComponent<PlayerAI>().characterStat.attackSpeed * Time.deltaTime;
+    //            if (timer > (leapDuration / 2))
+    //            {
+    //                currentState = LeapState.end;
+    //                timer = 0;
+    //            }
+    //            break;
+    //        case LeapState.end:
+    //            GameMgr.Instance.playerMgr.characters[0].GetComponent<PlayerAI>().onSkill = false;
+    //            Debug.Log(false);
+    //            ApplyAttack();
+    //            initialPosition = attacker.transform.position;
+    //            SetRandomTarget();
+    //            if(attackNumber > 1)
+    //            {
+    //                attackNumber--;
+    //                currentState = LeapState.Start;
+    //            }
+    //            else
+    //            {
+    //                Stop();
+    //            }
+    //            break;
+    //    }
+    //}
 }
