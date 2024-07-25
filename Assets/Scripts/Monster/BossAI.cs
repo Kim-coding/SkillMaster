@@ -25,7 +25,7 @@ public class BossAI : MonoBehaviour, IAnimation
     {
         players = GameObject.FindGameObjectsWithTag("Player");
         bossStat = GetComponent<BossStat>();
-        bossStat.Init();
+        //bossStat.Init();
         bossAttack = new BossAttack();
         animator = GetComponent<Animator>();
     }
@@ -45,6 +45,9 @@ public class BossAI : MonoBehaviour, IAnimation
 
     private void Update()
     {
+        if(Input.GetKeyDown(KeyCode.G)) {
+            Debug.Log(bossStat.Health);
+        }
         if (onDeath)
         { return; }
             timer += Time.deltaTime;
