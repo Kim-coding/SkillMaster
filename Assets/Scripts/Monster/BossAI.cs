@@ -45,9 +45,6 @@ public class BossAI : MonoBehaviour, IAnimation
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.G)) {
-            Debug.Log(bossStat.Health);
-        }
         if (onDeath)
         { return; }
             timer += Time.deltaTime;

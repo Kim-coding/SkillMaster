@@ -50,8 +50,8 @@ public class BattleState : IState
             return;
         }
         int[] attackMagicSkillTypes = { 1, 2, 5, 7, 9 };
-        int[] skillMagicSkillTypes = { 3, 4, 6, 11};
-        int[] attackNormalSkillTypes = { 8 , 10};
+        int[] skillMagicSkillTypes = { 3, 4, 6};
+        int[] attackNormalSkillTypes = { 8 , 10, 11};
 
         if (attackNormalSkillTypes.Contains(skillType))
         {

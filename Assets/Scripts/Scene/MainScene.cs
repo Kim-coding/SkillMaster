@@ -106,6 +106,7 @@ public class MainScene : MonoBehaviour
         }
         bossStage = false;
         spawner.InitialSpawn();
+        GameMgr.Instance.playerMgr.characters[0].GetComponent<PlayerAI>().Restart();
     }
 
     public bool IsBossBattle()

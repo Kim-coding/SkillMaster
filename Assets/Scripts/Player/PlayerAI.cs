@@ -198,4 +198,11 @@ public class PlayerAI : MonoBehaviour , IAnimation
         }
     }
 
+    public void Restart()
+    {
+        onSkill = false;
+        currentTarget = FindClosestMonster();
+        CheckAndChangeState();
+    }
+
 }
