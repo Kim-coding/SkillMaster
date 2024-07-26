@@ -23,14 +23,15 @@ public class BattleState : IState
             attackTimer += Time.deltaTime;
         }
 
-        if(attackTimer > player.characterStat.cooldown && !player.onSkill)
+        if (player.currentTarget == null || !player.currentTarget.gameObject.activeInHierarchy || !player.IsInAttackRange())
+        {
+            player.CheckAndChangeState();
+        }
+
+        if (attackTimer > player.characterStat.cooldown && !player.onSkill)
         {
             attackTimer = 0f;
             Attack();
-        }
-        if (player.currentTarget == null || !player.currentTarget.gameObject.activeInHierarchy)
-        {
-            player.CheckAndChangeState();
         }
     }
 
@@ -41,6 +42,12 @@ public class BattleState : IState
 
     private void Attack()
     {
+        if (player.currentTarget == null || !player.IsInAttackRange())
+        {
+            player.onSkill = false;
+            return;
+        }
+
         if (player.playerSkills.castingList.Count == 0)
         {
             player.playerSkills.SetList();

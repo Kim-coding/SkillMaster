@@ -22,6 +22,11 @@ public class WalkState : IState
     {
         pathUpdateTimer += Time.deltaTime;
 
+        if(!player.IsInAttackRange())
+        {
+            player.currentTarget = player.FindClosestMonster();
+        }
+
         if (pathUpdateTimer >= pathUpdateInterval)
         {
             pathUpdateTimer = 0f;
