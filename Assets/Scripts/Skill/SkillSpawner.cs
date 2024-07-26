@@ -95,7 +95,7 @@ public class SkillSpawner : MonoBehaviour
         rt.anchoredPosition = RandomVector();
 
         var newSkillControler = newSkill.GetComponent<SkillBallController>();
-        newSkillControler.Set(40001);
+        newSkillControler.Set(40018);
         GameMgr.Instance.playerMgr.skillBallControllers.Add(newSkillControler);
         GameMgr.Instance.playerMgr.playerEnhance.currentSpawnSkillCount--;
         GameMgr.Instance.uiMgr.uiMerge.SkillCountUpdate();

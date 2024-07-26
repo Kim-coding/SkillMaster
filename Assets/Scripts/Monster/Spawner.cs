@@ -46,6 +46,7 @@ public class Spawner : MonoBehaviour
 
             int monsterSpawnCount = UnityEngine.Random.Range(monstersPerZoneMin, monstersPerZoneMax + 1);
             monsterSpawnCount = Mathf.Min(monsterSpawnCount, startSpawnMonsterCount);
+            Debug.Log(monsterSpawnCount);
             SpawnMonsters(zone, monsterSpawnCount);
             startSpawnMonsterCount -= monsterSpawnCount;
         }
@@ -54,7 +55,7 @@ public class Spawner : MonoBehaviour
     public void SpawnMonsters(Transform zone, int count)
     {
         if (GameMgr.Instance.sceneMgr.mainScene.IsBossBattle()) return;
-        if (monsterPool.pool.Count >= monsterPool.MaxCapacity)
+        if (monsterPool.pool.Count >= monsterPool.MaxCapacity)  // TO-DO : pool.Count가 매 스테이지 2씩 증가 MaxCapacity를 넘어서면 스폰이 정지
         {
             return;
         }
@@ -81,29 +82,12 @@ public class Spawner : MonoBehaviour
         deathCount++;
         if (deathCount >= deathThreshold)
         {
-            isDeathCount = true;
-            if(isSpawn)
-            {
-                isSpawn = false;
-                isDeathCount = false;
-                deathCount -= 3;
-                int randomZoneIndex = UnityEngine.Random.Range(0, spawnPoints.Length);
-                SpawnMonsters(spawnPoints[randomZoneIndex], 3);
-            }
+            int randomZoneIndex = UnityEngine.Random.Range(0, spawnPoints.Length);
+            SpawnMonsters(spawnPoints[randomZoneIndex], 3);
+            deathCount -= 3;
         }
     }
-    private void Update()
-    {
-        if(isDeathCount)
-        {
-            timer += Time.deltaTime;
-            if(timer > duration)
-            {
-                isSpawn = true;
-                timer = 0;
-            }
-        }
-    }
+
 
     public GameObject BossSpawn(GameObject bossPrefab, Transform spawnPoint)
     {
