@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using TMPro;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 
@@ -115,6 +117,7 @@ public class LeapAttackSkill : MonoBehaviour, ISkillComponent, ISkill
 
             }
             elapsedTime = 0f;
+            targetPosition.y -= 0.5f;
             while (elapsedTime < leapDuration / 2)
             {
                 attacker.transform.position = Vector3.Lerp(targetAbovePosition, targetPosition, (elapsedTime / (leapDuration / 5)));
