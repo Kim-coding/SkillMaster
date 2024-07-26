@@ -20,6 +20,7 @@ public class DeathPopup : MonoBehaviour
         {
             GameMgr.Instance.sceneMgr.mainScene.RestartStage();
             player.Restart();
+            player.Animator.SetTrigger("Restart");
             gameObject.SetActive(false);
             
         }
