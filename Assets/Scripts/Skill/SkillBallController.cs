@@ -34,7 +34,7 @@ public class SkillBallController : MonoBehaviour, IPointerDownHandler, IPointerU
     [HideInInspector]
     public GameObject mergeWindow;
 
-    private int tier;
+    public int tier;
     
     private float effectX;
     private float effectY;

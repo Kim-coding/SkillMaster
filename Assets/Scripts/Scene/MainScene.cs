@@ -97,6 +97,8 @@ public class MainScene : MonoBehaviour
         GameMgr.Instance.cam.SetTarget(currentBoss.transform.GetChild(0).gameObject);
         GameMgr.Instance.soundMgr.PlaySFX("Boss");
         //spawner.BossSpawn(Stage.BossMonsterPrefab, bossSpawnPoint);
+
+        GameMgr.Instance.playerMgr.characters[0].GetComponent<PlayerSkills>().SetList();
     }
 
     public void RestartStage() //스테이지 재시작

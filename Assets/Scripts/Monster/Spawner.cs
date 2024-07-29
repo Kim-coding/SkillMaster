@@ -117,9 +117,5 @@ public class Spawner : MonoBehaviour
             monsterPool.Return(monster);
             OnMonsterDeath();
         }
-        else
-        {
-            Debug.LogError("Attempted to destroy a null monster.");
-        }
     }
 }

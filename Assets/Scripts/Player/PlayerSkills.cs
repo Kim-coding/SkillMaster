@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -84,9 +85,8 @@ public class PlayerSkills : MonoBehaviour
     }
     public void SetList()
     {
-        foreach(var skillObject in GameMgr.Instance.playerMgr.skillBallControllers) 
-        {
-            castingList.Add(skillObject);
-        }
+        castingList = GameMgr.Instance.playerMgr.skillBallControllers
+            .OrderByDescending(skill => skill.tier)
+            .ToList();
     }
 }
