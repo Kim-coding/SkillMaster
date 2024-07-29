@@ -70,8 +70,9 @@ public class MainScene : MonoBehaviour
         {
             if (monster != null && monster.TryGetComponent<MonsterAI>(out var monsterAI))
             {
-                if (!IsBossBattle())
+                if (!IsBossBattle() && !monsterAI.isReturnedToPool)
                 {
+                    monsterAI.isReturnedToPool = true;
                     monsterAI.gameObject.SetActive(false);
                     monsterPool.Return(monsterAI);
                     RemoveMonsters(monsterAI.gameObject);

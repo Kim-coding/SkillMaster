@@ -21,7 +21,7 @@ public class MonsterPool : ObjectPool<MonsterAI>
     //    obj.monsterStat.SetID(DataTableMgr.Get<StageTable>(DataTableIds.stage).GetID
     //(GameMgr.Instance.sceneMgr.mainScene.stageId).appearMonster);
         obj.monsterStat.Init();
-        base.OnGet(obj);        
+        base.OnGet(obj);
     }
 
     protected override void OnReturn(MonsterAI obj)

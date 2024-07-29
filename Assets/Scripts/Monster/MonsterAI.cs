@@ -22,6 +22,8 @@ public class MonsterAI : MonoBehaviour, IAnimation
     private Animator animator;
     public Animator Animator { get => animator; }
 
+    public bool isReturnedToPool = false;
+
     private void Awake()
     {
         players = GameObject.FindGameObjectsWithTag("Player");
@@ -47,6 +49,7 @@ public class MonsterAI : MonoBehaviour, IAnimation
         monsterStat.SetID(DataTableMgr.Get<StageTable>(DataTableIds.stage).GetID
 (GameMgr.Instance.sceneMgr.mainScene.stageId).appearMonster);
         monsterStat.Init();
+        isReturnedToPool = false ;
     }
 
     private void Update()

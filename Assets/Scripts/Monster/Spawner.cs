@@ -36,6 +36,15 @@ public class Spawner : MonoBehaviour
     {
         deathCount = 0;
         startSpawnMonsterCount = 25; //TO-DO : 테이블 연동 
+
+        if (monsterPool.pool.Count > 0)
+        {
+            foreach (var monster in monsterPool.pool)
+            {
+                monster.gameObject.SetActive(false);
+            }
+        }
+
         int monstersPerZoneMin = 3; // 최대수 / 8
         int monstersPerZoneMax = 4;
 
@@ -46,7 +55,6 @@ public class Spawner : MonoBehaviour
 
             int monsterSpawnCount = UnityEngine.Random.Range(monstersPerZoneMin, monstersPerZoneMax + 1);
             monsterSpawnCount = Mathf.Min(monsterSpawnCount, startSpawnMonsterCount);
-            Debug.Log(monsterSpawnCount);
             SpawnMonsters(zone, monsterSpawnCount);
             startSpawnMonsterCount -= monsterSpawnCount;
         }
@@ -103,8 +111,9 @@ public class Spawner : MonoBehaviour
             monsterPool = GameMgr.Instance.GetMonsterPool();
         }
 
-        if (monster != null)
+        if (monster != null && !monster.isReturnedToPool)
         {
+            monster.isReturnedToPool = true;
             monsterPool.Return(monster);
             OnMonsterDeath();
         }
