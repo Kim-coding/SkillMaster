@@ -25,23 +25,23 @@ public class PlayerInventory
     public void Init()
     {
         //데이터 테이블 / 키값 받아오기
-        var iconimage = Resources.LoadAll<Sprite>("Equipment/Hair_C_1");
-        baseHair = new Equip(iconimage,"기본 머리");
+        var iconimage = Resources.LoadAll<Sprite>("Equipment/Hair_Basic");
+        baseHair = new Equip(iconimage,"기본 머리", 0);
         baseHair.SetEquipItem(EquipType.Hair, RarerityType.C);
-        iconimage = Resources.LoadAll<Sprite>("Equipment/Eye_C_1");
-        baseFace = new Equip(iconimage, "기본 눈");
+        iconimage = Resources.LoadAll<Sprite>("Equipment/Eye_Basic");
+        baseFace = new Equip(iconimage, "기본 눈", 0);
         baseFace.SetEquipItem(EquipType.Face, RarerityType.C);
-        iconimage = Resources.LoadAll<Sprite>("Equipment/Cloth_C_1");
-        baseCloth = new Equip(iconimage, "기본 상의");
+        iconimage = Resources.LoadAll<Sprite>("Equipment/Cloth_Basic");
+        baseCloth = new Equip(iconimage, "기본 상의", 0);
         baseCloth.SetEquipItem(EquipType.Cloth, RarerityType.C);
-        iconimage = Resources.LoadAll<Sprite>("Equipment/Pant_A_2");
-        basePant = new Equip(iconimage, "기본 바지");
+        iconimage = Resources.LoadAll<Sprite>("Equipment/Pant_Basic");
+        basePant = new Equip(iconimage, "기본 바지", 0);
         basePant.SetEquipItem(EquipType.Pants, RarerityType.C);
-        iconimage = Resources.LoadAll<Sprite>("Equipment/Weapon_C_1");
-        baseWeapon = new Equip(iconimage, "기본 무기");
+        iconimage = Resources.LoadAll<Sprite>("Equipment/Weapon_Basic");
+        baseWeapon = new Equip(iconimage, "기본 무기", 0);
         baseWeapon.SetEquipItem(EquipType.Weapon, RarerityType.C);
-        iconimage = Resources.LoadAll<Sprite>("Equipment/Back_C_1");
-        baseCloak = new Equip(iconimage, "기본 망토");
+        iconimage = Resources.LoadAll<Sprite>("Equipment/Back_Basic");
+        baseCloak = new Equip(iconimage, "기본 망토", 0);
         baseCloak.SetEquipItem(EquipType.Cloak, RarerityType.C);
 
         //저장 받아오기 없으면

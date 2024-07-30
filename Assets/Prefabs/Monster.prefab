@@ -93,7 +93,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!114 &4316966190918739768
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110,6 +110,7 @@ MonoBehaviour:
   targetUpdataTime: 0.5
   monsterStat: {fileID: 0}
   onDeath: 0
+  isReturnedToPool: 0
 --- !u!114 &9089909014751631358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -201,6 +202,7 @@ MonoBehaviour:
   speed: 0
   attackSpeed: 0
   attackRange: 0
+  dropGold: 
 --- !u!114 &-4615519480749428121
 MonoBehaviour:
   m_ObjectHideFlags: 0

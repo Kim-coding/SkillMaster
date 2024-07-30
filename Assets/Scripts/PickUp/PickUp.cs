@@ -90,7 +90,7 @@ public class PickUp : MonoBehaviour
                     break;
             }
             var iconimage = Resources.LoadAll<Sprite>("Equipment/"+sb.ToString());
-            var equip = new Equip(iconimage, "·£´ýÀåºñ");
+            var equip = new Equip(iconimage, "·£´ýÀåºñ", ++GameMgr.Instance.playerMgr.playerInfo.obtainedItem);
             equip.SetEquipItem((EquipType)randomTypeNum, (RarerityType)randomRarityNum);
             InstantiateSlot(equip);
             GameMgr.Instance.uiMgr.uiInventory.InstantiateSlot(equip);

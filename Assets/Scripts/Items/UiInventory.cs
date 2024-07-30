@@ -151,19 +151,6 @@ public class UiInventory : MonoBehaviour
     }
 
 
-    private void Update()
-    {
-        if(Input.GetKeyUp(KeyCode.N))
-        {
-            var random = Random.Range(1, 10);
-            var iconimage = Resources.LoadAll<Sprite>(string.Format("SPUM/SPUM_Sprites/Items/0_Hair/Hair_{0}", random));
-            var equip = new Equip(iconimage, "Çì¾î" + random);
-            equip.SetEquipItem(EquipType.Hair, RarerityType.S);
-            var newSlot = Instantiate(prefabSlot, inventoryPanel.transform);
-            newSlot.SetData(equip);
-        }
-    }
-
     public void InstantiateSlot(Equip equip)
     {
         var newSlot = Instantiate(prefabSlot, inventoryPanel.transform);

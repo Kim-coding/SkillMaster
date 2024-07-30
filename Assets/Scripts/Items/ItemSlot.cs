@@ -52,6 +52,7 @@ public class ItemSlot : MonoBehaviour
     }
     public void OnbuttonClick()
     {
+        Debug.Log(currentEquip.equipType + " / " + currentEquip.rarerityType + " / " + currentEquip.itemNumber);
         SetData(GameMgr.Instance.playerMgr.playerinventory.EquipItem(currentEquip));
         GameMgr.Instance.uiMgr.uiInventory.UiSlotUpdate(currentEquip.equipType);
 
@@ -97,6 +98,7 @@ public class ItemSlot : MonoBehaviour
                 }
                 break;
         }
+
     }
 
 

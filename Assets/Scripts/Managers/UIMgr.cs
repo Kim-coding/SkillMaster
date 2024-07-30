@@ -41,12 +41,12 @@ public class UIMgr : MonoBehaviour
 
     public void GoldTextUpdate(BigInteger gold)
     {
-        goldUI.text = gold.ToStringShort() + " Gold";
+        goldUI.text = gold.ToStringShort();
     }
 
     public void DiaTextUpdate(BigInteger diamond)
     {
-        diamondUI.text = diamond.ToStringShort() + " Dia";
+        diamondUI.text = diamond.ToStringShort();
     }
 
     public void MonsterSliderUpdate()

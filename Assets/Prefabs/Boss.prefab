@@ -93,7 +93,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!50 &2498219312119838529
 Rigidbody2D:
   serializedVersion: 4
@@ -152,6 +152,7 @@ MonoBehaviour:
   speed: 0
   attackSpeed: 0
   attackRange: 0
+  dropGold: 
 --- !u!114 &7454287526471470266
 MonoBehaviour:
   m_ObjectHideFlags: 0

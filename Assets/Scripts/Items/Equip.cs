@@ -6,13 +6,16 @@ using UnityEngine.UI;
 public class Equip : Item
 {
     public Equip() { }
-    public Equip(Sprite[] icon, string itemName) :
-         base(icon, itemName) { }
+    public Equip(Sprite[] icon, string itemName, int itemNum) :
+         base(icon, itemName) {
+        itemNumber = itemNum;
+    }
 
     public EquipType equipType;
     public RarerityType rarerityType;
     public int reinforceStoneValue;
     private EquipOption equipOption;
+    public int itemNumber;
     public EquipOption EquipOption { get { return equipOption; }}
 
     private void Awake()

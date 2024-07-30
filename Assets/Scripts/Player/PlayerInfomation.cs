@@ -10,13 +10,14 @@ public class PlayerInfomation
     public int stageClear;
     public int skillSpawnCount;
     public int maxSkillLevel;
-
+    public int obtainedItem;
     public void Init()
     {
         monsterKill = new BigInteger(0); //TO-DO저장한데서 들고오기 밑에전부
         getGold = new BigInteger(0);
         skillSpawnCount = 0;
         maxSkillLevel = 1;
+        obtainedItem = 0;
         //stageClear;
 
         EventMgr.StartListening(QuestType.Stage, StageUpdate);
