@@ -19,20 +19,20 @@ public class UiEnhance : MonoBehaviour
 
     private void Start()
     {
-        attackPowerUpgrade.GetComponent<Button>().onClick.AddListener(GameMgr.Instance.playerMgr.playerEnhance.AddAttackPower);
+        attackPowerUpgrade.GetComponent<Enhance>().buttonClick += GameMgr.Instance.playerMgr.playerEnhance.AddAttackPower;
         attackPowerUpgrade.Init(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10001).GetStringID);
-        defenceUpgrade.GetComponent<Button>().onClick.AddListener(GameMgr.Instance.playerMgr.playerEnhance.AddDefence);
+        defenceUpgrade.GetComponent<Enhance>().buttonClick += GameMgr.Instance.playerMgr.playerEnhance.AddDefence;
         defenceUpgrade.Init(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10002).GetStringID);
-        maxHealthUpgrade.GetComponent<Button>().onClick.AddListener(GameMgr.Instance.playerMgr.playerEnhance.AddMaxHealth);
+        maxHealthUpgrade.GetComponent<Enhance>().buttonClick += GameMgr.Instance.playerMgr.playerEnhance.AddMaxHealth;
         maxHealthUpgrade.Init(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10003).GetStringID);
-        recoveryUpgrade.GetComponent<Button>().onClick.AddListener(GameMgr.Instance.playerMgr.playerEnhance.AddRecovery);
+        recoveryUpgrade.GetComponent<Enhance>().buttonClick += GameMgr.Instance.playerMgr.playerEnhance.AddRecovery;
         recoveryUpgrade.Init(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10007).GetStringID);
-        criticalPercentUpgrade.GetComponent<Button>().onClick.AddListener(GameMgr.Instance.playerMgr.playerEnhance.AddCriticalPercent);
+        criticalPercentUpgrade.GetComponent<Enhance>().buttonClick += GameMgr.Instance.playerMgr.playerEnhance.AddCriticalPercent;
         criticalPercentUpgrade.Init(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10004).GetStringID);
-        criticalMultipleUpgrade.GetComponent<Button>().onClick.AddListener(GameMgr.Instance.playerMgr.playerEnhance.AddCriticalMultiple);
+        criticalMultipleUpgrade.GetComponent<Enhance>().buttonClick += GameMgr.Instance.playerMgr.playerEnhance.AddCriticalMultiple;
         criticalMultipleUpgrade.Init(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10005).GetStringID);
 
-        goldUpgrade.GetComponent<Button>().onClick.AddListener(GameMgr.Instance.playerMgr.playerEnhance.AddGoldIncrease);
+        goldUpgrade.GetComponent<Enhance>().buttonClick += GameMgr.Instance.playerMgr.playerEnhance.AddGoldIncrease;
         goldUpgrade.Init(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10006).GetStringID);
     }
 
