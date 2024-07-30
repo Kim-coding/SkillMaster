@@ -17,6 +17,8 @@ public class MainScene : MonoBehaviour
     public int stageId;
 
     public ClearPopup clearPopup;
+
+    private CharacterStat playerCharacter;
     public void Init()
     {
         stageId = 50001; //TO-DO 저장된곳에서 가져오기
@@ -26,6 +28,7 @@ public class MainScene : MonoBehaviour
     private void Start()
     {
         monsterPool = GameMgr.Instance.GetMonsterPool();
+        playerCharacter = GameMgr.Instance.playerMgr.characters[0];
     }
 
     public GameObject[] GetMonsters()
@@ -98,7 +101,7 @@ public class MainScene : MonoBehaviour
         GameMgr.Instance.soundMgr.PlaySFX("Boss");
         //spawner.BossSpawn(Stage.BossMonsterPrefab, bossSpawnPoint);
 
-        GameMgr.Instance.playerMgr.characters[0].GetComponent<PlayerSkills>().SetList();
+        playerCharacter.GetComponent<PlayerSkills>().SetList();
     }
 
     public void RestartStage() //스테이지 재시작
@@ -111,7 +114,8 @@ public class MainScene : MonoBehaviour
         }
         bossStage = false;
         spawner.InitialSpawn();
-        GameMgr.Instance.playerMgr.characters[0].GetComponent<PlayerAI>().Restart();
+        playerCharacter.GetComponent<PlayerAI>().Restart();
+        playerCharacter.GetComponent<PlayerSkills>().SetList();
     }
 
     public bool IsBossBattle()
