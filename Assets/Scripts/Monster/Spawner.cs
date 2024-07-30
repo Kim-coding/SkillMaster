@@ -15,11 +15,11 @@ public class Spawner : MonoBehaviour
 
     public float spawnRange;
 
-    private float timer = 0f;
-    private float duration = 0.2f;
+    //private float timer = 0f;
+    //private float duration = 0.2f;
 
-    private bool isSpawn = false;
-    private bool isDeathCount = false;
+    //private bool isSpawn = false;
+    //private bool isDeathCount = false;
 
     private void Start()
     {

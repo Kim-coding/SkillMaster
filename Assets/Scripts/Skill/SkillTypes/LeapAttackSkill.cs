@@ -5,14 +5,6 @@ using TMPro;
 using UnityEngine;
 
 
-internal enum LeapState
-{
-    Start = 0,
-    floating = 1,
-    press,
-    end,
-}
-
 public class LeapAttackSkill : MonoBehaviour, ISkillComponent, ISkill
 {
     public GameObject skillObject;
@@ -25,11 +17,6 @@ public class LeapAttackSkill : MonoBehaviour, ISkillComponent, ISkill
     private float leapHeight = 1f;
     private float leapDuration = 0.5f;
     private float attackRadius;
-
-    LeapState currentState = LeapState.Start;
-
-    private float timer = 0f;
-    private float duration = 0.5f;
 
     private int attackNumber = 1;  // 공격 횟수 TO-DO 테이블로 받아와야 하는 정보
     private float skillColdiwn = 0f;

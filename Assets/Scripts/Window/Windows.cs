@@ -2,8 +2,8 @@ public enum Windows
 {
     Enhance,
     Inven,
-    Dungeon,
     PickUp,
+    Dungeon,
 }
 
 public enum Guide_Windows

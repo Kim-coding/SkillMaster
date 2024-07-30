@@ -235,6 +235,7 @@ MonoBehaviour:
   playerMgr: {fileID: 0}
   playerSkills: {fileID: 4269445523896851557}
   currentTarget: {fileID: 0}
+  onSkill: 0
 --- !u!114 &2715174331143790551
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -282,6 +283,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 204a48687284ffb4ea8be4ad1bd3c69a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathPopup: {fileID: 0}
 --- !u!114 &4266073701881930650
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -442,9 +444,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1354051838402284677, guid: 81ba63d0722e0874d9ac59caf131914e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5397367327368680981}
-    - targetCorrespondingSourceObject: {fileID: 1354051838402284677, guid: 81ba63d0722e0874d9ac59caf131914e, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8875930955677524602}
   m_SourcePrefab: {fileID: 100100000, guid: 81ba63d0722e0874d9ac59caf131914e, type: 3}
 --- !u!1 &2728899068385419576 stripped
 GameObject:
@@ -461,19 +460,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9fd2bec47ccd9bd43a704404d920019a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 7579185352719329593}
---- !u!114 &8875930955677524602
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2728899068385419576}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9e70f361cccc9f4ea0438d3f2ae0867, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 7579185352719329593}

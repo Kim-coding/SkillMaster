@@ -12,6 +12,8 @@ public class UiGuideQuest : MonoBehaviour
     public QuestData currentQuest;
     public GameObject clearText;
 
+    private UIMgr uiMgr;
+
     public void UiUpdate(int currentValue)
     {
         if(currentQuest.Targetvalue == -1)
@@ -50,7 +52,9 @@ public class UiGuideQuest : MonoBehaviour
                 case 9:
                 case 10:
                 case 11:
-                    guideQuestButton.onClick.AddListener(GameMgr.Instance.uiMgr.uiWindow.EnhanceWindowOpen);
+                    guideQuestButton.onClick.AddListener(() => {if(GameMgr.Instance.uiMgr.uiWindow.CurrentOpenWindow == Windows.Enhance)
+                        { return; }
+                        GameMgr.Instance.uiMgr.uiWindow.EnhanceWindowOpen(); });
                     break;
             }
         }

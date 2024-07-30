@@ -273,8 +273,8 @@ namespace Crystal
             topBackgroundImage.color = Color.black;
 
             // Ensure the letterbox background is rendered behind other UI elements
-            bottomLetterboxBackground.SetAsFirstSibling();
-            topLetterboxBackground.SetAsFirstSibling();
+            bottomLetterboxBackground.SetAsLastSibling();
+            topLetterboxBackground.SetAsLastSibling();
         }
     }
 

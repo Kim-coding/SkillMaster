@@ -158,7 +158,6 @@ public class PlayerAI : MonoBehaviour , IAnimation
             }
         }
     }
-    private int count = 0;
     public void OnAttack(GameObject skill)
     {
 
