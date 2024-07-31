@@ -60,11 +60,11 @@ public class EquipOption
         attackRange = 0;
     }
 
-    public void AddOption(OptionType option, float value)
+    public bool AddOption(OptionType option, float value)
     {
         if (optionCount[(int)option] > 2)
         {
-            return;
+            return false;
         }
 
         currentOptions.Add((option, value));
@@ -102,6 +102,7 @@ public class EquipOption
                 attackRange = value;
                 break;
         }
+        return true;
     }
 
     public void RemoveOption(OptionType option)

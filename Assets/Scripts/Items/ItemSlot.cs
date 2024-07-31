@@ -29,13 +29,8 @@ public class ItemSlot : MonoBehaviour
     {
         if (equipData != null)
         {
-            var texture = equipData.icon[0].texture;
             currentEquip = equipData;
-            itemImage.sprite = Sprite.Create(texture,new Rect(0,0,texture.width,texture.height), new Vector2(0.5f, 0.5f));
-            if(button != null) 
-            {
-                button.interactable = true;
-            }
+            itemImage.sprite = equipData.icon;
         }
 
     }
@@ -46,13 +41,13 @@ public class ItemSlot : MonoBehaviour
         currentEquip = null;
         itemImage = null;
     }
-    public void ButtonOff()
-    {
-        button.interactable = false;
-    }
     public void OnbuttonClick()
     {
-        Debug.Log(currentEquip.equipType + " / " + currentEquip.rarerityType + " / " + currentEquip.itemNumber);
+        Debug.Log(currentEquip.equipType + " / " + currentEquip.rarerityType + " / " + currentEquip.itemNumber + " / " + currentEquip.EquipOption.currentOptions.Count);
+        foreach (var equip in currentEquip.EquipOption.currentOptions)
+        {
+            Debug.Log(equip.Item1 + " / " + equip.Item2);
+        }
         SetData(GameMgr.Instance.playerMgr.playerinventory.EquipItem(currentEquip));
         GameMgr.Instance.uiMgr.uiInventory.UiSlotUpdate(currentEquip.equipType);
 

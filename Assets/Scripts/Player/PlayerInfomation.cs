@@ -13,6 +13,8 @@ public class PlayerInfomation
     public int obtainedItem;
 
     public int gachaLevel;
+    public int gachaExp;
+    public int gachaMaxExp;
     public void Init()
     {
         monsterKill = new BigInteger(0); //TO-DO저장한데서 들고오기 밑에전부
@@ -21,6 +23,7 @@ public class PlayerInfomation
         maxSkillLevel = 1;
         obtainedItem = 0;
         gachaLevel = 1;
+        gachaExp = 0;
         //stageClear;
 
         EventMgr.StartListening(QuestType.Stage, StageUpdate);

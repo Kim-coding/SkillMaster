@@ -30,6 +30,7 @@ public class UiWindow : MonoBehaviour
     public GameObject UIMonsterSlider;
     public GameObject UICameraButton;
 
+    public ItemInfoPanel pickUpItemPanel;
     private void Start()
     {
         windows = new Dictionary<Windows, GameObject>()

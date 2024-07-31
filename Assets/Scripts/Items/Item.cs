@@ -11,13 +11,14 @@ public enum ItemType
 }
 public abstract class Item
 {
-    public Sprite[] icon;
+    public Sprite[] texture;
     public string itemName;
+    public Sprite icon;
 
     public Item() { }
-    public Item(Sprite[] icon, string itemName)
+    public Item(Sprite[] texture, string itemName)
     {
-        this.icon = icon;
+        this.texture = texture;
         this.itemName = itemName;
     }
 }

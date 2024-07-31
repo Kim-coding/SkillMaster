@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 public class PickUp : MonoBehaviour
 {
-    public ItemSlot prefabSlot;
+    public PickUpSlot prefabSlot;
     public GameObject pickUpPanel;
 
-    private List<ItemSlot> pickUpitems = new List<ItemSlot>();
+    private List<PickUpSlot> pickUpitems = new List<PickUpSlot>();
     public Button pickUpButton_1;
     public Button pickUpButton_10;
     public Button pickUpButton_30;
@@ -116,9 +116,51 @@ public class PickUp : MonoBehaviour
                     sb.Append("_5");
                     break;
             }
-            var iconimage = Resources.LoadAll<Sprite>("Equipment/"+sb.ToString());
-            var equip = new Equip(iconimage, "랜덤장비", ++GameMgr.Instance.playerMgr.playerInfo.obtainedItem);
+            string sbString = sb.ToString();
+            EquipData equipData = DataTableMgr.Get<EquipmentTable>(DataTableIds.equipment).GetID(sbString);
+
+            var iconimage = Resources.LoadAll<Sprite>("Equipment/" + sbString);
+            var equip = new Equip(iconimage, equipData.GetItemName, ++GameMgr.Instance.playerMgr.playerInfo.obtainedItem);
             equip.SetEquipItem((EquipType)randomTypeNum, (RarerityType)randomRarityNum);
+
+            int optionCount = equipData.option_value;
+            while (optionCount > 0)
+            {
+                OptionData optionData = equipData.GetOption;
+                OptionType optionType;
+                float optionValue;
+                OptionNumberData optionNumberData;
+
+                float randomOption = Random.Range(0.0f, 100.0f);
+                // 소수점 한 자리까지 반올림
+                randomOption = Mathf.Round(randomOption * 10f) / 10f;
+
+                if (randomOption <= optionData.option1_persent)
+                {
+                    optionNumberData = optionData.GetOption1_value;
+                }
+                else if (randomOption <= optionData.option1_persent + optionData.option2_persent)
+                {
+                    optionNumberData = optionData.GetOption2_value;
+                }
+                else if (randomOption <= optionData.option1_persent + optionData.option2_persent + optionData.option3_persent)
+                {
+                    optionNumberData = optionData.GetOption3_value;
+                }
+                else
+                {
+                    optionNumberData = optionData.GetOption4_value;
+                }
+                optionType = (OptionType)(optionNumberData.option_state - 1);
+                optionValue = Random.Range(optionNumberData.option_min, optionNumberData.option_max);
+                optionValue = Mathf.Round(optionValue * 10f) / 10f;
+
+                if(equip.SetEquipStat((optionType, optionValue)))
+                {
+                    optionCount--;
+                }
+
+            }
             InstantiateSlot(equip);
             GameMgr.Instance.uiMgr.uiInventory.InstantiateSlot(equip);
         }
@@ -128,7 +170,6 @@ public class PickUp : MonoBehaviour
     {
         var newSlot = Instantiate(prefabSlot, pickUpPanel.transform);
         newSlot.SetData(equip);
-        newSlot.ButtonOff();
         pickUpitems.Add(newSlot);
     }
 

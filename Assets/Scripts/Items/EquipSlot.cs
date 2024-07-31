@@ -22,9 +22,8 @@ public class EquipSlot : MonoBehaviour
     {
         if (equipData != null)
         {
-            var texture = equipData.icon[0].texture;
             currentEquip = equipData;
-            itemImage.sprite = Sprite.Create(texture,new Rect(0,0,texture.width,texture.height), new Vector2(0.5f, 0.5f));
+            itemImage.sprite = equipData.icon;
             currentEquip.SetEquipItem(equipData.equipType, equipData.rarerityType);
         }
 
