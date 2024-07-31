@@ -15,6 +15,9 @@ public class Spawner : MonoBehaviour
 
     public float spawnRange;
 
+    private bool shouldSpawn = false;
+    private int spawnCount = 0;
+
     //private float timer = 0f;
     //private float duration = 0.2f;
 
@@ -31,7 +34,15 @@ public class Spawner : MonoBehaviour
         }
         InitialSpawn();
     }
-
+    private void Update()
+    {
+        if (shouldSpawn)
+        {
+            shouldSpawn = false;
+            int randomZoneIndex = UnityEngine.Random.Range(0, spawnPoints.Length);
+            SpawnMonsters(spawnPoints[randomZoneIndex], spawnCount);
+        }
+    }
     public void InitialSpawn()
     {
         deathCount = 0;
@@ -90,9 +101,9 @@ public class Spawner : MonoBehaviour
         deathCount++;
         if (deathCount >= deathThreshold)
         {
-            int randomZoneIndex = UnityEngine.Random.Range(0, spawnPoints.Length);
-            SpawnMonsters(spawnPoints[randomZoneIndex], 3);
             deathCount -= 3;
+            shouldSpawn = true;
+            spawnCount = 3;
         }
     }
 
