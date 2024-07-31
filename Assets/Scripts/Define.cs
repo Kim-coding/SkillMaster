@@ -135,6 +135,12 @@ public static class DataTableIds
 
     public static readonly string upgrade = "UpgradeTable";
 
+    public static readonly string equipment = "EquipmentTable";
+
+    public static readonly string option = "OptionTable";
+
+    public static readonly string optionNumber = "OptionNumberTable";
+
 
 
 }
