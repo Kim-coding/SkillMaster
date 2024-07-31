@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public enum OptionType
 {
-    attackPower = 1,
+    attackPower = 0,
     deffence,
     maxHealth,
     criticalPercent,
@@ -32,14 +32,13 @@ public class EquipOption
     public float goldIncrease;
     public float recovery;
     public float attackRange;
-    public float cooldown;
 
-    public void Init((OptionType, float) a, (OptionType, float) b, (OptionType, float) c, (OptionType, float) d)
+    public void Init(List<(OptionType, float)> optionList)
     {
-        AddOption(a.Item1, a.Item2);
-        AddOption(b.Item1, b.Item2);
-        AddOption(c.Item1, c.Item2);
-        AddOption(d.Item1, d.Item2);
+        foreach(var option in optionList)
+        {
+            currentOptions.Add(option);
+        }
     }
 
     public void OptionClear()
@@ -59,7 +58,6 @@ public class EquipOption
         goldIncrease = 0;
         recovery = 0;
         attackRange = 0;
-        cooldown = 0;
     }
 
     public void AddOption(OptionType option, float value)
@@ -102,9 +100,6 @@ public class EquipOption
                 break;
             case OptionType.attackRange:
                 attackRange = value;
-                break;
-            case OptionType.cooldown:
-                cooldown = value;
                 break;
         }
     }

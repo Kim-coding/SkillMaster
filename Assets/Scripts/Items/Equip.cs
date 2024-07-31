@@ -14,23 +14,19 @@ public class Equip : Item
     public EquipType equipType;
     public RarerityType rarerityType;
     public int reinforceStoneValue;
-    private EquipOption equipOption;
+    private EquipOption equipOption = new EquipOption();
     public int itemNumber;
     public EquipOption EquipOption { get { return equipOption; }}
 
-    private void Awake()
-    {
-        equipOption = new EquipOption();
-    }
     public void Init(Sprite[] icon, string itemName)
     {
         this.icon = icon;
         this.itemName = itemName;
     }
 
-    public void SetEquipStat((OptionType, float) a, (OptionType, float) b, (OptionType, float) c, (OptionType, float) d)
+    public void SetEquipStat((OptionType, float) a)
     {
-        equipOption.Init(a, b, c, d);
+        equipOption.AddOption(a.Item1, a.Item2);
     }
 
     public void SetEquipItem(EquipType equipType, RarerityType rarerityType)
