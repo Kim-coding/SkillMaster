@@ -41,6 +41,19 @@ public static class DataTableMgr
         StageTable stageTable = new StageTable();
         stageTable.Load(DataTableIds.stage);
         tables.Add(DataTableIds.stage, stageTable);
+
+        OptionNumberTable optionNumberTable = new OptionNumberTable();
+        optionNumberTable.Load(DataTableIds.optionNumber);
+        tables.Add(DataTableIds.optionNumber, optionNumberTable);
+
+        OptionTable optionTable = new OptionTable();
+        optionTable.Load(DataTableIds.option);
+        tables.Add(DataTableIds.option, optionTable);
+
+        EquipmentTable equipmentTable = new EquipmentTable();
+        equipmentTable.Load(DataTableIds.equipment);
+        tables.Add(DataTableIds.equipment, equipmentTable);
+
     }
 
     private static DataTable CreateDataTable(string id)
