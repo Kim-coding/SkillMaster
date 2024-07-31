@@ -3,17 +3,16 @@ using System.Collections.Generic;
 
 public enum OptionType
 {
-    attackPower = 0,
-    criticalPercent,
-    criticalMultiple,
-    attackSpeed,
+    attackPower = 1,
     deffence,
     maxHealth,
+    criticalPercent,
+    criticalMultiple,
+    recovery,
+    attackSpeed,
     speed,
     goldIncrease,
-    recovery,
     attackRange,
-    cooldown,
     count,
 }
 
