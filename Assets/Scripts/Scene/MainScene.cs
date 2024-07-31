@@ -122,4 +122,12 @@ public class MainScene : MonoBehaviour
     {
         return bossStage;
     }
+    public void OnPlayerDefeated()
+    {
+        if (bossStage)
+        {
+            bossStage = false; // 보스전 종료
+            GameMgr.Instance.ShowBossSpawnButton();
+        }
+    }
 }

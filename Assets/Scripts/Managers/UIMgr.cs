@@ -29,6 +29,8 @@ public class UIMgr : MonoBehaviour
     public void Init()
     {
         uiInventory.Init();
+        bossSpawnButton.onClick.AddListener(OnBossSpawnButtonClicked);
+        bossSpawnButton.gameObject.SetActive(false);
     }
 
     public void AllUIUpdate(BigInteger g, BigInteger d)
@@ -73,5 +75,18 @@ public class UIMgr : MonoBehaviour
         stageUI.text = $"Stage {stageCount}";
     }
 
+    private void OnBossSpawnButtonClicked()
+    {
+        GameMgr.Instance.OnBossSpawn();
+        bossSpawnButton.gameObject.SetActive(false);
+    }
 
+    public void ShowBossSpawnButton()
+    {
+        bossSpawnButton.gameObject.SetActive(true);
+    }
+    public void HideBossSpawnButton()
+    {
+        bossSpawnButton.gameObject.SetActive(false);
+    }
 }

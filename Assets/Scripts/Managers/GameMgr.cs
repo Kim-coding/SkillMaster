@@ -60,10 +60,18 @@ public class GameMgr : MonoBehaviour
 
     public void OnBossSpawn()
     {
-        uiMgr.bossSpawnButton.gameObject.SetActive(false);
-        
+        uiMgr.HideBossSpawnButton();
+
         sceneMgr.mainScene.RemoveAllMonsters();
         
         sceneMgr.mainScene.SpawnBoss();
+    }
+    public void ShowBossSpawnButton()
+    {
+        uiMgr.ShowBossSpawnButton();
+    }
+    public void HideBossSpawnButton()
+    {
+        uiMgr.HideBossSpawnButton();
     }
 }
