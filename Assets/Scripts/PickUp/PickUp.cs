@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
@@ -14,6 +13,13 @@ public class PickUp : MonoBehaviour
     public Button pickUpButton_10;
     public Button pickUpButton_30;
 
+    private float C_percent;
+    private float B_percent;
+    private float A_percent;
+    private float S_percent;
+    private float SS_percent;
+    private float SSS_percent;
+
     private void Awake()
     {
         pickUpButton_1.onClick.AddListener(() => { PickUpItem(1); });
@@ -23,7 +29,9 @@ public class PickUp : MonoBehaviour
 
     public void PickUpItem(int i)
     {
-        while(pickUpitems.Count > 0)
+        SetGachaPercent();
+
+        while (pickUpitems.Count > 0)
         {
             Destroy(pickUpitems[0].gameObject);
             pickUpitems.RemoveAt(0);
@@ -31,6 +39,10 @@ public class PickUp : MonoBehaviour
         for(int j = 0; j < i; j++)
         {
             StringBuilder sb = new StringBuilder();
+            float randomRarityNum = Random.Range(0.0f, 100.0f);
+            // 소수점 한 자리까지 반올림
+            randomRarityNum = Mathf.Round(randomRarityNum * 10f) / 10f;
+
             var randomTypeNum = Random.Range(1,7);
             switch (randomTypeNum)
             {
@@ -54,29 +66,38 @@ public class PickUp : MonoBehaviour
                     break;
             }
 
-            var randomRarityNum = Random.Range(1,7);
-            switch (randomRarityNum)
-            { 
-                case 1:
-                    sb.Append("_C");
-                    break;
-                case 2:
-                    sb.Append("_B");
-                    break;
-                case 3:
-                    sb.Append("_A");
-                    break;
-                case 4:
-                    sb.Append("_S");
-                    break;
-                case 5:
-                    sb.Append("_SS");
-                    break;
-                case 6:
-                    sb.Append("_SSS");
-                    break;
+            if(randomRarityNum <= C_percent)
+            {
+                sb.Append("_C");
+                randomRarityNum = 1;
             }
-            var randomColorNum = Random.Range(1, 4);
+            else if (randomRarityNum <= C_percent + B_percent)
+            {
+                sb.Append("_B");
+                randomRarityNum = 2;
+            }
+            else if (randomRarityNum <= C_percent + B_percent + A_percent)
+            {
+                sb.Append("_A");
+                randomRarityNum = 3;
+            }
+            else if (randomRarityNum <= C_percent + B_percent + A_percent + S_percent)
+            {
+                sb.Append("_S");
+                randomRarityNum = 4;
+            }
+            else if (randomRarityNum <= C_percent + B_percent + A_percent + S_percent + SS_percent)
+            {
+                sb.Append("_SS");
+                randomRarityNum = 5;
+            }
+            else
+            {
+                sb.Append("_SSS");
+                randomRarityNum = 6;
+            }
+
+            var randomColorNum = Random.Range(1, 6);
             switch (randomColorNum)
             {
                 case 1:
@@ -88,6 +109,12 @@ public class PickUp : MonoBehaviour
                 case 3:
                     sb.Append("_3");
                     break;
+                case 4:
+                    sb.Append("_4");
+                    break;
+                case 5:
+                    sb.Append("_5");
+                    break;
             }
             var iconimage = Resources.LoadAll<Sprite>("Equipment/"+sb.ToString());
             var equip = new Equip(iconimage, "랜덤장비", ++GameMgr.Instance.playerMgr.playerInfo.obtainedItem);
@@ -97,7 +124,6 @@ public class PickUp : MonoBehaviour
         }
     }
 
-
     public void InstantiateSlot(Equip equip)
     {
         var newSlot = Instantiate(prefabSlot, pickUpPanel.transform);
@@ -105,4 +131,17 @@ public class PickUp : MonoBehaviour
         newSlot.ButtonOff();
         pickUpitems.Add(newSlot);
     }
+
+    private void SetGachaPercent()
+    {
+        int currentLv = GameMgr.Instance.playerMgr.playerInfo.gachaLevel;
+        GachaData gachaData = DataTableMgr.Get<GachaTable>(DataTableIds.gacha).GetID(currentLv);
+        C_percent = gachaData.C_Probability;
+        B_percent = gachaData.B_Probability;
+        A_percent = gachaData.A_Probability;
+        S_percent = gachaData.S_Probability;
+        SS_percent = gachaData.SS_Probability;
+        SSS_percent = gachaData.SSS_Probability;
+    }
+
 }

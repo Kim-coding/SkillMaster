@@ -13,8 +13,8 @@ public class OptionNumberData
 
     public int optionvalueID { get; set; }
     public int option_state { get; set; }
-    public int option_min { get; set; }
-    public int option_max { get; set; }
+    public float option_min { get; set; }
+    public float option_max { get; set; }
 
 }
 public class OptionNumberTable : DataTable
