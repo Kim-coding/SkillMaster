@@ -141,6 +141,8 @@ public static class DataTableIds
 
     public static readonly string optionNumber = "OptionNumberTable";
 
+    public static readonly string gacha = "GachaTable";
+
 
 
 }
