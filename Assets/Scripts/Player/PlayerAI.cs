@@ -54,6 +54,11 @@ public class PlayerAI : MonoBehaviour , IAnimation
         if(characterStat.Ondeath)
         {
             stateMachine.ChangState(stateMachine.idleState);
+            if(GameMgr.Instance.sceneMgr.mainScene.IsBossBattle() && !GameMgr.Instance.sceneMgr.mainScene.playerDefeatedByBoss)
+            {
+                GameMgr.Instance.sceneMgr.mainScene.playerDefeatedByBoss = true;
+                Debug.Log("보스에게 죽음");
+            }
         }
         animator.SetFloat("Multiplier", characterStat.attackSpeed);
 

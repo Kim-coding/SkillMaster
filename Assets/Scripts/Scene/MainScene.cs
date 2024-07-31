@@ -19,6 +19,8 @@ public class MainScene : MonoBehaviour
     public ClearPopup clearPopup;
 
     private CharacterStat playerCharacter;
+
+    public bool playerDefeatedByBoss = false;
     public void Init()
     {
         stageId = 50001; //TO-DO 저장된곳에서 가져오기
@@ -127,6 +129,7 @@ public class MainScene : MonoBehaviour
         if (bossStage)
         {
             bossStage = false; // 보스전 종료
+            playerDefeatedByBoss = true;
             GameMgr.Instance.ShowBossSpawnButton();
         }
     }

@@ -54,16 +54,28 @@ public class GameMgr : MonoBehaviour
 
     public void OnBossDefeated()
     {
+        sceneMgr.mainScene.playerDefeatedByBoss = false;
+        uiMgr.ResetMonsterSlider();
         sceneMgr.mainScene.RestartStage();
         sceneMgr.mainScene.AddStage();
     }
 
     public void OnBossSpawn()
     {
-        uiMgr.HideBossSpawnButton();
+        if (!sceneMgr.mainScene.playerDefeatedByBoss)
+        {
+            BossSpawn();
+        }
+        else
+        {
+            ShowBossSpawnButton();
+        }
+    }
 
+    public void BossSpawn()
+    {
+        HideBossSpawnButton();
         sceneMgr.mainScene.RemoveAllMonsters();
-        
         sceneMgr.mainScene.SpawnBoss();
     }
     public void ShowBossSpawnButton()
