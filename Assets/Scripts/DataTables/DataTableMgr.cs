@@ -54,6 +54,10 @@ public static class DataTableMgr
         equipmentTable.Load(DataTableIds.equipment);
         tables.Add(DataTableIds.equipment, equipmentTable);
 
+        GachaTable gachaTable = new GachaTable();
+        gachaTable.Load(DataTableIds.gacha);
+        tables.Add(DataTableIds.gacha, gachaTable);
+
     }
 
     private static DataTable CreateDataTable(string id)
