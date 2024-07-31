@@ -13213,8 +13213,8 @@ RectTransform:
   m_Children:
   - {fileID: 1617693629}
   - {fileID: 1175904676}
-  - {fileID: 231454457}
   - {fileID: 1603245743}
+  - {fileID: 231454457}
   m_Father: {fileID: 688339761}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
@@ -18555,6 +18555,7 @@ MonoBehaviour:
   stageCount: 1
   stageId: 0
   clearPopup: {fileID: 429917912}
+  playerDefeatedByBoss: 0
 --- !u!114 &1423913456
 MonoBehaviour:
   m_ObjectHideFlags: 0
