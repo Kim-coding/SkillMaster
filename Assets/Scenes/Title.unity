@@ -615,7 +615,7 @@ Camera:
   m_GameObject: {fileID: 391552562}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
+  m_ClearFlags: 3
   m_BackGroundColor: {r: 0.023529414, g: 0.023529414, b: 0.03529412, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -809,8 +809,8 @@ Canvas:
   m_GameObject: {fileID: 727112624}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 1
+  m_Camera: {fileID: 391552564}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -1137,7 +1137,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 30
   orthographic: 1
   orthographic size: 5
   m_Depth: 1
@@ -1277,7 +1277,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -199.85, y: -81.601}
+  m_AnchoredPosition: {x: -199.85, y: -81.60101}
   m_SizeDelta: {x: 399.69, y: 1259.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1055097577
@@ -1747,7 +1747,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1644421946}
-  - component: {fileID: 1644421945}
+  - component: {fileID: 1644421947}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -1755,20 +1755,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1644421945
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1644421944}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4a067fb38b32484db29210636f63876, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  touchEffectPrefab: {fileID: 2951981114292172599, guid: 20a5f31f1a291c14aa60086e51179f45, type: 3}
-  touchEffectCamera: {fileID: 904302213}
 --- !u!4 &1644421946
 Transform:
   m_ObjectHideFlags: 0
@@ -1784,6 +1770,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1644421947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1644421944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4a067fb38b32484db29210636f63876, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particlePrefab: {fileID: 2951981114292172599, guid: 20a5f31f1a291c14aa60086e51179f45, type: 3}
+  mainCamera: {fileID: 391552564}
+  minTouchMovement: 10
 --- !u!1 &1648372573
 GameObject:
   m_ObjectHideFlags: 0
@@ -1969,7 +1970,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 199.85, y: -81.601}
+  m_AnchoredPosition: {x: 199.85, y: -81.60101}
   m_SizeDelta: {x: 399.7, y: 1259.799}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1958013690
@@ -2120,6 +2121,7 @@ MonoBehaviour:
   backButton: {fileID: 1055097577}
   nextButton: {fileID: 1958013690}
   closeButton: {fileID: 1084378556}
+  mainSceneAddress: Main
 --- !u!114 &2066974480
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
+using UnityEngine.ResourceManagement.ResourceProviders;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -21,6 +24,8 @@ public class GuideWindow : MonoBehaviour
     private Dictionary<Guide_Windows, GameObject> windows;
     private List<Guide_Windows> windowOrder;
     private int currentWindowIndex = 0;
+    
+    public string mainSceneAddress = "Main";
 
     private void Awake()
     {
@@ -62,7 +67,23 @@ public class GuideWindow : MonoBehaviour
 
     private void OnSkip()
     {
-        SceneManager.LoadScene("Main");
+        //SceneManager.LoadScene("Main");
+        LoadScene(mainSceneAddress);
+    }
+    void LoadScene(string sceneAddress)
+    {
+        Addressables.LoadSceneAsync(sceneAddress).Completed += OnSceneLoaded;
+    }
+    void OnSceneLoaded(AsyncOperationHandle<SceneInstance> obj)
+    {
+        if (obj.Status == AsyncOperationStatus.Succeeded)
+        {
+            Debug.Log("Scene loaded successfully");
+        }
+        else
+        {
+            Debug.LogError("Failed to load scene");
+        }
     }
 
     private void OnBack()
@@ -83,7 +104,8 @@ public class GuideWindow : MonoBehaviour
         }
         else if (windowOrder[currentWindowIndex] == Guide_Windows.Quest)
         { 
-            SceneManager.LoadScene("Main");
+            //SceneManager.LoadScene("Main");
+            LoadScene(mainSceneAddress);
         }
     }
 
