@@ -1,31 +1,44 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using Coffee.UIExtensions;
 
 public class TouchEffect : MonoBehaviour
 {
     public GameObject particlePrefab;
-    public Camera mainCamera;
-    //public Camera particleCamera;
+    public Canvas uiCanvas;
     public float minTouchMovement = 10f;
 
     private Vector3 lastTouchPosition;
 
     void Start()
     {
-        if (mainCamera == null)
+        if (uiCanvas == null)
         {
-            mainCamera = Camera.main;
+            uiCanvas = FindObjectOfType<Canvas>();
+            if (uiCanvas == null)
+            {
+                Debug.LogError("UI Canvas not found!");
+                return;
+            }
         }
 
-        //if (particleCamera == null)
-        //{
-        //    Debug.LogError("Particle Camera is not assigned.");
-        //}
+        if (uiCanvas.renderMode == RenderMode.ScreenSpaceCamera && uiCanvas.worldCamera == null)
+        {
+            uiCanvas.worldCamera = Camera.main;
+            if (uiCanvas.worldCamera == null)
+            {
+                Debug.LogError("World Camera not set on UI Canvas and no main camera found!");
+                return;
+            }
+        }
     }
 
     void Update()
     {
+        if (uiCanvas == null)
+        {
+            return;
+        }
+
         ProcessTouch();
     }
 
@@ -34,8 +47,17 @@ public class TouchEffect : MonoBehaviour
         if (Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
-            Vector3 touchPosition = mainCamera.ScreenToWorldPoint(new Vector3(touch.position.x, touch.position.y, mainCamera.nearClipPlane));
-            touchPosition.z = 0;
+            Vector3 touchPosition;
+
+            if (uiCanvas.renderMode == RenderMode.ScreenSpaceOverlay)
+            {
+                touchPosition = new Vector3(touch.position.x, touch.position.y, 0);
+            }
+            else
+            {
+                touchPosition = uiCanvas.worldCamera.ScreenToWorldPoint(new Vector3(touch.position.x, touch.position.y, uiCanvas.worldCamera.nearClipPlane));
+                touchPosition.z = 0;
+            }
 
             if (touch.phase == TouchPhase.Began)
             {
@@ -53,22 +75,39 @@ public class TouchEffect : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            lastTouchPosition = mainCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, mainCamera.nearClipPlane));
-            lastTouchPosition.z = 0;
+            Vector3 mousePosition;
+
+            if (uiCanvas.renderMode == RenderMode.ScreenSpaceOverlay)
+            {
+                mousePosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0);
+            }
+            else
+            {
+                mousePosition = uiCanvas.worldCamera.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, uiCanvas.worldCamera.nearClipPlane));
+                mousePosition.z = 0;
+            }
+
+            lastTouchPosition = mousePosition;
             SpawnTouchEffect(lastTouchPosition);
         }
     }
 
     void SpawnTouchEffect(Vector3 position)
     {
-        GameObject particleEffect = Instantiate(particlePrefab, position, Quaternion.identity);
-        ParticleSystem ps = particleEffect.GetComponent<ParticleSystem>();
-
-        if (ps != null)
+        GameObject particleEffect = Instantiate(particlePrefab, position, Quaternion.identity, uiCanvas.transform);
+        UIParticle uiParticle = particleEffect.GetComponent<UIParticle>();
+        if (uiParticle != null)
         {
-            ps.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
-            ps.Play();
-            Destroy(particleEffect, ps.main.duration + ps.main.startLifetime.constantMax);
+            uiParticle.Play();
+            ParticleSystem particleSystem = particleEffect.GetComponent<ParticleSystem>();
+            if (particleSystem != null)
+            {
+                Destroy(particleEffect, particleSystem.main.duration + particleSystem.main.startLifetime.constantMax);
+            }
+            else
+            {
+                Destroy(particleEffect, 1f);
+            }
         }
         else
         {
