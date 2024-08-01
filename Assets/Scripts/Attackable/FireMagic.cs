@@ -34,7 +34,7 @@ public class FireMagic : AttackDefinition
         bool isCritical = Random.value < PState.playerCriticalPercent;
         if (isCritical)
         {
-            damage *= PState.playerCriticalMultiple;
+            damage *= (1 + (PState.playerCriticalMultiple/100f));
         }
 
         return new Attack(damage, isCritical);

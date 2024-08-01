@@ -95,9 +95,12 @@ public class BaseStatEditor : Editor
 
         EditorGUILayout.PropertyField(basePlayerCriticalPercent, new GUIContent("기본 치명타 확률"));
         DrawDescriptionLabel("플레이어 캐릭터의 기본 치명타 확률");
+        DrawDescriptionLabel("1당 치명타 확률 1%씩 상승");
+
 
         EditorGUILayout.PropertyField(basePlayerCriticalMultiple, new GUIContent("기본 치명타 배율"));
         DrawDescriptionLabel("플레이어 캐릭터의 기본 치명타 배율");
+        DrawDescriptionLabel("1당 치명타 데미지 1%씩 상승");
 
         // 변경 사항 적용
         serializedObject.ApplyModifiedProperties();

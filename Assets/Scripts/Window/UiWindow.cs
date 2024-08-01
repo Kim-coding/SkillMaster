@@ -31,6 +31,7 @@ public class UiWindow : MonoBehaviour
     public GameObject UICameraButton;
 
     public ItemInfoPanel pickUpItemPanel;
+    public EquipmentInfoPanel equipmentItemPanel;
     private void Start()
     {
         windows = new Dictionary<Windows, GameObject>()

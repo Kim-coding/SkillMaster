@@ -36,14 +36,14 @@ public class PickUp : MonoBehaviour
             Destroy(pickUpitems[0].gameObject);
             pickUpitems.RemoveAt(0);
         }
-        for(int j = 0; j < i; j++)
+        for (int j = 0; j < i; j++)
         {
             StringBuilder sb = new StringBuilder();
             float randomRarityNum = Random.Range(0.0f, 100.0f);
             // 소수점 한 자리까지 반올림
             randomRarityNum = Mathf.Round(randomRarityNum * 10f) / 10f;
 
-            var randomTypeNum = Random.Range(1,7);
+            var randomTypeNum = Random.Range(1, 7);
             switch (randomTypeNum)
             {
                 case 1:
@@ -66,7 +66,7 @@ public class PickUp : MonoBehaviour
                     break;
             }
 
-            if(randomRarityNum <= C_percent)
+            if (randomRarityNum <= C_percent)
             {
                 sb.Append("_C");
                 randomRarityNum = 1;
@@ -153,9 +153,28 @@ public class PickUp : MonoBehaviour
                 }
                 optionType = (OptionType)(optionNumberData.option_state - 1);
                 optionValue = Random.Range(optionNumberData.option_min, optionNumberData.option_max);
-                optionValue = Mathf.Round(optionValue * 10f) / 10f;
 
-                if(equip.SetEquipStat((optionType, optionValue)))
+                switch (optionType)
+                {
+                    case OptionType.attackPower:
+                    case OptionType.maxHealth:
+                    case OptionType.deffence:
+                    case OptionType.recovery:
+                        optionValue = Mathf.Round(optionValue);
+                        break;
+                    case OptionType.criticalPercent:
+                    case OptionType.criticalMultiple:
+                    case OptionType.goldIncrease:      
+                        optionValue = Mathf.Round(optionValue * 10f) / 10f;
+                        break;
+                    case OptionType.speed:
+                    case OptionType.attackRange:
+                    case OptionType.attackSpeed:
+                        optionValue = Mathf.Round(optionValue * 100f) / 100f;
+                        break;
+                }
+
+                if (equip.SetEquipStat((optionType, optionValue)))
                 {
                     optionCount--;
                 }
