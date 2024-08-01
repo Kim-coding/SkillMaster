@@ -18,11 +18,8 @@ public class Spawner : MonoBehaviour
     private bool shouldSpawn = false;
     private int spawnCount = 0;
 
-    //private float timer = 0f;
-    //private float duration = 0.2f;
-
-    //private bool isSpawn = false;
-    //private bool isDeathCount = false;
+    private float spawnDelayTimer = 0f;
+    public float spawnDelay = 0.15f;
 
     private void Start()
     {
@@ -38,9 +35,20 @@ public class Spawner : MonoBehaviour
     {
         if (shouldSpawn)
         {
-            shouldSpawn = false;
-            int randomZoneIndex = UnityEngine.Random.Range(0, spawnPoints.Length);
-            SpawnMonsters(spawnPoints[randomZoneIndex], spawnCount);
+            spawnDelayTimer += Time.deltaTime;
+            if(spawnDelayTimer > spawnDelay)
+            {
+                shouldSpawn = false;
+                spawnDelayTimer = 0f;
+                int randomZoneIndex = UnityEngine.Random.Range(0, spawnPoints.Length);
+                SpawnMonsters(spawnPoints[randomZoneIndex], spawnCount);
+            }
+        }
+        if (deathCount >= deathThreshold && !shouldSpawn)
+        {
+            deathCount -= 3;
+            shouldSpawn = true;
+            spawnCount = 3;
         }
     }
     public void InitialSpawn()
@@ -99,12 +107,6 @@ public class Spawner : MonoBehaviour
         if (GameMgr.Instance.sceneMgr.mainScene.IsBossBattle()) return;
 
         deathCount++;
-        if (deathCount >= deathThreshold)
-        {
-            deathCount -= 3;
-            shouldSpawn = true;
-            spawnCount = 3;
-        }
     }
 
 
