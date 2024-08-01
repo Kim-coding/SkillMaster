@@ -3,10 +3,9 @@ using UnityEngine;
 public class TouchEffect : MonoBehaviour
 {
     public GameObject touchEffectPrefab;
-
+    public Camera touchEffectCamera;
     void Update()
     {
-        // 모바일 터치 입력 처리
         if (Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
@@ -16,7 +15,6 @@ public class TouchEffect : MonoBehaviour
             }
         }
 
-        // 마우스 입력 처리 (디버그용)
         if (Input.GetMouseButtonDown(0))
         {
             Vector3 mousePosition = Input.mousePosition;
@@ -26,8 +24,8 @@ public class TouchEffect : MonoBehaviour
 
     void SpawnTouchEffect(Vector3 position)
     {
-        Vector3 worldPosition = Camera.main.ScreenToWorldPoint(position);
+        Vector3 worldPosition = touchEffectCamera.ScreenToWorldPoint(position);
         worldPosition.z = 0;
-        Instantiate(touchEffectPrefab, worldPosition, Quaternion.identity);
+        Instantiate(touchEffectPrefab, worldPosition, Quaternion.identity, transform);
     }
 }

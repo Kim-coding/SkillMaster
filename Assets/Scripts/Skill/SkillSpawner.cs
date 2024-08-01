@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 public class SkillSpawner : MonoBehaviour
 {
@@ -39,6 +40,12 @@ public class SkillSpawner : MonoBehaviour
     Vector2 bottomLeftOffset;
     Vector2 topRightOffset;
 
+    public Button autoSkillSpownButton;
+    public TextMeshProUGUI autoSkillSpownButtonText;
+    private bool autoSpawn = false;
+    private float spawnTiemr = 0f;
+    private float spawnduration = 1f;
+
     private void Start()
     {
         parentTransform = mergeWindow.transform.GetComponent<RectTransform>();
@@ -48,6 +55,35 @@ public class SkillSpawner : MonoBehaviour
         if(GameMgr.Instance.playerMgr.skillBallControllers.Count == 0)
         {
             SpawnSkill();
+        }
+        autoSkillSpownButton.onClick.AddListener(AutoSkillSpawn);
+        autoSkillSpownButtonText = autoSkillSpownButton.GetComponentInChildren<TextMeshProUGUI>();
+    }
+
+    private void Update()
+    {
+        if(autoSpawn)
+        {
+            spawnTiemr += Time.deltaTime;
+            if(spawnTiemr > spawnduration)
+            {
+                spawnTiemr = 0f;
+                SpawnSkill();
+            }
+        }
+    }
+
+    public void AutoSkillSpawn()
+    {
+        if(autoSpawn)
+        {
+            autoSpawn = false;
+            autoSkillSpownButtonText.text = "荐悼 积己";
+        }
+        else
+        {
+            autoSpawn = true;
+            autoSkillSpownButtonText.text = "磊悼 积己";
         }
     }
 

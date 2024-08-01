@@ -3499,6 +3499,8 @@ MonoBehaviour:
   topRight: {x: 0, y: 0, z: 0}
   localPointX: {x: 0, y: 0, z: 0}
   localPointY: {x: 0, y: 0, z: 0}
+  autoSkillSpownButton: {fileID: 1346104801}
+  autoSkillSpownButtonText: {fileID: 0}
 --- !u!114 &240821522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13000,7 +13002,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Soon
+  m_text: "\uC218\uB3D9 \uC0DD\uC131"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ba5cee10b1f9cf54090860bdb7ef3a25, type: 2}
   m_sharedMaterial: {fileID: -3990531169659260423, guid: ba5cee10b1f9cf54090860bdb7ef3a25, type: 2}
@@ -18146,7 +18148,7 @@ GameObject:
   - component: {fileID: 1346104802}
   - component: {fileID: 1346104801}
   m_Layer: 5
-  m_Name: ?? (1)
+  m_Name: Auto Skill Spawn Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18211,7 +18213,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 1346104802}
   m_OnClick:
     m_PersistentCalls:
@@ -19565,6 +19567,7 @@ MonoBehaviour:
   - {fileID: 1817729860}
   - {fileID: 84649001}
   spawnRange: 1.5
+  spawnDelay: 0.15
 --- !u!114 &1423913463
 MonoBehaviour:
   m_ObjectHideFlags: 0
