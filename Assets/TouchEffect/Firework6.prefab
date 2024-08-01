@@ -4916,6 +4916,7 @@ GameObject:
   - component: {fileID: 2951981114292172596}
   - component: {fileID: 2951981114292172602}
   - component: {fileID: 2951981114292172597}
+  - component: {fileID: -5911821097513125667}
   m_Layer: 6
   m_Name: Firework6
   m_TagString: Untagged
@@ -9750,6 +9751,18 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!210 &-5911821097513125667
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2951981114292172599}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 10
+  m_SortAtRoot: 0
 --- !u!1 &2951981114445696477
 GameObject:
   m_ObjectHideFlags: 0
