@@ -25,7 +25,7 @@ public class GuideWindow : MonoBehaviour
     private List<Guide_Windows> windowOrder;
     private int currentWindowIndex = 0;
     
-    public string mainSceneAddress = "Main";
+    private string mainSceneAddress = "Main";
 
     private void Awake()
     {
@@ -67,8 +67,8 @@ public class GuideWindow : MonoBehaviour
 
     private void OnSkip()
     {
-        //SceneManager.LoadScene("Main");
-        LoadScene(mainSceneAddress);
+        SceneManager.LoadScene("Main");
+        //LoadScene(mainSceneAddress);
     }
     void LoadScene(string sceneAddress)
     {
@@ -104,8 +104,8 @@ public class GuideWindow : MonoBehaviour
         }
         else if (windowOrder[currentWindowIndex] == Guide_Windows.Quest)
         { 
-            //SceneManager.LoadScene("Main");
-            LoadScene(mainSceneAddress);
+            SceneManager.LoadScene("Main");
+            //LoadScene(mainSceneAddress);
         }
     }
 
