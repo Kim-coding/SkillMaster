@@ -3,54 +3,34 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using Unity.VisualScripting;
 
 public class UiInventory : MonoBehaviour
 {
-    private readonly string[] sortinOptions =
+
+    private readonly System.Comparison<ItemSlot>[] comparison =
 {
-        "획득 순 정렬",
-        "부위 별 정렬",
-        "등급 별 정렬",
+        (x, y) => x.currentEquip.itemNumber.CompareTo(y.currentEquip.itemNumber),
+        (x, y) => x.currentEquip.equipType.CompareTo(y.currentEquip.equipType),
+        (x, y) => y.currentEquip.rarerityType.CompareTo(x.currentEquip.rarerityType),
     };
 
-    private readonly System.Comparison<Equip>[] comparison =
-{
-        (x, y) => x.equipType.CompareTo(y.equipType),
-        (x, y) => y.rarerityType.CompareTo(x.rarerityType),
-    };
+    public ToggleGroup filteringOptions;
+    public Toggle[] toggles;
+    private int currentToggleNumber;
 
-    private readonly string[] filteringOptions =
-{
-        "전부",
-        "무기",
-        "헤어",
-        "얼굴",
-        "상의",
-        "하의",
-        "망토",
-    };
-    private readonly System.Func<Equip, bool>[] filter =
+    private readonly System.Func<ItemSlot, bool>[] filter =
     {
         x => true,
-        x => x.equipType == EquipType.Weapon,
-        x => x.equipType == EquipType.Hair,
-        x => x.equipType == EquipType.Face,
-        x => x.equipType == EquipType.Cloth,
-        x => x.equipType == EquipType.Pants,
-        x => x.equipType == EquipType.Cloak,
+        x => x.currentEquip.equipType == EquipType.Hair,
+        x => x.currentEquip.equipType == EquipType.Face,
+        x => x.currentEquip.equipType == EquipType.Cloth,
+        x => x.currentEquip.equipType == EquipType.Pants,
+        x => x.currentEquip.equipType == EquipType.Weapon,
+        x => x.currentEquip.equipType == EquipType.Cloak,
     };
 
-    private int sortinOption;
-    private int filteringOption;
-
     public ItemSlot prefabSlot;
-    public TMP_Dropdown sorting;
-    public Toggle currentToggle;
-
     public GameObject inventoryPanel;
-
-    private List<Equip> sortedList = new List<Equip>();
     private List<ItemSlot> selectedSlots = new List<ItemSlot>();
 
     public SPUM_SpriteList invenSpriteList;
@@ -63,10 +43,67 @@ public class UiInventory : MonoBehaviour
     public EquipSlot weaponSlot;
     public EquipSlot cloakSlot;
 
+    public TMP_Dropdown sortDropDown;
+
 
     public void SortItemSlots()
     {
-        // 정렬 필터링
+        selectedSlots.Sort(comparison[sortDropDown.value]);
+        foreach (var slot in selectedSlots)
+        {
+            slot.transform.SetAsLastSibling();
+        }
+    }
+
+    public void FilteringItemSlots()
+    {
+        System.Func<ItemSlot, bool> currentFilter = filter[currentToggleNumber];
+
+        foreach (var child in selectedSlots)
+        {
+            if (child != null)
+            {
+                if (currentFilter(child))
+                {
+                    child.gameObject.SetActive(true);
+                }
+                else
+                {
+                    child.gameObject.SetActive(false);
+                }
+            }
+        }
+    }
+
+    private void UpdateToggleColors()
+    {
+        foreach (var toggle in toggles)
+        {
+            if (toggle.isOn)
+            {
+                SetToggleColor(toggle, Color.blue);
+            }
+            else
+            {
+                SetToggleColor(toggle, Color.white);
+            }
+        }
+    }
+
+    private void SetToggleColor(Toggle toggle, Color color)
+    {
+        var background = toggle.targetGraphic;
+        var checkmark = toggle.graphic;
+
+        if (background != null)
+        {
+            background.color = color;
+        }
+
+        if (checkmark != null)
+        {
+            checkmark.color = color;
+        }
     }
 
     public void UiSlotUpdate(EquipType type)
@@ -129,10 +166,29 @@ public class UiInventory : MonoBehaviour
 
     private void Awake()
     {
+        foreach (Toggle toggle in toggles)
+        {
+            toggle.onValueChanged.AddListener(OnToggleValueChanged);
+        }
+        UpdateToggleColors();
         //데이터 테이블 호출
         //키 호출
 
         AllSlotUpdate();
+
+    }
+    private void OnToggleValueChanged(bool isOn)
+    {
+        UpdateToggleColors();
+        for (int i = 0; i < toggles.Length; i++)
+        {
+            if (toggles[i].isOn)
+            {
+                currentToggleNumber = i;
+                break;
+            }
+        }
+        FilteringItemSlots();
     }
 
     public void Init()
@@ -155,6 +211,7 @@ public class UiInventory : MonoBehaviour
     {
         var newSlot = Instantiate(prefabSlot, inventoryPanel.transform);
         newSlot.SetData(equip);
+        selectedSlots.Add(newSlot);
     }
 
 }

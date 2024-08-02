@@ -183,6 +183,9 @@ public class PickUp : MonoBehaviour
             InstantiateSlot(equip);
             GameMgr.Instance.uiMgr.uiInventory.InstantiateSlot(equip);
         }
+
+        GameMgr.Instance.uiMgr.uiInventory.SortItemSlots();
+        GameMgr.Instance.uiMgr.uiInventory.FilteringItemSlots();
     }
 
     public void InstantiateSlot(Equip equip)
