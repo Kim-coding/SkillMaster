@@ -45,6 +45,9 @@ public class UiInventory : MonoBehaviour
 
     public TMP_Dropdown sortDropDown;
 
+    Dictionary<EquipType, Equip> baseEquipments;
+    public TextMeshProUGUI itemSlotCountText;
+    public int itemSlotCountMax = 150;
 
     public void SortItemSlots()
     {
@@ -171,6 +174,17 @@ public class UiInventory : MonoBehaviour
             toggle.onValueChanged.AddListener(OnToggleValueChanged);
         }
         UpdateToggleColors();
+
+        baseEquipments = new Dictionary<EquipType, Equip>
+        {
+            { EquipType.Hair, GameMgr.Instance.playerMgr.playerinventory.baseHair },
+            { EquipType.Face, GameMgr.Instance.playerMgr.playerinventory.baseFace },
+            { EquipType.Cloth, GameMgr.Instance.playerMgr.playerinventory.baseCloth },
+            { EquipType.Pants, GameMgr.Instance.playerMgr.playerinventory.basePant },
+            { EquipType.Weapon, GameMgr.Instance.playerMgr.playerinventory.baseWeapon },
+            { EquipType.Cloak, GameMgr.Instance.playerMgr.playerinventory.baseCloak }
+        };
+
         //데이터 테이블 호출
         //키 호출
 
@@ -206,12 +220,41 @@ public class UiInventory : MonoBehaviour
         UiSlotUpdate(EquipType.Cloak);
     }
 
+    public void UnEquipAllSlot()
+    {
+        hairSlot.OnbuttonClick();
+        faceSlot.OnbuttonClick();
+        clothSlot.OnbuttonClick();
+        pantSlot.OnbuttonClick();
+        weaponSlot.OnbuttonClick();
+        cloakSlot.OnbuttonClick();
+    }
 
     public void InstantiateSlot(Equip equip)
     {
         var newSlot = Instantiate(prefabSlot, inventoryPanel.transform);
         newSlot.SetData(equip);
         selectedSlots.Add(newSlot);
+
+        SlotCountUpdate();
     }
 
+    public void ChangeEquip(ItemSlot newSlot)
+    {
+        newSlot.SetData(GameMgr.Instance.playerMgr.playerinventory.EquipItem(newSlot.currentEquip));
+        GameMgr.Instance.uiMgr.uiInventory.UiSlotUpdate(newSlot.currentEquip.equipType);
+        if (baseEquipments.TryGetValue(newSlot.currentEquip.equipType, out var baseEquip) &&
+             newSlot.currentEquip == baseEquip)
+        {
+            selectedSlots.Remove(newSlot);
+            Destroy(newSlot.gameObject);
+        }
+
+        SlotCountUpdate();
+    }
+
+    public void SlotCountUpdate()
+    {
+        itemSlotCountText.text = selectedSlots.Count.ToString() + " / " + itemSlotCountMax.ToString();
+    }
 }

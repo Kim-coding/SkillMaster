@@ -12,22 +12,10 @@ public class EquipmentInfoPanel : MonoBehaviour
 
     public Button equipButton;
 
-    Dictionary<EquipType, Equip> baseEquipments;
-
 
     private void Awake()
     {
-        equipButton.onClick.AddListener(ChangeEquip);
-
-        baseEquipments = new Dictionary<EquipType, Equip>
-        {
-            { EquipType.Hair, GameMgr.Instance.playerMgr.playerinventory.baseHair },
-            { EquipType.Face, GameMgr.Instance.playerMgr.playerinventory.baseFace },
-            { EquipType.Cloth, GameMgr.Instance.playerMgr.playerinventory.baseCloth },
-            { EquipType.Pants, GameMgr.Instance.playerMgr.playerinventory.basePant },
-            { EquipType.Weapon, GameMgr.Instance.playerMgr.playerinventory.baseWeapon },
-            { EquipType.Cloak, GameMgr.Instance.playerMgr.playerinventory.baseCloak }
-        };
+        equipButton.onClick.AddListener(ChangeEquipOnPanel);
     }
 
     public void Init()
@@ -74,16 +62,9 @@ public class EquipmentInfoPanel : MonoBehaviour
 
 
 
-    public void ChangeEquip()
+    public void ChangeEquipOnPanel()
     {
-        newItemSlot.SetData(GameMgr.Instance.playerMgr.playerinventory.EquipItem(newItemSlot.currentEquip));
-        GameMgr.Instance.uiMgr.uiInventory.UiSlotUpdate(newItemSlot.currentEquip.equipType);
-
-        if (baseEquipments.TryGetValue(newItemSlot.currentEquip.equipType, out var baseEquip) &&
-          newItemSlot.currentEquip == baseEquip)
-        {
-            Destroy(newItemSlot.gameObject);
-        }
+        GameMgr.Instance.uiMgr.uiInventory.ChangeEquip(newItemSlot);
         ClosePanel();
     }
 }
