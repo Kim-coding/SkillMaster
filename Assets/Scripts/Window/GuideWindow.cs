@@ -25,7 +25,8 @@ public class GuideWindow : MonoBehaviour
     private List<Guide_Windows> windowOrder;
     private int currentWindowIndex = 0;
     
-    private string mainSceneAddress = "Main";
+    //private string mainSceneAddress = "Main";
+    //public AssetLabelReference skillIconLable;
 
     private void Awake()
     {
@@ -67,24 +68,29 @@ public class GuideWindow : MonoBehaviour
 
     private void OnSkip()
     {
-        SceneManager.LoadScene("Main");
+        SceneManager.LoadScene("Loading");
         //LoadScene(mainSceneAddress);
     }
-    void LoadScene(string sceneAddress)
-    {
-        Addressables.LoadSceneAsync(sceneAddress).Completed += OnSceneLoaded;
-    }
-    void OnSceneLoaded(AsyncOperationHandle<SceneInstance> obj)
-    {
-        if (obj.Status == AsyncOperationStatus.Succeeded)
-        {
-            Debug.Log("Scene loaded successfully");
-        }
-        else
-        {
-            Debug.LogError("Failed to load scene");
-        }
-    }
+    //void LoadScene(string sceneAddress)
+    //{
+    //    Addressables.LoadSceneAsync(sceneAddress).Completed += OnSceneLoaded;
+    //    var labels = new List<string>() {skillIconLable.labelString};
+    //    foreach (var label in labels)
+    //    {
+    //        var handle = Addressables.GetDownloadSizeAsync(label);
+    //    }
+    //}
+    //void OnSceneLoaded(AsyncOperationHandle<SceneInstance> obj)
+    //{
+    //    if (obj.Status == AsyncOperationStatus.Succeeded)
+    //    {
+    //        Debug.Log("Scene loaded successfully");
+    //    }
+    //    else
+    //    {
+    //        Debug.LogError("Failed to load scene");
+    //    }
+    //}
 
     private void OnBack()
     {
@@ -104,7 +110,7 @@ public class GuideWindow : MonoBehaviour
         }
         else if (windowOrder[currentWindowIndex] == Guide_Windows.Quest)
         { 
-            SceneManager.LoadScene("Main");
+            SceneManager.LoadScene("Loading");
             //LoadScene(mainSceneAddress);
         }
     }
