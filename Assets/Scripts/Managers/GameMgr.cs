@@ -35,11 +35,11 @@ public class GameMgr : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKeyUp(KeyCode.Escape))
-        {
+        //if (Input.GetKeyUp(KeyCode.Escape))
+        //{
 
-            debugMode.gameObject.SetActive(!debugMode.isActiveAndEnabled);
-        }
+        //    debugMode.gameObject.SetActive(!debugMode.isActiveAndEnabled);
+        //}
     }
 
     public MonsterPool GetMonsterPool()
