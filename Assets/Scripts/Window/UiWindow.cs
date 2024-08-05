@@ -33,6 +33,8 @@ public class UiWindow : MonoBehaviour
     public ItemInfoPanel pickUpItemPanel;
     public EquipmentInfoPanel equipmentItemPanel;
     public ItemInfoPanel currentEquipmentPanel;
+    public ItemInfoPanel normalItemPanel;
+    public UIPopUp popUpUI;
     private void Start()
     {
         windows = new Dictionary<Windows, GameObject>()
@@ -91,6 +93,7 @@ public class UiWindow : MonoBehaviour
             return;
         }
 
+        invenWindow.GetComponent<UiInventory>().OffDecomposMode();
 
         GameMgr.Instance.soundMgr.PlaySFX("Button");
         foreach(var closeimage in uiButtonCloseImages)

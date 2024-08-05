@@ -20,6 +20,8 @@ public class PlayerInventory
     public Equip playerWeapon;
     public Equip playerCloak;
 
+
+    public List<Equip> playerEquipItemList = new List<Equip> { };
     public int maxSlots = 150;
 
     public float itemAttackPower;
@@ -154,6 +156,15 @@ public class PlayerInventory
         return null;
     }
 
+    public void AddEquipItem(Equip equip)
+    {
+        playerEquipItemList.Add(equip);
+    }
+
+    public void RemoveEquipItem(Equip equip)
+    {
+        playerEquipItemList.Remove(equip);
+    }
 
     private void ItemOptionsUpdate()
     {

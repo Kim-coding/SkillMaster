@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -107,6 +108,17 @@ public class ItemInfoPanel : MonoBehaviour
             optioncount++;
         }
     }
+
+    public void SetItemInfoPanel(Item item)
+    {
+        icon.sprite = item.icon;
+        itemName.text = item.itemName;
+        itemType.text = string.Empty;
+        itemRarity.text = string.Empty;
+        OptionTexts[0].gameObject.SetActive(true);
+        OptionTexts[0].text = "일반 아이템";
+    }
+
     public void ClosePanel()
     {
         gameObject.SetActive(false);

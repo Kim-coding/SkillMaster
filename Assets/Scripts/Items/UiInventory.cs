@@ -6,7 +6,9 @@ using TMPro;
 
 public class UiInventory : MonoBehaviour
 {
-
+    /// <summary>
+    /// 인벤토리 슬롯 관리
+    /// </summary>
     private readonly System.Comparison<EquipItemSlot>[] comparison =
 {
         (x, y) => x.currentEquip.itemNumber.CompareTo(y.currentEquip.itemNumber),
@@ -14,12 +16,8 @@ public class UiInventory : MonoBehaviour
         (x, y) => y.currentEquip.rarerityType.CompareTo(x.currentEquip.rarerityType),
     };
 
-    public ToggleGroup filteringOptions;
-    public Toggle[] toggles;
-    private int currentToggleNumber;
-
     private readonly System.Func<EquipItemSlot, bool>[] filter =
-    {
+{
         x => true,
         x => x.currentEquip.equipType == EquipType.Hair,
         x => x.currentEquip.equipType == EquipType.Face,
@@ -29,10 +27,48 @@ public class UiInventory : MonoBehaviour
         x => x.currentEquip.equipType == EquipType.Cloak,
     };
 
+
+    public ToggleGroup filteringOptions;
+    public Toggle[] filteringToggles;
+    private int currentToggleNumber;
+
+    public ToggleGroup inventoryModes;
+    public Toggle[] inventoryModeToggles;
+    private int inventoryModeToggleNumber;
+
+    public GameObject equipButtons;
+    public GameObject equipSlotPanel;
+    public GameObject equipTogglePanel;
+    public GameObject itemButtons;
+    public GameObject itemSlotPanel;
+
     public EquipItemSlot prefabSlot;
     public GameObject inventoryPanel;
     private List<EquipItemSlot> selectedSlots = new List<EquipItemSlot>();
 
+    public TMP_Dropdown sortDropDown;
+    public TextMeshProUGUI itemSlotCountText;
+    public int itemSlotCountMax = 150;
+
+
+    /// <summary>
+    /// 분해 관리
+    /// </summary>
+
+    private bool decomposMode = false;
+    public Button decomposButton;
+
+    public GameObject decomposPanel;
+    public GameObject sortPanel;
+
+    public Button autoDecomposButton;
+    public Button cancleDecomposButton;
+    public Button confirmDecomposButton;
+
+
+    /// <summary>
+    /// 장비 장착 관련
+    /// </summary>
     public SPUM_SpriteList invenSpriteList;
     public SPUM_SpriteList playerSpriteList;
 
@@ -43,11 +79,7 @@ public class UiInventory : MonoBehaviour
     public EquipSlot weaponSlot;
     public EquipSlot cloakSlot;
 
-    public TMP_Dropdown sortDropDown;
-
     Dictionary<EquipType, Equip> baseEquipments;
-    public TextMeshProUGUI itemSlotCountText;
-    public int itemSlotCountMax = 150;
 
     public void SortItemSlots()
     {
@@ -80,7 +112,7 @@ public class UiInventory : MonoBehaviour
 
     private void UpdateToggleColors()
     {
-        foreach (var toggle in toggles)
+        foreach (var toggle in filteringToggles)
         {
             if (toggle.isOn)
             {
@@ -91,6 +123,19 @@ public class UiInventory : MonoBehaviour
                 SetToggleColor(toggle, Color.white);
             }
         }
+
+        foreach (var toggle in inventoryModeToggles)
+        {
+            if (toggle.isOn)
+            {
+                SetToggleColor(toggle, new Color(0,0,0,0));
+            }
+            else
+            {
+                SetToggleColor(toggle, new Color(0f, 107f / 255f, 255f / 255f, 255f / 255f));
+            }
+        }
+
     }
 
     private void SetToggleColor(Toggle toggle, Color color)
@@ -174,9 +219,13 @@ public class UiInventory : MonoBehaviour
 
     private void Awake()
     {
-        foreach (Toggle toggle in toggles)
+        foreach (Toggle toggle in filteringToggles)
         {
-            toggle.onValueChanged.AddListener(OnToggleValueChanged);
+            toggle.onValueChanged.AddListener(OnFilteringToggleValueChanged);
+        }
+        foreach (Toggle toggle in inventoryModeToggles)
+        {
+            toggle.onValueChanged.AddListener(OnInventoryModeToggleValueChanged);
         }
         UpdateToggleColors();
 
@@ -189,25 +238,58 @@ public class UiInventory : MonoBehaviour
             { EquipType.Weapon, GameMgr.Instance.playerMgr.playerinventory.baseWeapon },
             { EquipType.Cloak, GameMgr.Instance.playerMgr.playerinventory.baseCloak }
         };
-
+        decomposButton.onClick.AddListener(OnDecomposMode);
+        cancleDecomposButton.onClick.AddListener(OffDecomposMode);
         //데이터 테이블 호출
         //키 호출
 
         AllSlotUpdate();
 
     }
-    private void OnToggleValueChanged(bool isOn)
+    private void OnFilteringToggleValueChanged(bool isOn)
     {
         UpdateToggleColors();
-        for (int i = 0; i < toggles.Length; i++)
+        for (int i = 0; i < filteringToggles.Length; i++)
         {
-            if (toggles[i].isOn)
+            if (filteringToggles[i].isOn)
             {
                 currentToggleNumber = i;
                 break;
             }
         }
         FilteringItemSlots();
+    }
+
+    private void OnInventoryModeToggleValueChanged(bool isOn)
+    {
+        bool mode = true;
+        UpdateToggleColors();
+        for (int i = 0; i < inventoryModeToggles.Length; i++)
+        {
+            if (inventoryModeToggles[i].isOn)
+            {
+                inventoryModeToggleNumber = i;
+                if(i == 0)
+                {
+                    mode = true;
+                }
+                else
+                {
+                    mode = false;
+                }
+                break;
+            }
+        }
+        InventoryModeChange(mode);
+    }
+
+    private void InventoryModeChange(bool mode)
+    {
+        equipButtons.gameObject.SetActive(mode);
+        equipSlotPanel.gameObject.SetActive(mode);
+        equipTogglePanel.gameObject.SetActive(mode);
+        itemButtons.gameObject.SetActive(!mode);
+        itemSlotPanel.gameObject.SetActive(!mode);
     }
 
     public void Init()
@@ -260,6 +342,27 @@ public class UiInventory : MonoBehaviour
 
     public void SlotCountUpdate()
     {
-        itemSlotCountText.text = selectedSlots.Count.ToString() + " / " + itemSlotCountMax.ToString();
+        itemSlotCountText.text = GameMgr.Instance.playerMgr.playerinventory.playerEquipItemList.Count.ToString() + " / " + itemSlotCountMax.ToString();
     }
+
+
+    public void OnDecomposMode()
+    {
+        decomposMode = true;
+        sortPanel.gameObject.SetActive(false);
+        decomposPanel.gameObject.SetActive(true); 
+    }
+
+    public void OffDecomposMode()
+    {
+        foreach (var item in selectedSlots)
+        {
+            item.onSelected = false;
+        }
+        decomposMode = false;
+        sortPanel.gameObject.SetActive(true);
+        decomposPanel.gameObject.SetActive(false);
+
+    }
+
 }
