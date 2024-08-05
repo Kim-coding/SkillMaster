@@ -13,12 +13,18 @@ public class UiMerge : MonoBehaviour
 
     public Button spawnButton;
     public Button sortButton;
+    public Button autoMergeButton;
 
     public GameObject merge;
+
+    private bool isAutoMerging = false;
+    private float timer = 0f;
+    private float duration = 1f;
 
     private void Start()
     {
         sortButton.onClick.AddListener(SortingSkills);
+        autoMergeButton.onClick.AddListener(ToggleAutoMerge);
     }
 
     public void SkillCountUpdate()
@@ -41,4 +47,27 @@ public class UiMerge : MonoBehaviour
         }
     }
 
+    private void ToggleAutoMerge()
+    {
+        isAutoMerging = !isAutoMerging;
+    }
+
+    private void Update()
+    {
+        if(isAutoMerging)
+        {
+            timer += Time.deltaTime;
+            if(timer > duration)
+            {
+                AutoMerge();
+            }
+        }
+    }
+
+    private void AutoMerge()
+    {
+        List<SkillBallController> skillBalls = GameMgr.Instance.playerMgr.skillBallControllers;
+        
+        skillBalls.Sort((a, b) => a.tier.CompareTo(b.tier));
+    }
 }
