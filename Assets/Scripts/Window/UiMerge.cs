@@ -14,6 +14,8 @@ public class UiMerge : MonoBehaviour
     public Button spawnButton;
     public Button sortButton;
 
+    public GameObject merge;
+
     private void Start()
     {
         sortButton.onClick.AddListener(SortingSkills);
@@ -32,7 +34,7 @@ public class UiMerge : MonoBehaviour
 
     private void SortingSkills()
     {
-        var sortSkillBall = gameObject.GetComponent<SortSkillBall>();
+        var sortSkillBall = merge.gameObject.GetComponent<SortSkillBall>();
         if(sortSkillBall != null )
         {
             sortSkillBall.Sort();
