@@ -12,6 +12,12 @@ public class UiMerge : MonoBehaviour
     public TextMeshProUGUI skillSpawnCount;
 
     public Button spawnButton;
+    public Button sortButton;
+
+    private void Start()
+    {
+        sortButton.onClick.AddListener(SortingSkills);
+    }
 
     public void SkillCountUpdate()
     {
@@ -22,6 +28,15 @@ public class UiMerge : MonoBehaviour
     public void SpawnButtonUpdate(bool a)
     {
         spawnButton.interactable = a;
+    }
+
+    private void SortingSkills()
+    {
+        var sortSkillBall = gameObject.GetComponent<SortSkillBall>();
+        if(sortSkillBall != null )
+        {
+            sortSkillBall.Sort();
+        }
     }
 
 }

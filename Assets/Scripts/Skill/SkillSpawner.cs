@@ -46,13 +46,16 @@ public class SkillSpawner : MonoBehaviour
     private float spawnTiemr = 0f;
     private float spawnduration = 1f;
 
+    private PlayerMgr playerMgr;
+
     private void Start()
     {
+        playerMgr = GameMgr.Instance.playerMgr;
         parentTransform = mergeWindow.transform.GetComponent<RectTransform>();
-        maxReserveSkillCount = GameMgr.Instance.playerMgr.playerEnhance.maxReserveSkillCount;
+        maxReserveSkillCount = playerMgr.playerEnhance.maxReserveSkillCount;
         Canvas.ForceUpdateCanvases();
         Setting();
-        if(GameMgr.Instance.playerMgr.skillBallControllers.Count == 0)
+        if(playerMgr.skillBallControllers.Count == 0)
         {
             SpawnSkill();
         }
@@ -117,11 +120,11 @@ public class SkillSpawner : MonoBehaviour
 
     public void SpawnSkill()
     {
-        if (GameMgr.Instance.playerMgr.skillBallControllers.Count == maxReserveSkillCount || GameMgr.Instance.playerMgr.playerEnhance.currentSpawnSkillCount <= 0)
+        if (playerMgr.skillBallControllers.Count == maxReserveSkillCount || playerMgr.playerEnhance.currentSpawnSkillCount <= 0)
         {
             return;
         }
-        if (GameMgr.Instance.playerMgr.skillBallControllers.Count != 0)
+        if (playerMgr.skillBallControllers.Count != 0)
         { 
             GameMgr.Instance.soundMgr.PlaySFX("Button"); 
         }
@@ -132,10 +135,10 @@ public class SkillSpawner : MonoBehaviour
 
         var newSkillControler = newSkill.GetComponent<SkillBallController>();
         newSkillControler.Set(40001);
-        GameMgr.Instance.playerMgr.skillBallControllers.Add(newSkillControler);
-        GameMgr.Instance.playerMgr.playerEnhance.currentSpawnSkillCount--;
+        playerMgr.skillBallControllers.Add(newSkillControler);
+        playerMgr.playerEnhance.currentSpawnSkillCount--;
         GameMgr.Instance.uiMgr.uiMerge.SkillCountUpdate();
-        if (GameMgr.Instance.playerMgr.skillBallControllers.Count == maxReserveSkillCount || GameMgr.Instance.playerMgr.playerEnhance.currentSpawnSkillCount <= 0)
+        if (playerMgr.skillBallControllers.Count == maxReserveSkillCount || playerMgr.playerEnhance.currentSpawnSkillCount <= 0)
         { GameMgr.Instance.uiMgr.uiMerge.SpawnButtonUpdate(false); }
     }
 
@@ -144,12 +147,12 @@ public class SkillSpawner : MonoBehaviour
         var newSkill = Instantiate(prefabSkillBall, pos, Quaternion.identity, parentTransform);
         var newSkillControler = newSkill.GetComponent<SkillBallController>();
         newSkillControler.Set(skill_ID);
-        GameMgr.Instance.playerMgr.skillBallControllers.Add(newSkillControler);
+        playerMgr.skillBallControllers.Add(newSkillControler);
 
         GameMgr.Instance.uiMgr.uiMerge.SpawnButtonUpdate(true);
 
         EventMgr.TriggerEvent(QuestType.MergeSkillCount);
-        GameMgr.Instance.playerMgr.playerInfo.MaxSkillLevelUpdate(t);
+        playerMgr.playerInfo.MaxSkillLevelUpdate(t);
     }
 
     private Vector3 RandomVector()
