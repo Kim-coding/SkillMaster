@@ -12,7 +12,7 @@ public class CameraMove : MonoBehaviour
 
     public float moveDuration = 0.5f; // 카메라 이동 시간
     public float zoomDuration = 0.5f; // 카메라 줌 시간
-    public float YPosition;
+
     public float[] distances;
     public Button CameraButton;
 
