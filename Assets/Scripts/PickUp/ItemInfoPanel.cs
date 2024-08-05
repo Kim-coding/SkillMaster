@@ -12,8 +12,25 @@ public class ItemInfoPanel : MonoBehaviour
     public TextMeshProUGUI itemRarity;
     public TextMeshProUGUI[] OptionTexts;
 
-    public void SetItemInfoPanel(Equip equip)
+    private EquipSlot currentEquip;
+
+    public Button unEquipButton;
+
+    public void SetItemInfoPanel(Equip equip, EquipSlot slot = null)
     {
+        if(slot != null)
+        {
+            currentEquip = slot;
+            if(slot.baseEquip)
+            {
+                unEquipButton.gameObject.SetActive(false);
+            }
+            else
+            {
+                unEquipButton.gameObject.SetActive(true);
+            }
+        }
+
         foreach (var optiontexts in OptionTexts)
         {
             optiontexts.gameObject.SetActive(false);
@@ -93,5 +110,11 @@ public class ItemInfoPanel : MonoBehaviour
     public void ClosePanel()
     {
         gameObject.SetActive(false);
+    }
+
+    public void OnbuttonClick()
+    {
+        currentEquip.RemoveEquip();
+        ClosePanel();
     }
 }

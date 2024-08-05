@@ -1,6 +1,10 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scripts/SaveLoad.meta
 guid: 6b560d0c964972140a3681330fe66e35
 folderAsset: yes
+========
+guid: 8f4c7b3e398907d4cae03c5d06202add
+>>>>>>>> develop:Assets/TouchEffect/CartoonVFX9X/FireworksEffect2D/Readme/Readme.rtf.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

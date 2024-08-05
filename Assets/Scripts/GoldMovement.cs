@@ -16,9 +16,11 @@ public class GoldMovement : MonoBehaviour
     public void Initialize(RectTransform target, float duration, string value)
     {
         gold = new BigInteger(value);
+        gold += (int)GameMgr.Instance.playerMgr.playerinventory.itemGoldIncrease;
+        float goldIncrease = 1 + GameMgr.Instance.playerMgr.playerEnhance.goldValue * GameMgr.Instance.playerMgr.playerEnhance.goldLevel;
+        gold *= goldIncrease;
         uiTarget = target;
         moveDuration = duration;
-
         transform.SetParent(uiTarget.parent);
 
         MoveToTarget();

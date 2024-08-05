@@ -12,6 +12,8 @@ public class EquipSlot : MonoBehaviour
     public Image itemImage;
     public Equip currentEquip = null;
 
+    public bool baseEquip = true;
+
     private void Awake()
     {
         TryGetComponent<Button>(out button);
@@ -38,14 +40,21 @@ public class EquipSlot : MonoBehaviour
 
     public void OnbuttonClick()
     {
+        GameMgr.Instance.uiMgr.uiWindow.currentEquipmentPanel.gameObject.SetActive(true);
+        GameMgr.Instance.uiMgr.uiWindow.currentEquipmentPanel.SetItemInfoPanel(currentEquip,this);
+    }
+
+
+    public void RemoveEquip()
+    {
         Equip equip = currentEquip;
         switch (currentEquip.equipType)
         {
-            
+
             case EquipType.None:
                 break;
             case EquipType.Hair:
-                if(currentEquip == GameMgr.Instance.playerMgr.playerinventory.baseHair)
+                if (currentEquip == GameMgr.Instance.playerMgr.playerinventory.baseHair)
                 {
                     return;
                 }
@@ -117,8 +126,8 @@ public class EquipSlot : MonoBehaviour
                 }
                 break;
         }
+        baseEquip = true;
         GameMgr.Instance.uiMgr.uiInventory.InstantiateSlot(equip);
     }
-
 
 }

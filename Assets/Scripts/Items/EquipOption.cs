@@ -22,17 +22,6 @@ public class EquipOption
     public List<(OptionType, float)> currentOptions = new List<(OptionType, float)>();
     public int[] optionCount = new int[(int)OptionType.count];
 
-    public float attackPower;
-    public float criticalPercent;
-    public float criticalMultiple;
-    public float attackSpeed;
-    public float deffence;
-    public float maxHealth;
-    public float speed;
-    public float goldIncrease;
-    public float recovery;
-    public float attackRange;
-
     public void Init(List<(OptionType, float)> optionList)
     {
         foreach(var option in optionList)
@@ -48,16 +37,6 @@ public class EquipOption
         {
             optionCount[i] = 0;
         }
-        attackPower = 0;
-        criticalPercent = 0;
-        criticalMultiple = 0;
-        attackSpeed = 0;
-        deffence = 0;
-        maxHealth = 0;
-        speed = 0;
-        goldIncrease = 0;
-        recovery = 0;
-        attackRange = 0;
     }
 
     public bool AddOption(OptionType option, float value)
@@ -69,39 +48,6 @@ public class EquipOption
 
         currentOptions.Add((option, value));
         optionCount[(int)option]++;
-        switch (option)
-        {
-            case OptionType.attackPower:
-                attackPower = value;
-                break;
-            case OptionType.criticalPercent:
-                criticalPercent = value;
-                break;
-            case OptionType.criticalMultiple:
-                criticalMultiple = value;
-                break;
-            case OptionType.attackSpeed:
-                attackSpeed = value;
-                break;
-            case OptionType.deffence:
-                deffence = value;
-                break;
-            case OptionType.maxHealth:
-                maxHealth = value;
-                break;
-            case OptionType.speed:
-                speed = value;
-                break;
-            case OptionType.goldIncrease:
-                goldIncrease = value;
-                break;
-            case OptionType.recovery:
-                recovery = value;
-                break;
-            case OptionType.attackRange:
-                attackRange = value;
-                break;
-        }
         return true;
     }
 

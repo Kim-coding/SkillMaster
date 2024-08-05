@@ -22,11 +22,22 @@ public class PlayerInventory
 
     public int maxSlots = 150;
 
+    public float itemAttackPower;
+    public float itemDeffence;
+    public float itemMaxHealth;
+    public float itemCriticalPercent;
+    public float itemCriticalMultiple;
+    public float itemRecovery;
+    public float itemAttackSpeed;
+    public float itemSpeed;
+    public float itemGoldIncrease;
+    public float itemAttackRange;
+
     public void Init()
     {
         //데이터 테이블 / 키값 받아오기
         var iconimage = Resources.LoadAll<Sprite>("Equipment/Hair_Basic");
-        baseHair = new Equip(iconimage,"기본 머리", 0);
+        baseHair = new Equip(iconimage, "기본 머리", 0);
         baseHair.SetEquipItem(EquipType.Hair, RarerityType.C);
         iconimage = Resources.LoadAll<Sprite>("Equipment/Eye_Basic");
         baseFace = new Equip(iconimage, "기본 눈", 0);
@@ -51,6 +62,7 @@ public class PlayerInventory
         playerPant = basePant;
         playerWeapon = baseWeapon;
         playerCloak = baseCloak;
+        ItemOptionsUpdate();
 
     }
 
@@ -89,6 +101,7 @@ public class PlayerInventory
                 break;
 
         }
+        ItemOptionsUpdate();
         return currentEquip;
     }
     public void RemoveItem(EquipType type)
@@ -116,6 +129,7 @@ public class PlayerInventory
                 playerCloak = baseCloak;
                 break;
         }
+        ItemOptionsUpdate();
     }
 
     public Equip GetPlayerEquips(EquipType type)
@@ -138,5 +152,68 @@ public class PlayerInventory
                 return playerCloak;
         }
         return null;
+    }
+
+
+    private void ItemOptionsUpdate()
+    {
+        itemAttackPower = 1;
+        itemDeffence = 1;
+        itemMaxHealth = 1;
+        itemCriticalPercent = 0;
+        itemCriticalMultiple = 0;
+        itemRecovery = 1;
+        itemAttackSpeed = 0;
+        itemSpeed = 0;
+        itemGoldIncrease = 0;
+        itemAttackRange = 0;
+
+        optionSearch(playerHair);
+        optionSearch(playerFace);
+        optionSearch(playerCloth);
+        optionSearch(playerPant);
+        optionSearch(playerWeapon);
+        optionSearch(playerCloak);
+
+        GameMgr.Instance.playerMgr.playerStat.playerStatUpdate();
+    }
+    private void optionSearch(Equip equip)
+    {
+        foreach (var option in equip.EquipOption.currentOptions)
+        {
+            switch (option.Item1)
+            {
+                case OptionType.attackPower:
+                    itemAttackPower += option.Item2;
+                    break;
+                case OptionType.criticalPercent:
+                    itemCriticalPercent += option.Item2;
+                    break;
+                case OptionType.criticalMultiple:
+                    itemCriticalMultiple += option.Item2;
+                    break;
+                case OptionType.attackSpeed:
+                    itemAttackSpeed += option.Item2;
+                    break;
+                case OptionType.deffence:
+                    itemDeffence += option.Item2;
+                    break;
+                case OptionType.maxHealth:
+                    itemMaxHealth += option.Item2;
+                    break;
+                case OptionType.speed:
+                    itemSpeed += option.Item2;
+                    break;
+                case OptionType.goldIncrease:
+                    itemGoldIncrease += option.Item2;
+                    break;
+                case OptionType.recovery:
+                    itemRecovery += option.Item2;
+                    break;
+                case OptionType.attackRange:
+                    itemAttackRange += option.Item2;
+                    break;
+            }
+        }
     }
 }
