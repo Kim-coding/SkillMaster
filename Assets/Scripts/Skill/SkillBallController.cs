@@ -58,7 +58,7 @@ public class SkillBallController : MonoBehaviour, IPointerDownHandler, IPointerU
     public string Skillicon;
 
     public Image skillIconImage;
-
+    public bool isMove = false;
     private void Start()
     {
         areaRect = GetComponent<RectTransform>();
@@ -149,6 +149,27 @@ public class SkillBallController : MonoBehaviour, IPointerDownHandler, IPointerU
         foreach (var other in GameMgr.Instance.playerMgr.skillBallControllers)
         {
             if(other.gameObject == gameObject || other == null || other.tier != tier)
+            { continue; }
+            if (gameObject.GetComponent<RectTransform>().Overlaps(other.GetComponent<RectTransform>()))
+            {
+                Vector3 mergePosition = (gameObject.transform.position + other.gameObject.transform.position) / 2;
+                skillSpawner.MergeSkill(skill_ID + 1, mergePosition, tier + 1);
+                //합쳐지는 이펙트
+                GameMgr.Instance.playerMgr.skillBallControllers.Remove(gameObject.GetComponent<SkillBallController>());
+                GameMgr.Instance.playerMgr.skillBallControllers.Remove(other.gameObject.GetComponent<SkillBallController>());
+                GameMgr.Instance.uiMgr.uiMerge.SkillCountUpdate();
+                Destroy(gameObject);
+                Destroy(other.gameObject);
+                break;
+            }
+        }
+    }
+    public void AutoMerge()
+    {
+        if (skill_ID == 40018) { return; }
+        foreach (var other in GameMgr.Instance.playerMgr.skillBallControllers)
+        {
+            if (other.gameObject == gameObject || other == null || other.tier != tier)
             { continue; }
             if (gameObject.GetComponent<RectTransform>().Overlaps(other.GetComponent<RectTransform>()))
             {

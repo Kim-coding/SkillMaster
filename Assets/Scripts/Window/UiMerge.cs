@@ -13,12 +13,21 @@ public class UiMerge : MonoBehaviour
 
     public Button spawnButton;
     public Button sortButton;
+    public Button autoMergeButton;
+
+    public TextMeshProUGUI autoMergeButtonText;
 
     public GameObject merge;
+
+    private bool isAutoMerging = false;
+    private float timer = 0f;
+    private float duration = 1f;
 
     private void Start()
     {
         sortButton.onClick.AddListener(SortingSkills);
+        autoMergeButton.onClick.AddListener(ToggleAutoMerge);
+        autoMergeButtonText = autoMergeButton.GetComponentInChildren<TextMeshProUGUI>();
     }
 
     public void SkillCountUpdate()
@@ -41,4 +50,68 @@ public class UiMerge : MonoBehaviour
         }
     }
 
+    private void ToggleAutoMerge()
+    {
+        if(isAutoMerging)
+        {
+            isAutoMerging = !isAutoMerging;
+            autoMergeButtonText.text = "자동 조합";
+        }
+        else
+        {
+            isAutoMerging = !isAutoMerging;
+            autoMergeButtonText.text = "수동 조합";
+        }
+    }
+
+    private void Update()
+    {
+        if(isAutoMerging)
+        {
+            timer += Time.deltaTime;
+            if(timer > duration)
+            {
+                AutoMerge();
+                timer = 0f;
+            }
+        }
+    }
+
+    private void AutoMerge()
+    {
+        List<SkillBallController> skillBalls = GameMgr.Instance.playerMgr.skillBallControllers;
+        
+        skillBalls.Sort((a, b) => a.tier.CompareTo(b.tier));
+
+        for ( int i = 0; i < skillBalls.Count - 1; i++ )
+        {
+            if (skillBalls[i].tier == skillBalls[i + 1].tier && !skillBalls[i].isMove && !skillBalls[i + 1].isMove)
+            {
+                MoveAndMerge(skillBalls[i], skillBalls[i + 1]);
+                skillBalls[i].isMove = true;
+                skillBalls[i + 1].isMove = true;
+                break;
+            }
+        }
+    }
+
+    private void MoveAndMerge(SkillBallController skillBall1, SkillBallController skillBall2)
+    {
+        SkillBallMovement movement1 = skillBall1.GetComponent<SkillBallMovement>();
+        SkillBallMovement movement2 = skillBall2.GetComponent<SkillBallMovement>();
+
+        if ( movement1 == null || movement2 == null )
+        {
+            return;
+        }
+
+        var startPosition1 = skillBall1.transform.position;
+        var startPosition2 = skillBall2.transform.position;
+        var endPosition = (startPosition1 + startPosition2)/2;
+
+        float moveDuration = 1f;
+
+        movement1.Move(startPosition1,endPosition,moveDuration);
+        movement2.Move(startPosition2,endPosition,moveDuration);
+    }
 }

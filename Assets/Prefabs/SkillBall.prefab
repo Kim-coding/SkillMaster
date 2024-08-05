@@ -385,6 +385,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3745033400167147162}
   - component: {fileID: 3049019889169281515}
+  - component: {fileID: 1414851982055156689}
   - component: {fileID: 1594760354795850020}
   m_Layer: 5
   m_Name: SkillBall
@@ -427,6 +428,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mergeWindow: {fileID: 0}
+  tier: 0
   tierText: {fileID: 3821765597310223915}
   pos: {fileID: 0}
   skill_ID: 0
@@ -441,6 +443,19 @@ MonoBehaviour:
   SkillEffect: 
   Skillicon: 
   skillIconImage: {fileID: 3937348620305645057}
+  isMove: 0
+--- !u!114 &1414851982055156689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8677752533633219280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f14f17953c25aed458b16a61c54ba307, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1594760354795850020
 MonoBehaviour:
   m_ObjectHideFlags: 0

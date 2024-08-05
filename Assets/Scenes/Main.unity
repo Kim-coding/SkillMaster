@@ -7194,7 +7194,7 @@ GameObject:
   - component: {fileID: 321616693}
   - component: {fileID: 321616692}
   m_Layer: 5
-  m_Name: ??
+  m_Name: AutoMergeButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7259,7 +7259,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 321616693}
   m_OnClick:
     m_PersistentCalls:
@@ -7535,6 +7535,8 @@ MonoBehaviour:
   skillSpawnCount: {fileID: 582369510}
   spawnButton: {fileID: 240821522}
   sortButton: {fileID: 2046850667}
+  autoMergeButton: {fileID: 321616692}
+  autoMergeButtonText: {fileID: 0}
   merge: {fileID: 2091457409}
 --- !u!1 &336583799
 GameObject:
@@ -15706,10 +15708,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Soon
+  m_text: "\uC218\uB3D9 \uC870\uD569"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ba5cee10b1f9cf54090860bdb7ef3a25, type: 2}
+  m_sharedMaterial: {fileID: -3990531169659260423, guid: ba5cee10b1f9cf54090860bdb7ef3a25, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
