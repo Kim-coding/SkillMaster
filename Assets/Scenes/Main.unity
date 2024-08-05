@@ -7194,7 +7194,7 @@ GameObject:
   - component: {fileID: 321616693}
   - component: {fileID: 321616692}
   m_Layer: 5
-  m_Name: ??
+  m_Name: AutoMergeButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7535,6 +7535,7 @@ MonoBehaviour:
   skillSpawnCount: {fileID: 582369510}
   spawnButton: {fileID: 240821522}
   sortButton: {fileID: 2046850667}
+  autoMergeButton: {fileID: 321616692}
   merge: {fileID: 2091457409}
 --- !u!1 &336583799
 GameObject:
