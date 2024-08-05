@@ -34,7 +34,7 @@ public class UiMerge : MonoBehaviour
 
     private void SortingSkills()
     {
-        var sortSkillBall = merge.gameObject.GetComponent<SortSkillBall>();
+        SortSkillBall sortSkillBall = merge.gameObject.GetComponent<SortSkillBall>();
         if(sortSkillBall != null )
         {
             sortSkillBall.Sort();

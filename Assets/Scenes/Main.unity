@@ -5189,7 +5189,7 @@ MonoBehaviour:
   localPointX: {x: 0, y: 0, z: 0}
   localPointY: {x: 0, y: 0, z: 0}
   autoSkillSpownButton: {fileID: 1346104801}
-  autoSkillSpownButtonText: {fileID: 0}
+  autoSkillSpownButtonText: {fileID: 978656649}
 --- !u!114 &240821522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17788,7 +17788,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.43427008}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -31.000122}
+  m_AnchoredPosition: {x: 0, y: -31.000092}
   m_SizeDelta: {x: -100, y: -258}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &899060104
@@ -37515,8 +37515,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   columns: 6
   rows: 4
-  horizontalSpacing: 5
-  verticalSpacing: 5
+  horizontalSpacing: 1
+  verticalSpacing: 1
 --- !u!1 &2094316874
 GameObject:
   m_ObjectHideFlags: 0

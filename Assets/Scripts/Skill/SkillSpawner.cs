@@ -47,7 +47,7 @@ public class SkillSpawner : MonoBehaviour
     private float spawnduration = 1f;
 
     private PlayerMgr playerMgr;
-
+    private GameObject virtualObject;
     private void Start()
     {
         playerMgr = GameMgr.Instance.playerMgr;
@@ -58,6 +58,7 @@ public class SkillSpawner : MonoBehaviour
         if(playerMgr.skillBallControllers.Count == 0)
         {
             SpawnSkill();
+            Destroy(virtualObject);
         }
         autoSkillSpownButton.onClick.AddListener(AutoSkillSpawn);
         autoSkillSpownButtonText = autoSkillSpownButton.GetComponentInChildren<TextMeshProUGUI>();
@@ -107,7 +108,7 @@ public class SkillSpawner : MonoBehaviour
         topRight = new Vector3(topRightOffset.x + topRightDesiredPosition.x, topRightOffset.y + topRightDesiredPosition.y);
 
 
-        GameObject virtualObject = new GameObject("virtualObject");
+        virtualObject = new GameObject("virtualObject");
         RectTransform virtualObjectRect = virtualObject.AddComponent<RectTransform>();
         virtualObjectRect.transform.SetParent(mergeWindow.GetComponent<RectTransform>(), false);
 
