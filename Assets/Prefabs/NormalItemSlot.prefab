@@ -138,7 +138,6 @@ MonoBehaviour:
   button: {fileID: 2897697053239479310}
   selectedBorder: {fileID: 0}
   itemImage: {fileID: 3098674382869050053}
-  itemCount: 0
   itemCountText: {fileID: 8095438026600540613}
   onSelected: 0
 --- !u!1 &5631035329813551588
@@ -175,8 +174,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 18.006311, y: -31.382315}
-  m_SizeDelta: {x: 61.2777, y: 37.2362}
+  m_AnchoredPosition: {x: -51.9086, y: -31.382}
+  m_SizeDelta: {x: 201.1077, y: 37.236}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4422276067840082897
 CanvasRenderer:
@@ -233,8 +232,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 25
+  m_fontSizeBase: 25
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

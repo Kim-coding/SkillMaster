@@ -33,9 +33,10 @@ public class Equip : Item
         return equipOption.AddOption(a.Item1, a.Item2);
     }
 
-    public void SetEquipItem(EquipType equipType, RarerityType rarerityType)
+    public void SetEquipItem(EquipType equipType, RarerityType rarerityType, int reinforceStone)
     {
         this.equipType = equipType;
         this.rarerityType = rarerityType;
+        reinforceStoneValue = reinforceStone;
     }
 }

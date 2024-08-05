@@ -26,7 +26,7 @@ public class EquipSlot : MonoBehaviour
         {
             currentEquip = equipData;
             itemImage.sprite = equipData.icon;
-            currentEquip.SetEquipItem(equipData.equipType, equipData.rarerityType);
+            currentEquip.SetEquipItem(equipData.equipType, equipData.rarerityType, equipData.reinforceStoneValue);
         }
 
     }
@@ -61,7 +61,7 @@ public class EquipSlot : MonoBehaviour
                 else
                 {
                     SetData(GameMgr.Instance.playerMgr.playerinventory.baseHair);
-                    GameMgr.Instance.playerMgr.playerinventory.RemoveItem(EquipType.Hair);
+                    GameMgr.Instance.playerMgr.playerinventory.UnEquipItem(EquipType.Hair);
                     GameMgr.Instance.uiMgr.uiInventory.UiSlotUpdate(currentEquip.equipType);
                 }
                 break;
@@ -73,7 +73,7 @@ public class EquipSlot : MonoBehaviour
                 else
                 {
                     SetData(GameMgr.Instance.playerMgr.playerinventory.baseFace);
-                    GameMgr.Instance.playerMgr.playerinventory.RemoveItem(EquipType.Face);
+                    GameMgr.Instance.playerMgr.playerinventory.UnEquipItem(EquipType.Face);
                     GameMgr.Instance.uiMgr.uiInventory.UiSlotUpdate(currentEquip.equipType);
                 }
                 break;
@@ -85,7 +85,7 @@ public class EquipSlot : MonoBehaviour
                 else
                 {
                     SetData(GameMgr.Instance.playerMgr.playerinventory.baseCloth);
-                    GameMgr.Instance.playerMgr.playerinventory.RemoveItem(EquipType.Cloth);
+                    GameMgr.Instance.playerMgr.playerinventory.UnEquipItem(EquipType.Cloth);
                     GameMgr.Instance.uiMgr.uiInventory.UiSlotUpdate(currentEquip.equipType);
                 }
                 break;
@@ -97,7 +97,7 @@ public class EquipSlot : MonoBehaviour
                 else
                 {
                     SetData(GameMgr.Instance.playerMgr.playerinventory.basePant);
-                    GameMgr.Instance.playerMgr.playerinventory.RemoveItem(EquipType.Pants);
+                    GameMgr.Instance.playerMgr.playerinventory.UnEquipItem(EquipType.Pants);
                     GameMgr.Instance.uiMgr.uiInventory.UiSlotUpdate(currentEquip.equipType);
                 }
                 break;
@@ -109,7 +109,7 @@ public class EquipSlot : MonoBehaviour
                 else
                 {
                     SetData(GameMgr.Instance.playerMgr.playerinventory.baseWeapon);
-                    GameMgr.Instance.playerMgr.playerinventory.RemoveItem(EquipType.Weapon);
+                    GameMgr.Instance.playerMgr.playerinventory.UnEquipItem(EquipType.Weapon);
                     GameMgr.Instance.uiMgr.uiInventory.UiSlotUpdate(currentEquip.equipType);
                 }
                 break;
@@ -121,7 +121,7 @@ public class EquipSlot : MonoBehaviour
                 else
                 {
                     SetData(GameMgr.Instance.playerMgr.playerinventory.baseCloak);
-                    GameMgr.Instance.playerMgr.playerinventory.RemoveItem(EquipType.Cloak);
+                    GameMgr.Instance.playerMgr.playerinventory.UnEquipItem(EquipType.Cloak);
                     GameMgr.Instance.uiMgr.uiInventory.UiSlotUpdate(currentEquip.equipType);
                 }
                 break;
