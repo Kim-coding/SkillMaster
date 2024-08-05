@@ -7,7 +7,7 @@ using TMPro;
 public class UiInventory : MonoBehaviour
 {
 
-    private readonly System.Comparison<ItemSlot>[] comparison =
+    private readonly System.Comparison<EquipItemSlot>[] comparison =
 {
         (x, y) => x.currentEquip.itemNumber.CompareTo(y.currentEquip.itemNumber),
         (x, y) => x.currentEquip.equipType.CompareTo(y.currentEquip.equipType),
@@ -18,7 +18,7 @@ public class UiInventory : MonoBehaviour
     public Toggle[] toggles;
     private int currentToggleNumber;
 
-    private readonly System.Func<ItemSlot, bool>[] filter =
+    private readonly System.Func<EquipItemSlot, bool>[] filter =
     {
         x => true,
         x => x.currentEquip.equipType == EquipType.Hair,
@@ -29,9 +29,9 @@ public class UiInventory : MonoBehaviour
         x => x.currentEquip.equipType == EquipType.Cloak,
     };
 
-    public ItemSlot prefabSlot;
+    public EquipItemSlot prefabSlot;
     public GameObject inventoryPanel;
-    private List<ItemSlot> selectedSlots = new List<ItemSlot>();
+    private List<EquipItemSlot> selectedSlots = new List<EquipItemSlot>();
 
     public SPUM_SpriteList invenSpriteList;
     public SPUM_SpriteList playerSpriteList;
@@ -60,7 +60,7 @@ public class UiInventory : MonoBehaviour
 
     public void FilteringItemSlots()
     {
-        System.Func<ItemSlot, bool> currentFilter = filter[currentToggleNumber];
+        System.Func<EquipItemSlot, bool> currentFilter = filter[currentToggleNumber];
 
         foreach (var child in selectedSlots)
         {
@@ -117,11 +117,13 @@ public class UiInventory : MonoBehaviour
                 break;
             case EquipType.Hair:
                 hairSlot.SetData(GameMgr.Instance.playerMgr.playerinventory.playerHair);
+                hairSlot.baseEquip = hairSlot.currentEquip == GameMgr.Instance.playerMgr.playerinventory.baseHair;
                 invenSpriteList._hairList[0].sprite = hairSlot.currentEquip.texture[0];
                 playerSpriteList._hairList[0].sprite = hairSlot.currentEquip.texture[0];
                 break;
             case EquipType.Face:
                 faceSlot.SetData(GameMgr.Instance.playerMgr.playerinventory.playerFace);
+                faceSlot.baseEquip = faceSlot.currentEquip == GameMgr.Instance.playerMgr.playerinventory.baseFace;
                 invenSpriteList._eyeList[0].sprite = faceSlot.currentEquip.texture[0];
                 invenSpriteList._eyeList[1].sprite = faceSlot.currentEquip.texture[0];
                 invenSpriteList._eyeList[2].sprite = faceSlot.currentEquip.texture[1];
@@ -134,6 +136,7 @@ public class UiInventory : MonoBehaviour
                 break;
             case EquipType.Cloth:
                 clothSlot.SetData(GameMgr.Instance.playerMgr.playerinventory.playerCloth);
+                clothSlot.baseEquip = clothSlot.currentEquip == GameMgr.Instance.playerMgr.playerinventory.baseCloth;
                 invenSpriteList._clothList[0].sprite = clothSlot.currentEquip.texture[0];
                 invenSpriteList._clothList[1].sprite = clothSlot.currentEquip.texture[1];
                 invenSpriteList._clothList[2].sprite = clothSlot.currentEquip.texture[2];
@@ -144,6 +147,7 @@ public class UiInventory : MonoBehaviour
                 break;
             case EquipType.Pants:
                 pantSlot.SetData(GameMgr.Instance.playerMgr.playerinventory.playerPant);
+                pantSlot.baseEquip = pantSlot.currentEquip == GameMgr.Instance.playerMgr.playerinventory.basePant;
                 invenSpriteList._pantList[0].sprite = pantSlot.currentEquip.texture[0];
                 invenSpriteList._pantList[1].sprite = pantSlot.currentEquip.texture[1];
 
@@ -152,14 +156,15 @@ public class UiInventory : MonoBehaviour
                 break;
             case EquipType.Weapon:
                 weaponSlot.SetData(GameMgr.Instance.playerMgr.playerinventory.playerWeapon);
+                weaponSlot.baseEquip = weaponSlot.currentEquip == GameMgr.Instance.playerMgr.playerinventory.baseWeapon;
                 invenSpriteList._weaponList[0].sprite = weaponSlot.currentEquip.texture[0];
 
                 playerSpriteList._weaponList[0].sprite = weaponSlot.currentEquip.texture[0];
                 break;
             case EquipType.Cloak:
                 cloakSlot.SetData(GameMgr.Instance.playerMgr.playerinventory.playerCloak);
+                cloakSlot.baseEquip = cloakSlot.currentEquip == GameMgr.Instance.playerMgr.playerinventory.baseCloak;
                 invenSpriteList._backList[0].sprite = cloakSlot.currentEquip.texture[0];
-
                 playerSpriteList._backList[0].sprite = cloakSlot.currentEquip.texture[0];
 
                 break;
@@ -222,12 +227,12 @@ public class UiInventory : MonoBehaviour
 
     public void UnEquipAllSlot()
     {
-        hairSlot.OnbuttonClick();
-        faceSlot.OnbuttonClick();
-        clothSlot.OnbuttonClick();
-        pantSlot.OnbuttonClick();
-        weaponSlot.OnbuttonClick();
-        cloakSlot.OnbuttonClick();
+        hairSlot.RemoveEquip();
+        faceSlot.RemoveEquip();
+        clothSlot.RemoveEquip();
+        pantSlot.RemoveEquip();
+        weaponSlot.RemoveEquip();
+        cloakSlot.RemoveEquip();
     }
 
     public void InstantiateSlot(Equip equip)
@@ -239,7 +244,7 @@ public class UiInventory : MonoBehaviour
         SlotCountUpdate();
     }
 
-    public void ChangeEquip(ItemSlot newSlot)
+    public void ChangeEquip(EquipItemSlot newSlot)
     {
         newSlot.SetData(GameMgr.Instance.playerMgr.playerinventory.EquipItem(newSlot.currentEquip));
         GameMgr.Instance.uiMgr.uiInventory.UiSlotUpdate(newSlot.currentEquip.equipType);

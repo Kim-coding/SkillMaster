@@ -71,34 +71,44 @@ public class PlayerStat
 
     public void playerStatUpdate()
     {
-        playerAttackPower = (basePlayerAttackPower + 
-            (GameMgr.Instance.playerMgr.playerEnhance.attackPowerLevel * 1/*TO-DO 테이블에서 증가량으로 받아와 대체*/)).ToString();
+        playerAttackPower = ((basePlayerAttackPower + 
+            (GameMgr.Instance.playerMgr.playerEnhance.attackPowerLevel * 1/*TO-DO 테이블에서 증가량으로 받아와 대체*/))
+            * GameMgr.Instance.playerMgr.playerinventory.itemAttackPower)
+            .ToString();
         
-        playerMaxHealth = (new BigInteger(basePlayerMaxHealth) +
+        playerMaxHealth = ((new BigInteger(basePlayerMaxHealth) +
             (new BigInteger(GameMgr.Instance.playerMgr.playerEnhance.maxHealthValue) *
-            GameMgr.Instance.playerMgr.playerEnhance.maxHealthLevel)).ToString();
+            GameMgr.Instance.playerMgr.playerEnhance.maxHealthLevel))
+            * GameMgr.Instance.playerMgr.playerinventory.itemMaxHealth)
+            .ToString();
 
-        defence = basePlayerDefence +
+        defence = (basePlayerDefence +
             GameMgr.Instance.playerMgr.playerEnhance.defenceLevel *
-            GameMgr.Instance.playerMgr.playerEnhance.defenceValue;
+            GameMgr.Instance.playerMgr.playerEnhance.defenceValue)
+            * GameMgr.Instance.playerMgr.playerinventory.itemDeffence;
 
-        playerHealthRecovery = (new BigInteger(basePlayerHealthRecovery) +
+        playerHealthRecovery = ((new BigInteger(basePlayerHealthRecovery) +
                             (new BigInteger(GameMgr.Instance.playerMgr.playerEnhance.recoveryValue) *
-                            GameMgr.Instance.playerMgr.playerEnhance.recoveryLevel)).ToString();
+                            GameMgr.Instance.playerMgr.playerEnhance.recoveryLevel))
+                            * GameMgr.Instance.playerMgr.playerinventory.itemRecovery
+                            )
+                            .ToString();
 
         playerCriticalPercent = basePlayerCriticalPercent +
                         GameMgr.Instance.playerMgr.playerEnhance.criticalPercentLevel *
                         GameMgr.Instance.playerMgr.playerEnhance.criticalPercentValue;
+        playerCriticalPercent += GameMgr.Instance.playerMgr.playerinventory.itemCriticalPercent;
 
         playerCriticalMultiple = basePlayerCriticalMultiple +
                         GameMgr.Instance.playerMgr.playerEnhance.criticalMultipleLevel * 
                         GameMgr.Instance.playerMgr.playerEnhance.criticalMultipleValue;
+        playerCriticalMultiple += GameMgr.Instance.playerMgr.playerinventory.itemCriticalMultiple;
 
 
-        speed = basePlayerSpeed; // @@
+        speed = basePlayerSpeed + GameMgr.Instance.playerMgr.playerinventory.itemSpeed;
         cooldown = basePlayerCooldown; // @@
-        attackRange = basePlayerAttackRange; // @@
-        attackSpeed = basePlayerAttackSpeed; // @@
+        attackRange = basePlayerAttackRange + GameMgr.Instance.playerMgr.playerinventory.itemAttackRange;
+        attackSpeed = basePlayerAttackSpeed + GameMgr.Instance.playerMgr.playerinventory.itemAttackSpeed;
 
         recoveryDuration = basePlayerRecoveryDuration;
 

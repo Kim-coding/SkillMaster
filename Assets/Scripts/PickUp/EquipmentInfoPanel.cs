@@ -8,7 +8,7 @@ public class EquipmentInfoPanel : MonoBehaviour
     public ItemInfoPanel currentItemPanel;
     public ItemInfoPanel newItemPanel;
 
-    public ItemSlot newItemSlot;
+    public EquipItemSlot newItemSlot;
 
     public Button equipButton;
 
@@ -21,7 +21,7 @@ public class EquipmentInfoPanel : MonoBehaviour
     public void Init()
     {
     }
-    public void OnItemSlotClick(Equip equip, ItemSlot itemSlot)
+    public void OnItemSlotClick(Equip equip, EquipItemSlot itemSlot)
     {
         newItemSlot = itemSlot;
         newItemPanel.SetItemInfoPanel(equip);

@@ -13,7 +13,7 @@ public class UpgradeData
     public int DivValue { get; set; } 
     public int Gold { get; set; }
     public int GoldRange { get; set; }
-    public float GoldincreaseValue { get; set; }
+    public int GoldincreaseValue { get; set; }
     public int MaxLv { get; set; }
     public string UpgradeIcon { get; set; }
     public int StringID { get; set; }

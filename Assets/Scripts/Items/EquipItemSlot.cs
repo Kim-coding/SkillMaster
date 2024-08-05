@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ItemSlot : MonoBehaviour
+public class EquipItemSlot : MonoBehaviour
 {
     public int slotIndex {  get; set; }
     public Button button;
