@@ -1962,7 +1962,8 @@ MonoBehaviour:
   backButton: {fileID: 1055097577}
   nextButton: {fileID: 1958013690}
   closeButton: {fileID: 1084378556}
-  mainSceneAddress: Main
+  skillIconLable:
+    m_LabelString: SkillIcon
 --- !u!114 &2066974480
 MonoBehaviour:
   m_ObjectHideFlags: 0

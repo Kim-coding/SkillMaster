@@ -4,9 +4,10 @@ using TMPro;
 using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 public static class RectTransformExtensions
 {
@@ -88,14 +89,23 @@ public class SkillBallController : MonoBehaviour, IPointerDownHandler, IPointerU
             tierText.text = tier.ToString();
         }
 
-        Sprite iconSprite = Resources.Load<Sprite>($"SkillIcon/{Skillicon}");
-        if (iconSprite != null)
+        LoadSkillIcon(Skillicon);
+    }
+    private void LoadSkillIcon(string iconName)
+    {
+        string address = $"Resources_moved/SkillIcon/{iconName}";
+        Addressables.LoadAssetAsync<Sprite>(address).Completed += OnLoadIcon;
+    }
+
+    void OnLoadIcon(AsyncOperationHandle<Sprite> obj)
+    {
+        if (obj.Status == AsyncOperationStatus.Succeeded)
         {
-            skillIconImage.sprite = iconSprite;
+            skillIconImage.sprite = obj.Result;
         }
         else
         {
-            Debug.LogError($"Skill icon not found in Resources/SkillIcon/{Skillicon}");
+            Debug.LogError($"Failed to load icon: {obj.OperationException}");
         }
     }
 

@@ -16,7 +16,120 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: f4d7d55b1027cc446958286ad8811b5b
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: ef6f6a9cd9ebcc44b8b3597dbbbae61d
+    m_Address: SkillIcon
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: df55ffb80436bfa438ef73bd86ec77ef
+    m_Address: Resources_moved/SkillIcon/FireMage_39
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SkillIcon
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 88db07e9ad948e240958cd28f53cc152
+    m_Address: Resources_moved/SkillIcon/red_08
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SkillIcon
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d6f14bdcd5952b74cb9fad463d09ea65
+    m_Address: Resources_moved/SkillIcon/fireball
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SkillIcon
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5d31593c49bf02948bfa83f27f253481
+    m_Address: Resources_moved/SkillIcon/yellow_17
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SkillIcon
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bd1ff5de4cb555b48bcd4f6588f05616
+    m_Address: Resources_moved/SkillIcon/skill_187_fireball
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SkillIcon
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a7501d9b5292e014a8baa61765590ac0
+    m_Address: Resources_moved/SkillIcon/skill_183
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SkillIcon
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 45420ac1e1c56e44abaa142cb88bab75
+    m_Address: Resources_moved/SkillIcon/Engineerskill_35_explosion
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SkillIcon
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4b6750c111c943a41b9e6668f402a3b5
+    m_Address: Resources_moved/SkillIcon/yellow_09
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SkillIcon
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b6d6c2973187388419c2d156cff46953
+    m_Address: Resources_moved/SkillIcon/Engineerskill_06Earth
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SkillIcon
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2eea54ed8433e7e40858f9264bc06d38
+    m_Address: Resources_moved/SkillIcon/FireMage_38
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SkillIcon
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 31ffab4c584b39e45bc996d55f4221d8
+    m_Address: Resources_moved/SkillIcon/addon_28
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SkillIcon
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c270f0c7316220d499d1735bf9930b34
+    m_Address: Resources_moved/SkillIcon/yellow_39
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SkillIcon
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 89c8c22595b4265418d5dab2e312964e
+    m_Address: Resources_moved/SkillIcon/fire_arrow
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SkillIcon
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0e78f6d11ee3c3b438b9cc571b3260d7
+    m_Address: Resources_moved/SkillIcon/yellow_20
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SkillIcon
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: aabfac225dcc1284c8a3762f69bdb670
+    m_Address: Resources_moved/SkillIcon/yellow_21
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SkillIcon
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f0b2445d0f792604493fb00409bc5d03
+    m_Address: Resources_moved/SkillIcon/FireMage_31
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SkillIcon
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9532c4283f8c932459df19807ebed0be
+    m_Address: Resources_moved/SkillIcon/fire_rain
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SkillIcon
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0cb668c2372dd464ea4bad81ee5c89a1
+    m_Address: Resources_moved/SkillIcon/yellow_42
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SkillIcon
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: b40805ff5e63f774f9d53c940d07c762, type: 2}
   m_SchemaSet:
