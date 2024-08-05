@@ -29,6 +29,15 @@ public class PickUp : MonoBehaviour
 
     public void PickUpItem(int i)
     {
+        if(i + GameMgr.Instance.playerMgr.playerinventory.playerEquipItemList.Count > GameMgr.Instance.playerMgr.playerinventory.maxSlots)
+        {
+            GameMgr.Instance.uiMgr.uiWindow.popUpUI.gameObject.SetActive(true);
+            GameMgr.Instance.uiMgr.uiWindow.popUpUI.SetText("인벤토리가 가득 찼습니다!");
+
+            return;
+        }
+
+
         SetGachaPercent();
 
         while (pickUpitems.Count > 0)
@@ -121,7 +130,7 @@ public class PickUp : MonoBehaviour
 
             var iconimage = Resources.LoadAll<Sprite>("Equipment/" + sbString);
             var equip = new Equip(iconimage, equipData.GetItemName, ++GameMgr.Instance.playerMgr.playerInfo.obtainedItem);
-            equip.SetEquipItem((EquipType)randomTypeNum, (RarerityType)randomRarityNum);
+            equip.SetEquipItem((EquipType)randomTypeNum, (RarerityType)randomRarityNum, equipData.reinforcement_value);
 
             int optionCount = equipData.option_value;
             while (optionCount > 0)
@@ -180,6 +189,7 @@ public class PickUp : MonoBehaviour
                 }
 
             }
+            GameMgr.Instance.playerMgr.playerinventory.AddEquipItem(equip);
             InstantiateSlot(equip);
             GameMgr.Instance.uiMgr.uiInventory.InstantiateSlot(equip);
         }

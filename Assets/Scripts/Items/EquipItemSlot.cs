@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class EquipItemSlot : MonoBehaviour
 {
-    public int slotIndex {  get; set; }
+    public int slotIndex { get; set; }
     public Button button;
     public Image selectedBorder;
 
@@ -19,7 +19,7 @@ public class EquipItemSlot : MonoBehaviour
     private void Awake()
     {
         TryGetComponent<Button>(out button);
-        if(button != null)
+        if (button != null)
         {
             button.onClick.AddListener(OnbuttonClick);
         }
@@ -43,6 +43,18 @@ public class EquipItemSlot : MonoBehaviour
     }
     public void OnbuttonClick()
     {
+        if (GameMgr.Instance.uiMgr.uiInventory.decomposMode)
+        {
+            OnSelected(GameMgr.Instance.uiMgr.uiInventory.DecomposSelect(this));
+            return;
+        }
+
         GameMgr.Instance.uiMgr.uiWindow.equipmentItemPanel.OnItemSlotClick(currentEquip, this);
+    }
+
+    public void OnSelected(bool isOn)
+    {
+        selectedBorder.gameObject.SetActive(isOn);
+        onSelected = true;
     }
 }

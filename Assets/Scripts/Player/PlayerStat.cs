@@ -97,7 +97,7 @@ public class PlayerStat
         playerCriticalPercent = basePlayerCriticalPercent +
                         GameMgr.Instance.playerMgr.playerEnhance.criticalPercentLevel *
                         GameMgr.Instance.playerMgr.playerEnhance.criticalPercentValue;
-        playerCriticalPercent += GameMgr.Instance.playerMgr.playerinventory.itemCriticalPercent;
+        playerCriticalPercent += GameMgr.Instance.playerMgr.playerinventory.itemCriticalPercent / 100f;
 
         playerCriticalMultiple = basePlayerCriticalMultiple +
                         GameMgr.Instance.playerMgr.playerEnhance.criticalMultipleLevel * 
