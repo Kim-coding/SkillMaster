@@ -22,6 +22,7 @@ public class PlayerInventory
 
 
     public List<Equip> playerEquipItemList = new List<Equip> { };
+    public List<Item> playerNormalItemList = new List<Item> { };
     public int maxSlots = 150;
 
     public float itemAttackPower;
@@ -40,22 +41,22 @@ public class PlayerInventory
         //데이터 테이블 / 키값 받아오기
         var iconimage = Resources.LoadAll<Sprite>("Equipment/Hair_Basic");
         baseHair = new Equip(iconimage, "기본 머리", 0);
-        baseHair.SetEquipItem(EquipType.Hair, RarerityType.C);
+        baseHair.SetEquipItem(EquipType.Hair, RarerityType.C, 0);
         iconimage = Resources.LoadAll<Sprite>("Equipment/Eye_Basic");
         baseFace = new Equip(iconimage, "기본 눈", 0);
-        baseFace.SetEquipItem(EquipType.Face, RarerityType.C);
+        baseFace.SetEquipItem(EquipType.Face, RarerityType.C, 0);
         iconimage = Resources.LoadAll<Sprite>("Equipment/Cloth_Basic");
         baseCloth = new Equip(iconimage, "기본 상의", 0);
-        baseCloth.SetEquipItem(EquipType.Cloth, RarerityType.C);
+        baseCloth.SetEquipItem(EquipType.Cloth, RarerityType.C, 0);
         iconimage = Resources.LoadAll<Sprite>("Equipment/Pant_Basic");
         basePant = new Equip(iconimage, "기본 바지", 0);
-        basePant.SetEquipItem(EquipType.Pants, RarerityType.C);
+        basePant.SetEquipItem(EquipType.Pants, RarerityType.C, 0);
         iconimage = Resources.LoadAll<Sprite>("Equipment/Weapon_Basic");
         baseWeapon = new Equip(iconimage, "기본 무기", 0);
-        baseWeapon.SetEquipItem(EquipType.Weapon, RarerityType.C);
+        baseWeapon.SetEquipItem(EquipType.Weapon, RarerityType.C, 0);
         iconimage = Resources.LoadAll<Sprite>("Equipment/Back_Basic");
         baseCloak = new Equip(iconimage, "기본 망토", 0);
-        baseCloak.SetEquipItem(EquipType.Cloak, RarerityType.C);
+        baseCloak.SetEquipItem(EquipType.Cloak, RarerityType.C, 0);
 
         //저장 받아오기 없으면
         playerHair = baseHair;
@@ -106,7 +107,7 @@ public class PlayerInventory
         ItemOptionsUpdate();
         return currentEquip;
     }
-    public void RemoveItem(EquipType type)
+    public void UnEquipItem(EquipType type)
     {
         switch (type)
         {

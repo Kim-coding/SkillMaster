@@ -109,14 +109,12 @@ public class ItemInfoPanel : MonoBehaviour
         }
     }
 
-    public void SetItemInfoPanel(Item item)
+    public void SetItemInfoPanel(NormalItem item)
     {
         icon.sprite = item.icon;
         itemName.text = item.itemName;
-        itemType.text = string.Empty;
-        itemRarity.text = string.Empty;
         OptionTexts[0].gameObject.SetActive(true);
-        OptionTexts[0].text = "일반 아이템";
+        OptionTexts[0].text = "장비 장착 슬롯 강화에 소모되는 아이템.";
     }
 
     public void ClosePanel()

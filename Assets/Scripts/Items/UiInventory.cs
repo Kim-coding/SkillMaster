@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting;
 
 public class UiInventory : MonoBehaviour
 {
@@ -42,20 +43,25 @@ public class UiInventory : MonoBehaviour
     public GameObject itemButtons;
     public GameObject itemSlotPanel;
 
-    public EquipItemSlot prefabSlot;
-    public GameObject inventoryPanel;
-    private List<EquipItemSlot> selectedSlots = new List<EquipItemSlot>();
+    public EquipItemSlot prefabEquipSlot;
+    public NormalItemSlot prefabNormalSlot;
+    public GameObject normalInventoryPanel;
+    public GameObject equipInventoryPanel;
+    private List<EquipItemSlot> equipItemSlots = new List<EquipItemSlot>();
+    private List<NormalItemSlot> normalItemSlots = new List<NormalItemSlot>();
 
     public TMP_Dropdown sortDropDown;
-    public TextMeshProUGUI itemSlotCountText;
-    public int itemSlotCountMax = 150;
+    public TextMeshProUGUI equipItemSlotCountText;
+    public TextMeshProUGUI normalItemSlotCountText;
 
 
     /// <summary>
     /// 분해 관리
     /// </summary>
 
-    private bool decomposMode = false;
+    public List<EquipItemSlot> selectedSlot = new List<EquipItemSlot>();
+
+    public bool decomposMode = false;
     public Button decomposButton;
 
     public GameObject decomposPanel;
@@ -83,8 +89,8 @@ public class UiInventory : MonoBehaviour
 
     public void SortItemSlots()
     {
-        selectedSlots.Sort(comparison[sortDropDown.value]);
-        foreach (var slot in selectedSlots)
+        equipItemSlots.Sort(comparison[sortDropDown.value]);
+        foreach (var slot in equipItemSlots)
         {
             slot.transform.SetAsLastSibling();
         }
@@ -94,7 +100,7 @@ public class UiInventory : MonoBehaviour
     {
         System.Func<EquipItemSlot, bool> currentFilter = filter[currentToggleNumber];
 
-        foreach (var child in selectedSlots)
+        foreach (var child in equipItemSlots)
         {
             if (child != null)
             {
@@ -240,6 +246,8 @@ public class UiInventory : MonoBehaviour
         };
         decomposButton.onClick.AddListener(OnDecomposMode);
         cancleDecomposButton.onClick.AddListener(OffDecomposMode);
+        confirmDecomposButton.onClick.AddListener(OpenDecomposPanel);
+
         //데이터 테이블 호출
         //키 호출
 
@@ -319,11 +327,30 @@ public class UiInventory : MonoBehaviour
 
     public void InstantiateSlot(Equip equip)
     {
-        var newSlot = Instantiate(prefabSlot, inventoryPanel.transform);
+        var newSlot = Instantiate(prefabEquipSlot, equipInventoryPanel.transform);
         newSlot.SetData(equip);
-        selectedSlots.Add(newSlot);
+        equipItemSlots.Add(newSlot);
 
-        SlotCountUpdate();
+        EquipSlotCountUpdate();
+    }
+
+    public void InstantiateSlot(NormalItem item, int value)
+    {
+        foreach (var slot in normalItemSlots)
+        {
+            if(slot.currentItem.itemNumber == item.itemNumber)
+            {
+                slot.currentItem.itemValue += value;
+                slot.itemCountUpdate();
+                return;
+            }
+        }
+
+        var newSlot = Instantiate(prefabNormalSlot, normalInventoryPanel.transform);
+        newSlot.SetData(item);
+        normalItemSlots.Add(newSlot);
+
+        NormalSlotCountUpdate();
     }
 
     public void ChangeEquip(EquipItemSlot newSlot)
@@ -333,18 +360,22 @@ public class UiInventory : MonoBehaviour
         if (baseEquipments.TryGetValue(newSlot.currentEquip.equipType, out var baseEquip) &&
              newSlot.currentEquip == baseEquip)
         {
-            selectedSlots.Remove(newSlot);
+            equipItemSlots.Remove(newSlot);
             Destroy(newSlot.gameObject);
         }
 
-        SlotCountUpdate();
+        EquipSlotCountUpdate();
     }
 
-    public void SlotCountUpdate()
+    public void EquipSlotCountUpdate()
     {
-        itemSlotCountText.text = GameMgr.Instance.playerMgr.playerinventory.playerEquipItemList.Count.ToString() + " / " + itemSlotCountMax.ToString();
+        equipItemSlotCountText.text = GameMgr.Instance.playerMgr.playerinventory.playerEquipItemList.Count.ToString() + " / " + GameMgr.Instance.playerMgr.playerinventory.maxSlots.ToString();
     }
 
+    public void NormalSlotCountUpdate()
+    {
+        normalItemSlotCountText.text = GameMgr.Instance.playerMgr.playerinventory.playerNormalItemList.Count.ToString() + " / " + GameMgr.Instance.playerMgr.playerinventory.maxSlots.ToString();
+    }
 
     public void OnDecomposMode()
     {
@@ -353,16 +384,52 @@ public class UiInventory : MonoBehaviour
         decomposPanel.gameObject.SetActive(true); 
     }
 
+    public bool DecomposSelect(EquipItemSlot slot)
+    {
+        if (!selectedSlot.Contains(slot))
+        {
+            selectedSlot.Add(slot);
+            return true;
+        }
+        selectedSlot.Remove(slot);
+        return false;
+    }
+
     public void OffDecomposMode()
     {
-        foreach (var item in selectedSlots)
+        foreach (var item in selectedSlot)
         {
-            item.onSelected = false;
+            item.OnSelected(false);
         }
+        selectedSlot.Clear();
+
         decomposMode = false;
         sortPanel.gameObject.SetActive(true);
         decomposPanel.gameObject.SetActive(false);
 
+    }
+
+    public void OpenDecomposPanel()
+    {
+        GameMgr.Instance.uiMgr.uiWindow.decomposPanel.gameObject.SetActive(true);
+        GameMgr.Instance.uiMgr.uiWindow.decomposPanel.SetDecompos(selectedSlot);
+
+    }
+
+    public void Decompos(int reinforcevalue)
+    {
+        foreach(var item in selectedSlot)
+        {
+            GameMgr.Instance.playerMgr.playerinventory.RemoveEquipItem(item.currentEquip);
+            equipItemSlots.Remove(item);
+            Destroy(item.gameObject);
+        }
+
+        NormalItem newitem = new NormalItem(Resources.LoadAll<Sprite>("reinforceStone"),"강화석",1111,reinforcevalue);
+        InstantiateSlot(newitem, reinforcevalue);
+
+        EquipSlotCountUpdate();
+        OffDecomposMode();
     }
 
 }
