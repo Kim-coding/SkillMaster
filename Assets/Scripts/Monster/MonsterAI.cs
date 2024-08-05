@@ -29,7 +29,7 @@ public class MonsterAI : MonoBehaviour, IAnimation
         players = GameObject.FindGameObjectsWithTag("Player");
         monsterStat = GetComponent<MonsterStat>();
         monsterStat.SetID(DataTableMgr.Get<StageTable>(DataTableIds.stage).GetID
-    (GameMgr.Instance.sceneMgr.mainScene.stageId).appearMonster);
+            (GameMgr.Instance.sceneMgr.mainScene.stageId).appearMonster);
         monsterStat.Init();
         monsterAttack = new MonsterAttack();
         rb = GetComponent<Rigidbody2D>();
@@ -47,8 +47,13 @@ public class MonsterAI : MonoBehaviour, IAnimation
     private void OnEnable()
     {
         monsterStat.SetID(DataTableMgr.Get<StageTable>(DataTableIds.stage).GetID
-(GameMgr.Instance.sceneMgr.mainScene.stageId).appearMonster);
+            (GameMgr.Instance.sceneMgr.mainScene.stageId).appearMonster);
         monsterStat.Init();
+        int randomValue = Random.Range(1, 3);
+        string assetName = randomValue == 1 ? monsterStat.asset1 : monsterStat.asset2;
+        gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>($"Spritesheets/{assetName}");
+        RuntimeAnimatorController newController = Resources.Load<RuntimeAnimatorController>($"Animations/{assetName}");
+        animator.runtimeAnimatorController = newController;
         isReturnedToPool = false ;
     }
 
