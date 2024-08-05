@@ -130,7 +130,7 @@ public class PickUp : MonoBehaviour
 
             var iconimage = Resources.LoadAll<Sprite>("Equipment/" + sbString);
             var equip = new Equip(iconimage, equipData.GetItemName, ++GameMgr.Instance.playerMgr.playerInfo.obtainedItem);
-            equip.SetEquipItem((EquipType)randomTypeNum, (RarerityType)randomRarityNum);
+            equip.SetEquipItem((EquipType)randomTypeNum, (RarerityType)randomRarityNum, equipData.reinforcement_value);
 
             int optionCount = equipData.option_value;
             while (optionCount > 0)

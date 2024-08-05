@@ -4,6 +4,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.Progress;
 
 public class NormalItemSlot : MonoBehaviour
 {
@@ -12,8 +13,7 @@ public class NormalItemSlot : MonoBehaviour
     public Image selectedBorder;
 
     public Image itemImage;
-    public Item currentItem = null;
-    public int itemCount;
+    public NormalItem currentItem = null;
     public TextMeshProUGUI itemCountText;
 
     public bool onSelected = false;
@@ -27,9 +27,17 @@ public class NormalItemSlot : MonoBehaviour
         }
     }
 
+    public void SetData(NormalItem item)
+    {
+        currentItem = item;
+        //아이템번호입력
+        itemImage.sprite = item.icon;
+        itemCountUpdate();
+    }
+
     public void itemCountUpdate()
     {
-        itemCountText.text = itemCount.ToString();
+        itemCountText.text = currentItem.itemValue.ToString();
     }
 
     public void OnbuttonClick()
