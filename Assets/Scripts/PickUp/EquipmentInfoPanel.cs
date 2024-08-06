@@ -60,8 +60,6 @@ public class EquipmentInfoPanel : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-
-
     public void ChangeEquipOnPanel()
     {
         GameMgr.Instance.uiMgr.uiInventory.ChangeEquip(newItemSlot);

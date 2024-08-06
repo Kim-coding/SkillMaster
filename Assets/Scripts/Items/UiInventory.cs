@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using Unity.VisualScripting;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 
 public class UiInventory : MonoBehaviour
 {
@@ -247,7 +248,7 @@ public class UiInventory : MonoBehaviour
         decomposButton.onClick.AddListener(OnDecomposMode);
         cancleDecomposButton.onClick.AddListener(OffDecomposMode);
         confirmDecomposButton.onClick.AddListener(OpenDecomposPanel);
-
+        autoDecomposButton.onClick.AddListener(OpenAutoDecomposPanel);
         //데이터 테이블 호출
         //키 호출
 
@@ -432,4 +433,40 @@ public class UiInventory : MonoBehaviour
         OffDecomposMode();
     }
 
+    public void OpenAutoDecomposPanel()
+    {
+        GameMgr.Instance.uiMgr.uiWindow.autoDecomposSelectPanel.gameObject.SetActive(true);
+        GameMgr.Instance.uiMgr.uiWindow.autoDecomposSelectPanel.AutoComposInit();
+    }
+
+    public void AutoDecomPos(List<EquipItemSlot> slots)
+    {
+        foreach (var item in selectedSlot)
+        {
+            item.OnSelected(false);
+        }
+        selectedSlot.Clear();
+
+        foreach (var item in slots)
+        {
+            item.OnSelected(true);
+            selectedSlot.Add(item);
+        }
+
+    }
+    public List<EquipItemSlot> GetSelectedItemCount(EquipType equipType, RarerityType rarerity)
+    {
+        List<EquipItemSlot> slots = new List<EquipItemSlot>();
+        foreach (var item in equipItemSlots)
+        {
+            if(item.currentEquip.equipType == equipType)
+            {
+                if(item.currentEquip.rarerityType == rarerity)
+                {
+                    slots.Add(item);
+                }
+            }
+        }
+        return slots;
+    }
 }

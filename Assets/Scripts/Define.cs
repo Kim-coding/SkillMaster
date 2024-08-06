@@ -99,8 +99,8 @@ public enum EquipType
     Face,
     Cloth,
     Pants,
-    Cloak,
     Weapon,
+    Cloak,
 }
 
 public enum RarerityType

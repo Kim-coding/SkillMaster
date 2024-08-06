@@ -36,6 +36,7 @@ public class UiWindow : MonoBehaviour
     public ItemInfoPanel normalItemPanel;
     public UIPopUp popUpUI;
     public DecomposPanel decomposPanel;
+    public AutoDecomposPanel autoDecomposSelectPanel;
     private void Start()
     {
         windows = new Dictionary<Windows, GameObject>()
