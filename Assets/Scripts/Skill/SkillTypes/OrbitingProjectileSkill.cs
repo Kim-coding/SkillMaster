@@ -100,13 +100,21 @@ public class OrbitingProjectileSkill : MonoBehaviour, ISkillComponent, ISkill
             if (skillEffectPrefab != null)
             {
                 skillEffectObject = Instantiate(skillEffectPrefab, attacker.transform.position, Quaternion.identity);
-                var mainModule = skillEffectObject.GetComponent<ParticleSystem>().main;
-                mainModule.startRotation = Mathf.Deg2Rad * targetAngle;
+                if (skillEffectPrefab.GetComponent<Animator>() != null)
+                {
+                    skillEffectObject.transform.rotation = Quaternion.Euler(0, 0, -targetAngle);
+                    skillEffectObject.transform.SetParent(skillObject.transform);
+                }
+                else
+                {
+                    var mainModule = skillEffectObject.GetComponent<ParticleSystem>().main;
+                    mainModule.startRotation = Mathf.Deg2Rad * targetAngle;
 
-                skillEffectObject.transform.SetParent(attacker.transform);
+                    skillEffectObject.transform.SetParent(attacker.transform);
 
-                float effectLifetime = (Projectileangle / 720f);
-                Destroy(skillEffectObject, effectLifetime);
+                    float effectLifetime = (Projectileangle / 720f);
+                    Destroy(skillEffectObject, effectLifetime);
+                }
             }
 
             StartCoroutine(MoveOrbitProjectile(projectile, attacker.transform.position, targetAngle)); 

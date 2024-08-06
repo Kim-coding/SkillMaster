@@ -21,7 +21,7 @@ public class UiMerge : MonoBehaviour
 
     private bool isAutoMerging = false;
     private float timer = 0f;
-    private float duration = 3f;
+    private float duration = 1f;
 
     private void Start()
     {
@@ -105,8 +105,11 @@ public class UiMerge : MonoBehaviour
             return;
         }
 
-        var startPosition1 = skillBall1.transform.position;
-        var startPosition2 = skillBall2.transform.position;
+        var rectTransform1 = skillBall1.GetComponent<RectTransform>();
+        var rectTransform2 = skillBall2.GetComponent<RectTransform>();
+
+        var startPosition1 = rectTransform1.anchoredPosition;
+        var startPosition2 = rectTransform2.anchoredPosition; 
         var endPosition = (startPosition1 + startPosition2)/2;
 
         float moveDuration = 1f;
