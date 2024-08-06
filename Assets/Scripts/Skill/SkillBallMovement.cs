@@ -44,6 +44,7 @@ public class SkillBallMovement : MonoBehaviour
                 if (skillBallController != null)
                 {
                     skillBallController.AutoMerge();
+                    skillBallController.playerSKills.SetList(); // 캐스팅 리스트 업데이트
                 }
             }
         }

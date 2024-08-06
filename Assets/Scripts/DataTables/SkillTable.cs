@@ -12,6 +12,7 @@ public class SkillData
     public int Skill_ID { get; set; }
     public int Type { get; set; }
     public string Skill_damage { get; set; }
+    public float skill_cooldown {  get; set; }
     public float AttackSpeed { get; set; }
     public float DamageColdown {  get; set; }
     public float SkillArange { get; set; }

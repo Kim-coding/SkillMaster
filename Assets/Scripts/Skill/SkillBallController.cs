@@ -8,6 +8,8 @@ using UnityEngine.AddressableAssets;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using UnityEngine.ResourceManagement.AsyncOperations;
+using static UnityEngine.ParticleSystem;
+using UnityEditor.Experimental.GraphView;
 
 public static class RectTransformExtensions
 {
@@ -54,11 +56,18 @@ public class SkillBallController : MonoBehaviour, IPointerDownHandler, IPointerU
     public float atkArangeX;
     public float atkArangeY;
     public int skillPropertyID;
+    public float skillCooldown;
     public string SkillEffect;
     public string Skillicon;
 
     public Image skillIconImage;
     public bool isMove = false;
+    public bool isFirstSkill = false;
+    
+    private float timer = 0f;
+    private PlayerAI playerAI;
+    public PlayerSkills playerSKills;
+
     private void Start()
     {
         areaRect = GetComponent<RectTransform>();
@@ -76,6 +85,7 @@ public class SkillBallController : MonoBehaviour, IPointerDownHandler, IPointerU
         {
             tier = skillData.SkillLv;
             skillPropertyID = skillData.SkillPropertyID;
+            skillCooldown = skillData.skill_cooldown;
             attackSpeed = skillData.AttackSpeed;
             skillType = skillData.Type;
             skillDamage = skillData.Skill_damage;
@@ -138,6 +148,7 @@ public class SkillBallController : MonoBehaviour, IPointerDownHandler, IPointerU
     public void OnPointerUp(PointerEventData eventData)
     {
         MergeCheck();
+        //playerSKills.SetList();
         isButtonPressed = false;
     }
 
@@ -154,6 +165,7 @@ public class SkillBallController : MonoBehaviour, IPointerDownHandler, IPointerU
             {
                 Vector3 mergePosition = (gameObject.transform.position + other.gameObject.transform.position) / 2;
                 skillSpawner.MergeSkill(skill_ID + 1, mergePosition, tier + 1);
+
                 //합쳐지는 이펙트
                 GameMgr.Instance.playerMgr.skillBallControllers.Remove(gameObject.GetComponent<SkillBallController>());
                 GameMgr.Instance.playerMgr.skillBallControllers.Remove(other.gameObject.GetComponent<SkillBallController>());
@@ -175,6 +187,7 @@ public class SkillBallController : MonoBehaviour, IPointerDownHandler, IPointerU
             {
                 Vector3 mergePosition = (gameObject.transform.position + other.gameObject.transform.position) / 2;
                 skillSpawner.MergeSkill(skill_ID + 1, mergePosition, tier + 1);
+
                 //합쳐지는 이펙트
                 GameMgr.Instance.playerMgr.skillBallControllers.Remove(gameObject.GetComponent<SkillBallController>());
                 GameMgr.Instance.playerMgr.skillBallControllers.Remove(other.gameObject.GetComponent<SkillBallController>());
@@ -184,6 +197,21 @@ public class SkillBallController : MonoBehaviour, IPointerDownHandler, IPointerU
                 break;
             }
         }
+    }
+
+    public void UpdateCooldown(float deltaTime)
+    {
+        timer += deltaTime;
+    }
+
+    public bool IsCooldownComplete()
+    {
+        return timer >= skillCooldown;
+    }
+
+    public void ResetCooldown()
+    {
+        timer = 0f;
     }
 }
 
