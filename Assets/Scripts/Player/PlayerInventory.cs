@@ -241,34 +241,34 @@ public class PlayerInventory
             switch (option.Item1)
             {
                 case OptionType.attackPower:
-                    itemAttackPower += option.Item2 * equipSlotUpgradePercent;
+                    itemAttackPower += option.Item2 + equipSlotUpgradePercent;
                     break;
                 case OptionType.criticalPercent:
-                    itemCriticalPercent += option.Item2 * equipSlotUpgradePercent;
+                    itemCriticalPercent += option.Item2 + equipSlotUpgradePercent;
                     break;
                 case OptionType.criticalMultiple:
-                    itemCriticalMultiple += option.Item2 * equipSlotUpgradePercent;
+                    itemCriticalMultiple += option.Item2 + equipSlotUpgradePercent;
                     break;
                 case OptionType.attackSpeed:
-                    itemAttackSpeed += option.Item2 * equipSlotUpgradePercent;
+                    itemAttackSpeed += option.Item2 + equipSlotUpgradePercent;
                     break;
                 case OptionType.deffence:
-                    itemDeffence += option.Item2 * equipSlotUpgradePercent;
+                    itemDeffence += option.Item2 + equipSlotUpgradePercent;
                     break;
                 case OptionType.maxHealth:
-                    itemMaxHealth += option.Item2 * equipSlotUpgradePercent;
+                    itemMaxHealth += option.Item2 + equipSlotUpgradePercent;
                     break;
                 case OptionType.speed:
-                    itemSpeed += option.Item2 * equipSlotUpgradePercent;
+                    itemSpeed += option.Item2 + equipSlotUpgradePercent;
                     break;
                 case OptionType.goldIncrease:
-                    itemGoldIncrease += option.Item2 * equipSlotUpgradePercent;
+                    itemGoldIncrease += option.Item2 + equipSlotUpgradePercent;
                     break;
                 case OptionType.recovery:
-                    itemRecovery += option.Item2 * equipSlotUpgradePercent;
+                    itemRecovery += option.Item2 + equipSlotUpgradePercent;
                     break;
                 case OptionType.attackRange:
-                    itemAttackRange += option.Item2 * equipSlotUpgradePercent;
+                    itemAttackRange += option.Item2 + equipSlotUpgradePercent;
                     break;
             }
         }
