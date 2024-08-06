@@ -1,0 +1,7 @@
+Equipmentupgradeid,Equipment_part,reinforce_initial,reinforce_increase,Success_persentup,Success_persentdown,Maxupgradelv,gold_initial,gold_increase,reinforce_gold_increasevalue,option_initial,option_raiserate
+130001,1,10,10,1,1,60,100,1000,5,1,0.01
+130002,2,10,10,1,1,60,200,1000,5,1,0.01
+130003,3,10,10,1,1,60,100,1000,5,1,0.01
+130004,4,10,10,1,1,60,100,1000,5,1,0.01
+130005,5,10,10,1,1,60,200,1000,5,1,0.01
+130006,6,10,10,1,1,60,100,1000,5,1,0.01
