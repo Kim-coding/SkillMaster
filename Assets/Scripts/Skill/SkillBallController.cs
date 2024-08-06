@@ -93,7 +93,7 @@ public class SkillBallController : MonoBehaviour, IPointerDownHandler, IPointerU
     }
     private void LoadSkillIcon(string iconName)
     {
-        string address = $"Resources_moved/SkillIcon/{iconName}";
+        string address = $"SkillIcon/{iconName}";
         Addressables.LoadAssetAsync<Sprite>(address).Completed += OnLoadIcon;
     }
 

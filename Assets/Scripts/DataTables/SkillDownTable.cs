@@ -12,10 +12,9 @@ public class SkillDownData
     public int ProjectileValue { get; set; }
     public float ProjectileSpeed { get; set; }
     public int Attacknumber { get; set; }
-    public float SkillColdown { get; set; }
+    public float attack_coldown { get; set; }
     public int Projectileangle { get; set; }
     public int HitMonsterValue { get; set; }
-    public float ATValueRadius { get; set; }
     public float AtminRadius { get; set; }
     public float AtmaxRadius { get; set; }
 }

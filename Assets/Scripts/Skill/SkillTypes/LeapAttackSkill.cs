@@ -50,7 +50,7 @@ public class LeapAttackSkill : MonoBehaviour, ISkillComponent, ISkill
             if (skillDownData != null)
             {
                 attackNumber = skillDownData.Attacknumber;
-                skillColdiwn = skillDownData.SkillColdown;
+                skillColdiwn = skillDownData.attack_coldown;
             }
         }
 

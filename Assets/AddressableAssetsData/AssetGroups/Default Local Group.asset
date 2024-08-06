@@ -22,110 +22,242 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: df55ffb80436bfa438ef73bd86ec77ef
-    m_Address: Resources_moved/SkillIcon/FireMage_39
+  - m_GUID: 11eaa597d0551ed43a44c46887f39fd8
+    m_Address: SkillIcon/Skill_Icon_13
     m_ReadOnly: 0
     m_SerializedLabels:
     - SkillIcon
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 88db07e9ad948e240958cd28f53cc152
-    m_Address: Resources_moved/SkillIcon/red_08
+  - m_GUID: 32929db7773bd8b4fae3c50d7101bc66
+    m_Address: SkillIcon/Skill_Icon_27
     m_ReadOnly: 0
     m_SerializedLabels:
     - SkillIcon
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: d6f14bdcd5952b74cb9fad463d09ea65
-    m_Address: Resources_moved/SkillIcon/fireball
+  - m_GUID: 6576038f887a7224784483a48c03eb09
+    m_Address: SkillIcon/Skill_Icon_23
     m_ReadOnly: 0
     m_SerializedLabels:
     - SkillIcon
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 5d31593c49bf02948bfa83f27f253481
-    m_Address: Resources_moved/SkillIcon/yellow_17
+  - m_GUID: c1e9d3ccb0dcdc74ba9fea2f39cd7636
+    m_Address: SkillIcon/Skill_Icon_37
     m_ReadOnly: 0
     m_SerializedLabels:
     - SkillIcon
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: bd1ff5de4cb555b48bcd4f6588f05616
-    m_Address: Resources_moved/SkillIcon/skill_187_fireball
+  - m_GUID: b52cd68d83c7477459ec75ca119f909a
+    m_Address: SkillIcon/Skill_Icon_26
     m_ReadOnly: 0
     m_SerializedLabels:
     - SkillIcon
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: a7501d9b5292e014a8baa61765590ac0
-    m_Address: Resources_moved/SkillIcon/skill_183
+  - m_GUID: 516455c5607cb1f489ba74d58bcc0bba
+    m_Address: SkillIcon/Skill_Icon_17
     m_ReadOnly: 0
     m_SerializedLabels:
     - SkillIcon
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 45420ac1e1c56e44abaa142cb88bab75
-    m_Address: Resources_moved/SkillIcon/Engineerskill_35_explosion
+  - m_GUID: d273a25dc3697a445bddcdb775e3a5f7
+    m_Address: SkillIcon/Skill_Icon_22
     m_ReadOnly: 0
     m_SerializedLabels:
     - SkillIcon
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 4b6750c111c943a41b9e6668f402a3b5
-    m_Address: Resources_moved/SkillIcon/yellow_09
+  - m_GUID: b7a2e023139c2804bb0cc35d0af13d9b
+    m_Address: SkillIcon/Skill_Icon_12
     m_ReadOnly: 0
     m_SerializedLabels:
     - SkillIcon
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: b6d6c2973187388419c2d156cff46953
-    m_Address: Resources_moved/SkillIcon/Engineerskill_06Earth
+  - m_GUID: cc6fb77f0610ac64e820601d0087ad08
+    m_Address: SkillIcon/Skill_Icon_07
     m_ReadOnly: 0
     m_SerializedLabels:
     - SkillIcon
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 2eea54ed8433e7e40858f9264bc06d38
-    m_Address: Resources_moved/SkillIcon/FireMage_38
+  - m_GUID: 98c10ea9aa0b0374e9d7b6328d4a4a0a
+    m_Address: SkillIcon/Skill_Icon_36
     m_ReadOnly: 0
     m_SerializedLabels:
     - SkillIcon
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 31ffab4c584b39e45bc996d55f4221d8
-    m_Address: Resources_moved/SkillIcon/addon_28
+  - m_GUID: 87c5e424656d8e3488563809a9482d14
+    m_Address: SkillIcon/Skill_Icon_14
     m_ReadOnly: 0
     m_SerializedLabels:
     - SkillIcon
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: c270f0c7316220d499d1735bf9930b34
-    m_Address: Resources_moved/SkillIcon/yellow_39
+  - m_GUID: dff92d5344de5934c9a42c66e32db4f7
+    m_Address: SkillIcon/Skill_Icon_32
     m_ReadOnly: 0
     m_SerializedLabels:
     - SkillIcon
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 89c8c22595b4265418d5dab2e312964e
-    m_Address: Resources_moved/SkillIcon/fire_arrow
+  - m_GUID: 7526e8c88865b8c4b98d1d8c4a104170
+    m_Address: SkillIcon/Skill_Icon_11
     m_ReadOnly: 0
     m_SerializedLabels:
     - SkillIcon
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 0e78f6d11ee3c3b438b9cc571b3260d7
-    m_Address: Resources_moved/SkillIcon/yellow_20
+  - m_GUID: 77e3f8762933202449de84bfc07a97f6
+    m_Address: SkillIcon/Skill_Icon_19
     m_ReadOnly: 0
     m_SerializedLabels:
     - SkillIcon
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: aabfac225dcc1284c8a3762f69bdb670
-    m_Address: Resources_moved/SkillIcon/yellow_21
+  - m_GUID: 1b7b8c2f63563434e99cc8e2610567b1
+    m_Address: SkillIcon/Skill_Icon_28
     m_ReadOnly: 0
     m_SerializedLabels:
     - SkillIcon
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: f0b2445d0f792604493fb00409bc5d03
-    m_Address: Resources_moved/SkillIcon/FireMage_31
+  - m_GUID: 2722892351ad4254d81e1c79de40912c
+    m_Address: SkillIcon/Skill_Icon_01
     m_ReadOnly: 0
     m_SerializedLabels:
     - SkillIcon
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 9532c4283f8c932459df19807ebed0be
-    m_Address: Resources_moved/SkillIcon/fire_rain
+  - m_GUID: 8d7d6be8984e79140bd2865f597a362d
+    m_Address: SkillIcon/Skill_Icon_08
     m_ReadOnly: 0
     m_SerializedLabels:
     - SkillIcon
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 0cb668c2372dd464ea4bad81ee5c89a1
-    m_Address: Resources_moved/SkillIcon/yellow_42
+  - m_GUID: 50fff38ea9cbf2a41941854250e3e7ce
+    m_Address: SkillIcon/Skill_Icon_25
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SkillIcon
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fd7acb79b5f955841a7ece82f42d248a
+    m_Address: SkillIcon/Skill_Icon_20
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SkillIcon
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 153072e7f3a137341840e30a8ce96b88
+    m_Address: SkillIcon/Skill_Icon_18
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SkillIcon
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 528d637febca09f4da4be7105a0f89ac
+    m_Address: SkillIcon/Skill_Icon_16
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SkillIcon
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a46f85aad0f80e145acb678c396a3b1f
+    m_Address: SkillIcon/Skill_Icon_24
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SkillIcon
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 23a85f075ad35ef46b455029079c2f70
+    m_Address: SkillIcon/Skill_Icon_29
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SkillIcon
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f1cb41bfb30a6c04386d8d505081c3d1
+    m_Address: SkillIcon/Skill_Icon_03
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SkillIcon
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5fcf2fcf9e1c56643823cfabe1dfd64c
+    m_Address: SkillIcon/Skill_Icon_30
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SkillIcon
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a2cb3e0128f7b074fae51ca803c1b7ff
+    m_Address: SkillIcon/Skill_Icon_06
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SkillIcon
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f735023146463a547a5e288e1a80a943
+    m_Address: SkillIcon/Skill_Icon_10
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SkillIcon
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5540a19aeb8966b47a21ded1023c7998
+    m_Address: SkillIcon/Skill_Icon_05
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SkillIcon
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f64c9ba7cd34fb048a9e5c1769fe6a0b
+    m_Address: SkillIcon/Skill_Icon_09
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SkillIcon
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a8ccc70413706ed409a3ea9a2d422d63
+    m_Address: SkillIcon/Skill_Icon_21
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SkillIcon
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4e014e2e178a1714fa5b820d78562634
+    m_Address: SkillIcon/Skill_Icon_35
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SkillIcon
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e18c42151cc5b1046b57296722595eed
+    m_Address: SkillIcon/Skill_Icon_40
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SkillIcon
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4d8616f92e3c4d14eaae1b0f05be625d
+    m_Address: SkillIcon/Skill_Icon_34
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SkillIcon
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2e8c648ff4810804580fa97030f1b72b
+    m_Address: SkillIcon/Skill_Icon_38
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SkillIcon
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8849968c07c9f38409e949272cad0af5
+    m_Address: SkillIcon/Skill_Icon_02
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SkillIcon
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 670502cd647dab04da07078f72689d63
+    m_Address: SkillIcon/Skill_Icon_33
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SkillIcon
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7aa3f9be041a6b742b9cbf4035532303
+    m_Address: SkillIcon/Skill_Icon_04
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SkillIcon
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: add28454488978e48a9446e240bbc959
+    m_Address: SkillIcon/Skill_Icon_31
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SkillIcon
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 76172bc2fce327f419ba6275bb3c5db3
+    m_Address: SkillIcon/Skill_Icon_15
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - SkillIcon
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f0d580ed20a83764e8e5f4ece6bf2685
+    m_Address: SkillIcon/Skill_Icon_39
     m_ReadOnly: 0
     m_SerializedLabels:
     - SkillIcon
