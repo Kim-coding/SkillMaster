@@ -11,6 +11,7 @@ public class AreaDotSkill : MonoBehaviour, ISkillComponent, ISkill //원형 범위 �
     public DamageType damageType;
 
     private float radius;
+    private float skillCooldown;
 
     float duration = 1.0f;
     float timer = 0f;

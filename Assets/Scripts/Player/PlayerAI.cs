@@ -71,6 +71,8 @@ public class PlayerAI : MonoBehaviour , IAnimation
                 animationPrefab.transform.localScale = new Vector3(Mathf.Abs(animationPrefab.transform.localScale.x) * -1, animationPrefab.transform.localScale.y);
             }
         }
+
+        CheckSkillCooldowns();
     }
     public void SetTarget(Transform target)
     {
@@ -195,6 +197,11 @@ public class PlayerAI : MonoBehaviour , IAnimation
     
     }
 
+    public void OnAttack(GameObject skill, int skillType, float skillX, float skillY, string skillDamage,int skillPropertyID, string skillEffect)
+    {
+        playerSkills.UseSkill(skill, skillType, gameObject, currentTarget.gameObject, skillX, skillY, skillDamage, skillPropertyID, skillEffect);
+    }
+
     public void Restart()
     {
         onSkill = false;
@@ -205,4 +212,33 @@ public class PlayerAI : MonoBehaviour , IAnimation
         CheckAndChangeState();
     }
 
+
+    private void CheckSkillCooldowns()
+    {
+        for (int i = 1; i < playerSkills.castingList.Count; i++)
+        {
+            if (playerSkills.castingList[i] == null)
+            {
+                playerSkills.SetList();
+                return;
+            }
+            playerSkills.castingList[i].UpdateCooldown(Time.deltaTime);
+            if (playerSkills.castingList[i].IsCooldownComplete())
+            {
+                playerSkills.castingList[i].ResetCooldown();
+                UseSkill(playerSkills.castingList[i], playerSkills.skills[0]);
+            }
+        }
+    }
+    private void UseSkill(SkillBallController skillBall, GameObject skill)
+    {
+        var skillType = skillBall.skillType;
+        string skillDamage = skillBall.skillDamage;
+        var skillX = skillBall.atkArangeX;
+        var skillY = skillBall.atkArangeY;
+        var skillPropertyID = skillBall.skillPropertyID;
+        string skillEffect = skillBall.SkillEffect;
+
+        playerSkills.UseSkill(skill, skillType, gameObject, currentTarget.gameObject, skillX, skillY, skillDamage, skillPropertyID, skillEffect);
+    }
 }

@@ -48,6 +48,9 @@ public class SkillSpawner : MonoBehaviour
 
     private PlayerMgr playerMgr;
     private GameObject virtualObject;
+    public TMP_InputField skillLevelInputField; // InputField 연결
+    public int skillLV = 40001;
+
     private void Start()
     {
         playerMgr = GameMgr.Instance.playerMgr;
@@ -62,6 +65,10 @@ public class SkillSpawner : MonoBehaviour
         }
         autoSkillSpownButton.onClick.AddListener(AutoSkillSpawn);
         autoSkillSpownButtonText = autoSkillSpownButton.GetComponentInChildren<TextMeshProUGUI>();
+        if(skillLevelInputField != null)
+        {
+            skillLevelInputField.onEndEdit.AddListener(OnSkillLevelInputFieldEndEdit);
+        }
     }
 
     private void Update()
@@ -135,10 +142,11 @@ public class SkillSpawner : MonoBehaviour
         rt.anchoredPosition = RandomVector();
 
         var newSkillControler = newSkill.GetComponent<SkillBallController>();
-        newSkillControler.Set(40001);
+        newSkillControler.Set(skillLV);
         playerMgr.skillBallControllers.Add(newSkillControler);
         playerMgr.playerEnhance.currentSpawnSkillCount--;
         GameMgr.Instance.uiMgr.uiMerge.SkillCountUpdate();
+        GameMgr.Instance.playerMgr.playerSkills.SetList(); // 캐스팅 리스트 업데이트
         if (playerMgr.skillBallControllers.Count == maxReserveSkillCount || playerMgr.playerEnhance.currentSpawnSkillCount <= 0)
         { GameMgr.Instance.uiMgr.uiMerge.SpawnButtonUpdate(false); }
     }
@@ -150,6 +158,7 @@ public class SkillSpawner : MonoBehaviour
         newSkillControler.Set(skill_ID);
         playerMgr.skillBallControllers.Add(newSkillControler);
 
+        GameMgr.Instance.playerMgr.playerSkills.SetList(); // 캐스팅 리스트 업데이트
         GameMgr.Instance.uiMgr.uiMerge.SpawnButtonUpdate(true);
 
         EventMgr.TriggerEvent(QuestType.MergeSkillCount);
@@ -161,5 +170,17 @@ public class SkillSpawner : MonoBehaviour
         float randomX = Random.Range(bottomLeftOffset.x + bottomLeftDesiredPosition.x, topRightOffset.x + topRightDesiredPosition.x);
         float randomY = Random.Range(bottomLeftOffset.y + bottomLeftDesiredPosition.y, topRightOffset.y + topRightDesiredPosition.y);
         return new Vector3(randomX, randomY, 0);
+    }
+    private void OnSkillLevelInputFieldEndEdit(string input)
+    {
+        if (int.TryParse(input, out int level))
+        {
+            skillLV = 40000 + level;
+            Debug.Log("Skill Level set to: " + skillLV);
+        }
+        else
+        {
+            Debug.LogError("Invalid input for skill level.");
+        }
     }
 }

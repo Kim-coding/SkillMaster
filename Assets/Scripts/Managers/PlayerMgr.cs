@@ -26,6 +26,13 @@ public class PlayerMgr : MonoBehaviour
     private float spawnTime = 0f;
     private float spawnCooldown = 2f; //TO-DO 테이블에서
 
+    public PlayerSkills playerSkills;
+
+    public void Start()
+    {
+        playerSkills = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerSkills>();
+    }
+
     private void Update()
     {
         spawnTime += Time.deltaTime;

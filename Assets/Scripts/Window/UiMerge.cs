@@ -55,12 +55,12 @@ public class UiMerge : MonoBehaviour
         if(isAutoMerging)
         {
             isAutoMerging = !isAutoMerging;
-            autoMergeButtonText.text = "자동 조합";
+            autoMergeButtonText.text = "수동 조합";
         }
         else
         {
             isAutoMerging = !isAutoMerging;
-            autoMergeButtonText.text = "수동 조합";
+            autoMergeButtonText.text = "자동 조합";
         }
     }
 
@@ -105,8 +105,11 @@ public class UiMerge : MonoBehaviour
             return;
         }
 
-        var startPosition1 = skillBall1.transform.position;
-        var startPosition2 = skillBall2.transform.position;
+        var rectTransform1 = skillBall1.GetComponent<RectTransform>();
+        var rectTransform2 = skillBall2.GetComponent<RectTransform>();
+
+        var startPosition1 = rectTransform1.anchoredPosition;
+        var startPosition2 = rectTransform2.anchoredPosition; 
         var endPosition = (startPosition1 + startPosition2)/2;
 
         float moveDuration = 1f;

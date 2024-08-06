@@ -48,7 +48,7 @@ public class BattleState : IState
             return;
         }
 
-        if (player.playerSkills.castingList.Count == 0)
+        if (player.playerSkills.castingList.Count == 0 || player.playerSkills.castingList[0] == null)
         {
             player.playerSkills.SetList();
         }
@@ -79,6 +79,6 @@ public class BattleState : IState
     public void OnAttackAnimationComplete()
     {
         player.OnAttack(player.playerSkills.skills[0]);
-        player.playerSkills.castingList.RemoveAt(0);
+        //player.playerAI.castingList.RemoveAt(0); // 첫 번째 스킬만 애니메이션에 맞춰 시전하기 위함
     }
 }

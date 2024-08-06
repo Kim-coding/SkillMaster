@@ -11,10 +11,12 @@ public class SkillBallMovement : MonoBehaviour
 
     private bool isMoving = false;
     private SkillBallController skillBallController;
+    private RectTransform rectTransform;
 
     private void Start()
     {
         skillBallController = GetComponent<SkillBallController>();
+        rectTransform = GetComponent<RectTransform>();
     }
 
     public void Move(Vector3 startPosition, Vector3 endPosition, float duration)
@@ -33,11 +35,11 @@ public class SkillBallMovement : MonoBehaviour
             elapsed += Time.deltaTime;
             if (elapsed < duration)
             {
-                transform.position = Vector3.Lerp(startPosition, endPosition, elapsed / duration);
+                rectTransform.anchoredPosition = Vector2.Lerp(startPosition, endPosition, elapsed / duration);
             }
             else
             {
-                transform.position = endPosition;
+                rectTransform.anchoredPosition = endPosition;
                 isMoving = false;
                 if (skillBallController != null)
                 {

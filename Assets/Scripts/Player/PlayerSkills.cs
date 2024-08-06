@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class PlayerSkills : MonoBehaviour
@@ -11,6 +12,8 @@ public class PlayerSkills : MonoBehaviour
     public FireMagic fireMagic;
     private PlayerAI playerAI;
 
+    private GameObject skill;
+
     private void Awake()
     {
         fireMagic = new FireMagic();
@@ -19,10 +22,12 @@ public class PlayerSkills : MonoBehaviour
 
     public void UseSkill(GameObject skill, int skillType, GameObject launchPoint, GameObject target, float range, float width, string skillDamage, int skillPropertyID, string skillEffect)
     {
+        this.skill = skill;
         fireMagic.SetDamage(skillDamage);
         var attack = fireMagic.CreateAttack(playerAI.characterStat);
         CreateSkill(skill, skillType, launchPoint, target, range, width, attack, skillPropertyID, skillEffect);
     }
+
     public GameObject CreateSkill(GameObject skillPrefab, int type, GameObject launchPoint, GameObject target, float range, float width, Attack attack, int skillPropertyID, string skillEffect)
     {
         GameObject skillObject = Instantiate(skillPrefab);
@@ -72,7 +77,7 @@ public class PlayerSkills : MonoBehaviour
         }
         if (skillComponent != null)
         {
-            InitializeSkill(skillComponent, skillObject, launchPoint, target, range, width, attack,  skillPropertyID, skillEffect);
+            InitializeSkill(skillComponent, skillObject, launchPoint, target, range, width, attack, skillPropertyID, skillEffect);
         }
 
         return skillObject;

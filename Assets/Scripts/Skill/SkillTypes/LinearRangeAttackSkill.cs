@@ -7,11 +7,12 @@ public class LinearRangeAttackSkill : MonoBehaviour, ISkillComponent, ISkill
     public GameObject attacker;
     public Attack attack;
     public DamageType damageType;
-
+    private GameObject skillEffectObject;
+    private string skillEffect;
 
     float duration = 0.5f;
     float timer = 0f;
-
+    float angle;
     public void Initialize()
     {
         timer = 0f;
@@ -20,19 +21,21 @@ public class LinearRangeAttackSkill : MonoBehaviour, ISkillComponent, ISkill
         //초기화 시 필요한 나머지 작업
     }
 
-    public void ApplyShape(GameObject skillObject, Vector3 launchPoint, GameObject target, float range, float width, int skillPropertyID, string skillEffect) //스킬의 형태와 위치를 설정
+    public void ApplyShape(GameObject skillObject, Vector3 launchPoint, GameObject target, float y, float x, int skillPropertyID, string skillEffect) //스킬의 형태와 위치를 설정
     {
         this.skillObject = skillObject;
-        skillObject.transform.localScale = new Vector3(range, width, 1);
+        this.skillEffect = skillEffect;
+
+        skillObject.transform.localScale = new Vector3(x, y, 1);
 
         skillObject.AddComponent<BoxCollider2D>();
         skillObject.GetComponent<BoxCollider2D>().isTrigger = true;
         
         var rot = (target.transform.position - launchPoint).normalized;
 
-        float angle = Mathf.Atan2(rot.y, rot.x) * Mathf.Rad2Deg;
+        angle = Mathf.Atan2(rot.y, rot.x) * Mathf.Rad2Deg;
         skillObject.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
-        skillObject.transform.position = launchPoint + rot * (range / 2);
+        skillObject.transform.position = launchPoint + rot * (x);
     }
 
     public void ApplyDamageType(GameObject attacker, Attack attack, DamageType damageType, SkillShapeType shapeType) //스킬의 데미지 속성을 설정
@@ -40,6 +43,17 @@ public class LinearRangeAttackSkill : MonoBehaviour, ISkillComponent, ISkill
         this.attacker = attacker;
         this.attack = attack;
         this.damageType = damageType;
+
+        GameObject skillEffectPrefab = Resources.Load<GameObject>($"SkillEffects/{skillEffect}");
+        if (skillEffectPrefab != null)
+        {
+            skillEffectObject = Instantiate(skillEffectPrefab, skillObject.transform.position, Quaternion.identity);
+            
+            skillEffectObject.transform.rotation = Quaternion.Euler(new Vector3(0, 0, -angle));
+            
+            skillEffectObject.transform.SetParent(skillObject.transform);
+
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
