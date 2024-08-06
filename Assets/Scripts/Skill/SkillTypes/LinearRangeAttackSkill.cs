@@ -48,11 +48,10 @@ public class LinearRangeAttackSkill : MonoBehaviour, ISkillComponent, ISkill
         if (skillEffectPrefab != null)
         {
             skillEffectObject = Instantiate(skillEffectPrefab, skillObject.transform.position, Quaternion.identity);
-            
-            skillEffectObject.transform.rotation = Quaternion.Euler(new Vector3(0, 0, -angle));
-            
             skillEffectObject.transform.SetParent(skillObject.transform);
 
+            skillEffectObject.transform.localScale = new Vector3(1, 1, 1);
+            skillEffectObject.transform.rotation = skillObject.transform.rotation;
         }
     }
 
