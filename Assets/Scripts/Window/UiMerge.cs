@@ -21,7 +21,7 @@ public class UiMerge : MonoBehaviour
 
     private bool isAutoMerging = false;
     private float timer = 0f;
-    private float duration = 1f;
+    private float duration = 3f;
 
     private void Start()
     {
@@ -55,12 +55,12 @@ public class UiMerge : MonoBehaviour
         if(isAutoMerging)
         {
             isAutoMerging = !isAutoMerging;
-            autoMergeButtonText.text = "자동 조합";
+            autoMergeButtonText.text = "수동 조합";
         }
         else
         {
             isAutoMerging = !isAutoMerging;
-            autoMergeButtonText.text = "수동 조합";
+            autoMergeButtonText.text = "자동 조합";
         }
     }
 
