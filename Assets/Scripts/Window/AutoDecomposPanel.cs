@@ -30,6 +30,7 @@ public class AutoDecomposPanel : MonoBehaviour
         {
             ItemRarityToggls[i].isOn = false;
         }
+        SelectButtonUpdate();
     }
 
     private void OnToggleValueChanged(bool isOn)
@@ -148,6 +149,15 @@ public class AutoDecomposPanel : MonoBehaviour
         selectedEquipCount = autoSelectSlots.Count;
         var buttonText = SelectButton.GetComponentInChildren<TextMeshProUGUI>();
         buttonText.text = $"º±≈√({selectedEquipCount})";
+
+        if(selectedEquipCount == 0)
+        {
+            SelectButton.interactable = false;
+        }
+        else
+        {
+            SelectButton.interactable = true;
+        }
     }
 
     public void SelectConfirm()

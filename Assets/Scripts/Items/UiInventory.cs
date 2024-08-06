@@ -343,10 +343,12 @@ public class UiInventory : MonoBehaviour
             {
                 slot.currentItem.itemValue += value;
                 slot.itemCountUpdate();
+                NormalSlotCountUpdate();
                 return;
             }
         }
 
+        GameMgr.Instance.playerMgr.playerinventory.playerNormalItemList.Add(item);
         var newSlot = Instantiate(prefabNormalSlot, normalInventoryPanel.transform);
         newSlot.SetData(item);
         normalItemSlots.Add(newSlot);
@@ -382,7 +384,8 @@ public class UiInventory : MonoBehaviour
     {
         decomposMode = true;
         sortPanel.gameObject.SetActive(false);
-        decomposPanel.gameObject.SetActive(true); 
+        decomposPanel.gameObject.SetActive(true);
+        DecomposButtonUpdate();
     }
 
     public bool DecomposSelect(EquipItemSlot slot)
@@ -390,9 +393,11 @@ public class UiInventory : MonoBehaviour
         if (!selectedSlot.Contains(slot))
         {
             selectedSlot.Add(slot);
+            DecomposButtonUpdate();
             return true;
         }
         selectedSlot.Remove(slot);
+        DecomposButtonUpdate();
         return false;
     }
 
@@ -452,6 +457,7 @@ public class UiInventory : MonoBehaviour
             item.OnSelected(true);
             selectedSlot.Add(item);
         }
+        DecomposButtonUpdate();
 
     }
     public List<EquipItemSlot> GetSelectedItemCount(EquipType equipType, RarerityType rarerity)
@@ -468,5 +474,17 @@ public class UiInventory : MonoBehaviour
             }
         }
         return slots;
+    }
+
+    public void DecomposButtonUpdate()
+    {
+        if(selectedSlot.Count == 0) 
+        { 
+            confirmDecomposButton.interactable = false;
+        }
+        else
+        {
+            confirmDecomposButton.interactable = true;
+        }
     }
 }
