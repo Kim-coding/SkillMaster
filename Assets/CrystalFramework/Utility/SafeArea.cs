@@ -97,6 +97,8 @@ namespace Crystal
         #endregion
 
         public GameObject canvas;
+        private GameObject topLetterBox;
+        private GameObject bottomLetterBox;
 
         RectTransform Panel;
         Rect LastSafeArea = new Rect (0, 0, 0, 0);
@@ -241,10 +243,20 @@ namespace Crystal
             RectTransform bottomLetterboxBackground;
             RectTransform topLetterboxBackground;
 
-            bottomLetterboxBackground = new GameObject("bottomletterboxBackground").AddComponent<RectTransform>();
+            if(bottomLetterBox != null)
+            {
+                Destroy(bottomLetterBox.gameObject);
+            }
+            bottomLetterBox = new GameObject("bottomletterboxBackground");
+            bottomLetterboxBackground = bottomLetterBox.AddComponent<RectTransform>();
             bottomLetterboxBackground.SetParent(canvas.transform, false);
 
-            topLetterboxBackground = new GameObject("topLetterboxBackground").AddComponent<RectTransform>();
+            if (topLetterBox != null)
+            {
+                Destroy(topLetterBox.gameObject);
+            }
+            topLetterBox = new GameObject("topLetterboxBackground");
+            topLetterboxBackground = topLetterBox.AddComponent<RectTransform>();
             topLetterboxBackground.SetParent(canvas.transform, false);
 
 
