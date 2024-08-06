@@ -65,7 +65,10 @@ public class SkillSpawner : MonoBehaviour
         }
         autoSkillSpownButton.onClick.AddListener(AutoSkillSpawn);
         autoSkillSpownButtonText = autoSkillSpownButton.GetComponentInChildren<TextMeshProUGUI>();
-        skillLevelInputField.onEndEdit.AddListener(OnSkillLevelInputFieldEndEdit);
+        if(skillLevelInputField != null)
+        {
+            skillLevelInputField.onEndEdit.AddListener(OnSkillLevelInputFieldEndEdit);
+        }
     }
 
     private void Update()

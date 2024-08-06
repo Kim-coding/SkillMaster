@@ -5708,6 +5708,8 @@ MonoBehaviour:
   localPointY: {x: 0, y: 0, z: 0}
   autoSkillSpownButton: {fileID: 1346104801}
   autoSkillSpownButtonText: {fileID: 978656649}
+  skillLevelInputField: {fileID: 0}
+  skillLV: 40001
 --- !u!114 &240821522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7536,7 +7538,7 @@ MonoBehaviour:
   spawnButton: {fileID: 240821522}
   sortButton: {fileID: 2046850667}
   autoMergeButton: {fileID: 321616692}
-  autoMergeButtonText: {fileID: 0}
+  autoMergeButtonText: {fileID: 810647972}
   merge: {fileID: 2091457409}
 --- !u!1 &336583799
 GameObject:
@@ -28595,6 +28597,7 @@ MonoBehaviour:
   skillBallControllers: []
   goldUI: {fileID: 5086343}
   diamondUI: {fileID: 256428876}
+  playerSkills: {fileID: 0}
 --- !u!114 &1423913459
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29297,6 +29300,7 @@ MonoBehaviour:
   normalItemPanel: {fileID: 339150874}
   popUpUI: {fileID: 450711731}
   decomposPanel: {fileID: 1964705134}
+  autoDecomposSelectPanel: {fileID: 0}
 --- !u!114 &1458089215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34746,11 +34750,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8432446683903782523, guid: bd0b10f85c768234f81a78ecec3afada, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.146
+      value: -0.011000007
       objectReference: {fileID: 0}
     - target: {fileID: 8432446683903782523, guid: bd0b10f85c768234f81a78ecec3afada, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.05670001
       objectReference: {fileID: 0}
     - target: {fileID: 8432446683903782523, guid: bd0b10f85c768234f81a78ecec3afada, type: 3}
       propertyPath: m_LocalPosition.z
@@ -36645,11 +36649,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6496946428098163311, guid: 2ce039dac8e6be74e9ad8f16b8cb87c9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.161
+      value: -0.026
       objectReference: {fileID: 0}
     - target: {fileID: 6496946428098163311, guid: 2ce039dac8e6be74e9ad8f16b8cb87c9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.1177
+      value: 0.061
       objectReference: {fileID: 0}
     - target: {fileID: 6496946428098163311, guid: 2ce039dac8e6be74e9ad8f16b8cb87c9, type: 3}
       propertyPath: m_LocalPosition.z
