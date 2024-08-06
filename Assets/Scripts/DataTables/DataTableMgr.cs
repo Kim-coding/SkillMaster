@@ -58,6 +58,10 @@ public static class DataTableMgr
         gachaTable.Load(DataTableIds.gacha);
         tables.Add(DataTableIds.gacha, gachaTable);
 
+        EquipUpgradeTable equipUpgradeTable = new EquipUpgradeTable();
+        equipUpgradeTable.Load(DataTableIds.equipmentUpgrade);
+        tables.Add(DataTableIds.equipmentUpgrade, equipUpgradeTable);
+
     }
 
     private static DataTable CreateDataTable(string id)

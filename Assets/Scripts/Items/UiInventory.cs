@@ -88,6 +88,12 @@ public class UiInventory : MonoBehaviour
 
     Dictionary<EquipType, Equip> baseEquipments;
 
+
+    /// <summary>
+    /// 장비 강화 관련
+    /// </summary>
+    public Button equipUpgradeButton;
+
     public void SortItemSlots()
     {
         equipItemSlots.Sort(comparison[sortDropDown.value]);
@@ -249,6 +255,7 @@ public class UiInventory : MonoBehaviour
         cancleDecomposButton.onClick.AddListener(OffDecomposMode);
         confirmDecomposButton.onClick.AddListener(OpenDecomposPanel);
         autoDecomposButton.onClick.AddListener(OpenAutoDecomposPanel);
+        equipUpgradeButton.onClick.AddListener(OpenEquipUpgradePanel);
         //데이터 테이블 호출
         //키 호출
 
@@ -486,5 +493,10 @@ public class UiInventory : MonoBehaviour
         {
             confirmDecomposButton.interactable = true;
         }
+    }
+
+    public void OpenEquipUpgradePanel()
+    {
+        GameMgr.Instance.uiMgr.uiWindow.equipUpgradePanel.gameObject.SetActive(true);
     }
 }
