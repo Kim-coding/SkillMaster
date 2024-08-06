@@ -21,6 +21,13 @@ public class PlayerInventory
     public Equip playerCloak;
 
 
+    public int hairSlotUpgrade;
+    public int faceSlotUpgrade;
+    public int clothSlotUpgrade;
+    public int pantSlotUpgrade;
+    public int weaponSlotUpgrade;
+    public int cloakSlotUpgrade;
+
     public List<Equip> playerEquipItemList = new List<Equip> { };
     public List<Item> playerNormalItemList = new List<Item> { };
     public int maxSlots = 150;
@@ -65,6 +72,15 @@ public class PlayerInventory
         playerPant = basePant;
         playerWeapon = baseWeapon;
         playerCloak = baseCloak;
+
+
+        hairSlotUpgrade = 0;
+        faceSlotUpgrade = 0;
+        clothSlotUpgrade = 0;
+        pantSlotUpgrade = 0;
+        weaponSlotUpgrade = 0;
+        cloakSlotUpgrade = 0;
+
         ItemOptionsUpdate();
 
     }
@@ -191,41 +207,92 @@ public class PlayerInventory
     }
     private void optionSearch(Equip equip)
     {
+        float equipSlotUpgradePercent = 1f;
+        int equipSlotUpgradeLevel = 0;
+
+        switch (equip.equipType)
+        {
+            case EquipType.None:
+                break;
+            case EquipType.Hair:
+                equipSlotUpgradeLevel = Mathf.Min(hairSlotUpgrade, EquipRarityCheck(equip.rarerityType));
+                break; 
+            case EquipType.Face:
+                equipSlotUpgradeLevel = Mathf.Min(faceSlotUpgrade, EquipRarityCheck(equip.rarerityType));
+                break;
+            case EquipType.Cloth:
+                equipSlotUpgradeLevel = Mathf.Min(clothSlotUpgrade, EquipRarityCheck(equip.rarerityType));
+                break;
+            case EquipType.Pants:
+                equipSlotUpgradeLevel = Mathf.Min(pantSlotUpgrade, EquipRarityCheck(equip.rarerityType));
+                break;
+            case EquipType.Weapon:
+                equipSlotUpgradeLevel = Mathf.Min(weaponSlotUpgrade, EquipRarityCheck(equip.rarerityType));
+                break;
+            case EquipType.Cloak:
+                equipSlotUpgradeLevel = Mathf.Min(cloakSlotUpgrade, EquipRarityCheck(equip.rarerityType));
+                break;
+        }
+        float equipSlotUpgradeValue = 1f;
+        equipSlotUpgradePercent = 1 + (equipSlotUpgradeLevel * equipSlotUpgradeValue / 100f);
+
         foreach (var option in equip.EquipOption.currentOptions)
         {
             switch (option.Item1)
             {
                 case OptionType.attackPower:
-                    itemAttackPower += option.Item2;
+                    itemAttackPower += option.Item2 * equipSlotUpgradePercent;
                     break;
                 case OptionType.criticalPercent:
-                    itemCriticalPercent += option.Item2;
+                    itemCriticalPercent += option.Item2 * equipSlotUpgradePercent;
                     break;
                 case OptionType.criticalMultiple:
-                    itemCriticalMultiple += option.Item2;
+                    itemCriticalMultiple += option.Item2 * equipSlotUpgradePercent;
                     break;
                 case OptionType.attackSpeed:
-                    itemAttackSpeed += option.Item2;
+                    itemAttackSpeed += option.Item2 * equipSlotUpgradePercent;
                     break;
                 case OptionType.deffence:
-                    itemDeffence += option.Item2;
+                    itemDeffence += option.Item2 * equipSlotUpgradePercent;
                     break;
                 case OptionType.maxHealth:
-                    itemMaxHealth += option.Item2;
+                    itemMaxHealth += option.Item2 * equipSlotUpgradePercent;
                     break;
                 case OptionType.speed:
-                    itemSpeed += option.Item2;
+                    itemSpeed += option.Item2 * equipSlotUpgradePercent;
                     break;
                 case OptionType.goldIncrease:
-                    itemGoldIncrease += option.Item2;
+                    itemGoldIncrease += option.Item2 * equipSlotUpgradePercent;
                     break;
                 case OptionType.recovery:
-                    itemRecovery += option.Item2;
+                    itemRecovery += option.Item2 * equipSlotUpgradePercent;
                     break;
                 case OptionType.attackRange:
-                    itemAttackRange += option.Item2;
+                    itemAttackRange += option.Item2 * equipSlotUpgradePercent;
                     break;
             }
         }
+    }
+
+
+
+    private int EquipRarityCheck(RarerityType rarerity)
+    {
+        switch (rarerity)
+        {
+            case RarerityType.C:
+                return 10;
+            case RarerityType.B:
+                return 20;
+            case RarerityType.A:
+                return 30;
+            case RarerityType.S:
+                return 40;
+            case RarerityType.SS:
+                return 50;
+            case RarerityType.SSS:
+                return 60;
+        }
+        return int.MaxValue;
     }
 }
