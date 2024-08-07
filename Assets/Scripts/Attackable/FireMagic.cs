@@ -31,7 +31,7 @@ public class FireMagic : AttackDefinition
             damage.numberList[damage.factor - 1] = 1;
         } // 데미지 0은 안되게 최소 보정
 
-        bool isCritical = Random.value < PState.playerCriticalPercent;
+        bool isCritical = Random.Range(0,100) < PState.playerCriticalPercent;
         if (isCritical)
         {
             damage *= (1 + (PState.playerCriticalMultiple/100f));
