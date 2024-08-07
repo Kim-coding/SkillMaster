@@ -123,2248 +123,5104 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_0
+      name: Skill_14_0
       rect:
         serializedVersion: 2
-        x: 512
-        y: 3168
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 714
+        y: 3199
+        width: 47
+        height: 23
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 03a6d857d0f9e5a4ea4222b37d4f8184
-      internalID: 990081116
+      spriteID: e54f7cb97c8b02c4c9f5068239e4483c
+      internalID: 1795032526
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_1
+      name: Skill_14_1
       rect:
         serializedVersion: 2
-        x: 1024
-        y: 3168
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 756
+        y: 3198
+        width: 33
+        height: 24
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ffe337756ac4629429ddadf1f802df33
-      internalID: 1449702632
+      spriteID: d6a6c61f0967e504582aaf116c0f0274
+      internalID: -2126525178
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_2
+      name: Skill_14_2
       rect:
         serializedVersion: 2
-        x: 1536
-        y: 3168
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 798
+        y: 3198
+        width: 24
+        height: 24
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 183e78560851cd14693470ab1cc1d02b
-      internalID: 1604114546
+      spriteID: cbcdedb0e285c2241a198539c56ea694
+      internalID: -547824381
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_3
+      name: Skill_14_3
       rect:
         serializedVersion: 2
-        x: 2048
-        y: 3168
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1230
+        y: 3192
+        width: 108
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5bcddb1798b4444449228d4404ec8e9e
-      internalID: -1119831396
+      spriteID: 3d34d35e28d0f634d99309d77d6b42e1
+      internalID: 1376437483
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_4
+      name: Skill_14_4
       rect:
         serializedVersion: 2
-        x: 2560
-        y: 3168
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1740
+        y: 3192
+        width: 108
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7c343cfa1c342014aa5fcbcfa28bcf79
-      internalID: -1766036238
+      spriteID: bb5242dfc54189e48954f53967eb4abd
+      internalID: -386475995
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_5
+      name: Skill_14_5
       rect:
         serializedVersion: 2
-        x: 3072
-        y: 3168
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 2250
+        y: 3192
+        width: 114
+        height: 42
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f9c88e3801c88034f800256bd4afee27
-      internalID: -1373054011
+      spriteID: c51f204a6ace7bd43b49f65aed587ca2
+      internalID: 546690083
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_6
+      name: Skill_14_6
       rect:
         serializedVersion: 2
-        x: 3584
-        y: 3168
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 2765
+        y: 3192
+        width: 109
+        height: 42
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b43ce3c2a43f6134eb300a4be45b5dc5
-      internalID: -767633987
+      spriteID: 2416db1d548733c48be72f5d133b03fc
+      internalID: 725583134
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_7
+      name: Skill_14_7
       rect:
         serializedVersion: 2
-        x: 4096
-        y: 3168
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 3276
+        y: 3192
+        width: 114
+        height: 48
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e25b809c51a1dfc468909ca296009111
-      internalID: -749249020
+      spriteID: 9d6a0cb5806e6014d8601d4818241267
+      internalID: 18823509
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_8
+      name: Skill_14_8
       rect:
         serializedVersion: 2
-        x: 4608
-        y: 3168
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 3786
+        y: 3192
+        width: 114
+        height: 48
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 984154ea622096c4caa9b93c9ec715fa
-      internalID: 204074294
+      spriteID: 6846a6436504f6f4e84d114b3b6405c1
+      internalID: 634177293
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_9
+      name: Skill_14_9
       rect:
         serializedVersion: 2
-        x: 0
-        y: 2880
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 4296
+        y: 3192
+        width: 120
+        height: 54
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 41e5a20a0a39d354aabefd82f84c5e78
-      internalID: -2109018007
+      spriteID: d3b7fd8e3a508eb41be870112f0f792a
+      internalID: 30902805
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_10
+      name: Skill_14_10
       rect:
         serializedVersion: 2
-        x: 512
-        y: 2880
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 4806
+        y: 3192
+        width: 120
+        height: 54
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 13633c68be674b843b4dc9835b31c3eb
-      internalID: -1534309636
+      spriteID: 68cd068ce2b8dd64ba212f8d4cf91adc
+      internalID: 197746699
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_11
+      name: Skill_14_11
       rect:
         serializedVersion: 2
-        x: 1024
-        y: 2880
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 204
+        y: 2904
+        width: 114
+        height: 60
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 73dd64df862753a4e87076486069009c
-      internalID: 1008398003
+      spriteID: e399a7c6a05c6b440beee6d32e60cc12
+      internalID: -270393858
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_12
+      name: Skill_14_12
       rect:
         serializedVersion: 2
-        x: 1536
-        y: 2880
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 714
+        y: 2904
+        width: 120
+        height: 60
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5e05de81b4aad504b8fb1066ce8d204c
-      internalID: -467279943
+      spriteID: 4d59b9ad92178254686532e50d777026
+      internalID: 453456787
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_13
+      name: Skill_14_13
       rect:
         serializedVersion: 2
-        x: 2048
-        y: 2880
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1224
+        y: 2904
+        width: 120
+        height: 66
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b4f7686c7b050df4e824e468c7f053f3
-      internalID: 622762082
+      spriteID: 4c08ba4f9544f6949b535b75e7e17fcc
+      internalID: -794659762
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_14
+      name: Skill_14_14
       rect:
         serializedVersion: 2
-        x: 2560
-        y: 2880
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1735
+        y: 2904
+        width: 121
+        height: 66
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e60c01cefe94bf647bdb6be61a799533
-      internalID: -1129588405
+      spriteID: 0adc3e65de9666d449c6d2d6728d66d9
+      internalID: -850841858
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_15
+      name: Skill_14_15
       rect:
         serializedVersion: 2
-        x: 3072
-        y: 2880
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 2250
+        y: 2904
+        width: 120
+        height: 72
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7a103924d7469d04083a12d457b710e3
-      internalID: 741247619
+      spriteID: 70a2082f7d597fb43bafbbaf0b43de6b
+      internalID: -1574812333
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_16
+      name: Skill_14_16
       rect:
         serializedVersion: 2
-        x: 3584
-        y: 2880
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 2760
+        y: 2904
+        width: 120
+        height: 72
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fcc59520b3155c94fa6e89b659cd7bc3
-      internalID: 952709150
+      spriteID: b4d8c9dd1bc895f4b8333f2bfb3fa7c8
+      internalID: 622430646
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_17
+      name: Skill_14_17
       rect:
         serializedVersion: 2
-        x: 4096
-        y: 2880
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 3273
+        y: 2904
+        width: 123
+        height: 78
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fc770f17a1fb67a428f9acbbdbd3d428
-      internalID: 174904742
+      spriteID: 6171a3f7ab32ba44ab1a20a6be5aa2af
+      internalID: 1313245181
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_18
+      name: Skill_14_18
       rect:
         serializedVersion: 2
-        x: 4608
-        y: 2880
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 3781
+        y: 2904
+        width: 125
+        height: 78
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ce9f129ad83e1804c9d00941e192fc73
-      internalID: 413585331
+      spriteID: 5789ff4dbc562a442bea1ed4a15481d2
+      internalID: 865030874
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_19
+      name: Skill_14_19
       rect:
         serializedVersion: 2
-        x: 0
-        y: 2592
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 4290
+        y: 2904
+        width: 126
+        height: 84
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 91b5740b47061b64ebcea0dce9c8d676
-      internalID: 344280569
+      spriteID: 83117e9c69653cf4f9c90398784e2541
+      internalID: 1398245202
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_20
+      name: Skill_14_20
       rect:
         serializedVersion: 2
-        x: 512
-        y: 2592
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 4806
+        y: 2904
+        width: 126
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 963236ecb19cd67459c19d9783f9c627
-      internalID: 1348622399
+      spriteID: 9c8f0adcbbba77d4d800399e7a806621
+      internalID: -347604776
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_21
+      name: Skill_14_21
       rect:
         serializedVersion: 2
-        x: 1024
-        y: 2592
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 192
+        y: 2616
+        width: 132
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7c559b67bdd3e6942ae55373a1c875a6
-      internalID: 1779725152
+      spriteID: 9effe157ef5f6384baf23b21745263a8
+      internalID: 490237171
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_22
+      name: Skill_14_22
       rect:
         serializedVersion: 2
-        x: 1536
-        y: 2592
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 702
+        y: 2616
+        width: 132
+        height: 90
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 998fe4fff45b09245b0e4aab3da16247
-      internalID: -16387432
+      spriteID: 679dcde03e03a4940a84a1deb6f3d43e
+      internalID: -1894916498
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_23
+      name: Skill_14_23
       rect:
         serializedVersion: 2
-        x: 2048
-        y: 2592
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1218
+        y: 2616
+        width: 132
+        height: 96
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 750297327275d604bbbacf38846267f2
-      internalID: -553961869
+      spriteID: e32f7c1812cb56d43ac33c4ca51aaed3
+      internalID: 1902059330
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_24
+      name: Skill_14_24
       rect:
         serializedVersion: 2
-        x: 2560
-        y: 2592
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1728
+        y: 2616
+        width: 132
+        height: 96
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b565b120cd2c0764aa9136d6fe34cd4a
-      internalID: 621939718
+      spriteID: 312d70773d195f1449a5defd0a86cb9c
+      internalID: -1388306592
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_25
+      name: Skill_14_25
       rect:
         serializedVersion: 2
-        x: 3072
-        y: 2592
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 2239
+        y: 2616
+        width: 137
+        height: 102
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 408e103b5593073458f5463fff6ffa9d
-      internalID: 651803447
+      spriteID: 1eb81a8ab73d6744db3c1423c5290e94
+      internalID: 348606235
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_26
+      name: Skill_14_26
       rect:
         serializedVersion: 2
-        x: 3584
-        y: 2592
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 2752
+        y: 2616
+        width: 134
+        height: 102
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a710a8e014b32cb4da1f6c4434cba1a3
-      internalID: -84560399
+      spriteID: ab47f3b186417b7499f486361d33aa10
+      internalID: -1041353186
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_27
+      name: Skill_14_27
       rect:
         serializedVersion: 2
-        x: 4096
-        y: 2592
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 3258
+        y: 2616
+        width: 144
+        height: 108
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1773e460562471b44849c62e8afbca11
-      internalID: 607835492
+      spriteID: 6781be2859bc7574681f2dcf3708e2ca
+      internalID: 586689958
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_28
+      name: Skill_14_28
       rect:
         serializedVersion: 2
-        x: 4608
-        y: 2592
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 3774
+        y: 2616
+        width: 138
+        height: 108
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c640493b979169f43b53226cd5331857
-      internalID: 389695383
+      spriteID: 51adcde2b8dc46845ac57820cc80e16d
+      internalID: 1775637191
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_29
+      name: Skill_14_29
       rect:
         serializedVersion: 2
-        x: 0
-        y: 2304
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 4284
+        y: 2616
+        width: 138
+        height: 114
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c8d45c21d3c77624bba364387add0280
-      internalID: -551898567
+      spriteID: 9ef02ad672da4d24c8cfbf0031905432
+      internalID: 1604300957
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_30
+      name: Skill_14_30
       rect:
         serializedVersion: 2
-        x: 512
-        y: 2304
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 4794
+        y: 2616
+        width: 144
+        height: 114
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 60ad4772cf5d77a47bed6a308e68d052
-      internalID: 1304424433
+      spriteID: 2bbeedd400771534b859a8ca8eb21ef2
+      internalID: -1423208419
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_31
+      name: Skill_14_31
       rect:
         serializedVersion: 2
-        x: 1024
-        y: 2304
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 3810
+        y: 2466
+        width: 6
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8ccc7778d26e06447915f849b1996cda
-      internalID: -2004718011
+      spriteID: 4982b9ef86fbf3a47b76af8b2e5a49c5
+      internalID: -350223955
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_32
+      name: Skill_14_32
       rect:
         serializedVersion: 2
-        x: 1536
-        y: 2304
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 4404
+        y: 2496
+        width: 6
+        height: 6
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a811f34dd6849d244b2d292563479631
-      internalID: 970898205
+      spriteID: 32057c6125edc8740a308356d05c767d
+      internalID: -713412624
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_33
+      name: Skill_14_33
       rect:
         serializedVersion: 2
-        x: 2048
-        y: 2304
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 4842
+        y: 2496
+        width: 6
+        height: 6
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9c0175a228a205a47b4dbc20735acd61
-      internalID: -574984709
+      spriteID: 0eb0323d2303abc4787e4eaab65fca63
+      internalID: 61177634
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_34
+      name: Skill_14_34
       rect:
         serializedVersion: 2
-        x: 2560
-        y: 2304
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 3768
+        y: 2322
+        width: 150
+        height: 174
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9a4d0cd422f441941b588c1d9ff3c4bb
-      internalID: -651311797
+      spriteID: 5539fd16cf6665942b0721762a9363e0
+      internalID: 2056794653
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_35
+      name: Skill_14_35
       rect:
         serializedVersion: 2
-        x: 3072
-        y: 2304
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 4842
+        y: 2484
+        width: 6
+        height: 6
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 63661a0bdcead4c459a3a8013656fcec
-      internalID: 667347641
+      spriteID: 0131fa3dbfeef964193718011a5d4785
+      internalID: -2027333241
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_36
+      name: Skill_14_36
       rect:
         serializedVersion: 2
-        x: 3584
-        y: 2304
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 186
+        y: 2328
+        width: 144
+        height: 120
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6db0e648f7ed4ae45abd22077738998f
-      internalID: -1801484001
+      spriteID: 7618e3ab478803a4d9ae6d865b30884e
+      internalID: -81171533
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_37
+      name: Skill_14_37
       rect:
         serializedVersion: 2
-        x: 4096
-        y: 2304
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 696
+        y: 2328
+        width: 144
+        height: 126
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2445e4c5bca8c9d4f94d5a4e1a2bdb36
-      internalID: 1622415611
+      spriteID: 6e3062dedd32d33448ec14e04830f3c1
+      internalID: -444585805
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_38
+      name: Skill_14_38
       rect:
         serializedVersion: 2
-        x: 4608
-        y: 2304
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1212
+        y: 2328
+        width: 138
+        height: 126
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 74e2ec048f2838f4db54deea3f337fe3
-      internalID: 344423553
+      spriteID: 682e0d0bad227234cb7347e1e476b575
+      internalID: -275716842
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_39
+      name: Skill_14_39
       rect:
         serializedVersion: 2
-        x: 0
-        y: 2016
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1722
+        y: 2328
+        width: 144
+        height: 132
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 826a35ec6726b8e40b6550a7a755795e
-      internalID: -415220828
+      spriteID: c0ac253c91e2ba34c846414040805246
+      internalID: -909944339
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_40
+      name: Skill_14_40
       rect:
         serializedVersion: 2
-        x: 512
-        y: 2016
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 2232
+        y: 2328
+        width: 174
+        height: 132
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1601c8c7b3e09024186ec0a9746a864d
-      internalID: 1201254036
+      spriteID: 2f829d844c38bcd4d9a7499a2905e724
+      internalID: 829612989
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_41
+      name: Skill_14_41
       rect:
         serializedVersion: 2
-        x: 1024
-        y: 2016
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 2748
+        y: 2328
+        width: 144
+        height: 138
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ea3be9143183df44bbe17eefd1e44009
-      internalID: 149180143
+      spriteID: 0a94fbce384e2174a91b9ea6b33bede4
+      internalID: -1371790590
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_42
+      name: Skill_14_42
       rect:
         serializedVersion: 2
-        x: 1536
-        y: 2016
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 3258
+        y: 2322
+        width: 144
+        height: 144
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dc8145f8ff4b310469237a7e171f3711
-      internalID: -1703937383
+      spriteID: a9717312369f66a43b4bfa4913f03522
+      internalID: 1369293383
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_43
+      name: Skill_14_43
       rect:
         serializedVersion: 2
-        x: 2048
-        y: 2016
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 4278
+        y: 2322
+        width: 150
+        height: 150
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e6b4f0684f1155d4f941c23eaa2440ac
-      internalID: -1175541493
+      spriteID: 1e10dc7e8281e8a4a89dee9d54a3986e
+      internalID: -638359990
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_44
+      name: Skill_14_44
       rect:
         serializedVersion: 2
-        x: 2560
-        y: 2016
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 4788
+        y: 2322
+        width: 156
+        height: 156
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3da0477e78f851843945630de715418c
-      internalID: 1335986937
+      spriteID: ba353f527d47e854eb2d4c4cacab928a
+      internalID: -2056748508
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_45
+      name: Skill_14_45
       rect:
         serializedVersion: 2
-        x: 3072
-        y: 2016
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 4968
+        y: 2430
+        width: 6
+        height: 6
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d4bd8ec64b3d02f4a9a6b9608c1337a9
-      internalID: -713720177
+      spriteID: 21bc666be3cc02d409f2891510a1627f
+      internalID: 559242565
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_46
+      name: Skill_14_46
       rect:
         serializedVersion: 2
-        x: 3584
-        y: 2016
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1794
+        y: 2226
+        width: 6
+        height: 6
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 00c3ef16e2d5ddc46944a0d01b3d1400
-      internalID: -97543567
+      spriteID: 5fe05d95491576e4d83860678167b4dd
+      internalID: -560283356
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_47
+      name: Skill_14_47
       rect:
         serializedVersion: 2
-        x: 4096
-        y: 2016
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 3762
+        y: 2046
+        width: 150
+        height: 198
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b91405bc3f94d804f85052e2540febd7
-      internalID: -86323630
+      spriteID: 43184ab73a011b24d9d2fb00d3a14ecb
+      internalID: 23144627
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_48
+      name: Skill_14_48
       rect:
         serializedVersion: 2
-        x: 4608
-        y: 2016
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 2739
+        y: 2040
+        width: 155
+        height: 168
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0f5c55247dc72df4592e9b2095a5296b
-      internalID: -1539692401
+      spriteID: e887b35762c7f5144bb882cec1e67131
+      internalID: 947536904
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_49
+      name: Skill_14_49
       rect:
         serializedVersion: 2
-        x: 0
-        y: 1728
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 3252
+        y: 2046
+        width: 156
+        height: 168
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 136ced7e83357784a8182e9b87e65cda
-      internalID: 2112157047
+      spriteID: 1870d5656c49b8447aef5834435587a1
+      internalID: 1871918460
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_50
+      name: Skill_14_50
       rect:
         serializedVersion: 2
-        x: 512
-        y: 1728
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 4272
+        y: 2046
+        width: 154
+        height: 174
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 072ae3a137d57c74fb2dfdda7c2227db
-      internalID: -1863304641
+      spriteID: 18b01d44fe263c64eb7ea7076a4dfe2e
+      internalID: -587062446
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_51
+      name: Skill_14_51
       rect:
         serializedVersion: 2
-        x: 1024
-        y: 1728
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 4452
+        y: 2202
+        width: 6
+        height: 6
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 242f7108eac1a034b96b9c85e2fa6f63
-      internalID: 1048028253
+      spriteID: 39555e0d177fb054eb72cef26fa6cc1e
+      internalID: 742907974
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_52
+      name: Skill_14_52
       rect:
         serializedVersion: 2
-        x: 1536
-        y: 1728
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 4782
+        y: 2046
+        width: 157
+        height: 174
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b8a825c3f98460841ac58296e089cb53
-      internalID: 15227955
+      spriteID: e82bad9ade1a46c44adf52bbe7738cbc
+      internalID: -1339529983
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_53
+      name: Skill_14_53
       rect:
         serializedVersion: 2
-        x: 2048
-        y: 1728
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 180
+        y: 2034
+        width: 156
+        height: 156
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0b4119bf8b76beb4797c9e224fda36be
-      internalID: 654656327
+      spriteID: 1badd14fde4eb8146a9f4fb02994c9bd
+      internalID: -603921684
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_54
+      name: Skill_14_54
       rect:
         serializedVersion: 2
-        x: 2560
-        y: 1728
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 696
+        y: 2034
+        width: 150
+        height: 162
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f2fb33b0f9d066b4ab5760f82a81125f
-      internalID: 1536120028
+      spriteID: 3c83cab583428194c955f2937d248af2
+      internalID: -2052834348
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_55
+      name: Skill_14_55
       rect:
         serializedVersion: 2
-        x: 3072
-        y: 1728
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1206
+        y: 2040
+        width: 156
+        height: 156
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 10fbce2c580c9984691ace08b8872499
-      internalID: 1148903021
+      spriteID: 59b4daa0c4d23e04e9980277687b852d
+      internalID: 1947469693
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_56
+      name: Skill_14_56
       rect:
         serializedVersion: 2
-        x: 3584
-        y: 1728
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1716
+        y: 2040
+        width: 156
+        height: 162
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f8b7504fda4adea469aa4277d0634e75
-      internalID: -1638515187
+      spriteID: 85852a662f51f3343883814faf804490
+      internalID: -507440137
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_57
+      name: Skill_14_57
       rect:
         serializedVersion: 2
-        x: 4096
-        y: 1728
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 2232
+        y: 2040
+        width: 150
+        height: 162
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9a8b87beef7a9a7439bbb4d5a3791c8d
-      internalID: -457555978
+      spriteID: a61aecd8e7f3ada40a019cb7aebaf589
+      internalID: 1809445558
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_58
+      name: Skill_14_58
       rect:
         serializedVersion: 2
-        x: 4608
-        y: 1728
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 4248
+        y: 2178
+        width: 6
+        height: 6
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e590497c34e19184c82c59e553222f1c
-      internalID: -160263204
+      spriteID: 5cdc2ca681120b040974ee80d5d032b6
+      internalID: -1745488884
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_59
+      name: Skill_14_59
       rect:
         serializedVersion: 2
-        x: 0
-        y: 1440
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 2226
+        y: 2160
+        width: 6
+        height: 6
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b31b384518cb410499eaec542f462ac5
-      internalID: -589512959
+      spriteID: bc21b6c012c4ea84c987fe6a1358abd7
+      internalID: -1829132749
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_60
+      name: Skill_14_60
       rect:
         serializedVersion: 2
-        x: 512
-        y: 1440
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 3246
+        y: 2154
+        width: 13
+        height: 13
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2f4018c2cc1c2624d99e0c2588607e69
-      internalID: -751731137
+      spriteID: 2ed18bf4bab5fc041889d019d4890bf3
+      internalID: -1811115615
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_61
+      name: Skill_14_61
       rect:
         serializedVersion: 2
-        x: 1024
-        y: 1440
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 3906
+        y: 2143
+        width: 15
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a781e228a98d5e645926b6b96be1741d
-      internalID: -36859569
+      spriteID: 9809055d09572cc478be25437b031299
+      internalID: 682442969
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_62
+      name: Skill_14_62
       rect:
         serializedVersion: 2
-        x: 1536
-        y: 1440
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 4422
+        y: 2148
+        width: 10
+        height: 14
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 28ba102582dd1174cbdd925df39dd56d
-      internalID: 1674345217
+      spriteID: 8f9a59f13ff9b6d469d9636d95aeb175
+      internalID: 1000720380
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_63
+      name: Skill_14_63
       rect:
         serializedVersion: 2
-        x: 2048
-        y: 1440
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 2376
+        y: 2136
+        width: 7
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 78d7aa3a605739d4daa72499b96b55e1
-      internalID: 2113346591
+      spriteID: e4f0af6f833c47b41af2043e4a974660
+      internalID: 475733199
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_64
+      name: Skill_14_64
       rect:
         serializedVersion: 2
-        x: 2560
-        y: 1440
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 2887
+        y: 2136
+        width: 11
+        height: 22
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 13b25c8307f339946b6e016791150237
-      internalID: 1013913610
+      spriteID: 7cc22988d624e474fadff2785e09566f
+      internalID: -576821512
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_65
+      name: Skill_14_65
       rect:
         serializedVersion: 2
-        x: 3072
-        y: 1440
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 3402
+        y: 2151
+        width: 5
+        height: 6
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5807b068055e22645bcf4e9ae96d8377
-      internalID: -961380778
+      spriteID: c2e7c3f1691f0f148bf82d45b17ff36f
+      internalID: 96651849
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_66
+      name: Skill_14_66
       rect:
         serializedVersion: 2
-        x: 3584
-        y: 1440
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 3398
+        y: 2142
+        width: 5
+        height: 6
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bae62d0f44d6c324ea17ef1b9b0bd6be
-      internalID: -762127756
+      spriteID: fd9719e318c6281448fa8ea76061b145
+      internalID: 1310297552
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_67
+      name: Skill_14_67
       rect:
         serializedVersion: 2
-        x: 4096
-        y: 1440
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 4937
+        y: 2137
+        width: 5
+        height: 9
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 825bb7b16b8ecc4409cdd784e0f13751
-      internalID: 1434850224
+      spriteID: 6b422266380bd644abc8bfb5392f1bba
+      internalID: 1431782740
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_68
+      name: Skill_14_68
       rect:
         serializedVersion: 2
-        x: 4608
-        y: 1440
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 3396
+        y: 2124
+        width: 12
+        height: 12
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3708fe8cdf229a94fb66eb9e8e80b042
-      internalID: 2050203921
+      spriteID: 6d7a628d20c64d04dba2e0ff2082d0eb
+      internalID: -675663393
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_69
+      name: Skill_14_69
       rect:
         serializedVersion: 2
-        x: 0
-        y: 1152
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 3912
+        y: 2130
+        width: 6
+        height: 6
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 82f1774940fa0bc4796eef520df72b02
-      internalID: -101783329
+      spriteID: 81938a0520c254d4ea20f57c2ac72b74
+      internalID: 1207530254
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_70
+      name: Skill_14_70
       rect:
         serializedVersion: 2
-        x: 512
-        y: 1152
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 4422
+        y: 2130
+        width: 6
+        height: 10
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6ffbe015bc38bcd48bd394c1c147cafe
-      internalID: 498631657
+      spriteID: 08d50e72f1b453242b94942ca42f1219
+      internalID: -1238296473
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_71
+      name: Skill_14_71
       rect:
         serializedVersion: 2
-        x: 1024
-        y: 1152
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 4932
+        y: 2116
+        width: 12
+        height: 17
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 03fa8c46ecbef7d4c8b06911241bc067
-      internalID: 1497613664
+      spriteID: 18a487d146bc3304bb154de370d2f2c6
+      internalID: -1994719855
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_72
+      name: Skill_14_72
       rect:
         serializedVersion: 2
-        x: 1536
-        y: 1152
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 3396
+        y: 2107
+        width: 10
+        height: 11
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b6ea5a08eb9fef540be5053cb1fd8909
-      internalID: -1687902766
+      spriteID: f87debf1f5d604c40ba4bd123f8db38f
+      internalID: -1973608865
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_73
+      name: Skill_14_73
       rect:
         serializedVersion: 2
-        x: 2048
-        y: 1152
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 3913
+        y: 2112
+        width: 4
+        height: 6
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9810e2dc8fbfb4d44965acc007d4b2f0
-      internalID: 1147887081
+      spriteID: 4e57f6a6446867740bd2fbc881205036
+      internalID: -804560200
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_74
+      name: Skill_14_74
       rect:
         serializedVersion: 2
-        x: 2560
-        y: 1152
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 4422
+        y: 2111
+        width: 8
+        height: 7
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c06438122b024554991ca3e30b1586d5
-      internalID: 1614929587
+      spriteID: 07a0d3fc3e97ebb4697e5533f1f27fcc
+      internalID: -1056000206
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_75
+      name: Skill_14_75
       rect:
         serializedVersion: 2
-        x: 3072
-        y: 1152
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 772
+        y: 1931
+        width: 8
+        height: 37
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6a04fe9bfbb093a49bccadc04229ca14
-      internalID: -1277767056
+      spriteID: 04f265807fe065a40b913992fb0ecd54
+      internalID: -635162624
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_76
+      name: Skill_14_76
       rect:
         serializedVersion: 2
-        x: 3584
-        y: 1152
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 3240
+        y: 1758
+        width: 178
+        height: 195
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1acb546ad9a55114c988ff84ee234446
-      internalID: -1453503470
+      spriteID: 8b5382ff17bb010439878ae340d4e8c9
+      internalID: -1451688886
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_77
+      name: Skill_14_77
       rect:
         serializedVersion: 2
-        x: 4096
-        y: 1152
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 3295
+        y: 1944
+        width: 17
+        height: 10
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4394f865a2b105948b3efbb4fb75d779
-      internalID: 1060978313
+      spriteID: 34f3eea63d5eca445bdf321ef64c4e75
+      internalID: 2084078642
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_78
+      name: Skill_14_78
       rect:
         serializedVersion: 2
-        x: 4608
-        y: 1152
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 3333
+        y: 1943
+        width: 16
+        height: 11
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 324bd4e1ec1c7d74287fdb5d464b74ea
-      internalID: -757479569
+      spriteID: 2bde213a8c286d24d82d50af618359da
+      internalID: 663566333
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_79
+      name: Skill_14_79
       rect:
         serializedVersion: 2
-        x: 0
-        y: 864
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 3366
+        y: 1949
+        width: 4
+        height: 4
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2d08107cea3d5484582524d0237a4abb
-      internalID: 922072911
+      spriteID: d00cc117a0f6b704c96245a796709f89
+      internalID: 409193974
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_80
+      name: Skill_14_80
       rect:
         serializedVersion: 2
-        x: 512
-        y: 864
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 3750
+        y: 1761
+        width: 180
+        height: 196
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 97ba4aba392abe8448f70a481fe0b067
-      internalID: 117244675
+      spriteID: 3c3cd9403a332954c8a07b53f42312f0
+      internalID: -906963113
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_81
+      name: Skill_14_81
       rect:
         serializedVersion: 2
-        x: 1024
-        y: 864
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 3847
+        y: 1948
+        width: 4
+        height: 5
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 757e2ac92d2ebbf4b901eceeb1b74de2
-      internalID: 229259261
+      spriteID: da4edadaf1b5b4e4fbf13c6d37d4886a
+      internalID: 818591390
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_82
+      name: Skill_14_82
       rect:
         serializedVersion: 2
-        x: 1536
-        y: 864
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 3854
+        y: 1952
+        width: 4
+        height: 4
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0681e2d12e9b119428005d94124f1f2d
-      internalID: -1233175655
+      spriteID: 9f3183dc59bb2984ea46c6a699b638e8
+      internalID: 1900162143
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_83
+      name: Skill_14_83
       rect:
         serializedVersion: 2
-        x: 2048
-        y: 864
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 4260
+        y: 1764
+        width: 185
+        height: 196
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8374b715436ea5c4f8f14d82ac627055
-      internalID: -66376803
+      spriteID: 0e37ec6b1c384bb438478d09954a25a1
+      internalID: 1267746063
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_84
+      name: Skill_14_84
       rect:
         serializedVersion: 2
-        x: 2560
-        y: 864
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 4770
+        y: 1764
+        width: 192
+        height: 197
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 93d3901ad2bc23644b2cf11559721ed0
-      internalID: -132786695
+      spriteID: 5c80ab9b59bf03940b52d5775525da92
+      internalID: 625045873
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_85
+      name: Skill_14_85
       rect:
         serializedVersion: 2
-        x: 3072
-        y: 864
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 4836
+        y: 1950
+        width: 11
+        height: 6
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6b31ea2885de2aa49b5a1f3e15882a76
-      internalID: 146597242
+      spriteID: c4e75b25f4b48a44a8339bd827e60a05
+      internalID: -200167509
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_86
+      name: Skill_14_86
       rect:
         serializedVersion: 2
-        x: 3584
-        y: 864
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 2286
+        y: 1942
+        width: 10
+        height: 7
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 10a4b35715d68ed4282fbea176f7ef4c
-      internalID: 2113596849
+      spriteID: c9a646b2195db684aae7d19f79b586dd
+      internalID: 995701952
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_87
+      name: Skill_14_87
       rect:
         serializedVersion: 2
-        x: 4096
-        y: 864
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 2370
+        y: 1943
+        width: 6
+        height: 7
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a881b92e047d81d4e9c7e4801e362b46
-      internalID: -369870571
+      spriteID: 04dcd62c7b65a094a8ce25978622e10c
+      internalID: 788611941
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_88
+      name: Skill_14_88
       rect:
         serializedVersion: 2
-        x: 4608
-        y: 864
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 2724
+        y: 1764
+        width: 177
+        height: 188
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1fdbc2f4bce445441a50b21a938d22e6
-      internalID: 574304874
+      spriteID: e19c5154f10f1324fba9418e465ae064
+      internalID: -864498474
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_89
+      name: Skill_14_89
       rect:
         serializedVersion: 2
-        x: 0
-        y: 576
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 2824
+        y: 1939
+        width: 17
+        height: 12
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ddce66bf524587a449dfde4b8d5cbb39
-      internalID: 2021675456
+      spriteID: 1a7a42b642410ae4980759ada74fd924
+      internalID: -1213657418
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_90
+      name: Skill_14_90
       rect:
         serializedVersion: 2
-        x: 512
-        y: 576
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 2883
+        y: 1945
+        width: 6
+        height: 4
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e1b26d2955813914b8d144d56b67c2b3
-      internalID: 483918394
+      spriteID: e609788383bfddd42bd57be318bd03d6
+      internalID: 117960085
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_91
+      name: Skill_14_91
       rect:
         serializedVersion: 2
-        x: 1024
-        y: 576
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 3396
+        y: 1948
+        width: 5
+        height: 4
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 847496b9896ce8d4ba942a6dd6a7cdb6
-      internalID: 1608125682
+      spriteID: f9c164854a7a2104dbbc2c57557e87fa
+      internalID: 1435865387
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_92
+      name: Skill_14_92
       rect:
         serializedVersion: 2
-        x: 1536
-        y: 576
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 4344
+        y: 1944
+        width: 10
+        height: 7
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5cdd907dab26fc149a80ed45ed00b850
-      internalID: -1144874496
+      spriteID: eba0c55e17568974ca1799ac2ecc3e42
+      internalID: -2121104519
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_93
+      name: Skill_14_93
       rect:
         serializedVersion: 2
-        x: 2048
-        y: 576
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1704
+        y: 1764
+        width: 174
+        height: 181
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8c718fce9d4b8de408822d87d7dda4af
-      internalID: 1471359460
+      spriteID: 07c8be2b8fd36c0478215fdf36fe7013
+      internalID: -1943307648
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_94
+      name: Skill_14_94
       rect:
         serializedVersion: 2
-        x: 2560
-        y: 576
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 2214
+        y: 1764
+        width: 173
+        height: 182
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1e9d7569b50613241994508f432843c2
-      internalID: 595732311
+      spriteID: e7674015eeedc1543bfaa641a9059c7a
+      internalID: 1155080069
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_95
+      name: Skill_14_95
       rect:
         serializedVersion: 2
-        x: 3072
-        y: 576
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 2269
+        y: 1944
+        width: 11
+        height: 4
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 34ae590da833f394a84115e72a924c6d
-      internalID: -1963530363
+      spriteID: a65c99049359422418110cd627c2c4d1
+      internalID: 1079795060
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_96
+      name: Skill_14_96
       rect:
         serializedVersion: 2
-        x: 3584
-        y: 576
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 2310
+        y: 1932
+        width: 17
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 68b708c8798410b4f88f376b6fdec6c3
-      internalID: -1462019084
+      spriteID: afa26a3ba6742ce4b91cef96eef08461
+      internalID: 1680965993
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_97
+      name: Skill_14_97
       rect:
         serializedVersion: 2
-        x: 4096
-        y: 576
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 2336
+        y: 1942
+        width: 8
+        height: 4
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9ddf3d2eb828c4448ae3a310b26a94be
-      internalID: -505526611
+      spriteID: 12e1ff64ea5cf33449db010f4f9bec35
+      internalID: -1967321501
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_98
+      name: Skill_14_98
       rect:
         serializedVersion: 2
-        x: 4608
-        y: 576
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 2354
+        y: 1943
+        width: 5
+        height: 4
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 23ddae33c4db4324f8ddb4a1a4430d3f
-      internalID: -677486777
+      spriteID: 4471d8fd044d4e24bb23fbb56736380a
+      internalID: -122189467
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_99
+      name: Skill_14_99
       rect:
         serializedVersion: 2
-        x: 0
-        y: 288
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 3324
+        y: 1932
+        width: 4
+        height: 13
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f2c7d10da2daeb74c817de7f1e710f2e
-      internalID: -251332988
+      spriteID: 5a9aa5eecb3a22b468ed6a09ba1ebaf6
+      internalID: -2109503336
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_100
+      name: Skill_14_100
       rect:
         serializedVersion: 2
-        x: 512
-        y: 288
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 175
+        y: 1758
+        width: 158
+        height: 180
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0aa1dd8b5a29b9d4fa939a3ea21702eb
-      internalID: -1880779460
+      spriteID: 9f402c2ad9de018488a1266ac3624c3b
+      internalID: 303371948
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_101
+      name: Skill_14_101
       rect:
         serializedVersion: 2
-        x: 1024
-        y: 288
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 684
+        y: 1758
+        width: 162
+        height: 180
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7119e4d40528d21419ad9c16406aebbf
-      internalID: -1041749806
+      spriteID: bc3068864df726f4c8416390fb6d4139
+      internalID: -1864685304
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_102
+      name: Skill_14_102
       rect:
         serializedVersion: 2
-        x: 1536
-        y: 288
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 747
+        y: 1932
+        width: 7
+        height: 7
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a6f42196299bcd64b9ce12165a1e9bc9
-      internalID: -1893579126
+      spriteID: c37ba75e17baf7b4c89cd5a1e9892106
+      internalID: 1230383183
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_103
+      name: Skill_14_103
       rect:
         serializedVersion: 2
-        x: 2048
-        y: 288
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1194
+        y: 1758
+        width: 168
+        height: 183
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a131878222b44d745a6696a289121862
-      internalID: 1660414473
+      spriteID: d0b70fd63ded11c48a4158f378f6d9ba
+      internalID: 1272704981
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_104
+      name: Skill_14_104
       rect:
         serializedVersion: 2
-        x: 2560
-        y: 288
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1244
+        y: 1926
+        width: 22
+        height: 18
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 578bd7133da91164e89961d6a58c651b
-      internalID: -1464171906
+      spriteID: d5b89abdf92aa334098834ed578bb7c0
+      internalID: 217467795
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_105
+      name: Skill_14_105
       rect:
         serializedVersion: 2
-        x: 3072
-        y: 288
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1332
+        y: 1932
+        width: 24
+        height: 12
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c4b1fd894226fb140b6a46d53b57bff7
-      internalID: -1790868549
+      spriteID: 07b058d0f6d6b784790ac3fde04c5598
+      internalID: -1464892550
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fire VFX 10_#[512,288]_106
+      name: Skill_14_106
       rect:
         serializedVersion: 2
-        x: 3584
-        y: 288
-        width: 512
-        height: 288
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 330
+        y: 1896
+        width: 6
+        height: 6
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 58190a9c97de76f4a824a60597a58e94
-      internalID: 1574549331
+      spriteID: 99debdf49b295a44d9f17e12bb2665e7
+      internalID: 1557421094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_107
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 1896
+        width: 6
+        height: 6
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1eccaa512f8e4f847861e0a4092977a5
+      internalID: 26267924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_108
+      rect:
+        serializedVersion: 2
+        x: 354
+        y: 1896
+        width: 6
+        height: 6
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56736324725a8434c85c1eb0fac5c63b
+      internalID: 692403957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_109
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 1878
+        width: 10
+        height: 10
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab8414801ed09674284527dd583f75e9
+      internalID: -534194444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_110
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 1850
+        width: 12
+        height: 11
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: edc17c2a38f1b524981334bf835c4780
+      internalID: -1032373168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_111
+      rect:
+        serializedVersion: 2
+        x: 2773
+        y: 1667
+        width: 32
+        height: 18
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75df78e6d6b4bd64297c7d2b43e6b30d
+      internalID: 1719696536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_112
+      rect:
+        serializedVersion: 2
+        x: 3290
+        y: 1672
+        width: 15
+        height: 17
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97b6fa60f9b27d54db89128ea1189a32
+      internalID: -104537703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_113
+      rect:
+        serializedVersion: 2
+        x: 3801
+        y: 1682
+        width: 7
+        height: 10
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1d5ec0a1bf4eaa4381ad10f119dfe4d
+      internalID: -134974237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_114
+      rect:
+        serializedVersion: 2
+        x: 4252
+        y: 1488
+        width: 200
+        height: 208
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be7aeeec56c8a7a488c66b7a4e7ae1f6
+      internalID: 1641242214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_115
+      rect:
+        serializedVersion: 2
+        x: 4764
+        y: 1488
+        width: 204
+        height: 206
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df4c661a7b63dd74bb8cc4db95816aeb
+      internalID: -985246960
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_116
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 1476
+        width: 192
+        height: 199
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d857ebe6854f1bd439976a52158160bf
+      internalID: -1706132473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_117
+      rect:
+        serializedVersion: 2
+        x: 678
+        y: 1476
+        width: 186
+        height: 202
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 920a23cc877536e45aae9baeda38afd2
+      internalID: -1749066095
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_118
+      rect:
+        serializedVersion: 2
+        x: 1243
+        y: 1668
+        width: 17
+        height: 7
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57f476a455a2e0f4daddb7a7149fde83
+      internalID: -1196982556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_119
+      rect:
+        serializedVersion: 2
+        x: 1698
+        y: 1476
+        width: 191
+        height: 199
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9bccf271e0c4504d93492468fbcedb1
+      internalID: -2096624487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_120
+      rect:
+        serializedVersion: 2
+        x: 1755
+        y: 1673
+        width: 8
+        height: 4
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12b29cc015578f14ba2f0a984c4e7be9
+      internalID: 2003226623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_121
+      rect:
+        serializedVersion: 2
+        x: 1770
+        y: 1668
+        width: 13
+        height: 11
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc351031f82d4d84bbda8a2eece28b7a
+      internalID: 64245489
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_122
+      rect:
+        serializedVersion: 2
+        x: 2208
+        y: 1478
+        width: 192
+        height: 203
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc634277921be7949970205db20107dd
+      internalID: -1286398237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_123
+      rect:
+        serializedVersion: 2
+        x: 2718
+        y: 1482
+        width: 198
+        height: 197
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 269d4c7856845dd48a3cdb57f1d304da
+      internalID: 475577696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_124
+      rect:
+        serializedVersion: 2
+        x: 3228
+        y: 1482
+        width: 198
+        height: 200
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8100b05cb1c95a43a3c74dc9640ebf3
+      internalID: 1791412904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_125
+      rect:
+        serializedVersion: 2
+        x: 3303
+        y: 1668
+        width: 15
+        height: 8
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a1dc503162688548a6726a7e0f58ea5
+      internalID: 344010240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_126
+      rect:
+        serializedVersion: 2
+        x: 3741
+        y: 1482
+        width: 201
+        height: 197
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92836e7c2b168e24098754571b8e1660
+      internalID: 1028206302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_127
+      rect:
+        serializedVersion: 2
+        x: 3810
+        y: 1674
+        width: 4
+        height: 7
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ecb7beb3c60658d41bae185572d44ccd
+      internalID: -1479141088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_128
+      rect:
+        serializedVersion: 2
+        x: 1188
+        y: 1476
+        width: 186
+        height: 191
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d940be12eb664684da9860cbb0610f15
+      internalID: -1765724747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_129
+      rect:
+        serializedVersion: 2
+        x: 1261
+        y: 1662
+        width: 10
+        height: 12
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93def974f4078bf45a6e9c106ce6e245
+      internalID: 410847133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_130
+      rect:
+        serializedVersion: 2
+        x: 1293
+        y: 1662
+        width: 19
+        height: 7
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89833c1980184d642a65748f02aeed4c
+      internalID: 156066058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_131
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 1626
+        width: 24
+        height: 6
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c043b300ee1bdb49bef3be27b40fc79
+      internalID: 1947894898
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_132
+      rect:
+        serializedVersion: 2
+        x: 1854
+        y: 1602
+        width: 48
+        height: 15
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf263eabd067f33428fe4b5a15e2fc9d
+      internalID: 1770119506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_133
+      rect:
+        serializedVersion: 2
+        x: 4962
+        y: 1608
+        width: 6
+        height: 6
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12042bfcd5854eb4b96c4fb4b3a0f4e3
+      internalID: 2072256148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_134
+      rect:
+        serializedVersion: 2
+        x: 2196
+        y: 1206
+        width: 210
+        height: 205
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc53a8835b6d90947a2c373dc3dd51e7
+      internalID: 1796633721
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_135
+      rect:
+        serializedVersion: 2
+        x: 2851
+        y: 1402
+        width: 11
+        height: 7
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2528889a53385f04792ad42ce04f71bc
+      internalID: 1795430586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_136
+      rect:
+        serializedVersion: 2
+        x: 3216
+        y: 1207
+        width: 246
+        height: 204
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f44489db981b3054bb84645f4f206002
+      internalID: -1319733103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_137
+      rect:
+        serializedVersion: 2
+        x: 3367
+        y: 1407
+        width: 10
+        height: 6
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5bc56435c7861c64bbe0f940cf0604d6
+      internalID: 659024598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_138
+      rect:
+        serializedVersion: 2
+        x: 3732
+        y: 1206
+        width: 240
+        height: 206
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c70eccf828cfcd4f8c842dca63d5ffc
+      internalID: 1954029844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_139
+      rect:
+        serializedVersion: 2
+        x: 3884
+        y: 1408
+        width: 4
+        height: 7
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68ebf81db8ccdeb4ba6c20d9745683a9
+      internalID: 901365989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_140
+      rect:
+        serializedVersion: 2
+        x: 4246
+        y: 1182
+        width: 213
+        height: 235
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0709155b3179fbf489674da1b289fd80
+      internalID: -387382408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_141
+      rect:
+        serializedVersion: 2
+        x: 4734
+        y: 1218
+        width: 264
+        height: 199
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bffbc77cbe553204390aa4eb73d6536a
+      internalID: 257339100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_142
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 1201
+        width: 205
+        height: 197
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 995846ee91b6b63469ccfa5e6818e677
+      internalID: 1750778228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_143
+      rect:
+        serializedVersion: 2
+        x: 666
+        y: 1200
+        width: 206
+        height: 201
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b05c6ec03ef54514a93fa997447ba004
+      internalID: -1337014166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_144
+      rect:
+        serializedVersion: 2
+        x: 1176
+        y: 1194
+        width: 234
+        height: 211
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e5e1a78be6958d4aa89a37b8aff45aa
+      internalID: -1093625399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_145
+      rect:
+        serializedVersion: 2
+        x: 1686
+        y: 1206
+        width: 210
+        height: 201
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 537c136958e33a04cbd2911d65f6d586
+      internalID: 412360174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_146
+      rect:
+        serializedVersion: 2
+        x: 1896
+        y: 1320
+        width: 6
+        height: 24
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac40e3843780da042936d65febc6c1c3
+      internalID: -1106836579
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_147
+      rect:
+        serializedVersion: 2
+        x: 2406
+        y: 1332
+        width: 6
+        height: 13
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70aa0e5e435d5054e872974871085729
+      internalID: 833959390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_148
+      rect:
+        serializedVersion: 2
+        x: 2710
+        y: 1207
+        width: 213
+        height: 200
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2cbaf4c26e1838d4b9424c522ee6dae6
+      internalID: 1450989513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_149
+      rect:
+        serializedVersion: 2
+        x: 2922
+        y: 1343
+        width: 6
+        height: 7
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 462fd75c1f099334695c13ab1f4c81d7
+      internalID: 1771420730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_150
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 1320
+        width: 9
+        height: 12
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd025bc8cad7a494292a5d930fc2fc41
+      internalID: 409246490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_151
+      rect:
+        serializedVersion: 2
+        x: 2922
+        y: 1331
+        width: 6
+        height: 11
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e93e291a6d0b004e97ef2f52724a625
+      internalID: -1829213509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_152
+      rect:
+        serializedVersion: 2
+        x: 4218
+        y: 1287
+        width: 30
+        height: 9
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e392db0f6b84f7941850b110dfa50dbc
+      internalID: 1616431072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_153
+      rect:
+        serializedVersion: 2
+        x: 4459
+        y: 1281
+        width: 4
+        height: 4
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53115b4c4e186df448f82d18a7ff3809
+      internalID: 1707266603
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_154
+      rect:
+        serializedVersion: 2
+        x: 2172
+        y: 1272
+        width: 6
+        height: 6
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56543ccf26487d44588198dbd895ba44
+      internalID: 594646263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_155
+      rect:
+        serializedVersion: 2
+        x: 2406
+        y: 1266
+        width: 30
+        height: 12
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6240fb9381d80f48a68b07716892674
+      internalID: -1774191868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_156
+      rect:
+        serializedVersion: 2
+        x: 2694
+        y: 1266
+        width: 12
+        height: 6
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed92bfc4237c1844a8687a55d0d35f75
+      internalID: 989093019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_157
+      rect:
+        serializedVersion: 2
+        x: 2712
+        y: 1266
+        width: 6
+        height: 6
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac61de10426d9104e8cb68db213abbf0
+      internalID: -869531598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_158
+      rect:
+        serializedVersion: 2
+        x: 1902
+        y: 1260
+        width: 6
+        height: 6
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 376007c98885f8d499a10b6f01e13721
+      internalID: 1657692114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_159
+      rect:
+        serializedVersion: 2
+        x: 1914
+        y: 1260
+        width: 6
+        height: 6
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4180339d2efd43f42926adb1dcde0dfe
+      internalID: -974262591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_160
+      rect:
+        serializedVersion: 2
+        x: 665
+        y: 1254
+        width: 7
+        height: 6
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae6828feafd88644fb6cde31d5819b9d
+      internalID: 771406086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_161
+      rect:
+        serializedVersion: 2
+        x: 4242
+        y: 1254
+        width: 6
+        height: 6
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e16d2b34edeec148ad564f6af904a57
+      internalID: -915655742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_162
+      rect:
+        serializedVersion: 2
+        x: 3702
+        y: 1248
+        width: 30
+        height: 6
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43db47be645609045bbe24f327532390
+      internalID: 1197452145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_163
+      rect:
+        serializedVersion: 2
+        x: 1734
+        y: 1200
+        width: 6
+        height: 30
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0155e67af46d4ed4cbff42f1b14fc697
+      internalID: -965455112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_164
+      rect:
+        serializedVersion: 2
+        x: 2676
+        y: 1212
+        width: 36
+        height: 34
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fabadc41290619d4d9f90b83f28b4493
+      internalID: 1607679375
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_165
+      rect:
+        serializedVersion: 2
+        x: 2718
+        y: 1206
+        width: 12
+        height: 30
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 270b0ca033fe48749af2b9532a8d60d9
+      internalID: -954653762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_166
+      rect:
+        serializedVersion: 2
+        x: 3870
+        y: 1182
+        width: 12
+        height: 36
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5bb7e6ad4f6782344bac20ec41532470
+      internalID: 1948383141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_167
+      rect:
+        serializedVersion: 2
+        x: 4839
+        y: 1176
+        width: 39
+        height: 44
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b37772b5d4c5ba49932c6c6a76e67f8
+      internalID: 699982776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_168
+      rect:
+        serializedVersion: 2
+        x: 1692
+        y: 1200
+        width: 6
+        height: 6
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f28282b4f9ecf74daf9f15080957dff
+      internalID: -1613925042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_169
+      rect:
+        serializedVersion: 2
+        x: 2250
+        y: 1200
+        width: 6
+        height: 6
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4bb1fe859c73bfc448861d17d73ec235
+      internalID: -1595196588
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_170
+      rect:
+        serializedVersion: 2
+        x: 786
+        y: 1182
+        width: 6
+        height: 6
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f11503b0b63ab8479c124798420d815
+      internalID: 1882920959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_171
+      rect:
+        serializedVersion: 2
+        x: 1254
+        y: 1182
+        width: 6
+        height: 6
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18dc44b0ea775ef47b3613bdf878fecb
+      internalID: 2081817919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_172
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 930
+        width: 241
+        height: 200
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de28332b9de22e6448b5f397c839d8fd
+      internalID: -1203817976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_173
+      rect:
+        serializedVersion: 2
+        x: 660
+        y: 924
+        width: 246
+        height: 211
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 428fa3b5bfa0be0439c88c666df80968
+      internalID: 1937842534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_174
+      rect:
+        serializedVersion: 2
+        x: 1170
+        y: 932
+        width: 222
+        height: 206
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0969acfd86ae32f46965739b1d7b1418
+      internalID: 1655657511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_175
+      rect:
+        serializedVersion: 2
+        x: 1674
+        y: 924
+        width: 230
+        height: 216
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85e40ecc4ba00594b84c055038c5d66a
+      internalID: -1023820312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_176
+      rect:
+        serializedVersion: 2
+        x: 2184
+        y: 926
+        width: 232
+        height: 214
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: adb5d6b9f320bee45af8a5fd57c369d3
+      internalID: -421256695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_177
+      rect:
+        serializedVersion: 2
+        x: 2700
+        y: 912
+        width: 229
+        height: 227
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4f57f3763915b648a406c79db5cf5cf
+      internalID: 2114608255
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_178
+      rect:
+        serializedVersion: 2
+        x: 3211
+        y: 928
+        width: 230
+        height: 216
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d816ff179fe1a2044ad071215e0036e8
+      internalID: -1643105343
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_179
+      rect:
+        serializedVersion: 2
+        x: 3722
+        y: 940
+        width: 230
+        height: 208
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b618861e3a8232b4aab5ae376d9133aa
+      internalID: 320551720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_180
+      rect:
+        serializedVersion: 2
+        x: 4234
+        y: 942
+        width: 230
+        height: 202
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77f63c7ef02a31d449e89f2d9f0ce037
+      internalID: -226335655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_181
+      rect:
+        serializedVersion: 2
+        x: 4458
+        y: 1064
+        width: 8
+        height: 10
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b755d05ca33aad7459da241598f08b0b
+      internalID: 1255558221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_182
+      rect:
+        serializedVersion: 2
+        x: 4744
+        y: 933
+        width: 235
+        height: 207
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0efe6d6eafb58f34f85a08389f404353
+      internalID: 646051520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_183
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 923
+        width: 24
+        height: 11
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de13d4078ccc114429ff22b1c61bb37a
+      internalID: -2031623361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_184
+      rect:
+        serializedVersion: 2
+        x: 1230
+        y: 930
+        width: 12
+        height: 18
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f379894dc0ca3e44a178a314f017e1b
+      internalID: -102371192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_185
+      rect:
+        serializedVersion: 2
+        x: 1272
+        y: 931
+        width: 5
+        height: 5
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b729defe11af0154d95070a252d92dc8
+      internalID: -1778916502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_186
+      rect:
+        serializedVersion: 2
+        x: 3816
+        y: 931
+        width: 7
+        height: 6
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f128be257b0734c4e9cfe1f2c66a075d
+      internalID: 313586478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_187
+      rect:
+        serializedVersion: 2
+        x: 4325
+        y: 932
+        width: 11
+        height: 17
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0903aa102dff0af489b7240766edc6f6
+      internalID: 2087191420
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_188
+      rect:
+        serializedVersion: 2
+        x: 1212
+        y: 924
+        width: 6
+        height: 6
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10a64f8b2d811df4297c90197c469df1
+      internalID: 730355850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_189
+      rect:
+        serializedVersion: 2
+        x: 1256
+        y: 926
+        width: 15
+        height: 4
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 173e66f1d0437364e9b21bf535afdff3
+      internalID: 1655213637
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_190
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 655
+        width: 237
+        height: 201
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a31e477853b79004d97b9cac41f04bb3
+      internalID: 965162074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_191
+      rect:
+        serializedVersion: 2
+        x: 646
+        y: 658
+        width: 237
+        height: 201
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e598a2d360f8a3b4a8d7b6e6d7ff8c0f
+      internalID: 1283032767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_192
+      rect:
+        serializedVersion: 2
+        x: 1158
+        y: 673
+        width: 237
+        height: 190
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93479e5be8188af4cb3cbd3772673651
+      internalID: 1622582032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_193
+      rect:
+        serializedVersion: 2
+        x: 1677
+        y: 673
+        width: 230
+        height: 191
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5867da57dde6c6440af1666bc21c9550
+      internalID: 1871632624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_194
+      rect:
+        serializedVersion: 2
+        x: 2191
+        y: 669
+        width: 226
+        height: 195
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d97fd20e9d44a39459d0554e2b85124e
+      internalID: -1972925693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_195
+      rect:
+        serializedVersion: 2
+        x: 2701
+        y: 673
+        width: 227
+        height: 191
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a78fa46d5b89ae4a8d12554f7ffe032
+      internalID: 1233230220
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_196
+      rect:
+        serializedVersion: 2
+        x: 3206
+        y: 681
+        width: 236
+        height: 183
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5d911054eb40ad4d88f1e692a797c22
+      internalID: -266295896
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_197
+      rect:
+        serializedVersion: 2
+        x: 3726
+        y: 680
+        width: 228
+        height: 184
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3213b6955273c5b469838925f3b577e5
+      internalID: -1979112125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_198
+      rect:
+        serializedVersion: 2
+        x: 3945
+        y: 811
+        width: 8
+        height: 8
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f92aa09345a51714983e8ef293dccbd2
+      internalID: -1459011117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_199
+      rect:
+        serializedVersion: 2
+        x: 4253
+        y: 682
+        width: 216
+        height: 182
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7c696dd8f4ed2543afe43617a9e55ba
+      internalID: 1828051196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_200
+      rect:
+        serializedVersion: 2
+        x: 4746
+        y: 687
+        width: 228
+        height: 177
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11133e6488645aa49861d79b08c707fb
+      internalID: -1359710344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_201
+      rect:
+        serializedVersion: 2
+        x: 365
+        y: 784
+        width: 6
+        height: 11
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b46fefbe9554534f9ae0a7e5e4a61b9
+      internalID: 760333782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_202
+      rect:
+        serializedVersion: 2
+        x: 3731
+        y: 777
+        width: 8
+        height: 14
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8bfd6ff5f876a3141b15d5c0209ff715
+      internalID: 1332157968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_203
+      rect:
+        serializedVersion: 2
+        x: 4241
+        y: 785
+        width: 7
+        height: 9
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ea92bc41cd406a4b8678ab8f739666d
+      internalID: -1039179494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_204
+      rect:
+        serializedVersion: 2
+        x: 4754
+        y: 788
+        width: 4
+        height: 4
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8aea1c23b30b060429e5c61238b3d58f
+      internalID: 1455073090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_205
+      rect:
+        serializedVersion: 2
+        x: 3722
+        y: 753
+        width: 4
+        height: 5
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 145cd9d94e515364cb5535c3d08630d5
+      internalID: -1130538600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_206
+      rect:
+        serializedVersion: 2
+        x: 4235
+        y: 756
+        width: 16
+        height: 10
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9465fe0b8433ef41a21611833b19487
+      internalID: -318159519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_207
+      rect:
+        serializedVersion: 2
+        x: 2190
+        y: 739
+        width: 6
+        height: 11
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8097843f1ff7ba84eaf0d9b3a5396718
+      internalID: -923829451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_208
+      rect:
+        serializedVersion: 2
+        x: 2701
+        y: 746
+        width: 4
+        height: 6
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d084a9ef10f3a24ea33284be20c4b3a
+      internalID: -1237146132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_209
+      rect:
+        serializedVersion: 2
+        x: 2184
+        y: 727
+        width: 6
+        height: 11
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7584c1a341887714aa3ccc68881d4fee
+      internalID: 373330701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_210
+      rect:
+        serializedVersion: 2
+        x: 2694
+        y: 720
+        width: 19
+        height: 19
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2aed5b52579bf9948ab7ec747dd3f03c
+      internalID: 54536824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_211
+      rect:
+        serializedVersion: 2
+        x: 3717
+        y: 735
+        width: 13
+        height: 9
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd9d3c6ff3d540a4d9a1cc315632d761
+      internalID: -736235768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_212
+      rect:
+        serializedVersion: 2
+        x: 4235
+        y: 734
+        width: 12
+        height: 8
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 203550d6a575cbe4d8b420578b27e73d
+      internalID: -1674032559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_213
+      rect:
+        serializedVersion: 2
+        x: 1669
+        y: 725
+        width: 10
+        height: 9
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f247838de3d46546b57d9540e9a1bcf
+      internalID: -1470717789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_214
+      rect:
+        serializedVersion: 2
+        x: 2190
+        y: 714
+        width: 11
+        height: 13
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa5cf477b0f0b4445ad7824f32957782
+      internalID: -2029312557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_215
+      rect:
+        serializedVersion: 2
+        x: 3215
+        y: 726
+        width: 10
+        height: 6
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0fe73e3a1c18a9c4e9cd95be78bfcc12
+      internalID: 1593124288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_216
+      rect:
+        serializedVersion: 2
+        x: 1676
+        y: 712
+        width: 17
+        height: 13
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bafd572f7d46de343b21d27d894ec988
+      internalID: 284844087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_217
+      rect:
+        serializedVersion: 2
+        x: 3299
+        y: 679
+        width: 5
+        height: 6
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd9a85fdedfa50446afdb7e6663d815c
+      internalID: 438557599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_218
+      rect:
+        serializedVersion: 2
+        x: 3809
+        y: 680
+        width: 5
+        height: 5
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8087066eb69bb0240983acd33ca0886e
+      internalID: 959798408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_219
+      rect:
+        serializedVersion: 2
+        x: 3313
+        y: 676
+        width: 4
+        height: 4
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 535e2212a167287449bda352f964b983
+      internalID: -1519970848
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_220
+      rect:
+        serializedVersion: 2
+        x: 1261
+        y: 667
+        width: 6
+        height: 6
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b24ad9d67e948741858f39e87c4278f
+      internalID: 637269243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_221
+      rect:
+        serializedVersion: 2
+        x: 1772
+        y: 668
+        width: 4
+        height: 4
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1088569d7653aaf4b8c72951bdf621c8
+      internalID: 2041768718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_222
+      rect:
+        serializedVersion: 2
+        x: 1261
+        y: 661
+        width: 4
+        height: 4
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 285b7b379a7bf5b4a9391338c1c52923
+      internalID: 422860213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_223
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 398
+        width: 222
+        height: 178
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 619bf9d3e2a630948b69fdb26e9067a3
+      internalID: 539082446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_224
+      rect:
+        serializedVersion: 2
+        x: 659
+        y: 412
+        width: 221
+        height: 164
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e02592728dc6fbd4a8f4cda5d910eafe
+      internalID: -1888648975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_225
+      rect:
+        serializedVersion: 2
+        x: 1188
+        y: 417
+        width: 198
+        height: 159
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1554084e6e43b8147abfe66efe4269e4
+      internalID: -2017345321
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_226
+      rect:
+        serializedVersion: 2
+        x: 1699
+        y: 412
+        width: 198
+        height: 164
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 057efa90fbda6384c86a5022e20c056b
+      internalID: 2049691021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_227
+      rect:
+        serializedVersion: 2
+        x: 2214
+        y: 426
+        width: 184
+        height: 150
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 525ebe41a13792748b79ceb4f86770cf
+      internalID: -1323202476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_228
+      rect:
+        serializedVersion: 2
+        x: 2755
+        y: 438
+        width: 130
+        height: 138
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f53bead5c6b7394395d4a8b3218632c
+      internalID: 49822515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_229
+      rect:
+        serializedVersion: 2
+        x: 3336
+        y: 554
+        width: 7
+        height: 14
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36899f315c51f78408353fb01bba5e41
+      internalID: 1385458851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_230
+      rect:
+        serializedVersion: 2
+        x: 2864
+        y: 529
+        width: 9
+        height: 6
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b161ef9676ead254eb862be54984ec66
+      internalID: 50396730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_231
+      rect:
+        serializedVersion: 2
+        x: 2875
+        y: 527
+        width: 9
+        height: 8
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61d6227ee7a4f5c40aad953cd9456d60
+      internalID: 567301853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_232
+      rect:
+        serializedVersion: 2
+        x: 3293
+        y: 455
+        width: 70
+        height: 97
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4598883cfeceec342b3287f2ca38ffe5
+      internalID: 1386758613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_233
+      rect:
+        serializedVersion: 2
+        x: 3823
+        y: 518
+        width: 14
+        height: 29
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5eb39edc9d363f4dacc668192beb1ff
+      internalID: -1695606273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_234
+      rect:
+        serializedVersion: 2
+        x: 2856
+        y: 485
+        width: 45
+        height: 43
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3debb8494dd7f304c8bf6bf6c965471d
+      internalID: 1728606227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_235
+      rect:
+        serializedVersion: 2
+        x: 3817
+        y: 517
+        width: 4
+        height: 7
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3cc4e95daaf4bc741b706d65b81f367d
+      internalID: -1429791501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_236
+      rect:
+        serializedVersion: 2
+        x: 2399
+        y: 504
+        width: 4
+        height: 4
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd54291720c872c488225ec40a501433
+      internalID: 1608704689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_237
+      rect:
+        serializedVersion: 2
+        x: 3811
+        y: 472
+        width: 44
+        height: 43
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20574d75070fe8440b9d20481468bea0
+      internalID: -1959734037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_238
+      rect:
+        serializedVersion: 2
+        x: 2778
+        y: 448
+        width: 4
+        height: 4
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c57167e55ae328448edf5331f5a4942
+      internalID: 1626076517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_239
+      rect:
+        serializedVersion: 2
+        x: 2781
+        y: 446
+        width: 15
+        height: 5
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1a879186bce15641b2066bca7945517
+      internalID: -1140242889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_240
+      rect:
+        serializedVersion: 2
+        x: 2778
+        y: 429
+        width: 11
+        height: 9
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b8086f7c9bb90f4789af8958c72664f
+      internalID: -443710550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_241
+      rect:
+        serializedVersion: 2
+        x: 745
+        y: 403
+        width: 12
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc55bceadaff5704d88ab5565298a711
+      internalID: -1170741586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Skill_14_242
+      rect:
+        serializedVersion: 2
+        x: 1259
+        y: 408
+        width: 7
+        height: 12
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d33449f6a9143994d88b8ffa21d78339
+      internalID: -1150567376
       vertices: []
       indices: 
       edges: []
@@ -2380,113 +5236,249 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Fire VFX 10_#[512,288]_0: 990081116
-      Fire VFX 10_#[512,288]_1: 1449702632
-      Fire VFX 10_#[512,288]_10: -1534309636
-      Fire VFX 10_#[512,288]_100: -1880779460
-      Fire VFX 10_#[512,288]_101: -1041749806
-      Fire VFX 10_#[512,288]_102: -1893579126
-      Fire VFX 10_#[512,288]_103: 1660414473
-      Fire VFX 10_#[512,288]_104: -1464171906
-      Fire VFX 10_#[512,288]_105: -1790868549
-      Fire VFX 10_#[512,288]_106: 1574549331
-      Fire VFX 10_#[512,288]_11: 1008398003
-      Fire VFX 10_#[512,288]_12: -467279943
-      Fire VFX 10_#[512,288]_13: 622762082
-      Fire VFX 10_#[512,288]_14: -1129588405
-      Fire VFX 10_#[512,288]_15: 741247619
-      Fire VFX 10_#[512,288]_16: 952709150
-      Fire VFX 10_#[512,288]_17: 174904742
-      Fire VFX 10_#[512,288]_18: 413585331
-      Fire VFX 10_#[512,288]_19: 344280569
-      Fire VFX 10_#[512,288]_2: 1604114546
-      Fire VFX 10_#[512,288]_20: 1348622399
-      Fire VFX 10_#[512,288]_21: 1779725152
-      Fire VFX 10_#[512,288]_22: -16387432
-      Fire VFX 10_#[512,288]_23: -553961869
-      Fire VFX 10_#[512,288]_24: 621939718
-      Fire VFX 10_#[512,288]_25: 651803447
-      Fire VFX 10_#[512,288]_26: -84560399
-      Fire VFX 10_#[512,288]_27: 607835492
-      Fire VFX 10_#[512,288]_28: 389695383
-      Fire VFX 10_#[512,288]_29: -551898567
-      Fire VFX 10_#[512,288]_3: -1119831396
-      Fire VFX 10_#[512,288]_30: 1304424433
-      Fire VFX 10_#[512,288]_31: -2004718011
-      Fire VFX 10_#[512,288]_32: 970898205
-      Fire VFX 10_#[512,288]_33: -574984709
-      Fire VFX 10_#[512,288]_34: -651311797
-      Fire VFX 10_#[512,288]_35: 667347641
-      Fire VFX 10_#[512,288]_36: -1801484001
-      Fire VFX 10_#[512,288]_37: 1622415611
-      Fire VFX 10_#[512,288]_38: 344423553
-      Fire VFX 10_#[512,288]_39: -415220828
-      Fire VFX 10_#[512,288]_4: -1766036238
-      Fire VFX 10_#[512,288]_40: 1201254036
-      Fire VFX 10_#[512,288]_41: 149180143
-      Fire VFX 10_#[512,288]_42: -1703937383
-      Fire VFX 10_#[512,288]_43: -1175541493
-      Fire VFX 10_#[512,288]_44: 1335986937
-      Fire VFX 10_#[512,288]_45: -713720177
-      Fire VFX 10_#[512,288]_46: -97543567
-      Fire VFX 10_#[512,288]_47: -86323630
-      Fire VFX 10_#[512,288]_48: -1539692401
-      Fire VFX 10_#[512,288]_49: 2112157047
-      Fire VFX 10_#[512,288]_5: -1373054011
-      Fire VFX 10_#[512,288]_50: -1863304641
-      Fire VFX 10_#[512,288]_51: 1048028253
-      Fire VFX 10_#[512,288]_52: 15227955
-      Fire VFX 10_#[512,288]_53: 654656327
-      Fire VFX 10_#[512,288]_54: 1536120028
-      Fire VFX 10_#[512,288]_55: 1148903021
-      Fire VFX 10_#[512,288]_56: -1638515187
-      Fire VFX 10_#[512,288]_57: -457555978
-      Fire VFX 10_#[512,288]_58: -160263204
-      Fire VFX 10_#[512,288]_59: -589512959
-      Fire VFX 10_#[512,288]_6: -767633987
-      Fire VFX 10_#[512,288]_60: -751731137
-      Fire VFX 10_#[512,288]_61: -36859569
-      Fire VFX 10_#[512,288]_62: 1674345217
-      Fire VFX 10_#[512,288]_63: 2113346591
-      Fire VFX 10_#[512,288]_64: 1013913610
-      Fire VFX 10_#[512,288]_65: -961380778
-      Fire VFX 10_#[512,288]_66: -762127756
-      Fire VFX 10_#[512,288]_67: 1434850224
-      Fire VFX 10_#[512,288]_68: 2050203921
-      Fire VFX 10_#[512,288]_69: -101783329
-      Fire VFX 10_#[512,288]_7: -749249020
-      Fire VFX 10_#[512,288]_70: 498631657
-      Fire VFX 10_#[512,288]_71: 1497613664
-      Fire VFX 10_#[512,288]_72: -1687902766
-      Fire VFX 10_#[512,288]_73: 1147887081
-      Fire VFX 10_#[512,288]_74: 1614929587
-      Fire VFX 10_#[512,288]_75: -1277767056
-      Fire VFX 10_#[512,288]_76: -1453503470
-      Fire VFX 10_#[512,288]_77: 1060978313
-      Fire VFX 10_#[512,288]_78: -757479569
-      Fire VFX 10_#[512,288]_79: 922072911
-      Fire VFX 10_#[512,288]_8: 204074294
-      Fire VFX 10_#[512,288]_80: 117244675
-      Fire VFX 10_#[512,288]_81: 229259261
-      Fire VFX 10_#[512,288]_82: -1233175655
-      Fire VFX 10_#[512,288]_83: -66376803
-      Fire VFX 10_#[512,288]_84: -132786695
-      Fire VFX 10_#[512,288]_85: 146597242
-      Fire VFX 10_#[512,288]_86: 2113596849
-      Fire VFX 10_#[512,288]_87: -369870571
-      Fire VFX 10_#[512,288]_88: 574304874
-      Fire VFX 10_#[512,288]_89: 2021675456
-      Fire VFX 10_#[512,288]_9: -2109018007
-      Fire VFX 10_#[512,288]_90: 483918394
-      Fire VFX 10_#[512,288]_91: 1608125682
-      Fire VFX 10_#[512,288]_92: -1144874496
-      Fire VFX 10_#[512,288]_93: 1471359460
-      Fire VFX 10_#[512,288]_94: 595732311
-      Fire VFX 10_#[512,288]_95: -1963530363
-      Fire VFX 10_#[512,288]_96: -1462019084
-      Fire VFX 10_#[512,288]_97: -505526611
-      Fire VFX 10_#[512,288]_98: -677486777
-      Fire VFX 10_#[512,288]_99: -251332988
+      Skill_14_0: 1795032526
+      Skill_14_1: -2126525178
+      Skill_14_10: 197746699
+      Skill_14_100: 303371948
+      Skill_14_101: -1864685304
+      Skill_14_102: 1230383183
+      Skill_14_103: 1272704981
+      Skill_14_104: 217467795
+      Skill_14_105: -1464892550
+      Skill_14_106: 1557421094
+      Skill_14_107: 26267924
+      Skill_14_108: 692403957
+      Skill_14_109: -534194444
+      Skill_14_11: -270393858
+      Skill_14_110: -1032373168
+      Skill_14_111: 1719696536
+      Skill_14_112: -104537703
+      Skill_14_113: -134974237
+      Skill_14_114: 1641242214
+      Skill_14_115: -985246960
+      Skill_14_116: -1706132473
+      Skill_14_117: -1749066095
+      Skill_14_118: -1196982556
+      Skill_14_119: -2096624487
+      Skill_14_12: 453456787
+      Skill_14_120: 2003226623
+      Skill_14_121: 64245489
+      Skill_14_122: -1286398237
+      Skill_14_123: 475577696
+      Skill_14_124: 1791412904
+      Skill_14_125: 344010240
+      Skill_14_126: 1028206302
+      Skill_14_127: -1479141088
+      Skill_14_128: -1765724747
+      Skill_14_129: 410847133
+      Skill_14_13: -794659762
+      Skill_14_130: 156066058
+      Skill_14_131: 1947894898
+      Skill_14_132: 1770119506
+      Skill_14_133: 2072256148
+      Skill_14_134: 1796633721
+      Skill_14_135: 1795430586
+      Skill_14_136: -1319733103
+      Skill_14_137: 659024598
+      Skill_14_138: 1954029844
+      Skill_14_139: 901365989
+      Skill_14_14: -850841858
+      Skill_14_140: -387382408
+      Skill_14_141: 257339100
+      Skill_14_142: 1750778228
+      Skill_14_143: -1337014166
+      Skill_14_144: -1093625399
+      Skill_14_145: 412360174
+      Skill_14_146: -1106836579
+      Skill_14_147: 833959390
+      Skill_14_148: 1450989513
+      Skill_14_149: 1771420730
+      Skill_14_15: -1574812333
+      Skill_14_150: 409246490
+      Skill_14_151: -1829213509
+      Skill_14_152: 1616431072
+      Skill_14_153: 1707266603
+      Skill_14_154: 594646263
+      Skill_14_155: -1774191868
+      Skill_14_156: 989093019
+      Skill_14_157: -869531598
+      Skill_14_158: 1657692114
+      Skill_14_159: -974262591
+      Skill_14_16: 622430646
+      Skill_14_160: 771406086
+      Skill_14_161: -915655742
+      Skill_14_162: 1197452145
+      Skill_14_163: -965455112
+      Skill_14_164: 1607679375
+      Skill_14_165: -954653762
+      Skill_14_166: 1948383141
+      Skill_14_167: 699982776
+      Skill_14_168: -1613925042
+      Skill_14_169: -1595196588
+      Skill_14_17: 1313245181
+      Skill_14_170: 1882920959
+      Skill_14_171: 2081817919
+      Skill_14_172: -1203817976
+      Skill_14_173: 1937842534
+      Skill_14_174: 1655657511
+      Skill_14_175: -1023820312
+      Skill_14_176: -421256695
+      Skill_14_177: 2114608255
+      Skill_14_178: -1643105343
+      Skill_14_179: 320551720
+      Skill_14_18: 865030874
+      Skill_14_180: -226335655
+      Skill_14_181: 1255558221
+      Skill_14_182: 646051520
+      Skill_14_183: -2031623361
+      Skill_14_184: -102371192
+      Skill_14_185: -1778916502
+      Skill_14_186: 313586478
+      Skill_14_187: 2087191420
+      Skill_14_188: 730355850
+      Skill_14_189: 1655213637
+      Skill_14_19: 1398245202
+      Skill_14_190: 965162074
+      Skill_14_191: 1283032767
+      Skill_14_192: 1622582032
+      Skill_14_193: 1871632624
+      Skill_14_194: -1972925693
+      Skill_14_195: 1233230220
+      Skill_14_196: -266295896
+      Skill_14_197: -1979112125
+      Skill_14_198: -1459011117
+      Skill_14_199: 1828051196
+      Skill_14_2: -547824381
+      Skill_14_20: -347604776
+      Skill_14_200: -1359710344
+      Skill_14_201: 760333782
+      Skill_14_202: 1332157968
+      Skill_14_203: -1039179494
+      Skill_14_204: 1455073090
+      Skill_14_205: -1130538600
+      Skill_14_206: -318159519
+      Skill_14_207: -923829451
+      Skill_14_208: -1237146132
+      Skill_14_209: 373330701
+      Skill_14_21: 490237171
+      Skill_14_210: 54536824
+      Skill_14_211: -736235768
+      Skill_14_212: -1674032559
+      Skill_14_213: -1470717789
+      Skill_14_214: -2029312557
+      Skill_14_215: 1593124288
+      Skill_14_216: 284844087
+      Skill_14_217: 438557599
+      Skill_14_218: 959798408
+      Skill_14_219: -1519970848
+      Skill_14_22: -1894916498
+      Skill_14_220: 637269243
+      Skill_14_221: 2041768718
+      Skill_14_222: 422860213
+      Skill_14_223: 539082446
+      Skill_14_224: -1888648975
+      Skill_14_225: -2017345321
+      Skill_14_226: 2049691021
+      Skill_14_227: -1323202476
+      Skill_14_228: 49822515
+      Skill_14_229: 1385458851
+      Skill_14_23: 1902059330
+      Skill_14_230: 50396730
+      Skill_14_231: 567301853
+      Skill_14_232: 1386758613
+      Skill_14_233: -1695606273
+      Skill_14_234: 1728606227
+      Skill_14_235: -1429791501
+      Skill_14_236: 1608704689
+      Skill_14_237: -1959734037
+      Skill_14_238: 1626076517
+      Skill_14_239: -1140242889
+      Skill_14_24: -1388306592
+      Skill_14_240: -443710550
+      Skill_14_241: -1170741586
+      Skill_14_242: -1150567376
+      Skill_14_25: 348606235
+      Skill_14_26: -1041353186
+      Skill_14_27: 586689958
+      Skill_14_28: 1775637191
+      Skill_14_29: 1604300957
+      Skill_14_3: 1376437483
+      Skill_14_30: -1423208419
+      Skill_14_31: -350223955
+      Skill_14_32: -713412624
+      Skill_14_33: 61177634
+      Skill_14_34: 2056794653
+      Skill_14_35: -2027333241
+      Skill_14_36: -81171533
+      Skill_14_37: -444585805
+      Skill_14_38: -275716842
+      Skill_14_39: -909944339
+      Skill_14_4: -386475995
+      Skill_14_40: 829612989
+      Skill_14_41: -1371790590
+      Skill_14_42: 1369293383
+      Skill_14_43: -638359990
+      Skill_14_44: -2056748508
+      Skill_14_45: 559242565
+      Skill_14_46: -560283356
+      Skill_14_47: 23144627
+      Skill_14_48: 947536904
+      Skill_14_49: 1871918460
+      Skill_14_5: 546690083
+      Skill_14_50: -587062446
+      Skill_14_51: 742907974
+      Skill_14_52: -1339529983
+      Skill_14_53: -603921684
+      Skill_14_54: -2052834348
+      Skill_14_55: 1947469693
+      Skill_14_56: -507440137
+      Skill_14_57: 1809445558
+      Skill_14_58: -1745488884
+      Skill_14_59: -1829132749
+      Skill_14_6: 725583134
+      Skill_14_60: -1811115615
+      Skill_14_61: 682442969
+      Skill_14_62: 1000720380
+      Skill_14_63: 475733199
+      Skill_14_64: -576821512
+      Skill_14_65: 96651849
+      Skill_14_66: 1310297552
+      Skill_14_67: 1431782740
+      Skill_14_68: -675663393
+      Skill_14_69: 1207530254
+      Skill_14_7: 18823509
+      Skill_14_70: -1238296473
+      Skill_14_71: -1994719855
+      Skill_14_72: -1973608865
+      Skill_14_73: -804560200
+      Skill_14_74: -1056000206
+      Skill_14_75: -635162624
+      Skill_14_76: -1451688886
+      Skill_14_77: 2084078642
+      Skill_14_78: 663566333
+      Skill_14_79: 409193974
+      Skill_14_8: 634177293
+      Skill_14_80: -906963113
+      Skill_14_81: 818591390
+      Skill_14_82: 1900162143
+      Skill_14_83: 1267746063
+      Skill_14_84: 625045873
+      Skill_14_85: -200167509
+      Skill_14_86: 995701952
+      Skill_14_87: 788611941
+      Skill_14_88: -864498474
+      Skill_14_89: -1213657418
+      Skill_14_9: 30902805
+      Skill_14_90: 117960085
+      Skill_14_91: 1435865387
+      Skill_14_92: -2121104519
+      Skill_14_93: -1943307648
+      Skill_14_94: 1155080069
+      Skill_14_95: 1079795060
+      Skill_14_96: 1680965993
+      Skill_14_97: -1967321501
+      Skill_14_98: -122189467
+      Skill_14_99: -2109503336
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
