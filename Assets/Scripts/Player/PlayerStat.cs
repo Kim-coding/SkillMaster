@@ -71,8 +71,8 @@ public class PlayerStat
 
     public void playerStatUpdate()
     {
-        playerAttackPower = ((basePlayerAttackPower + 
-            (GameMgr.Instance.playerMgr.playerEnhance.attackPowerLevel * 1/*TO-DO 테이블에서 증가량으로 받아와 대체*/))
+        playerAttackPower = ((new BigInteger(basePlayerAttackPower) + 
+            (new BigInteger(GameMgr.Instance.playerMgr.playerEnhance.attackPowerLevel) * 1/*TO-DO 테이블에서 증가량으로 받아와 대체*/))
             * GameMgr.Instance.playerMgr.playerinventory.itemAttackPower)
             .ToString();
         

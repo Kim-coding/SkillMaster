@@ -37,7 +37,6 @@ public class GameMgr : MonoBehaviour
     {
         if (Input.GetKeyUp(KeyCode.D))
         {
-
             debugMode.gameObject.SetActive(!debugMode.isActiveAndEnabled);
         }
     }

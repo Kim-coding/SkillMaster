@@ -28,8 +28,10 @@ public class PlayerInventory
     public int weaponSlotUpgrade;
     public int cloakSlotUpgrade;
 
+    public int upgradeFailCount;
+
     public List<Equip> playerEquipItemList = new List<Equip> { };
-    public List<Item> playerNormalItemList = new List<Item> { };
+    public List<NormalItem> playerNormalItemList = new List<NormalItem> { };
     public int maxSlots = 150;
 
     public float itemAttackPower;
@@ -80,6 +82,8 @@ public class PlayerInventory
         pantSlotUpgrade = 0;
         weaponSlotUpgrade = 0;
         cloakSlotUpgrade = 0;
+
+        upgradeFailCount = 0;
 
         ItemOptionsUpdate();
 
@@ -183,7 +187,7 @@ public class PlayerInventory
         playerEquipItemList.Remove(equip);
     }
 
-    private void ItemOptionsUpdate()
+    public void ItemOptionsUpdate()
     {
         itemAttackPower = 1;
         itemDeffence = 1;
@@ -233,42 +237,44 @@ public class PlayerInventory
                 equipSlotUpgradeLevel = Mathf.Min(cloakSlotUpgrade, EquipRarityCheck(equip.rarerityType));
                 break;
         }
-        float equipSlotUpgradeValue = 1f;
-        equipSlotUpgradePercent = 1 + (equipSlotUpgradeLevel * equipSlotUpgradeValue / 100f);
+
+        var currentUpgradeData = DataTableMgr.Get<EquipUpgradeTable>(DataTableIds.equipmentUpgrade).GetID(equipSlotUpgradeLevel);
+
+        equipSlotUpgradePercent = currentUpgradeData.option_raise;
 
         foreach (var option in equip.EquipOption.currentOptions)
         {
             switch (option.Item1)
             {
                 case OptionType.attackPower:
-                    itemAttackPower += option.Item2 + equipSlotUpgradePercent;
+                    itemAttackPower += option.Item2 * equipSlotUpgradePercent;
                     break;
                 case OptionType.criticalPercent:
-                    itemCriticalPercent += option.Item2 + equipSlotUpgradePercent;
+                    itemCriticalPercent += option.Item2 * equipSlotUpgradePercent;
                     break;
                 case OptionType.criticalMultiple:
-                    itemCriticalMultiple += option.Item2 + equipSlotUpgradePercent;
+                    itemCriticalMultiple += option.Item2 * equipSlotUpgradePercent;
                     break;
                 case OptionType.attackSpeed:
-                    itemAttackSpeed += option.Item2 + equipSlotUpgradePercent;
+                    itemAttackSpeed += option.Item2 * equipSlotUpgradePercent;
                     break;
                 case OptionType.deffence:
-                    itemDeffence += option.Item2 + equipSlotUpgradePercent;
+                    itemDeffence += option.Item2 * equipSlotUpgradePercent;
                     break;
                 case OptionType.maxHealth:
-                    itemMaxHealth += option.Item2 + equipSlotUpgradePercent;
+                    itemMaxHealth += option.Item2 * equipSlotUpgradePercent;
                     break;
                 case OptionType.speed:
-                    itemSpeed += option.Item2 + equipSlotUpgradePercent;
+                    itemSpeed += option.Item2 * equipSlotUpgradePercent;
                     break;
                 case OptionType.goldIncrease:
-                    itemGoldIncrease += option.Item2 + equipSlotUpgradePercent;
+                    itemGoldIncrease += option.Item2 * equipSlotUpgradePercent;
                     break;
                 case OptionType.recovery:
-                    itemRecovery += option.Item2 + equipSlotUpgradePercent;
+                    itemRecovery += option.Item2 * equipSlotUpgradePercent;
                     break;
                 case OptionType.attackRange:
-                    itemAttackRange += option.Item2 + equipSlotUpgradePercent;
+                    itemAttackRange += option.Item2 * equipSlotUpgradePercent;
                     break;
             }
         }

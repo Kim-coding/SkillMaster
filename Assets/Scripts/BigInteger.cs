@@ -65,7 +65,7 @@ public struct BigInteger
             int substringLength = Math.Min(3, length);
             if (!int.TryParse(s.Substring(startIndex, substringLength), out element))
             {
-                numberList = null;
+                //numberList = null;
                 element = 0;
                 factor = 0;
                 Clear();

@@ -342,6 +342,14 @@ public class UiInventory : MonoBehaviour
         EquipSlotCountUpdate();
     }
 
+    public void NormalItemUpdate()
+    {
+        foreach (var slot in normalItemSlots)
+        {
+            slot.itemCountUpdate();
+        }
+    }
+
     public void InstantiateSlot(NormalItem item, int value)
     {
         foreach (var slot in normalItemSlots)

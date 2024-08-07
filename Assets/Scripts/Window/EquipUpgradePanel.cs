@@ -12,8 +12,9 @@ public class EquipUpgradePanel : MonoBehaviour
     public Toggle[] partsToggles;
     public TextMeshProUGUI[] currentLevels;
 
-    public TextMeshProUGUI currentLv;
-    public TextMeshProUGUI nextLv;
+    public TextMeshProUGUI currentLvText;
+    private int currentLv;
+    public TextMeshProUGUI nextLvText;
 
     public TextMeshProUGUI explainText;
     public GameObject lvPanel;
@@ -21,15 +22,17 @@ public class EquipUpgradePanel : MonoBehaviour
     public GameObject materialPanel;
 
     public GameObject[] options;
+    public TextMeshProUGUI[] optionNames;
     public TextMeshProUGUI[] currentPercent;
     public TextMeshProUGUI[] nextPercent;
 
     public GameObject missingPanel;
 
-    public TextMeshProUGUI successPercent;
-    public TextMeshProUGUI sumSuccessPercent;
-    public Button informationButton;
+    public TextMeshProUGUI successPercentText;
+    public TextMeshProUGUI sumSuccessPercentText;
+    public int successPercent;
 
+    public Button informationButton;
     public Button informationPanel;
     public TextMeshProUGUI informationText;
 
@@ -41,7 +44,7 @@ public class EquipUpgradePanel : MonoBehaviour
     public GameObject upgradeResultPanel;
 
     private int currentToggleNumber = -1;
-
+    private Equip selectedEquip;
     private void Awake()
     {
         exitButton.onClick.AddListener(ClosePanel);
@@ -49,11 +52,14 @@ public class EquipUpgradePanel : MonoBehaviour
         {
             part.onValueChanged.AddListener(onToggleValueChange);
         }
+        informationButton.onClick.AddListener(OpenInformation);
+        informationPanel.onClick.AddListener(()=> { informationPanel.gameObject.SetActive(false); });
+        upgradeButton.onClick.AddListener(EquipUpgrade);
     }
 
     private void OnEnable()
     {
-        foreach(var part in partsToggles)
+        foreach (var part in partsToggles)
         {
             part.isOn = false;
         }
@@ -72,77 +78,142 @@ public class EquipUpgradePanel : MonoBehaviour
         currentLevels[4].text = "Lv " + GameMgr.Instance.playerMgr.playerinventory.weaponSlotUpgrade;
         currentLevels[5].text = "Lv " + GameMgr.Instance.playerMgr.playerinventory.cloakSlotUpgrade;
 
-        if(currentToggleNumber != -1)
+        foreach (var option in options)
         {
-            switch(currentToggleNumber)
+            option.gameObject.SetActive(false);
+        }
+
+        if (currentToggleNumber != -1)
+        {
+            switch (currentToggleNumber)
             {
                 case 0:
-                    currentLv.text = "Lv. " + GameMgr.Instance.playerMgr.playerinventory.hairSlotUpgrade;
-                    if(GameMgr.Instance.playerMgr.playerinventory.hairSlotUpgrade == 60)
-                    {
-                        nextLv.text = "Lv. Max";
-                    }
-                    else
-                    {
-                        nextLv.text = "Lv. " + (GameMgr.Instance.playerMgr.playerinventory.hairSlotUpgrade + 1);
-                    }
+                    currentLv = GameMgr.Instance.playerMgr.playerinventory.hairSlotUpgrade;
+                    missingPanel.gameObject.SetActive(GameMgr.Instance.uiMgr.uiInventory.hairSlot.baseEquip);
+                    selectedEquip = GameMgr.Instance.playerMgr.playerinventory.playerHair;
                     break;
                 case 1:
-                    currentLv.text = "Lv. " + GameMgr.Instance.playerMgr.playerinventory.faceSlotUpgrade;
-                    if (GameMgr.Instance.playerMgr.playerinventory.faceSlotUpgrade == 60)
-                    {
-                        nextLv.text = "Lv. Max";
-                    }
-                    else
-                    {
-                        nextLv.text = "Lv. " + (GameMgr.Instance.playerMgr.playerinventory.faceSlotUpgrade + 1);
-                    }
+                    currentLv = GameMgr.Instance.playerMgr.playerinventory.faceSlotUpgrade;
+                    missingPanel.gameObject.SetActive(GameMgr.Instance.uiMgr.uiInventory.faceSlot.baseEquip);
+                    selectedEquip = GameMgr.Instance.playerMgr.playerinventory.playerFace;
                     break;
                 case 2:
-                    currentLv.text = "Lv. " + GameMgr.Instance.playerMgr.playerinventory.clothSlotUpgrade;
-                    if (GameMgr.Instance.playerMgr.playerinventory.clothSlotUpgrade == 60)
-                    {
-                        nextLv.text = "Lv. Max";
-                    }
-                    else
-                    {
-                        nextLv.text = "Lv. " + (GameMgr.Instance.playerMgr.playerinventory.clothSlotUpgrade + 1);
-                    }
+                    currentLv = GameMgr.Instance.playerMgr.playerinventory.clothSlotUpgrade;
+                    missingPanel.gameObject.SetActive(GameMgr.Instance.uiMgr.uiInventory.clothSlot.baseEquip);
+                    selectedEquip = GameMgr.Instance.playerMgr.playerinventory.playerCloth;
                     break;
                 case 3:
-                    currentLv.text = "Lv. " + GameMgr.Instance.playerMgr.playerinventory.pantSlotUpgrade;
-                    if (GameMgr.Instance.playerMgr.playerinventory.pantSlotUpgrade == 60)
-                    {
-                        nextLv.text = "Lv. Max";
-                    }
-                    else
-                    {
-                        nextLv.text = "Lv. " + (GameMgr.Instance.playerMgr.playerinventory.pantSlotUpgrade + 1);
-                    }
+                    currentLv = GameMgr.Instance.playerMgr.playerinventory.pantSlotUpgrade;
+                    missingPanel.gameObject.SetActive(GameMgr.Instance.uiMgr.uiInventory.pantSlot.baseEquip);
+                    selectedEquip = GameMgr.Instance.playerMgr.playerinventory.playerPant;
                     break;
                 case 4:
-                    currentLv.text = "Lv. " + GameMgr.Instance.playerMgr.playerinventory.weaponSlotUpgrade;
-                    if (GameMgr.Instance.playerMgr.playerinventory.weaponSlotUpgrade == 60)
-                    {
-                        nextLv.text = "Lv. Max";
-                    }
-                    else
-                    {
-                        nextLv.text = "Lv. " + (GameMgr.Instance.playerMgr.playerinventory.weaponSlotUpgrade + 1);
-                    }
+                    currentLv = GameMgr.Instance.playerMgr.playerinventory.weaponSlotUpgrade;
+                    missingPanel.gameObject.SetActive(GameMgr.Instance.uiMgr.uiInventory.weaponSlot.baseEquip);
+                    selectedEquip = GameMgr.Instance.playerMgr.playerinventory.playerWeapon;
                     break;
                 case 5:
-                    currentLv.text = "Lv. " + GameMgr.Instance.playerMgr.playerinventory.cloakSlotUpgrade;
-                    if (GameMgr.Instance.playerMgr.playerinventory.cloakSlotUpgrade == 60)
-                    {
-                        nextLv.text = "Lv. Max";
-                    }
-                    else
-                    {
-                        nextLv.text = "Lv. " + (GameMgr.Instance.playerMgr.playerinventory.cloakSlotUpgrade + 1);
-                    }
+                    currentLv = GameMgr.Instance.playerMgr.playerinventory.cloakSlotUpgrade;
+                    missingPanel.gameObject.SetActive(GameMgr.Instance.uiMgr.uiInventory.cloakSlot.baseEquip);
+                    selectedEquip = GameMgr.Instance.playerMgr.playerinventory.playerCloak;
                     break;
             }
+            currentLvText.text = "Lv. " + currentLv;
+            if (currentLv == 60)
+            {
+                nextLvText.text = "Lv. Max";
+            }
+            else
+            {
+                nextLvText.text = "Lv. " + (currentLv + 1);
+            }
+
+            var currentUpgradeData = DataTableMgr.Get<EquipUpgradeTable>(DataTableIds.equipmentUpgrade).GetID(currentLv);
+
+            for (int i = 0; i < selectedEquip.EquipOption.currentOptions.Count; i++)
+            {
+                options[i].gameObject.SetActive(true);
+                string optiontext = string.Empty;
+                switch (selectedEquip.EquipOption.currentOptions[i].Item1)
+                {
+                    case OptionType.attackPower:
+                        optiontext = "공격력";
+                        break;
+                    case OptionType.maxHealth:
+                        optiontext = "최대 체력";
+                        break;
+                    case OptionType.deffence:
+                        optiontext = "방어력";
+                        break;
+                    case OptionType.recovery:
+                        optiontext = "회복력";
+                        break;
+                    case OptionType.criticalPercent:
+                        optiontext = "치명타 확률";
+                        break;
+                    case OptionType.criticalMultiple:
+                        optiontext = "치명타 데미지";
+                        break;
+                    case OptionType.speed:
+                        optiontext = "이동 속도";
+                        break;
+                    case OptionType.attackRange:
+                        optiontext = "공격 범위";
+                        break;
+                    case OptionType.attackSpeed:
+                        optiontext = "공격 속도";
+                        break;
+                    case OptionType.goldIncrease:
+                        optiontext = "골드 획득량";
+                        break;
+                }
+                optionNames[i].text = optiontext;
+                var option_raise = currentUpgradeData.option_raise;
+                currentPercent[i].text = (selectedEquip.EquipOption.currentOptions[i].Item2 * option_raise).ToString() + "%";
+                var nextOption_raise = DataTableMgr.Get<EquipUpgradeTable>(DataTableIds.equipmentUpgrade).GetID(currentLv + 1).option_raise;
+                nextPercent[i].text = (selectedEquip.EquipOption.currentOptions[i].Item2 * nextOption_raise).ToString() + "%";
+            }
+
+            successPercent = currentUpgradeData.Success_persent + currentUpgradeData.Success_persentdown * GameMgr.Instance.playerMgr.playerinventory.upgradeFailCount;
+            successPercentText.text = successPercent + "%";
+            sumSuccessPercentText.text = "(" + currentUpgradeData.Success_persent + "% + " +
+                (currentUpgradeData.Success_persentdown * GameMgr.Instance.playerMgr.playerinventory.upgradeFailCount) + "%)";
+
+            goldText.text = $"{currentUpgradeData.gold_usevalue}개 소모 / 보유 : {GameMgr.Instance.playerMgr.currency.gold.ToStringShort()}";
+            int reinforceCount = 0;
+            foreach (var item in GameMgr.Instance.playerMgr.playerinventory.playerNormalItemList)
+            {
+                if (item.itemNumber == 1111)
+                {
+                    reinforceCount = item.itemValue;
+                    break;
+                }
+            }
+            reinforceText.text = $"{currentUpgradeData.reinforce_increase}개 소모 / 보유 : {reinforceCount}";
+            BigInteger goldValue = new BigInteger(currentUpgradeData.gold_usevalue);
+
+            bool upgradeButtonActive = false;
+            if (goldValue > GameMgr.Instance.playerMgr.currency.gold)
+            {
+                goldText.color = Color.red;
+            }
+            else
+            {
+                goldText.color = Color.black;
+                upgradeButtonActive = true;
+            }
+
+            if (currentUpgradeData.reinforce_increase > reinforceCount)
+            {
+                reinforceText.color = Color.red;
+                upgradeButtonActive = false;
+            }
+            else
+            {
+                reinforceText.color = Color.black;
+            }
+
+            upgradeButton.interactable = upgradeButtonActive;
         }
     }
 
@@ -154,7 +225,7 @@ public class EquipUpgradePanel : MonoBehaviour
         materialPanel.gameObject.SetActive(false);
         upgradeButton.interactable = false;
         currentToggleNumber = -1;
-        for(int i = 0; i < partsToggles.Length; i++)
+        for (int i = 0; i < partsToggles.Length; i++)
         {
             if (partsToggles[i].isOn)
             {
@@ -204,6 +275,69 @@ public class EquipUpgradePanel : MonoBehaviour
         {
             checkmark.color = color;
         }
+    }
+    
+    public void OpenInformation()
+    {
+        informationPanel.gameObject.SetActive(true);
+    }
+
+    public void EquipUpgrade()
+    {
+        var currentUpgradeData = DataTableMgr.Get<EquipUpgradeTable>(DataTableIds.equipmentUpgrade).GetID(currentLv);
+        BigInteger goldValue = new BigInteger(currentUpgradeData.gold_usevalue);
+        GameMgr.Instance.playerMgr.currency.RemoveGold(goldValue);
+
+        foreach (var item in GameMgr.Instance.playerMgr.playerinventory.playerNormalItemList)
+        {
+            if (item.itemNumber == 1111)
+            {
+                item.itemValue -= currentUpgradeData.reinforce_increase;
+                break;
+            }
+        }
+
+        GameMgr.Instance.uiMgr.uiInventory.NormalItemUpdate();
+
+        int upgradeNum = Random.Range(0, 101);
+        if ( upgradeNum <= successPercent)
+        {
+            //강화 성공
+            GameMgr.Instance.uiMgr.uiWindow.popUpUI.gameObject.SetActive(true);
+            GameMgr.Instance.uiMgr.uiWindow.popUpUI.SetText("강화 성공");
+            switch(currentToggleNumber)
+            {
+                case 0:
+                    GameMgr.Instance.playerMgr.playerinventory.hairSlotUpgrade++;
+                    break;
+                case 1:
+                    GameMgr.Instance.playerMgr.playerinventory.faceSlotUpgrade++;
+                    break;
+                case 2:
+                    GameMgr.Instance.playerMgr.playerinventory.clothSlotUpgrade++;
+                    break;
+                case 3:
+                    GameMgr.Instance.playerMgr.playerinventory.pantSlotUpgrade++;
+                    break;
+                case 4:
+                    GameMgr.Instance.playerMgr.playerinventory.weaponSlotUpgrade++;
+                    break;
+                case 5:
+                    GameMgr.Instance.playerMgr.playerinventory.cloakSlotUpgrade++;
+                    break;
+            }
+            GameMgr.Instance.playerMgr.playerinventory.upgradeFailCount = 0;
+            GameMgr.Instance.playerMgr.playerinventory.ItemOptionsUpdate();
+
+        }
+        else
+        {
+            //강화 실패
+            GameMgr.Instance.uiMgr.uiWindow.popUpUI.gameObject.SetActive(true);
+            GameMgr.Instance.uiMgr.uiWindow.popUpUI.SetText("강화 실패");
+            GameMgr.Instance.playerMgr.playerinventory.upgradeFailCount++;
+        }
+        EquipUpgradePanelUpdate();
     }
 
     public void ClosePanel()
