@@ -1,0 +1,7 @@
+﻿stuffid,stuff_name,stuff_type,Itembundle,Itemmaxvalue,Itemicon,stuff_explainid
+220001,골드,1,100,-1,gold.png,120199
+220002,다이아,2,100,-1,diamond.png,120200
+220003,골드 던전 열쇠,3,100,2,goldkey.png,120201
+220004,다이아 던전 열쇠,3,100,2,diamondkey.png,120202
+220005,뽑기 티켓,4,100,-1,ticket.png,120203
+220006,강화석,5,99999,-1,reinforce.png,120204
