@@ -10,6 +10,8 @@ public class AreaSingleHitSkill : MonoBehaviour, ISkillComponent, ISkill
     public Attack attack;
     public DamageType damageType;
 
+    private GameObject skillEffectObject;
+    private string skillEffect;
 
     float duration = 0.5f;
     float timer = 0f;
@@ -25,13 +27,14 @@ public class AreaSingleHitSkill : MonoBehaviour, ISkillComponent, ISkill
     public void ApplyShape(GameObject skillObject, Vector3 launchPoint, GameObject target, float range, float width, int skillPropertyID, string skillEffect)
     {
         this.skillObject = skillObject;
+        this.skillEffect = skillEffect;
         Sprite circleSprite = Resources.Load<Sprite>("Circle");
         if (circleSprite != null)
         {
             skillObject.GetComponent<SpriteRenderer>().sprite = circleSprite;
         }
 
-        skillObject.transform.localScale = new Vector2(range, range);
+        skillObject.transform.localScale = new Vector2(range*2, range*2);
 
         skillObject.AddComponent<CircleCollider2D>().isTrigger = true;
         skillObject.transform.position = launchPoint;
@@ -42,6 +45,14 @@ public class AreaSingleHitSkill : MonoBehaviour, ISkillComponent, ISkill
         this.attacker = attacker;
         this.attack = attack;
         this.damageType = damageType;
+
+        GameObject skillEffectPrefab = Resources.Load<GameObject>($"SkillEffects/{skillEffect}");
+        if (skillEffectPrefab != null)
+        {
+            skillEffectObject = Instantiate(skillEffectPrefab, skillObject.transform.position, Quaternion.identity);
+            skillEffectObject.transform.SetParent(skillObject.transform);
+            skillEffectObject.transform.localScale = new Vector2(0.5f, 0.5f);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

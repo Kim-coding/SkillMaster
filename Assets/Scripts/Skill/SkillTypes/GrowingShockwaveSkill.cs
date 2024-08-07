@@ -16,41 +16,43 @@ public class GrowingShockwaveSkill : MonoBehaviour, ISkillComponent, ISkill  //Ã
     float duration = 2f;
     float timer = 0f;
 
-    float growingSpeed = 1f;   // ¼ºÀå ¼Óµµ
+    float growingSpeed;   // ¼ºÀå ¼Óµµ
 
-    float initialInnerRadius = 0.5f;  // ½ÃÀÛ ³»¿ø ¹ÝÁö¸§
-    float initialOuterRadius = 1.0f;  // ½ÃÀÛ ¿Ü¿ø ¹ÝÁö¸§
+    private float currentRadius;
+    private float endRadius;
 
-    private float currentInnerRadius;
-    private float currentOuterRadius;
+    private GameObject skillEffectObject;
+    private string skillEffect;
 
     public void Initialize()
     {
         timer = 0f;
-        //skillID = 0;
         skillObject = null;
-        currentInnerRadius = initialInnerRadius;
-        currentOuterRadius = initialOuterRadius;
         //ÃÊ±âÈ­ ½Ã ÇÊ¿äÇÑ ³ª¸ÓÁö ÀÛ¾÷
-    }
-
-    private void Start()
-    {
-        currentInnerRadius = initialInnerRadius;
-        currentOuterRadius = initialOuterRadius;
     }
 
     public void ApplyShape(GameObject skillObject, Vector3 launchPoint, GameObject target, float range, float width, int skillPropertyID, string skillEffect)
     {
         this.skillObject = skillObject;
+        this.skillEffect = skillEffect;
+
         Sprite circleSprite = Resources.Load<Sprite>("OuterCircleSprite");
         if (circleSprite != null)
         {
             skillObject.GetComponent<SpriteRenderer>().sprite = circleSprite;
         }
-
+        if (skillPropertyID > 0)
+        {
+            var skillDownTable = DataTableMgr.Get<SkillDownTable>(DataTableIds.skillDown);
+            var skillDownData = skillDownTable.GetID(skillPropertyID);
+            if (skillDownData != null)
+            {
+                currentRadius = skillDownData.AtminRadius;
+                endRadius = skillDownData.AtmaxRadius;
+            }
+        }
         skillObject.transform.position = launchPoint;
-        skillObject.transform.localScale = new Vector2(currentOuterRadius*2, currentOuterRadius * 2);
+        skillObject.transform.localScale = new Vector2(currentRadius * 2, currentRadius * 2);
     }
 
     public void ApplyDamageType(GameObject attacker, Attack attack, DamageType damageType, SkillShapeType shapeType)
@@ -58,6 +60,14 @@ public class GrowingShockwaveSkill : MonoBehaviour, ISkillComponent, ISkill  //Ã
         this.attacker = attacker;
         this.attack = attack;
         this.damageType = damageType;
+
+        GameObject skillEffectPrefab = Resources.Load<GameObject>($"SkillEffects/{skillEffect}");
+        if (skillEffectPrefab != null)
+        {
+            skillEffectObject = Instantiate(skillEffectPrefab, attacker.transform.position, Quaternion.identity);
+            skillEffectObject.transform.SetParent(skillObject.transform);
+            skillEffectObject.transform.localScale = new Vector2(0.5f, 0.5f);
+        }
     }
 
     private void UpdateMonsterList()
@@ -68,7 +78,7 @@ public class GrowingShockwaveSkill : MonoBehaviour, ISkillComponent, ISkill  //Ã
             if (monster != null)
             {
                 float distance = Vector2.Distance(skillObject.transform.position, monster.transform.position);
-                if (distance < currentOuterRadius && distance > currentInnerRadius && !attackedMonsters.Contains(monster))
+                if (distance < endRadius && !attackedMonsters.Contains(monster))
                 {
                     attackedMonsters.Add(monster);
                     var attackables = monster.GetComponents<IAttackable>();
@@ -83,19 +93,16 @@ public class GrowingShockwaveSkill : MonoBehaviour, ISkillComponent, ISkill  //Ã
 
     private void Update()
     {
-        timer += Time.deltaTime;
-        if(timer > duration)
+        if(currentRadius > endRadius)
         {
-            timer = 0;
             attackedMonsters.Clear();
             Destroy(gameObject);
         }
         else
         {
-            currentInnerRadius += growingSpeed * Time.deltaTime;
-            currentOuterRadius += growingSpeed * Time.deltaTime;
+            currentRadius += growingSpeed * Time.deltaTime;
 
-            skillObject.transform.localScale = new Vector2(currentOuterRadius * 2, currentOuterRadius * 2);
+            skillObject.transform.localScale = new Vector2(currentRadius * 2, currentRadius * 2);
 
             UpdateMonsterList();
         }

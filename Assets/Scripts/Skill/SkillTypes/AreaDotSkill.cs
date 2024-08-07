@@ -13,6 +13,9 @@ public class AreaDotSkill : MonoBehaviour, ISkillComponent, ISkill //¿øÇü ¹üÀ§ µ
     private float radius;
     private float skillCooldown;
 
+    private GameObject skillEffectObject;
+    private string skillEffect;
+
     float duration = 1.0f;
     float timer = 0f;
 
@@ -33,6 +36,7 @@ public class AreaDotSkill : MonoBehaviour, ISkillComponent, ISkill //¿øÇü ¹üÀ§ µ
     public void ApplyShape(GameObject skillObject, Vector3 launchPoint, GameObject target, float range, float width, int skillPropertyID, string skillEffect)
     {
         this.skillObject = skillObject;
+        this.skillEffect = skillEffect;
         Sprite circleSprite = Resources.Load<Sprite>("Circle");
         if (circleSprite != null)
         {
@@ -50,6 +54,15 @@ public class AreaDotSkill : MonoBehaviour, ISkillComponent, ISkill //¿øÇü ¹üÀ§ µ
         this.attacker = attacker;
         this.attack = attack;
         this.damageType = damageType;
+
+        GameObject skillEffectPrefab = Resources.Load<GameObject>($"SkillEffects/{skillEffect}");
+        if (skillEffectPrefab != null)
+        {
+            skillEffectObject = Instantiate(skillEffectPrefab, attacker.transform.position, Quaternion.identity);
+            skillEffectObject.transform.SetParent(skillObject.transform);
+            skillEffectObject.transform.localScale = new Vector2(0.5f, 0.5f);
+
+        }
     }
 
     private IEnumerator ApplyDotDamage()

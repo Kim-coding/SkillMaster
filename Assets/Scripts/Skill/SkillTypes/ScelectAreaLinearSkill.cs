@@ -60,7 +60,7 @@ public class ScelectAreaLinearAttack : MonoBehaviour, ISkillComponent, ISkill
             skillEffectObject.transform.SetParent(skillObject.transform);
             if (skillEffectPrefab.GetComponent<Animator>() != null)
             {
-                skillEffectObject.transform.localScale = new Vector2(atkArangeX, atkArangeY);
+                skillEffectObject.transform.localScale = new Vector2(1, 1);
             }
             else
             {

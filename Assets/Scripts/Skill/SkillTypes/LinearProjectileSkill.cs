@@ -22,7 +22,7 @@ public class LinearProjectileSkill : MonoBehaviour, ISkillComponent, ISkill //직
     float duration = 1.0f;
     float timer = 0f;
 
-    public float speed = 5f; // 투사체 속도
+    public float speed; // 투사체 속도
     private GameObject skillEffectObject;
     private string skillEffect;
     public void Initialize()
@@ -46,6 +46,7 @@ public class LinearProjectileSkill : MonoBehaviour, ISkillComponent, ISkill //직
                 projectileangle = skillDownData.Projectileangle;
                 ProjectileSizeX = skillDownData.ProjectileSizeX;
                 ProjectileSizeY = skillDownData.ProjectileSizeY;
+                speed = skillDownData.ProjectileSpeed;
             }
         }
         

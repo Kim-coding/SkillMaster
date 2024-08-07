@@ -5709,7 +5709,7 @@ MonoBehaviour:
   autoSkillSpownButton: {fileID: 1346104801}
   autoSkillSpownButtonText: {fileID: 978656649}
   skillLevelInputField: {fileID: 448768821}
-  skillLV: 40002
+  skillLV: 40010
 --- !u!114 &240821522
 MonoBehaviour:
   m_ObjectHideFlags: 0
