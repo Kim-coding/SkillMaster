@@ -13,6 +13,7 @@ public class LinearRangeAttackSkill : MonoBehaviour, ISkillComponent, ISkill
     float duration = 0.5f;
     float timer = 0f;
     float angle;
+    float skillEffectAngle;
     public void Initialize()
     {
         timer = 0f;
@@ -36,6 +37,8 @@ public class LinearRangeAttackSkill : MonoBehaviour, ISkillComponent, ISkill
         angle = Mathf.Atan2(rot.y, rot.x) * Mathf.Rad2Deg;
         skillObject.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
         skillObject.transform.position = launchPoint + rot * (x);
+
+        skillEffectAngle = (-angle + 90);
     }
 
     public void ApplyDamageType(GameObject attacker, Attack attack, DamageType damageType, SkillShapeType shapeType) //스킬의 데미지 속성을 설정
@@ -48,11 +51,19 @@ public class LinearRangeAttackSkill : MonoBehaviour, ISkillComponent, ISkill
         if (skillEffectPrefab != null)
         {
             skillEffectObject = Instantiate(skillEffectPrefab, skillObject.transform.position, Quaternion.identity);
-            
-            skillEffectObject.transform.rotation = Quaternion.Euler(new Vector3(0, 0, -angle));
-            
             skillEffectObject.transform.SetParent(skillObject.transform);
-
+            if (skillEffectPrefab.GetComponent<Animator>() != null)
+            {
+                angle -= 90;
+                skillEffectObject.transform.rotation = Quaternion.Euler(0, 0, angle);
+                skillEffectObject.transform.localScale = new Vector3(1, 1.2f, 1);
+            }
+            else
+            {
+                var mainModule = skillEffectObject.GetComponent<ParticleSystem>().main;
+                mainModule.startRotation = skillEffectAngle * Mathf.Deg2Rad;
+            }
+            
         }
     }
 
@@ -75,6 +86,7 @@ public class LinearRangeAttackSkill : MonoBehaviour, ISkillComponent, ISkill
         if(timer >= duration)
         {
             timer = 0;
+            Destroy(skillEffectObject);
             Destroy(gameObject);
         }
     }

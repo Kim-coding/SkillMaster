@@ -15,7 +15,8 @@ public class ScelectAreaLinearAttack : MonoBehaviour, ISkillComponent, ISkill
     float angle;
     private GameObject skillEffectObject;
     private string skillEffect;
-
+    float atkArangeX;
+    float atkArangeY;
     public void Initialize()
     {
         timer = 0f;
@@ -28,7 +29,8 @@ public class ScelectAreaLinearAttack : MonoBehaviour, ISkillComponent, ISkill
     {
         this.skillObject = skillObject;
         this.skillEffect = skillEffect;
-
+        atkArangeX = range;
+        atkArangeY = width;
         Renderer renderer = this.skillObject.GetComponent<Renderer>();
         if (renderer != null)
         {
@@ -55,9 +57,16 @@ public class ScelectAreaLinearAttack : MonoBehaviour, ISkillComponent, ISkill
         if (skillEffectPrefab != null)
         {
             skillEffectObject = Instantiate(skillEffectPrefab, skillObject.transform.position, Quaternion.identity);
-
             skillEffectObject.transform.SetParent(skillObject.transform);
-
+            if (skillEffectPrefab.GetComponent<Animator>() != null)
+            {
+                skillEffectObject.transform.localScale = new Vector2(atkArangeX, atkArangeY);
+            }
+            else
+            {
+                var mainModule = skillEffectObject.GetComponent<ParticleSystem>().main;
+                mainModule.startSize = atkArangeX;
+            }
         }
     }
 

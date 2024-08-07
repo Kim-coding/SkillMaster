@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TreeEditor;
 using UnityEngine;
 
 public class OrbitingProjectileSkill : MonoBehaviour, ISkillComponent, ISkill
@@ -37,8 +38,12 @@ public class OrbitingProjectileSkill : MonoBehaviour, ISkillComponent, ISkill
         this.target = target;
         this.skillObject.transform.position = launchPoint;
         skillObject.transform.position = launchPoint;
-        
-        if(skillPropertyID > 0)
+
+        Vector3 directionToTarget = (target.transform.position - launchPoint).normalized;
+        float targetAngle = Mathf.Atan2(directionToTarget.y, directionToTarget.x) * Mathf.Rad2Deg;
+        skillObject.transform.rotation = Quaternion.Euler(new Vector3(0, 0, targetAngle));
+
+        if (skillPropertyID > 0)
         {
             var skillDownTable = DataTableMgr.Get<SkillDownTable>(DataTableIds.skillDown);
             var skillDownData = skillDownTable.GetID(skillPropertyID);
@@ -60,14 +65,18 @@ public class OrbitingProjectileSkill : MonoBehaviour, ISkillComponent, ISkill
         this.attack = attack;
         this.damageType = damageType;
 
-        StartCoroutine(CreateOrbitProjectiles());
+        CreateOrbitProjectiles();
     }
 
-    private IEnumerator CreateOrbitProjectiles()
+    private void CreateOrbitProjectiles()
     {
         for (int j = 0; j < ProjectileValue; j++)
         {
-            GameObject projectile = Instantiate(skillObject, target.transform.position, Quaternion.identity);
+
+            GameObject projectile = Instantiate(skillObject, transform.position, Quaternion.identity);
+            projectile.transform.SetParent(transform);
+            Vector3 direction = Vector3.back;
+            projectile.transform.position = direction * radius;
             projectile.transform.localScale = new Vector2(ProjectileSizeX, ProjectileSizeY);
             Sprite CircleSprite = Resources.Load<Sprite>("Circle");
             if (CircleSprite != null)
@@ -103,6 +112,7 @@ public class OrbitingProjectileSkill : MonoBehaviour, ISkillComponent, ISkill
                 if (skillEffectPrefab.GetComponent<Animator>() != null)
                 {
                     skillEffectObject.transform.rotation = Quaternion.Euler(0, 0, -targetAngle);
+                    skillEffectObject.transform.localScale = new Vector3(ProjectileSizeY, ProjectileSizeY, ProjectileSizeY);
                     skillEffectObject.transform.SetParent(skillObject.transform);
                 }
                 else
@@ -111,14 +121,10 @@ public class OrbitingProjectileSkill : MonoBehaviour, ISkillComponent, ISkill
                     mainModule.startRotation = Mathf.Deg2Rad * targetAngle;
 
                     skillEffectObject.transform.SetParent(attacker.transform);
-
-                    float effectLifetime = (Projectileangle / 720f);
-                    Destroy(skillEffectObject, effectLifetime);
                 }
             }
 
             StartCoroutine(MoveOrbitProjectile(projectile, attacker.transform.position, targetAngle)); 
-            yield return new WaitForSeconds(0.4f);
         }
     }
 

@@ -37,6 +37,8 @@ public class ScelectAreaProjectileSkill : MonoBehaviour, ISkillComponent, ISkill
     {
         this.skillObject = skillObject;
         this.skillEffect = skillEffect;
+        attackArangeX = width;
+        attackArangeY = range;
         Sprite circleSprite = Resources.Load<Sprite>("Circle");
         if (circleSprite != null)
         {
@@ -71,7 +73,7 @@ public class ScelectAreaProjectileSkill : MonoBehaviour, ISkillComponent, ISkill
         }
         else
         {
-            this.skillObject.transform.localScale = new Vector2(range * 2, width * 2);
+            this.skillObject.transform.localScale = new Vector2(attackArangeX * 2, attackArangeY * 2);
             this.skillObject.transform.position = targetPoint;
 
         }
@@ -82,12 +84,11 @@ public class ScelectAreaProjectileSkill : MonoBehaviour, ISkillComponent, ISkill
             skillEffectObject = Instantiate(skillEffectPrefab, skillObject.transform.position, Quaternion.identity);
 
             skillEffectObject.transform.SetParent(skillObject.transform);
+            var mainModule = skillEffectObject.GetComponent<ParticleSystem>().main;
+            mainModule.startSize = attackArangeX * 2;
             skillEffectObject.transform.position = targetPoint;
 
         }
-
-        attackArangeX = range;
-        attackArangeY = width;
     }
 
     public void ApplyDamageType(GameObject attacker, Attack attack, DamageType damageType, SkillShapeType shapeType)

@@ -5709,7 +5709,7 @@ MonoBehaviour:
   autoSkillSpownButton: {fileID: 1346104801}
   autoSkillSpownButtonText: {fileID: 978656649}
   skillLevelInputField: {fileID: 448768821}
-  skillLV: 40001
+  skillLV: 40002
 --- !u!114 &240821522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26974,7 +26974,7 @@ SortingGroup:
   m_Enabled: 1
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 4
   m_SortAtRoot: 0
 --- !u!1 &1336599744
 GameObject:
@@ -35153,11 +35153,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8432446683903782523, guid: bd0b10f85c768234f81a78ecec3afada, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.011000007
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8432446683903782523, guid: bd0b10f85c768234f81a78ecec3afada, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.05670001
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8432446683903782523, guid: bd0b10f85c768234f81a78ecec3afada, type: 3}
       propertyPath: m_LocalPosition.z
@@ -37046,17 +37046,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1880426546}
     m_Modifications:
+    - target: {fileID: 660948233740584256, guid: 2ce039dac8e6be74e9ad8f16b8cb87c9, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4831553660578189742, guid: 2ce039dac8e6be74e9ad8f16b8cb87c9, type: 3}
       propertyPath: m_Name
       value: Monster
       objectReference: {fileID: 0}
     - target: {fileID: 6496946428098163311, guid: 2ce039dac8e6be74e9ad8f16b8cb87c9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.026
+      value: -0.0601
       objectReference: {fileID: 0}
     - target: {fileID: 6496946428098163311, guid: 2ce039dac8e6be74e9ad8f16b8cb87c9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.061
+      value: -0.0678
       objectReference: {fileID: 0}
     - target: {fileID: 6496946428098163311, guid: 2ce039dac8e6be74e9ad8f16b8cb87c9, type: 3}
       propertyPath: m_LocalPosition.z
