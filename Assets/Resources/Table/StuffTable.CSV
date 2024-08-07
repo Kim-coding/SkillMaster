@@ -1,0 +1,7 @@
+stuffid,stuff_name_id,stuff_type,Itembundle,Itemmaxvalue,Itemicon,stuff_explainid
+220001,120205,1,100,-1,gold.png,120199
+220002,120206,2,100,-1,diamond.png,120200
+220003,120207,3,100,2,goldkey.png,120201
+220004,120208,3,100,2,diamondkey.png,120202
+220005,120209,4,100,-1,ticket.png,120203
+220006,120210,5,99999,-1,reinforce.png,120204
