@@ -8,6 +8,11 @@ public class UiEnhance : MonoBehaviour
 {
     private PlayerEnhance p_E;
     private PlayerBaseStat p_BS;
+
+    public Toggle[] enhanceModes;
+    public GameObject statPanel;
+    public GameObject skillPanel;
+
     public Enhance attackPowerUpgrade;
     public Enhance defenceUpgrade;
     public Enhance maxHealthUpgrade;
@@ -16,6 +21,9 @@ public class UiEnhance : MonoBehaviour
     public Enhance criticalMultipleUpgrade;
     public Enhance goldUpgrade;
 
+    public Enhance maxSkillCount;
+    public Enhance summonCooldown;
+    public Enhance minSummonLevel;
 
     private void Start()
     {
@@ -34,6 +42,11 @@ public class UiEnhance : MonoBehaviour
 
         goldUpgrade.GetComponent<Enhance>().buttonClick += GameMgr.Instance.playerMgr.playerEnhance.AddGoldIncrease;
         goldUpgrade.Init(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10006).GetStringID);
+
+        foreach (var toggle in enhanceModes)
+        {
+            toggle.onValueChanged.AddListener(onToggleValueChange);
+        }
     }
 
 
@@ -111,4 +124,48 @@ public class UiEnhance : MonoBehaviour
            p_E.goldCost);
     }
 
+    private void onToggleValueChange(bool isOn)
+    {
+        UpdateToggleColors();
+        if (enhanceModes[0].isOn)
+        {
+            statPanel.gameObject.SetActive(isOn);
+            skillPanel.gameObject.SetActive(!isOn);
+        }
+        else
+        {
+            statPanel.gameObject.SetActive(!isOn);
+            skillPanel.gameObject.SetActive(isOn);
+        }
+    }
+
+    private void UpdateToggleColors()
+    {
+        foreach (var toggle in enhanceModes)
+        {
+            if (toggle.isOn)
+            {
+                SetToggleColor(toggle, Color.blue);
+            }
+            else
+            {
+                SetToggleColor(toggle, Color.white);
+            }
+        }
+    }
+    private void SetToggleColor(Toggle toggle, Color color)
+    {
+        var background = toggle.targetGraphic;
+        var checkmark = toggle.graphic;
+
+        if (background != null)
+        {
+            background.color = color;
+        }
+
+        if (checkmark != null)
+        {
+            checkmark.color = color;
+        }
+    }
 }
