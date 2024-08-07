@@ -280,6 +280,8 @@ public class EquipUpgradePanel : MonoBehaviour
     public void OpenInformation()
     {
         informationPanel.gameObject.SetActive(true);
+        informationPanel.GetComponentInChildren<TextMeshProUGUI>().text = $"강화에 실패할 때마다 성공 확률이\r\n" +
+            $"{DataTableMgr.Get<EquipUpgradeTable>(DataTableIds.equipmentUpgrade).GetID(currentLv).Success_persentdown}% 씩 높아집니다.";
     }
 
     public void EquipUpgrade()

@@ -145,6 +145,10 @@ public static class DataTableIds
 
     public static readonly string equipmentUpgrade = "EquipmentUpgradeTable";
 
+    public static readonly string cbnUpgrade = "CombinationUpgrade";
+
+    public static readonly string skillSummon = "SkillSummonTable";
+
 
 
 }
