@@ -337,14 +337,26 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 1026111182, guid: 5dd07d5ea61a4a6409aea09dcafa9958, type: 3}
+    - target: {fileID: 3020782448858288366, guid: 81ba63d0722e0874d9ac59caf131914e, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3595408268774787376, guid: 81ba63d0722e0874d9ac59caf131914e, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 1686784057, guid: 5dd07d5ea61a4a6409aea09dcafa9958, type: 3}
+    - target: {fileID: 3595408268774787376, guid: 81ba63d0722e0874d9ac59caf131914e, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6783727903760966010, guid: 81ba63d0722e0874d9ac59caf131914e, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 1711166755, guid: 5dd07d5ea61a4a6409aea09dcafa9958, type: 3}
+    - target: {fileID: 6783727903760966010, guid: 81ba63d0722e0874d9ac59caf131914e, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8479137642763515216, guid: 81ba63d0722e0874d9ac59caf131914e, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

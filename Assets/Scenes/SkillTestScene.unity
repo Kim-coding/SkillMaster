@@ -29709,6 +29709,7 @@ MonoBehaviour:
   popUpUI: {fileID: 450711731}
   decomposPanel: {fileID: 1964705134}
   autoDecomposSelectPanel: {fileID: 0}
+  equipUpgradePanel: {fileID: 0}
 --- !u!114 &1458089215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34904,6 +34905,7 @@ MonoBehaviour:
   pantSlot: {fileID: 1031323795}
   weaponSlot: {fileID: 317484081}
   cloakSlot: {fileID: 643381587}
+  equipUpgradeButton: {fileID: 0}
 --- !u!1 &1817729859
 GameObject:
   m_ObjectHideFlags: 0
