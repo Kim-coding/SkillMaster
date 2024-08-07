@@ -68,10 +68,10 @@ public class PickUp : MonoBehaviour
                     sb.Append("Pant");
                     break;
                 case 5:
-                    sb.Append("Back");
+                    sb.Append("Weapon");
                     break;
                 case 6:
-                    sb.Append("Weapon");
+                    sb.Append("Back");
                     break;
             }
 

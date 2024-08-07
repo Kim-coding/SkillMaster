@@ -143,6 +143,8 @@ public static class DataTableIds
 
     public static readonly string gacha = "GachaTable";
 
+    public static readonly string equipmentUpgrade = "EquipmentUpgradeTable";
+
 
 
 }

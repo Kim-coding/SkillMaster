@@ -88,6 +88,12 @@ public class UiInventory : MonoBehaviour
 
     Dictionary<EquipType, Equip> baseEquipments;
 
+
+    /// <summary>
+    /// 장비 강화 관련
+    /// </summary>
+    public Button equipUpgradeButton;
+
     public void SortItemSlots()
     {
         equipItemSlots.Sort(comparison[sortDropDown.value]);
@@ -249,6 +255,7 @@ public class UiInventory : MonoBehaviour
         cancleDecomposButton.onClick.AddListener(OffDecomposMode);
         confirmDecomposButton.onClick.AddListener(OpenDecomposPanel);
         autoDecomposButton.onClick.AddListener(OpenAutoDecomposPanel);
+        equipUpgradeButton.onClick.AddListener(OpenEquipUpgradePanel);
         //데이터 테이블 호출
         //키 호출
 
@@ -335,6 +342,14 @@ public class UiInventory : MonoBehaviour
         EquipSlotCountUpdate();
     }
 
+    public void NormalItemUpdate()
+    {
+        foreach (var slot in normalItemSlots)
+        {
+            slot.itemCountUpdate();
+        }
+    }
+
     public void InstantiateSlot(NormalItem item, int value)
     {
         foreach (var slot in normalItemSlots)
@@ -343,10 +358,12 @@ public class UiInventory : MonoBehaviour
             {
                 slot.currentItem.itemValue += value;
                 slot.itemCountUpdate();
+                NormalSlotCountUpdate();
                 return;
             }
         }
 
+        GameMgr.Instance.playerMgr.playerinventory.playerNormalItemList.Add(item);
         var newSlot = Instantiate(prefabNormalSlot, normalInventoryPanel.transform);
         newSlot.SetData(item);
         normalItemSlots.Add(newSlot);
@@ -382,7 +399,8 @@ public class UiInventory : MonoBehaviour
     {
         decomposMode = true;
         sortPanel.gameObject.SetActive(false);
-        decomposPanel.gameObject.SetActive(true); 
+        decomposPanel.gameObject.SetActive(true);
+        DecomposButtonUpdate();
     }
 
     public bool DecomposSelect(EquipItemSlot slot)
@@ -390,9 +408,11 @@ public class UiInventory : MonoBehaviour
         if (!selectedSlot.Contains(slot))
         {
             selectedSlot.Add(slot);
+            DecomposButtonUpdate();
             return true;
         }
         selectedSlot.Remove(slot);
+        DecomposButtonUpdate();
         return false;
     }
 
@@ -452,6 +472,7 @@ public class UiInventory : MonoBehaviour
             item.OnSelected(true);
             selectedSlot.Add(item);
         }
+        DecomposButtonUpdate();
 
     }
     public List<EquipItemSlot> GetSelectedItemCount(EquipType equipType, RarerityType rarerity)
@@ -468,5 +489,22 @@ public class UiInventory : MonoBehaviour
             }
         }
         return slots;
+    }
+
+    public void DecomposButtonUpdate()
+    {
+        if(selectedSlot.Count == 0) 
+        { 
+            confirmDecomposButton.interactable = false;
+        }
+        else
+        {
+            confirmDecomposButton.interactable = true;
+        }
+    }
+
+    public void OpenEquipUpgradePanel()
+    {
+        GameMgr.Instance.uiMgr.uiWindow.equipUpgradePanel.gameObject.SetActive(true);
     }
 }

@@ -77,6 +77,11 @@ public class DebugMode : MonoBehaviour
             Debug.Log("CRM : " + player.playerCriticalMultiple.ToString());
         }
 
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            Debug.Log(GameMgr.Instance.playerMgr.playerinventory.itemAttackPower);
+        }
+
         GameMgr.Instance.playerMgr.playerStat.DebugStatSetting(speedValue, cooldownValue, attackSpeedValue ,attackRangeValue, recoveryDurationValue);
     }
 }
