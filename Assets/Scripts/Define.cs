@@ -149,6 +149,8 @@ public static class DataTableIds
 
     public static readonly string skillSummon = "SkillSummonTable";
 
+    public static readonly string stuff = "StuffTable";
+
 
 
 }
