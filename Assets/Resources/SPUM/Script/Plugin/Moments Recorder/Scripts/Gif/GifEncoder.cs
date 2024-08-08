@@ -54,7 +54,7 @@ namespace Moments.Encoder
 		/// <param name="repeat">Default is -1 (no repeat); 0 means play indefinitely</param>
 		/// <param name="quality">Sets quality of color quantization (conversion of images to
 		/// the maximum 256 colors allowed by the GIF specification). Lower values (minimum = 1)
-		/// produce better colors, but slow processing significantly. Higher values will speed
+		/// produce better colors, but slow processing significantly. Higher values will projectileSpeed
 		/// up the quantization pass at the cost of lower image quality (maximum = 100).</param>
 		public GifEncoder(int repeat, int quality)
 		{

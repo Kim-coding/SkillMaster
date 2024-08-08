@@ -137,6 +137,8 @@ public static class DataTableIds
 
     public static readonly string equipment = "EquipmentTable";
 
+    public static readonly string offlineReward = "OfflineRewardTable";
+
     public static readonly string option = "OptionTable";
 
     public static readonly string optionNumber = "OptionNumberTable";
