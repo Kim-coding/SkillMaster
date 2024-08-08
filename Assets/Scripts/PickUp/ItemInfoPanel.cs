@@ -114,7 +114,7 @@ public class ItemInfoPanel : MonoBehaviour
         icon.sprite = item.icon;
         itemName.text = item.itemName;
         OptionTexts[0].gameObject.SetActive(true);
-        OptionTexts[0].text = "장비 장착 슬롯 강화에 소모되는 아이템.";
+        OptionTexts[0].text = item.itemExplain;
     }
 
     public void ClosePanel()

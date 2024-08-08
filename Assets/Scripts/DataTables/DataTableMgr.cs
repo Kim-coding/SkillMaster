@@ -55,12 +55,28 @@ public static class DataTableMgr
         tables.Add(DataTableIds.equipment, equipmentTable);
 
         GachaTable gachaTable = new GachaTable();
-        gachaTable.Load(DataTableIds.gacha);
-        tables.Add(DataTableIds.gacha, gachaTable);
+        gachaTable.Load(DataTableIds.gachaLevel);
+        tables.Add(DataTableIds.gachaLevel, gachaTable);
+
+        GachaGradeTable gachaGradeTable = new GachaGradeTable();
+        gachaGradeTable.Load(DataTableIds.gachaGrade);
+        tables.Add(DataTableIds.gachaGrade, gachaGradeTable);
+
+        GachaPartTable gachaPartTable = new GachaPartTable();
+        gachaPartTable.Load(DataTableIds.gachaPart);
+        tables.Add(DataTableIds.gachaPart, gachaPartTable);
+
+        GachaItemTable gachaItemTable = new GachaItemTable();
+        gachaItemTable.Load(DataTableIds.gachaItem);
+        tables.Add(DataTableIds.gachaItem, gachaItemTable);
 
         EquipUpgradeTable equipUpgradeTable = new EquipUpgradeTable();
         equipUpgradeTable.Load(DataTableIds.equipmentUpgrade);
         tables.Add(DataTableIds.equipmentUpgrade, equipUpgradeTable);
+
+        StuffTable stuffTable = new StuffTable();
+        stuffTable.Load(DataTableIds.stuff);
+        tables.Add(DataTableIds.stuff, stuffTable);
 
     }
 

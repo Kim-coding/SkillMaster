@@ -53,7 +53,7 @@ public class EquipUpgradePanel : MonoBehaviour
             part.onValueChanged.AddListener(onToggleValueChange);
         }
         informationButton.onClick.AddListener(OpenInformation);
-        informationPanel.onClick.AddListener(()=> { informationPanel.gameObject.SetActive(false); });
+        informationPanel.onClick.AddListener(() => { informationPanel.gameObject.SetActive(false); });
         upgradeButton.onClick.AddListener(EquipUpgrade);
     }
 
@@ -170,8 +170,16 @@ public class EquipUpgradePanel : MonoBehaviour
                 optionNames[i].text = optiontext;
                 var option_raise = currentUpgradeData.option_raise;
                 currentPercent[i].text = (selectedEquip.EquipOption.currentOptions[i].Item2 * option_raise).ToString() + "%";
-                var nextOption_raise = DataTableMgr.Get<EquipUpgradeTable>(DataTableIds.equipmentUpgrade).GetID(currentLv + 1).option_raise;
-                nextPercent[i].text = (selectedEquip.EquipOption.currentOptions[i].Item2 * nextOption_raise).ToString() + "%";
+
+                if (currentLv == 60)
+                {
+                    nextPercent[i].text = "Max";
+                }
+                else
+                {
+                    var nextOption_raise = DataTableMgr.Get<EquipUpgradeTable>(DataTableIds.equipmentUpgrade).GetID(currentLv + 1).option_raise;
+                    nextPercent[i].text = (selectedEquip.EquipOption.currentOptions[i].Item2 * nextOption_raise).ToString() + "%";
+                }
             }
 
             successPercent = currentUpgradeData.Success_persent + currentUpgradeData.Success_persentdown * GameMgr.Instance.playerMgr.playerinventory.upgradeFailCount;
@@ -183,7 +191,7 @@ public class EquipUpgradePanel : MonoBehaviour
             int reinforceCount = 0;
             foreach (var item in GameMgr.Instance.playerMgr.playerinventory.playerNormalItemList)
             {
-                if (item.itemNumber == 1111)
+                if (item.itemNumber == 220006)
                 {
                     reinforceCount = item.itemValue;
                     break;
@@ -211,6 +219,11 @@ public class EquipUpgradePanel : MonoBehaviour
             else
             {
                 reinforceText.color = Color.black;
+            }
+
+            if (currentLv == 60)
+            {
+                upgradeButtonActive = false;
             }
 
             upgradeButton.interactable = upgradeButtonActive;
@@ -276,7 +289,7 @@ public class EquipUpgradePanel : MonoBehaviour
             checkmark.color = color;
         }
     }
-    
+
     public void OpenInformation()
     {
         informationPanel.gameObject.SetActive(true);
@@ -292,7 +305,7 @@ public class EquipUpgradePanel : MonoBehaviour
 
         foreach (var item in GameMgr.Instance.playerMgr.playerinventory.playerNormalItemList)
         {
-            if (item.itemNumber == 1111)
+            if (item.itemNumber == 220006)
             {
                 item.itemValue -= currentUpgradeData.reinforce_increase;
                 break;
@@ -302,12 +315,12 @@ public class EquipUpgradePanel : MonoBehaviour
         GameMgr.Instance.uiMgr.uiInventory.NormalItemUpdate();
 
         int upgradeNum = Random.Range(0, 101);
-        if ( upgradeNum <= successPercent)
+        if (upgradeNum <= successPercent)
         {
             //강화 성공
             GameMgr.Instance.uiMgr.uiWindow.popUpUI.gameObject.SetActive(true);
             GameMgr.Instance.uiMgr.uiWindow.popUpUI.SetText("강화 성공");
-            switch(currentToggleNumber)
+            switch (currentToggleNumber)
             {
                 case 0:
                     GameMgr.Instance.playerMgr.playerinventory.hairSlotUpgrade++;
