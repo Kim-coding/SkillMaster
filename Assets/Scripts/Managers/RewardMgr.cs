@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,17 +10,25 @@ public class RewardMgr : MonoBehaviour
     public GameObject offlineRewardPopUp;
     public Button offlineRewardButton;
     public TextMeshProUGUI offlinDurationText;
+
+    private int goldValue;
+    private int diaValue;
+    private float diaProbability;
+    private TimeSpan offlineDuration;
+
     public void Init()
     {
         guideQuest = new GuideQuest();
         guideQuest.Init();
 
-        offlineRewardButton.onClick.AddListener(OfflineReward);
+        //offlineRewardButton.onClick.AddListener(OfflineReward);
     }
 
     public void OfflineRewardPopUp(TimeSpan offlineDuration)
     {
         offlineRewardPopUp.SetActive(true);
+
+        this.offlineDuration = offlineDuration;
 
         var durationText = "";
         if (offlineDuration.TotalHours >= 1)
@@ -42,6 +48,32 @@ public class RewardMgr : MonoBehaviour
 
     private void OfflineReward()
     {
-        offlineRewardPopUp.SetActive(false);
+        var OfflineRewardTable = DataTableMgr.Get<OfflineRewardTable>(DataTableIds.offlineReward);
+
+        var OfflineRewardData = OfflineRewardTable.GetID(30001); //TO-DO 저장된 스테이지를 가지고 와야 함
+        if (OfflineRewardData != null)
+        {
+            goldValue = OfflineRewardData.GoldValue;
+            diaValue = OfflineRewardData.DiaValue;
+            diaProbability = OfflineRewardData.DiaProbability;
+        }
+
+        var rewardGold = goldValue * offlineDuration.Minutes;
+
+        System.Random random = new System.Random();
+        int totalDia = 0;
+
+        for (int i = 0; i < offlineDuration.Minutes; i++)
+        {
+            if (random.NextDouble() < diaProbability)
+            {
+                totalDia += diaValue;
+            }
+        }
+
+        GameMgr.Instance.playerMgr.currency.AddGold(new BigInteger(rewardGold));
+        GameMgr.Instance.playerMgr.currency.AddDia(new BigInteger(totalDia));
+
+        /*offlineRewardPopUp.SetActive(false)*/;
     }
 }

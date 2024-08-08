@@ -131,7 +131,7 @@ public class WebTimeMgr : MonoBehaviour
             {
                 Debug.Log("마지막 종료 시간" + timeData.endTime);
                 TimeSpan inactiveDuration = startTime - lastEndTime;
-                if(inactiveDuration.Minutes >= 1)
+                if(inactiveDuration.Minutes > 0)
                 {
                     GameMgr.Instance.rewardMgr.OfflineRewardPopUp(inactiveDuration);
                 }
