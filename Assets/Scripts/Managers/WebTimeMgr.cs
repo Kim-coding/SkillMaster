@@ -131,8 +131,7 @@ public class WebTimeMgr : MonoBehaviour
             {
                 Debug.Log("마지막 종료 시간" + timeData.endTime);
                 TimeSpan inactiveDuration = startTime - lastEndTime;
-                Debug.Log("미접속 시간: " + inactiveDuration.TotalMinutes + "분");
-                Debug.Log("미접속 시간: " + inactiveDuration.TotalSeconds + "초");
+                GameMgr.Instance.rewardMgr.OfflineRewardPopUp(inactiveDuration);
             }
         }
     }
