@@ -1,5 +1,6 @@
 using System;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,6 +12,7 @@ public class RewardMgr : MonoBehaviour
     public Button offlineRewardButton;
     public TextMeshProUGUI offlinDurationText;
 
+    private int stageID;
     private int goldValue;
     private int diaValue;
     private float diaProbability;
@@ -20,8 +22,22 @@ public class RewardMgr : MonoBehaviour
     {
         guideQuest = new GuideQuest();
         guideQuest.Init();
+    }
 
-        //offlineRewardButton.onClick.AddListener(OfflineReward);
+    private void Start()
+    {
+        var OfflineRewardTable = DataTableMgr.Get<OfflineRewardTable>(DataTableIds.offlineReward);
+
+        var OfflineRewardData = OfflineRewardTable.GetID(30001); //TO-DO 저장된 스테이지를 가지고 와야 함
+        if (OfflineRewardData != null)
+        {
+            stageID = OfflineRewardData.StageID;
+            goldValue = OfflineRewardData.GoldValue;
+            diaValue = OfflineRewardData.DiaValue;
+            diaProbability = OfflineRewardData.DiaProbability;
+        }
+
+        offlineRewardButton.onClick.AddListener(OfflineReward);
     }
 
     public void OfflineRewardPopUp(TimeSpan offlineDuration)
@@ -48,16 +64,6 @@ public class RewardMgr : MonoBehaviour
 
     private void OfflineReward()
     {
-        var OfflineRewardTable = DataTableMgr.Get<OfflineRewardTable>(DataTableIds.offlineReward);
-
-        var OfflineRewardData = OfflineRewardTable.GetID(30001); //TO-DO 저장된 스테이지를 가지고 와야 함
-        if (OfflineRewardData != null)
-        {
-            goldValue = OfflineRewardData.GoldValue;
-            diaValue = OfflineRewardData.DiaValue;
-            diaProbability = OfflineRewardData.DiaProbability;
-        }
-
         var rewardGold = goldValue * offlineDuration.Minutes;
 
         System.Random random = new System.Random();
