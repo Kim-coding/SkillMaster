@@ -1,7 +1,7 @@
-﻿stuffid,stuff_name,stuff_type,Itembundle,Itemmaxvalue,Itemicon,stuff_explainid
-220001,120205,1,100,-1,gold,120199
-220002,120206,2,100,-1,diamond,120200
-220003,120207,3,100,2,goldkey,120201
-220004,120208,3,100,2,diamondkey,120202
-220005,120209,4,100,-1,ticket,120203
-220006,120210,5,99999,-1,reinforce,120204
+﻿stuffid,list,stuff_name,stuff_type,Itembundle,Itemmaxvalue,Itemicon,stuff_explainid
+220001,골드,120205,1,100,-1,Icon_Golds,120199
+220002,다이아,120206,2,100,-1,Icon_Gem03_Diamond_Blue,120200
+220003,골드 던전 열쇠,120207,3,100,2,Icon_Key_Gold,120201
+220004,다이아 던전 열쇠,120208,3,100,2,Icon_Key_Dia,120202
+220005,뽑기 티켓,120209,4,100,-1,Icon_Ticket,120203
+220006,강화석,120210,5,99999,-1,reinforceStone,120204
