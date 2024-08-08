@@ -2,17 +2,68 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
+using static UnityEditor.Progress;
 
 public class Equip : Item
 {
     public Equip() { }
-    public Equip(Sprite[] texture, string itemName, int itemNum) : base(texture, itemName)
+
+    public Equip(Sprite[] texture, string Name, int value) 
     {
-        itemNumber = itemNum;
+        this.itemNumber = 0;
+        equipData = null;
         this.texture = texture;
         var Image = texture[0].texture;
         icon = Sprite.Create(Image, new Rect(0, 0, Image.width, Image.height), new Vector2(0.5f, 0.5f));
+        itemName = Name;
+        reinforceStoneValue = value;
     }
+
+    public Equip(EquipData equipData, int itemNumber)
+    {
+        this.itemNumber = itemNumber;
+        this.equipData = equipData;
+        texture = equipData.GetTexture;
+        icon = equipData.Geticon;
+        itemName = equipData.GetItemName;
+
+        switch (equipData.equipmenttype)
+        {
+            case 1:
+                equipType = EquipType.Cloth;
+                break;
+            case 2:
+                equipType = EquipType.Weapon;
+                break;
+            case 3:
+                equipType = EquipType.Pants;
+                break;
+            case 4:
+                equipType = EquipType.Face;
+                break;
+            case 5:
+                equipType = EquipType.Hair;
+                break;
+            case 6:
+                equipType = EquipType.Cloak;
+                break;
+        }
+        if (equipData.equipment_rating == "C")
+        { rarerityType = RarerityType.C; }
+        else if (equipData.equipment_rating == "B")
+        { rarerityType = RarerityType.B; }
+        else if (equipData.equipment_rating == "A")
+        { rarerityType = RarerityType.A; }
+        else if (equipData.equipment_rating == "S")
+        { rarerityType = RarerityType.S; }
+        else if (equipData.equipment_rating == "SS")
+        { rarerityType = RarerityType.SS; }
+        else
+        { rarerityType = RarerityType.SSS; }
+        reinforceStoneValue = equipData.reinforcement_value;
+    }
+    public EquipData equipData = new EquipData();
     public EquipType equipType;
     public RarerityType rarerityType;
     public int reinforceStoneValue;
@@ -20,12 +71,48 @@ public class Equip : Item
     public int itemNumber;
     public EquipOption EquipOption { get { return equipOption; } }
 
-    public void Init(Sprite[] texture, string itemName)
+    public void Init(EquipData equipData, int itemNumber)
     {
-        this.texture = texture;
-        this.itemName = itemName;
-        var Image = texture[0].texture;
-        icon = Sprite.Create(Image, new Rect(0, 0, Image.width, Image.height), new Vector2(0.5f, 0.5f));
+        this.itemNumber = itemNumber;
+        this.equipData = equipData;
+        texture = equipData.GetTexture;
+        icon = equipData.Geticon;
+        itemName = equipData.GetItemName;
+
+        switch (equipData.equipmenttype)
+        {
+            case 1:
+                equipType = EquipType.Cloth;
+                break;
+            case 2:
+                equipType = EquipType.Weapon;
+                break;
+            case 3:
+                equipType = EquipType.Pants;
+                break;
+            case 4:
+                equipType = EquipType.Face;
+                break;
+            case 5:
+                equipType = EquipType.Hair;
+                break;
+            case 6:
+                equipType = EquipType.Cloak;
+                break;
+        }
+        if (equipData.equipment_rating == "C")
+        { rarerityType = RarerityType.C; }
+        else if (equipData.equipment_rating == "B")
+        { rarerityType = RarerityType.B; }
+        else if (equipData.equipment_rating == "A")
+        { rarerityType = RarerityType.A; }
+        else if (equipData.equipment_rating == "S")
+        { rarerityType = RarerityType.S; }
+        else if (equipData.equipment_rating == "SS")
+        { rarerityType = RarerityType.SS; }
+        else
+        { rarerityType = RarerityType.SSS; }
+        reinforceStoneValue = equipData.reinforcement_value;
     }
 
     public bool SetEquipStat((OptionType, float) a)

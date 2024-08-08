@@ -2,6 +2,7 @@ using CsvHelper;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.SqlTypes;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -10,12 +11,26 @@ using UnityEngine;
 
 public class EquipData
 {
-    //public static readonly string FormatMonsterPath = "Monster/{0}";
-
     public int equipmentID { get; set; }
     public int equipmenttype { get; set; }
     public string equipment_rating { get; set; }
-    public string equipment_esset { get; set; }  //¿Ã∞‘ key
+    public string equipment_esset { get; set; }
+
+    public Sprite[] GetTexture
+    {
+        get
+        {
+            return Resources.LoadAll<Sprite>("Equipment/" + equipment_esset);
+        }
+    }
+    public Sprite Geticon
+    {
+        get
+        {
+            var Image = GetTexture[0].texture;
+            return Sprite.Create(Image, new Rect(0, 0, Image.width, Image.height), new Vector2(0.5f, 0.5f));
+        }
+    }
     public int reinforcement_value { get; set; }
     public int item_name_id { get; set; }
     public string GetItemName
@@ -44,7 +59,7 @@ public class EquipData
 public class EquipmentTable : DataTable
 {
 
-    private Dictionary<string, EquipData> equipTable = new Dictionary<string, EquipData>();
+    private Dictionary<int, EquipData> equipTable = new Dictionary<int, EquipData>();
 
     public List<EquipData> equipDatas
     {
@@ -54,7 +69,7 @@ public class EquipmentTable : DataTable
         }
     }
 
-    public EquipData GetID(string id)
+    public EquipData GetID(int id)
     {
         equipTable.TryGetValue(id, out var data);
         return data;
@@ -70,7 +85,7 @@ public class EquipmentTable : DataTable
             var records = csvReader.GetRecords<EquipData>();
             foreach (var record in records)
             {
-                equipTable.Add(record.equipment_esset, record);
+                equipTable.Add(record.equipmentID, record);
             }
         }
     }

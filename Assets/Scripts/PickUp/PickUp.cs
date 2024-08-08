@@ -12,6 +12,7 @@ public class PickUp : MonoBehaviour
     public Button pickUpButton_1;
     public Button pickUpButton_10;
     public Button pickUpButton_30;
+    GachaGradeData gachaData = new GachaGradeData();
 
     private float C_percent;
     private float B_percent;
@@ -47,91 +48,92 @@ public class PickUp : MonoBehaviour
         }
         for (int j = 0; j < i; j++)
         {
-            StringBuilder sb = new StringBuilder();
             float randomRarityNum = Random.Range(0.0f, 100.0f);
             // 소수점 한 자리까지 반올림
             randomRarityNum = Mathf.Round(randomRarityNum * 10f) / 10f;
-
-            var randomTypeNum = Random.Range(1, 7);
-            switch (randomTypeNum)
-            {
-                case 1:
-                    sb.Append("Hair");
-                    break;
-                case 2:
-                    sb.Append("Eye");
-                    break;
-                case 3:
-                    sb.Append("Cloth");
-                    break;
-                case 4:
-                    sb.Append("Pant");
-                    break;
-                case 5:
-                    sb.Append("Weapon");
-                    break;
-                case 6:
-                    sb.Append("Back");
-                    break;
-            }
+            GachaPartData partData = new GachaPartData();
 
             if (randomRarityNum <= C_percent)
             {
-                sb.Append("_C");
-                randomRarityNum = 1;
+                partData = DataTableMgr.Get<GachaPartTable>(DataTableIds.gachaPart).GetID(gachaData.Gacha1_ID);
             }
             else if (randomRarityNum <= C_percent + B_percent)
             {
-                sb.Append("_B");
-                randomRarityNum = 2;
+                partData = DataTableMgr.Get<GachaPartTable>(DataTableIds.gachaPart).GetID(gachaData.Gacha2_ID);
             }
             else if (randomRarityNum <= C_percent + B_percent + A_percent)
             {
-                sb.Append("_A");
-                randomRarityNum = 3;
+                partData = DataTableMgr.Get<GachaPartTable>(DataTableIds.gachaPart).GetID(gachaData.Gacha3_ID);
             }
             else if (randomRarityNum <= C_percent + B_percent + A_percent + S_percent)
             {
-                sb.Append("_S");
-                randomRarityNum = 4;
+                partData = DataTableMgr.Get<GachaPartTable>(DataTableIds.gachaPart).GetID(gachaData.Gacha4_ID);
             }
             else if (randomRarityNum <= C_percent + B_percent + A_percent + S_percent + SS_percent)
             {
-                sb.Append("_SS");
-                randomRarityNum = 5;
+                partData = DataTableMgr.Get<GachaPartTable>(DataTableIds.gachaPart).GetID(gachaData.Gacha5_ID);
             }
             else
             {
-                sb.Append("_SSS");
-                randomRarityNum = 6;
+                partData = DataTableMgr.Get<GachaPartTable>(DataTableIds.gachaPart).GetID(gachaData.Gacha6_ID);
             }
 
-            var randomColorNum = Random.Range(1, 6);
-            switch (randomColorNum)
+            float randomTypeNum = Random.Range(0.0f, 100.0f);
+            randomTypeNum = Mathf.Round(randomTypeNum * 10f) / 10f;
+            GachaItemData itemData = new GachaItemData();
+
+            if (randomTypeNum <= partData.Gacha1_Odds)
             {
-                case 1:
-                    sb.Append("_1");
-                    break;
-                case 2:
-                    sb.Append("_2");
-                    break;
-                case 3:
-                    sb.Append("_3");
-                    break;
-                case 4:
-                    sb.Append("_4");
-                    break;
-                case 5:
-                    sb.Append("_5");
-                    break;
+                itemData = DataTableMgr.Get<GachaItemTable>(DataTableIds.gachaItem).GetID(partData.Gacha1_ID);
             }
-            string sbString = sb.ToString();
-            EquipData equipData = DataTableMgr.Get<EquipmentTable>(DataTableIds.equipment).GetID(sbString);
+            else if (randomTypeNum <= partData.Gacha1_Odds + partData.Gacha2_Odds)
+            {
+                itemData = DataTableMgr.Get<GachaItemTable>(DataTableIds.gachaItem).GetID(partData.Gacha2_ID);
+            }
+            else if (randomTypeNum <= partData.Gacha1_Odds + partData.Gacha2_Odds + partData.Gacha3_Odds)
+            {
+                itemData = DataTableMgr.Get<GachaItemTable>(DataTableIds.gachaItem).GetID(partData.Gacha3_ID);
+            }
+            else if (randomTypeNum <= partData.Gacha1_Odds + partData.Gacha2_Odds + partData.Gacha3_Odds + partData.Gacha4_Odds)
+            {
+                itemData = DataTableMgr.Get<GachaItemTable>(DataTableIds.gachaItem).GetID(partData.Gacha4_ID);
+            }
+            else if (randomTypeNum <= partData.Gacha1_Odds + partData.Gacha2_Odds + partData.Gacha3_Odds + partData.Gacha4_Odds + partData.Gacha5_Odds)
+            {
+                itemData = DataTableMgr.Get<GachaItemTable>(DataTableIds.gachaItem).GetID(partData.Gacha5_ID);
+            }
+            else
+            {
+                itemData = DataTableMgr.Get<GachaItemTable>(DataTableIds.gachaItem).GetID(partData.Gacha6_ID);
+            }
 
-            var iconimage = Resources.LoadAll<Sprite>("Equipment/" + sbString);
-            var equip = new Equip(iconimage, equipData.GetItemName, ++GameMgr.Instance.playerMgr.playerInfo.obtainedItem);
-            equip.SetEquipItem((EquipType)randomTypeNum, (RarerityType)randomRarityNum, equipData.reinforcement_value);
+            float randomColorNum = Random.Range(0.0f, 100.0f);
+            randomColorNum = Mathf.Round(randomColorNum * 10f) / 10f;
 
+            EquipData equipData = new EquipData();
+
+            if (randomColorNum <= itemData.Gacha1_Odds)
+            {
+                equipData = DataTableMgr.Get<EquipmentTable>(DataTableIds.equipment).GetID(itemData.Gacha1_ID);
+            }
+            else if (randomColorNum <= itemData.Gacha1_Odds + itemData.Gacha2_Odds)
+            {
+                equipData = DataTableMgr.Get<EquipmentTable>(DataTableIds.equipment).GetID(itemData.Gacha2_ID);
+            }
+            else if (randomColorNum <= itemData.Gacha1_Odds + itemData.Gacha2_Odds + itemData.Gacha3_Odds)
+            {
+                equipData = DataTableMgr.Get<EquipmentTable>(DataTableIds.equipment).GetID(itemData.Gacha3_ID);
+            }
+            else if (randomColorNum <= itemData.Gacha1_Odds + itemData.Gacha2_Odds + itemData.Gacha3_Odds + itemData.Gacha4_Odds)
+            {
+                equipData = DataTableMgr.Get<EquipmentTable>(DataTableIds.equipment).GetID(itemData.Gacha4_ID);
+            }
+            else
+            {
+                equipData = DataTableMgr.Get<EquipmentTable>(DataTableIds.equipment).GetID(itemData.Gacha5_ID);
+            }
+
+            var equip = new Equip(equipData, ++GameMgr.Instance.playerMgr.playerInfo.obtainedItem);
             int optionCount = equipData.option_value;
             while (optionCount > 0)
             {
@@ -208,13 +210,13 @@ public class PickUp : MonoBehaviour
     private void SetGachaPercent()
     {
         int currentLv = GameMgr.Instance.playerMgr.playerInfo.gachaLevel;
-        GachaData gachaData = DataTableMgr.Get<GachaTable>(DataTableIds.gacha).GetID(currentLv);
-        C_percent = gachaData.C_Probability;
-        B_percent = gachaData.B_Probability;
-        A_percent = gachaData.A_Probability;
-        S_percent = gachaData.S_Probability;
-        SS_percent = gachaData.SS_Probability;
-        SSS_percent = gachaData.SSS_Probability;
+        gachaData = DataTableMgr.Get<GachaTable>(DataTableIds.gachaLevel).GetID(currentLv).getGachaGrade;
+        C_percent = gachaData.Gacha1_Odds;
+        B_percent = gachaData.Gacha2_Odds;
+        A_percent = gachaData.Gacha3_Odds;
+        S_percent = gachaData.Gacha4_Odds;
+        SS_percent = gachaData.Gacha5_Odds;
+        SSS_percent = gachaData.Gacha6_Odds;
     }
 
 }

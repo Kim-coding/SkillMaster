@@ -141,7 +141,13 @@ public static class DataTableIds
 
     public static readonly string optionNumber = "OptionNumberTable";
 
-    public static readonly string gacha = "GachaTable";
+    public static readonly string gachaLevel = "GachaLevelTable";
+
+    public static readonly string gachaGrade = "GachaGradeTable";
+
+    public static readonly string gachaPart = "GachaPartTable";
+
+    public static readonly string gachaItem = "GachaItemTable";
 
     public static readonly string equipmentUpgrade = "EquipmentUpgradeTable";
 

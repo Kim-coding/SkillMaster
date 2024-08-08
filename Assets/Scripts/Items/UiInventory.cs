@@ -446,7 +446,7 @@ public class UiInventory : MonoBehaviour
             Destroy(item.gameObject);
         }
 
-        NormalItem newitem = new NormalItem(Resources.LoadAll<Sprite>("reinforceStone"),"°­È­¼®",1111,reinforcevalue);
+        NormalItem newitem = new NormalItem(220006, reinforcevalue);
         InstantiateSlot(newitem, reinforcevalue);
 
         EquipSlotCountUpdate();

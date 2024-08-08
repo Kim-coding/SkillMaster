@@ -1,29 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class NormalItem : Item
 {
     public NormalItem() { }
-    public NormalItem(Sprite[] texture, string itemName, int itemNum, int itemValue) : base(texture, itemName)
+    public NormalItem(int itemID,int itemValue)
     {
-        itemNumber = itemNum;
-        this.texture = texture;
-        var Image = texture[0].texture;
-        icon = Sprite.Create(Image, new Rect(0, 0, Image.width, Image.height), new Vector2(0.5f, 0.5f));
+        itemNumber = itemID;
+        stuffData = DataTableMgr.Get<StuffTable>(DataTableIds.stuff).GetID(itemID);
+        icon = stuffData.Geticon;
+        itemName = stuffData.GetName;
+        itemExplain = stuffData.GetExplain;
         this.itemValue = itemValue;
     }
 
+    public StuffData stuffData = new StuffData();
     public int itemNumber;
     public int itemValue;
+    public string itemExplain;
 
-    public void Init(Sprite[] texture, string itemName, int itemNum, int itemValue)
+    public void Init(int itemID, int itemValue)
     {
-        this.texture = texture;
-        this.itemName = itemName;
-        var Image = texture[0].texture;
-        icon = Sprite.Create(Image, new Rect(0, 0, Image.width, Image.height), new Vector2(0.5f, 0.5f));
-        itemNumber = itemNum;
+        itemNumber = itemID;
+        stuffData = DataTableMgr.Get<StuffTable>(DataTableIds.stuff).GetID(itemID);
+        icon = stuffData.Geticon;
+        itemName = stuffData.GetName;
+        itemExplain = stuffData.GetExplain;
         this.itemValue = itemValue;
     }
 }

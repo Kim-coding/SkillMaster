@@ -9,14 +9,30 @@ using UnityEngine;
 public class StuffData
 {
     public int stuffid { get; set; }
-    public string stuff_name { get; set; }
+    public int stuff_name { get; set; }
+    public string GetName
+    {
+        get
+        {
+            return DataTableMgr.Get<StringTable>(DataTableIds.String).GetID(stuff_name);
+        }
+    }
     public int stuff_type { get; set; }
     public int Itembundle { get; set; }
     public int Itemmaxvalue { get; set; }
     public string Itemicon { get; set; }
+    public Sprite Geticon
+    {
+        get
+        {
+            Sprite[] texture = Resources.LoadAll<Sprite>(Itemicon);
+            var Image = texture[0].texture;
+            return Sprite.Create(Image, new Rect(0, 0, Image.width, Image.height), new Vector2(0.5f, 0.5f));
+        }
+    }
     public int stuff_explainid { get; set; }
 
-    public string GetStuff
+    public string GetExplain
     {
         get
         {
