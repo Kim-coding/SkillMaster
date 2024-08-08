@@ -183,4 +183,9 @@ public class SkillSpawner : MonoBehaviour
             Debug.LogError("Invalid input for skill level.");
         }
     }
+
+    public void maxReserveSkillCountUpdate()
+    {
+        maxReserveSkillCount = playerMgr.playerEnhance.maxReserveSkillCount;
+    }
 }

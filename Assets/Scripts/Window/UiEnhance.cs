@@ -43,10 +43,20 @@ public class UiEnhance : MonoBehaviour
         goldUpgrade.GetComponent<Enhance>().buttonClick += GameMgr.Instance.playerMgr.playerEnhance.AddGoldIncrease;
         goldUpgrade.Init(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10006).GetStringID);
 
+        maxSkillCount.GetComponent<Enhance>().buttonClick += GameMgr.Instance.playerMgr.playerEnhance.AddMaxReserveSkillCount;
+        maxSkillCount.GetComponent<Enhance>().buttonClick += MaxReserveSkillTextUpdate;
+
+        summonCooldown.GetComponent<Enhance>().buttonClick += GameMgr.Instance.playerMgr.playerEnhance.AddSkillSpawnCooldown;
+        summonCooldown.GetComponent<Enhance>().buttonClick += SpawnSkillCooldownTextUpdate;
+
+
         foreach (var toggle in enhanceModes)
         {
             toggle.onValueChanged.AddListener(onToggleValueChange);
         }
+
+
+        UpdateToggleColors();
     }
 
 
@@ -130,6 +140,26 @@ public class UiEnhance : MonoBehaviour
           1 + (p_E.goldLevel + 1) * p_E.goldValue,
            p_E.goldCost);
     }
+    public void MaxReserveSkillTextUpdate()
+    {
+        maxSkillCount.TextUpdate(
+            p_E.maxReserveSkillLevel,
+            p_E.maxReserveSkillMaxLevel,
+            p_E.maxReserveSkillCount,
+            p_E.maxReserveSkillCount + p_E.maxReserveSkillValue,
+            p_E.maxReserveSkillCost);;
+    }
+
+    public void SpawnSkillCooldownTextUpdate()
+    {
+        summonCooldown.TextUpdate(
+            p_E.SkillSpawnCooldownLevel,
+            p_E.SkillSpawnCooldownMaxLevel,
+            GameMgr.Instance.playerMgr.spawnCooldown,
+            GameMgr.Instance.playerMgr.spawnCooldown - p_E.SkillSpawnCooldownValue,
+            p_E.SkillSpawnCooldownCost);
+    }
+
 
     private void onToggleValueChange(bool isOn)
     {

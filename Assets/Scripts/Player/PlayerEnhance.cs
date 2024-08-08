@@ -4,10 +4,25 @@ using UnityEngine;
 
 public class PlayerEnhance
 {
+    public int baseMaxReserveSkillCount;
     public int maxReserveSkillCount;
     public int maxSpawnSkillCount;
     public int currentSpawnSkillCount;
 
+    public int maxReserveSkillLevel;
+    public int maxReserveSkillMaxLevel;
+    public int maxReserveSkillValue;
+    public BigInteger maxReserveSkillCost;
+
+    public int SkillSpawnCooldownLevel;
+    public int SkillSpawnCooldownMaxLevel;
+    public float SkillSpawnCooldownValue;
+    public BigInteger SkillSpawnCooldownCost;
+
+    public int SpawnSkillLvLevel;
+    public int SpawnSkillLvMaxLevel;
+    public int SpawnSkillLvValue;
+    public BigInteger SpawnSkillLvCost;
 
     //Level / Value / Cost 세트로 있어야 함
     public int attackPowerLevel;
@@ -60,9 +75,10 @@ public class PlayerEnhance
     {
         //세이브 로드시 가져와야 함
         cbnUpgradeLv = 1;
-        maxReserveSkillCount = 20;
+        baseMaxReserveSkillCount = 20;
+        maxReserveSkillCount = baseMaxReserveSkillCount += maxReserveSkillLevel * maxReserveSkillValue;
         maxSpawnSkillCount = 14;
-        currentSpawnSkillCount = maxSpawnSkillCount;
+        currentSpawnSkillCount = maxSpawnSkillCount; // 이것도 저장해야됨 아니면 껏다킬때마다 풀충됨
         GameMgr.Instance.uiMgr.uiMerge.SkillCountUpdate();
 
         var attackPowerUpgradeData = DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10001);
@@ -114,6 +130,30 @@ public class PlayerEnhance
         goldCost = new BigInteger(goldUpgradeData.Gold)
            + new BigInteger(goldUpgradeData.GoldRange) * goldLevel;
 
+        var maxReserveSkillData = DataTableMgr.Get<CombinationUpgradeTable>(DataTableIds.cbnUpgrade).GetID(190001);
+        maxReserveSkillLevel = 0;
+        maxReserveSkillMaxLevel = maxReserveSkillData.MaxLv;
+        maxReserveSkillValue = (int)maxReserveSkillData.Increase;
+        maxReserveSkillCost = new BigInteger(
+            (maxReserveSkillLevel / maxReserveSkillData.PayRange) * maxReserveSkillData.PayIncrease + maxReserveSkillData.PayDefault
+            );
+
+        var skillCooldownData = DataTableMgr.Get<CombinationUpgradeTable>(DataTableIds.cbnUpgrade).GetID(190002);
+        SkillSpawnCooldownLevel = 0;
+        SkillSpawnCooldownMaxLevel = skillCooldownData.MaxLv;
+        SkillSpawnCooldownValue = skillCooldownData.Increase;
+        SkillSpawnCooldownCost = new BigInteger(
+            (SkillSpawnCooldownLevel / skillCooldownData.PayRange) * skillCooldownData.PayIncrease + skillCooldownData.PayDefault
+            );
+
+        var spawnSkillLvData = DataTableMgr.Get<CombinationUpgradeTable>(DataTableIds.cbnUpgrade).GetID(190003);
+        SpawnSkillLvLevel = 0;
+        SpawnSkillLvMaxLevel = spawnSkillLvData.MaxLv;
+        SpawnSkillLvValue = (int)spawnSkillLvData.Increase;
+        SpawnSkillLvCost = new BigInteger(
+            (SpawnSkillLvLevel / spawnSkillLvData.PayRange) * spawnSkillLvData.PayIncrease + spawnSkillLvData.PayDefault
+            );
+
         var skillSummonData = DataTableMgr.Get<SkillSummonTable>(DataTableIds.skillSummon).GetID(cbnUpgradeLv);
         skill1Lv = skillSummonData.skill1Lv;
         skill2Lv = skillSummonData.skill2Lv;
@@ -133,6 +173,9 @@ public class PlayerEnhance
         GameMgr.Instance.uiMgr.uiEnhance.CriticalPercentTextUpdate();
         GameMgr.Instance.uiMgr.uiEnhance.CriticalMultipleTextUpdate();
         GameMgr.Instance.uiMgr.uiEnhance.GoldIncreaseTextUpdate();
+
+        GameMgr.Instance.uiMgr.uiEnhance.MaxReserveSkillTextUpdate();
+        GameMgr.Instance.uiMgr.uiEnhance.SpawnSkillCooldownTextUpdate();
 
 
     }
@@ -251,5 +294,62 @@ public class PlayerEnhance
         GameMgr.Instance.soundMgr.PlaySFX("UpgradeButton");
         EventMgr.TriggerEvent(QuestType.GoldEnhance);
 
+    }
+
+    public void AddMaxReserveSkillCount()
+    {
+        if (maxReserveSkillCost > GameMgr.Instance.playerMgr.currency.gold)
+        {
+            return;
+        }
+        GameMgr.Instance.playerMgr.currency.RemoveGold(maxReserveSkillCost);
+
+        var maxReserveSkillData = DataTableMgr.Get<CombinationUpgradeTable>(DataTableIds.cbnUpgrade).GetID(190001);
+
+        maxReserveSkillLevel++;
+        maxReserveSkillCount = baseMaxReserveSkillCount + maxReserveSkillLevel * maxReserveSkillValue;
+        maxReserveSkillCost = new BigInteger(
+    (maxReserveSkillLevel / maxReserveSkillData.PayRange) * maxReserveSkillData.PayIncrease + maxReserveSkillData.PayDefault
+    );
+        GameMgr.Instance.soundMgr.PlaySFX("UpgradeButton");
+        GameMgr.Instance.uiMgr.uiMerge.skillSpawner.maxReserveSkillCountUpdate();
+        GameMgr.Instance.uiMgr.uiMerge.SkillCountUpdate();
+
+    }
+    public void AddSkillSpawnCooldown()
+    {
+        if (SkillSpawnCooldownCost > GameMgr.Instance.playerMgr.currency.gold)
+        {
+            return;
+        }
+        GameMgr.Instance.playerMgr.currency.RemoveGold(SkillSpawnCooldownCost);
+
+        var SkillSpawnCooldownData = DataTableMgr.Get<CombinationUpgradeTable>(DataTableIds.cbnUpgrade).GetID(190002);
+
+        SkillSpawnCooldownLevel++;
+        SkillSpawnCooldownCost = new BigInteger(
+    (SkillSpawnCooldownLevel / SkillSpawnCooldownData.PayRange) * SkillSpawnCooldownData.PayIncrease + SkillSpawnCooldownData.PayDefault
+    );
+        GameMgr.Instance.soundMgr.PlaySFX("UpgradeButton");
+        GameMgr.Instance.playerMgr.AddSpawnSkillCooldown(SkillSpawnCooldownLevel, SkillSpawnCooldownValue);
+    }
+
+    public void AddSpawnSkillLevel()
+    {
+        if (SpawnSkillLvCost > GameMgr.Instance.playerMgr.currency.gold)
+        {
+            return;
+        }
+        GameMgr.Instance.playerMgr.currency.RemoveGold(SpawnSkillLvCost);
+
+        var SpawnSkillLvData = DataTableMgr.Get<CombinationUpgradeTable>(DataTableIds.cbnUpgrade).GetID(190003);
+
+        SpawnSkillLvLevel++;
+        SpawnSkillLvCost = new BigInteger(
+    (SpawnSkillLvLevel / SpawnSkillLvData.PayRange) * SpawnSkillLvData.PayIncrease + SpawnSkillLvData.PayDefault
+    );
+        GameMgr.Instance.soundMgr.PlaySFX("UpgradeButton");
+
+        //TO-DO 업데이트 해줘야함
     }
 }
