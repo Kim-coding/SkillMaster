@@ -78,6 +78,10 @@ public static class DataTableMgr
         stuffTable.Load(DataTableIds.stuff);
         tables.Add(DataTableIds.stuff, stuffTable);
 
+        CombinationUpgradeTable combineTable = new CombinationUpgradeTable();
+        combineTable.Load(DataTableIds.cbnUpgrade);
+        tables.Add(DataTableIds.cbnUpgrade, combineTable);
+
     }
 
     private static DataTable CreateDataTable(string id)
