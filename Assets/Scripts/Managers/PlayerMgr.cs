@@ -24,7 +24,8 @@ public class PlayerMgr : MonoBehaviour
     public TextMeshProUGUI diamondUI;
 
     private float spawnTime = 0f;
-    private float spawnCooldown = 2f; //TO-DO 테이블에서
+    private float baseSpawnCooldown = 2f;
+    public float spawnCooldown; //TO-DO 테이블에서
 
     public PlayerSkills playerSkills;
 
@@ -104,5 +105,10 @@ public class PlayerMgr : MonoBehaviour
             playerBaseStat.baseAttackRange,
             playerBaseStat.baseRecoveryDuration
             );
+    }
+
+    public void AddSpawnSkillCooldown(int level, float value)
+    {
+        spawnCooldown = baseSpawnCooldown - level * value;
     }
 }
