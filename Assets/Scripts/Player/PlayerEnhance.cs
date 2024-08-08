@@ -45,10 +45,21 @@ public class PlayerEnhance
     public float goldValue;
     public BigInteger goldCost;
 
+    public int cbnUpgradeLv;
+    public int skill1Lv;
+    public int skill2Lv;
+    public int skill3Lv;
+    public int skill4Lv;
+    public int skill1per;
+    public int skill2per;
+    public int skill3per;
+    public int skill4per;
+    public BigInteger cbnUpgradeCost;
+
     public void Init()
     {
         //세이브 로드시 가져와야 함
-
+        cbnUpgradeLv = 1;
         maxReserveSkillCount = 20;
         maxSpawnSkillCount = 14;
         currentSpawnSkillCount = maxSpawnSkillCount;
@@ -102,6 +113,17 @@ public class PlayerEnhance
         goldValue = goldUpgradeData.Increase;
         goldCost = new BigInteger(goldUpgradeData.Gold)
            + new BigInteger(goldUpgradeData.GoldRange) * goldLevel;
+
+        var skillSummonData = DataTableMgr.Get<SkillSummonTable>(DataTableIds.skillSummon).GetID(cbnUpgradeLv);
+        skill1Lv = skillSummonData.skill1Lv;
+        skill2Lv = skillSummonData.skill2Lv;
+        skill3Lv = skillSummonData.skill3Lv;
+        skill4Lv = skillSummonData.skill4Lv;
+        skill1per = skillSummonData.skill1per;
+        skill2per = skillSummonData.skill2per;
+        skill3per = skillSummonData.skill3per;
+        skill4per = skillSummonData.skill4per;
+
 
         GameMgr.Instance.uiMgr.uiEnhance.Init();
         GameMgr.Instance.uiMgr.uiEnhance.AttackTextUpdate();
@@ -230,5 +252,4 @@ public class PlayerEnhance
         EventMgr.TriggerEvent(QuestType.GoldEnhance);
 
     }
-
 }
