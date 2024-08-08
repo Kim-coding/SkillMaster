@@ -70,7 +70,6 @@ public class GuideWindow : MonoBehaviour
         else
         {
             gameObject.SetActive(true);
-            Debug.Log("인터넷 연결 확인");
         }
     }
 
@@ -128,11 +127,11 @@ public class GuideWindow : MonoBehaviour
         }
         else
         {
-            #if UNITY_EDITOR
-                        UnityEditor.EditorApplication.isPlaying = false;
-            #else
-                    Application.Quit();
-            #endif
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+#else
+            Application.Quit();
+#endif
         }
     }
 }

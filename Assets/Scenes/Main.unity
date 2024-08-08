@@ -39880,6 +39880,8 @@ GameObject:
   - component: {fileID: 1423913464}
   - component: {fileID: 1423913465}
   - component: {fileID: 1423913466}
+  - component: {fileID: 1423913468}
+  - component: {fileID: 1423913467}
   m_Layer: 0
   m_Name: Mgrs
   m_TagString: Untagged
@@ -39988,6 +39990,8 @@ MonoBehaviour:
   cam: {fileID: 1460805578}
   rewardMgr: {fileID: 1423913466}
   soundMgr: {fileID: 7924897}
+  webTimeMgr: {fileID: 1423913467}
+  networkConnect: {fileID: 1423913468}
 --- !u!4 &1423913460
 Transform:
   m_ObjectHideFlags: 0
@@ -40090,6 +40094,30 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 03133e66443f36c4288f0b95c8f533eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1423913467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1423913453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 847c856391b74ac46bec1978dfbf17e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1423913468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1423913453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 768ec8a864570854caa72970a5b7347d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1438259308

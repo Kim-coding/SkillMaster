@@ -31,11 +31,11 @@ public class GrowingShockwaveSkill : MonoBehaviour, ISkillComponent, ISkill  //�
         //초기화 시 필요한 나머지 작업
     }
 
-    public void ApplyShape(GameObject skillObject, Vector3 launchPoint, GameObject target, float range, float width, int skillPropertyID, string skillEffect)
+    public void ApplyShape(GameObject skillObject, Vector3 launchPoint, GameObject target, float speed, float range, float width, int skillPropertyID, string skillEffect)
     {
         this.skillObject = skillObject;
         this.skillEffect = skillEffect;
-
+        growingSpeed = speed;
         Sprite circleSprite = Resources.Load<Sprite>("OuterCircleSprite");
         if (circleSprite != null)
         {

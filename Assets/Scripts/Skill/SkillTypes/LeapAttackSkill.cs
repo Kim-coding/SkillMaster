@@ -31,7 +31,7 @@ public class LeapAttackSkill : MonoBehaviour, ISkillComponent, ISkill
     {
         StartCoroutine(Leap());
     }
-    public void ApplyShape(GameObject skillObject, Vector3 launchPosition, GameObject target, float range, float width, int skillPropertyID, string skillEffect)
+    public void ApplyShape(GameObject skillObject, Vector3 launchPosition, GameObject target, float speed, float range, float width, int skillPropertyID, string skillEffect)
     {
         this.skillObject = skillObject;
         this.skillEffect = skillEffect;
