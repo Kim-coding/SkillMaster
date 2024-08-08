@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
@@ -9,6 +10,9 @@ using UnityEngine.UI;
 
 public class GuideWindow : MonoBehaviour
 {
+    public NetworkConnect network;
+    public GameObject networkPanel;
+
     public GameObject battleWindow;
     public GameObject skillWindow;
     public GameObject upgradeWindow;
@@ -58,7 +62,16 @@ public class GuideWindow : MonoBehaviour
 
     public void OpenGuide()
     {
-        gameObject.SetActive(true);
+        if (!network.CheckConnectInternet())
+        {
+            networkPanel.gameObject.SetActive(true);
+            return;
+        }
+        else
+        {
+            gameObject.SetActive(true);
+            Debug.Log("인터넷 연결 확인");
+        }
     }
 
     public void CloseGuide()
@@ -69,28 +82,7 @@ public class GuideWindow : MonoBehaviour
     private void OnSkip()
     {
         SceneManager.LoadScene("Loading");
-        //LoadScene(mainSceneAddress);
     }
-    //void LoadScene(string sceneAddress)
-    //{
-    //    Addressables.LoadSceneAsync(sceneAddress).Completed += OnSceneLoaded;
-    //    var labels = new List<string>() {skillIconLable.labelString};
-    //    foreach (var label in labels)
-    //    {
-    //        var handle = Addressables.GetDownloadSizeAsync(label);
-    //    }
-    //}
-    //void OnSceneLoaded(AsyncOperationHandle<SceneInstance> obj)
-    //{
-    //    if (obj.Status == AsyncOperationStatus.Succeeded)
-    //    {
-    //        Debug.Log("Scene loaded successfully");
-    //    }
-    //    else
-    //    {
-    //        Debug.LogError("Failed to load scene");
-    //    }
-    //}
 
     private void OnBack()
     {
@@ -125,6 +117,22 @@ public class GuideWindow : MonoBehaviour
         if (windows.ContainsKey(window))
         {
             windows[window].SetActive(true);
+        }
+    }
+
+    public void CheckNetworkConnet()
+    {
+        if(network.CheckConnectInternet())
+        {
+            networkPanel.SetActive(false);
+        }
+        else
+        {
+            #if UNITY_EDITOR
+                        UnityEditor.EditorApplication.isPlaying = false;
+            #else
+                    Application.Quit();
+            #endif
         }
     }
 }

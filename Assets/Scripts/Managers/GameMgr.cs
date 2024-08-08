@@ -15,6 +15,8 @@ public class GameMgr : MonoBehaviour
     public CameraMove cam;
     public RewardMgr rewardMgr;
     public SoundMgr soundMgr;
+    public WebTimeMgr webTimeMgr;
+    public NetworkConnect networkConnect;
 
     private void Awake()
     {
