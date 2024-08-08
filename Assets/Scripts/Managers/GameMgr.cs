@@ -36,10 +36,10 @@ public class GameMgr : MonoBehaviour
         uiMgr.Init();
     }
 
-    public void Start()
-    {
-        webTimeMgr.CalculateInactiveDuration();
-    }
+    //public void Start()
+    //{
+    //    webTimeMgr.OfflineDuration();
+    //}
 
     private void Update()
     {

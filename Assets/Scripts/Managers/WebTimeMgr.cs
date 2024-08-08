@@ -16,6 +16,7 @@ public class WebTimeMgr : MonoBehaviour
     private const string WorldTimeApiUrl = "https://worldtimeapi.org/api/timezone/Etc/UTC";
     private NetworkConnect network;
     private string dataPath;
+    private DateTime startTime;
 
     void Start()
     {
@@ -56,9 +57,10 @@ public class WebTimeMgr : MonoBehaviour
         {
             var jsonResult = request.downloadHandler.text;
             var worldTime = JsonUtility.FromJson<WorldTimeApiResponse>(jsonResult);
-            DateTime serverTime = DateTime.Parse(worldTime.datetime);
-            Debug.Log("서버 시간 (시작 시간): " + serverTime);
-            SaveStartTime(serverTime);
+            startTime = DateTime.Parse(worldTime.datetime);
+            Debug.Log("서버 시간 (시작 시간): " + startTime);
+            SaveStartTime(startTime);
+            OfflineDuration();
         }
     }
 
@@ -119,12 +121,7 @@ public class WebTimeMgr : MonoBehaviour
         File.WriteAllText(dataPath, jsonData);
     }
 
-    public static TimeSpan GetInactiveDiration() // TimeSpan은 두 날짜나 시간 사이의 간격을 나타내는 구조체
-    {
-        return TimeSpan.Zero;
-    }
-
-    public void CalculateInactiveDuration()
+    public void OfflineDuration()
     {
         TimeData timeData = LoadTimeData();
         if (timeData != null && !string.IsNullOrEmpty(timeData.endTime))
@@ -132,9 +129,10 @@ public class WebTimeMgr : MonoBehaviour
             DateTime lastEndTime;
             if (DateTime.TryParse(timeData.endTime, out lastEndTime))
             {
-                DateTime currentTime = DateTime.UtcNow;
-                TimeSpan inactiveDuration = currentTime - lastEndTime;
-                Debug.Log("비활성 기간: " + inactiveDuration.TotalMinutes + "분");
+                Debug.Log("마지막 종료 시간" + timeData.endTime);
+                TimeSpan inactiveDuration = startTime - lastEndTime;
+                Debug.Log("미접속 시간: " + inactiveDuration.TotalMinutes + "분");
+                Debug.Log("미접속 시간: " + inactiveDuration.TotalSeconds + "초");
             }
         }
     }
