@@ -11,30 +11,37 @@ public class PlayerEnhance
 
     //Level / Value / Cost 세트로 있어야 함
     public int attackPowerLevel;
+    public int attackPowerMaxLevel;
     public int attackPowerValue;
     public BigInteger attackPowerCost;
 
     public int maxHealthLevel;
+    public int maxHealthMaxLevel;
     public int maxHealthValue;
     public BigInteger maxHealthCost;
 
     public int defenceLevel;
+    public int defenceMaxLevel;
     public float defenceValue;
     public BigInteger defenceCost;
 
     public int criticalPercentLevel;
+    public int criticalPercentMaxLevel;
     public float criticalPercentValue;
     public BigInteger criticalPercentCost;
 
     public int criticalMultipleLevel;
+    public int criticalMultipleMaxLevel;
     public float criticalMultipleValue;
     public BigInteger criticalMultipleCost;
 
     public int recoveryLevel;
+    public int recoveryMaxLevel;
     public int recoveryValue;
     public BigInteger recoveryCost;
 
     public int goldLevel;
+    public int goldMaxLevel;
     public float goldValue;
     public BigInteger goldCost;
 
@@ -47,40 +54,54 @@ public class PlayerEnhance
         currentSpawnSkillCount = maxSpawnSkillCount;
         GameMgr.Instance.uiMgr.uiMerge.SkillCountUpdate();
 
+        var attackPowerUpgradeData = DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10001);
         attackPowerLevel = 0;
-        attackPowerValue = (int)DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10001).Increase;
-        attackPowerCost = new BigInteger(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10001).Gold)
-            + new BigInteger(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10003).GoldRange) * attackPowerLevel;
+        attackPowerMaxLevel = attackPowerUpgradeData.MaxLv;
+        attackPowerValue = (int)attackPowerUpgradeData.Increase;
+        attackPowerCost = new BigInteger(attackPowerUpgradeData.Gold)
+            + new BigInteger(attackPowerUpgradeData.GoldRange) * attackPowerLevel;
 
+        var maxHealthUpgradeData = DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10003);
         maxHealthLevel = 0;
-        maxHealthValue = (int)DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10003).Increase;
-        maxHealthCost = new BigInteger(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10003).Gold)
-            + new BigInteger(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10003).GoldRange) * maxHealthLevel;
+        maxHealthMaxLevel = maxHealthUpgradeData.MaxLv;
+        maxHealthValue = (int)maxHealthUpgradeData.Increase;
+        maxHealthCost = new BigInteger(attackPowerUpgradeData.Gold)
+            + new BigInteger(attackPowerUpgradeData.GoldRange) * maxHealthLevel;
 
+        var defenceUpgradeData = DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10002);
         defenceLevel = 0;
-        defenceValue = DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10002).Increase;
-        defenceCost = new BigInteger(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10002).Gold)
-            + new BigInteger(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10002).GoldRange) * defenceLevel;
+        defenceMaxLevel = defenceUpgradeData.MaxLv;
+        defenceValue = defenceUpgradeData.Increase;
+        defenceCost = new BigInteger(defenceUpgradeData.Gold)
+            + new BigInteger(defenceUpgradeData.GoldRange) * defenceLevel;
 
+        var criticalPercentUpgradeData = DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10004);
         criticalPercentLevel = 0;
-        criticalPercentValue = DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10004).Increase;
-        criticalPercentCost = new BigInteger(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10004).Gold)
-            + new BigInteger(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10004).GoldRange) * criticalPercentLevel;
+        criticalPercentMaxLevel = criticalPercentUpgradeData.MaxLv;
+        criticalPercentValue = criticalPercentUpgradeData.Increase;
+        criticalPercentCost = new BigInteger(criticalPercentUpgradeData.Gold)
+            + new BigInteger(criticalPercentUpgradeData.GoldRange) * criticalPercentLevel;
 
+        var criticalMultipleUpgradeData = DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10005);
         criticalMultipleLevel = 0;
-        criticalMultipleValue = DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10005).Increase;
-        criticalMultipleCost = new BigInteger(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10005).Gold)
-            + new BigInteger(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10005).GoldRange) * criticalMultipleLevel;
+        criticalMultipleMaxLevel = criticalMultipleUpgradeData.MaxLv;
+        criticalMultipleValue = criticalMultipleUpgradeData.Increase;
+        criticalMultipleCost = new BigInteger(criticalMultipleUpgradeData.Gold)
+            + new BigInteger(criticalMultipleUpgradeData.GoldRange) * criticalMultipleLevel;
 
+        var recoveryUpgradeData = DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10007);
         recoveryLevel = 0;
-        recoveryValue = (int)DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10007).Increase;
-        recoveryCost = new BigInteger(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10007).Gold)
-           + new BigInteger(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10007).GoldRange) * recoveryLevel;
+        recoveryMaxLevel = recoveryUpgradeData.MaxLv;
+        recoveryValue = (int)recoveryUpgradeData.Increase;
+        recoveryCost = new BigInteger(recoveryUpgradeData.Gold)
+           + new BigInteger(recoveryUpgradeData.GoldRange) * recoveryLevel;
 
+        var goldUpgradeData = DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10006);
         goldLevel = 0;
-        goldValue = DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10006).Increase;
-        goldCost = new BigInteger(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10006).Gold)
-           + new BigInteger(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10006).GoldRange) * goldLevel;
+        goldMaxLevel = goldUpgradeData.MaxLv;
+        goldValue = goldUpgradeData.Increase;
+        goldCost = new BigInteger(goldUpgradeData.Gold)
+           + new BigInteger(goldUpgradeData.GoldRange) * goldLevel;
 
         GameMgr.Instance.uiMgr.uiEnhance.Init();
         GameMgr.Instance.uiMgr.uiEnhance.AttackTextUpdate();

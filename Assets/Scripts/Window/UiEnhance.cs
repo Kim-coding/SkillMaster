@@ -68,6 +68,7 @@ public class UiEnhance : MonoBehaviour
     {
         attackPowerUpgrade.TextUpdate(
        p_E.attackPowerLevel,
+       p_E.attackPowerMaxLevel,
        p_BS.basePlayerAttackPower + p_E.attackPowerLevel * p_E.attackPowerValue,
        p_BS.basePlayerAttackPower + (p_E.attackPowerLevel + 1) * p_E.attackPowerValue,
        p_E.attackPowerCost);
@@ -77,6 +78,7 @@ public class UiEnhance : MonoBehaviour
     {
         defenceUpgrade.TextUpdate(
             p_E.defenceLevel,
+            p_E.defenceMaxLevel,
             p_BS.basePlayerDefence + p_E.defenceLevel * p_E.defenceValue,
            p_BS.basePlayerDefence +( p_E.defenceLevel + 1) * p_E.defenceValue,
             p_E.defenceCost);
@@ -85,6 +87,7 @@ public class UiEnhance : MonoBehaviour
     {
         maxHealthUpgrade.TextUpdate(
             p_E.maxHealthLevel,
+            p_E.maxHealthMaxLevel,
             p_BS.basePlayerMaxHealth + p_E.maxHealthLevel * p_E.maxHealthValue,
             p_BS.basePlayerMaxHealth + (p_E.maxHealthLevel + 1) * p_E.maxHealthValue,
             p_E.maxHealthCost);
@@ -94,6 +97,7 @@ public class UiEnhance : MonoBehaviour
     {
         recoveryUpgrade.TextUpdate(
             p_E.recoveryLevel,
+            p_E.recoveryMaxLevel,
             p_BS.basePlayerHealthRecovery + p_E.recoveryLevel * p_E.recoveryValue,
             p_BS.basePlayerHealthRecovery + (p_E.recoveryLevel + 1) * p_E.recoveryValue,
             p_E.recoveryCost);
@@ -103,6 +107,7 @@ public class UiEnhance : MonoBehaviour
     {
         criticalPercentUpgrade.PercentTextUpdate(
             p_E.criticalPercentLevel,
+            p_E.criticalPercentMaxLevel,
             p_BS.basePlayerCriticalPercent + p_E.criticalPercentLevel * p_E.criticalPercentValue,
             p_BS.basePlayerCriticalPercent + (p_E.criticalPercentLevel + 1) * p_E.criticalPercentValue,
             p_E.criticalPercentCost);
@@ -111,6 +116,7 @@ public class UiEnhance : MonoBehaviour
     {
         criticalMultipleUpgrade.PercentTextUpdate(
            p_E.criticalMultipleLevel,
+           p_E.criticalMultipleMaxLevel,
            p_BS.basePlayerCriticalMultiple + p_E.criticalMultipleLevel * p_E.criticalMultipleValue,
           p_BS.basePlayerCriticalMultiple + (p_E.criticalMultipleLevel + 1) * p_E.criticalMultipleValue,
            p_E.criticalMultipleCost);
@@ -119,6 +125,7 @@ public class UiEnhance : MonoBehaviour
     {
         goldUpgrade.PercentTextUpdate(
            p_E.goldLevel,
+           p_E.goldMaxLevel,
            1 + p_E.goldLevel * p_E.goldValue,
           1 + (p_E.goldLevel + 1) * p_E.goldValue,
            p_E.goldCost);
