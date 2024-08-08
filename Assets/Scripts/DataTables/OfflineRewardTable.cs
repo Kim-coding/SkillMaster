@@ -8,10 +8,10 @@ using UnityEngine;
 
 public class OfflineRewardData
 {
-    public int StageID { get; private set; }
-    public int GoldValue { get; private set; }
-    public int DiaValue {  get; private set; }
-    public float DiaProbability { get; private set; }
+    public int StageID { get; set; }
+    public int GoldValue { get; set; }
+    public int DiaValue {  get; set; }
+    public float DiaProbability { get; set; }
 }
 
 public class OfflineRewardTable : DataTable

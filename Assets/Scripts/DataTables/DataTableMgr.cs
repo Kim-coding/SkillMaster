@@ -83,7 +83,7 @@ public static class DataTableMgr
         tables.Add(DataTableIds.cbnUpgrade, combineTable);
 
         OfflineRewardTable offlineRewardTable = new OfflineRewardTable();
-        combineTable.Load(DataTableIds.offlineReward);
+        offlineRewardTable.Load(DataTableIds.offlineReward);
         tables.Add(DataTableIds.offlineReward, offlineRewardTable);
 
     }

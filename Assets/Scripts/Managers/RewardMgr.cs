@@ -80,6 +80,6 @@ public class RewardMgr : MonoBehaviour
         GameMgr.Instance.playerMgr.currency.AddGold(new BigInteger(rewardGold));
         GameMgr.Instance.playerMgr.currency.AddDia(new BigInteger(totalDia));
 
-        /*offlineRewardPopUp.SetActive(false)*/;
+        offlineRewardPopUp.SetActive(false);
     }
 }
