@@ -192,14 +192,9 @@ public class PlayerAI : MonoBehaviour , IAnimation
         var skillY = playerSkills.castingList[0].atkArangeY;
         var skillPropertyID = playerSkills.castingList[0].skillPropertyID;
         string skillEffect = playerSkills.castingList[0].SkillEffect;
-
-        playerSkills.UseSkill(skill, skillType, gameObject, currentTarget.gameObject, skillX, skillY, skillDamage, skillPropertyID, skillEffect);
+        float speed = playerSkills.castingList[0].attackSpeed;
+        playerSkills.UseSkill(skill, skillType, gameObject, currentTarget.gameObject, speed, skillX, skillY, skillDamage, skillPropertyID, skillEffect);
     
-    }
-
-    public void OnAttack(GameObject skill, int skillType, float skillX, float skillY, string skillDamage,int skillPropertyID, string skillEffect)
-    {
-        playerSkills.UseSkill(skill, skillType, gameObject, currentTarget.gameObject, skillX, skillY, skillDamage, skillPropertyID, skillEffect);
     }
 
     public void Restart()
@@ -238,7 +233,8 @@ public class PlayerAI : MonoBehaviour , IAnimation
         var skillY = skillBall.atkArangeY;
         var skillPropertyID = skillBall.skillPropertyID;
         string skillEffect = skillBall.SkillEffect;
+        float speed = skillBall.attackSpeed;
 
-        playerSkills.UseSkill(skill, skillType, gameObject, currentTarget.gameObject, skillX, skillY, skillDamage, skillPropertyID, skillEffect);
+        playerSkills.UseSkill(skill, skillType, gameObject, currentTarget.gameObject, speed, skillX, skillY, skillDamage, skillPropertyID, skillEffect);
     }
 }

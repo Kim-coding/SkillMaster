@@ -22,7 +22,7 @@ public class LinearRangeAttackSkill : MonoBehaviour, ISkillComponent, ISkill
         //초기화 시 필요한 나머지 작업
     }
 
-    public void ApplyShape(GameObject skillObject, Vector3 launchPoint, GameObject target, float y, float x, int skillPropertyID, string skillEffect) //스킬의 형태와 위치를 설정
+    public void ApplyShape(GameObject skillObject, Vector3 launchPoint, GameObject target, float speed, float y, float x, int skillPropertyID, string skillEffect) //스킬의 형태와 위치를 설정
     {
         this.skillObject = skillObject;
         this.skillEffect = skillEffect;

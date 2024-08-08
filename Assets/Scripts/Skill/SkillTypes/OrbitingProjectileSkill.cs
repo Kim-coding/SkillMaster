@@ -30,7 +30,7 @@ public class OrbitingProjectileSkill : MonoBehaviour, ISkillComponent, ISkill
         // 필요 시 초기화 작업 수행
     }
 
-    public void ApplyShape(GameObject skillObject, Vector3 launchPoint, GameObject target, float range, float width, int skillPropertyID, string skillEffect)
+    public void ApplyShape(GameObject skillObject, Vector3 launchPoint, GameObject target, float speed, float range, float width, int skillPropertyID, string skillEffect)
     {
         this.skillObject = skillObject;
         this.skillEffect = skillEffect;
