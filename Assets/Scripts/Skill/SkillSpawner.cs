@@ -142,7 +142,7 @@ public class SkillSpawner : MonoBehaviour
         rt.anchoredPosition = RandomVector();
 
         var newSkillControler = newSkill.GetComponent<SkillBallController>();
-        newSkillControler.Set(skillLV);
+        newSkillControler.Set(SelectedSkill());
         playerMgr.skillBallControllers.Add(newSkillControler);
         playerMgr.playerEnhance.currentSpawnSkillCount--;
         GameMgr.Instance.uiMgr.uiMerge.SkillCountUpdate();
@@ -187,5 +187,43 @@ public class SkillSpawner : MonoBehaviour
     public void maxReserveSkillCountUpdate()
     {
         maxReserveSkillCount = playerMgr.playerEnhance.maxReserveSkillCount;
+    }
+
+    private int SelectedSkill()
+    {
+        var playerEnhance = GameMgr.Instance.playerMgr.playerEnhance;
+
+        int skill1Lv = AdjustSkillLevel(playerEnhance.skill1Lv);
+        int skill2Lv = AdjustSkillLevel(playerEnhance.skill2Lv);
+        int skill3Lv = AdjustSkillLevel(playerEnhance.skill3Lv);
+        int skill4Lv = AdjustSkillLevel(playerEnhance.skill4Lv);
+        int skill1per = playerEnhance.skill1per;
+        int skill2per = playerEnhance.skill2per;
+        int skill3per = playerEnhance.skill3per;
+        int skill4per = playerEnhance.skill4per;
+
+        int totalProbability = skill1per + skill2per + skill3per + skill4per;
+        int randomValue = Random.Range(0, totalProbability);
+
+        if (randomValue < skill1per)
+        {
+            return skill1Lv;
+        }
+        else if (randomValue < skill1per + skill2per)
+        {
+            return skill2Lv;
+        }
+        else if (randomValue < skill1per + skill2per + skill3per)
+        {
+            return skill3Lv;
+        }
+        else
+        {
+            return skill4Lv;
+        }
+    }
+    private int AdjustSkillLevel(int skillLevel)
+    {
+        return skillLevel + 40000;
     }
 }

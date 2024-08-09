@@ -86,6 +86,9 @@ public static class DataTableMgr
         offlineRewardTable.Load(DataTableIds.offlineReward);
         tables.Add(DataTableIds.offlineReward, offlineRewardTable);
 
+        SkillSummonTable skillSummonTable = new SkillSummonTable();
+        skillSummonTable.Load(DataTableIds.skillSummon);
+        tables.Add(DataTableIds.skillSummon, skillSummonTable);
     }
 
     private static DataTable CreateDataTable(string id)

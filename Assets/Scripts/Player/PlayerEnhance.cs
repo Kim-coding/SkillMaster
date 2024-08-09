@@ -348,8 +348,18 @@ public class PlayerEnhance
         SpawnSkillLvCost = new BigInteger(
     (SpawnSkillLvLevel / SpawnSkillLvData.PayRange) * SpawnSkillLvData.PayIncrease + SpawnSkillLvData.PayDefault
     );
-        GameMgr.Instance.soundMgr.PlaySFX("UpgradeButton");
+        var skillSummonData = DataTableMgr.Get<SkillSummonTable>(DataTableIds.skillSummon).GetID(cbnUpgradeLv + SpawnSkillLvLevel);
+        skill1Lv = skillSummonData.skill1Lv;
+        skill2Lv = skillSummonData.skill2Lv;
+        skill3Lv = skillSummonData.skill3Lv;
+        skill4Lv = skillSummonData.skill4Lv;
+        skill1per = skillSummonData.skill1per;
+        skill2per = skillSummonData.skill2per;
+        skill3per = skillSummonData.skill3per;
+        skill4per = skillSummonData.skill4per;
 
-        //TO-DO 업데이트 해줘야함
+        GameMgr.Instance.soundMgr.PlaySFX("UpgradeButton");
+        
+        //TO-DO 업데이트 해줘야함 스킬 스포너
     }
 }
