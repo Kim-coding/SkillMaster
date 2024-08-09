@@ -30,16 +30,17 @@ public class GameMgr : MonoBehaviour
             Destroy(gameObject);
         }
 
-        playerMgr.Init();
+        InitGame();
+    }
+
+    private void InitGame()
+    {
         rewardMgr.Init();
+        webTimeMgr.init();
+        playerMgr.Init();
         sceneMgr.mainScene.Init();
         uiMgr.Init();
     }
-
-    //public void Start()
-    //{
-    //    webTimeMgr.OfflineDuration();
-    //}
 
     private void Update()
     {
@@ -54,7 +55,7 @@ public class GameMgr : MonoBehaviour
     }
     private IEnumerator SaveAndQuit()
     {
-        yield return webTimeMgr.GetEndTime(); //GetEndTime 퍼블릭으로 하기 싫은데..
+        yield return webTimeMgr.GetEndTime();
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else
