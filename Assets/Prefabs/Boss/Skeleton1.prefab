@@ -20,7 +20,7 @@ GameObject:
   - component: {fileID: -2263757533002577063}
   - component: {fileID: 7110322791205126742}
   m_Layer: 0
-  m_Name: Skeleton2
+  m_Name: Skeleton1
   m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -83,12 +83,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: -306131988, guid: 59e8078300ee57942b7b34e324ffe86e, type: 3}
+  m_Sprite: {fileID: 1022205791, guid: 0ea0bc6dd911c5b4087d2f0dd1590ee3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.8828125, y: 1}
+  m_Size: {x: 1.28, y: 1.28}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -247,7 +247,7 @@ Animator:
   m_GameObject: {fileID: 1605052194642255169}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 0811204eeb9d1d54ba740f7d48a58d5e, type: 2}
+  m_Controller: {fileID: 9100000, guid: 70b6a95ab784cb345a06cfcea379ca8e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
