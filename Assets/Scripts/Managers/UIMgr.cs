@@ -78,7 +78,6 @@ public class UIMgr : MonoBehaviour
     private void OnBossSpawnButtonClicked()
     {
         GameMgr.Instance.BossSpawn();
-        bossSpawnButton.gameObject.SetActive(false);
     }
 
     public void ShowBossSpawnButton()
