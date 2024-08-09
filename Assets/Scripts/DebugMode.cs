@@ -79,7 +79,13 @@ public class DebugMode : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.V))
         {
-            Debug.Log(GameMgr.Instance.playerMgr.playerinventory.itemAttackPower);
+            Debug.Log(GameMgr.Instance.playerMgr.playerStat.playerAttackPower);
+            Debug.Log(GameMgr.Instance.playerMgr.playerStat.playerMaxHealth);
+            Debug.Log(GameMgr.Instance.playerMgr.playerStat.defence);
+            Debug.Log(GameMgr.Instance.playerMgr.playerStat.playerHealthRecovery);
+            Debug.Log(GameMgr.Instance.playerMgr.playerStat.playerCriticalPercent);
+            Debug.Log(GameMgr.Instance.playerMgr.playerStat.playerCriticalMultiple);
+
         }
 
         if (Input.GetKeyDown(KeyCode.L))

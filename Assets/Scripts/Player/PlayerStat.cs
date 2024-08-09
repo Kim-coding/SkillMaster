@@ -46,7 +46,7 @@ public class PlayerStat
         basePlayerDefence = baseDefence;
         basePlayerHealthRecovery = baseRecovery;
 
-        basePlayerCriticalPercent = baseCriPer / 100f;
+        basePlayerCriticalPercent = baseCriPer;
         basePlayerCriticalMultiple = baseCirMulti;
 
         basePlayerSpeed = baseSpeed;
@@ -73,31 +73,31 @@ public class PlayerStat
     {
         playerAttackPower = ((new BigInteger(basePlayerAttackPower) + 
             (new BigInteger(GameMgr.Instance.playerMgr.playerEnhance.attackPowerLevel) * 1/*TO-DO 테이블에서 증가량으로 받아와 대체*/))
-            * GameMgr.Instance.playerMgr.playerinventory.itemAttackPower)
+            * (1 + GameMgr.Instance.playerMgr.playerinventory.itemAttackPower / 100f))
             .ToString();
         
         playerMaxHealth = ((new BigInteger(basePlayerMaxHealth) +
             (new BigInteger(GameMgr.Instance.playerMgr.playerEnhance.maxHealthValue) *
             GameMgr.Instance.playerMgr.playerEnhance.maxHealthLevel))
-            * GameMgr.Instance.playerMgr.playerinventory.itemMaxHealth)
+            * (1 + GameMgr.Instance.playerMgr.playerinventory.itemMaxHealth / 100f))
             .ToString();
 
         defence = (basePlayerDefence +
             GameMgr.Instance.playerMgr.playerEnhance.defenceLevel *
             GameMgr.Instance.playerMgr.playerEnhance.defenceValue)
-            * GameMgr.Instance.playerMgr.playerinventory.itemDeffence;
+            * (1 + GameMgr.Instance.playerMgr.playerinventory.itemDeffence / 100f);
 
         playerHealthRecovery = ((new BigInteger(basePlayerHealthRecovery) +
                             (new BigInteger(GameMgr.Instance.playerMgr.playerEnhance.recoveryValue) *
                             GameMgr.Instance.playerMgr.playerEnhance.recoveryLevel))
-                            * GameMgr.Instance.playerMgr.playerinventory.itemRecovery
+                            * (1 + GameMgr.Instance.playerMgr.playerinventory.itemRecovery / 100f)
                             )
                             .ToString();
 
         playerCriticalPercent = basePlayerCriticalPercent +
                         GameMgr.Instance.playerMgr.playerEnhance.criticalPercentLevel *
                         GameMgr.Instance.playerMgr.playerEnhance.criticalPercentValue;
-        playerCriticalPercent += GameMgr.Instance.playerMgr.playerinventory.itemCriticalPercent / 100f;
+        playerCriticalPercent += GameMgr.Instance.playerMgr.playerinventory.itemCriticalPercent;
 
         playerCriticalMultiple = basePlayerCriticalMultiple +
                         GameMgr.Instance.playerMgr.playerEnhance.criticalMultipleLevel * 

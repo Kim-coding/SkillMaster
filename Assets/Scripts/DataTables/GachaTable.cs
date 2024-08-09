@@ -38,7 +38,6 @@ public class GachaGradeData
 {
 
     public int GachaID { get; set; }
-    public string List { get; set; }
     public int Gacha1_ID { get; set; }
     public float Gacha1_Odds { get; set; }
     public int Gacha2_ID { get; set; }
@@ -100,7 +99,6 @@ public class GachaPartData
 {
 
     public int GachaID { get; set; }
-    public string List { get; set; }
     public int Gacha1_ID { get; set; }
     public float Gacha1_Odds { get; set; }
     public int Gacha2_ID { get; set; }
@@ -163,7 +161,6 @@ public class GachaItemData
 {
 
     public int GachaID { get; set; }
-    public string List { get; set; }
     public int Gacha1_ID { get; set; }
     public float Gacha1_Odds { get; set; }
     public int Gacha2_ID { get; set; }

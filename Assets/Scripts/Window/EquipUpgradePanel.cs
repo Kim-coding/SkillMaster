@@ -181,11 +181,11 @@ public class EquipUpgradePanel : MonoBehaviour
                     nextPercent[i].text = (selectedEquip.EquipOption.currentOptions[i].Item2 * nextOption_raise).ToString() + "%";
                 }
             }
-
-            successPercent = currentUpgradeData.Success_persent + currentUpgradeData.Success_persentdown * GameMgr.Instance.playerMgr.playerinventory.upgradeFailCount;
+            int upgradeCount = GameMgr.Instance.playerMgr.playerinventory.upgradeFailCount[currentToggleNumber];
+            successPercent = currentUpgradeData.Success_persent + currentUpgradeData.Success_persentdown * upgradeCount;
             successPercentText.text = successPercent + "%";
             sumSuccessPercentText.text = "(" + currentUpgradeData.Success_persent + "% + " +
-                (currentUpgradeData.Success_persentdown * GameMgr.Instance.playerMgr.playerinventory.upgradeFailCount) + "%)";
+                (currentUpgradeData.Success_persentdown * upgradeCount) + "%)";
 
             goldText.text = $"{currentUpgradeData.gold_usevalue}개 소모 / 보유 : {GameMgr.Instance.playerMgr.currency.gold.ToStringShort()}";
             int reinforceCount = 0;
@@ -341,7 +341,8 @@ public class EquipUpgradePanel : MonoBehaviour
                     GameMgr.Instance.playerMgr.playerinventory.cloakSlotUpgrade++;
                     break;
             }
-            GameMgr.Instance.playerMgr.playerinventory.upgradeFailCount = 0;
+
+            GameMgr.Instance.playerMgr.playerinventory.upgradeFailCount[currentToggleNumber] = 0;
             GameMgr.Instance.playerMgr.playerinventory.ItemOptionsUpdate();
 
         }
@@ -350,7 +351,7 @@ public class EquipUpgradePanel : MonoBehaviour
             //강화 실패
             GameMgr.Instance.uiMgr.uiWindow.popUpUI.gameObject.SetActive(true);
             GameMgr.Instance.uiMgr.uiWindow.popUpUI.SetText("강화 실패");
-            GameMgr.Instance.playerMgr.playerinventory.upgradeFailCount++;
+            GameMgr.Instance.playerMgr.playerinventory.upgradeFailCount[currentToggleNumber]++;
         }
         EquipUpgradePanelUpdate();
     }
