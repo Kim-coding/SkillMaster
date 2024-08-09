@@ -18,7 +18,7 @@ public class WebTimeMgr : MonoBehaviour
     private string dataPath;
     private DateTime startTime;
 
-    void Start()
+    public void init()
     {
         network = GameMgr.Instance.networkConnect;
         if (network.CheckConnectInternet())
@@ -32,7 +32,7 @@ public class WebTimeMgr : MonoBehaviour
         }
     }
 
-    public void CurrentTime()  // 외부에서 (특정 시점 마다)주기적으로 현재 시간을 종료 시간으로 저장하기 위한 것
+    public void SaveTime()  // 외부에서 (특정 시점 마다)주기적으로 현재 시간을 종료 시간으로 저장하기 위한 것
     {
         if (network.CheckConnectInternet())
         {

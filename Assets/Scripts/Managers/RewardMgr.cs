@@ -27,10 +27,7 @@ public class RewardMgr : MonoBehaviour
     {
         guideQuest = new GuideQuest();
         guideQuest.Init();
-    }
 
-    private void Start()
-    {
         var OfflineRewardTable = DataTableMgr.Get<OfflineRewardTable>(DataTableIds.offlineReward);
 
         var OfflineRewardData = OfflineRewardTable.GetID(30001); //TO-DO 저장된 스테이지를 가지고 와야 함
