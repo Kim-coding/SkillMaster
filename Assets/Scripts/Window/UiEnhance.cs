@@ -49,6 +49,8 @@ public class UiEnhance : MonoBehaviour
         summonCooldown.GetComponent<Enhance>().buttonClick += GameMgr.Instance.playerMgr.playerEnhance.AddSkillSpawnCooldown;
         summonCooldown.GetComponent<Enhance>().buttonClick += SpawnSkillCooldownTextUpdate;
 
+        minSummonLevel.GetComponent<Enhance>().buttonClick += GameMgr.Instance.playerMgr.playerEnhance.AddSpawnSkillLevel;
+        minSummonLevel.GetComponent<Enhance>().buttonClick += MinSummonLvTextUpdate;
 
         foreach (var toggle in enhanceModes)
         {
@@ -158,6 +160,16 @@ public class UiEnhance : MonoBehaviour
             GameMgr.Instance.playerMgr.spawnCooldown,
             GameMgr.Instance.playerMgr.spawnCooldown - p_E.SkillSpawnCooldownValue,
             p_E.SkillSpawnCooldownCost);
+    }
+
+    public void MinSummonLvTextUpdate()
+    {
+        minSummonLevel.TextUpdate(
+            p_E.SpawnSkillLvLevel,
+            p_E.SpawnSkillLvMaxLevel,
+            p_E.skill1Lv,
+            p_E.skill1Lv + 1,
+            p_E.SpawnSkillLvCost);
     }
 
 

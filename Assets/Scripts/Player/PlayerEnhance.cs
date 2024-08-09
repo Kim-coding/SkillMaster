@@ -175,7 +175,9 @@ public class PlayerEnhance
         GameMgr.Instance.uiMgr.uiEnhance.GoldIncreaseTextUpdate();
 
         GameMgr.Instance.uiMgr.uiEnhance.MaxReserveSkillTextUpdate();
+        GameMgr.Instance.playerMgr.AddSpawnSkillCooldown(SkillSpawnCooldownLevel, SkillSpawnCooldownValue);
         GameMgr.Instance.uiMgr.uiEnhance.SpawnSkillCooldownTextUpdate();
+        GameMgr.Instance.uiMgr.uiEnhance.MinSummonLvTextUpdate();
 
 
     }

@@ -24,6 +24,7 @@ public class PlayerInfomation
         obtainedItem = 0;
         gachaLevel = 1;
         gachaExp = 0;
+        gachaMaxExp = DataTableMgr.Get<GachaTable>(DataTableIds.gachaLevel).GetID(gachaLevel).gachaRequestValue;
         //stageClear;
 
         EventMgr.StartListening(QuestType.Stage, StageUpdate);
@@ -55,5 +56,18 @@ public class PlayerInfomation
 
         maxSkillLevel = SkillLevel;
         GameMgr.Instance.rewardMgr.guideQuest.MaxSkillComparisonCheck();
+    }
+
+    public void GetGachaExp(int i)
+    {
+        gachaExp += i;
+        if(gachaExp >= gachaMaxExp && gachaMaxExp != -1)
+        {
+            gachaLevel++;
+            gachaExp -= gachaMaxExp;
+
+            gachaMaxExp = DataTableMgr.Get<GachaTable>(DataTableIds.gachaLevel).GetID(gachaLevel).gachaRequestValue;
+        }
+        GameMgr.Instance.uiMgr.uiWindow.pickUpWindow.GetComponent<PickUp>().UIUpdate(gachaLevel, gachaExp, gachaMaxExp);
     }
 }

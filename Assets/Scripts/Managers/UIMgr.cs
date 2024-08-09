@@ -48,7 +48,7 @@ public class UIMgr : MonoBehaviour
 
     public void DiaTextUpdate(BigInteger diamond)
     {
-        diamondUI.text = diamond.ToStringShort();
+        diamondUI.text = diamond.ToString();
     }
 
     public void MonsterSliderUpdate()

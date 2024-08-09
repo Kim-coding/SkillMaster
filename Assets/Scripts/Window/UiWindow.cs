@@ -38,6 +38,7 @@ public class UiWindow : MonoBehaviour
     public DecomposPanel decomposPanel;
     public AutoDecomposPanel autoDecomposSelectPanel;
     public EquipUpgradePanel equipUpgradePanel;
+    public PickUpItemsPanel pickUpResultPanel;
     private void Start()
     {
         windows = new Dictionary<Windows, GameObject>()

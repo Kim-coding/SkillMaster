@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using System.Text;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,11 +23,22 @@ public class PickUp : MonoBehaviour
     private float SS_percent;
     private float SSS_percent;
 
+    public TextMeshProUGUI gachaTicketText;
+    public TextMeshProUGUI gachaLevelText;
+    public TextMeshProUGUI gachaExpText;
+    public Image gachaExp;
+    public Button explainButton;
+
     private void Awake()
     {
         pickUpButton_1.onClick.AddListener(() => { PickUpItem(1); });
         pickUpButton_10.onClick.AddListener(() => { PickUpItem(10); });
         pickUpButton_30.onClick.AddListener(() => { PickUpItem(30); });
+
+        var playerInfo = GameMgr.Instance.playerMgr.playerInfo;
+        UIUpdate(playerInfo.gachaLevel, playerInfo.gachaExp, playerInfo.gachaMaxExp);
+
+       GameMgr.Instance.playerMgr.currency.AddDia(new BigInteger(100000)); //TO-DO 테스트용 지급
     }
 
     public void PickUpItem(int i)
@@ -38,8 +51,18 @@ public class PickUp : MonoBehaviour
             return;
         }
 
+        BigInteger diaCost = new BigInteger(i * 100);
+        if (GameMgr.Instance.playerMgr.currency.diamond < diaCost)
+        {
+            GameMgr.Instance.uiMgr.uiWindow.popUpUI.gameObject.SetActive(true);
+            GameMgr.Instance.uiMgr.uiWindow.popUpUI.SetText("다이아가 부족합니다!");
 
-        SetGachaPercent();
+            return;
+        }
+        GameMgr.Instance.playerMgr.currency.RemoveDia(diaCost);
+        GameMgr.Instance.uiMgr.uiWindow.pickUpResultPanel.ResultListClear();
+
+            SetGachaPercent();
 
         while (pickUpitems.Count > 0)
         {
@@ -194,8 +217,12 @@ public class PickUp : MonoBehaviour
             GameMgr.Instance.playerMgr.playerinventory.AddEquipItem(equip);
             InstantiateSlot(equip);
             GameMgr.Instance.uiMgr.uiInventory.InstantiateSlot(equip);
+            GameMgr.Instance.uiMgr.uiWindow.pickUpResultPanel.gameObject.SetActive(true);
+            GameMgr.Instance.uiMgr.uiWindow.pickUpResultPanel.AddResult(equip);
         }
 
+        GameMgr.Instance.uiMgr.uiWindow.pickUpResultPanel.ShowResult();
+        GameMgr.Instance.playerMgr.playerInfo.GetGachaExp(i);
         GameMgr.Instance.uiMgr.uiInventory.SortItemSlots();
         GameMgr.Instance.uiMgr.uiInventory.FilteringItemSlots();
     }
@@ -219,4 +246,10 @@ public class PickUp : MonoBehaviour
         SSS_percent = gachaData.Gacha6_Odds;
     }
 
+    public void UIUpdate(int level, int exp, int maxExp)
+    {
+        gachaLevelText.text = level.ToString();
+        gachaExp.fillAmount = (float)exp / maxExp;
+        gachaExpText.text = exp.ToString() + " / " + maxExp.ToString();
+    }
 }
