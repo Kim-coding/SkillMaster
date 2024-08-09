@@ -71,8 +71,10 @@ public class PlayerAI : MonoBehaviour , IAnimation
                 animationPrefab.transform.localScale = new Vector3(Mathf.Abs(animationPrefab.transform.localScale.x) * -1, animationPrefab.transform.localScale.y);
             }
         }
-
-        CheckSkillCooldowns();
+        if(stateMachine.currentState is BattleState)
+        {
+            CheckSkillCooldowns();
+        }
     }
     public void SetTarget(Transform target)
     {
