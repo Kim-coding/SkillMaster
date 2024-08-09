@@ -28,7 +28,7 @@ public class PlayerInventory
     public int weaponSlotUpgrade;
     public int cloakSlotUpgrade;
 
-    public int upgradeFailCount;
+    public int[] upgradeFailCount = new int[6];
 
     public List<Equip> playerEquipItemList = new List<Equip> { };
     public List<NormalItem> playerNormalItemList = new List<NormalItem> { };
@@ -83,7 +83,10 @@ public class PlayerInventory
         weaponSlotUpgrade = 0;
         cloakSlotUpgrade = 0;
 
-        upgradeFailCount = 0;
+        for(int i = 0; i < upgradeFailCount.Length;  i++)
+        {
+            upgradeFailCount[i] = 0;
+        }
 
         ItemOptionsUpdate();
 
