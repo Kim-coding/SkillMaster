@@ -41,7 +41,7 @@ public class Loading : MonoBehaviour
                 {
                     foreach (var icon in loadHandle.Result)
                     {
-                        string iconKey = $"Resources_moved/SkillIcon/{icon.name}";
+                        string iconKey = $"SkillIcon/{icon.name}";
                         var iconHandle = Addressables.LoadAssetAsync<Sprite>(iconKey);
                         iconHandle.Completed += (AsyncOperationHandle<Sprite> iconLoadHandle) =>
                         {

@@ -43772,6 +43772,8 @@ MonoBehaviour:
   offlineRewardPopUp: {fileID: 777801421}
   offlineRewardButton: {fileID: 451800360}
   offlinDurationText: {fileID: 1128200823}
+  goldRewardText: {fileID: 529067888}
+  diaRewardText: {fileID: 1704580869}
 --- !u!114 &1423913467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49894,7 +49896,7 @@ GameObject:
   - component: {fileID: 1681828438}
   - component: {fileID: 1681828437}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Gold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -52638,7 +52640,7 @@ GameObject:
   - component: {fileID: 1786358749}
   - component: {fileID: 1786358748}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: Dia
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

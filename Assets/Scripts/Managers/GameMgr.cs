@@ -30,8 +30,8 @@ public class GameMgr : MonoBehaviour
             Destroy(gameObject);
         }
 
-        playerMgr.Init();
         rewardMgr.Init();
+        playerMgr.Init();
         sceneMgr.mainScene.Init();
         uiMgr.Init();
     }

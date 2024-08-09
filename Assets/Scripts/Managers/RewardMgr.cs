@@ -11,12 +11,17 @@ public class RewardMgr : MonoBehaviour
     public GameObject offlineRewardPopUp;
     public Button offlineRewardButton;
     public TextMeshProUGUI offlinDurationText;
+    public TextMeshProUGUI goldRewardText;
+    public TextMeshProUGUI diaRewardText;
 
     private int stageID;
     private int goldValue;
     private int diaValue;
     private float diaProbability;
     private TimeSpan offlineDuration;
+
+    private int goldReward;
+    private int totalDia;
 
     public void Init()
     {
@@ -44,32 +49,28 @@ public class RewardMgr : MonoBehaviour
     {
         offlineRewardPopUp.SetActive(true);
 
+        if (offlineDuration.TotalHours >= 12)
+        {
+            offlineDuration = TimeSpan.FromHours(12);
+        }
+
         this.offlineDuration = offlineDuration;
 
-        var durationText = "";
         if (offlineDuration.TotalHours >= 1)
         {
             offlinDurationText.text = String.Format("{0:D2}시간 {1:D2}분", offlineDuration.Hours, offlineDuration.Minutes);
         }
-
-        if (offlineDuration.Minutes > 0)
+        else
         {
-            durationText += String.Format("{0:D2}분", offlineDuration.Minutes);
+            offlinDurationText.text = String.Format("{0:D2}분", offlineDuration.Minutes);
         }
-        offlinDurationText.text = durationText.Trim();
 
-        Debug.Log("미접속 시간: " + offlineDuration.TotalMinutes + "분");
-        Debug.Log("미접속 시간: " + offlineDuration.TotalSeconds + "초");
-    }
-
-    private void OfflineReward()
-    {
-        var rewardGold = goldValue * offlineDuration.Minutes;
+        goldReward = goldValue * (int)offlineDuration.TotalMinutes;
 
         System.Random random = new System.Random();
-        int totalDia = 0;
+        totalDia = 0;
 
-        for (int i = 0; i < offlineDuration.Minutes; i++)
+        for (int i = 0; i < (int)offlineDuration.TotalMinutes; i++)
         {
             if (random.NextDouble() < diaProbability)
             {
@@ -77,7 +78,13 @@ public class RewardMgr : MonoBehaviour
             }
         }
 
-        GameMgr.Instance.playerMgr.currency.AddGold(new BigInteger(rewardGold));
+        goldRewardText.text = $"{new BigInteger(goldReward).ToStringShort()}";
+        diaRewardText.text = $"{new BigInteger(totalDia)}";
+    }
+
+    private void OfflineReward()
+    {
+        GameMgr.Instance.playerMgr.currency.AddGold(new BigInteger(goldReward));
         GameMgr.Instance.playerMgr.currency.AddDia(new BigInteger(totalDia));
 
         offlineRewardPopUp.SetActive(false);
