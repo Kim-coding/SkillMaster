@@ -1,7 +1,7 @@
 using UnityEngine;
 using DG.Tweening;
 
-public class GoldMovement : MonoBehaviour
+public class DropItemMovement : MonoBehaviour
 {
     private BigInteger gold;
     private RectTransform uiTarget;

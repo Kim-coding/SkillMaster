@@ -16,7 +16,7 @@ public class GoldMgr : MonoBehaviour
 
         goldRectTransform.anchoredPosition = startPosition;
 
-        GoldMovement goldMovement = goldObject.GetComponent<GoldMovement>();
+        DropItemMovement goldMovement = goldObject.GetComponent<DropItemMovement>();
         goldMovement.Initialize(uiTarget, duration, value);
     }
 }
