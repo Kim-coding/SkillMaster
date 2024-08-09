@@ -1,18 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.U2D.Aseprite;
 using UnityEngine;
 
 public class MainScene : MonoBehaviour
 {
     public Spawner spawner;
     public Monster monster;
-    public GameObject BossMonsterPrefab;  //스테이지에서 현재 스폰될 보스를 가지고 와야 함
+    public GameObject[] BossMonsterPrefabs;  //스테이지에서 현재 스폰될 보스를 가지고 와야 함
     public Transform bossSpawnPoint;
     //public Stage stage;  // 스폰 되어야 하는 몬스터 등을 가지고 있게 해야함
     private GameObject currentBoss;
     private bool bossStage = false;
     private MonsterPool monsterPool;
 
+    private StageData stageData;
+
+    private int appearBossMonster;
     public int stageCount;
     public int stageId;
 
@@ -24,7 +28,12 @@ public class MainScene : MonoBehaviour
     public void Init()
     {
         stageId = 50001; //TO-DO 저장된곳에서 가져오기
-        stageCount = DataTableMgr.Get<StageTable>(DataTableIds.stage).GetID(stageId).StageLv;
+        stageData = DataTableMgr.Get<StageTable>(DataTableIds.stage).GetID(stageId);
+        if(stageData != null)
+        {
+            stageCount = stageData.StageLv;
+            appearBossMonster = stageData.appearBossMonster;
+        }
     }
 
     private void Start()
@@ -53,7 +62,13 @@ public class MainScene : MonoBehaviour
         clearPopup.gameObject.SetActive(true);
         EventMgr.TriggerEvent(QuestType.Stage);
         stageId++;
-        stageCount = DataTableMgr.Get<StageTable>(DataTableIds.stage).GetID(stageId).StageLv;
+        stageData = DataTableMgr.Get<StageTable>(DataTableIds.stage).GetID(stageId);
+        if(stageData != null)
+        {
+            stageCount = stageData.StageLv;
+            appearBossMonster = stageData.appearBossMonster;
+        }
+
         var monsters = monster.GetMonsters();
         foreach (GameObject monsterai in monsters) 
         {
@@ -61,8 +76,7 @@ public class MainScene : MonoBehaviour
             {
                 continue;
             }
-            monsterai.GetComponent<MonsterAI>().monsterStat.SetID(DataTableMgr.Get<StageTable>(DataTableIds.stage).GetID
-           (GameMgr.Instance.sceneMgr.mainScene.stageId).appearMonster);
+            monsterai.GetComponent<MonsterAI>().monsterStat.SetID(stageData.appearMonster);
             monsterai.GetComponent<MonsterAI>().monsterStat.Init();
         }
         GameMgr.Instance.uiMgr.StageUpdate(stageCount);
@@ -90,13 +104,37 @@ public class MainScene : MonoBehaviour
         }
     }
 
+    //public void SpawnBoss()  //보스 몬스터 소환
+    //{
+    //    bossStage = true;
+    //    currentBoss = spawner.BossSpawn(BossMonsterPrefabs[0], bossSpawnPoint);
+    //    var bossAi = currentBoss.GetComponent<BossAI>();
+    //    bossAi.bossStat.SetBossID(DataTableMgr.Get<StageTable>(DataTableIds.stage).GetID
+    //       (stageId).appearBossMonster);
+    //    bossAi.bossStat.Init();
+    //    AddMonsters(currentBoss);
+    //    GameMgr.Instance.cam.SetTarget(currentBoss.transform.GetChild(0).gameObject);
+    //    GameMgr.Instance.soundMgr.PlaySFX("Boss");
+
+    //    playerCharacter.GetComponent<PlayerSkills>().SetList();
+    //}
+
     public void SpawnBoss()  //보스 몬스터 소환
     {
         bossStage = true;
-        currentBoss = spawner.BossSpawn(BossMonsterPrefab, bossSpawnPoint);
+
+        var bossData = DataTableMgr.Get<BossTable>(DataTableIds.boss).GetID(appearBossMonster);
+        string bossPrefab = null;
+        if( bossData != null )
+        {
+            bossPrefab = bossData.Asset;
+        }
+
+        var boss = Resources.Load<GameObject>($"Boss/{ bossPrefab}");
+
+        currentBoss = spawner.BossSpawn(boss, bossSpawnPoint);
         var bossAi = currentBoss.GetComponent<BossAI>();
-        bossAi.bossStat.SetBossID(DataTableMgr.Get<StageTable>(DataTableIds.stage).GetID
-           (GameMgr.Instance.sceneMgr.mainScene.stageId).appearBossMonster);
+        bossAi.bossStat.SetBossID(appearBossMonster);
         bossAi.bossStat.Init();
         AddMonsters(currentBoss);
         GameMgr.Instance.cam.SetTarget(currentBoss.transform.GetChild(0).gameObject);
