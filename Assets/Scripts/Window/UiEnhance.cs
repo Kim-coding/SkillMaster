@@ -24,6 +24,8 @@ public class UiEnhance : MonoBehaviour
     public Enhance maxSkillCount;
     public Enhance summonCooldown;
     public Enhance minSummonLevel;
+    public Enhance autoSummonCooldown;
+    public Enhance autoMergeCooldown;
 
     private void Start()
     {
@@ -45,15 +47,15 @@ public class UiEnhance : MonoBehaviour
 
         maxSkillCount.GetComponent<Enhance>().buttonClick += GameMgr.Instance.playerMgr.playerEnhance.AddMaxReserveSkillCount;
         maxSkillCount.GetComponent<Enhance>().buttonClick += MaxReserveSkillTextUpdate;
-        maxSkillCount.Init(DataTableMgr.Get<CombinationUpgradeTable>(DataTableIds.cbnUpgrade).GetID(120211).GetCbnName);
+        maxSkillCount.Init(DataTableMgr.Get<CombinationUpgradeTable>(DataTableIds.cbnUpgrade).GetID(190001).GetCbnName);
 
         summonCooldown.GetComponent<Enhance>().buttonClick += GameMgr.Instance.playerMgr.playerEnhance.AddSkillSpawnCooldown;
         summonCooldown.GetComponent<Enhance>().buttonClick += SpawnSkillCooldownTextUpdate;
-        summonCooldown.Init(DataTableMgr.Get<CombinationUpgradeTable>(DataTableIds.cbnUpgrade).GetID(120212).GetCbnName);
+        summonCooldown.Init(DataTableMgr.Get<CombinationUpgradeTable>(DataTableIds.cbnUpgrade).GetID(190002).GetCbnName);
 
         minSummonLevel.GetComponent<Enhance>().buttonClick += GameMgr.Instance.playerMgr.playerEnhance.AddSpawnSkillLevel;
         minSummonLevel.GetComponent<Enhance>().buttonClick += MinSummonLvTextUpdate;
-        minSummonLevel.Init(DataTableMgr.Get<CombinationUpgradeTable>(DataTableIds.cbnUpgrade).GetID(120213).GetCbnName);
+        minSummonLevel.Init(DataTableMgr.Get<CombinationUpgradeTable>(DataTableIds.cbnUpgrade).GetID(190003).GetCbnName);
 
         foreach (var toggle in enhanceModes)
         {
