@@ -26,6 +26,7 @@ public class PickUp : MonoBehaviour
     public TextMeshProUGUI gachaTicketText;
     public TextMeshProUGUI gachaLevelText;
     public TextMeshProUGUI gachaExpText;
+    public TextMeshProUGUI rewardText;
     public Image gachaExp;
     public Button explainButton;
 
@@ -36,7 +37,7 @@ public class PickUp : MonoBehaviour
         pickUpButton_30.onClick.AddListener(() => { PickUpItem(30); });
 
         var playerInfo = GameMgr.Instance.playerMgr.playerInfo;
-        UIUpdate(playerInfo.gachaLevel, playerInfo.gachaExp, playerInfo.gachaMaxExp);
+        UIUpdate(playerInfo.gachaLevel, playerInfo.gachaExp, playerInfo.gachaMaxExp, DataTableMgr.Get<GachaTable>(DataTableIds.gachaLevel).GetID(playerInfo.gachaLevel).gachaRequestValue);
 
        GameMgr.Instance.playerMgr.currency.AddDia(new BigInteger(100000)); //TO-DO 테스트용 지급
     }
@@ -246,7 +247,7 @@ public class PickUp : MonoBehaviour
         SSS_percent = gachaData.Gacha6_Odds;
     }
 
-    public void UIUpdate(int level, int exp, int maxExp)
+    public void UIUpdate(int level, int exp, int maxExp, int rewardValue)
     {
         gachaLevelText.text = level.ToString();
         gachaExp.fillAmount = (float)exp / maxExp;
@@ -255,5 +256,6 @@ public class PickUp : MonoBehaviour
         {
             gachaExpText.text = exp.ToString() + " / MAX";
         }
+        rewardText.text = rewardValue.ToString(); 
     }
 }

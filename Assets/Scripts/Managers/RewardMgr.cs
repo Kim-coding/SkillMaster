@@ -13,6 +13,10 @@ public class RewardMgr : MonoBehaviour
     public TextMeshProUGUI offlinDurationText;
     public TextMeshProUGUI goldRewardText;
     public TextMeshProUGUI diaRewardText;
+    public GameObject rewardPopUp;
+    public TextMeshProUGUI rewardText;
+    private int rewardDiaValue;
+
 
     private int stageID;
     private int goldValue;
@@ -40,6 +44,7 @@ public class RewardMgr : MonoBehaviour
         }
 
         offlineRewardButton.onClick.AddListener(OfflineReward);
+        rewardPopUp.GetComponent<Button>().onClick.AddListener(GetReward);
     }
 
     public void OfflineRewardPopUp(TimeSpan offlineDuration)
@@ -85,5 +90,20 @@ public class RewardMgr : MonoBehaviour
         GameMgr.Instance.playerMgr.currency.AddDia(new BigInteger(totalDia));
 
         offlineRewardPopUp.SetActive(false);
+    }
+
+
+
+    public void SetReward(int value)
+    {
+        rewardPopUp.gameObject.SetActive(true);
+        rewardDiaValue = value;
+        rewardText.text = value.ToString();
+    }
+
+    public void GetReward()
+    {
+        GameMgr.Instance.playerMgr.currency.AddDia(new BigInteger(rewardDiaValue));
+        rewardPopUp.gameObject.SetActive(false);
     }
 }
