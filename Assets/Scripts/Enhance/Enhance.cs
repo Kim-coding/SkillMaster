@@ -33,7 +33,7 @@ public class Enhance : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         }
         else
         {
-            icon.sprite = Resources.Load<Sprite>("diamond");
+            icon.sprite = Resources.Load<Sprite>("Icon_Gem03_Diamond_Blue");
         }
     }
 

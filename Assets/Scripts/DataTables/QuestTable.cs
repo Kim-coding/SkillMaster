@@ -11,7 +11,7 @@ public class QuestData
     public int QuestID {  get; set; }
     public int Division {  get; set; } // 타입
     public int Targetvalue {  get; set; }  // 퀘스트 완료조건
-    public string reward { get; set; } // 보상
+    public int reward { get; set; } // 보상
     public int rewardvalue { get;  set; } // 보상 수치 
     public int Next_Quest { get; set; } // 다음 퀘스트 아이디
     public int StringId { get; set; } // 설명

@@ -11,6 +11,8 @@ public class UiGuideQuest : MonoBehaviour
     public TextMeshProUGUI questCount;
     public QuestData currentQuest;
     public GameObject clearText;
+    public Image rewardImage;
+    public TextMeshProUGUI rewardCount;
 
     private UIMgr uiMgr;
 
@@ -22,6 +24,8 @@ public class UiGuideQuest : MonoBehaviour
         }
         questName.text = (DataTableMgr.Get<QuestTable>(DataTableIds.quest).GetID(currentQuest.QuestID).GetStringID);
         questCount.text = currentValue.ToString() + " / " + currentQuest.Targetvalue.ToString();
+        rewardImage.sprite = DataTableMgr.Get<StuffTable>(DataTableIds.stuff).GetID(currentQuest.reward).Geticon;
+        rewardCount.text = currentQuest.rewardvalue.ToString();
     }
 
     public void UiButtonUpdate(bool a)
@@ -29,6 +33,15 @@ public class UiGuideQuest : MonoBehaviour
         guideQuestButton.onClick.RemoveAllListeners();
         if (a)
         {
+            var value = new BigInteger(currentQuest.rewardvalue);
+            if(currentQuest.reward == 220001)
+            {
+                guideQuestButton.onClick.AddListener(() => { GameMgr.Instance.playerMgr.currency.AddGold(value); });
+            }
+            if (currentQuest.reward == 220002)
+            {
+                guideQuestButton.onClick.AddListener(() => { GameMgr.Instance.playerMgr.currency.AddDia(value); });
+            }
             guideQuestButton.onClick.AddListener(GameMgr.Instance.rewardMgr.guideQuest.NextQuest);
             clearText.SetActive(true);
         }
