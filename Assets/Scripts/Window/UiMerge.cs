@@ -21,13 +21,19 @@ public class UiMerge : MonoBehaviour
 
     private bool isAutoMerging = false;
     private float timer = 0f;
-    private float duration = 1f;
+    public float autoMergeDuration;
+    public float baseAutoMergeDuration;
 
     private void Start()
     {
         sortButton.onClick.AddListener(SortingSkills);
         autoMergeButton.onClick.AddListener(ToggleAutoMerge);
         autoMergeButtonText = autoMergeButton.GetComponentInChildren<TextMeshProUGUI>();
+    }
+
+    public void SetBase(float duration)
+    {
+        baseAutoMergeDuration = duration;
     }
 
     public void SkillCountUpdate()
@@ -64,12 +70,17 @@ public class UiMerge : MonoBehaviour
         }
     }
 
+    public void SetAutoMergeDuration(float duration)
+    {
+        autoMergeDuration = baseAutoMergeDuration - duration;
+    }
+
     private void Update()
     {
         if(isAutoMerging)
         {
             timer += Time.deltaTime;
-            if(timer > duration)
+            if(timer > autoMergeDuration)
             {
                 AutoMerge();
                 timer = 0f;
@@ -85,7 +96,7 @@ public class UiMerge : MonoBehaviour
 
         for ( int i = 0; i < skillBalls.Count - 1; i++ )
         {
-            if (skillBalls[i].tier == skillBalls[i + 1].tier && !skillBalls[i].isMove && !skillBalls[i + 1].isMove)
+            if (skillBalls[i].tier == skillBalls[i + 1].tier && !skillBalls[i].isMove && !skillBalls[i + 1].isMove && skillBalls[i].tier != GameMgr.Instance.playerMgr.playerInfo.maxSkillLevel)
             {
                 MoveAndMerge(skillBalls[i], skillBalls[i + 1]);
                 skillBalls[i].isMove = true;

@@ -44,7 +44,8 @@ public class SkillSpawner : MonoBehaviour
     public TextMeshProUGUI autoSkillSpownButtonText;
     private bool autoSpawn = false;
     private float spawnTiemr = 0f;
-    private float spawnduration = 1f;
+    public float spawnduration;
+    public float baseSpawnduration = 2f;
 
     private PlayerMgr playerMgr;
     private GameObject virtualObject;
@@ -82,6 +83,16 @@ public class SkillSpawner : MonoBehaviour
                 SpawnSkill();
             }
         }
+    }
+
+    public void SetSpawnDuration(float duration)
+    {
+        spawnduration = baseSpawnduration - duration;
+    }
+
+    public void SetBase(float duration)
+    {
+        baseSpawnduration = duration;
     }
 
     public void AutoSkillSpawn()
@@ -143,6 +154,7 @@ public class SkillSpawner : MonoBehaviour
 
         var newSkillControler = newSkill.GetComponent<SkillBallController>();
         newSkillControler.Set(SelectedSkill());
+        playerMgr.playerInfo.MaxSkillLevelUpdate(newSkillControler.tier);
         playerMgr.skillBallControllers.Add(newSkillControler);
         playerMgr.playerEnhance.currentSpawnSkillCount--;
         GameMgr.Instance.uiMgr.uiMerge.SkillCountUpdate();
@@ -191,16 +203,16 @@ public class SkillSpawner : MonoBehaviour
 
     private int SelectedSkill()
     {
-        var playerEnhance = GameMgr.Instance.playerMgr.playerEnhance;
+        var skillSummonData = DataTableMgr.Get<SkillSummonTable>(DataTableIds.skillSummon).GetID(GameMgr.Instance.playerMgr.playerEnhance.cbnUpgradeLv);
 
-        int skill1Lv = AdjustSkillLevel(playerEnhance.skill1Lv);
-        int skill2Lv = AdjustSkillLevel(playerEnhance.skill2Lv);
-        int skill3Lv = AdjustSkillLevel(playerEnhance.skill3Lv);
-        int skill4Lv = AdjustSkillLevel(playerEnhance.skill4Lv);
-        int skill1per = playerEnhance.skill1per;
-        int skill2per = playerEnhance.skill2per;
-        int skill3per = playerEnhance.skill3per;
-        int skill4per = playerEnhance.skill4per;
+        int skill1Lv = AdjustSkillLevel(skillSummonData.skill1Lv);
+        int skill2Lv = AdjustSkillLevel(skillSummonData.skill2Lv);
+        int skill3Lv = AdjustSkillLevel(skillSummonData.skill3Lv);
+        int skill4Lv = AdjustSkillLevel(skillSummonData.skill4Lv);
+        int skill1per = skillSummonData.skill1per;
+        int skill2per = skillSummonData.skill2per;
+        int skill3per = skillSummonData.skill3per;
+        int skill4per = skillSummonData.skill4per;
 
         int totalProbability = skill1per + skill2per + skill3per + skill4per;
         int randomValue = Random.Range(0, totalProbability);

@@ -24,33 +24,52 @@ public class UiEnhance : MonoBehaviour
     public Enhance maxSkillCount;
     public Enhance summonCooldown;
     public Enhance minSummonLevel;
+    public Enhance autoSummonCooldown;
+    public Enhance autoMergeCooldown;
 
     private void Start()
     {
         attackPowerUpgrade.GetComponent<Enhance>().buttonClick += GameMgr.Instance.playerMgr.playerEnhance.AddAttackPower;
-        attackPowerUpgrade.Init(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10001).GetStringID);
+        attackPowerUpgrade.Init(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10001).GetStringID, 1);
         defenceUpgrade.GetComponent<Enhance>().buttonClick += GameMgr.Instance.playerMgr.playerEnhance.AddDefence;
-        defenceUpgrade.Init(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10002).GetStringID);
+        defenceUpgrade.Init(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10002).GetStringID, 1);
         maxHealthUpgrade.GetComponent<Enhance>().buttonClick += GameMgr.Instance.playerMgr.playerEnhance.AddMaxHealth;
-        maxHealthUpgrade.Init(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10003).GetStringID);
+        maxHealthUpgrade.Init(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10003).GetStringID, 1);
         recoveryUpgrade.GetComponent<Enhance>().buttonClick += GameMgr.Instance.playerMgr.playerEnhance.AddRecovery;
-        recoveryUpgrade.Init(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10007).GetStringID);
+        recoveryUpgrade.Init(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10007).GetStringID, 1);
         criticalPercentUpgrade.GetComponent<Enhance>().buttonClick += GameMgr.Instance.playerMgr.playerEnhance.AddCriticalPercent;
-        criticalPercentUpgrade.Init(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10004).GetStringID);
+        criticalPercentUpgrade.Init(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10004).GetStringID, 1);
         criticalMultipleUpgrade.GetComponent<Enhance>().buttonClick += GameMgr.Instance.playerMgr.playerEnhance.AddCriticalMultiple;
-        criticalMultipleUpgrade.Init(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10005).GetStringID);
+        criticalMultipleUpgrade.Init(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10005).GetStringID, 1);
 
         goldUpgrade.GetComponent<Enhance>().buttonClick += GameMgr.Instance.playerMgr.playerEnhance.AddGoldIncrease;
-        goldUpgrade.Init(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10006).GetStringID);
+        goldUpgrade.Init(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10006).GetStringID,1);
 
         maxSkillCount.GetComponent<Enhance>().buttonClick += GameMgr.Instance.playerMgr.playerEnhance.AddMaxReserveSkillCount;
         maxSkillCount.GetComponent<Enhance>().buttonClick += MaxReserveSkillTextUpdate;
+        var data = DataTableMgr.Get<CombinationUpgradeTable>(DataTableIds.cbnUpgrade).GetID(190001);
+        maxSkillCount.Init(data.GetCbnName, data.Pay);
 
         summonCooldown.GetComponent<Enhance>().buttonClick += GameMgr.Instance.playerMgr.playerEnhance.AddSkillSpawnCooldown;
         summonCooldown.GetComponent<Enhance>().buttonClick += SpawnSkillCooldownTextUpdate;
+        data = DataTableMgr.Get<CombinationUpgradeTable>(DataTableIds.cbnUpgrade).GetID(190002);
+        summonCooldown.Init(data.GetCbnName, data.Pay);
 
         minSummonLevel.GetComponent<Enhance>().buttonClick += GameMgr.Instance.playerMgr.playerEnhance.AddSpawnSkillLevel;
         minSummonLevel.GetComponent<Enhance>().buttonClick += MinSummonLvTextUpdate;
+        data = DataTableMgr.Get<CombinationUpgradeTable>(DataTableIds.cbnUpgrade).GetID(190003);
+        minSummonLevel.Init(data.GetCbnName, data.Pay);
+
+        autoSummonCooldown.GetComponent<Enhance>().buttonClick += GameMgr.Instance.playerMgr.playerEnhance.AddAutoSpawnCooldown;
+        autoSummonCooldown.GetComponent<Enhance>().buttonClick += AUtoSpawnTextUpdate;
+        data = DataTableMgr.Get<CombinationUpgradeTable>(DataTableIds.cbnUpgrade).GetID(190004);
+        autoSummonCooldown.Init(data.GetCbnName, data.Pay);
+
+        autoMergeCooldown.GetComponent<Enhance>().buttonClick += GameMgr.Instance.playerMgr.playerEnhance.AddAutoMergeCooldown;
+        autoMergeCooldown.GetComponent<Enhance>().buttonClick += AUtoMergeTextUpdate;
+        data = DataTableMgr.Get<CombinationUpgradeTable>(DataTableIds.cbnUpgrade).GetID(190005);
+        autoMergeCooldown.Init(data.GetCbnName, data.Pay);
+
 
         foreach (var toggle in enhanceModes)
         {
@@ -165,11 +184,31 @@ public class UiEnhance : MonoBehaviour
     public void MinSummonLvTextUpdate()
     {
         minSummonLevel.TextUpdate(
-            p_E.SpawnSkillLvLevel,
+            p_E.cbnUpgradeLv,
             p_E.SpawnSkillLvMaxLevel,
-            p_E.skill1Lv,
-            p_E.skill1Lv + 1,
+            DataTableMgr.Get<SkillSummonTable>(DataTableIds.skillSummon).GetID(GameMgr.Instance.playerMgr.playerEnhance.cbnUpgradeLv).skill1Lv,
+            DataTableMgr.Get<SkillSummonTable>(DataTableIds.skillSummon).GetID(GameMgr.Instance.playerMgr.playerEnhance.cbnUpgradeLv).skill1Lv + 1,
             p_E.SpawnSkillLvCost);
+    }
+
+    public void AUtoSpawnTextUpdate()
+    {
+        autoSummonCooldown.TextUpdate(
+            p_E.autoSpawnLevel,
+            p_E.autoSpawnMaxLevel,
+            GameMgr.Instance.uiMgr.uiMerge.skillSpawner.spawnduration,
+            GameMgr.Instance.uiMgr.uiMerge.skillSpawner.spawnduration - p_E.autoSpawnValue,
+            p_E.autoSpawnCost);
+    }
+
+    public void AUtoMergeTextUpdate()
+    {
+        autoMergeCooldown.TextUpdate(
+            p_E.autoMergeLevel,
+            p_E.autoMergeMaxLevel,
+            GameMgr.Instance.uiMgr.uiMerge.autoMergeDuration,
+            GameMgr.Instance.uiMgr.uiMerge.autoMergeDuration - p_E.autoMergeValue,
+            p_E.autoMergeCost);
     }
 
 

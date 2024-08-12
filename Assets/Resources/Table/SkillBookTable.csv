@@ -1,4 +1,4 @@
-﻿skillbook_ID,skill_equipment_id,skill_level,dia_rewardvalue,text_id,image
+skillbook_ID,skill_equipment_id,skill_level,dia_rewardvalue,text_id,image
 170001,40001,1,100,120466,Skill_Icon_01
 170002,40002,2,101,120467,Skill_Icon_02
 170003,40003,3,102,120468,Skill_Icon_03

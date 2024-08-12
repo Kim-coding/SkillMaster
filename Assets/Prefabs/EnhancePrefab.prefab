@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: (maxLv.5000)
+  m_text: (5000)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ba5cee10b1f9cf54090860bdb7ef3a25, type: 2}
   m_sharedMaterial: {fileID: -3990531169659260423, guid: ba5cee10b1f9cf54090860bdb7ef3a25, type: 2}
@@ -463,7 +463,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &1808891315935460557
@@ -684,6 +684,8 @@ MonoBehaviour:
   currentPercentText: {fileID: 382962921688169663}
   nextPercentText: {fileID: 7866842363748971107}
   nextCostText: {fileID: 6714269200534554401}
+  icon: {fileID: 8561686959285433626}
+  disableEvents: 0
 --- !u!1 &4140448413813994912
 GameObject:
   m_ObjectHideFlags: 0
@@ -1014,7 +1016,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: -0.8980408, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &7225967281966454252
