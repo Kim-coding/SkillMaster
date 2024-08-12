@@ -118,7 +118,7 @@ public class PlayerAI : MonoBehaviour , IAnimation
         { return null; }    
         foreach (GameObject monster in monsters)
         {
-            if (monster != null && monster.activeInHierarchy)
+            if (monster != null && monster.activeSelf)
             {
                 float distanceToMonster = Vector3.Distance(transform.position, monster.transform.position);
                 if (distanceToMonster < closestDistance)
@@ -144,7 +144,7 @@ public class PlayerAI : MonoBehaviour , IAnimation
 
     public void CheckAndChangeState()
     {
-        if (currentTarget == null || !currentTarget.gameObject.activeInHierarchy)
+        if (currentTarget == null || !currentTarget.gameObject.activeSelf)
         {
             if (!(stateMachine.currentState is IdleState))
             {

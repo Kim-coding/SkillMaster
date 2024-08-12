@@ -38,7 +38,7 @@ public class GameMgr : MonoBehaviour
         rewardMgr.Init();
         webTimeMgr.init();
         playerMgr.Init();
-        sceneMgr.mainScene.Init();
+        sceneMgr.Init();
         uiMgr.Init();
     }
 
@@ -69,7 +69,15 @@ public class GameMgr : MonoBehaviour
 
     public GameObject[] GetMonsters()
     {
-        return sceneMgr.mainScene.GetMonsters();
+        if(sceneMgr.mainScene != null)
+        {
+            return sceneMgr.mainScene.GetMonsters();
+        }
+        if(sceneMgr.dungeonScene != null)
+        {
+            return sceneMgr.dungeonScene.GetMonsters();
+        }
+        return null;
     }
 
     public void OnBossDefeated()
