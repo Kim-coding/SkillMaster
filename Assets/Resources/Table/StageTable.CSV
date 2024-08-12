@@ -1,4 +1,4 @@
-﻿StageID ,list,huntvalue,appearMonster,timelimit,appearBossMonster,MonsterMaxValue,StageLv,Asset
+﻿StageID,list,huntvalue,appearMonster,timelimit,appearBossMonster,MonsterMaxValue,StageLv,Asset
 50001,스테이지 1,10,20001,30,30001,16,1,Background_1
 50002,스테이지 2,10,20002,30,30002,16,2,Background_1
 50003,스테이지 3,10,20003,30,30003,16,3,Background_1
