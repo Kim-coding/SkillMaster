@@ -170,10 +170,10 @@ public class UiEnhance : MonoBehaviour
     public void MinSummonLvTextUpdate()
     {
         minSummonLevel.TextUpdate(
-            p_E.SpawnSkillLvLevel,
+            p_E.cbnUpgradeLv,
             p_E.SpawnSkillLvMaxLevel,
-            p_E.skill1Lv,
-            p_E.skill1Lv + 1,
+            DataTableMgr.Get<SkillSummonTable>(DataTableIds.skillSummon).GetID(GameMgr.Instance.playerMgr.playerEnhance.cbnUpgradeLv).skill1Lv,
+            DataTableMgr.Get<SkillSummonTable>(DataTableIds.skillSummon).GetID(GameMgr.Instance.playerMgr.playerEnhance.cbnUpgradeLv).skill1Lv + 1,
             p_E.SpawnSkillLvCost);
     }
 

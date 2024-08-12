@@ -85,7 +85,7 @@ public class UiMerge : MonoBehaviour
 
         for ( int i = 0; i < skillBalls.Count - 1; i++ )
         {
-            if (skillBalls[i].tier == skillBalls[i + 1].tier && !skillBalls[i].isMove && !skillBalls[i + 1].isMove)
+            if (skillBalls[i].tier == skillBalls[i + 1].tier && !skillBalls[i].isMove && !skillBalls[i + 1].isMove && skillBalls[i].tier != GameMgr.Instance.playerMgr.playerInfo.maxSkillLevel)
             {
                 MoveAndMerge(skillBalls[i], skillBalls[i + 1]);
                 skillBalls[i].isMove = true;

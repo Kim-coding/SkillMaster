@@ -176,7 +176,6 @@ public class SkillBallController : MonoBehaviour, IPointerDownHandler, IPointerU
     }
     public void AutoMerge()
     {
-        if (skill_ID == GameMgr.Instance.playerMgr.playerInfo.maxSkillLevel) { return; }
         foreach (var other in GameMgr.Instance.playerMgr.skillBallControllers)
         {
             if (other.gameObject == gameObject || other == null || other.tier != tier)
