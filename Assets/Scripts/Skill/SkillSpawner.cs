@@ -90,6 +90,11 @@ public class SkillSpawner : MonoBehaviour
         spawnduration = baseSpawnduration - duration;
     }
 
+    public void SetBase(float duration)
+    {
+        baseSpawnduration = duration;
+    }
+
     public void AutoSkillSpawn()
     {
         if(autoSpawn)

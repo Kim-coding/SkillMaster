@@ -64,14 +64,19 @@ public class UiWindow : MonoBehaviour
 
     public void OnGameWindowClick()
     {
-        if(!OnMergeWindow)
+        //if(!OnMergeWindow)
+        //{
+        //    return;
+        //}
+
+        //AnimateCloseMergeWindow();
+        //CameraMove.isToggle = false;
+        //CameraMove.CurrentCameraView();
+        if(currentOpenWindow != Windows.Enhance)
         {
             return;
         }
-
-        AnimateCloseMergeWindow();
-        CameraMove.isToggle = false;
-        CameraMove.CurrentCameraView();
+        Open(Windows.Enhance);
     }
 
     private void OnWindowButtonClick()

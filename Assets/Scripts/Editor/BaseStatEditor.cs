@@ -19,6 +19,13 @@ public class BaseStatEditor : Editor
     SerializedProperty basePlayerCriticalPercent;
     SerializedProperty basePlayerCriticalMultiple;
 
+    SerializedProperty baseMaxReserveSkillCount;
+    SerializedProperty baseSkillSpawnCooldown;
+    SerializedProperty baseAutoSpawnCooldown;
+    SerializedProperty baseAutoMergeCooldown;
+
+
+
 
     void OnEnable()
     {
@@ -36,6 +43,12 @@ public class BaseStatEditor : Editor
         basePlayerHealthRecovery = serializedObject.FindProperty("basePlayerHealthRecovery");
         basePlayerCriticalPercent = serializedObject.FindProperty("basePlayerCriticalPercent");
         basePlayerCriticalMultiple = serializedObject.FindProperty("basePlayerCriticalMultiple");
+
+        baseMaxReserveSkillCount = serializedObject.FindProperty("baseMaxReserveSkillCount");
+        baseSkillSpawnCooldown = serializedObject.FindProperty("baseSkillSpawnCooldown");
+        baseAutoSpawnCooldown = serializedObject.FindProperty("baseAutoSpawnCooldown");
+        baseAutoMergeCooldown = serializedObject.FindProperty("baseAutoMergeCooldown");
+
     }
     public override void OnInspectorGUI()
     {
@@ -101,6 +114,22 @@ public class BaseStatEditor : Editor
         EditorGUILayout.PropertyField(basePlayerCriticalMultiple, new GUIContent("기본 치명타 배율"));
         DrawDescriptionLabel("플레이어 캐릭터의 기본 치명타 배율");
         DrawDescriptionLabel("1당 치명타 데미지 1%씩 상승");
+
+        EditorGUILayout.Space(20);
+        EditorGUILayout.LabelField("강화 초기값 설정", style);
+        EditorGUILayout.Space(10);
+
+        EditorGUILayout.PropertyField(baseMaxReserveSkillCount, new GUIContent("스킬 보유량"));
+        DrawDescriptionLabel("조합 창의 스킬 최대 갯수");
+
+        EditorGUILayout.PropertyField(baseSkillSpawnCooldown, new GUIContent("스킬 소환 쿨타임"));
+        DrawDescriptionLabel("조합 창의 스킬 소환 쿨타임");
+
+        EditorGUILayout.PropertyField(baseAutoSpawnCooldown, new GUIContent("자동 소환 쿨타임"));
+        DrawDescriptionLabel("자동 소환 쿨타임");
+
+        EditorGUILayout.PropertyField(baseAutoMergeCooldown, new GUIContent("자동 조합 쿨타임"));
+        DrawDescriptionLabel("자동 조합 쿨타임");
 
         // 변경 사항 적용
         serializedObject.ApplyModifiedProperties();

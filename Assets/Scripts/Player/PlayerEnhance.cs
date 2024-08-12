@@ -73,10 +73,10 @@ public class PlayerEnhance
     public int cbnUpgradeLv;
     public BigInteger cbnUpgradeCost;
 
-    public void Init()
+    public void Init(int baseMaxSkill, float baseskillSpawnDuration, float baseAutoSpawnDuration, float baseAutoMergeDuration)
     {
         //세이브 로드시 가져와야 함
-        baseMaxReserveSkillCount = 20;
+        baseMaxReserveSkillCount = baseMaxSkill;
         maxReserveSkillCount = baseMaxReserveSkillCount += maxReserveSkillLevel * maxReserveSkillValue;
         maxSpawnSkillCount = 14;
         currentSpawnSkillCount = maxSpawnSkillCount; // 이것도 저장해야됨 아니면 껏다킬때마다 풀충됨
@@ -140,6 +140,7 @@ public class PlayerEnhance
             );
 
         var skillCooldownData = DataTableMgr.Get<CombinationUpgradeTable>(DataTableIds.cbnUpgrade).GetID(190002);
+        GameMgr.Instance.playerMgr.SetBase(baseskillSpawnDuration);
         SkillSpawnCooldownLevel = 0;
         SkillSpawnCooldownMaxLevel = skillCooldownData.MaxLv;
         SkillSpawnCooldownValue = skillCooldownData.Increase;
@@ -156,6 +157,7 @@ public class PlayerEnhance
             );
 
         var autoSpawnData = DataTableMgr.Get<CombinationUpgradeTable>(DataTableIds.cbnUpgrade).GetID(190004);
+        GameMgr.Instance.uiMgr.uiMerge.skillSpawner.SetBase(baseAutoSpawnDuration);
         autoSpawnLevel = 0;
         autoSpawnMaxLevel = autoSpawnData.MaxLv;
         autoSpawnValue = autoSpawnData.Increase;
@@ -164,6 +166,7 @@ public class PlayerEnhance
             );
 
         var autoMergeData = DataTableMgr.Get<CombinationUpgradeTable>(DataTableIds.cbnUpgrade).GetID(190005);
+        GameMgr.Instance.uiMgr.uiMerge.SetBase(baseAutoMergeDuration);
         autoMergeLevel = 0;
         autoMergeMaxLevel = autoMergeData.MaxLv;
         autoMergeValue = autoMergeData.Increase;

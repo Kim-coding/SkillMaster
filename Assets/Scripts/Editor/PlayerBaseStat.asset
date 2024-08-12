@@ -23,3 +23,7 @@ MonoBehaviour:
   basePlayerHealthRecovery: 1
   basePlayerCriticalPercent: 1
   basePlayerCriticalMultiple: 1.01
+  baseMaxReserveSkillCount: 20
+  baseSkillSpawnCooldown: 2
+  baseAutoSpawnCooldown: 0.2
+  baseAutoMergeCooldown: 2

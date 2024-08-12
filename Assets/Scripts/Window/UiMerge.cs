@@ -22,13 +22,18 @@ public class UiMerge : MonoBehaviour
     private bool isAutoMerging = false;
     private float timer = 0f;
     public float autoMergeDuration;
-    public float baseAutoMergeDuration = 2f;
+    public float baseAutoMergeDuration;
 
     private void Start()
     {
         sortButton.onClick.AddListener(SortingSkills);
         autoMergeButton.onClick.AddListener(ToggleAutoMerge);
         autoMergeButtonText = autoMergeButton.GetComponentInChildren<TextMeshProUGUI>();
+    }
+
+    public void SetBase(float duration)
+    {
+        baseAutoMergeDuration = duration;
     }
 
     public void SkillCountUpdate()

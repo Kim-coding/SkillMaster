@@ -24,7 +24,7 @@ public class PlayerMgr : MonoBehaviour
     public TextMeshProUGUI diamondUI;
 
     private float spawnTime = 0f;
-    private float baseSpawnCooldown = 2f;
+    private float baseSpawnCooldown;
     public float spawnCooldown; //TO-DO 테이블에서
 
     public PlayerSkills playerSkills;
@@ -55,6 +55,11 @@ public class PlayerMgr : MonoBehaviour
         }
     }
 
+    public void SetBase(float duration)
+    {
+        baseSpawnCooldown = duration;
+    }
+
     public List<SkillBallController> GetList()
     {
         return skillBallControllers;
@@ -70,16 +75,18 @@ public class PlayerMgr : MonoBehaviour
         playerinventory = new PlayerInventory();
         currency.Init();
         StatSetting();
-        playerEnhance.Init();
+        EnhanceSetting();
         playerInfo.Init();
         playerinventory.Init();
 
         playerBaseStat.onSettingChange += StatSetting;
+        playerBaseStat.onSettingChange += EnhanceSetting;
     }
 
     private void OnDestroy()
     {
         playerBaseStat.onSettingChange -= StatSetting;
+        playerBaseStat.onSettingChange -= EnhanceSetting;
     }
 
     public GameObject[] RequestMonsters()
@@ -105,6 +112,14 @@ public class PlayerMgr : MonoBehaviour
             playerBaseStat.baseAttackRange,
             playerBaseStat.baseRecoveryDuration
             );
+    }
+
+    private void EnhanceSetting()
+    {
+        playerEnhance.Init(playerBaseStat.baseMaxReserveSkillCount,
+           playerBaseStat.baseSkillSpawnCooldown,
+           playerBaseStat.baseAutoSpawnCooldown,
+           playerBaseStat.baseAutoMergeCooldown);
     }
 
     public void AddSpawnSkillCooldown(int level, float value)

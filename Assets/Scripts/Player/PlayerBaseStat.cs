@@ -17,7 +17,10 @@ public class PlayerBaseStat : ScriptableObject
     public float basePlayerCriticalPercent;
     public float basePlayerCriticalMultiple;
 
-
+    public int baseMaxReserveSkillCount;
+    public float baseSkillSpawnCooldown;
+    public float baseAutoSpawnCooldown;
+    public float baseAutoMergeCooldown;
 
     public delegate void OnSettingChange();
     public event OnSettingChange onSettingChange;
