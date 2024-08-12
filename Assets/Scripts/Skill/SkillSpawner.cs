@@ -44,7 +44,8 @@ public class SkillSpawner : MonoBehaviour
     public TextMeshProUGUI autoSkillSpownButtonText;
     private bool autoSpawn = false;
     private float spawnTiemr = 0f;
-    private float spawnduration = 1f;
+    public float spawnduration;
+    public float baseSpawnduration = 2f;
 
     private PlayerMgr playerMgr;
     private GameObject virtualObject;
@@ -82,6 +83,11 @@ public class SkillSpawner : MonoBehaviour
                 SpawnSkill();
             }
         }
+    }
+
+    public void SetSpawnDuration(float duration)
+    {
+        spawnduration = baseSpawnduration - duration;
     }
 
     public void AutoSkillSpawn()

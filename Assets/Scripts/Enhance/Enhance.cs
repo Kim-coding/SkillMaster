@@ -13,6 +13,7 @@ public class Enhance : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     public TextMeshProUGUI currentPercentText;
     public TextMeshProUGUI nextPercentText;
     public TextMeshProUGUI nextCostText;
+    public Image icon;
 
     private float clickTime;
     private float holdInterval = 0.1f;
@@ -23,9 +24,17 @@ public class Enhance : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     public delegate void ButtonClickAction();
     public event ButtonClickAction buttonClick;
 
-    public void Init(string name)
+    public void Init(string name, int i)
     {
         enhanceName.text = name;
+        if(i == 1)
+        {
+            icon.sprite = Resources.Load<Sprite>("Icon_Money");
+        }
+        else
+        {
+            icon.sprite = Resources.Load<Sprite>("diamond");
+        }
     }
 
     private void MaxLvCheck(int lv,int maxlv)

@@ -21,7 +21,8 @@ public class UiMerge : MonoBehaviour
 
     private bool isAutoMerging = false;
     private float timer = 0f;
-    private float duration = 1f;
+    public float autoMergeDuration;
+    public float baseAutoMergeDuration = 2f;
 
     private void Start()
     {
@@ -64,12 +65,17 @@ public class UiMerge : MonoBehaviour
         }
     }
 
+    public void SetAutoMergeDuration(float duration)
+    {
+        autoMergeDuration = baseAutoMergeDuration - duration;
+    }
+
     private void Update()
     {
         if(isAutoMerging)
         {
             timer += Time.deltaTime;
-            if(timer > duration)
+            if(timer > autoMergeDuration)
             {
                 AutoMerge();
                 timer = 0f;

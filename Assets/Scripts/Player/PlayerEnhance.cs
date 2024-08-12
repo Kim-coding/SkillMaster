@@ -23,6 +23,17 @@ public class PlayerEnhance
     public int SpawnSkillLvValue;
     public BigInteger SpawnSkillLvCost;
 
+    public int autoSpawnLevel;
+    public int autoSpawnMaxLevel;
+    public float autoSpawnValue;
+    public BigInteger autoSpawnCost;
+
+    public int autoMergeLevel;
+    public int autoMergeMaxLevel;
+    public float autoMergeValue;
+    public BigInteger autoMergeCost;
+
+
     //Level / Value / Cost 세트로 있어야 함
     public int attackPowerLevel;
     public int attackPowerMaxLevel;
@@ -144,6 +155,22 @@ public class PlayerEnhance
             (cbnUpgradeLv / spawnSkillLvData.PayRange) * spawnSkillLvData.PayIncrease + spawnSkillLvData.PayDefault
             );
 
+        var autoSpawnData = DataTableMgr.Get<CombinationUpgradeTable>(DataTableIds.cbnUpgrade).GetID(190004);
+        autoSpawnLevel = 0;
+        autoSpawnMaxLevel = autoSpawnData.MaxLv;
+        autoSpawnValue = autoSpawnData.Increase;
+        autoSpawnCost = new BigInteger(
+            (autoSpawnLevel / autoSpawnData.PayRange) * autoSpawnData.PayIncrease + autoSpawnData.PayDefault
+            );
+
+        var autoMergeData = DataTableMgr.Get<CombinationUpgradeTable>(DataTableIds.cbnUpgrade).GetID(190005);
+        autoMergeLevel = 0;
+        autoMergeMaxLevel = autoMergeData.MaxLv;
+        autoMergeValue = autoMergeData.Increase;
+        autoMergeCost = new BigInteger(
+            (autoMergeLevel / autoMergeData.PayRange) * autoMergeData.PayIncrease + autoMergeData.PayDefault
+            );
+
         GameMgr.Instance.uiMgr.uiEnhance.Init();
         GameMgr.Instance.uiMgr.uiEnhance.AttackTextUpdate();
         GameMgr.Instance.uiMgr.uiEnhance.DefenceTextUpdate();
@@ -157,6 +184,10 @@ public class PlayerEnhance
         GameMgr.Instance.playerMgr.AddSpawnSkillCooldown(SkillSpawnCooldownLevel, SkillSpawnCooldownValue);
         GameMgr.Instance.uiMgr.uiEnhance.SpawnSkillCooldownTextUpdate();
         GameMgr.Instance.uiMgr.uiEnhance.MinSummonLvTextUpdate();
+        GameMgr.Instance.uiMgr.uiMerge.skillSpawner.SetSpawnDuration(autoSpawnData.Increase * autoSpawnLevel);
+        GameMgr.Instance.uiMgr.uiEnhance.AUtoSpawnTextUpdate();
+        GameMgr.Instance.uiMgr.uiMerge.SetAutoMergeDuration(autoMergeData.Increase * autoMergeLevel);
+        GameMgr.Instance.uiMgr.uiEnhance.AUtoMergeTextUpdate();
 
 
     }
@@ -279,13 +310,24 @@ public class PlayerEnhance
 
     public void AddMaxReserveSkillCount()
     {
-        if (maxReserveSkillCost > GameMgr.Instance.playerMgr.currency.gold)
-        {
-            return;
-        }
-        GameMgr.Instance.playerMgr.currency.RemoveGold(maxReserveSkillCost);
-
         var maxReserveSkillData = DataTableMgr.Get<CombinationUpgradeTable>(DataTableIds.cbnUpgrade).GetID(190001);
+        if(maxReserveSkillData.Pay == 1)
+        {
+            if (maxReserveSkillCost > GameMgr.Instance.playerMgr.currency.gold)
+            {
+                return;
+            }
+            GameMgr.Instance.playerMgr.currency.RemoveGold(maxReserveSkillCost);
+        }
+        else
+        {
+            if (maxReserveSkillCost > GameMgr.Instance.playerMgr.currency.diamond)
+            {
+                return;
+            }
+            GameMgr.Instance.playerMgr.currency.RemoveDia(maxReserveSkillCost);
+        }
+
 
         maxReserveSkillLevel++;
         maxReserveSkillCount = baseMaxReserveSkillCount + maxReserveSkillLevel * maxReserveSkillValue;
@@ -299,13 +341,24 @@ public class PlayerEnhance
     }
     public void AddSkillSpawnCooldown()
     {
-        if (SkillSpawnCooldownCost > GameMgr.Instance.playerMgr.currency.gold)
-        {
-            return;
-        }
-        GameMgr.Instance.playerMgr.currency.RemoveGold(SkillSpawnCooldownCost);
-
         var SkillSpawnCooldownData = DataTableMgr.Get<CombinationUpgradeTable>(DataTableIds.cbnUpgrade).GetID(190002);
+
+        if (SkillSpawnCooldownData.Pay == 1)
+        {
+            if (SkillSpawnCooldownCost > GameMgr.Instance.playerMgr.currency.gold)
+            {
+                return;
+            }
+            GameMgr.Instance.playerMgr.currency.RemoveGold(SkillSpawnCooldownCost);
+        }
+        else
+        {
+            if (SkillSpawnCooldownCost > GameMgr.Instance.playerMgr.currency.diamond)
+            {
+                return;
+            }
+            GameMgr.Instance.playerMgr.currency.RemoveDia(SkillSpawnCooldownCost);
+        }
 
         SkillSpawnCooldownLevel++;
         SkillSpawnCooldownCost = new BigInteger(
@@ -317,13 +370,25 @@ public class PlayerEnhance
 
     public void AddSpawnSkillLevel()
     {
-        if (SpawnSkillLvCost > GameMgr.Instance.playerMgr.currency.gold)
-        {
-            return;
-        }
-        GameMgr.Instance.playerMgr.currency.RemoveGold(SpawnSkillLvCost);
-
         var SpawnSkillLvData = DataTableMgr.Get<CombinationUpgradeTable>(DataTableIds.cbnUpgrade).GetID(190003);
+
+        if (SpawnSkillLvData.Pay == 1)
+        {
+            if (SpawnSkillLvCost > GameMgr.Instance.playerMgr.currency.gold)
+            {
+                return;
+            }
+            GameMgr.Instance.playerMgr.currency.RemoveGold(SpawnSkillLvCost);
+        }
+        else
+        {
+            if (SpawnSkillLvCost > GameMgr.Instance.playerMgr.currency.diamond)
+            {
+                return;
+            }
+            GameMgr.Instance.playerMgr.currency.RemoveDia(SpawnSkillLvCost);
+        }
+
 
         cbnUpgradeLv++;
         SpawnSkillLvCost = new BigInteger(
@@ -331,7 +396,68 @@ public class PlayerEnhance
     );
 
         GameMgr.Instance.soundMgr.PlaySFX("UpgradeButton");
-        
+
         //TO-DO 업데이트 해줘야함 스킬 스포너
     }
+
+    public void AddAutoSpawnCooldown()
+    {
+        var autoSpawnCooldownData = DataTableMgr.Get<CombinationUpgradeTable>(DataTableIds.cbnUpgrade).GetID(190004);
+
+        if (autoSpawnCooldownData.Pay == 1)
+        {
+            if (autoSpawnCost > GameMgr.Instance.playerMgr.currency.gold)
+            {
+                return;
+            }
+            GameMgr.Instance.playerMgr.currency.RemoveGold(autoSpawnCost);
+        }
+        else
+        {
+            if (autoSpawnCost > GameMgr.Instance.playerMgr.currency.diamond)
+            {
+                return;
+            }
+            GameMgr.Instance.playerMgr.currency.RemoveDia(autoSpawnCost);
+        }
+
+        autoSpawnLevel++;
+        autoSpawnCost = new BigInteger(
+    (autoSpawnLevel / autoSpawnCooldownData.PayRange) * autoSpawnCooldownData.PayIncrease + autoSpawnCooldownData.PayDefault
+    );
+        GameMgr.Instance.soundMgr.PlaySFX("UpgradeButton");
+        GameMgr.Instance.uiMgr.uiMerge.skillSpawner.SetSpawnDuration(autoSpawnCooldownData.Increase * autoSpawnLevel);
+    }
+
+    public void AddAutoMergeCooldown()
+    {
+        var autoMergeData = DataTableMgr.Get<CombinationUpgradeTable>(DataTableIds.cbnUpgrade).GetID(190005);
+
+        if (autoMergeData.Pay == 1)
+        {
+            if (autoMergeCost > GameMgr.Instance.playerMgr.currency.gold)
+            {
+                return;
+            }
+            GameMgr.Instance.playerMgr.currency.RemoveGold(autoMergeCost);
+        }
+        else
+        {
+            if (autoMergeCost > GameMgr.Instance.playerMgr.currency.diamond)
+            {
+                return;
+            }
+            GameMgr.Instance.playerMgr.currency.RemoveDia(autoMergeCost);
+        }
+
+        autoMergeLevel++;
+        autoMergeCost = new BigInteger(
+    (autoMergeLevel / autoMergeData.PayRange) * autoMergeData.PayIncrease + autoMergeData.PayDefault
+    );
+        GameMgr.Instance.soundMgr.PlaySFX("UpgradeButton");
+        GameMgr.Instance.uiMgr.uiMerge.SetAutoMergeDuration(autoMergeData.Increase * autoMergeLevel);
+
+    }
+
+
 }
