@@ -72,7 +72,7 @@ public class UIMgr : MonoBehaviour
     public void StageUpdate(int s)
     {
         stageCount = s;
-        stageUI.text = $"Stage {stageCount}";
+        stageUI.text = $"스테이지 {stageCount}";
     }
 
     private void OnBossSpawnButtonClicked()
