@@ -6,8 +6,7 @@ public class BossStat : Status ,IDamageable
 {
     private int bossId;
 
-    public string dropGold;
-    public BigInteger Health { get; set; }
+    public string dropGold;    public BigInteger Health { get; set; }
     public bool Ondeath { get; set; }
     public float Defence { get; set; }
     public void Init()

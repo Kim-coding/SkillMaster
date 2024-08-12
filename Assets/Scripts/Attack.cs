@@ -1,6 +1,5 @@
 public struct Attack
-{
-    public BigInteger Damage { get; set; }
+{    public BigInteger Damage { get; set; }
     public bool Critical { get; set; }
 
     //public AttackType Type { get; set; }

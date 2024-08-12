@@ -7,4 +7,16 @@ public class SceneMgr : MonoBehaviour
     public DungeonScene dungeonScene;
     public DamageTextMgr damageTextMgr;
 
+    public void Init()
+    {
+        if(mainScene != null)
+        {
+            mainScene.Init();
+
+        }
+        if(dungeonScene != null)
+        {
+            dungeonScene.Init();
+        }
+    }
 }
