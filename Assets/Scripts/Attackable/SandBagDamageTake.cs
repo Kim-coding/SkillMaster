@@ -10,5 +10,6 @@ public class SandBagDamageTake : MonoBehaviour, IAttackable
         score.Health += attack.Damage;
         Debug.Log(score.Health);
         gameObject.GetComponent<DamageDisplay>().DisplayText(attack);
+        GameMgr.Instance.uiMgr.ScoreSliderUpdate(score.Health);
     }
 }

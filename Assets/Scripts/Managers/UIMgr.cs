@@ -18,6 +18,9 @@ public class UIMgr : MonoBehaviour
 
     public Slider monsterSlider;
     public Button bossSpawnButton;
+
+    public Slider DungeonScoreSlider;
+    
     public TextMeshProUGUI goldUI;
     public TextMeshProUGUI diamondUI;
     public TextMeshProUGUI stageUI;
@@ -29,13 +32,17 @@ public class UIMgr : MonoBehaviour
     public void Init()
     {
         uiInventory.Init();
-        bossSpawnButton.onClick.AddListener(OnBossSpawnButtonClicked);
-        bossSpawnButton.gameObject.SetActive(false);
+        if(bossSpawnButton != null)
+        {
+            bossSpawnButton.onClick.AddListener(OnBossSpawnButtonClicked);
+            bossSpawnButton.gameObject.SetActive(false);
+        }
     }
 
     public void AllUIUpdate(BigInteger g, BigInteger d)
     {
-        bossSpawnButton.gameObject.SetActive(false);
+        if (bossSpawnButton != null)
+            bossSpawnButton.gameObject.SetActive(false);
         GoldTextUpdate(g);
         DiaTextUpdate(d);
         
@@ -87,5 +94,9 @@ public class UIMgr : MonoBehaviour
     public void HideBossSpawnButton()
     {
         bossSpawnButton.gameObject.SetActive(false);
+    }
+    public void ScoreSliderUpdate(BigInteger value)
+    {
+        //DungeonScoreSlider.value += value.factor;
     }
 }
