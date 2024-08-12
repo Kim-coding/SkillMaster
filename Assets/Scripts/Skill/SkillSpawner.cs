@@ -154,8 +154,8 @@ public class SkillSpawner : MonoBehaviour
 
         var newSkillControler = newSkill.GetComponent<SkillBallController>();
         newSkillControler.Set(SelectedSkill());
-        playerMgr.playerInfo.MaxSkillLevelUpdate(newSkillControler.tier);
         playerMgr.skillBallControllers.Add(newSkillControler);
+        playerMgr.playerInfo.MaxSkillLevelUpdate(newSkillControler.tier);
         playerMgr.playerEnhance.currentSpawnSkillCount--;
         GameMgr.Instance.uiMgr.uiMerge.SkillCountUpdate();
         GameMgr.Instance.playerMgr.playerSkills.SetList(); // 캐스팅 리스트 업데이트

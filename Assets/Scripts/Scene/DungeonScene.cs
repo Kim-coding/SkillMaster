@@ -9,7 +9,7 @@ public class DungeonScene : MonoBehaviour
     public GameObject[] GoldDungeonMonster;   // 테이블 연결 필요
     public GameObject[] DiaDungeonMonsters; // 테이블 연결 필요
 
-    public int currentStage = 1; //TO-DO SaveLoad 적용 필요 
+    public int currentStage = 1; //저장된 정보를 받아 오기.
 
     public Transform GoldDungeonSpawnPoint;
     public Transform[] DiaDungeonSpawnPoints;

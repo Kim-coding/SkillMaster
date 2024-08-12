@@ -16,9 +16,14 @@ public class GuideQuest
     private Action currentEventHandler;
     public void Init()
     {
+        //if(currentQuest == null)
+        //{
+        //    return;
+        //}
         questID = 60001; //TO-DO 저장데이터
-        currentQuest = new QuestData();
+        //currentQuest = new QuestData();
         currentQuest = DataTableMgr.Get<QuestTable>(DataTableIds.quest).GetID(questID);
+        Debug.Log("currentQuest : " + currentQuest);
         GameMgr.Instance.uiMgr.uiGuideQuest.currentQuest = currentQuest;
         currentTargetValue = 0; //TO-DO 저장데이터
         RegisterQuestEvents();
