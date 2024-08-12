@@ -41,7 +41,7 @@ public class EquipOption
 
     public bool AddOption(OptionType option, float value)
     {
-        if (optionCount[(int)option] > 2)
+        if (optionCount[(int)option] >= 2)
         {
             return false;
         }
