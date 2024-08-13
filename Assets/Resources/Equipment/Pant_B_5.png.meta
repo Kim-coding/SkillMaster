@@ -113,12 +113,12 @@ TextureImporter:
       name: Pant_B_5_0
       rect:
         serializedVersion: 2
-        x: 18
-        y: 11
-        width: 4
+        x: 17
+        y: 13
+        width: 3
         height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.3414866, y: 0.6567707}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -134,12 +134,12 @@ TextureImporter:
       name: Pant_B_5_1
       rect:
         serializedVersion: 2
-        x: 10
-        y: 11
-        width: 4
+        x: 11
+        y: 13
+        width: 3
         height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.6463197, y: 0.6881251}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

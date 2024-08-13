@@ -20015,7 +20015,7 @@ PrefabInstance:
     - target: {fileID: 4742213440672812113, guid: dbeea996a665f9c4592c9fffb3197dc5, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -2108071912, guid: 254e3434e70c537438211cbf43a718eb, type: 3}
+      objectReference: {fileID: 1108227043, guid: 9f81a3fdde808674eb76552dcf8241df, type: 3}
     - target: {fileID: 4966246136279436897, guid: dbeea996a665f9c4592c9fffb3197dc5, type: 3}
       propertyPath: m_Layer
       value: 8
@@ -20079,7 +20079,11 @@ PrefabInstance:
     - target: {fileID: 5461539578734621359, guid: dbeea996a665f9c4592c9fffb3197dc5, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -2085497757, guid: 904a3e190c128944ca294f2fcdf9ccbd, type: 3}
+      objectReference: {fileID: 0}
+    - target: {fileID: 5461539578734621359, guid: dbeea996a665f9c4592c9fffb3197dc5, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5523659205884335777, guid: dbeea996a665f9c4592c9fffb3197dc5, type: 3}
       propertyPath: m_Layer
       value: 8
@@ -20091,7 +20095,7 @@ PrefabInstance:
     - target: {fileID: 5698731916983654070, guid: dbeea996a665f9c4592c9fffb3197dc5, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 1533600375, guid: 254e3434e70c537438211cbf43a718eb, type: 3}
+      objectReference: {fileID: -1527091273, guid: 9f81a3fdde808674eb76552dcf8241df, type: 3}
     - target: {fileID: 5745796484760671861, guid: dbeea996a665f9c4592c9fffb3197dc5, type: 3}
       propertyPath: m_Layer
       value: 8
@@ -20219,7 +20223,7 @@ PrefabInstance:
     - target: {fileID: 7579792719568751815, guid: dbeea996a665f9c4592c9fffb3197dc5, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 2001709575, guid: 8e7b31d52cf86154e8ef170cbf8d2ba5, type: 3}
+      objectReference: {fileID: -151192218, guid: 72f98a676bddb154cb8d33cdabfe3271, type: 3}
     - target: {fileID: 7642355567094686219, guid: dbeea996a665f9c4592c9fffb3197dc5, type: 3}
       propertyPath: m_Layer
       value: 8
