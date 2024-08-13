@@ -14,17 +14,17 @@ public class GuideQuest
     public int currentTargetValue;
 
     private Action currentEventHandler;
+    private UiGuideQuest uiGuideQuest;
     public void Init()
     {
-        //if(currentQuest == null)
-        //{
-        //    return;
-        //}
         questID = 60001; //TO-DO 저장데이터
-        //currentQuest = new QuestData();
         currentQuest = DataTableMgr.Get<QuestTable>(DataTableIds.quest).GetID(questID);
         Debug.Log("currentQuest : " + currentQuest);
-        GameMgr.Instance.uiMgr.uiGuideQuest.currentQuest = currentQuest;
+        if(GameMgr.Instance.uiMgr.uiGuideQuest != null)
+        {
+            uiGuideQuest = GameMgr.Instance.uiMgr.uiGuideQuest;
+            uiGuideQuest.currentQuest = currentQuest;
+        }
         currentTargetValue = 0; //TO-DO 저장데이터
         RegisterQuestEvents();
         CheckQuestCompletion();
@@ -36,22 +36,22 @@ public class GuideQuest
     {
         if (currentQuest.Targetvalue > currentTargetValue)
         {
-            GameMgr.Instance.uiMgr.uiGuideQuest.UiButtonUpdate(false);
+            uiGuideQuest.UiButtonUpdate(false);
         }
         else
         {
-            GameMgr.Instance.uiMgr.uiGuideQuest.UiButtonUpdate(true);
+            uiGuideQuest.UiButtonUpdate(true);
             RemoveEvent();
         }
     }
 
     public void NextQuest()
     {
-        GameMgr.Instance.uiMgr.uiGuideQuest.UiButtonUpdate(false);
+        uiGuideQuest.UiButtonUpdate(false);
         GameMgr.Instance.soundMgr.PlaySFX("QuestClear");
         questID = currentQuest.Next_Quest;
         currentQuest = DataTableMgr.Get<QuestTable>(DataTableIds.quest).GetID(questID);
-        GameMgr.Instance.uiMgr.uiGuideQuest.currentQuest = currentQuest;
+        uiGuideQuest.currentQuest = currentQuest;
         currentTargetValue = 0; //TO-DO 조건 확인하고 초기화}
         RegisterQuestEvents();
         CheckQuestCompletion();
@@ -181,7 +181,7 @@ public class GuideQuest
 
     public void UiUpdate()
     {
-        GameMgr.Instance.uiMgr.uiGuideQuest.UiUpdate(currentTargetValue);
+        uiGuideQuest.UiUpdate(currentTargetValue);
     }
 
     private void AddEvent(QuestType questType, Action subscriber)
