@@ -35,10 +35,8 @@ public class GameMgr : MonoBehaviour
 
     private void InitGame()
     {
-        rewardMgr.Init();
-        webTimeMgr.init();
-        playerMgr.Init();
         sceneMgr.Init();
+        playerMgr.Init();
         uiMgr.Init();
     }
 

@@ -51,8 +51,8 @@ public class PlayerInfomation
 
     public void MaxSkillLevelUpdate(int SkillLevel)
     {
-        if (SkillLevel <= maxSkillLevel)
-        { return; }
+        if (SkillLevel <= maxSkillLevel || GameMgr.Instance.rewardMgr.guideQuest == null)
+            return;
 
         maxSkillLevel = SkillLevel;
         GameMgr.Instance.rewardMgr.guideQuest.MaxSkillComparisonCheck();

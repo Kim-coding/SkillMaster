@@ -17,14 +17,13 @@ public class GuideQuest
     private UiGuideQuest uiGuideQuest;
     public void Init()
     {
+        if (GameMgr.Instance.uiMgr.uiGuideQuest == null)
+            return;
         questID = 60001; //TO-DO 저장데이터
         currentQuest = DataTableMgr.Get<QuestTable>(DataTableIds.quest).GetID(questID);
         Debug.Log("currentQuest : " + currentQuest);
-        if(GameMgr.Instance.uiMgr.uiGuideQuest != null)
-        {
-            uiGuideQuest = GameMgr.Instance.uiMgr.uiGuideQuest;
-            uiGuideQuest.currentQuest = currentQuest;
-        }
+        uiGuideQuest = GameMgr.Instance.uiMgr.uiGuideQuest;
+        uiGuideQuest.currentQuest = currentQuest;
         currentTargetValue = 0; //TO-DO 저장데이터
         RegisterQuestEvents();
         CheckQuestCompletion();
