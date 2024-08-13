@@ -139,7 +139,7 @@ TextureImporter:
         width: 2
         height: 2
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -164,6 +164,7 @@ TextureImporter:
     nameFileIdTable:
       Eye_C_4_0: -1560838331
       Eye_C_4_1: -845337505
+      Eye_C_4_2: 1117107009
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

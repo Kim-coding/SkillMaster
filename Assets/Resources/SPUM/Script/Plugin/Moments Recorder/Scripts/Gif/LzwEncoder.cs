@@ -65,7 +65,7 @@ namespace Moments.Encoder
 		bool clear_flg = false;
 
 		// Algorithm:  use open addressing double hashing (no chaining) on the
-		// prefix code / next character combination.  We do a variant of Knuth's
+		// prefix code / nextRequestDamage character combination.  We do a variant of Knuth's
 		// algorithm D (vol. 3, sec. 6.4) along with G. Knott's relatively-prime
 		// secondary probe.  Here, the modular division first probe is gives way
 		// to a faster exclusive-or manipulation.  Also do block compression with
@@ -264,7 +264,7 @@ namespace Moments.Encoder
 		}
 	
 		//----------------------------------------------------------------------------
-		// Return the next pixel from the image
+		// Return the nextRequestDamage pixel from the image
 		//----------------------------------------------------------------------------
 		private int NextPixel() 
 		{
@@ -293,7 +293,7 @@ namespace Moments.Encoder
 				cur_bits -= 8;
 			}
 
-			// If the next entry is going to be too big for the code size,
+			// If the nextRequestDamage entry is going to be too big for the code size,
 			// then increase it, if possible.
 			if (free_ent > maxcode || clear_flg) 
 			{

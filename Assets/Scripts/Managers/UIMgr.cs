@@ -21,7 +21,11 @@ public class UIMgr : MonoBehaviour
 
     public Slider DungeonScoreSlider;
     public Slider DungeonTimeSlider;
+    public TextMeshProUGUI timeText;
+    private float timer = 0;
+
     private BigInteger currentMaxDamage;
+    public TextMeshProUGUI dungeonScoreText;
 
     public TextMeshProUGUI goldUI;
     public TextMeshProUGUI diamondUI;
@@ -129,23 +133,21 @@ public class UIMgr : MonoBehaviour
 
         DungeonScoreSlider.value = percent;
     }
-    public void InitializeNextStageSlider(BigInteger nextStageMaxDamage)
+    public void InitializeNextStageSlider(int lv)
     {
         if (DungeonScoreSlider != null)
         {
-            float maxDamageValue = nextStageMaxDamage.ToFloat();
-
-            DungeonScoreSlider.maxValue = maxDamageValue;
-
-            currentMaxDamage = nextStageMaxDamage;
-
             DungeonScoreSlider.value = 0;
+
+            dungeonScoreText.text = $"{lv} ·¹º§";
         }
     }
 
     public void TimeSliderUpdate()
     {
-        var value = Time.deltaTime;
-        DungeonTimeSlider.value += value;
+        timer += Time.deltaTime;
+
+        timeText.text = timer.ToString("F2");
+        DungeonTimeSlider.value = timer;
     }
 }

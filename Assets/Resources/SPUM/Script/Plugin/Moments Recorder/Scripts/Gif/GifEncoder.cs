@@ -85,8 +85,8 @@ namespace Moments.Encoder
 		}
 
 		/// <summary>
-		/// Adds next GIF frame. The frame is not written immediately, but is actually deferred
-		/// until the next frame is received so that timing data can be inserted. Invoking
+		/// Adds nextRequestDamage GIF frame. The frame is not written immediately, but is actually deferred
+		/// until the nextRequestDamage frame is received so that timing data can be inserted. Invoking
 		/// <code>Finish()</code> flushes all frames.
 		/// </summary>
 		/// <param name="frame">GifFrame containing frame to write.</param>
