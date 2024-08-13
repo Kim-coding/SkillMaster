@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Threading;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DungeonScene : MonoBehaviour
 {
-    public GameObject[] GoldDungeonMonster;   // 테이블 연결 필요
-    public GameObject[] DiaDungeonMonsters; // 테이블 연결 필요
-
     public int currentStage = 1; //저장된 정보를 받아 오기.
+
+    public GameObject GoldDungeonMonster;   // 테이블 연결 필요
+    public GameObject[] DiaDungeonMonsters; // 테이블 연결 필요
 
     public Transform GoldDungeonSpawnPoint;
     public Transform[] DiaDungeonSpawnPoints;
@@ -17,14 +18,25 @@ public class DungeonScene : MonoBehaviour
     public bool goldDungeon = false;
     public bool diaDungeon = false;
 
-    public Transform Parent;
-
     private List<GameObject> monster = new List<GameObject>();
+    
+    public Transform Parent;
+    public Slider slider;
+
+    public GoldDungeonData goldDungeonData;
+    //public DiaDungeonData diaDungeonData;
 
     public void Init()
     {
         currentStage = 1;
-
+        if(goldDungeon)
+        {
+            goldDungeonData = DataTableMgr.Get<GoldDungeonTable>(DataTableIds.goldDungeon).GetID(currentStage);
+        }
+        if(diaDungeon)
+        {
+            //diaDungeonData = 
+        }
 
     }
 
@@ -32,7 +44,7 @@ public class DungeonScene : MonoBehaviour
     {
         if (goldDungeon)
         {
-            var sandBag = Instantiate(GoldDungeonMonster[0], GoldDungeonSpawnPoint.position, Quaternion.identity, Parent);
+            var sandBag = Instantiate(GoldDungeonMonster, GoldDungeonSpawnPoint.position, Quaternion.identity, Parent);
             monster.Add(sandBag);
         }
         if (diaDungeon)

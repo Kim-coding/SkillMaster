@@ -1107,7 +1107,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -7.597687, y: -258.40424}
+  m_AnchoredPosition: {x: -7.5977173, y: -258.4043}
   m_SizeDelta: {x: -283.616, y: -954.2183}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &18388298
@@ -14250,7 +14250,7 @@ GameObject:
   - component: {fileID: 377149476}
   - component: {fileID: 377149477}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: TimeSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21061,6 +21061,7 @@ MonoBehaviour:
   gachaTicketText: {fileID: 402587476}
   gachaLevelText: {fileID: 90619088}
   gachaExpText: {fileID: 1868353025}
+  rewardText: {fileID: 0}
   gachaExp: {fileID: 467295104}
   explainButton: {fileID: 1617900935}
 --- !u!114 &619789942
@@ -47860,11 +47861,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a5b7c134861bb54484970e40902409b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GoldDungeonMonster:
-  - {fileID: 1605052194642255169, guid: 259421fe8b6bea244bf707800f29a70a, type: 3}
+  currentStage: 1
+  GoldDungeonMonster: {fileID: 1605052194642255169, guid: 259421fe8b6bea244bf707800f29a70a, type: 3}
   DiaDungeonMonsters:
   - {fileID: 1605052194642255169, guid: 9f1e9dec77e08564c9b6f6924c05cecd, type: 3}
-  currentStage: 1
   GoldDungeonSpawnPoint: {fileID: 18118072}
   DiaDungeonSpawnPoints:
   - {fileID: 870644932}
@@ -47873,6 +47873,7 @@ MonoBehaviour:
   goldDungeon: 1
   diaDungeon: 0
   Parent: {fileID: 1880426546}
+  slider: {fileID: 0}
 --- !u!114 &1423913457
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47964,7 +47965,8 @@ MonoBehaviour:
   uiInventory: {fileID: 1813656379}
   monsterSlider: {fileID: 0}
   bossSpawnButton: {fileID: 0}
-  DungeonScoreSlider: {fileID: 0}
+  DungeonScoreSlider: {fileID: 1948932809}
+  DungeonTimeSlider: {fileID: 377149477}
   goldUI: {fileID: 5086343}
   diamondUI: {fileID: 256428876}
   stageUI: {fileID: 0}
@@ -48015,6 +48017,8 @@ MonoBehaviour:
   offlinDurationText: {fileID: 1128200823}
   goldRewardText: {fileID: 529067888}
   diaRewardText: {fileID: 1704580869}
+  rewardPopUp: {fileID: 0}
+  rewardText: {fileID: 0}
 --- !u!114 &1423913467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63272,7 +63276,7 @@ GameObject:
   - component: {fileID: 1948932808}
   - component: {fileID: 1948932809}
   m_Layer: 5
-  m_Name: MonsterSlider
+  m_Name: ScoreSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
