@@ -10,8 +10,16 @@ public class PlayerCurrency
 
     public void Init()
     {
-        gold.Init(0);
-        diamond.Init(0);
+        if (SaveLoadSystem.CurrSaveData.savePlay == null)
+        {
+            gold.Init(0);
+            diamond.Init(0);
+        }
+        else
+        {
+            gold = SaveLoadSystem.CurrSaveData.savePlay.saveCurrency.gold;
+            diamond = SaveLoadSystem.CurrSaveData.savePlay.saveCurrency.diamond;
+        }
         GameMgr.Instance.uiMgr.AllUIUpdate(gold,diamond);
     }
   

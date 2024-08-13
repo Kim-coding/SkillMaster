@@ -113,12 +113,12 @@ TextureImporter:
       name: Hair_C_5_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
+        x: 7
+        y: 9
         width: 17
         height: 15
       alignment: 9
-      pivot: {x: 0.4058824, y: 0.417037}
+      pivot: {x: 0.5087433, y: 0.4971831}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

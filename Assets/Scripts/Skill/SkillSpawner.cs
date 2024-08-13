@@ -62,8 +62,8 @@ public class SkillSpawner : MonoBehaviour
         if(playerMgr.skillBallControllers.Count == 0)
         {
             SpawnSkill();
-            Destroy(virtualObject);
         }
+        Destroy(virtualObject);
         autoSkillSpownButton.onClick.AddListener(AutoSkillSpawn);
         autoSkillSpownButtonText = autoSkillSpownButton.GetComponentInChildren<TextMeshProUGUI>();
         if(skillLevelInputField != null)
