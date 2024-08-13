@@ -52,6 +52,23 @@ public class GameMgr : MonoBehaviour
         {
             StartCoroutine(SaveAndQuit());
         }
+
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            SaveLoadSystem.Save();
+        }
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            SaveLoadSystem.Load();
+            Instance.playerMgr.currency = SaveLoadSystem.CurrSaveData.savePlay.saveCurrency;
+            Instance.playerMgr.currency.Init();
+            Debug.Log("load");
+        }
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            SaveLoadSystem.DeleteSaveData();
+        }
+
     }
     private IEnumerator SaveAndQuit()
     {
