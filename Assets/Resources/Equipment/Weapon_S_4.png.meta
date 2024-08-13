@@ -113,12 +113,12 @@ TextureImporter:
       name: Weapon_S_4_0
       rect:
         serializedVersion: 2
-        x: 12
-        y: 9
-        width: 7
-        height: 14
+        x: 1
+        y: 1
+        width: 30
+        height: 30
       alignment: 9
-      pivot: {x: 0.49479595, y: 0.15912043}
+      pivot: {x: 0.28182566, y: 0.28442815}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

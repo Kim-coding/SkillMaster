@@ -113,12 +113,12 @@ TextureImporter:
       name: Weapon_B_3_0
       rect:
         serializedVersion: 2
-        x: 11
-        y: 4
+        x: 12
+        y: 6
         width: 9
-        height: 23
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        height: 19
+      alignment: 9
+      pivot: {x: 0.48784426, y: 0.37632856}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

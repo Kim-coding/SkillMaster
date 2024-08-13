@@ -792,6 +792,8 @@ MonoBehaviour:
   maxSkillCount: {fileID: 0}
   summonCooldown: {fileID: 0}
   minSummonLevel: {fileID: 0}
+  autoSummonCooldown: {fileID: 0}
+  autoMergeCooldown: {fileID: 0}
 --- !u!114 &18185123
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5969,6 +5971,8 @@ MonoBehaviour:
   localPointY: {x: 0, y: 0, z: 0}
   autoSkillSpownButton: {fileID: 1346104801}
   autoSkillSpownButtonText: {fileID: 978656649}
+  spawnduration: 0
+  baseSpawnduration: 2
   skillLevelInputField: {fileID: 448768821}
   skillLV: 40001
 --- !u!114 &240821522
@@ -7801,6 +7805,8 @@ MonoBehaviour:
   autoMergeButton: {fileID: 321616692}
   autoMergeButtonText: {fileID: 810647972}
   merge: {fileID: 2091457409}
+  autoMergeDuration: 0
+  baseAutoMergeDuration: 0
 --- !u!1 &336583799
 GameObject:
   m_ObjectHideFlags: 0
@@ -13015,6 +13021,12 @@ MonoBehaviour:
   pickUpButton_1: {fileID: 880201670}
   pickUpButton_10: {fileID: 860615119}
   pickUpButton_30: {fileID: 863749545}
+  gachaTicketText: {fileID: 0}
+  gachaLevelText: {fileID: 0}
+  gachaExpText: {fileID: 0}
+  rewardText: {fileID: 0}
+  gachaExp: {fileID: 0}
+  explainButton: {fileID: 0}
 --- !u!1 &624626417
 GameObject:
   m_ObjectHideFlags: 0
@@ -19895,7 +19907,7 @@ PrefabInstance:
     - target: {fileID: 2973822800045915569, guid: dbeea996a665f9c4592c9fffb3197dc5, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -313006120, guid: f4e3b9e3cd73b63408eeff05f41891a8, type: 3}
+      objectReference: {fileID: -28571024, guid: 9e414f8b7d57e304f942217025e34103, type: 3}
     - target: {fileID: 2973822800045915569, guid: dbeea996a665f9c4592c9fffb3197dc5, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -20064,6 +20076,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 5461539578734621359, guid: dbeea996a665f9c4592c9fffb3197dc5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -2085497757, guid: 904a3e190c128944ca294f2fcdf9ccbd, type: 3}
     - target: {fileID: 5523659205884335777, guid: dbeea996a665f9c4592c9fffb3197dc5, type: 3}
       propertyPath: m_Layer
       value: 8
@@ -20146,16 +20162,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6557338318282945342, guid: dbeea996a665f9c4592c9fffb3197dc5, type: 3}
       propertyPath: m_Size.x
-      value: 0.125
+      value: 0.59375
       objectReference: {fileID: 0}
     - target: {fileID: 6557338318282945342, guid: dbeea996a665f9c4592c9fffb3197dc5, type: 3}
       propertyPath: m_Size.y
-      value: 0.15625
+      value: 0.40625
       objectReference: {fileID: 0}
     - target: {fileID: 6557338318282945342, guid: dbeea996a665f9c4592c9fffb3197dc5, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -1350576289, guid: 7aaf02d7124d2da4a9dadf8630d268f0, type: 3}
+      objectReference: {fileID: 1290626557, guid: cf953789f4d7d8b46ae30489310d41ee, type: 3}
     - target: {fileID: 6557338318282945342, guid: dbeea996a665f9c4592c9fffb3197dc5, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
@@ -20171,7 +20187,7 @@ PrefabInstance:
     - target: {fileID: 6862792894060675341, guid: dbeea996a665f9c4592c9fffb3197dc5, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 430131191, guid: 4814a4bc15cb5cd43bfe2fb053781a0f, type: 3}
+      objectReference: {fileID: -1205898117, guid: 565e40f87acf58c44ae9afeb265aa7ac, type: 3}
     - target: {fileID: 6941776083937141916, guid: dbeea996a665f9c4592c9fffb3197dc5, type: 3}
       propertyPath: m_Layer
       value: 8
@@ -29581,7 +29597,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawner: {fileID: 1423913462}
   monster: {fileID: 1423913454}
-  BossMonsterPrefab: {fileID: 1605052194642255169, guid: 9a445daf56e69d34bb641bce0692cb3e, type: 3}
+  BossMonsterPrefabs: []
   bossSpawnPoint: {fileID: 421622222}
   stageCount: 1
   stageId: 0
@@ -29599,6 +29615,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a5b7c134861bb54484970e40902409b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentStage: 1
+  GoldDungeonMonster: {fileID: 0}
+  DiaDungeonMonsters: []
+  GoldDungeonSpawnPoint: {fileID: 0}
+  DiaDungeonSpawnPoints: []
+  goldDungeon: 0
+  diaDungeon: 0
+  Parent: {fileID: 0}
+  slider: {fileID: 0}
 --- !u!114 &1423913457
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29631,6 +29656,7 @@ MonoBehaviour:
   skillBallControllers: []
   goldUI: {fileID: 5086343}
   diamondUI: {fileID: 256428876}
+  spawnCooldown: 0
   playerSkills: {fileID: 0}
 --- !u!114 &1423913459
 MonoBehaviour:
@@ -29713,6 +29739,8 @@ MonoBehaviour:
   uiInventory: {fileID: 1813656379}
   monsterSlider: {fileID: 1102606861}
   bossSpawnButton: {fileID: 231454458}
+  DungeonScoreSlider: {fileID: 0}
+  DungeonTimeSlider: {fileID: 0}
   goldUI: {fileID: 5086343}
   diamondUI: {fileID: 256428876}
   stageUI: {fileID: 1603245744}
@@ -29761,6 +29789,10 @@ MonoBehaviour:
   offlineRewardPopUp: {fileID: 0}
   offlineRewardButton: {fileID: 0}
   offlinDurationText: {fileID: 0}
+  goldRewardText: {fileID: 0}
+  diaRewardText: {fileID: 0}
+  rewardPopUp: {fileID: 0}
+  rewardText: {fileID: 0}
 --- !u!1 &1438259308
 GameObject:
   m_ObjectHideFlags: 0
@@ -30225,6 +30257,8 @@ MonoBehaviour:
   questName: {fileID: 1324343696}
   questCount: {fileID: 630353792}
   clearText: {fileID: 1600596864}
+  rewardImage: {fileID: 0}
+  rewardCount: {fileID: 0}
 --- !u!1 &1458089209
 GameObject:
   m_ObjectHideFlags: 0
@@ -30341,6 +30375,7 @@ MonoBehaviour:
   decomposPanel: {fileID: 1964705134}
   autoDecomposSelectPanel: {fileID: 0}
   equipUpgradePanel: {fileID: 0}
+  pickUpResultPanel: {fileID: 0}
 --- !u!114 &1458089215
 MonoBehaviour:
   m_ObjectHideFlags: 0
