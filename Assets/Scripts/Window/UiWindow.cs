@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
+using UnityEditor.SearchService;
+using UnityEngine.SceneManagement;
 public class UiWindow : MonoBehaviour
 {
     public GameObject mergeWindow;
@@ -269,5 +271,10 @@ public class UiWindow : MonoBehaviour
             UICameraButton.transform.SetAsLastSibling();
 
         }
+    }
+
+    public void Dungeon()
+    {
+        SceneManager.LoadScene("Dungeon");
     }
 }

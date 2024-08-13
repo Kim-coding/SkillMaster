@@ -147,7 +147,7 @@ public class UIMgr : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-        timeText.text = timer.ToString("F2");
+        timeText.text = $"{timer.ToString("F1")}s";
         DungeonTimeSlider.value = timer;
     }
 }

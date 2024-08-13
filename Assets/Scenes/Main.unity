@@ -25062,7 +25062,7 @@ GameObject:
   - component: {fileID: 731365348}
   - component: {fileID: 731365347}
   m_Layer: 5
-  m_Name: ??
+  m_Name: Dungeon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25128,11 +25128,23 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 731365348}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1458089214}
+        m_TargetAssemblyTypeName: UiWindow, Assembly-CSharp
+        m_MethodName: Dungeon
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &731365348
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43691,7 +43703,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Soon
+  m_text: "\uB358\uC804"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ba5cee10b1f9cf54090860bdb7ef3a25, type: 2}
   m_sharedMaterial: {fileID: -3990531169659260423, guid: ba5cee10b1f9cf54090860bdb7ef3a25, type: 2}
@@ -48952,7 +48964,6 @@ GameObject:
   - component: {fileID: 1423913459}
   - component: {fileID: 1423913458}
   - component: {fileID: 1423913457}
-  - component: {fileID: 1423913456}
   - component: {fileID: 1423913455}
   - component: {fileID: 1423913454}
   - component: {fileID: 1423913462}
@@ -49017,27 +49028,6 @@ MonoBehaviour:
   stageId: 0
   clearPopup: {fileID: 429917912}
   playerDefeatedByBoss: 0
---- !u!114 &1423913456
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1423913453}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a5b7c134861bb54484970e40902409b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GoldDungeonMonster:
-  - {fileID: 0}
-  DiaDungeonMonsters: []
-  currentStage: 1
-  GoldDungeonSpawnPoint: {fileID: 0}
-  DiaDungeonSpawnPoints: []
-  goldDungeon: 0
-  diaDungeon: 0
-  Parent: {fileID: 0}
 --- !u!114 &1423913457
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49051,7 +49041,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainScene: {fileID: 1423913455}
-  dungeonScene: {fileID: 1423913456}
+  dungeonScene: {fileID: 0}
   damageTextMgr: {fileID: 1423913464}
 --- !u!114 &1423913458
 MonoBehaviour:
@@ -49154,6 +49144,9 @@ MonoBehaviour:
   monsterSlider: {fileID: 1102606861}
   bossSpawnButton: {fileID: 231454458}
   DungeonScoreSlider: {fileID: 0}
+  DungeonTimeSlider: {fileID: 0}
+  timeText: {fileID: 0}
+  dungeonScoreText: {fileID: 0}
   goldUI: {fileID: 5086343}
   diamondUI: {fileID: 256428876}
   stageUI: {fileID: 1603245744}

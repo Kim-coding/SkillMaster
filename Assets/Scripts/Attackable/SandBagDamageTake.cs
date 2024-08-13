@@ -34,10 +34,8 @@ public class SandBagDamageTake : MonoBehaviour, IAttackable
         }
 
         score.Health += attack.Damage;
-        Debug.Log(score.Health);
 
         dungeonScene.currentScore += attack.Damage;
-        Debug.Log(dungeonScene.currentScore);
 
         gameObject.GetComponent<DamageDisplay>().DisplayText(attack);
 

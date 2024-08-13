@@ -60,7 +60,10 @@ public class Spawner : MonoBehaviour
         {
             foreach (var monster in monsterPool.pool)
             {
-                monster.gameObject.SetActive(false);
+                if (monster != null)
+                {                
+                    monster.gameObject.SetActive(false);
+                }
             }
         }
 

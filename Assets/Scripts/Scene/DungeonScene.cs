@@ -10,6 +10,8 @@ using UnityEngine.UI;
 
 public class DungeonScene : MonoBehaviour
 {
+    public GameObject startPanel;
+
     public int currentStage = 1; //저장된 정보를 받아 오기.
     public BigInteger currentScore = new BigInteger(0);
 
@@ -44,7 +46,9 @@ public class DungeonScene : MonoBehaviour
 
     public void Init()
     {
+        //받아와야 하는 정보 : 도전 스테이지, 선택한 던전 (골드, 다이아), 스킬
         currentStage = 1;
+
         if(goldDungeon)
         {
             goldDungeonData = DataTableMgr.Get<GoldDungeonTable>(DataTableIds.goldDungeon).GetID(currentStage);
@@ -54,7 +58,7 @@ public class DungeonScene : MonoBehaviour
         {
             //diaDungeonData = 
         }
-
+        startPanel.SetActive(true);
     }
 
     private void Start()
@@ -128,12 +132,15 @@ public class DungeonScene : MonoBehaviour
         {
             goldDungeonClearPopUp.SetActive(true);
             goldDungeonClearStageText.text = clearedStage.ToString();
-            if(clearedStage != 0)
+            var rewardGold = "0";
+            if (clearedStage != 0)
             {
-                clearCompensationText.text = DataTableMgr.Get<GoldDungeonTable>(DataTableIds.goldDungeon).GetID(clearedStage).reward_value;
+                rewardGold = DataTableMgr.Get<GoldDungeonTable>(DataTableIds.goldDungeon).GetID(clearedStage).reward_value;
+                clearCompensationText.text = rewardGold;
             }
+            //메인 씬으로 넘겨야 하는 정보 : rewardGold, goldDungeonClearStageText.text (클리어 보상, 클리어한 스테이지)
         }
-        if(diaDungeon)
+        if (diaDungeon)
         {
 
         }
@@ -142,6 +149,6 @@ public class DungeonScene : MonoBehaviour
     private void LoadMainScene()
     {
         //SceneManager.LoadScene("Main");
-        Addressables.LoadSceneAsync("Main", LoadSceneMode.Single);
+        Addressables.LoadSceneAsync("MainScene", LoadSceneMode.Single);
     }
 }

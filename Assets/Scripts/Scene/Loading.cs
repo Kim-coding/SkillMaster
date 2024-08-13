@@ -57,7 +57,6 @@ public class Loading : MonoBehaviour
                         };
                     }
 
-                    Debug.Log($"Loaded assets for label: {label}");
                     if (AllLoadsCompleted(handles))
                     {
                         LoadMainScene();

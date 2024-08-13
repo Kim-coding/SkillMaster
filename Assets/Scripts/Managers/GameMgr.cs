@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameMgr : MonoBehaviour
 {
@@ -23,7 +24,7 @@ public class GameMgr : MonoBehaviour
         if(Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
+            //DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -35,6 +36,7 @@ public class GameMgr : MonoBehaviour
 
     private void InitGame()
     {
+        Time.timeScale = 1f;
         sceneMgr.Init();
         playerMgr.Init();
         uiMgr.Init();
@@ -49,6 +51,10 @@ public class GameMgr : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Escape))
         {
             StartCoroutine(SaveAndQuit());
+        }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            SceneManager.LoadScene("Loading");
         }
 
         if (Input.GetKeyDown(KeyCode.S))

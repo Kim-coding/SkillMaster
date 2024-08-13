@@ -11,14 +11,12 @@ public class Monster : MonoBehaviour
 
     private void Awake()
     {
-        if (monsterPool == null)
-        {
-            InitializeMonsterPool();
-        }
+        InitializeMonsterPool();
     }
 
     private void InitializeMonsterPool()
     {
+        Debug.Log(poolParent);
         monsterPool = new MonsterPool(monsterPrefabs[0], poolParent);
     }
 

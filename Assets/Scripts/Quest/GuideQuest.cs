@@ -21,7 +21,6 @@ public class GuideQuest
             return;
         questID = 60001; //TO-DO 저장데이터
         currentQuest = DataTableMgr.Get<QuestTable>(DataTableIds.quest).GetID(questID);
-        Debug.Log("currentQuest : " + currentQuest);
         uiGuideQuest = GameMgr.Instance.uiMgr.uiGuideQuest;
         uiGuideQuest.currentQuest = currentQuest;
         currentTargetValue = 0; //TO-DO 저장데이터
