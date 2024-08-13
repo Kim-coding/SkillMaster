@@ -113,12 +113,12 @@ TextureImporter:
       name: Back_C_3_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
+        x: 9
+        y: 9
         width: 14
         height: 14
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.16955505, y: 0.5863389}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -142,6 +142,7 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       Back_C_3_0: -678858319
+      Back_C_3_1: 425301936
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

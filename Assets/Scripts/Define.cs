@@ -159,6 +159,8 @@ public static class DataTableIds
 
     public static readonly string stuff = "StuffTable";
 
+    public static readonly string goldDungeon = "GoldDungeonTable";
+
 
 
 }

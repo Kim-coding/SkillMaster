@@ -89,6 +89,10 @@ public static class DataTableMgr
         SkillSummonTable skillSummonTable = new SkillSummonTable();
         skillSummonTable.Load(DataTableIds.skillSummon);
         tables.Add(DataTableIds.skillSummon, skillSummonTable);
+
+        GoldDungeonTable goldDungeonTable = new GoldDungeonTable();
+        goldDungeonTable.Load(DataTableIds.goldDungeon);
+        tables.Add(DataTableIds.goldDungeon, goldDungeonTable);
     }
 
     private static DataTable CreateDataTable(string id)

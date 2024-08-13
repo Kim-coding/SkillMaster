@@ -113,12 +113,12 @@ TextureImporter:
       name: BowBack_1_Sword_SSS_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 9
-        width: 4
-        height: 5
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 8
+        y: 12
+        width: 13
+        height: 11
+      alignment: 9
+      pivot: {x: 0.042970743, y: 0.9599273}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

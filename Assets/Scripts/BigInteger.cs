@@ -569,4 +569,16 @@ public struct BigInteger
         return sb.ToString();
 
     }
+
+    public float ToFloat()
+    {
+        float result = 0;
+        float multiplier = 1;
+        foreach (var number in numberList)
+        {
+            result += number * multiplier;
+            multiplier *= 1000;
+        }
+        return result;
+    }
 }

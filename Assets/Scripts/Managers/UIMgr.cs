@@ -20,7 +20,9 @@ public class UIMgr : MonoBehaviour
     public Button bossSpawnButton;
 
     public Slider DungeonScoreSlider;
-    
+    public Slider DungeonTimeSlider;
+    private BigInteger currentMaxDamage;
+
     public TextMeshProUGUI goldUI;
     public TextMeshProUGUI diamondUI;
     public TextMeshProUGUI stageUI;
@@ -95,8 +97,55 @@ public class UIMgr : MonoBehaviour
     {
         bossSpawnButton.gameObject.SetActive(false);
     }
-    public void ScoreSliderUpdate(BigInteger value)
+    public void ScoreSliderUpdate(BigInteger currentDamage, BigInteger maxDamage)
     {
-        //DungeonScoreSlider.value += value.factor;
+        if (currentDamage > maxDamage)
+        {
+            currentDamage = new BigInteger(maxDamage);
+        }
+
+        float percent = 0f;
+
+        if (maxDamage.factor - 1 > currentDamage.factor)
+        {
+            percent = 0f;
+        }
+        else if (maxDamage.factor > currentDamage.factor)
+        {
+            float max = maxDamage.numberList[maxDamage.factor - 1] * 1000 + maxDamage.numberList[maxDamage.factor - 2];
+            float damage = currentDamage.numberList[currentDamage.factor - 1];
+            percent = damage / max;
+        }
+        else if (maxDamage.factor < currentDamage.factor)
+        {
+            percent = 1f;
+        }
+        else
+        {
+            percent = 
+            (float)currentDamage.numberList[currentDamage.factor - 1] 
+            / maxDamage.numberList[maxDamage.factor - 1];
+        }
+
+        DungeonScoreSlider.value = percent;
+    }
+    public void InitializeNextStageSlider(BigInteger nextStageMaxDamage)
+    {
+        if (DungeonScoreSlider != null)
+        {
+            float maxDamageValue = nextStageMaxDamage.ToFloat();
+
+            DungeonScoreSlider.maxValue = maxDamageValue;
+
+            currentMaxDamage = nextStageMaxDamage;
+
+            DungeonScoreSlider.value = 0;
+        }
+    }
+
+    public void TimeSliderUpdate()
+    {
+        var value = Time.deltaTime;
+        DungeonTimeSlider.value += value;
     }
 }
