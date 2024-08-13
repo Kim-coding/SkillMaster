@@ -113,12 +113,12 @@ TextureImporter:
       name: Back_B_1_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 23
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 4
+        y: 10
+        width: 25
+        height: 12
+      alignment: 9
+      pivot: {x: 0.42276862, y: 0.8187618}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
