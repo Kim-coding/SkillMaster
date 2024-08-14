@@ -16,7 +16,6 @@ public class Monster : MonoBehaviour
 
     private void InitializeMonsterPool()
     {
-        Debug.Log(poolParent);
         monsterPool = new MonsterPool(monsterPrefabs[0], poolParent);
     }
 

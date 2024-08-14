@@ -59,10 +59,16 @@ public class SkillSpawner : MonoBehaviour
         maxReserveSkillCount = playerMgr.playerEnhance.maxReserveSkillCount;
         Canvas.ForceUpdateCanvases();
         Setting();
-        if(playerMgr.skillBallControllers.Count == 0)
+
+        if (SaveLoadSystem.CurrSaveData.savePlay != null)
+        {
+            GameMgr.Instance.uiMgr.uiMerge.skillSpawner.LoadSkill(SaveLoadSystem.CurrSaveData.savePlay.saveSkillBallControllers);
+        }
+        else
         {
             SpawnSkill();
         }
+
         Destroy(virtualObject);
         autoSkillSpownButton.onClick.AddListener(AutoSkillSpawn);
         autoSkillSpownButtonText = autoSkillSpownButton.GetComponentInChildren<TextMeshProUGUI>();
@@ -70,6 +76,7 @@ public class SkillSpawner : MonoBehaviour
         {
             skillLevelInputField.onEndEdit.AddListener(OnSkillLevelInputFieldEndEdit);
         }
+
     }
 
     private void Update()
@@ -135,6 +142,24 @@ public class SkillSpawner : MonoBehaviour
         virtualObjectRect.anchoredPosition = topRight;
         localPointY = new Vector3(virtualObjectRect.position.x, virtualObjectRect.position.y, 0);
     }
+
+    public void LoadSkill(List<SkillBallController> list)
+    { 
+
+        foreach (SkillBallController skillBallController in list)
+        {
+            var newSkill = Instantiate(prefabSkillBall, parentTransform);
+            var rt = newSkill.GetComponent<RectTransform>();
+            rt.anchoredPosition = new Vector3(skillBallController.anchoredPos.x, skillBallController.anchoredPos.y , 0);
+            var newSkillControler = newSkill.GetComponent<SkillBallController>();
+            newSkillControler.Set(skillBallController.skill_ID);
+            playerMgr.skillBallControllers.Add(newSkillControler);
+        }
+
+        GameMgr.Instance.playerMgr.playerSkills.SetList(); // 캐스팅 리스트 업데이트
+
+    }
+
 
 
     public void SpawnSkill()

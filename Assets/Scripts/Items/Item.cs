@@ -1,3 +1,4 @@
+using Newtonsoft.Json;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,8 +12,10 @@ public enum ItemType
 }
 public abstract class Item
 {
+    [JsonIgnore]
     public Sprite[] texture;
     public string itemName;
+    [JsonIgnore]
     public Sprite icon;
 
     public Item() { }

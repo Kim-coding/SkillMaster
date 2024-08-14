@@ -60,6 +60,7 @@ public class GameMgr : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.S))
         {
             SaveLoadSystem.Save();
+            Debug.Log("save");
         }
         if (Input.GetKeyDown(KeyCode.L))
         {

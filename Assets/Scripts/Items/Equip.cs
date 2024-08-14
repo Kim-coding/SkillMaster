@@ -61,6 +61,13 @@ public class Equip : Item
         else
         { rarerityType = RarerityType.SSS; }
         reinforceStoneValue = equipData.reinforcement_value;
+
+
+        if(equipType == EquipType.Face)
+        {
+            icon = texture[0];
+        }
+
     }
     public EquipData equipData = new EquipData();
     public EquipType equipType;

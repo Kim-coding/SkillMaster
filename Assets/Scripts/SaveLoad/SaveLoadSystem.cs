@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Security.Cryptography;
 using UnityEngine;
+using static SavePlayDataConverter;
 
 public class SaveLoadSystem
 {
@@ -51,8 +52,12 @@ public class SaveLoadSystem
         CurrSaveData.savePlay.saveStat = GameMgr.Instance.playerMgr.playerStat;
         CurrSaveData.savePlay.savePlayerEnhance = GameMgr.Instance.playerMgr.playerEnhance;
         CurrSaveData.savePlay.savePlayerInfomation = GameMgr.Instance.playerMgr.playerInfo;
-        //CurrSaveData.savePlay.savePlayerInventory = GameMgr.Instance.playerMgr.playerinventory;
-        //CurrSaveData.savePlay.saveSkillBallControllers = GameMgr.Instance.playerMgr.skillBallControllers;
+        CurrSaveData.savePlay.savePlayerInventory = GameMgr.Instance.playerMgr.playerinventory;
+
+        foreach (var data in GameMgr.Instance.playerMgr.skillBallControllers)
+        {
+            CurrSaveData.savePlay.saveSkillBallControllers.Add(data);
+        }
 
 
 
@@ -69,6 +74,9 @@ public class SaveLoadSystem
             var serializer = new JsonSerializer();
             serializer.Formatting = Formatting.Indented;
             serializer.TypeNameHandling = TypeNameHandling.All;
+            serializer.Converters.Add(new EquipDataConverter());
+            serializer.Converters.Add(new Vector3Converter());
+            serializer.Converters.Add(new SkillBallConverter());
             serializer.Serialize(writer, CurrSaveData);
         }
 
@@ -188,6 +196,9 @@ public class SaveLoadSystem
             var serializer = new JsonSerializer();
             serializer.Formatting = Formatting.Indented;
             serializer.TypeNameHandling = TypeNameHandling.All;
+            serializer.Converters.Add(new EquipDataConverter());
+            serializer.Converters.Add(new Vector3Converter());
+            serializer.Converters.Add(new SkillBallConverter());
             data = serializer.Deserialize<SaveData>(reader);
         }
 

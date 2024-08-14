@@ -16,10 +16,8 @@ public class SavePlayData
     public PlayerStat saveStat;
     public PlayerEnhance savePlayerEnhance;
     public PlayerInfomation savePlayerInfomation;
-    [JsonIgnore]
     public PlayerInventory savePlayerInventory;
-    [JsonIgnore]
-    public List<SkillBallController> saveSkillBallControllers;
+    public List<SkillBallController> saveSkillBallControllers = new List<SkillBallController>();
 
 
     //저장할것들

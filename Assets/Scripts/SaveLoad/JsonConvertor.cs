@@ -137,5 +137,91 @@ public class SavePlayDataConverter : JsonConverter<SavePlayData>
         }
     }
 
+    public class EquipDataConverter : JsonConverter<EquipData>
+    {
+
+        public override EquipData ReadJson(JsonReader reader, Type objectType, EquipData existingValue, bool hasExistingValue, JsonSerializer serializer)
+        {
+            if (reader.TokenType == JsonToken.Null)
+            {
+                return null;
+            }
+            EquipData data = new EquipData();
+            JObject jObj = JObject.Load(reader);
+            data.equipmentID = (int)jObj["equipmentID"];
+            data.equipmenttype = (int)jObj["equipmenttype"];
+            data.equipment_rating = (string)jObj["equipment_rating"];
+            data.equipment_esset = (string)jObj["equipment_esset"];
+            data.reinforcement_value = (int)jObj["reinforcement_value"];
+            data.item_name_id = (int)jObj["item_name_id"];
+            data.option_value = (int)jObj["option_value"];
+            data.option_id = (int)jObj["option_id"];
+            data.item_icon = (string)jObj["item_icon"];
+
+            return data;
+        }
+
+        public override void WriteJson(JsonWriter writer, EquipData value, JsonSerializer serializer)
+        {
+            writer.WriteStartObject();
+            writer.WritePropertyName("equipmentID");
+            writer.WriteValue(value.equipmentID);
+            writer.WritePropertyName("equipmenttype");
+            writer.WriteValue(value.equipmenttype);
+            writer.WritePropertyName("equipment_rating");
+            writer.WriteValue(value.equipment_rating);
+            writer.WritePropertyName("equipment_esset");
+            writer.WriteValue(value.equipment_esset);
+            writer.WritePropertyName("reinforcement_value");
+            writer.WriteValue(value.reinforcement_value);
+            writer.WritePropertyName("item_name_id");
+            writer.WriteValue(value.item_name_id);
+            writer.WritePropertyName("option_value");
+            writer.WriteValue(value.option_value);
+            writer.WritePropertyName("option_id");
+            writer.WriteValue(value.option_id);
+            writer.WritePropertyName("item_icon");
+            writer.WriteValue(value.item_icon);
+            writer.WriteEndObject();
+        }
+    }
+
+
+    public class SkillBallConverter : JsonConverter<SkillBallController>
+    {
+
+        public override SkillBallController ReadJson(JsonReader reader, Type objectType, SkillBallController existingValue, bool hasExistingValue, JsonSerializer serializer)
+        {
+            SkillBallController data = new SkillBallController();
+            JObject jObj = JObject.Load(reader);
+            data.tier = (int)jObj["tier"];
+            //JArray areaRectArray = (JArray)jObj["areaRect"];
+            //data.anchoredPos = new Vector2(areaRectArray[0].Value<float>(), areaRectArray[1].Value<float>());
+            data.anchoredPos = new Vector2((float)jObj["areaRectX"], (float)jObj["areaRectY"]) ;
+            data.skill_ID = (int)jObj["skill_ID"];
+
+            return data;
+        }
+
+        public override void WriteJson(JsonWriter writer, SkillBallController value, JsonSerializer serializer)
+        {
+            writer.WriteStartObject();
+            writer.WritePropertyName("tier");
+            writer.WriteValue(value.tier);
+            value.anchoredPos = new Vector2(value.areaRect.anchoredPosition.x, value.areaRect.anchoredPosition.y);
+
+            writer.WritePropertyName("areaRectX");
+            writer.WriteValue(value.anchoredPos.x);
+            writer.WritePropertyName("areaRectY");
+            writer.WriteValue(value.anchoredPos.y);
+            //writer.WriteStartArray();
+            //writer.WriteValue(value.anchoredPos.x);
+            //writer.WriteValue(value.anchoredPos.y);
+            //writer.WriteEndArray();
+            writer.WritePropertyName("skill_ID");
+            writer.WriteValue(value.skill_ID);
+            writer.WriteEndObject();
+        }
+    }
 }
 

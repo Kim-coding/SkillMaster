@@ -76,63 +76,83 @@ public class PlayerEnhance
     public void Init(int baseMaxSkill, float baseskillSpawnDuration, float baseAutoSpawnDuration, float baseAutoMergeDuration)
     {
         //세이브 로드시 가져와야 함
-        baseMaxReserveSkillCount = baseMaxSkill;
-        maxReserveSkillCount = baseMaxReserveSkillCount += maxReserveSkillLevel * maxReserveSkillValue;
-        maxSpawnSkillCount = 14;
-        currentSpawnSkillCount = maxSpawnSkillCount; // 이것도 저장해야됨 아니면 껏다킬때마다 풀충됨
-        GameMgr.Instance.uiMgr.uiMerge.SkillCountUpdate();
+
+        if (SaveLoadSystem.CurrSaveData.savePlay == null)
+        {
+            attackPowerLevel = 0;
+            maxHealthLevel = 0;
+            defenceLevel = 0;
+            criticalPercentLevel = 0;
+            criticalMultipleLevel = 0;
+            recoveryLevel = 0;
+            goldLevel = 0;
+            maxReserveSkillLevel = 0;
+            SkillSpawnCooldownLevel = 0;
+            cbnUpgradeLv = 0;
+            autoSpawnLevel = 0;
+            autoMergeLevel = 0;
+        }
+        else
+        {
+            var saveData = SaveLoadSystem.CurrSaveData.savePlay.savePlayerEnhance;
+            attackPowerLevel = saveData.attackPowerLevel;
+            maxHealthLevel = saveData.maxHealthLevel;
+            defenceLevel = saveData.defenceLevel;
+            criticalPercentLevel = saveData.criticalPercentLevel;
+            criticalMultipleLevel = saveData.criticalMultipleLevel;
+            recoveryLevel = saveData.recoveryLevel;
+            goldLevel = saveData.goldLevel;
+            maxReserveSkillLevel = saveData.maxReserveSkillLevel;
+            SkillSpawnCooldownLevel = saveData.SkillSpawnCooldownLevel;
+            cbnUpgradeLv = saveData.cbnUpgradeLv;
+            autoSpawnLevel = saveData.autoSpawnLevel;
+            autoMergeLevel = saveData.autoMergeLevel;
+
+        }
 
         var attackPowerUpgradeData = DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10001);
-        attackPowerLevel = 0;
         attackPowerMaxLevel = attackPowerUpgradeData.MaxLv;
         attackPowerValue = (int)attackPowerUpgradeData.Increase;
         attackPowerCost = new BigInteger(attackPowerUpgradeData.Gold)
             + new BigInteger(attackPowerUpgradeData.GoldRange) * attackPowerLevel;
 
         var maxHealthUpgradeData = DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10003);
-        maxHealthLevel = 0;
         maxHealthMaxLevel = maxHealthUpgradeData.MaxLv;
         maxHealthValue = (int)maxHealthUpgradeData.Increase;
         maxHealthCost = new BigInteger(attackPowerUpgradeData.Gold)
             + new BigInteger(attackPowerUpgradeData.GoldRange) * maxHealthLevel;
 
         var defenceUpgradeData = DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10002);
-        defenceLevel = 0;
         defenceMaxLevel = defenceUpgradeData.MaxLv;
         defenceValue = defenceUpgradeData.Increase;
         defenceCost = new BigInteger(defenceUpgradeData.Gold)
             + new BigInteger(defenceUpgradeData.GoldRange) * defenceLevel;
 
         var criticalPercentUpgradeData = DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10004);
-        criticalPercentLevel = 0;
         criticalPercentMaxLevel = criticalPercentUpgradeData.MaxLv;
         criticalPercentValue = criticalPercentUpgradeData.Increase;
         criticalPercentCost = new BigInteger(criticalPercentUpgradeData.Gold)
             + new BigInteger(criticalPercentUpgradeData.GoldRange) * criticalPercentLevel;
 
         var criticalMultipleUpgradeData = DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10005);
-        criticalMultipleLevel = 0;
         criticalMultipleMaxLevel = criticalMultipleUpgradeData.MaxLv;
         criticalMultipleValue = criticalMultipleUpgradeData.Increase;
         criticalMultipleCost = new BigInteger(criticalMultipleUpgradeData.Gold)
             + new BigInteger(criticalMultipleUpgradeData.GoldRange) * criticalMultipleLevel;
 
         var recoveryUpgradeData = DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10007);
-        recoveryLevel = 0;
         recoveryMaxLevel = recoveryUpgradeData.MaxLv;
         recoveryValue = (int)recoveryUpgradeData.Increase;
         recoveryCost = new BigInteger(recoveryUpgradeData.Gold)
            + new BigInteger(recoveryUpgradeData.GoldRange) * recoveryLevel;
 
         var goldUpgradeData = DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10006);
-        goldLevel = 0;
         goldMaxLevel = goldUpgradeData.MaxLv;
         goldValue = goldUpgradeData.Increase;
         goldCost = new BigInteger(goldUpgradeData.Gold)
            + new BigInteger(goldUpgradeData.GoldRange) * goldLevel;
 
         var maxReserveSkillData = DataTableMgr.Get<CombinationUpgradeTable>(DataTableIds.cbnUpgrade).GetID(190001);
-        maxReserveSkillLevel = 0;
         maxReserveSkillMaxLevel = maxReserveSkillData.MaxLv;
         maxReserveSkillValue = (int)maxReserveSkillData.Increase;
         maxReserveSkillCost = new BigInteger(
@@ -141,7 +161,6 @@ public class PlayerEnhance
 
         var skillCooldownData = DataTableMgr.Get<CombinationUpgradeTable>(DataTableIds.cbnUpgrade).GetID(190002);
         GameMgr.Instance.playerMgr.SetBase(baseskillSpawnDuration);
-        SkillSpawnCooldownLevel = 0;
         SkillSpawnCooldownMaxLevel = skillCooldownData.MaxLv;
         SkillSpawnCooldownValue = skillCooldownData.Increase;
         SkillSpawnCooldownCost = new BigInteger(
@@ -149,7 +168,6 @@ public class PlayerEnhance
             );
 
         var spawnSkillLvData = DataTableMgr.Get<CombinationUpgradeTable>(DataTableIds.cbnUpgrade).GetID(190003);
-        cbnUpgradeLv = 0;
         SpawnSkillLvMaxLevel = spawnSkillLvData.MaxLv;
         SpawnSkillLvValue = (int)spawnSkillLvData.Increase;
         SpawnSkillLvCost = new BigInteger(
@@ -158,7 +176,6 @@ public class PlayerEnhance
 
         var autoSpawnData = DataTableMgr.Get<CombinationUpgradeTable>(DataTableIds.cbnUpgrade).GetID(190004);
         GameMgr.Instance.uiMgr.uiMerge.skillSpawner.SetBase(baseAutoSpawnDuration);
-        autoSpawnLevel = 0;
         autoSpawnMaxLevel = autoSpawnData.MaxLv;
         autoSpawnValue = autoSpawnData.Increase;
         autoSpawnCost = new BigInteger(
@@ -167,12 +184,27 @@ public class PlayerEnhance
 
         var autoMergeData = DataTableMgr.Get<CombinationUpgradeTable>(DataTableIds.cbnUpgrade).GetID(190005);
         GameMgr.Instance.uiMgr.uiMerge.SetBase(baseAutoMergeDuration);
-        autoMergeLevel = 0;
         autoMergeMaxLevel = autoMergeData.MaxLv;
         autoMergeValue = autoMergeData.Increase;
         autoMergeCost = new BigInteger(
             (autoMergeLevel / autoMergeData.PayRange) * autoMergeData.PayIncrease + autoMergeData.PayDefault
             );
+
+
+        baseMaxReserveSkillCount = baseMaxSkill;
+        maxReserveSkillCount = baseMaxReserveSkillCount += maxReserveSkillLevel * maxReserveSkillValue;
+        maxSpawnSkillCount = 14;
+        if(SaveLoadSystem.CurrSaveData.savePlay == null)
+        {
+            currentSpawnSkillCount = maxSpawnSkillCount; 
+
+        }
+        else
+        {
+            currentSpawnSkillCount = SaveLoadSystem.CurrSaveData.savePlay.savePlayerEnhance.currentSpawnSkillCount;
+        }
+        GameMgr.Instance.uiMgr.uiMerge.SkillCountUpdate();
+
 
         GameMgr.Instance.uiMgr.uiEnhance.Init();
         GameMgr.Instance.uiMgr.uiEnhance.AttackTextUpdate();

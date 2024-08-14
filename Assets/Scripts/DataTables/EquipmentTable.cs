@@ -1,4 +1,5 @@
 using CsvHelper;
+using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -15,7 +16,6 @@ public class EquipData
     public int equipmenttype { get; set; }
     public string equipment_rating { get; set; }
     public string equipment_esset { get; set; }
-
     public Sprite[] GetTexture
     {
         get
@@ -23,6 +23,7 @@ public class EquipData
             return Resources.LoadAll<Sprite>("Equipment/" + equipment_esset);
         }
     }
+
     public Sprite Geticon
     {
         get

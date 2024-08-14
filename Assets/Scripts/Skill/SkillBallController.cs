@@ -9,6 +9,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using static UnityEngine.ParticleSystem;
+using Newtonsoft.Json;
 
 public static class RectTransformExtensions
 {
@@ -33,6 +34,7 @@ public static class RectTransformExtensions
 public class SkillBallController : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDragHandler
 {
     private SkillSpawner skillSpawner;
+    [JsonIgnore]
     [HideInInspector]
     public GameObject mergeWindow;
 
@@ -41,9 +43,11 @@ public class SkillBallController : MonoBehaviour, IPointerDownHandler, IPointerU
     private float effectX;
     private float effectY;
     public TextMeshProUGUI tierText;
+    [JsonIgnore]
     public Transform pos;
-
-    private RectTransform areaRect;   
+    [JsonIgnore]
+    public RectTransform areaRect;
+    public Vector2 anchoredPos;
     private bool isButtonPressed;
 
     public int skill_ID;
