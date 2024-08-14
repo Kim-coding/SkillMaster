@@ -27,7 +27,7 @@ public class SandBagDamageTake : MonoBehaviour, IAttackable
 
         if (nextRequestDamage != null && nextLv)
         {
-            maxDamage = new BigInteger(int.Parse(nextRequestDamage) - int.Parse(currentRequestDamage));//인트로 변환하는 건 임시 방편이다.
+            maxDamage = new BigInteger(nextRequestDamage) - new BigInteger(currentRequestDamage);
             currentRequestDamage = nextRequestDamage;
             nextLv = false;
             Debug.Log("maxDamage : "+maxDamage.ToString());
