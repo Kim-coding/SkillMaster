@@ -182,15 +182,15 @@ public class UiInventory : MonoBehaviour
             case EquipType.Face:
                 faceSlot.SetData(GameMgr.Instance.playerMgr.playerinventory.playerFace);
                 faceSlot.baseEquip = faceSlot.currentEquip == GameMgr.Instance.playerMgr.playerinventory.baseFace;
-                invenSpriteList._eyeList[0].sprite = faceSlot.currentEquip.texture[0];
-                invenSpriteList._eyeList[1].sprite = faceSlot.currentEquip.texture[0];
-                invenSpriteList._eyeList[2].sprite = faceSlot.currentEquip.texture[1];
-                invenSpriteList._eyeList[3].sprite = faceSlot.currentEquip.texture[1];
+                invenSpriteList._eyeList[0].sprite = faceSlot.currentEquip.texture[1];
+                invenSpriteList._eyeList[1].sprite = faceSlot.currentEquip.texture[1];
+                invenSpriteList._eyeList[2].sprite = faceSlot.currentEquip.texture[2];
+                invenSpriteList._eyeList[3].sprite = faceSlot.currentEquip.texture[2];
 
-                playerSpriteList._eyeList[0].sprite = faceSlot.currentEquip.texture[0];
-                playerSpriteList._eyeList[1].sprite = faceSlot.currentEquip.texture[0];
-                playerSpriteList._eyeList[2].sprite = faceSlot.currentEquip.texture[1];
-                playerSpriteList._eyeList[3].sprite = faceSlot.currentEquip.texture[1];
+                playerSpriteList._eyeList[0].sprite = faceSlot.currentEquip.texture[1];
+                playerSpriteList._eyeList[1].sprite = faceSlot.currentEquip.texture[1];
+                playerSpriteList._eyeList[2].sprite = faceSlot.currentEquip.texture[2];
+                playerSpriteList._eyeList[3].sprite = faceSlot.currentEquip.texture[2];
                 break;
             case EquipType.Cloth:
                 clothSlot.SetData(GameMgr.Instance.playerMgr.playerinventory.playerCloth);
