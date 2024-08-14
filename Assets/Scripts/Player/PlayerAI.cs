@@ -54,7 +54,9 @@ public class PlayerAI : MonoBehaviour , IAnimation
         if(characterStat.Ondeath)
         {
             stateMachine.ChangState(stateMachine.idleState);
-            if(GameMgr.Instance.sceneMgr.mainScene.IsBossBattle() && !GameMgr.Instance.sceneMgr.mainScene.playerDefeatedByBoss)
+            if(GameMgr.Instance.sceneMgr.mainScene != null && 
+                GameMgr.Instance.sceneMgr.mainScene.IsBossBattle() && 
+                !GameMgr.Instance.sceneMgr.mainScene.playerDefeatedByBoss)
             {
                 GameMgr.Instance.sceneMgr.mainScene.playerDefeatedByBoss = true;
             }

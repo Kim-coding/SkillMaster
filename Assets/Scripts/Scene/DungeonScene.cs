@@ -33,7 +33,6 @@ public class DungeonScene : MonoBehaviour
     //기타
     private List<GameObject> monster = new List<GameObject>();
     public Transform Parent;
-    public Slider slider;
 
     private float timer = 0f;
     private float endTime = 30f;
@@ -41,11 +40,12 @@ public class DungeonScene : MonoBehaviour
     private bool isCleared = false;
     private int clearedStage;
 
-    public GameObject goldDungeonClearPopUp;
-    public Button goldEndButton;
-    public TextMeshProUGUI clearCompensationText;
-
-    public TextMeshProUGUI goldDungeonClearStageText;
+    public TextMeshProUGUI dungeonText;
+    public TextMeshProUGUI clearText;
+    public TextMeshProUGUI clearRewardText;
+    public TextMeshProUGUI DungeonClearStageText;
+    public GameObject DungeonClearPopUp;
+    public Button EndButton;
 
     public void Init()
     {
@@ -55,7 +55,7 @@ public class DungeonScene : MonoBehaviour
         if(goldDungeon)
         {
             goldDungeonData = DataTableMgr.Get<GoldDungeonTable>(DataTableIds.goldDungeon).GetID(currentStage);
-            goldEndButton.onClick.AddListener(LoadMainScene);
+            EndButton.onClick.AddListener(LoadMainScene);
         }
         if(diaDungeon)
         {
@@ -127,32 +127,46 @@ public class DungeonScene : MonoBehaviour
         ShowEndPopup();
     }
 
-    private void EndDiaDungeon(bool cleared, int stage)
+    public void EndDiaDungeon(bool cleared, int stage)
     {
         isCleared = cleared;
         clearedStage = stage;
 
-        ShowEndPopup() ;
+        ShowEndPopup();
     }
 
     private void ShowEndPopup()
     {
-        if(goldDungeon)
+        Time.timeScale = 0f;
+
+        DungeonClearPopUp.SetActive(true);
+        DungeonClearStageText.text = clearedStage.ToString();
+        var reward = "0";
+        if (clearedStage != 0)
         {
-            goldDungeonClearPopUp.SetActive(true);
-            goldDungeonClearStageText.text = clearedStage.ToString();
-            var rewardGold = "0";
-            if (clearedStage != 0)
-            {
-                rewardGold = DataTableMgr.Get<GoldDungeonTable>(DataTableIds.goldDungeon).GetID(clearedStage).reward_value;
-                clearCompensationText.text = rewardGold;
-            }
-            //메인 씬으로 넘겨야 하는 정보 : rewardGold, goldDungeonClearStageText.text (클리어 보상, 클리어한 스테이지)
+            reward = DataTableMgr.Get<GoldDungeonTable>(DataTableIds.goldDungeon).GetID(clearedStage).reward_value;
+            clearRewardText.text = reward;
+        }
+
+        if(isCleared)
+        {
+            clearText.text = "VICTORY";
+        }
+        else
+        {
+            clearText.text = "DEFEAT";
+        }
+
+        if (goldDungeon)
+        {
+            dungeonText.text = "골드 던전";
         }
         if (diaDungeon)
         {
-
+            dungeonText.text = "다이아 던전";
         }
+
+        //메인 씬으로 넘겨야 하는 정보 : reward, DungeonClearStageText.text (클리어 보상, 클리어한 스테이지)
     }
 
     private void SpawnNextBoss()
@@ -185,7 +199,6 @@ public class DungeonScene : MonoBehaviour
 
     private void LoadMainScene()
     {
-        //SceneManager.LoadScene("Main");
         Addressables.LoadSceneAsync("MainScene", LoadSceneMode.Single);
     }
 }
