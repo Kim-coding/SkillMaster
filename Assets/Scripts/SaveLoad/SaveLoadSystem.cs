@@ -49,7 +49,6 @@ public class SaveLoadSystem
         CurrSaveData.savePlay = new SavePlayData();
         CurrSaveData.savePlay.stageId = GameMgr.Instance.sceneMgr.mainScene.stageId;
         CurrSaveData.savePlay.saveCurrency = GameMgr.Instance.playerMgr.currency;
-        CurrSaveData.savePlay.saveStat = GameMgr.Instance.playerMgr.playerStat;
         CurrSaveData.savePlay.savePlayerEnhance = GameMgr.Instance.playerMgr.playerEnhance;
         CurrSaveData.savePlay.savePlayerInfomation = GameMgr.Instance.playerMgr.playerInfo;
         CurrSaveData.savePlay.savePlayerInventory = GameMgr.Instance.playerMgr.playerinventory;
@@ -76,7 +75,9 @@ public class SaveLoadSystem
             serializer.TypeNameHandling = TypeNameHandling.All;
             serializer.Converters.Add(new EquipDataConverter());
             serializer.Converters.Add(new Vector3Converter());
+            serializer.Converters.Add(new NormalItemDataConverter());
             serializer.Converters.Add(new SkillBallConverter());
+
             serializer.Serialize(writer, CurrSaveData);
         }
 
@@ -198,6 +199,7 @@ public class SaveLoadSystem
             serializer.TypeNameHandling = TypeNameHandling.All;
             serializer.Converters.Add(new EquipDataConverter());
             serializer.Converters.Add(new Vector3Converter());
+            serializer.Converters.Add(new NormalItemDataConverter());
             serializer.Converters.Add(new SkillBallConverter());
             data = serializer.Deserialize<SaveData>(reader);
         }

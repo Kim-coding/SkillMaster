@@ -8,7 +8,7 @@ public class Equip : Item
 {
     public Equip() { }
 
-    public Equip(Sprite[] texture, string Name, int value) 
+    public Equip(Sprite[] texture, string Name, int value, bool Face = false) 
     {
         this.itemNumber = 0;
         equipData = null;
@@ -17,6 +17,11 @@ public class Equip : Item
         icon = Sprite.Create(Image, new Rect(0, 0, Image.width, Image.height), new Vector2(0.5f, 0.5f));
         itemName = Name;
         reinforceStoneValue = value;
+        if (Face)
+        {
+            icon = texture[0];
+        }
+
     }
 
     public Equip(EquipData equipData, int itemNumber)
@@ -77,10 +82,10 @@ public class Equip : Item
     public int itemNumber;
     public EquipOption EquipOption { get { return equipOption; } }
 
-    public void Init(EquipData equipData, int itemNumber)
+    public void Init(EquipData equipData)
     {
-        this.itemNumber = itemNumber;
         this.equipData = equipData;
+        //texture = Resources.LoadAll<Sprite>("Equipment/" + equipData.equipment_esset);
         texture = equipData.GetTexture;
         icon = equipData.Geticon;
         itemName = equipData.GetItemName;
@@ -119,6 +124,11 @@ public class Equip : Item
         else
         { rarerityType = RarerityType.SSS; }
         reinforceStoneValue = equipData.reinforcement_value;
+
+        if (equipType == EquipType.Face)
+        {
+            icon = texture[0];
+        }
     }
 
     public bool SetEquipStat((OptionType, float) a)

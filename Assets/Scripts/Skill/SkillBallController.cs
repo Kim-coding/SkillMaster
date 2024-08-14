@@ -47,7 +47,7 @@ public class SkillBallController : MonoBehaviour, IPointerDownHandler, IPointerU
     public Transform pos;
     [JsonIgnore]
     public RectTransform areaRect;
-    public Vector2 anchoredPos;
+    public Vector3 anchoredPos;
     private bool isButtonPressed;
 
     public int skill_ID;
