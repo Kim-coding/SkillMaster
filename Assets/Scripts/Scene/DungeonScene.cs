@@ -102,7 +102,6 @@ public class DungeonScene : MonoBehaviour
                 Time.timeScale = 0f;
                 EndGoldDungeon(true, currentStage - 1);
             }
-            GameMgr.Instance.uiMgr.TimeSliderUpdate();
         }
         if (diaDungeon)
         {
@@ -112,6 +111,7 @@ public class DungeonScene : MonoBehaviour
                 EndDiaDungeon(true,currentStage - 1);
             }
         }
+        GameMgr.Instance.uiMgr.TimeSliderUpdate();
     }
 
     public GameObject[] GetMonsters()
@@ -170,6 +170,9 @@ public class DungeonScene : MonoBehaviour
         {
 
             var currentBoss = Instantiate(bossPrefab, diaDungeonSpawnPoints[currentBossIndex].position, Quaternion.identity, Parent);
+            var bossAi = currentBoss.GetComponent<BossAI>();
+            bossAi.bossStat.SetBossID(bossid);
+            bossAi.bossStat.Init(); 
             monster.Add(currentBoss);
             currentBossIndex++;
         }

@@ -18,8 +18,9 @@ public class WebTimeMgr : MonoBehaviour
     private string dataPath;
     private DateTime startTime;
 
-    public void init()
+    public void Start()
     {
+        DontDestroyOnLoad(gameObject);
         network = GameMgr.Instance.networkConnect;
         if (network.CheckConnectInternet())
         {

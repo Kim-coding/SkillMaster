@@ -48723,8 +48723,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startPanel: {fileID: 1234475769}
   currentStage: 1
-  goldDungeon: 0
-  diaDungeon: 1
+  goldDungeon: 1
+  diaDungeon: 0
   goldDungeonMonster: {fileID: 1605052194642255169, guid: 259421fe8b6bea244bf707800f29a70a, type: 3}
   GoldDungeonSpawnPoint: {fileID: 18118072}
   diaDungeonMonsters:
