@@ -64,8 +64,6 @@ public class SkillBallController : MonoBehaviour, IPointerDownHandler, IPointerU
     public bool isFirstSkill = false;
     
     private float timer = 0f;
-    private PlayerAI playerAI;
-    public PlayerSkills playerSKills;
 
     private void Start()
     {
@@ -147,7 +145,6 @@ public class SkillBallController : MonoBehaviour, IPointerDownHandler, IPointerU
     public void OnPointerUp(PointerEventData eventData)
     {
         MergeCheck();
-        //playerSKills.SetList();
         isButtonPressed = false;
     }
 

@@ -12,7 +12,6 @@ public class SceneMgr : MonoBehaviour
         if(mainScene != null)
         {
             GameMgr.Instance.rewardMgr.Init();
-            GameMgr.Instance.webTimeMgr.init();
             mainScene.Init();
         }
         if(dungeonScene != null)
