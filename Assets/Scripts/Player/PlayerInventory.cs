@@ -151,6 +151,10 @@ public class PlayerInventory
 
             foreach(var equip in data.playerEquipItemList)
             {
+                if(equip.currentEquip)
+                {
+                    continue;
+                }
                 equip.Init(equip.equipData);
                 GameMgr.Instance.uiMgr.uiInventory.InstantiateSlot(equip);
                 playerEquipItemList.Add(equip);
@@ -225,6 +229,7 @@ public class PlayerInventory
 
         }
         ItemOptionsUpdate();
+        equip.currentEquip = true;
         return currentEquip;
     }
     public void UnEquipItem(EquipType type)

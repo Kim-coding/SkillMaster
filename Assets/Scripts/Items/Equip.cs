@@ -80,6 +80,7 @@ public class Equip : Item
     public int reinforceStoneValue;
     private EquipOption equipOption = new EquipOption();
     public int itemNumber;
+    public bool currentEquip = false;
     public EquipOption EquipOption { get { return equipOption; } }
 
     public void Init(EquipData equipData)

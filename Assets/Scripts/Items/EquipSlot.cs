@@ -127,6 +127,7 @@ public class EquipSlot : MonoBehaviour
                 break;
         }
         baseEquip = true;
+        equip.currentEquip = false;
         GameMgr.Instance.uiMgr.uiInventory.InstantiateSlot(equip);
     }
 
