@@ -12,7 +12,7 @@ public class DiaDungeonData
     public int boss1_id { get; set; }
     public int boss2_id { get; set; }
     public int boss3_id { get; set; }
-    public int reward_value { get; set; }
+    public string reward_value { get; set; }
     public int stage_lv { get; set; }
 }
 

@@ -255,7 +255,6 @@ public class UiWindow : MonoBehaviour
     {
         Open(Windows.PickUp);
     }
-
     public void groundUISort(bool onUIopen)
     {
         if (onUIopen)

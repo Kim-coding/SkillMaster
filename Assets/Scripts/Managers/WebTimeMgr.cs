@@ -3,6 +3,7 @@ using System.Collections;
 using System.IO;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.SceneManagement;
 
 [Serializable]
 public class TimeData
@@ -18,18 +19,35 @@ public class WebTimeMgr : MonoBehaviour
     private string dataPath;
     private DateTime startTime;
 
-    public void Start()
+    private static WebTimeMgr instance;
+    void Awake()
     {
-        DontDestroyOnLoad(gameObject);
-        network = GameMgr.Instance.networkConnect;
-        if (network.CheckConnectInternet())
+        if (instance == null)
         {
-            dataPath = Path.Combine(Application.persistentDataPath, "timeData.json");
-            StartCoroutine(GetStartTime());
+            instance = this;
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
-            Debug.Log("인터넷을 연결 해 주세요.");
+            Destroy(gameObject);
+            return;
+        }
+    }
+
+    public void Start()
+    {
+        if (network == null)
+        {
+            network = GameMgr.Instance.networkConnect;
+            if (network.CheckConnectInternet())
+            {
+                dataPath = Path.Combine(Application.persistentDataPath, "timeData.json");
+                StartCoroutine(GetStartTime());
+            }
+            else
+            {
+                Debug.Log("인터넷을 연결 해 주세요.");
+            }
         }
     }
 

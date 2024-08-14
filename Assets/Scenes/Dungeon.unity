@@ -31120,7 +31120,7 @@ GameObject:
   - component: {fileID: 890133516}
   - component: {fileID: 890133515}
   m_Layer: 5
-  m_Name: GoldDungeonClear
+  m_Name: DungeonEndPanle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48701,7 +48701,6 @@ GameObject:
   - component: {fileID: 1423913465}
   - component: {fileID: 1423913466}
   - component: {fileID: 1423913468}
-  - component: {fileID: 1423913467}
   m_Layer: 0
   m_Name: Mgrs
   m_TagString: Untagged
@@ -48723,8 +48722,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startPanel: {fileID: 1234475769}
   currentStage: 1
-  goldDungeon: 1
-  diaDungeon: 0
+  goldDungeon: 0
+  diaDungeon: 1
   goldDungeonMonster: {fileID: 1605052194642255169, guid: 259421fe8b6bea244bf707800f29a70a, type: 3}
   GoldDungeonSpawnPoint: {fileID: 18118072}
   diaDungeonMonsters:
@@ -48745,11 +48744,12 @@ MonoBehaviour:
   - {fileID: 711450311}
   - {fileID: 1550696901}
   Parent: {fileID: 1880426546}
-  slider: {fileID: 0}
-  goldDungeonClearPopUp: {fileID: 890133513}
-  goldEndButton: {fileID: 1647339438}
-  clearCompensationText: {fileID: 1448002153}
-  goldDungeonClearStageText: {fileID: 884582806}
+  dungeonText: {fileID: 348395680}
+  clearText: {fileID: 887302030}
+  clearRewardText: {fileID: 1448002153}
+  DungeonClearStageText: {fileID: 884582806}
+  DungeonClearPopUp: {fileID: 890133513}
+  EndButton: {fileID: 1647339438}
 --- !u!114 &1423913457
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48804,7 +48804,7 @@ MonoBehaviour:
   cam: {fileID: 1460805578}
   rewardMgr: {fileID: 1423913466}
   soundMgr: {fileID: 7924897}
-  webTimeMgr: {fileID: 1423913467}
+  webTimeMgr: {fileID: 0}
   networkConnect: {fileID: 1423913468}
 --- !u!4 &1423913460
 Transform:
@@ -48897,18 +48897,6 @@ MonoBehaviour:
   diaRewardText: {fileID: 1704580869}
   rewardPopUp: {fileID: 0}
   rewardText: {fileID: 0}
---- !u!114 &1423913467
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1423913453}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 847c856391b74ac46bec1978dfbf17e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1423913468
 MonoBehaviour:
   m_ObjectHideFlags: 0

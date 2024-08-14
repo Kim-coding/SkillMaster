@@ -172,8 +172,10 @@ public class SkillSpawner : MonoBehaviour
 
         GameMgr.Instance.playerMgr.playerSkills.SetList(); // 캐스팅 리스트 업데이트
         GameMgr.Instance.uiMgr.uiMerge.SpawnButtonUpdate(true);
-
-        EventMgr.TriggerEvent(QuestType.MergeSkillCount);
+        if(GameMgr.Instance.uiMgr.uiGuideQuest != null)
+        {
+            EventMgr.TriggerEvent(QuestType.MergeSkillCount);
+        }
         playerMgr.playerInfo.MaxSkillLevelUpdate(t);
     }
 
