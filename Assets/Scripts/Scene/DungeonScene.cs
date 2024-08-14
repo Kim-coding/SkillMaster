@@ -47,6 +47,7 @@ public class DungeonScene : MonoBehaviour
     public GameObject DungeonClearPopUp;
     public Button EndButton;
 
+    private GameObject currentBoss;
     public void Init()
     {
         //받아와야 하는 정보 : 도전 스테이지, 선택한 던전 (골드, 다이아), 스킬
@@ -183,7 +184,7 @@ public class DungeonScene : MonoBehaviour
         if (bossPrefabDictionary.TryGetValue(bossName, out GameObject bossPrefab))
         {
 
-            var currentBoss = Instantiate(bossPrefab, diaDungeonSpawnPoints[currentBossIndex].position, Quaternion.identity, Parent);
+            currentBoss = Instantiate(bossPrefab, diaDungeonSpawnPoints[currentBossIndex].position, Quaternion.identity, Parent);
             var bossAi = currentBoss.GetComponent<BossAI>();
             bossAi.bossStat.SetBossID(bossid);
             bossAi.bossStat.Init(); 
@@ -195,6 +196,13 @@ public class DungeonScene : MonoBehaviour
             Debug.LogError($"Boss prefab not found for: {bossName}");
         }
 
+    }
+
+    public void OnBossDeath()
+    {
+        monster.Remove(currentBoss);
+        Destroy(currentBoss);
+        SpawnNextBoss();
     }
 
     private void LoadMainScene()
