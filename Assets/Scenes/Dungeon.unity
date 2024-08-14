@@ -33603,6 +33603,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -360278913, guid: bda823273a56f2f4798100973da42e73, type: 3}
+    - target: {fileID: 50379102675183572, guid: dbeea996a665f9c4592c9fffb3197dc5, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 212812076666908812, guid: dbeea996a665f9c4592c9fffb3197dc5, type: 3}
       propertyPath: m_Layer
       value: 8
@@ -33734,6 +33738,10 @@ PrefabInstance:
     - target: {fileID: 2371957835043291804, guid: dbeea996a665f9c4592c9fffb3197dc5, type: 3}
       propertyPath: m_Color.r
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2371957835043291804, guid: dbeea996a665f9c4592c9fffb3197dc5, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2510745358421022359, guid: dbeea996a665f9c4592c9fffb3197dc5, type: 3}
       propertyPath: m_Layer
@@ -33915,6 +33923,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5177162917568214765, guid: dbeea996a665f9c4592c9fffb3197dc5, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5255258497422915947, guid: dbeea996a665f9c4592c9fffb3197dc5, type: 3}
       propertyPath: m_Layer
       value: 8
@@ -33943,6 +33955,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -360278913, guid: bda823273a56f2f4798100973da42e73, type: 3}
+    - target: {fileID: 5680715792074797794, guid: dbeea996a665f9c4592c9fffb3197dc5, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5698731916983654070, guid: dbeea996a665f9c4592c9fffb3197dc5, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -48727,18 +48743,24 @@ MonoBehaviour:
   goldDungeonMonster: {fileID: 1605052194642255169, guid: 259421fe8b6bea244bf707800f29a70a, type: 3}
   GoldDungeonSpawnPoint: {fileID: 18118072}
   diaDungeonMonsters:
-  - {fileID: 1605052194642255169, guid: 65b3a6cad73e8134c969ead29eb9b850, type: 3}
-  - {fileID: 1605052194642255169, guid: 5750b6d03fb2c174cb6d9ce8d58b062e, type: 3}
-  - {fileID: 1605052194642255169, guid: 40ab7499e75ecdc479166ea8c2ddf832, type: 3}
-  - {fileID: 1605052194642255169, guid: 1ad18003f024a5e449c9150222c67c46, type: 3}
-  - {fileID: 1605052194642255169, guid: 20deb8c38a8118c46ad57d059a69c96a, type: 3}
-  - {fileID: 1605052194642255169, guid: ac688920e6941a94691d5213e789786a, type: 3}
-  - {fileID: 1605052194642255169, guid: 8579a69ba83ef7248a6b239b1363ebed, type: 3}
-  - {fileID: 1605052194642255169, guid: 53338255196cb2342a700112bcf220b9, type: 3}
-  - {fileID: 1605052194642255169, guid: eccd3b3364fd07944972cceeee4fa1ba, type: 3}
-  - {fileID: 1605052194642255169, guid: f9b34ad46b390cc4ea02a402df5b424e, type: 3}
-  - {fileID: 1605052194642255169, guid: 6ad2a4f007726b941a07f1db5f5dbae4, type: 3}
+  - {fileID: 1605052194642255169, guid: 45ae357a06114714f883f6283a7417cc, type: 3}
+  - {fileID: 1605052194642255169, guid: 7c4132e05454e03449c6105c305bd790, type: 3}
   - {fileID: 1605052194642255169, guid: f0c0317c4d32e0b4c8b3f4578d03df6c, type: 3}
+  - {fileID: 1605052194642255169, guid: c6d87be4dbc573e48a2e7361933d52e2, type: 3}
+  - {fileID: 1605052194642255169, guid: 023140866716a794da14446dedfbd8af, type: 3}
+  - {fileID: 1605052194642255169, guid: ca7f0e2673766c1498ed6f36fc6ca48a, type: 3}
+  - {fileID: 1605052194642255169, guid: 2d7a5c0b9f3c3a04bacf374117717f4c, type: 3}
+  - {fileID: 1605052194642255169, guid: d6562a7c8e4e11f40af19fc0ee75eb3d, type: 3}
+  - {fileID: 1605052194642255169, guid: 27202287f640a1848b5c719aad062c19, type: 3}
+  - {fileID: 1605052194642255169, guid: d8d0afc9583a67b4980b18fe4e821c89, type: 3}
+  - {fileID: 1605052194642255169, guid: fd420b449e97de14b88676d78cb80094, type: 3}
+  - {fileID: 1605052194642255169, guid: 35db05796a8cdff489417879ad9d9bcc, type: 3}
+  - {fileID: 1605052194642255169, guid: 9900970c2dff18e48b15baf909cd3caa, type: 3}
+  - {fileID: 1605052194642255169, guid: 414aea97af228e24eb5debe321a5cca7, type: 3}
+  - {fileID: 1605052194642255169, guid: 77b9be79dc33c2746b578f54b8a4030c, type: 3}
+  - {fileID: 1605052194642255169, guid: f89efaf327d52a84e91ad75fa6dc5309, type: 3}
+  - {fileID: 1605052194642255169, guid: 7b74859a2bb091047b6efcf906deb0b5, type: 3}
+  - {fileID: 1605052194642255169, guid: dd810241a5c431643a27f131c970f0ff, type: 3}
   diaDungeonSpawnPoints:
   - {fileID: 870644932}
   - {fileID: 711450311}
