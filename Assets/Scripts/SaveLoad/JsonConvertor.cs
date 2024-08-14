@@ -186,6 +186,37 @@ public class SavePlayDataConverter : JsonConverter<SavePlayData>
         }
     }
 
+    public class NormalItemDataConverter : JsonConverter<NormalItem>
+    {
+
+        public override NormalItem ReadJson(JsonReader reader, Type objectType, NormalItem existingValue, bool hasExistingValue, JsonSerializer serializer)
+        {
+            if (reader.TokenType == JsonToken.Null)
+            {
+                return null;
+            }
+            NormalItem data = new NormalItem();
+            JObject jObj = JObject.Load(reader);
+            data.itemNumber = (int)jObj["itemNumber"];
+            data.itemValue = (int)jObj["itemValue"];
+            data.itemExplain = (string)jObj["itemExplain"];
+
+            return data;
+        }
+
+        public override void WriteJson(JsonWriter writer, NormalItem value, JsonSerializer serializer)
+        {
+            writer.WriteStartObject();
+            writer.WritePropertyName("itemNumber");
+            writer.WriteValue(value.itemNumber);
+            writer.WritePropertyName("itemValue");
+            writer.WriteValue(value.itemValue);
+            writer.WritePropertyName("itemExplain");
+            writer.WriteValue(value.itemExplain);
+            writer.WriteEndObject();
+        }
+    }
+
 
     public class SkillBallConverter : JsonConverter<SkillBallController>
     {
@@ -197,7 +228,7 @@ public class SavePlayDataConverter : JsonConverter<SavePlayData>
             data.tier = (int)jObj["tier"];
             //JArray areaRectArray = (JArray)jObj["areaRect"];
             //data.anchoredPos = new Vector2(areaRectArray[0].Value<float>(), areaRectArray[1].Value<float>());
-            data.anchoredPos = new Vector2((float)jObj["areaRectX"], (float)jObj["areaRectY"]) ;
+            data.anchoredPos = new Vector3((float)jObj["areaRectX"], (float)jObj["areaRectY"]) ;
             data.skill_ID = (int)jObj["skill_ID"];
 
             return data;
@@ -208,7 +239,7 @@ public class SavePlayDataConverter : JsonConverter<SavePlayData>
             writer.WriteStartObject();
             writer.WritePropertyName("tier");
             writer.WriteValue(value.tier);
-            value.anchoredPos = new Vector2(value.areaRect.anchoredPosition.x, value.areaRect.anchoredPosition.y);
+            value.anchoredPos = new Vector3(value.areaRect.anchoredPosition.x, value.areaRect.anchoredPosition.y);
 
             writer.WritePropertyName("areaRectX");
             writer.WriteValue(value.anchoredPos.x);

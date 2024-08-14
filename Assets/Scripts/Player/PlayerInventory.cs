@@ -52,7 +52,7 @@ public class PlayerInventory
         baseHair = new Equip(iconimage, "기본 머리", 0);
         baseHair.SetEquipItem(EquipType.Hair, RarerityType.C, 0);
         iconimage = Resources.LoadAll<Sprite>("Equipment/Eye_Basic");
-        baseFace = new Equip(iconimage, "기본 눈", 0);
+        baseFace = new Equip(iconimage, "기본 눈", 0 , true);
         baseFace.SetEquipItem(EquipType.Face, RarerityType.C, 0);
         iconimage = Resources.LoadAll<Sprite>("Equipment/Cloth_Basic");
         baseCloth = new Equip(iconimage, "기본 상의", 0);
@@ -67,29 +67,126 @@ public class PlayerInventory
         baseCloak = new Equip(iconimage, "기본 망토", 0);
         baseCloak.SetEquipItem(EquipType.Cloak, RarerityType.C, 0);
 
-        //저장 받아오기 없으면
-        playerHair = baseHair;
-        playerFace = baseFace;
-        playerCloth = baseCloth;
-        playerPant = basePant;
-        playerWeapon = baseWeapon;
-        playerCloak = baseCloak;
-
-
-        hairSlotUpgrade = 0;
-        faceSlotUpgrade = 0;
-        clothSlotUpgrade = 0;
-        pantSlotUpgrade = 0;
-        weaponSlotUpgrade = 0;
-        cloakSlotUpgrade = 0;
-
-        for(int i = 0; i < upgradeFailCount.Length;  i++)
+        if (SaveLoadSystem.CurrSaveData.savePlay != null)
         {
-            upgradeFailCount[i] = 0;
+            var data = SaveLoadSystem.CurrSaveData.savePlay.savePlayerInventory;
+            if (data.playerHair.equipData != null)
+            {
+                playerHair = data.playerHair;
+                data.playerHair.Init(data.playerHair.equipData);
+                playerEquipItemList.Add(playerHair);
+            }
+            else
+            {
+                playerHair = baseHair;
+            }
+
+            if (data.playerFace.equipData != null)
+            {
+                playerFace = data.playerFace;
+                data.playerFace.Init(data.playerFace.equipData);
+                playerEquipItemList.Add(playerFace);
+            }
+            else
+            {
+                playerFace = baseFace;
+            }
+
+            if (data.playerCloth.equipData != null)
+            {
+                playerCloth = data.playerCloth;
+                data.playerCloth.Init(data.playerCloth.equipData);
+                playerEquipItemList.Add(playerCloth);
+            }
+            else
+            {
+                playerCloth = baseCloth;
+            }
+
+            if (data.playerPant.equipData != null)
+            {
+                playerPant = data.playerPant;
+                data.playerPant.Init(data.playerPant.equipData);
+                playerEquipItemList.Add(playerPant);
+            }
+            else
+            {
+                playerPant = basePant;
+            }
+
+            if (data.playerWeapon.equipData != null)
+            {
+                playerWeapon = data.playerWeapon;
+                data.playerWeapon.Init(data.playerWeapon.equipData);
+                playerEquipItemList.Add(playerWeapon);
+            }
+            else
+            {
+                playerWeapon = baseWeapon;
+            }
+
+            if (data.playerCloak.equipData != null)
+            {
+                playerCloak = data.playerCloak;
+                data.playerCloak.Init(data.playerCloak.equipData);
+                playerEquipItemList.Add(playerCloak);
+            }
+            else
+            {
+                playerCloak = baseCloak;
+            }
+
+
+            hairSlotUpgrade = data.hairSlotUpgrade;
+            faceSlotUpgrade = data.faceSlotUpgrade;
+            clothSlotUpgrade = data.clothSlotUpgrade;
+            pantSlotUpgrade = data.pantSlotUpgrade;
+            weaponSlotUpgrade = data.weaponSlotUpgrade;
+            cloakSlotUpgrade = data.cloakSlotUpgrade;
+
+            for (int i = 0; i < upgradeFailCount.Length; i++)
+            {
+                upgradeFailCount[i] = data.upgradeFailCount[i];
+            }
+
+            foreach(var equip in data.playerEquipItemList)
+            {
+                equip.Init(equip.equipData);
+                GameMgr.Instance.uiMgr.uiInventory.InstantiateSlot(equip);
+                playerEquipItemList.Add(equip);
+            }
+
+            foreach (var normalItem in data.playerNormalItemList)
+            {
+                normalItem.Init(normalItem.itemNumber, normalItem.itemValue);
+                GameMgr.Instance.uiMgr.uiInventory.InstantiateSlot(normalItem, normalItem.itemValue);
+            }
+        }
+        else
+        {
+            playerHair = baseHair;
+            playerFace = baseFace;
+            playerCloth = baseCloth;
+            playerPant = basePant;
+            playerWeapon = baseWeapon;
+            playerCloak = baseCloak;
+
+            hairSlotUpgrade = 0;
+            faceSlotUpgrade = 0;
+            clothSlotUpgrade = 0;
+            pantSlotUpgrade = 0;
+            weaponSlotUpgrade = 0;
+            cloakSlotUpgrade = 0;
+
+            for (int i = 0; i < upgradeFailCount.Length; i++)
+            {
+                upgradeFailCount[i] = 0;
+            }
         }
 
         ItemOptionsUpdate();
-
+        GameMgr.Instance.uiMgr.uiInventory.EquipSlotCountUpdate();
+        GameMgr.Instance.uiMgr.uiInventory.NormalSlotCountUpdate();
     }
 
 
@@ -223,7 +320,7 @@ public class PlayerInventory
                 break;
             case EquipType.Hair:
                 equipSlotUpgradeLevel = Mathf.Min(hairSlotUpgrade, EquipRarityCheck(equip.rarerityType));
-                break; 
+                break;
             case EquipType.Face:
                 equipSlotUpgradeLevel = Mathf.Min(faceSlotUpgrade, EquipRarityCheck(equip.rarerityType));
                 break;

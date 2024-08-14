@@ -333,13 +333,15 @@ public class UiInventory : MonoBehaviour
         cloakSlot.RemoveEquip();
     }
 
-    public void InstantiateSlot(Equip equip)
+    public EquipItemSlot InstantiateSlot(Equip equip)
     {
         var newSlot = Instantiate(prefabEquipSlot, equipInventoryPanel.transform);
         newSlot.SetData(equip);
         equipItemSlots.Add(newSlot);
 
         EquipSlotCountUpdate();
+
+        return newSlot;
     }
 
     public void NormalItemUpdate()

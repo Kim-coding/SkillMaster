@@ -13,7 +13,7 @@ public class SavePlayData
     // 플레이어 관련
 
     public PlayerCurrency saveCurrency;
-    public PlayerStat saveStat;
+    //public PlayerStat saveStat;
     public PlayerEnhance savePlayerEnhance;
     public PlayerInfomation savePlayerInfomation;
     public PlayerInventory savePlayerInventory;
