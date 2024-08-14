@@ -39,7 +39,7 @@ TextureImporter:
     mipBias: 0
     wrapU: 1
     wrapV: 1
-    wrapW: 0
+    wrapW: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -63,16 +63,16 @@ TextureImporter:
   compressionQualitySet: 0
   textureFormatSet: 0
   ignorePngGamma: 0
-  applyGammaDecoding: 1
+  applyGammaDecoding: 0
   swizzle: 50462976
-  cookieLightType: 2
+  cookieLightType: 0
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -85,7 +85,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -94,11 +94,11 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: Android
+    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -114,18 +114,18 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 3
-        height: 3
-      alignment: 9
-      pivot: {x: 0.15925936, y: 0.32962978}
+        y: 10
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c75d099980431404d8d1dc9de70e0ad2
-      internalID: -558101157
+      spriteID: 23a0a67f4d0fb5e4b95757a635863239
+      internalID: 2032854378
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,28 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 1
+        width: 3
+        height: 3
+      alignment: 9
+      pivot: {x: 0.17333347, y: 0.49999976}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6bbc14f78a337d542b6609ebd22347a3
+      internalID: -2066284015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eye_SSS_4_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1
         width: 1
         height: 2
       alignment: 0
@@ -145,8 +166,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c43a5f7e88d81b54e8ee05fe1241ff36
-      internalID: 749961827
+      spriteID: 76d509951459d5248b3799c5406ef935
+      internalID: 1136739462
       vertices: []
       indices: 
       edges: []
@@ -154,7 +175,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 1a6f1a547d3ccfb46b21a72855c1e4ee
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -162,8 +183,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Eye_SSS_4_0: -558101157
-      Eye_SSS_4_1: 749961827
+      Eye_SSS_4_0: 2032854378
+      Eye_SSS_4_1: -2066284015
+      Eye_SSS_4_2: 1136739462
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

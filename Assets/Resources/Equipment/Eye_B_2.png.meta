@@ -39,7 +39,7 @@ TextureImporter:
     mipBias: 0
     wrapU: 1
     wrapV: 1
-    wrapW: 0
+    wrapW: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -63,16 +63,16 @@ TextureImporter:
   compressionQualitySet: 0
   textureFormatSet: 0
   ignorePngGamma: 0
-  applyGammaDecoding: 1
+  applyGammaDecoding: 0
   swizzle: 50462976
-  cookieLightType: 2
+  cookieLightType: 0
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -85,7 +85,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -94,11 +94,11 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: Android
+    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -110,28 +110,28 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Eye_B_2_1
+      name: Eye_B_2_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 5
-        width: 2
-        height: 2
+        y: 10
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6e76d56ff871f9d4cafedb659d885983
-      internalID: 2100372692
+      spriteID: 92e9c3ebc42e2ba43b0920df754a7dc6
+      internalID: -951101719
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Eye_B_2_0
+      name: Eye_B_2_1
       rect:
         serializedVersion: 2
         x: 0
@@ -139,14 +139,35 @@ TextureImporter:
         width: 4
         height: 3
       alignment: 9
-      pivot: {x: 0.26666656, y: 0.3444446}
+      pivot: {x: 0.24500011, y: 0.5000002}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c0618884e1d39b249b7df626bc875332
-      internalID: 1259925388
+      spriteID: 639891baaf9154747860a0708aa4cb16
+      internalID: -2142915969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eye_B_2_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1
+        width: 2
+        height: 2
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f3488af0021bf54babf7c40e414ef5e
+      internalID: -1510450051
       vertices: []
       indices: 
       edges: []
@@ -154,7 +175,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: d6412682b7ba9f540bb49a5b18b14e98
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -162,8 +183,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Eye_B_2_0: 1259925388
-      Eye_B_2_1: 2100372692
+      Eye_B_2_0: -951101719
+      Eye_B_2_1: -2142915969
+      Eye_B_2_2: -1510450051
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
