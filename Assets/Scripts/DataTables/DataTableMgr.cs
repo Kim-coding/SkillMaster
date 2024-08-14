@@ -93,6 +93,10 @@ public static class DataTableMgr
         GoldDungeonTable goldDungeonTable = new GoldDungeonTable();
         goldDungeonTable.Load(DataTableIds.goldDungeon);
         tables.Add(DataTableIds.goldDungeon, goldDungeonTable);
+
+        DiaDungeonTable diaDungeonTable = new DiaDungeonTable();
+        diaDungeonTable.Load(DataTableIds.diaDungeon);
+        tables.Add(DataTableIds.diaDungeon, diaDungeonTable);
     }
 
     private static DataTable CreateDataTable(string id)

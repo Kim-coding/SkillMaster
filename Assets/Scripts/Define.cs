@@ -161,6 +161,8 @@ public static class DataTableIds
 
     public static readonly string goldDungeon = "GoldDungeonTable";
 
+    public static readonly string diaDungeon = "DiaDungeonTable";
+
 
 
 }

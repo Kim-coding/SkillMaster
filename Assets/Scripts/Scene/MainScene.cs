@@ -102,21 +102,6 @@ public class MainScene : MonoBehaviour
         }
     }
 
-    //public void SpawnBoss()  //보스 몬스터 소환
-    //{
-    //    bossStage = true;
-    //    currentBoss = spawner.BossSpawn(BossMonsterPrefabs[0], bossSpawnPoint);
-    //    var bossAi = currentBoss.GetComponent<BossAI>();
-    //    bossAi.bossStat.SetBossID(DataTableMgr.Get<StageTable>(DataTableIds.stage).GetID
-    //       (stageId).appearBossMonster);
-    //    bossAi.bossStat.Init();
-    //    AddMonsters(currentBoss);
-    //    GameMgr.Instance.cam.SetTarget(currentBoss.transform.GetChild(0).gameObject);
-    //    GameMgr.Instance.soundMgr.PlaySFX("Boss");
-
-    //    playerCharacter.GetComponent<PlayerSkills>().SetList();
-    //}
-
     public void SpawnBoss()  //보스 몬스터 소환
     {
         bossStage = true;

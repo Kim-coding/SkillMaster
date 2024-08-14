@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -94,7 +94,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: Android
+    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -110,43 +110,64 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Eye_C_3_1
+      name: Eye_C_3_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 2
-        height: 2
+        y: 10
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 18af898d1e3e45c47a3cd824a5a4b7cf
-      internalID: -271220667
+      spriteID: 076fc5550c8faef4ebcb7e45794fb0c6
+      internalID: -1058834143
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Eye_C_3_0
+      name: Eye_C_3_1
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 2
         width: 3
         height: 3
       alignment: 9
-      pivot: {x: 0.32222208, y: 0.3370371}
+      pivot: {x: 0.33333346, y: 0.5066669}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1e8a4ff4e1a0f8549ac23c12c7c5a148
-      internalID: 1360568602
+      spriteID: f7a7a8db59366444b96861138e1d8980
+      internalID: 1191869529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eye_C_3_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2
+        width: 2
+        height: 2
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 452a90dcb3baebc47ae6b44c252fc02b
+      internalID: -1147929322
       vertices: []
       indices: 
       edges: []
@@ -162,8 +183,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Eye_C_3_0: 1360568602
-      Eye_C_3_1: -271220667
+      Eye_C_3_0: -1058834143
+      Eye_C_3_1: 1191869529
+      Eye_C_3_2: -1147929322
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

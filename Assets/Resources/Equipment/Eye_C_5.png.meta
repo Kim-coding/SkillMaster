@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -94,7 +94,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: Android
+    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -114,24 +114,45 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 4
-        width: 3
-        height: 4
-      alignment: 9
-      pivot: {x: 0.32222232, y: 0.25000012}
+        y: 10
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 986665bc22077b543882d34858b22850
-      internalID: -1204645171
+      spriteID: 8d2cba96e53d01f4ab36d9a8b71a06ed
+      internalID: -715051329
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
       name: Eye_C_5_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4
+        width: 3
+        height: 4
+      alignment: 9
+      pivot: {x: 0.32000014, y: 0.37000012}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7504a9153e59d5349bb564dd67bdd2cd
+      internalID: 1578051435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eye_C_5_2
       rect:
         serializedVersion: 2
         x: 0
@@ -145,8 +166,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 98d66f8293773234bbe8d995f9e8d0cb
-      internalID: -1416140252
+      spriteID: 79ce5ec225ee1f449ba812a96d92714f
+      internalID: -1658361414
       vertices: []
       indices: 
       edges: []
@@ -162,8 +183,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Eye_C_5_0: -1204645171
-      Eye_C_5_1: -1416140252
+      Eye_C_5_0: -715051329
+      Eye_C_5_1: 1578051435
+      Eye_C_5_2: -1658361414
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

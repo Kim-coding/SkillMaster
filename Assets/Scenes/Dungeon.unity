@@ -48723,16 +48723,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startPanel: {fileID: 1234475769}
   currentStage: 1
-  GoldDungeonMonster: {fileID: 1605052194642255169, guid: 259421fe8b6bea244bf707800f29a70a, type: 3}
-  DiaDungeonMonsters:
-  - {fileID: 1605052194642255169, guid: 9f1e9dec77e08564c9b6f6924c05cecd, type: 3}
+  goldDungeon: 1
+  diaDungeon: 0
+  goldDungeonMonster: {fileID: 1605052194642255169, guid: 259421fe8b6bea244bf707800f29a70a, type: 3}
   GoldDungeonSpawnPoint: {fileID: 18118072}
-  DiaDungeonSpawnPoints:
+  diaDungeonMonsters:
+  - {fileID: 1605052194642255169, guid: 65b3a6cad73e8134c969ead29eb9b850, type: 3}
+  - {fileID: 1605052194642255169, guid: 5750b6d03fb2c174cb6d9ce8d58b062e, type: 3}
+  - {fileID: 1605052194642255169, guid: 40ab7499e75ecdc479166ea8c2ddf832, type: 3}
+  - {fileID: 1605052194642255169, guid: 1ad18003f024a5e449c9150222c67c46, type: 3}
+  - {fileID: 1605052194642255169, guid: 20deb8c38a8118c46ad57d059a69c96a, type: 3}
+  - {fileID: 1605052194642255169, guid: ac688920e6941a94691d5213e789786a, type: 3}
+  - {fileID: 1605052194642255169, guid: 8579a69ba83ef7248a6b239b1363ebed, type: 3}
+  - {fileID: 1605052194642255169, guid: 53338255196cb2342a700112bcf220b9, type: 3}
+  - {fileID: 1605052194642255169, guid: eccd3b3364fd07944972cceeee4fa1ba, type: 3}
+  - {fileID: 1605052194642255169, guid: f9b34ad46b390cc4ea02a402df5b424e, type: 3}
+  - {fileID: 1605052194642255169, guid: 6ad2a4f007726b941a07f1db5f5dbae4, type: 3}
+  - {fileID: 1605052194642255169, guid: f0c0317c4d32e0b4c8b3f4578d03df6c, type: 3}
+  diaDungeonSpawnPoints:
   - {fileID: 870644932}
   - {fileID: 711450311}
   - {fileID: 1550696901}
-  goldDungeon: 1
-  diaDungeon: 0
   Parent: {fileID: 1880426546}
   slider: {fileID: 0}
   goldDungeonClearPopUp: {fileID: 890133513}

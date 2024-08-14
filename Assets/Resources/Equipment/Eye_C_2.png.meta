@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -94,7 +94,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: Android
+    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -110,12 +110,54 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
+      name: Eye_C_2_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 10
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c7c3d0f58537104289f2c5dd1d46c5a
+      internalID: 1180390656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
       name: Eye_C_2_1
       rect:
         serializedVersion: 2
         x: 0
         y: 5
-        width: 2
+        width: 3
+        height: 3
+      alignment: 9
+      pivot: {x: 0.31333387, y: 0.5000002}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab83c11e9ab3e17449e8e955620f9534
+      internalID: 1763132713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Eye_C_2_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2
+        width: 1
         height: 2
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -124,29 +166,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 41d375046217cf44cb8c9d6e424dc2e5
-      internalID: -467869078
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Eye_C_2_00
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 5
-        width: 3
-        height: 3
-      alignment: 9
-      pivot: {x: 0.33703688, y: 0.3444446}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a407610bcd2508541bbfd3e73444c107
-      internalID: 1514271240
+      spriteID: 76e700c950434cd469e2bda5a781e999
+      internalID: 1781295882
       vertices: []
       indices: 
       edges: []
@@ -162,8 +183,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Eye_C_2_00: 1514271240
-      Eye_C_2_1: -467869078
+      Eye_C_2_0: 1180390656
+      Eye_C_2_1: 1763132713
+      Eye_C_2_2: 1781295882
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
