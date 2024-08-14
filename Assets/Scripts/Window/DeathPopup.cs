@@ -18,10 +18,18 @@ public class DeathPopup : MonoBehaviour
 
         if(timer > duration)
         {
-            GameMgr.Instance.sceneMgr.mainScene.RestartStage();
-            player.Restart();
-            player.Animator.SetTrigger("Restart");
-            gameObject.SetActive(false);
+            var scene = GameMgr.Instance.sceneMgr;
+            if (scene.mainScene != null)
+            {
+                scene.mainScene.RestartStage();
+                player.Restart();
+                player.Animator.SetTrigger("Restart");
+                gameObject.SetActive(false);
+            }
+            if(scene.dungeonScene != null)
+            {
+                scene.dungeonScene.EndDiaDungeon(false, scene.dungeonScene.currentStage - 1);
+            }
             
         }
     }
