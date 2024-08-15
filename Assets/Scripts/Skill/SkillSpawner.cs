@@ -77,6 +77,7 @@ public class SkillSpawner : MonoBehaviour
             skillLevelInputField.onEndEdit.AddListener(OnSkillLevelInputFieldEndEdit);
         }
 
+        GameMgr.Instance.uiMgr.uiMerge.SkillCountUpdate();
     }
 
     private void Update()

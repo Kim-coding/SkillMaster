@@ -8,7 +8,7 @@ using UnityEngine;
 
 public class GuideQuest
 {
-    private int questID;
+    public int questID;
     [HideInInspector]
     public QuestData currentQuest;
     public int currentTargetValue;
@@ -17,13 +17,25 @@ public class GuideQuest
     private UiGuideQuest uiGuideQuest;
     public void Init()
     {
+
         if (GameMgr.Instance.uiMgr.uiGuideQuest == null)
             return;
-        questID = 60001; //TO-DO 저장데이터
+
+        if(SaveLoadSystem.CurrSaveData.savePlay != null)
+        {
+            var data = SaveLoadSystem.CurrSaveData.savePlay;
+            questID = data.questID; //TO-DO 저장데이터
+            currentTargetValue = data.questValue;
+        }
+        else
+        {
+            questID = 60001; //TO-DO 저장데이터
+            currentTargetValue = 0;
+        }
+
         currentQuest = DataTableMgr.Get<QuestTable>(DataTableIds.quest).GetID(questID);
         uiGuideQuest = GameMgr.Instance.uiMgr.uiGuideQuest;
         uiGuideQuest.currentQuest = currentQuest;
-        currentTargetValue = 0; //TO-DO 저장데이터
         RegisterQuestEvents();
         CheckQuestCompletion();
         UiUpdate();

@@ -34,7 +34,17 @@ public class RewardMgr : MonoBehaviour
 
         var OfflineRewardTable = DataTableMgr.Get<OfflineRewardTable>(DataTableIds.offlineReward);
 
-        var OfflineRewardData = OfflineRewardTable.GetID(30001); //TO-DO 저장된 스테이지를 가지고 와야 함
+        var data = SaveLoadSystem.CurrSaveData.savePlay;
+        OfflineRewardData OfflineRewardData;
+        if (data != null)
+        {
+            OfflineRewardData = OfflineRewardTable.GetID(data.stageId); //TO-DO 저장된 스테이지를 가지고 와야 함
+        }
+        else
+        {
+            OfflineRewardData = OfflineRewardTable.GetID(30001); //TO-DO 저장된 스테이지를 가지고 와야 함
+        }
+
         if (OfflineRewardData != null)
         {
             stageID = OfflineRewardData.StageID;

@@ -20,7 +20,12 @@ public class SavePlayData
     public List<SkillBallController> saveSkillBallControllers = new List<SkillBallController>();
 
 
-    //저장할것들
+    //퀘스트
+    public int questID;
+    public int questValue;
+
+
+    //UI 세팅
 }
 
 public abstract class SaveData

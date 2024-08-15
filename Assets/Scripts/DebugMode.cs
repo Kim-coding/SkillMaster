@@ -63,6 +63,7 @@ public class DebugMode : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.S))
         {
             GameMgr.Instance.playerMgr.currency.AddGold(new BigInteger(1000000000));
+            GameMgr.Instance.playerMgr.currency.AddDia(new BigInteger(100000));
         }
 
         if (Input.GetKeyDown(KeyCode.Space))

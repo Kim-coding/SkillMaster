@@ -37,8 +37,8 @@ public class GameMgr : MonoBehaviour
     private void InitGame()
     {
         Time.timeScale = 1f;
-        sceneMgr.Init();
         playerMgr.Init();
+        sceneMgr.Init();
         uiMgr.Init();
     }
 

@@ -17,14 +17,29 @@ public class PlayerInfomation
     public int gachaMaxExp;
     public void Init()
     {
-        monsterKill = new BigInteger(0); //TO-DO저장한데서 들고오기 밑에전부
-        getGold = new BigInteger(0);
-        skillSpawnCount = 0;
-        maxSkillLevel = 1;
-        obtainedItem = 0;
-        gachaLevel = 1;
-        gachaExp = 0;
-        gachaMaxExp = DataTableMgr.Get<GachaTable>(DataTableIds.gachaLevel).GetID(gachaLevel).gachaRequestValue;
+        if(SaveLoadSystem.CurrSaveData.savePlay != null)
+        {
+            var data = SaveLoadSystem.CurrSaveData.savePlay.savePlayerInfomation;
+            monsterKill = new BigInteger(data.monsterKill); //TO-DO저장한데서 들고오기 밑에전부
+            getGold = new BigInteger(data.getGold);
+            skillSpawnCount = data.skillSpawnCount;
+            maxSkillLevel = data.maxSkillLevel;
+            obtainedItem = data.obtainedItem;
+            gachaLevel = data.gachaLevel;
+            gachaExp = data.gachaExp;
+            gachaMaxExp = DataTableMgr.Get<GachaTable>(DataTableIds.gachaLevel).GetID(gachaLevel).gachaRequestValue;
+        }
+        else
+        {
+            monsterKill = new BigInteger(0); //TO-DO저장한데서 들고오기 밑에전부
+            getGold = new BigInteger(0);
+            skillSpawnCount = 0;
+            maxSkillLevel = 1;
+            obtainedItem = 0;
+            gachaLevel = 1;
+            gachaExp = 0;
+            gachaMaxExp = DataTableMgr.Get<GachaTable>(DataTableIds.gachaLevel).GetID(gachaLevel).gachaRequestValue;
+        }
         //stageClear;
 
         EventMgr.StartListening(QuestType.Stage, StageUpdate);

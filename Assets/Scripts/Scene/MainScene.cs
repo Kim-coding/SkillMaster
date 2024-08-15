@@ -1,4 +1,5 @@
 
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class MainScene : MonoBehaviour
@@ -25,13 +26,24 @@ public class MainScene : MonoBehaviour
     public bool playerDefeatedByBoss = false;
     public void Init()
     {
-        stageId = 50001; //TO-DO 저장된곳에서 가져오기
+        var data = SaveLoadSystem.CurrSaveData.savePlay;
+
+        if(data != null)
+        {
+            stageId = data.stageId;
+        }
+        else
+        {
+            stageId = 50001;
+        }
         stageData = DataTableMgr.Get<StageTable>(DataTableIds.stage).GetID(stageId);
         if(stageData != null)
         {
             stageCount = stageData.StageLv;
             appearBossMonster = stageData.appearBossMonster;
         }
+
+        GameMgr.Instance.uiMgr.StageUpdate(stageCount);
     }
 
     private void Start()

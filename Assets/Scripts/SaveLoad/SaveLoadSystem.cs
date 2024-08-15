@@ -58,6 +58,9 @@ public class SaveLoadSystem
             CurrSaveData.savePlay.saveSkillBallControllers.Add(data);
         }
 
+        CurrSaveData.savePlay.questID = GameMgr.Instance.rewardMgr.guideQuest.questID;
+        CurrSaveData.savePlay.questValue = GameMgr.Instance.rewardMgr.guideQuest.currentTargetValue;
+
 
 
         if (!Directory.Exists(SaveDirectory))

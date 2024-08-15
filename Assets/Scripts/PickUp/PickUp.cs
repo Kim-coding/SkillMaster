@@ -39,7 +39,6 @@ public class PickUp : MonoBehaviour
         var playerInfo = GameMgr.Instance.playerMgr.playerInfo;
         UIUpdate(playerInfo.gachaLevel, playerInfo.gachaExp, playerInfo.gachaMaxExp, DataTableMgr.Get<GachaTable>(DataTableIds.gachaLevel).GetID(playerInfo.gachaLevel).gachaRequestValue);
 
-       GameMgr.Instance.playerMgr.currency.AddDia(new BigInteger(100000)); //TO-DO 테스트용 지급
     }
 
     public void PickUpItem(int i)
