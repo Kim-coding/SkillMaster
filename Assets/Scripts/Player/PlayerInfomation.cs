@@ -15,6 +15,9 @@ public class PlayerInfomation
     public int gachaLevel;
     public int gachaExp;
     public int gachaMaxExp;
+
+    public int goldDungeonLv = 1;
+    public int diaDungeonLv = 1;
     public void Init()
     {
         if(SaveLoadSystem.CurrSaveData.savePlay != null)

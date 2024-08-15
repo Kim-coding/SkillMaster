@@ -7,7 +7,9 @@ public class SetTriggerDeath : MonoBehaviour, IDestructible
     {
         var player = gameObject.GetComponent<IAnimation>();
         player.Animator.SetTrigger("Death");
-        deathPopup.gameObject.SetActive(true);
-
+        if(deathPopup != null)
+        {
+            deathPopup.gameObject.SetActive(true);
+        }
     }
 }

@@ -157,7 +157,7 @@ public class SkillSpawner : MonoBehaviour
             playerMgr.skillBallControllers.Add(newSkillControler);
         }
 
-        GameMgr.Instance.playerMgr.playerSkills.SetList(); // 캐스팅 리스트 업데이트
+        playerMgr.playerSkills.SetList(); // 캐스팅 리스트 업데이트
 
     }
 
@@ -184,7 +184,7 @@ public class SkillSpawner : MonoBehaviour
         playerMgr.playerInfo.MaxSkillLevelUpdate(newSkillControler.tier);
         playerMgr.playerEnhance.currentSpawnSkillCount--;
         GameMgr.Instance.uiMgr.uiMerge.SkillCountUpdate();
-        GameMgr.Instance.playerMgr.playerSkills.SetList(); // 캐스팅 리스트 업데이트
+        playerMgr.playerSkills.SetList(); // 캐스팅 리스트 업데이트
         if (playerMgr.skillBallControllers.Count == maxReserveSkillCount || playerMgr.playerEnhance.currentSpawnSkillCount <= 0)
         { GameMgr.Instance.uiMgr.uiMerge.SpawnButtonUpdate(false); }
     }
@@ -196,7 +196,7 @@ public class SkillSpawner : MonoBehaviour
         newSkillControler.Set(skill_ID);
         playerMgr.skillBallControllers.Add(newSkillControler);
 
-        GameMgr.Instance.playerMgr.playerSkills.SetList(); // 캐스팅 리스트 업데이트
+        playerMgr.playerSkills.SetList(); // 캐스팅 리스트 업데이트
         GameMgr.Instance.uiMgr.uiMerge.SpawnButtonUpdate(true);
         if(GameMgr.Instance.uiMgr.uiGuideQuest != null)
         {

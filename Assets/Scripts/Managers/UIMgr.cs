@@ -34,6 +34,10 @@ public class UIMgr : MonoBehaviour
     public TextMeshProUGUI skillcount;
     public int stageCount = 1;
 
+    public TextMeshProUGUI goldText;
+    public TextMeshProUGUI goldLvText;
+    public TextMeshProUGUI diaText;
+    public TextMeshProUGUI diaLvText;
 
     public void Init()
     {
@@ -42,6 +46,14 @@ public class UIMgr : MonoBehaviour
         {
             bossSpawnButton.onClick.AddListener(OnBossSpawnButtonClicked);
             bossSpawnButton.gameObject.SetActive(false);
+        }
+        var playerInfo = GameMgr.Instance.playerMgr.playerInfo;
+        if (goldText != null)
+        {
+            goldLvText.text = playerInfo.goldDungeonLv.ToString();
+            diaLvText.text = playerInfo.diaDungeonLv.ToString();
+            goldText.text = new BigInteger(DataTableMgr.Get<GoldDungeonTable>(DataTableIds.goldDungeon).GetID(playerInfo.goldDungeonLv).reward_value).ToStringShort();
+            diaText.text = DataTableMgr.Get<DiaDungeonTable>(DataTableIds.diaDungeon).GetID(playerInfo.diaDungeonLv).reward_value;
         }
     }
 
@@ -143,6 +155,10 @@ public class UIMgr : MonoBehaviour
         }
     }
 
+    public void ResetTimer()
+    {
+        timer = 0f;
+    }
     public void TimeSliderUpdate()
     {
         timer += Time.deltaTime;
