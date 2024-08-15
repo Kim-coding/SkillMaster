@@ -274,6 +274,7 @@ public class UiWindow : MonoBehaviour
 
     public void Dungeon()
     {
+        GameMgr.Instance.webTimeMgr.SaveTime();
         SceneManager.LoadScene("Dungeon");
     }
 }

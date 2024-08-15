@@ -28,7 +28,7 @@ public class DeathPopup : MonoBehaviour
             }
             if(scene.dungeonScene != null)
             {
-                scene.dungeonScene.EndDiaDungeon(false, scene.dungeonScene.currentStage - 1);
+                scene.dungeonScene.EndDungeon(false, scene.dungeonScene.currentStage - 1);
             }
             
         }

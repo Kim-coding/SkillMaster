@@ -97,7 +97,7 @@ public class WebTimeMgr : MonoBehaviour
             var jsonResult = request.downloadHandler.text;
             var worldTime = JsonUtility.FromJson<WorldTimeApiResponse>(jsonResult);
             DateTime serverTime = DateTime.Parse(worldTime.datetime);
-            Debug.Log("서버 시간 (종료 시간): " + serverTime);
+            Debug.Log("서버 시간 (마지막 시간): " + serverTime);
             SaveEndTime(serverTime);
         }
     }

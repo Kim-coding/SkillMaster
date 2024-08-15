@@ -16,8 +16,8 @@ public class PlayerInfomation
     public int gachaExp;
     public int gachaMaxExp;
 
-    public int goldDungeonLv;
-    public int diaDungeonLv;
+    public int goldDungeonLv = 1;
+    public int diaDungeonLv = 1;
     public void Init()
     {
         monsterKill = new BigInteger(0); //TO-DO저장한데서 들고오기 밑에전부
