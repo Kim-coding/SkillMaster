@@ -93,6 +93,12 @@ public class DebugMode : MonoBehaviour
             GameMgr.Instance.playerMgr.playerInfo.GetGachaExp(2000);
         }
 
+
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+          SaveLoadSystem.DeleteSaveData() ;
+        }
+
         GameMgr.Instance.playerMgr.playerStat.DebugStatSetting(speedValue, cooldownValue, attackSpeedValue ,attackRangeValue, recoveryDurationValue);
     }
 }
