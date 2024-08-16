@@ -52,6 +52,7 @@ public class GameMgr : MonoBehaviour
         {
             saveTimer = 0;
             SaveLoadSystem.Save();
+            webTimeMgr.SaveTime();
         }
 
         if (Input.GetKeyDown(KeyCode.D))
