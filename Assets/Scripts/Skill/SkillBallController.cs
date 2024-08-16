@@ -76,7 +76,7 @@ public class SkillBallController : MonoBehaviour, IPointerDownHandler, IPointerU
         mergeWindow = skillSpawner.mergeWindow;
     }
 
-    public void Set(int skill_ID)
+    public bool Set(int skill_ID)
     {
         this.skill_ID = skill_ID;
         var skillTable = DataTableMgr.Get<SkillTable>(DataTableIds.skill);
@@ -99,8 +99,14 @@ public class SkillBallController : MonoBehaviour, IPointerDownHandler, IPointerU
 
             tierText.text = tier.ToString();
         }
+        else
+        {
+            return false;
+        }
 
         LoadSkillIcon(Skillicon);
+
+        return true;
     }
     private void LoadSkillIcon(string iconName)
     {

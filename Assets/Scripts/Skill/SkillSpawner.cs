@@ -163,7 +163,7 @@ public class SkillSpawner : MonoBehaviour
 
 
 
-    public void SpawnSkill()
+    public void SpawnSkill(int skillId = -1)
     {
         if (playerMgr.skillBallControllers.Count == maxReserveSkillCount || playerMgr.playerEnhance.currentSpawnSkillCount <= 0)
         {
@@ -179,7 +179,18 @@ public class SkillSpawner : MonoBehaviour
         rt.anchoredPosition = RandomVector();
 
         var newSkillControler = newSkill.GetComponent<SkillBallController>();
-        newSkillControler.Set(SelectedSkill());
+        if (skillId == -1)
+        {
+            newSkillControler.Set(SelectedSkill());
+        }
+        else
+        {
+            if(!newSkillControler.Set(skillId + 40000))
+            {
+                Destroy(newSkill.gameObject);
+                return;
+            }
+        }
         playerMgr.skillBallControllers.Add(newSkillControler);
         playerMgr.playerInfo.MaxSkillLevelUpdate(newSkillControler.tier);
         playerMgr.playerEnhance.currentSpawnSkillCount--;

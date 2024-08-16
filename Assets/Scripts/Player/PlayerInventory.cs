@@ -52,7 +52,7 @@ public class PlayerInventory
         baseHair = new Equip(iconimage, "기본 머리", 0);
         baseHair.SetEquipItem(EquipType.Hair, RarerityType.C, 0);
         iconimage = Resources.LoadAll<Sprite>("Equipment/Eye_Basic");
-        baseFace = new Equip(iconimage, "기본 눈", 0 , true);
+        baseFace = new Equip(iconimage, "기본 눈", 0, true);
         baseFace.SetEquipItem(EquipType.Face, RarerityType.C, 0);
         iconimage = Resources.LoadAll<Sprite>("Equipment/Cloth_Basic");
         baseCloth = new Equip(iconimage, "기본 상의", 0);
@@ -149,9 +149,9 @@ public class PlayerInventory
                 upgradeFailCount[i] = data.upgradeFailCount[i];
             }
 
-            foreach(var equip in data.playerEquipItemList)
+            foreach (var equip in data.playerEquipItemList)
             {
-                if(equip.currentEquip)
+                if (equip.currentEquip)
                 {
                     continue;
                 }
@@ -385,7 +385,95 @@ public class PlayerInventory
         }
     }
 
+    public void CreateItem(int itemNumber, int itemValue, ItemType itemType)
+    {
+        if (itemType == ItemType.Equip)
+        {
+            if (itemValue + GameMgr.Instance.playerMgr.playerinventory.playerEquipItemList.Count > GameMgr.Instance.playerMgr.playerinventory.maxSlots)
+            {
+                return;
+            }
+            while (itemValue > 0)
+            {
 
+                var equipData = DataTableMgr.Get<EquipmentTable>(DataTableIds.equipment).GetID(itemNumber);
+                if (equipData == null)
+                {
+                    return;
+                }
+                var equip = new Equip(equipData, ++GameMgr.Instance.playerMgr.playerInfo.obtainedItem);
+                int optionCount = equipData.option_value;
+                while (optionCount > 0)
+                {
+                    OptionData optionData = equipData.GetOption;
+                    OptionType optionType;
+                    float optionValue;
+                    OptionNumberData optionNumberData;
+
+                    float randomOption = Random.Range(0.0f, 100.0f);
+                    // 소수점 한 자리까지 반올림
+                    randomOption = Mathf.Round(randomOption * 10f) / 10f;
+
+                    if (randomOption <= optionData.option1_persent)
+                    {
+                        optionNumberData = optionData.GetOption1_value;
+                    }
+                    else if (randomOption <= optionData.option1_persent + optionData.option2_persent)
+                    {
+                        optionNumberData = optionData.GetOption2_value;
+                    }
+                    else if (randomOption <= optionData.option1_persent + optionData.option2_persent + optionData.option3_persent)
+                    {
+                        optionNumberData = optionData.GetOption3_value;
+                    }
+                    else
+                    {
+                        optionNumberData = optionData.GetOption4_value;
+                    }
+                    optionType = (OptionType)(optionNumberData.option_state - 1);
+                    optionValue = Random.Range(optionNumberData.option_min, optionNumberData.option_max);
+
+                    switch (optionType)
+                    {
+                        case OptionType.attackPower:
+                        case OptionType.maxHealth:
+                        case OptionType.deffence:
+                        case OptionType.recovery:
+                            optionValue = Mathf.Round(optionValue);
+                            break;
+                        case OptionType.criticalPercent:
+                        case OptionType.criticalMultiple:
+                        case OptionType.goldIncrease:
+                            optionValue = Mathf.Round(optionValue * 10f) / 10f;
+                            break;
+                        case OptionType.speed:
+                        case OptionType.attackRange:
+                        case OptionType.attackSpeed:
+                            optionValue = Mathf.Round(optionValue * 100f) / 100f;
+                            break;
+                    }
+
+                    if (equip.SetEquipStat((optionType, optionValue)))
+                    {
+                        optionCount--;
+                    }
+                }
+                GameMgr.Instance.playerMgr.playerinventory.AddEquipItem(equip);
+                GameMgr.Instance.uiMgr.uiInventory.InstantiateSlot(equip);
+                itemValue--;
+            }
+        }
+
+        if (itemType == ItemType.misc)
+        {
+            NormalItem item = new NormalItem(itemNumber, itemValue);
+            if (item.stuffData == null)
+            {
+                return;
+            }
+            GameMgr.Instance.uiMgr.uiInventory.InstantiateSlot(item, itemValue);
+        }
+    }
 
     private int EquipRarityCheck(RarerityType rarerity)
     {
