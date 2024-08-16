@@ -136,4 +136,9 @@ public class GameMgr : MonoBehaviour
     {
         uiMgr.HideBossSpawnButton();
     }
+
+    public void FindWebTime()
+    {
+        webTimeMgr = GameObject.FindGameObjectWithTag("WebTime").GetComponent<WebTimeMgr>();
+    }
 }

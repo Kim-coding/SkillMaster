@@ -272,9 +272,22 @@ public class UiWindow : MonoBehaviour
         }
     }
 
-    public void Dungeon()
+    private void Dungeon()
     {
         GameMgr.Instance.webTimeMgr.SaveTime();
+        SaveLoadSystem.Save();
         SceneManager.LoadScene("Dungeon");
+    }
+
+    public void SetGoldDungeon()
+    {
+        GameMgr.Instance.playerMgr.playerInfo.dungeonMode = true;
+        Dungeon();
+    }
+
+    public void SetDiaDungeon()
+    {
+        GameMgr.Instance.playerMgr.playerInfo.dungeonMode = false;
+        Dungeon();
     }
 }

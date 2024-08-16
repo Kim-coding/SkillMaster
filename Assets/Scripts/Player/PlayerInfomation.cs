@@ -16,8 +16,9 @@ public class PlayerInfomation
     public int gachaExp;
     public int gachaMaxExp;
 
-    public int goldDungeonLv = 1;
-    public int diaDungeonLv = 1;
+    public int goldDungeonLv;
+    public int diaDungeonLv;
+    public bool dungeonMode;
     public void Init()
     {
         if(SaveLoadSystem.CurrSaveData.savePlay != null)
@@ -31,6 +32,9 @@ public class PlayerInfomation
             gachaLevel = data.gachaLevel;
             gachaExp = data.gachaExp;
             gachaMaxExp = DataTableMgr.Get<GachaTable>(DataTableIds.gachaLevel).GetID(gachaLevel).gachaRequestValue;
+            goldDungeonLv = data.goldDungeonLv;
+            diaDungeonLv = data.diaDungeonLv;
+            dungeonMode = data.dungeonMode;
         }
         else
         {
@@ -42,6 +46,9 @@ public class PlayerInfomation
             gachaLevel = 1;
             gachaExp = 0;
             gachaMaxExp = DataTableMgr.Get<GachaTable>(DataTableIds.gachaLevel).GetID(gachaLevel).gachaRequestValue;
+            goldDungeonLv = 1;
+            diaDungeonLv = 1;
+            dungeonMode = true;
         }
         //stageClear;
 

@@ -47,7 +47,18 @@ public class SaveLoadSystem
     {
 
         CurrSaveData.savePlay = new SavePlayData();
-        CurrSaveData.savePlay.stageId = GameMgr.Instance.sceneMgr.mainScene.stageId;
+        if(GameMgr.Instance.sceneMgr.mainScene != null)
+        {
+            CurrSaveData.savePlay.stageId = GameMgr.Instance.sceneMgr.mainScene.stageId;
+            CurrSaveData.savePlay.questID = GameMgr.Instance.rewardMgr.guideQuest.questID;
+            CurrSaveData.savePlay.questValue = GameMgr.Instance.rewardMgr.guideQuest.currentTargetValue;
+        }
+        else
+        {
+            CurrSaveData.savePlay.stageId = GameMgr.Instance.sceneMgr.dungeonScene.stageId;
+            CurrSaveData.savePlay.questID = GameMgr.Instance.sceneMgr.dungeonScene.questId;
+            CurrSaveData.savePlay.questValue = GameMgr.Instance.sceneMgr.dungeonScene.questValue;
+        }
         CurrSaveData.savePlay.saveCurrency = GameMgr.Instance.playerMgr.currency;
         CurrSaveData.savePlay.savePlayerEnhance = GameMgr.Instance.playerMgr.playerEnhance;
         CurrSaveData.savePlay.savePlayerInfomation = GameMgr.Instance.playerMgr.playerInfo;
@@ -57,11 +68,6 @@ public class SaveLoadSystem
         {
             CurrSaveData.savePlay.saveSkillBallControllers.Add(data);
         }
-
-        CurrSaveData.savePlay.questID = GameMgr.Instance.rewardMgr.guideQuest.questID;
-        CurrSaveData.savePlay.questValue = GameMgr.Instance.rewardMgr.guideQuest.currentTargetValue;
-
-
 
         if (!Directory.Exists(SaveDirectory))
         {

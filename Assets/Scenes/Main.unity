@@ -4307,7 +4307,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1458089214}
         m_TargetAssemblyTypeName: UiWindow, Assembly-CSharp
-        m_MethodName: Dungeon
+        m_MethodName: SetGoldDungeon
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8504,7 +8504,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1458089214}
         m_TargetAssemblyTypeName: UiWindow, Assembly-CSharp
-        m_MethodName: Dungeon
+        m_MethodName: SetDiaDungeon
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -23982,7 +23982,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uACE8\uB4DC \uB358\uC804"
+  m_text: "\uB2E4\uC774\uC544 \uB358\uC804"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4a4cb5ff1460d3847bfaf1bedca9c15e, type: 2}
   m_sharedMaterial: {fileID: -8394872773446215976, guid: 4a4cb5ff1460d3847bfaf1bedca9c15e, type: 2}
@@ -62255,7 +62255,7 @@ GameObject:
   - component: {fileID: 1752705534}
   m_Layer: 0
   m_Name: WebTime
-  m_TagString: Untagged
+  m_TagString: WebTime
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

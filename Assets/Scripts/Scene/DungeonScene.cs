@@ -14,8 +14,8 @@ public class DungeonScene : MonoBehaviour
 
     public int currentStage; //저장된 정보를 받아 오기.
     public BigInteger currentScore = new BigInteger(0);
-    public bool goldDungeon = false;
-    public bool diaDungeon = false;
+
+    private bool dungeonMode;
 
     //골드 던전
     public GameObject goldDungeonMonster;
@@ -53,20 +53,32 @@ public class DungeonScene : MonoBehaviour
     public Button diaNextButton;
 
     private GameObject currentBoss;
+
+    public int stageId;
+    public int questId;
+    public int questValue;
+
     public void Init()
     {
         //받아와야 하는 정보 : 도전 스테이지, 선택한 던전 (골드, 다이아)
+
+        var data = SaveLoadSystem.CurrSaveData.savePlay;
+        stageId = data.stageId;
+        questId = data.questID;
+        questValue = data.questValue;
+        dungeonMode = GameMgr.Instance.playerMgr.playerInfo.dungeonMode;
+
         var camera = GameObject.FindWithTag("MainCamera");
         camera.GetComponent<CameraMove>().isToggle = false;
 
-        if (goldDungeon)
+        if (dungeonMode)
         {
             currentStage = GameMgr.Instance.playerMgr.playerInfo.goldDungeonLv;
             goldDungeonData = DataTableMgr.Get<GoldDungeonTable>(DataTableIds.goldDungeon).GetID(currentStage);
             goldEndButton.gameObject.SetActive(true);
             goldEndButton.onClick.AddListener(LoadMainScene);
         }
-        if(diaDungeon)
+        else
         {
             currentStage = GameMgr.Instance.playerMgr.playerInfo.diaDungeonLv;
             foreach (var monster in diaDungeonMonsters)
@@ -95,12 +107,12 @@ public class DungeonScene : MonoBehaviour
 
     private void Start()
     {
-        if (goldDungeon)
+        if (dungeonMode)
         {
             var sandBag = Instantiate(goldDungeonMonster, goldDungeonSpawnPoint.position, Quaternion.identity, Parent);
             monster.Add(sandBag);
         }
-        if (diaDungeon)
+        else
         {
             SpawnNextBoss();
         }
@@ -109,7 +121,7 @@ public class DungeonScene : MonoBehaviour
 
     void Update()
     {
-        if (goldDungeon)
+        if (dungeonMode)
         {
             timer += Time.deltaTime;
             if (timer > endTime)
@@ -117,12 +129,12 @@ public class DungeonScene : MonoBehaviour
                 EndDungeon(true, currentStage - 1);
             }
         }
-        if (diaDungeon)
+        else
         {
             timer += Time.deltaTime;
             if (timer > endTime)
             {
-                EndDungeon(true,currentStage - 1);
+                EndDungeon(true,currentStage);
             }
         }
         GameMgr.Instance.uiMgr.TimeSliderUpdate();
@@ -155,15 +167,17 @@ public class DungeonScene : MonoBehaviour
             diaNextButton.interactable = true;
             if (clearedStage != 0)
             {
-                if(goldDungeon)
+                if(dungeonMode)
                 {
                     reward = DataTableMgr.Get<GoldDungeonTable>(DataTableIds.goldDungeon).GetID(clearedStage).reward_value;
                     clearRewardText.text = new BigInteger(reward).ToStringShort();
+                    GameMgr.Instance.playerMgr.playerInfo.goldDungeonLv++;
                 }
                 else
                 {
                     reward = DataTableMgr.Get<DiaDungeonTable>(DataTableIds.diaDungeon).GetID(clearedStage).reward_value;
                     clearRewardText.text = reward;
+                    GameMgr.Instance.playerMgr.playerInfo.diaDungeonLv++;
                 }
             }
         }
@@ -174,13 +188,13 @@ public class DungeonScene : MonoBehaviour
             diaNextButton.interactable = false;
         }
 
-        if (goldDungeon)
+        if (dungeonMode)
         {
             diaImage.SetActive(false);
             dungeonText.text = "골드 던전";
             GameMgr.Instance.playerMgr.currency.AddGold(new BigInteger(reward)); //골드 추가
         }
-        if (diaDungeon)
+        else
         {
             goldImage.SetActive(false);
             dungeonText.text = "다이아 던전";
@@ -255,6 +269,7 @@ public class DungeonScene : MonoBehaviour
 
     private void LoadMainScene()
     {
+        SaveLoadSystem.Save();
         Addressables.LoadSceneAsync("MainScene", LoadSceneMode.Single);
     }
 }

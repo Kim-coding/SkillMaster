@@ -11,8 +11,8 @@ public class SceneMgr : MonoBehaviour
     {
         if(mainScene != null)
         {
-            GameMgr.Instance.rewardMgr.Init();
             mainScene.Init();
+            GameMgr.Instance.rewardMgr.Init();
         }
         if(dungeonScene != null)
         {

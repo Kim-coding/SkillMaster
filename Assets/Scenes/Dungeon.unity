@@ -49134,8 +49134,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startPanel: {fileID: 1234475769}
   currentStage: 1
-  goldDungeon: 0
-  diaDungeon: 1
+  goldDungeon: 1
+  diaDungeon: 0
   goldDungeonMonster: {fileID: 1605052194642255169, guid: 259421fe8b6bea244bf707800f29a70a, type: 3}
   goldDungeonSpawnPoint: {fileID: 18118072}
   diaDungeonMonsters:
@@ -49173,6 +49173,9 @@ MonoBehaviour:
   goldEndButton: {fileID: 1647339438}
   diaEndButton: {fileID: 698071133}
   diaNextButton: {fileID: 570502710}
+  stageId: 0
+  questId: 0
+  questValue: 0
 --- !u!114 &1423913457
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49273,6 +49276,10 @@ MonoBehaviour:
   stageUI: {fileID: 0}
   skillcount: {fileID: 0}
   stageCount: 1
+  goldText: {fileID: 0}
+  goldLvText: {fileID: 0}
+  diaText: {fileID: 0}
+  diaLvText: {fileID: 0}
 --- !u!114 &1423913464
 MonoBehaviour:
   m_ObjectHideFlags: 0

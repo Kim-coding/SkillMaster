@@ -30,6 +30,7 @@ public class WebTimeMgr : MonoBehaviour
         else
         {
             Destroy(gameObject);
+            GameMgr.Instance.FindWebTime();
             return;
         }
     }
