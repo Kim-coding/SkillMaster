@@ -354,6 +354,8 @@ public class EquipUpgradePanel : MonoBehaviour
             GameMgr.Instance.playerMgr.playerinventory.upgradeFailCount[currentToggleNumber]++;
         }
         EquipUpgradePanelUpdate();
+
+        SaveLoadSystem.Save();
     }
 
     public void ClosePanel()

@@ -108,6 +108,9 @@ public class Enhance : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         {
             buttonClick.Invoke();
         }
+
+        SaveLoadSystem.Save();
+
     }
 
     private void Update()

@@ -18,7 +18,7 @@ public class RewardMgr : MonoBehaviour
     private int rewardDiaValue;
 
 
-    private int stageID;
+    public int stageID;
     private int goldValue;
     private int diaValue;
     private float diaProbability;
@@ -38,7 +38,7 @@ public class RewardMgr : MonoBehaviour
         OfflineRewardData OfflineRewardData;
         if (data != null)
         {
-            OfflineRewardData = OfflineRewardTable.GetID(data.stageId); //TO-DO 저장된 스테이지를 가지고 와야 함
+            OfflineRewardData = OfflineRewardTable.GetID(data.rewardID); //TO-DO 저장된 스테이지를 가지고 와야 함
         }
         else
         {
