@@ -32,6 +32,13 @@ public class DebugMode : MonoBehaviour
     public float recoveryDurationValue;
     public TextMeshProUGUI recoveryDurationText;
 
+
+    public GameObject createPanel;
+    public Toggle[] typeToggle;
+    public TMP_InputField idField;
+    public TMP_InputField valueField;
+    public Button confirmButton;
+
     private void Awake()
     {
         speedSlider.value = playerStat.baseSpeed;
@@ -39,6 +46,8 @@ public class DebugMode : MonoBehaviour
         attackSpeedSlider.value = playerStat.baseAttackSpeed;
         attackRangeSlider.value = playerStat.baseAttackRange;
         recoveryDurationSlider.value = playerStat.baseRecoveryDuration;
+
+        confirmButton.onClick.AddListener(OnclickButton);
     }
 
     void Update()
@@ -100,6 +109,55 @@ public class DebugMode : MonoBehaviour
           SaveLoadSystem.DeleteSaveData() ;
         }
 
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            createPanel.gameObject.SetActive(true);
+        }
+
         GameMgr.Instance.playerMgr.playerStat.DebugStatSetting(speedValue, cooldownValue, attackSpeedValue ,attackRangeValue, recoveryDurationValue);
+    }
+
+
+    public void OnclickButton()
+    {
+        int id;
+        int value;
+        if (int.TryParse(idField.text, out int result))
+        {
+            id = result;
+        }
+        else
+        {
+            createPanel.gameObject.SetActive(false);
+            gameObject.SetActive(false);
+            return;
+        }
+
+        if (int.TryParse(valueField.text, out int result2))
+        {
+            value = result2;
+        }
+        else
+        {
+            createPanel.gameObject.SetActive(false);
+            gameObject.SetActive(false);
+            return;
+        }
+
+        if (typeToggle[0].isOn)
+        {
+            GameMgr.Instance.playerMgr.playerinventory.CreateItem(id, value, ItemType.Equip);
+        }
+        if (typeToggle[1].isOn)
+        {
+            GameMgr.Instance.playerMgr.playerinventory.CreateItem(id, value, ItemType.misc);
+        }
+        if (typeToggle[2].isOn)
+        {
+            GameMgr.Instance.uiMgr.uiMerge.skillSpawner.SpawnSkill(id);
+        }
+
+        createPanel.gameObject.SetActive(false);
+        gameObject.SetActive(false);
     }
 }
