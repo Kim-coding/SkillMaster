@@ -73,7 +73,7 @@ public class DungeonScene : MonoBehaviour
 
         if (dungeonMode)
         {
-            currentStage = GameMgr.Instance.playerMgr.playerInfo.goldDungeonLv;
+            currentStage = 1;
             goldDungeonData = DataTableMgr.Get<GoldDungeonTable>(DataTableIds.goldDungeon).GetID(currentStage);
             goldEndButton.gameObject.SetActive(true);
             goldEndButton.onClick.AddListener(LoadMainScene);
@@ -156,6 +156,7 @@ public class DungeonScene : MonoBehaviour
     private void ShowEndPopup()
     {
         Time.timeScale = 0f;
+        timer = 0f;
 
         dungeonClearPopUp.SetActive(true);
         dungeonClearStageText.text = clearedStage.ToString();
@@ -171,13 +172,13 @@ public class DungeonScene : MonoBehaviour
                 {
                     reward = DataTableMgr.Get<GoldDungeonTable>(DataTableIds.goldDungeon).GetID(clearedStage).reward_value;
                     clearRewardText.text = new BigInteger(reward).ToStringShort();
-                    GameMgr.Instance.playerMgr.playerInfo.goldDungeonLv++;
+                    GameMgr.Instance.playerMgr.playerInfo.goldDungeonLv = clearedStage++;
                 }
                 else
                 {
                     reward = DataTableMgr.Get<DiaDungeonTable>(DataTableIds.diaDungeon).GetID(clearedStage).reward_value;
                     clearRewardText.text = reward;
-                    GameMgr.Instance.playerMgr.playerInfo.diaDungeonLv++;
+                    GameMgr.Instance.playerMgr.playerInfo.diaDungeonLv = clearedStage++;
                 }
             }
         }

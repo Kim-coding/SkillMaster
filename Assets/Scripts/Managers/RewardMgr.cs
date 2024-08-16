@@ -92,13 +92,13 @@ public class RewardMgr : MonoBehaviour
 
         goldRewardText.text = $"{new BigInteger(goldReward).ToStringShort()}";
         diaRewardText.text = $"{new BigInteger(totalDia)}";
+
+        GameMgr.Instance.playerMgr.currency.AddGold(new BigInteger(goldReward));
+        GameMgr.Instance.playerMgr.currency.AddDia(new BigInteger(totalDia));
     }
 
     private void OfflineReward()
     {
-        GameMgr.Instance.playerMgr.currency.AddGold(new BigInteger(goldReward));
-        GameMgr.Instance.playerMgr.currency.AddDia(new BigInteger(totalDia));
-
         offlineRewardPopUp.SetActive(false);
     }
 

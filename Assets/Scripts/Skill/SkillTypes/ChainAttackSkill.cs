@@ -32,7 +32,7 @@ public class ChainAttackSkill : MonoBehaviour, ISkillComponent, ISkill, ISpecial
         hitMonsters.Clear();
         ClearChainEffects();
 
-        if (GameMgr.Instance.sceneMgr.mainScene.IsBossBattle())
+        if (GameMgr.Instance.sceneMgr.mainScene!= null && GameMgr.Instance.sceneMgr.mainScene.IsBossBattle())
         {
             StartChainEffect(attacker, currentTarget);
             ApplyDamage(currentTarget);
