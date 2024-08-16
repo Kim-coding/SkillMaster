@@ -19,6 +19,8 @@ public class GameMgr : MonoBehaviour
     public WebTimeMgr webTimeMgr;
     public NetworkConnect networkConnect;
 
+    private float saveTimer;
+
     private void Awake()
     {
         if(Instance == null)
@@ -44,6 +46,14 @@ public class GameMgr : MonoBehaviour
 
     private void Update()
     {
+
+        saveTimer += Time.deltaTime;
+        if(saveTimer > 300f)
+        {
+            saveTimer = 0;
+            SaveLoadSystem.Save();
+        }
+
         if (Input.GetKeyDown(KeyCode.D))
         {
             debugMode.gameObject.SetActive(!debugMode.isActiveAndEnabled);

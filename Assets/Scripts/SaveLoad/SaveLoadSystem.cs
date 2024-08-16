@@ -69,6 +69,9 @@ public class SaveLoadSystem
             CurrSaveData.savePlay.saveSkillBallControllers.Add(data);
         }
 
+        CurrSaveData.savePlay.rewardID = GameMgr.Instance.rewardMgr.stageID;
+
+
         if (!Directory.Exists(SaveDirectory))
         {
             Directory.CreateDirectory(SaveDirectory);
