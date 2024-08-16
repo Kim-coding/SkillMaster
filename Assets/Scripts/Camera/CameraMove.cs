@@ -48,13 +48,13 @@ public class CameraMove : MonoBehaviour
         if(bossViewTimer > bossViewDuration)
         {
             bossViewTimer = 0;
-            onBossView = false;
             SetTarget();
         }
     }
 
     public void SetTarget()
     {
+        onBossView = false;
         centerCameraNear.Follow = player.transform;
         centerCameraMiddle.Follow = player.transform;
         centerCameraFar.Follow = player.transform;

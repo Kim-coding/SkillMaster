@@ -114,6 +114,7 @@ public class GameMgr : MonoBehaviour
 
     public void OnBossDefeated()
     {
+        cam.SetTarget();
         sceneMgr.mainScene.playerDefeatedByBoss = false;
         uiMgr.ResetMonsterSlider();
         sceneMgr.mainScene.RestartStage();
