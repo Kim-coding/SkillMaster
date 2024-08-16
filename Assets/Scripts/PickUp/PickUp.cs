@@ -225,6 +225,8 @@ public class PickUp : MonoBehaviour
         GameMgr.Instance.playerMgr.playerInfo.GetGachaExp(i);
         GameMgr.Instance.uiMgr.uiInventory.SortItemSlots();
         GameMgr.Instance.uiMgr.uiInventory.FilteringItemSlots();
+
+        SaveLoadSystem.Save();
     }
 
     public void InstantiateSlot(Equip equip)

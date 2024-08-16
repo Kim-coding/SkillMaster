@@ -24,6 +24,8 @@ public class SavePlayData
     public int questID;
     public int questValue;
 
+    //보상 ID
+    public int rewardID;
 
     //UI 세팅
 }
