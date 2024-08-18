@@ -14688,7 +14688,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 30
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 30
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -49330,6 +49330,7 @@ MonoBehaviour:
   diaRewardText: {fileID: 1704580869}
   rewardPopUp: {fileID: 0}
   rewardText: {fileID: 0}
+  stageID: 0
 --- !u!114 &1423913468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -55378,7 +55379,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0.0s
+  m_text: 30.0s
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4a4cb5ff1460d3847bfaf1bedca9c15e, type: 2}
   m_sharedMaterial: {fileID: -8394872773446215976, guid: 4a4cb5ff1460d3847bfaf1bedca9c15e, type: 2}
