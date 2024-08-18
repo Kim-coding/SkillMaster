@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Playables;
+using UnityEngine.UI;
+using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class BossAI : MonoBehaviour, IAnimation
 {
@@ -15,6 +17,8 @@ public class BossAI : MonoBehaviour, IAnimation
 
     public BossStat bossStat;
     public BossAttack bossAttack;
+
+    public Image bossHp;
     [HideInInspector]
     public bool onDeath = false;
 
@@ -38,6 +42,11 @@ public class BossAI : MonoBehaviour, IAnimation
         }
     }
 
+    public void UpdateHpBar(float f)
+    {
+        bossHp.fillAmount = f;
+    }
+
     private void OnEnable()
     {
         onDeath = false;
@@ -57,13 +66,16 @@ public class BossAI : MonoBehaviour, IAnimation
 
         if (target != null)
         {
+            var hpCanvas = bossHp.transform.parent;
             if ((target.transform.position - transform.position).x >= 0)
             {
                 transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y);
+                hpCanvas.transform.localScale = new Vector3(Mathf.Abs(hpCanvas.transform.localScale.x), hpCanvas.transform.localScale.y);
             }
             else
             {
                 transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x) * -1, transform.localScale.y);
+                hpCanvas.transform.localScale = new Vector3(Mathf.Abs(hpCanvas.transform.localScale.x) * -1, hpCanvas.transform.localScale.y);
             }
         }
 

@@ -95,7 +95,7 @@ public class MainScene : MonoBehaviour
             monsterai.GetComponent<MonsterAI>().monsterStat.Init();
         }
 
-        background.sprite = Resources.Load<Sprite>(backgroundAsset);
+        background.sprite = Resources.Load<Sprite>($"Background/{backgroundAsset}");
         GameMgr.Instance.uiMgr.StageUpdate(stageCount);
     }
 

@@ -30,7 +30,6 @@ public class DropItemMgr : MonoBehaviour
         goldRectTransform.anchoredPosition = startPosition;
 
         DropItemMovement diaMovement = goldObject.GetComponent<DropItemMovement>();
-        Debug.Log(value);
         diaMovement.Initialize(uiDiaTarget, duration, value, false);
     }
 }

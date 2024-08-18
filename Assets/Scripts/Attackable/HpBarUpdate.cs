@@ -6,7 +6,16 @@ public class HpBarUpdate : MonoBehaviour, IAttackable
 {
     public void OnAttack(GameObject attacker, GameObject defender, Attack attack)
     {
-        var player = defender.GetComponent<PlayerAI>();
-        player.characterStat.UpdateHpBar();
+        if(defender.GetComponent<PlayerAI>() != null)
+        {
+            var player = defender.GetComponent<PlayerAI>();
+            player.characterStat.UpdateHpBar();
+        }
+
+        if(defender.GetComponent<BossAI>() != null)
+        {
+            var player = defender.GetComponent<BossAI>();
+            player.bossStat.UpdateHpBar();
+        }
     }
 }
