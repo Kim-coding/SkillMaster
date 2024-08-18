@@ -12,7 +12,7 @@ public class GameMgr : MonoBehaviour
     public PlayerMgr playerMgr;
     public UIMgr uiMgr;
     public DebugMode debugMode;
-    public GoldMgr goldManager;
+    public DropItemMgr dropItemMgr;
     public CameraMove cam;
     public RewardMgr rewardMgr;
     public SoundMgr soundMgr;

@@ -1,5 +1,6 @@
 
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class MainScene : MonoBehaviour
 {
@@ -7,6 +8,7 @@ public class MainScene : MonoBehaviour
     public Monster monster;
     public GameObject[] BossMonsterPrefabs;  //스테이지에서 현재 스폰될 보스를 가지고 와야 함
     public Transform bossSpawnPoint;
+    public SpriteRenderer background;
     //public Stage stage;  // 스폰 되어야 하는 몬스터 등을 가지고 있게 해야함
     private GameObject currentBoss;
     private bool bossStage = false;
@@ -14,6 +16,7 @@ public class MainScene : MonoBehaviour
 
     private StageData stageData;
 
+    private string backgroundAsset;
     private int appearBossMonster;
     public int stageCount;
     public int stageId;
@@ -40,8 +43,10 @@ public class MainScene : MonoBehaviour
         {
             stageCount = stageData.StageLv;
             appearBossMonster = stageData.appearBossMonster;
+            backgroundAsset = stageData.Asset;
         }
 
+        background.sprite = Resources.Load<Sprite>($"Background/{backgroundAsset}");
         GameMgr.Instance.uiMgr.StageUpdate(stageCount);
     }
 
@@ -76,6 +81,7 @@ public class MainScene : MonoBehaviour
         {
             stageCount = stageData.StageLv;
             appearBossMonster = stageData.appearBossMonster;
+            backgroundAsset = stageData.Asset;
         }
 
         var monsters = monster.GetMonsters();
@@ -88,6 +94,8 @@ public class MainScene : MonoBehaviour
             monsterai.GetComponent<MonsterAI>().monsterStat.SetID(stageData.appearMonster);
             monsterai.GetComponent<MonsterAI>().monsterStat.Init();
         }
+
+        background.sprite = Resources.Load<Sprite>(backgroundAsset);
         GameMgr.Instance.uiMgr.StageUpdate(stageCount);
     }
 

@@ -16,6 +16,7 @@ public class StageData
     public int appearBossMonster { get; set; }
     public int MonsterMaxValue { get; set; }
     public int StageLv { get; set; }
+    public string Asset {  get; set; }
 }
 
 public class StageTable : DataTable

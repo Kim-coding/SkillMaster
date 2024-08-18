@@ -71,6 +71,10 @@ public class ChainAttackSkill : MonoBehaviour, ISkillComponent, ISkill, ISpecial
             if (skillDownData != null)
             {
                 attackNumber = skillDownData.Attacknumber;
+                if(attackNumber == -1) 
+                {
+                    attackNumber = 1;
+                }
                 maxChains = skillDownData.HitMonsterValue;
             }
         }
@@ -118,6 +122,7 @@ public class ChainAttackSkill : MonoBehaviour, ISkillComponent, ISkill, ISpecial
             ApplyDamage(target);
 
             yield return new WaitForSeconds(0.1f);
+
             ClearChainEffects();
             List<GameObject> newTargets = new List<GameObject> { };
             if (hitMonsters.Count == 1)
@@ -202,7 +207,7 @@ public class ChainAttackSkill : MonoBehaviour, ISkillComponent, ISkill, ISpecial
         GameObject skillEffectPrefab = Resources.Load<GameObject>($"SkillEffects/{skillEffect}");
         if (skillEffectPrefab != null)
         {
-            GameObject chainEffect = Instantiate(skillEffectPrefab, from.transform.position, Quaternion.identity);
+            GameObject chainEffect = Instantiate(skillEffectPrefab, from.transform.position, Quaternion.identity, transform);
             chainEffect.AddComponent<MoveEffect>().Initialize(from.transform.position, to.transform.position, 0.2f);
             chainEffects.Add(chainEffect);
         }
@@ -218,37 +223,6 @@ public class ChainAttackSkill : MonoBehaviour, ISkillComponent, ISkill, ISpecial
             }
         }
         chainEffects.Clear();
-    }
-
-    private void DrawLine(GameObject from, GameObject to)
-    {
-        if (from == null || to == null)
-        {
-            Debug.LogWarning("DrawLine: One of the targets is null");
-            return;
-        }
-
-        GameObject lineObj = new GameObject("LineRenderer");
-        LineRenderer lineRenderer = lineObj.AddComponent<LineRenderer>();
-        lineRenderer.startWidth = 0.1f;
-        lineRenderer.endWidth = 0.1f;
-        lineRenderer.positionCount = 2;
-        lineRenderer.SetPosition(0, from.transform.position);
-        lineRenderer.SetPosition(1, to.transform.position);
-        lineObj.transform.SetParent(transform);
-        lineRenderers.Add(lineObj);
-    }
-
-    private void ClearLineRenderers()
-    {
-        foreach (var lineRenderer in lineRenderers)
-        {
-            if (lineRenderer != null)
-            {
-                Destroy(lineRenderer);
-            }
-        }
-        lineRenderers.Clear();
     }
 
     private void ChainCoroutineStop()

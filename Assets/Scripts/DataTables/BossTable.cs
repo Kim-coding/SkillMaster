@@ -11,7 +11,7 @@ public class BossData
     public string Damage { get; set; }
     public string Health { get; set; }
     public string GoldValue { get; set; }
-    public int DiaValue { get; set; }
+    public string DiaValue { get; set; }
     public int Reward1 { get; set; }
     public int Reward1Value { get; set; }
     public string Asset { get; set; }
