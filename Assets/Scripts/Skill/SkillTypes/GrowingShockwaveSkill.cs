@@ -13,9 +13,6 @@ public class GrowingShockwaveSkill : MonoBehaviour, ISkillComponent, ISkill  //�
 
     private List<GameObject> attackedMonsters = new List<GameObject>();
 
-    float duration = 2f;
-    float timer = 0f;
-
     float growingSpeed;   // 성장 속도
 
     private float currentRadius;
@@ -26,7 +23,6 @@ public class GrowingShockwaveSkill : MonoBehaviour, ISkillComponent, ISkill  //�
 
     public void Initialize()
     {
-        timer = 0f;
         skillObject = null;
         //초기화 시 필요한 나머지 작업
     }

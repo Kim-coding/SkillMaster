@@ -22,7 +22,8 @@ public class UIMgr : MonoBehaviour
     public Slider DungeonScoreSlider;
     public Slider DungeonTimeSlider;
     public TextMeshProUGUI timeText;
-    private float timer = 0;
+    private float timer;
+    private float maxTime = 30f;
 
     private BigInteger currentMaxDamage;
     public TextMeshProUGUI dungeonScoreText;
@@ -157,13 +158,25 @@ public class UIMgr : MonoBehaviour
 
     public void ResetTimer()
     {
-        timer = 0f;
+        timer = maxTime;
+        DungeonTimeSlider.maxValue = maxTime;
+        DungeonTimeSlider.minValue = 0f;
+        DungeonTimeSlider.value = maxTime;
     }
     public void TimeSliderUpdate()
     {
-        timer += Time.deltaTime;
+        if (timer > 0)
+        {
+            timer -= Time.deltaTime;
+            timeText.text = $"{timer.ToString("F1")}s";
 
-        timeText.text = $"{timer.ToString("F1")}s";
-        DungeonTimeSlider.value = timer;
+            DungeonTimeSlider.value = timer;
+        }
+        else
+        {
+            timer = 0;
+            timeText.text = "0.0s";
+            DungeonTimeSlider.value = 0;
+        }
     }
 }

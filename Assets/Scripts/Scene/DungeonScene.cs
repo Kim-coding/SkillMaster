@@ -107,6 +107,7 @@ public class DungeonScene : MonoBehaviour
 
     private void Start()
     {
+        GameMgr.Instance.uiMgr.ResetTimer();
         if (dungeonMode)
         {
             var sandBag = Instantiate(goldDungeonMonster, goldDungeonSpawnPoint.position, Quaternion.identity, Parent);
@@ -241,6 +242,7 @@ public class DungeonScene : MonoBehaviour
         GameMgr.Instance.uiMgr.ResetTimer();
 
         currentStage++;
+        GameMgr.Instance.uiMgr.InitializeNextStageSlider(currentStage);
         diaDungeonData = DataTableMgr.Get<DiaDungeonTable>(DataTableIds.diaDungeon).GetID(currentStage);
 
         bossIds.Clear();
