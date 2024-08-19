@@ -4,8 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-
-public class Enhance : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
+public class Enhance : MonoBehaviour
 {
     public TextMeshProUGUI enhanceName;
     public TextMeshProUGUI levelText;
@@ -15,14 +14,7 @@ public class Enhance : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     public TextMeshProUGUI nextCostText;
     public Image icon;
 
-    private float clickTime;
-    private float holdInterval = 0.1f;
-    private bool isClick = false;
-    private bool lonkClick = false;
-    public bool disableEvents = false;
-
-    public delegate void ButtonClickAction();
-    public event ButtonClickAction buttonClick;
+    public EnhanceButton button;
 
     public void Init(string name, int i)
     {
@@ -43,8 +35,8 @@ public class Enhance : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         {
             nextPercentText.text = "max";
             nextCostText.text = "max";
-            GetComponent<Button>().interactable = false;
-            disableEvents = true;
+            button.GetComponent<Button>().interactable = false;
+            button.disableEvents = true;
         }
     }
 
@@ -84,50 +76,4 @@ public class Enhance : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 
     }
 
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        if (disableEvents)
-        {
-            return;
-        }
-
-        isClick = true;
-        lonkClick = false;
-        clickTime = 0f;
-    }
-
-    public void OnPointerUp(PointerEventData eventData)
-    {
-        if (disableEvents)
-        {
-            return;
-        }
-
-        isClick = false;
-        if(lonkClick == false)
-        {
-            buttonClick.Invoke();
-        }
-
-        SaveLoadSystem.Save();
-
-    }
-
-    private void Update()
-    {
-        if(disableEvents)
-        {
-            return;
-        }
-        if (isClick)
-        {
-            clickTime += Time.deltaTime;
-            if (clickTime >= holdInterval)
-            {
-                lonkClick = true;
-                clickTime = 0f;
-                buttonClick.Invoke();
-            }
-        }
-    }
 }
