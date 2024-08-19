@@ -10,6 +10,7 @@ public class ItemInfoPanel : MonoBehaviour
     public TextMeshProUGUI itemType;
     public TextMeshProUGUI itemRarity;
     public TextMeshProUGUI[] OptionTexts;
+    public TextMeshProUGUI CPText;
 
     private EquipSlot currentEquip;
 
@@ -135,6 +136,8 @@ public class ItemInfoPanel : MonoBehaviour
             OptionTexts[optioncount].text = optiontext + " : " + option.Item2;
             optioncount++;
         }
+
+        CPText.text = "ÀüÅõ·Â : " + equip.CP;
     }
 
     public void SetItemInfoPanel(NormalItem item)
