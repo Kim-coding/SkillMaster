@@ -1,6 +1,4 @@
-﻿스킬 소환 확률ID,강화 레벨,스킬1 ID,스킬1 확률,스킬2 ID,스킬2 확률,스킬3 ID,스킬3 확률,스킬4 ID,스킬4 확률
-summonID,CbnUpgradeLv,skill1Lv,skill1per,skill2Lv,skill2per,skill3Lv,skill3per,skill4Lv,skill4per
-int,int,int,float,int,float,int,float,int,float
+﻿summonID,CbnUpgradeLv,skill1Lv,skill1per,skill2Lv,skill2per,skill3Lv,skill3per,skill4Lv,skill4per
 200001,0,1,93.9,2,5,3,1,4,0.1
 200002,1,2,93.9,3,5,4,1,5,0.1
 200003,2,3,93.9,4,5,5,1,6,0.1
