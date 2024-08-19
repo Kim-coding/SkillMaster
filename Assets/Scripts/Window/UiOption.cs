@@ -9,7 +9,7 @@ public class UiOption : MonoBehaviour
     public GameObject configurationWindow;
     public GameObject exitWindow;
 
-    public GameObject LoadingPanel;
+    //public GameObject LoadingPanel;
 
     public Button[] closeButtons;
 
