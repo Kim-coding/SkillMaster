@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,6 +8,7 @@ public class EquipSlot : MonoBehaviour
 
     public Image itemImage;
     public Equip currentEquip = null;
+    public Image rarityColor;
 
     public bool baseEquip = true;
 
@@ -27,6 +25,33 @@ public class EquipSlot : MonoBehaviour
             currentEquip = equipData;
             itemImage.sprite = equipData.icon;
             currentEquip.SetEquipItem(equipData.equipType, equipData.rarerityType, equipData.reinforceStoneValue);
+            Color newColor = Color.white;
+            switch (equipData.rarerityType)
+            {
+                case RarerityType.None :
+                    ColorUtility.TryParseHtmlString("#C4C4C4", out newColor);
+                    break;
+                case RarerityType.C:
+                    ColorUtility.TryParseHtmlString("#97846B", out newColor);
+                    break;
+                case RarerityType.B:
+                    ColorUtility.TryParseHtmlString("#6AAC8D", out newColor);
+                    break;
+                case RarerityType.A:
+                    ColorUtility.TryParseHtmlString("#A4BDFF", out newColor);
+                    break;
+                case RarerityType.S:
+                    ColorUtility.TryParseHtmlString("#C188D7", out newColor);
+                    break;
+                case RarerityType.SS:
+                    ColorUtility.TryParseHtmlString("#F4C56B", out newColor);
+                    break;
+                case RarerityType.SSS:
+                    ColorUtility.TryParseHtmlString("#C74B46", out newColor);
+                    break;
+            }
+
+            rarityColor.color = newColor;
         }
 
     }
