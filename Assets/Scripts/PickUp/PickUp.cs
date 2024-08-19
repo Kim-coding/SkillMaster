@@ -171,6 +171,7 @@ public class PickUp : MonoBehaviour
                 float randomOption = Random.Range(0.0f, 100.0f);
                 // 소수점 한 자리까지 반올림
                 randomOption = Mathf.Round(randomOption * 10f) / 10f;
+                Debug.Log(equipData.GetItemName);
 
                 if (randomOption <= optionData.option1_persent)
                 {
@@ -214,6 +215,9 @@ public class PickUp : MonoBehaviour
                 if (equip.SetEquipStat((optionType, optionValue)))
                 {
                     optionCount--;
+                    var CPData = DataTableMgr.Get<EquipmentCPTable>(DataTableIds.CP).GetID((int)optionType + 1);
+                    var maxStat = CPData.GetMaxStat;
+                    equip.CP += (int)(optionValue / maxStat * CPData.equipment_option_value * 10000);
                 }
 
             }

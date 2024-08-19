@@ -163,6 +163,5 @@ public static class DataTableIds
 
     public static readonly string diaDungeon = "DiaDungeonTable";
 
-
-
+    public static readonly string CP = "EquipmentCPTable";
 }

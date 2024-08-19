@@ -81,7 +81,7 @@ public class Equip : Item
     private EquipOption equipOption = new EquipOption();
     public int itemNumber;
     public bool currentEquip = false;
-    public int battleStat;
+    public int CP;
     public EquipOption EquipOption { get { return equipOption; } }
 
     public void Init(EquipData equipData)
