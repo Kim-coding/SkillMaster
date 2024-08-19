@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 140
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -106,6 +106,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -113,18 +126,18 @@ TextureImporter:
       name: Weapon_A_1_0
       rect:
         serializedVersion: 2
-        x: 4
-        y: 4
-        width: 23
-        height: 23
+        x: 40
+        y: 13
+        width: 45
+        height: 98
       alignment: 9
-      pivot: {x: 0.39546216, y: 0.40021387}
+      pivot: {x: 0.48643553, y: 0.25659895}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2e34ab133478f6e47b0d5db8ac8e4973
+      spriteID: 2d86c3607699e464eacba9453e679d8b
       internalID: 1971804000
       vertices: []
       indices: 
@@ -142,6 +155,7 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       Weapon_A_1_0: 1971804000
+      Weapon_A_1_1: -1421535755
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
