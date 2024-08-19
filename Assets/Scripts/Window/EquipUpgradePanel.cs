@@ -22,6 +22,8 @@ public class EquipUpgradePanel : MonoBehaviour
     public TextMeshProUGUI explainText;
     public GameObject lvPanel;
     public GameObject optionPanel;
+    public GameObject optionValuePanel;
+    public GameObject percentPanel;
     public GameObject materialPanel;
 
     public GameObject[] options;
@@ -269,7 +271,9 @@ public class EquipUpgradePanel : MonoBehaviour
         explainText.gameObject.SetActive(true);
         optionPanel.gameObject.SetActive(false);
         lvPanel.gameObject.SetActive(false);
+        optionValuePanel.gameObject.SetActive(false);
         materialPanel.gameObject.SetActive(false);
+        percentPanel.gameObject.SetActive(false);
         upgradeButton.interactable = false;
         currentToggleNumber = -1;
         for (int i = 0; i < partsToggles.Length; i++)
@@ -279,7 +283,9 @@ public class EquipUpgradePanel : MonoBehaviour
                 explainText.gameObject.SetActive(false);
                 optionPanel.gameObject.SetActive(true);
                 lvPanel.gameObject.SetActive(true);
+                optionValuePanel.gameObject.SetActive(true);
                 materialPanel.gameObject.SetActive(true);
+                percentPanel.gameObject.SetActive(true);
                 currentToggleNumber = i;
                 break;
             }
