@@ -61,7 +61,7 @@ public class GameMgr : MonoBehaviour
         }
         if(Input.GetKeyDown(KeyCode.Escape))
         {
-            StartCoroutine(SaveAndQuit());
+            SaveAndQuit();
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -86,9 +86,9 @@ public class GameMgr : MonoBehaviour
         }
 
     }
-    private IEnumerator SaveAndQuit()
+    public void SaveAndQuit()
     {
-        yield return webTimeMgr.GetEndTime();
+        webTimeMgr.GetEndTime();
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.IO;
+using System.Net.Http;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
@@ -56,7 +57,8 @@ public class WebTimeMgr : MonoBehaviour
     {
         if (network.CheckConnectInternet())
         {
-            StartCoroutine(GetEndTime());
+            //StartCoroutine(GetEndTime());
+            GetEndTime();
         }
         else
         {
@@ -84,22 +86,43 @@ public class WebTimeMgr : MonoBehaviour
         }
     }
 
-    public IEnumerator GetEndTime()    // 종료 시간
+    public void GetEndTime()    // 종료 시간
     {
-        UnityWebRequest request = UnityWebRequest.Get(WorldTimeApiUrl);
-        yield return request.SendWebRequest();
+        //UnityWebRequest request = UnityWebRequest.Get(WorldTimeApiUrl);
+        //yield return request.SendWebRequest();
 
-        if (request.result != UnityWebRequest.Result.Success)
+        //if (request.result != UnityWebRequest.Result.Success)
+        //{
+        //    Debug.Log("시간 가져오기 실패");
+        //}
+        //else
+        //{
+        //    var jsonResult = request.downloadHandler.text;
+        //    var worldTime = JsonUtility.FromJson<WorldTimeApiResponse>(jsonResult);
+        //    DateTime serverTime = DateTime.Parse(worldTime.datetime);
+        //    Debug.Log("서버 시간 (마지막 시간): " + serverTime);
+        //    SaveEndTime(serverTime);
+        //}
+        DateTime endTime = FetchEndTime();
+        Debug.Log("서버 시간 (마지막 시간): " + endTime);
+        SaveEndTime(endTime);
+    }
+    private DateTime FetchEndTime()
+    {
+        using (HttpClient client = new HttpClient())
         {
-            Debug.Log("시간 가져오기 실패");
-        }
-        else
-        {
-            var jsonResult = request.downloadHandler.text;
-            var worldTime = JsonUtility.FromJson<WorldTimeApiResponse>(jsonResult);
-            DateTime serverTime = DateTime.Parse(worldTime.datetime);
-            Debug.Log("서버 시간 (마지막 시간): " + serverTime);
-            SaveEndTime(serverTime);
+            HttpResponseMessage response = client.GetAsync(WorldTimeApiUrl).Result; // 동기적으로 요청을 보냄
+
+            if (response.IsSuccessStatusCode)
+            {
+                string jsonResult = response.Content.ReadAsStringAsync().Result;
+                var worldTime = JsonUtility.FromJson<WorldTimeApiResponse>(jsonResult);
+                return DateTime.Parse(worldTime.datetime);
+            }
+            else
+            {
+                throw new Exception("네트워크 요청 실패: " + response.ReasonPhrase);
+            }
         }
     }
 

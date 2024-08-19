@@ -102,7 +102,6 @@ public class UIMgr : MonoBehaviour
 
     public void ResetMonsterSlider()
     {
-        Debug.Log(GameMgr.Instance.sceneMgr.mainScene.stageId);
         DungeonTimeSlider.gameObject.SetActive(false);
         monsterSlider.maxValue = DataTableMgr.Get<StageTable>(DataTableIds.stage).GetID(GameMgr.Instance.sceneMgr.mainScene.stageId).huntvalue;
         monsterSlider.value = 0;
@@ -195,6 +194,14 @@ public class UIMgr : MonoBehaviour
         {
             //보스전 타임 아웃 : 플레이어 패배 처리
             //메인씬, 던전씬 분기
+            if(GameMgr.Instance.sceneMgr.mainScene != null)
+            {
+
+            }
+            else if (GameMgr.Instance.sceneMgr.dungeonScene != null)
+            {
+
+            }
         }
     }
 }
