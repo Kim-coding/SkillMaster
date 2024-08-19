@@ -15,3 +15,10 @@ public enum Guide_Windows
     Equipment,
     Quest,
 }
+
+public enum Option_Windows
+{
+    Option,
+    Configuration,
+    Exit,
+}

@@ -12,6 +12,7 @@ public class UiWindow : MonoBehaviour
     public GameObject dungeonWindow;
     public GameObject pickUpWindow;
     public CameraMove CameraMove;
+    public GameObject option;
 
     public Button toggleWindowButton;
 
@@ -288,5 +289,9 @@ public class UiWindow : MonoBehaviour
     {
         GameMgr.Instance.playerMgr.playerInfo.dungeonMode = false;
         Dungeon();
+    }
+    public void OnOption()
+    {
+        option.SetActive(true);
     }
 }
