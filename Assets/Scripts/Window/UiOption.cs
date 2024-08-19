@@ -63,8 +63,6 @@ public class UiOption : MonoBehaviour
 
     public void Exit()
     {
-        Time.timeScale = 0f;
-        LoadingPanel.SetActive(true);
         //StartCoroutine(GameMgr.Instance.SaveAndQuit());
         GameMgr.Instance.SaveAndQuit();
     }

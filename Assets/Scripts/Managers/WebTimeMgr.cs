@@ -111,7 +111,7 @@ public class WebTimeMgr : MonoBehaviour
     {
         using (HttpClient client = new HttpClient())
         {
-            HttpResponseMessage response = client.GetAsync(WorldTimeApiUrl).Result; // 동기적으로 요청을 보냄
+            HttpResponseMessage response = client.GetAsync(WorldTimeApiUrl).Result;
 
             if (response.IsSuccessStatusCode)
             {
