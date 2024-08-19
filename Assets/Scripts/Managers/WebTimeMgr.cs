@@ -15,7 +15,9 @@ public class TimeData
 
 public class WebTimeMgr : MonoBehaviour
 {
-    private const string WorldTimeApiUrl = "https://worldtimeapi.org/api/timezone/Etc/UTC";
+    private const string SeoulTimeApiUrl = "https://timeapi.io/api/Time/current/zone?timeZone=Asia/Seoul";
+    private const string UtcTimeApiUrl = "https://worldtimeapi.org/api/timezone/Etc/UTC";
+
     private NetworkConnect network;
     private string dataPath;
     private DateTime startTime;
@@ -68,41 +70,34 @@ public class WebTimeMgr : MonoBehaviour
 
     private IEnumerator GetStartTime()  //시작 시간
     {
-        UnityWebRequest request = UnityWebRequest.Get(WorldTimeApiUrl);
+        UnityWebRequest request = UnityWebRequest.Get(SeoulTimeApiUrl);
         yield return request.SendWebRequest();
-        
-        if(request.result  != UnityWebRequest.Result.Success)
+
+        if (request.result != UnityWebRequest.Result.Success)
         {
-            Debug.Log("시간 가져오기 실패");
+            Debug.Log("시간 가져오기 실패: " + request.error);
         }
         else
         {
             var jsonResult = request.downloadHandler.text;
             var worldTime = JsonUtility.FromJson<WorldTimeApiResponse>(jsonResult);
-            startTime = DateTime.Parse(worldTime.datetime);
-            Debug.Log("서버 시간 (시작 시간): " + startTime);
-            SaveStartTime(startTime);
-            OfflineDuration();
+
+            if (worldTime != null && !string.IsNullOrEmpty(worldTime.dateTime))
+            {
+                startTime = DateTime.Parse(worldTime.dateTime);
+                Debug.Log("서버 시간 (시작 시간): " + startTime);
+                SaveStartTime(startTime);
+                OfflineDuration();
+            }
+            else
+            {
+                Debug.LogError("서버 응답에서 dateTime 필드가 비어있음.");
+            }
         }
     }
 
     public void GetEndTime()    // 종료 시간
     {
-        //UnityWebRequest request = UnityWebRequest.Get(WorldTimeApiUrl);
-        //yield return request.SendWebRequest();
-
-        //if (request.result != UnityWebRequest.Result.Success)
-        //{
-        //    Debug.Log("시간 가져오기 실패");
-        //}
-        //else
-        //{
-        //    var jsonResult = request.downloadHandler.text;
-        //    var worldTime = JsonUtility.FromJson<WorldTimeApiResponse>(jsonResult);
-        //    DateTime serverTime = DateTime.Parse(worldTime.datetime);
-        //    Debug.Log("서버 시간 (마지막 시간): " + serverTime);
-        //    SaveEndTime(serverTime);
-        //}
         DateTime endTime = FetchEndTime();
         Debug.Log("서버 시간 (마지막 시간): " + endTime);
         SaveEndTime(endTime);
@@ -111,13 +106,13 @@ public class WebTimeMgr : MonoBehaviour
     {
         using (HttpClient client = new HttpClient())
         {
-            HttpResponseMessage response = client.GetAsync(WorldTimeApiUrl).Result;
+            HttpResponseMessage response = client.GetAsync(SeoulTimeApiUrl).Result;
 
             if (response.IsSuccessStatusCode)
             {
                 string jsonResult = response.Content.ReadAsStringAsync().Result;
                 var worldTime = JsonUtility.FromJson<WorldTimeApiResponse>(jsonResult);
-                return DateTime.Parse(worldTime.datetime);
+                return DateTime.Parse(worldTime.dateTime);
             }
             else
             {
@@ -182,9 +177,9 @@ public class WebTimeMgr : MonoBehaviour
         }
     }
 
-    [Serializable]
+    [System.Serializable]
     private class WorldTimeApiResponse
     {
-        public string datetime;
+        public string dateTime;
     }
 }
