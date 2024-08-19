@@ -534,10 +534,12 @@ public class UiInventory : MonoBehaviour
         if (selectedSlot.Count == 0)
         {
             confirmDecomposButton.interactable = false;
+            confirmDecomposButton.GetComponentInChildren<TextMeshProUGUI>().text = "선택 완료";
         }
         else
         {
             confirmDecomposButton.interactable = true;
+            confirmDecomposButton.GetComponentInChildren<TextMeshProUGUI>().text = "선택 완료\n(" + selectedSlot.Count + ")";
         }
     }
 
