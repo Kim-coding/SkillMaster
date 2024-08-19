@@ -248,13 +248,13 @@ public class SkillSpawner : MonoBehaviour
         int skill2Lv = AdjustSkillLevel(skillSummonData.skill2Lv);
         int skill3Lv = AdjustSkillLevel(skillSummonData.skill3Lv);
         int skill4Lv = AdjustSkillLevel(skillSummonData.skill4Lv);
-        int skill1per = skillSummonData.skill1per;
-        int skill2per = skillSummonData.skill2per;
-        int skill3per = skillSummonData.skill3per;
-        int skill4per = skillSummonData.skill4per;
+        float skill1per = skillSummonData.skill1per;
+        float skill2per = skillSummonData.skill2per;
+        float skill3per = skillSummonData.skill3per;
+        float skill4per = skillSummonData.skill4per;
 
-        int totalProbability = skill1per + skill2per + skill3per + skill4per;
-        int randomValue = Random.Range(0, totalProbability);
+        float totalProbability = skill1per + skill2per + skill3per + skill4per;
+        float randomValue = Random.Range(0, totalProbability);
 
         if (randomValue < skill1per)
         {

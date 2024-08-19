@@ -190,5 +190,11 @@ public class UIMgr : MonoBehaviour
             timeText.text = "0.0s";
             DungeonTimeSlider.value = 0;
         }
+
+        if(timer == 0 && GameMgr.Instance.sceneMgr.mainScene.bossStage)
+        {
+            //보스전 타임 아웃 : 플레이어 패배 처리
+
+        }
     }
 }

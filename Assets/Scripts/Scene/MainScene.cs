@@ -6,12 +6,12 @@ public class MainScene : MonoBehaviour
 {
     public Spawner spawner;
     public Monster monster;
-    public GameObject[] BossMonsterPrefabs;  //스테이지에서 현재 스폰될 보스를 가지고 와야 함
+    
     public Transform bossSpawnPoint;
     public SpriteRenderer background;
-    //public Stage stage;  // 스폰 되어야 하는 몬스터 등을 가지고 있게 해야함
+    
     private GameObject currentBoss;
-    private bool bossStage = false;
+    public bool bossStage = false;
     private MonsterPool monsterPool;
 
     private StageData stageData;
@@ -54,6 +54,14 @@ public class MainScene : MonoBehaviour
     {
         monsterPool = GameMgr.Instance.GetMonsterPool();
         playerCharacter = GameMgr.Instance.playerMgr.characters[0];
+    }
+
+    private void Update()
+    {
+        if(bossStage)  //TO-DO : MainScene에서 TimeSlider 붙이기.
+        {
+            GameMgr.Instance.uiMgr.TimeSliderUpdate();
+        }
     }
 
     public GameObject[] GetMonsters()
@@ -143,10 +151,8 @@ public class MainScene : MonoBehaviour
         GameMgr.Instance.soundMgr.PlaySFX("Boss");
 
         playerCharacter.GetComponent<PlayerSkills>().SetList();
-
         GameMgr.Instance.uiMgr.DungeonTimeSlider.gameObject.SetActive(true);
         GameMgr.Instance.uiMgr.ResetTimer();
-        GameMgr.Instance.uiMgr.TimeSliderUpdate();
     }
 
     public void RestartStage() //스테이지 재시작
