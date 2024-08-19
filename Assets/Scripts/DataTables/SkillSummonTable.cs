@@ -11,13 +11,13 @@ public class SkillSummonData
     public int summonID { get; set; }
     public int CbnUpgradeLv { get; set; }
     public int skill1Lv { get; set; }
-    public int skill1per { get; set; }
+    public float skill1per { get; set; }
     public int skill2Lv { get; set; }
-    public int skill2per { get; set; }
+    public float skill2per { get; set; }
     public int skill3Lv { get; set; }
-    public int skill3per { get; set; }
+    public float skill3per { get; set; }
     public int skill4Lv { get; set; }
-    public int skill4per { get; set; }
+    public float skill4per { get; set; }
 
 }
 
