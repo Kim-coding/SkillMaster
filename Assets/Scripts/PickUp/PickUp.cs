@@ -23,22 +23,25 @@ public class PickUp : MonoBehaviour
     private float SS_percent;
     private float SSS_percent;
 
+    public GameObject probabilityGuidancePanel;
     public TextMeshProUGUI gachaTicketText;
     public TextMeshProUGUI gachaLevelText;
     public TextMeshProUGUI gachaExpText;
     public TextMeshProUGUI rewardText;
     public Image gachaExp;
     public Button explainButton;
+    public Button probabilityGuidanceButton;
 
     private void Awake()
     {
         pickUpButton_1.onClick.AddListener(() => { PickUpItem(1); });
         pickUpButton_10.onClick.AddListener(() => { PickUpItem(10); });
         pickUpButton_30.onClick.AddListener(() => { PickUpItem(30); });
+        explainButton.onClick.AddListener(OpenProbabilityGuidance);
+        probabilityGuidanceButton.onClick.AddListener(CloseProbabilityGuidance);
 
         var playerInfo = GameMgr.Instance.playerMgr.playerInfo;
         UIUpdate(playerInfo.gachaLevel, playerInfo.gachaExp, playerInfo.gachaMaxExp, DataTableMgr.Get<GachaTable>(DataTableIds.gachaLevel).GetID(playerInfo.gachaLevel).gachaRequestValue);
-
     }
 
     public void PickUpItem(int i)
@@ -258,5 +261,15 @@ public class PickUp : MonoBehaviour
             gachaExpText.text = exp.ToString() + " / MAX";
         }
         rewardText.text = rewardValue.ToString(); 
+    }
+
+    private void OpenProbabilityGuidance()
+    {
+        probabilityGuidancePanel.SetActive(true);
+    }
+
+    private void CloseProbabilityGuidance()
+    {
+        probabilityGuidancePanel.SetActive(false);
     }
 }

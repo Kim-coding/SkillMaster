@@ -191,10 +191,10 @@ public class UIMgr : MonoBehaviour
             DungeonTimeSlider.value = 0;
         }
 
-        if(timer == 0 && GameMgr.Instance.sceneMgr.mainScene.bossStage)
+        if(timer == 0)
         {
             //보스전 타임 아웃 : 플레이어 패배 처리
-
+            //메인씬, 던전씬 분기
         }
     }
 }
