@@ -66,7 +66,7 @@ public class SkillSpawner : MonoBehaviour
         }
         else
         {
-            SpawnSkill();
+            SpawnSkill(1);
         }
 
         Destroy(virtualObject);

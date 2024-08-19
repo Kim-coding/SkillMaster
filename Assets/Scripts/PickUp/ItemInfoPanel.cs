@@ -1,13 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ItemInfoPanel : MonoBehaviour
 {
     public Image icon;
+    public Image rarityColor;
     public TextMeshProUGUI itemName;
     public TextMeshProUGUI itemType;
     public TextMeshProUGUI itemRarity;
@@ -37,6 +35,32 @@ public class ItemInfoPanel : MonoBehaviour
             optiontexts.gameObject.SetActive(false);
         }
         icon.sprite = equip.icon;
+        Color newColor = Color.white;
+        switch (equip.rarerityType)
+        {
+            case RarerityType.None:
+                ColorUtility.TryParseHtmlString("#C4C4C4", out newColor);
+                break;
+            case RarerityType.C:
+                ColorUtility.TryParseHtmlString("#97846B", out newColor);
+                break;
+            case RarerityType.B:
+                ColorUtility.TryParseHtmlString("#6AAC8D", out newColor);
+                break;
+            case RarerityType.A:
+                ColorUtility.TryParseHtmlString("#A4BDFF", out newColor);
+                break;
+            case RarerityType.S:
+                ColorUtility.TryParseHtmlString("#C188D7", out newColor);
+                break;
+            case RarerityType.SS:
+                ColorUtility.TryParseHtmlString("#F4C56B", out newColor);
+                break;
+            case RarerityType.SSS:
+                ColorUtility.TryParseHtmlString("#C74B46", out newColor);
+                break;
+        }
+        rarityColor.color = newColor;
         itemName.text = equip.itemName;
         string typeName = string.Empty;
         switch(equip.equipType)
@@ -66,6 +90,10 @@ public class ItemInfoPanel : MonoBehaviour
 
         itemType.text = "Type : " + typeName;
         itemRarity.text = "Rarity : " + equip.rarerityType;
+        if(equip.rarerityType == RarerityType.None)
+        {
+            itemRarity.text = "Rarity : " + "±âº»";
+        }
         int optioncount = 0;
         foreach (var option in equip.EquipOption.currentOptions)
         {
