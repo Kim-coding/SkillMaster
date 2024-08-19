@@ -14,8 +14,21 @@ public class UiInventory : MonoBehaviour
     private readonly System.Comparison<EquipItemSlot>[] comparison =
 {
         (x, y) => x.currentEquip.itemNumber.CompareTo(y.currentEquip.itemNumber),
-        (x, y) => x.currentEquip.equipType.CompareTo(y.currentEquip.equipType),
-        (x, y) => y.currentEquip.rarerityType.CompareTo(x.currentEquip.rarerityType),
+        //(x, y) => x.currentEquip.equipType.CompareTo(y.currentEquip.equipType),
+        //(x, y) => y.currentEquip.rarerityType.CompareTo(x.currentEquip.rarerityType),
+        (x, y) => { int rarityComparison = y.currentEquip.rarerityType.CompareTo(x.currentEquip.rarerityType);
+                        if (rarityComparison != 0)
+                        {
+                             return rarityComparison;
+                        }
+                              int equipTypeComparison = x.currentEquip.equipType.CompareTo(y.currentEquip.equipType);
+
+                         if (equipTypeComparison != 0)
+                         {
+                             return equipTypeComparison;
+                         }
+                             return x.currentEquip.itemNumber.CompareTo(y.currentEquip.itemNumber);
+        }
     };
 
     private readonly System.Func<EquipItemSlot, bool>[] filter =
@@ -28,7 +41,8 @@ public class UiInventory : MonoBehaviour
         x => x.currentEquip.equipType == EquipType.Weapon,
         x => x.currentEquip.equipType == EquipType.Cloak,
     };
-
+    public Toggle ascendingToggle;
+    public TextMeshProUGUI ascendingToggleText;
 
     public ToggleGroup filteringOptions;
     public Toggle[] filteringToggles;
@@ -99,7 +113,14 @@ public class UiInventory : MonoBehaviour
         equipItemSlots.Sort(comparison[sortDropDown.value]);
         foreach (var slot in equipItemSlots)
         {
-            slot.transform.SetAsLastSibling();
+            if (ascendingToggle.isOn)
+            {
+                slot.transform.SetAsLastSibling();
+            }
+            else
+            {
+                slot.transform.SetAsFirstSibling();
+            }
         }
     }
 
@@ -141,7 +162,7 @@ public class UiInventory : MonoBehaviour
         {
             if (toggle.isOn)
             {
-                SetToggleColor(toggle, new Color(0,0,0,0));
+                SetToggleColor(toggle, new Color(0, 0, 0, 0));
             }
             else
             {
@@ -232,6 +253,8 @@ public class UiInventory : MonoBehaviour
 
     private void Awake()
     {
+        ascendingToggle.onValueChanged.AddListener(AscendingValueChange);
+
         foreach (Toggle toggle in filteringToggles)
         {
             toggle.onValueChanged.AddListener(OnFilteringToggleValueChanged);
@@ -276,6 +299,19 @@ public class UiInventory : MonoBehaviour
         FilteringItemSlots();
     }
 
+    private void AscendingValueChange(bool isOn)
+    {
+        if(ascendingToggle.isOn)
+        {
+            ascendingToggleText.text = "오름차순";
+        }
+        else
+        {
+            ascendingToggleText.text = "내림차순";
+        }
+        SortItemSlots();
+    }
+
     private void OnInventoryModeToggleValueChanged(bool isOn)
     {
         bool mode = true;
@@ -285,7 +321,7 @@ public class UiInventory : MonoBehaviour
             if (inventoryModeToggles[i].isOn)
             {
                 inventoryModeToggleNumber = i;
-                if(i == 0)
+                if (i == 0)
                 {
                     mode = true;
                 }
@@ -356,7 +392,7 @@ public class UiInventory : MonoBehaviour
     {
         foreach (var slot in normalItemSlots)
         {
-            if(slot.currentItem.itemNumber == item.itemNumber)
+            if (slot.currentItem.itemNumber == item.itemNumber)
             {
                 slot.currentItem.itemValue += value;
                 slot.itemCountUpdate();
@@ -441,7 +477,7 @@ public class UiInventory : MonoBehaviour
 
     public void Decompos(int reinforcevalue)
     {
-        foreach(var item in selectedSlot)
+        foreach (var item in selectedSlot)
         {
             GameMgr.Instance.playerMgr.playerinventory.RemoveEquipItem(item.currentEquip);
             equipItemSlots.Remove(item);
@@ -482,9 +518,9 @@ public class UiInventory : MonoBehaviour
         List<EquipItemSlot> slots = new List<EquipItemSlot>();
         foreach (var item in equipItemSlots)
         {
-            if(item.currentEquip.equipType == equipType)
+            if (item.currentEquip.equipType == equipType)
             {
-                if(item.currentEquip.rarerityType == rarerity)
+                if (item.currentEquip.rarerityType == rarerity)
                 {
                     slots.Add(item);
                 }
@@ -495,8 +531,8 @@ public class UiInventory : MonoBehaviour
 
     public void DecomposButtonUpdate()
     {
-        if(selectedSlot.Count == 0) 
-        { 
+        if (selectedSlot.Count == 0)
+        {
             confirmDecomposButton.interactable = false;
         }
         else
