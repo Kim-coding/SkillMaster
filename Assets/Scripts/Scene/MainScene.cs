@@ -143,6 +143,10 @@ public class MainScene : MonoBehaviour
         GameMgr.Instance.soundMgr.PlaySFX("Boss");
 
         playerCharacter.GetComponent<PlayerSkills>().SetList();
+
+        GameMgr.Instance.uiMgr.DungeonTimeSlider.gameObject.SetActive(true);
+        GameMgr.Instance.uiMgr.ResetTimer();
+        GameMgr.Instance.uiMgr.TimeSliderUpdate();
     }
 
     public void RestartStage() //스테이지 재시작

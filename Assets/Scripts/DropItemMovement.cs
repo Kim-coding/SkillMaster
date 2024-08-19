@@ -41,8 +41,7 @@ public class DropItemMovement : MonoBehaviour
             .SetEase(Ease.InOutQuad)
             .OnUpdate(() =>
             {
-                if (uiWindow.enhanceWindow.activeSelf || 
-                    uiWindow.invenWindow.activeSelf || 
+                if (uiWindow.invenWindow.activeSelf || 
                     uiWindow.dungeonWindow.activeSelf || 
                     uiWindow.pickUpWindow.activeSelf)
                 {

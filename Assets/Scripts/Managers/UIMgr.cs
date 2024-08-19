@@ -23,7 +23,7 @@ public class UIMgr : MonoBehaviour
     public Slider DungeonTimeSlider;
     public TextMeshProUGUI timeText;
     private float timer;
-    private float maxTime = 30f;
+    private float maxTime;
 
     private BigInteger currentMaxDamage;
     public TextMeshProUGUI dungeonScoreText;
@@ -56,6 +56,15 @@ public class UIMgr : MonoBehaviour
             goldText.text = new BigInteger(DataTableMgr.Get<GoldDungeonTable>(DataTableIds.goldDungeon).GetID(playerInfo.goldDungeonLv).reward_value).ToStringShort();
             diaText.text = DataTableMgr.Get<DiaDungeonTable>(DataTableIds.diaDungeon).GetID(playerInfo.diaDungeonLv).reward_value;
         }
+        if(GameMgr.Instance.sceneMgr.dungeonScene != null)
+        {
+            maxTime = DataTableMgr.Get<DiaDungeonTable>(DataTableIds.diaDungeon).GetID(playerInfo.diaDungeonLv).timelimt;
+        }
+        if (GameMgr.Instance.sceneMgr.mainScene != null)
+        {
+            maxTime = DataTableMgr.Get<StageTable>(DataTableIds.stage).GetID(GameMgr.Instance.sceneMgr.mainScene.stageId).timelimit;
+        }
+
     }
 
     public void AllUIUpdate(BigInteger g, BigInteger d)
@@ -93,6 +102,9 @@ public class UIMgr : MonoBehaviour
 
     public void ResetMonsterSlider()
     {
+        Debug.Log(GameMgr.Instance.sceneMgr.mainScene.stageId);
+        DungeonTimeSlider.gameObject.SetActive(false);
+        monsterSlider.maxValue = DataTableMgr.Get<StageTable>(DataTableIds.stage).GetID(GameMgr.Instance.sceneMgr.mainScene.stageId).huntvalue;
         monsterSlider.value = 0;
     }
     public void StageUpdate(int s)

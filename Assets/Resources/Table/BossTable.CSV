@@ -1,5 +1,5 @@
 Monsterid,Damage,Health,GoldValue,DiaValue,Reward1,Reward1Value,Asset
-30001,17,75,500,1000,-1,-1,Spider2
+30001,17,75,500,-1,-1,-1,Spider2
 30002,19,88,520,-1,-1,-1,Spider2
 30003,21,101,580,-1,-1,-1,Spider2
 30004,23,116,680,-1,-1,-1,Spider2

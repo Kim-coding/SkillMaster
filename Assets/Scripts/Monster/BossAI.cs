@@ -3,7 +3,6 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.UI;
-using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class BossAI : MonoBehaviour, IAnimation
 {
@@ -19,6 +18,8 @@ public class BossAI : MonoBehaviour, IAnimation
     public BossAttack bossAttack;
 
     public Image bossHp;
+    private Transform hpCanvas;
+
     [HideInInspector]
     public bool onDeath = false;
 
@@ -44,7 +45,15 @@ public class BossAI : MonoBehaviour, IAnimation
 
     public void UpdateHpBar(float f)
     {
-        bossHp.fillAmount = f;
+        if(bossHp != null)
+        {
+            bossHp.fillAmount = f;
+        }
+        if(GameMgr.Instance.uiMgr.monsterSlider != null)
+        {
+            GameMgr.Instance.uiMgr.monsterSlider.maxValue = 1f;
+            GameMgr.Instance.uiMgr.monsterSlider.value = f;
+        }
     }
 
     private void OnEnable()
@@ -66,16 +75,21 @@ public class BossAI : MonoBehaviour, IAnimation
 
         if (target != null)
         {
-            var hpCanvas = bossHp.transform.parent;
+            if(bossHp != null)
+            {
+                hpCanvas = bossHp.transform.parent;
+            }
             if ((target.transform.position - transform.position).x >= 0)
             {
                 transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y);
-                hpCanvas.transform.localScale = new Vector3(Mathf.Abs(hpCanvas.transform.localScale.x), hpCanvas.transform.localScale.y);
+                if(hpCanvas != null)
+                    hpCanvas.transform.localScale = new Vector3(Mathf.Abs(hpCanvas.transform.localScale.x), hpCanvas.transform.localScale.y);
             }
             else
             {
                 transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x) * -1, transform.localScale.y);
-                hpCanvas.transform.localScale = new Vector3(Mathf.Abs(hpCanvas.transform.localScale.x) * -1, hpCanvas.transform.localScale.y);
+                if (hpCanvas != null)
+                    hpCanvas.transform.localScale = new Vector3(Mathf.Abs(hpCanvas.transform.localScale.x) * -1, hpCanvas.transform.localScale.y);
             }
         }
 
