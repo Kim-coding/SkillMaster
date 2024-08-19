@@ -15,6 +15,9 @@ public class EquipUpgradePanel : MonoBehaviour
     public TextMeshProUGUI currentLvText;
     private int currentLv;
     public TextMeshProUGUI nextLvText;
+    public TextMeshProUGUI currentOptionValueText;
+    public TextMeshProUGUI nextOptionValueText;
+
 
     public TextMeshProUGUI explainText;
     public GameObject lvPanel;
@@ -45,6 +48,7 @@ public class EquipUpgradePanel : MonoBehaviour
 
     private int currentToggleNumber = -1;
     private Equip selectedEquip;
+    private bool[] limits = new bool[6];
     private void Awake()
     {
         exitButton.onClick.AddListener(ClosePanel);
@@ -71,12 +75,7 @@ public class EquipUpgradePanel : MonoBehaviour
     private void EquipUpgradePanelUpdate()
     {
         toggleCheck();
-        currentLevels[0].text = "Lv " + GameMgr.Instance.playerMgr.playerinventory.hairSlotUpgrade;
-        currentLevels[1].text = "Lv " + GameMgr.Instance.playerMgr.playerinventory.faceSlotUpgrade;
-        currentLevels[2].text = "Lv " + GameMgr.Instance.playerMgr.playerinventory.clothSlotUpgrade;
-        currentLevels[3].text = "Lv " + GameMgr.Instance.playerMgr.playerinventory.pantSlotUpgrade;
-        currentLevels[4].text = "Lv " + GameMgr.Instance.playerMgr.playerinventory.weaponSlotUpgrade;
-        currentLevels[5].text = "Lv " + GameMgr.Instance.playerMgr.playerinventory.cloakSlotUpgrade;
+        LimitCheck();
 
         foreach (var option in options)
         {
@@ -118,17 +117,24 @@ public class EquipUpgradePanel : MonoBehaviour
                     selectedEquip = GameMgr.Instance.playerMgr.playerinventory.playerCloak;
                     break;
             }
+
+            var currentUpgradeData = DataTableMgr.Get<EquipUpgradeTable>(DataTableIds.equipmentUpgrade).GetID(currentLv);
+
             currentLvText.text = "Lv. " + currentLv;
+            currentOptionValueText.text = "可记 惑铰伏 : " + currentUpgradeData.option_raise.ToString();
+
             if (currentLv == 60)
             {
                 nextLvText.text = "Lv. Max";
+                nextOptionValueText.text = "Max";
             }
             else
             {
                 nextLvText.text = "Lv. " + (currentLv + 1);
+                var nextUpgradeData = DataTableMgr.Get<EquipUpgradeTable>(DataTableIds.equipmentUpgrade).GetID(currentLv+1);
+                nextOptionValueText.text = "可记 惑铰伏 : " + nextUpgradeData.option_raise.ToString();
             }
 
-            var currentUpgradeData = DataTableMgr.Get<EquipUpgradeTable>(DataTableIds.equipmentUpgrade).GetID(currentLv);
 
             for (int i = 0; i < selectedEquip.EquipOption.currentOptions.Count; i++)
             {
@@ -174,6 +180,34 @@ public class EquipUpgradePanel : MonoBehaviour
                 if (currentLv == 60)
                 {
                     nextPercent[i].text = "Max";
+                }
+                else if (limits[currentToggleNumber])
+                {
+                    int lv = 0;
+                    switch (currentToggleNumber)
+                    {
+                        case 0:
+                            lv = EquipRarityCheck(GameMgr.Instance.uiMgr.uiInventory.hairSlot.currentEquip.rarerityType);
+                            break;
+                        case 1:
+                            lv = EquipRarityCheck(GameMgr.Instance.uiMgr.uiInventory.faceSlot.currentEquip.rarerityType);
+                            break;
+                        case 2:
+                            lv = EquipRarityCheck(GameMgr.Instance.uiMgr.uiInventory.clothSlot.currentEquip.rarerityType);
+                            break;
+                        case 3:
+                            lv = EquipRarityCheck(GameMgr.Instance.uiMgr.uiInventory.pantSlot.currentEquip.rarerityType);
+                            break;
+                        case 4:
+                            lv = EquipRarityCheck(GameMgr.Instance.uiMgr.uiInventory.weaponSlot.currentEquip.rarerityType);
+                            break;
+                        case 5:
+                            lv = EquipRarityCheck(GameMgr.Instance.uiMgr.uiInventory.cloakSlot.currentEquip.rarerityType);
+                            break;
+                    }
+                    var limitOption_raise = DataTableMgr.Get<EquipUpgradeTable>(DataTableIds.equipmentUpgrade).GetID(lv).option_raise;
+                    currentPercent[i].text = (selectedEquip.EquipOption.currentOptions[i].Item2 * limitOption_raise).ToString() + "%";
+                    nextPercent[i].text = currentPercent[i].text;
                 }
                 else
                 {
@@ -354,12 +388,127 @@ public class EquipUpgradePanel : MonoBehaviour
             GameMgr.Instance.playerMgr.playerinventory.upgradeFailCount[currentToggleNumber]++;
         }
         EquipUpgradePanelUpdate();
-
+        GameMgr.Instance.uiMgr.uiInventory.SlotLevelUpdate();
         SaveLoadSystem.Save();
     }
 
     public void ClosePanel()
     {
         gameObject.SetActive(false);
+    }
+
+    private int EquipRarityCheck(RarerityType rarerity)
+    {
+        switch (rarerity)
+        {
+            case RarerityType.C:
+                return 10;
+            case RarerityType.B:
+                return 20;
+            case RarerityType.A:
+                return 30;
+            case RarerityType.S:
+                return 40;
+            case RarerityType.SS:
+                return 50;
+            case RarerityType.SSS:
+                return 60;
+        }
+        return int.MaxValue;
+    }
+
+
+    private void LimitCheck()
+    {
+        var hairRare = EquipRarityCheck(GameMgr.Instance.uiMgr.uiInventory.hairSlot.currentEquip.rarerityType);
+        var hairLv = GameMgr.Instance.playerMgr.playerinventory.hairSlotUpgrade;
+        if (hairLv >= hairRare)
+        {
+            currentLevels[0].text = "Lv " + hairRare;
+            currentLevels[0].color = Color.red;
+            limits[0] = true;
+        }
+        else
+        {
+            currentLevels[0].text = "Lv " + hairLv;
+            currentLevels[0].color = Color.black;
+            limits[0] = false;
+        }
+
+        var faceRare = EquipRarityCheck(GameMgr.Instance.uiMgr.uiInventory.faceSlot.currentEquip.rarerityType);
+        var faceLv = GameMgr.Instance.playerMgr.playerinventory.faceSlotUpgrade;
+        if (faceLv >= faceRare)
+        {
+            currentLevels[1].text = "Lv " + faceRare;
+            currentLevels[1].color = Color.red;
+            limits[1] = true;
+        }
+        else
+        {
+            currentLevels[1].text = "Lv " + faceLv;
+            currentLevels[1].color = Color.black;
+            limits[1] = false;
+        }
+
+        var clothRare = EquipRarityCheck(GameMgr.Instance.uiMgr.uiInventory.clothSlot.currentEquip.rarerityType);
+        var clothLv = GameMgr.Instance.playerMgr.playerinventory.clothSlotUpgrade;
+        if (clothLv >= clothRare)
+        {
+            currentLevels[2].text = "Lv " + clothRare;
+            currentLevels[2].color = Color.red;
+            limits[2] = true;
+
+        }
+        else
+        {
+            currentLevels[2].text = "Lv " + clothLv;
+            currentLevels[2].color = Color.black;
+            limits[2] = false;
+        }
+
+        var pantsRare = EquipRarityCheck(GameMgr.Instance.uiMgr.uiInventory.pantSlot.currentEquip.rarerityType);
+        var pantsLv = GameMgr.Instance.playerMgr.playerinventory.pantSlotUpgrade;
+        if (pantsLv >= pantsRare)
+        {
+            currentLevels[3].text = "Lv " + pantsRare;
+            currentLevels[3].color = Color.red;
+            limits[3] = true;
+        }
+        else
+        {
+            currentLevels[3].text = "Lv " + pantsLv;
+            currentLevels[3].color = Color.black;
+            limits[3] = false;
+        }
+
+        var weaponRare = EquipRarityCheck(GameMgr.Instance.uiMgr.uiInventory.weaponSlot.currentEquip.rarerityType);
+        var weaponLv = GameMgr.Instance.playerMgr.playerinventory.weaponSlotUpgrade;
+        if (weaponLv >= weaponRare)
+        {
+            currentLevels[4].text = "Lv " + weaponRare;
+            currentLevels[4].color = Color.red;
+            limits[4] = true;
+        }
+        else
+        {
+            currentLevels[4].text = "Lv " + weaponLv;
+            currentLevels[4].color = Color.black;
+            limits[4] = false;
+        }
+
+        var cloakRare = EquipRarityCheck(GameMgr.Instance.uiMgr.uiInventory.cloakSlot.currentEquip.rarerityType);
+        var cloakLv = GameMgr.Instance.playerMgr.playerinventory.cloakSlotUpgrade;
+        if (cloakLv >= cloakRare)
+        {
+            currentLevels[5].text = "Lv " + cloakRare;
+            currentLevels[5].color = Color.red;
+            limits[5] = true;
+        }
+        else
+        {
+            currentLevels[5].text = "Lv " + cloakLv;
+            currentLevels[5].color = Color.black;
+            limits[5] = false;
+        }
     }
 }

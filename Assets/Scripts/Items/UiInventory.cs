@@ -260,7 +260,7 @@ public class UiInventory : MonoBehaviour
         //≈∞ »£√‚
 
         AllSlotUpdate();
-
+        SlotLevelUpdate();
     }
     private void OnFilteringToggleValueChanged(bool isOn)
     {
@@ -505,6 +505,15 @@ public class UiInventory : MonoBehaviour
         }
     }
 
+    public void SlotLevelUpdate()
+    {
+        hairSlot.SlotLevelUpdate();
+        faceSlot.SlotLevelUpdate();
+        clothSlot.SlotLevelUpdate();
+        pantSlot.SlotLevelUpdate();
+        weaponSlot.SlotLevelUpdate();
+        cloakSlot.SlotLevelUpdate();
+    }
     public void OpenEquipUpgradePanel()
     {
         GameMgr.Instance.uiMgr.uiWindow.equipUpgradePanel.gameObject.SetActive(true);

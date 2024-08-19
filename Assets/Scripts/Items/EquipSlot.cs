@@ -1,14 +1,16 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class EquipSlot : MonoBehaviour
 {
-    public int slotIndex {  get; set; }
+    public int slotIndex { get; set; }
     public Button button;
 
     public Image itemImage;
     public Equip currentEquip = null;
     public Image rarityColor;
+    public TextMeshProUGUI slotLevel;
 
     public bool baseEquip = true;
 
@@ -28,7 +30,7 @@ public class EquipSlot : MonoBehaviour
             Color newColor = Color.white;
             switch (equipData.rarerityType)
             {
-                case RarerityType.None :
+                case RarerityType.None:
                     ColorUtility.TryParseHtmlString("#C4C4C4", out newColor);
                     break;
                 case RarerityType.C:
@@ -53,7 +55,7 @@ public class EquipSlot : MonoBehaviour
 
             rarityColor.color = newColor;
         }
-
+        SlotLevelUpdate();
     }
 
     public void SetEmpty()
@@ -65,8 +67,12 @@ public class EquipSlot : MonoBehaviour
 
     public void OnbuttonClick()
     {
+        if (baseEquip)
+        {
+            return;
+        }
         GameMgr.Instance.uiMgr.uiWindow.currentEquipmentPanel.gameObject.SetActive(true);
-        GameMgr.Instance.uiMgr.uiWindow.currentEquipmentPanel.SetItemInfoPanel(currentEquip,this);
+        GameMgr.Instance.uiMgr.uiWindow.currentEquipmentPanel.SetItemInfoPanel(currentEquip, this);
     }
 
 
@@ -154,6 +160,118 @@ public class EquipSlot : MonoBehaviour
         baseEquip = true;
         equip.currentEquip = false;
         GameMgr.Instance.uiMgr.uiInventory.InstantiateSlot(equip);
+        SlotLevelUpdate();
     }
 
+
+    public void SlotLevelUpdate()
+    {
+        var Lv = EquipRarityCheck(currentEquip.rarerityType);
+        Color LvColor = new Color(128 / 255f, 128 / 255f, 128 / 255f);
+        switch (currentEquip.equipType)
+        {
+
+            case EquipType.None:
+                break;
+            case EquipType.Hair:
+                var hair = GameMgr.Instance.playerMgr.playerinventory.hairSlotUpgrade;
+                if (hair >= Lv)
+                {
+                    slotLevel.text = "Lv." + Lv.ToString();
+                    slotLevel.color = Color.red;
+                }
+                else
+                {
+                    slotLevel.text = "Lv." + hair.ToString();
+                    slotLevel.color = LvColor;
+                }
+                break;
+            case EquipType.Face:
+                var face = GameMgr.Instance.playerMgr.playerinventory.faceSlotUpgrade;
+                if (face >= Lv)
+                {
+                    slotLevel.text = "Lv." + Lv.ToString();
+                    slotLevel.color = Color.red;
+                }
+                else
+                {
+                    slotLevel.text = "Lv." + face.ToString();
+                    slotLevel.color = LvColor;
+                }
+                break;
+            case EquipType.Cloth:
+                var cloth = GameMgr.Instance.playerMgr.playerinventory.clothSlotUpgrade;
+                if (cloth >= Lv)
+                {
+                    slotLevel.text = "Lv." + Lv.ToString();
+                    slotLevel.color = Color.red;
+                }
+                else
+                {
+                    slotLevel.text = "Lv." + cloth.ToString();
+                    slotLevel.color = LvColor;
+                }
+                break;
+            case EquipType.Pants:
+                var pants = GameMgr.Instance.playerMgr.playerinventory.pantSlotUpgrade;
+                if (pants >= Lv)
+                {
+                    slotLevel.text = "Lv." + Lv.ToString();
+                    slotLevel.color = Color.red;
+                }
+                else
+                {
+                    slotLevel.text = "Lv." + pants.ToString();
+                    slotLevel.color = LvColor;
+                }
+                break;
+            case EquipType.Weapon:
+                var weapon = GameMgr.Instance.playerMgr.playerinventory.weaponSlotUpgrade;
+                if (weapon >= Lv)
+                {
+                    slotLevel.text = "Lv." + Lv.ToString();
+                    slotLevel.color = Color.red;
+                }
+                else
+                {
+                    slotLevel.text = "Lv." + weapon.ToString();
+                    slotLevel.color = LvColor;
+                }
+                break;
+            case EquipType.Cloak:
+                var cloak = GameMgr.Instance.playerMgr.playerinventory.cloakSlotUpgrade;
+                if (cloak >= Lv)
+                {
+                    slotLevel.text = "Lv." + Lv.ToString();
+                    slotLevel.color = Color.red;
+                }
+                else
+                {
+                    slotLevel.text = "Lv." + cloak.ToString();
+                    slotLevel.color = LvColor;
+                }
+                break;
+        }
+    }
+
+
+    private int EquipRarityCheck(RarerityType rarerity)
+    {
+        switch (rarerity)
+        {
+            case RarerityType.C:
+                return 10;
+            case RarerityType.B:
+                return 20;
+            case RarerityType.A:
+                return 30;
+            case RarerityType.S:
+                return 40;
+            case RarerityType.SS:
+                return 50;
+            case RarerityType.SSS:
+                return 60;
+        }
+        return int.MaxValue;
+    }
 }
