@@ -31,6 +31,7 @@ public class SavePlayData
 
     //Æ©Åä¸®¾ó
     public int tutorialID;
+    public int tutorialIndex;
 }
 
 public abstract class SaveData

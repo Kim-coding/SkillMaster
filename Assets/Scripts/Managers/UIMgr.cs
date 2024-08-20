@@ -11,8 +11,7 @@ public class UIMgr : MonoBehaviour
     public UiEnhance uiEnhance;
     public UiGuideQuest uiGuideQuest;
     public UiInventory uiInventory;
-    public UiBattleTutorial uiBattleTutorial;
-
+    public UiTutorial uiTutorial;
 
     /// <summary>
     /// 밑에것들 정리 필요
@@ -195,7 +194,6 @@ public class UIMgr : MonoBehaviour
         if(timer == 0)
         {
             //보스전 타임 아웃 : 플레이어 패배 처리
-            //메인씬, 던전씬 분기
             if(GameMgr.Instance.sceneMgr.mainScene != null)
             {
 

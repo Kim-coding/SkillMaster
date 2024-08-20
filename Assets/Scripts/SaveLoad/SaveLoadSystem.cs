@@ -59,6 +59,8 @@ public class SaveLoadSystem
             CurrSaveData.savePlay.questID = GameMgr.Instance.sceneMgr.dungeonScene.questId;
             CurrSaveData.savePlay.questValue = GameMgr.Instance.sceneMgr.dungeonScene.questValue;
         }
+        CurrSaveData.savePlay.tutorialID = GameMgr.Instance.uiMgr.uiTutorial.currentTutorialID;
+        CurrSaveData.savePlay.tutorialIndex = GameMgr.Instance.uiMgr.uiTutorial.currentTutorial;
         CurrSaveData.savePlay.saveCurrency = GameMgr.Instance.playerMgr.currency;
         CurrSaveData.savePlay.savePlayerEnhance = GameMgr.Instance.playerMgr.playerEnhance;
         CurrSaveData.savePlay.savePlayerInfomation = GameMgr.Instance.playerMgr.playerInfo;
