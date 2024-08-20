@@ -106,6 +106,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -114,9 +127,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 10
+        y: 43
         width: 32
-        height: 32
+        height: 31
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -135,7 +148,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 1
+        y: 9
         width: 1
         height: 3
       alignment: 0
@@ -156,7 +169,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 1
+        y: 9
         width: 1
         height: 2
       alignment: 0
@@ -166,7 +179,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9affc6b4ed8ba7d4489bf1fcf79f3066
+      spriteID: 9e5c0951c3416ac45884b5340d35c5a5
       internalID: -726244560
       vertices: []
       indices: 
@@ -186,6 +199,7 @@ TextureImporter:
       Eye_Basic_0: -613020650
       Eye_Basic_1: -1125657751
       Eye_Basic_2: -726244560
+      Eye_Basic_3: 237024060
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
