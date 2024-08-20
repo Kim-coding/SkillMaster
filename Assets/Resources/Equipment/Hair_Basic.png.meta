@@ -113,12 +113,12 @@ TextureImporter:
       name: Hair_Basic_0
       rect:
         serializedVersion: 2
-        x: 8
-        y: 12
-        width: 15
-        height: 9
-      alignment: 9
-      pivot: {x: 0.5242865, y: 0.55262333}
+        x: 0
+        y: 43
+        width: 32
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -126,6 +126,27 @@ TextureImporter:
       bones: []
       spriteID: cb5eb336c4d08e8488ed307b07807383
       internalID: -313006120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hair_Basic_1
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 13
+        width: 19
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e8f415bd11c79d4ea4973b6d8d43814
+      internalID: -812563005
       vertices: []
       indices: 
       edges: []
@@ -142,6 +163,7 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       Hair_Basic_0: -313006120
+      Hair_Basic_1: -812563005
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

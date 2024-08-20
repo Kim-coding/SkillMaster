@@ -113,12 +113,12 @@ TextureImporter:
       name: Weapon_Basic_0
       rect:
         serializedVersion: 2
-        x: 13
-        y: 8
-        width: 7
-        height: 12
-      alignment: 9
-      pivot: {x: 0.5052041, y: 0.16302371}
+        x: 0
+        y: 43
+        width: 32
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -126,6 +126,27 @@ TextureImporter:
       bones: []
       spriteID: 2690a65ce0c0db54097a65ce394fc96b
       internalID: 430131191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Weapon_Basic_1
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 8
+        width: 9
+        height: 13
+      alignment: 9
+      pivot: {x: 0.4999998, y: 0.1436739}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11158b5e9a4dc6a429500a2d44e17b7a
+      internalID: -384782534
       vertices: []
       indices: 
       edges: []
@@ -142,6 +163,7 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       Weapon_Basic_0: 430131191
+      Weapon_Basic_1: -384782534
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

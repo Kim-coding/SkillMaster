@@ -39,7 +39,7 @@ TextureImporter:
     mipBias: 0
     wrapU: 1
     wrapV: 1
-    wrapW: 0
+    wrapW: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -63,9 +63,9 @@ TextureImporter:
   compressionQualitySet: 0
   textureFormatSet: 0
   ignorePngGamma: 0
-  applyGammaDecoding: 1
+  applyGammaDecoding: 0
   swizzle: 50462976
-  cookieLightType: 2
+  cookieLightType: 0
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -85,7 +85,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -98,7 +98,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -110,22 +110,43 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BowBack_1_Sword_SSS_0
+      name: Back_Basic_0
       rect:
         serializedVersion: 2
-        x: 8
-        y: 12
-        width: 13
-        height: 11
-      alignment: 9
-      pivot: {x: 0.042970743, y: 0.9599273}
+        x: 0
+        y: 43
+        width: 32
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4c0ddfaf76e881241a8e657910a35190
-      internalID: -1350576289
+      spriteID: 05c69111b7facfb4fabf02f54c4ae0b8
+      internalID: 331347588
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Back_Basic_1
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 11
+        width: 15
+        height: 12
+      alignment: 9
+      pivot: {x: 0.17626151, y: 0.5827718}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff324c8f7fbda6e47b30c71fd7972261
+      internalID: 2097522650
       vertices: []
       indices: 
       edges: []
@@ -141,7 +162,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      BowBack_1_Sword_SSS_0: -1350576289
+      Back_Basic_0: 331347588
+      Back_Basic_1: 2097522650
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

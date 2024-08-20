@@ -113,12 +113,12 @@ TextureImporter:
       name: Pant_Basic_0
       rect:
         serializedVersion: 2
-        x: 18
-        y: 12
-        width: 4
-        height: 7
+        x: 0
+        y: 43
+        width: 32
+        height: 31
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -134,9 +134,9 @@ TextureImporter:
       name: Pant_Basic_1
       rect:
         serializedVersion: 2
-        x: 10
+        x: 9
         y: 12
-        width: 4
+        width: 6
         height: 7
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -145,8 +145,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ba08ccf508fa9474a8cc5b872248d329
+      spriteID: 38676a342e878014eae6da60aee52df3
       internalID: 1533600375
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pant_Basic_2
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 12
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4b6f84a871098e4b8ec5e549f9bb8f3
+      internalID: 1366196944
       vertices: []
       indices: 
       edges: []
@@ -164,6 +185,7 @@ TextureImporter:
     nameFileIdTable:
       Pant_Basic_0: -2108071912
       Pant_Basic_1: 1533600375
+      Pant_Basic_2: 1366196944
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
