@@ -556,4 +556,94 @@ public class UiInventory : MonoBehaviour
     {
         GameMgr.Instance.uiMgr.uiWindow.equipUpgradePanel.gameObject.SetActive(true);
     }
+
+    public void AutoEquip()
+    {
+        UnEquipAllSlot();
+        int hairCP = 0;
+        EquipItemSlot hair = null;
+        int faceCP = 0;
+        EquipItemSlot face = null;
+        int clothCP = 0;
+        EquipItemSlot cloth = null;
+        int pantCP = 0;
+        EquipItemSlot pant = null;
+        int weaponCP = 0;
+        EquipItemSlot weapon = null;
+        int cloakCP = 0;
+        EquipItemSlot cloak = null;
+
+        foreach (var equip in equipItemSlots)
+        {
+            switch(equip.currentEquip.equipType)
+            {
+                case EquipType.Hair:
+                    if (equip.currentEquip.CP > hairCP)
+                        { 
+                           hair = equip;
+                           hairCP = equip.currentEquip.CP;
+                        }
+                    break;
+                case EquipType.Face:
+                    if (equip.currentEquip.CP > faceCP)
+                    {
+                        face = equip;
+                        faceCP = equip.currentEquip.CP;
+                    }
+                    break;
+                case EquipType.Cloth:
+                    if (equip.currentEquip.CP > clothCP)
+                    {
+                        cloth = equip;
+                        clothCP = equip.currentEquip.CP;
+                    }
+                    break;
+                case EquipType.Pants:
+                    if (equip.currentEquip.CP > pantCP)
+                    {
+                        pant = equip;
+                        pantCP = equip.currentEquip.CP;
+                    }
+                    break;
+                case EquipType.Weapon:
+                    if (equip.currentEquip.CP > weaponCP)
+                    {
+                        weapon = equip;
+                        weaponCP = equip.currentEquip.CP;
+                    }
+                    break;
+                case EquipType.Cloak:
+                    if (equip.currentEquip.CP > cloakCP)
+                    {
+                        cloak = equip;
+                        cloakCP = equip.currentEquip.CP;
+                    }
+                    break;
+            }
+        }
+        if (hair != null)
+        {
+            ChangeEquip(hair);
+        }
+        if (face != null)
+        {
+            ChangeEquip(face);
+        }
+        if (cloth != null)
+        {
+            ChangeEquip(cloth);
+        }
+        if (pant != null)
+        {
+            ChangeEquip(pant);
+        }
+        if (weapon != null)
+        {
+            ChangeEquip(weapon);
+        }
+        if (cloak != null)
+        {
+            ChangeEquip(cloak);
+        }
+    }
 }

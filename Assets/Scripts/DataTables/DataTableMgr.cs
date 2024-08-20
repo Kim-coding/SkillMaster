@@ -97,6 +97,10 @@ public static class DataTableMgr
         DiaDungeonTable diaDungeonTable = new DiaDungeonTable();
         diaDungeonTable.Load(DataTableIds.diaDungeon);
         tables.Add(DataTableIds.diaDungeon, diaDungeonTable);
+
+        EquipmentCPTable cPTable = new EquipmentCPTable();
+        cPTable.Load(DataTableIds.CP);
+        tables.Add(DataTableIds.CP, cPTable);
     }
 
     private static DataTable CreateDataTable(string id)
