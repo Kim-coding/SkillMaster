@@ -10,8 +10,9 @@ public class UIMgr : MonoBehaviour
     public UiMerge uiMerge;
     public UiEnhance uiEnhance;
     public UiGuideQuest uiGuideQuest;
-    public UiTutorial uiTutorial;
     public UiInventory uiInventory;
+    public UiBattleTutorial uiBattleTutorial;
+
 
     /// <summary>
     /// 밑에것들 정리 필요

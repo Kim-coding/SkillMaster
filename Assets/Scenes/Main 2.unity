@@ -11977,9 +11977,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1416259241}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 151.9195, y: -30.366}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 143.839, y: 60.732}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &268399178
@@ -15521,6 +15521,7 @@ MonoBehaviour:
   itemRarity: {fileID: 0}
   OptionTexts:
   - {fileID: 766840689}
+  CPText: {fileID: 0}
   unEquipButton: {fileID: 0}
 --- !u!114 &339150875
 MonoBehaviour:
@@ -24719,9 +24720,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1446826468}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 139.305, y: -64.68651}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 278.61, y: 47.149}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &630353792
@@ -28047,6 +28048,7 @@ MonoBehaviour:
   - {fileID: 668822129}
   - {fileID: 2132214299}
   - {fileID: 842855847}
+  CPText: {fileID: 0}
   unEquipButton: {fileID: 1319034293}
 --- !u!114 &708723578
 MonoBehaviour:
@@ -44658,9 +44660,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1416259241}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 30, y: -30}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 60, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1126064870
@@ -46671,6 +46673,7 @@ MonoBehaviour:
   - {fileID: 454576648}
   - {fileID: 1399892799}
   - {fileID: 980672175}
+  CPText: {fileID: 0}
   unEquipButton: {fileID: 0}
 --- !u!1 &1170363934
 GameObject:
@@ -53132,9 +53135,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1446826468}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 139.305, y: -20.204168}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 278.61, y: 39.001}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1324343696
@@ -57026,9 +57029,9 @@ RectTransform:
   - {fileID: 268399177}
   m_Father: {fileID: 1446826468}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 139.305, y: -120.03434}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 223.839, y: 60.732}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1416259243
@@ -57551,12 +57554,12 @@ GameObject:
   - component: {fileID: 1431821218}
   - component: {fileID: 1431821220}
   m_Layer: 5
-  m_Name: TutorialPanel1
+  m_Name: TutorialPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1431821217
 RectTransform:
   m_ObjectHideFlags: 0
@@ -57629,10 +57632,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db1e20b328e09d74596d7f01fa8fce29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tutorialPanel: {fileID: 0}
-  topText: {fileID: 0}
-  bottomText: {fileID: 0}
-  tutorialID: 0
+  tutorialPanel: {fileID: 1431821216}
+  textPositions: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  topText: {fileID: 1598658988}
+  bottomText: {fileID: 781027853}
+  currentTutorialID: 120221
 --- !u!1 &1431860276
 GameObject:
   m_ObjectHideFlags: 0
@@ -67678,6 +67682,7 @@ MonoBehaviour:
   - {fileID: 316342082}
   - {fileID: 2048368127}
   - {fileID: 30971748}
+  CPText: {fileID: 0}
   unEquipButton: {fileID: 0}
 --- !u!1 &1718466857
 GameObject:
@@ -76255,6 +76260,7 @@ MonoBehaviour:
   - {fileID: 260279781}
   - {fileID: 1336599747}
   - {fileID: 1408454598}
+  CPText: {fileID: 0}
   unEquipButton: {fileID: 0}
 --- !u!1 &1959688370
 GameObject:

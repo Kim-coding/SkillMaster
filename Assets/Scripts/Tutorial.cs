@@ -8,30 +8,22 @@ public class Tutorial : MonoBehaviour
 
     public void Init()
     {
-        if (GameMgr.Instance.uiMgr.uiTutorial == null)
+        if (GameMgr.Instance.uiMgr.uiBattleTutorial == null)
         {
             return;
         }
 
+        var uiTutorial = GameMgr.Instance.uiMgr.uiBattleTutorial;
+
         if (SaveLoadSystem.CurrSaveData.savePlay != null)
         {
             var data = SaveLoadSystem.CurrSaveData.savePlay;
-            tutorialID = data.tutorialID;
+            uiTutorial.currentTutorialID = data.tutorialID;
         }
         else
         {
             tutorialID = 120221;
         }
-
     }
 
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
-    }
 }
