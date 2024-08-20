@@ -28,6 +28,9 @@ public class SavePlayData
     public int rewardID;
 
     //UI 세팅
+
+    //튜토리얼
+    public int tutorialID;
 }
 
 public abstract class SaveData

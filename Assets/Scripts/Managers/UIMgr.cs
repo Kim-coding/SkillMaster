@@ -10,6 +10,7 @@ public class UIMgr : MonoBehaviour
     public UiMerge uiMerge;
     public UiEnhance uiEnhance;
     public UiGuideQuest uiGuideQuest;
+    public UiTutorial uiTutorial;
     public UiInventory uiInventory;
 
     /// <summary>

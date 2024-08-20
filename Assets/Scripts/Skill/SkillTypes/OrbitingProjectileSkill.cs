@@ -72,10 +72,8 @@ public class OrbitingProjectileSkill : MonoBehaviour, ISkillComponent, ISkill
         for (int j = 0; j < ProjectileValue; j++)
         {
 
-            GameObject projectile = Instantiate(skillObject, transform.position, Quaternion.identity);
+            GameObject projectile = Instantiate(skillObject, target.transform.position, Quaternion.identity);
             projectile.transform.SetParent(transform);
-            Vector3 direction = Vector3.back;
-            projectile.transform.position = direction * radius;
             projectile.transform.localScale = new Vector2(ProjectileSizeX, ProjectileSizeY);
             Sprite CircleSprite = Resources.Load<Sprite>("Circle");
             if (CircleSprite != null)
@@ -98,8 +96,10 @@ public class OrbitingProjectileSkill : MonoBehaviour, ISkillComponent, ISkill
 
             projectiles.Add(projectile);
 
-            Vector3 directionToTarget = (projectile.transform.position - attacker.transform.position).normalized;
+            Vector3 directionToTarget = (target.transform.position - attacker.transform.position).normalized;
             float targetAngle = Mathf.Atan2(directionToTarget.y, directionToTarget.x) * Mathf.Rad2Deg;
+
+            float adjustedAngle = targetAngle - 140f;
 
             if (targetAngle < 0)
                 targetAngle += 360f;
@@ -110,14 +110,14 @@ public class OrbitingProjectileSkill : MonoBehaviour, ISkillComponent, ISkill
                 skillEffectObject = Instantiate(skillEffectPrefab, attacker.transform.position, Quaternion.identity);
                 if (skillEffectPrefab.GetComponent<Animator>() != null)
                 {
-                    skillEffectObject.transform.rotation = Quaternion.Euler(0, 0, -targetAngle);
+                    skillEffectObject.transform.rotation = Quaternion.Euler(0, 0, adjustedAngle);
                     skillEffectObject.transform.localScale = new Vector3(ProjectileSizeY, ProjectileSizeY, ProjectileSizeY);
                     skillEffectObject.transform.SetParent(skillObject.transform);
                 }
                 else
                 {
                     var mainModule = skillEffectObject.GetComponent<ParticleSystem>().main;
-                    mainModule.startRotation = Mathf.Deg2Rad * targetAngle;
+                    mainModule.startRotation = Mathf.Deg2Rad * adjustedAngle;
 
                     skillEffectObject.transform.SetParent(attacker.transform);
                 }

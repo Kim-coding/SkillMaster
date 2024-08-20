@@ -39,10 +39,10 @@ public class TouchEffect : MonoBehaviour
             return;
         }
 
-        ProcessTouch();
+        //ProcessTouch();
     }
 
-    private void ProcessTouch()
+    private void OnGUI()
     {
         if (Input.touchCount > 0)
         {
@@ -73,7 +73,7 @@ public class TouchEffect : MonoBehaviour
             }
         }
 
-        if (Input.GetMouseButtonDown(0))
+        if (Event.current.type == EventType.MouseDown)
         {
             Vector3 mousePosition;
 
@@ -96,18 +96,18 @@ public class TouchEffect : MonoBehaviour
     {
         GameObject particleEffect = Instantiate(particlePrefab, position, Quaternion.identity, uiCanvas.transform);
         UIParticle uiParticle = particleEffect.GetComponent<UIParticle>();
+
         if (uiParticle != null)
         {
+            foreach (var particleSystem in particleEffect.GetComponentsInChildren<ParticleSystem>())
+            {
+                var mainModule = particleSystem.main;
+                mainModule.useUnscaledTime = true;  //Time.Scale = 0f인 상황에서도 터치이펙트 작동.
+            }
+
             uiParticle.Play();
-            ParticleSystem particleSystem = particleEffect.GetComponent<ParticleSystem>();
-            if (particleSystem != null)
-            {
-                Destroy(particleEffect, particleSystem.main.duration + particleSystem.main.startLifetime.constantMax);
-            }
-            else
-            {
-                Destroy(particleEffect, 1f);
-            }
+
+            Destroy(particleEffect, 2f);
         }
         else
         {

@@ -65,7 +65,14 @@ public class GameMgr : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            SceneManager.LoadScene("Loading");
+            if(Time.timeScale == 1f)
+            {
+                Time.timeScale = 0f;
+            }
+            else
+            {
+                Time.timeScale = 1f;
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.S))
