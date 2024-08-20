@@ -525,7 +525,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -639,7 +639,8 @@ MonoBehaviour:
   currentPercentText: {fileID: 382962921688169663}
   nextPercentText: {fileID: 7866842363748971107}
   nextCostText: {fileID: 6714269200534554401}
-  icon: {fileID: 8561686959285433626}
+  costIcon: {fileID: 8561686959285433626}
+  enhanceIcon: {fileID: 5993482937658728107}
   button: {fileID: 1348789542378875212}
 --- !u!1 &4140448413813994912
 GameObject:

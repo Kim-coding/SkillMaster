@@ -39869,7 +39869,7 @@ PrefabInstance:
       objectReference: {fileID: -1350576289, guid: 7aaf02d7124d2da4a9dadf8630d268f0, type: 3}
     - target: {fileID: 6557338318282945342, guid: dbeea996a665f9c4592c9fffb3197dc5, type: 3}
       propertyPath: m_WasSpriteAssigned
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6579794927726045699, guid: dbeea996a665f9c4592c9fffb3197dc5, type: 3}
       propertyPath: m_Layer
@@ -58780,7 +58780,7 @@ MonoBehaviour:
   uiEnhance: {fileID: 18185122}
   uiGuideQuest: {fileID: 1446826472}
   uiInventory: {fileID: 1813656379}
-  uiBattleTutorial: {fileID: 0}
+  uiTutorial: {fileID: 0}
   monsterSlider: {fileID: 1102606861}
   bossSpawnButton: {fileID: 231454458}
   DungeonScoreSlider: {fileID: 0}
