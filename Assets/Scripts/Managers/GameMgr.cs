@@ -96,6 +96,14 @@ public class GameMgr : MonoBehaviour
         {
             sceneMgr.tutorial.OnTutorial();
         }
+        if (Input.GetKeyDown(KeyCode.Alpha7))
+        {
+            EnterPowerSavingMode();
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha6))
+        {
+            ExitPowerSavingMode();
+        }
     }
     public void SaveAndQuit()
     {
@@ -197,5 +205,15 @@ public class GameMgr : MonoBehaviour
         }
 
         return increasePerLevel;
+    }
+
+    void EnterPowerSavingMode()
+    {
+        Camera.main.enabled = false;  // 메인 카메라 비활성화 (렌더링 중지)
+    }
+
+    void ExitPowerSavingMode()
+    {
+        Camera.main.enabled = true;  // 메인 카메라 활성화 (렌더링 재개)
     }
 }

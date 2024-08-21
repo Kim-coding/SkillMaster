@@ -31,8 +31,14 @@ public class Tutorial
 
     public void OnTutorial()
     {
+        Time.timeScale = 0f;
         if(tutorialID <= 120238)
         {
+            if (tutorialID >= 120234 && tutorialID <= 120237)
+            {
+                GameMgr.Instance.uiMgr.uiWindow.EnhanceWindowOpen();
+            }
+
             UiTutorial.EndTutorialIndex = 120239;
             SetTutorial();
         }
