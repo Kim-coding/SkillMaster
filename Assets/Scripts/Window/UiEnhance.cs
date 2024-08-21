@@ -256,4 +256,5 @@ public class UiEnhance : MonoBehaviour
             checkmark.color = color;
         }
     }
+
 }
