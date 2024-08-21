@@ -72,8 +72,8 @@ public class PlayerStat
     public void playerStatUpdate()
     {
         playerAttackPower = ((new BigInteger(basePlayerAttackPower) + 
-            (new BigInteger(GameMgr.Instance.playerMgr.playerEnhance.attackPowerLevel) * 1/*TO-DO 테이블에서 증가량으로 받아와 대체*/))
-            * (1 + GameMgr.Instance.playerMgr.playerinventory.itemAttackPower / 100f))
+            new BigInteger(GameMgr.Instance.playerMgr.playerEnhance.attackPowerValue)
+            * (1 + GameMgr.Instance.playerMgr.playerinventory.itemAttackPower / 100f)))
             .ToString();
         
         playerMaxHealth = ((new BigInteger(basePlayerMaxHealth) +

@@ -258,11 +258,12 @@ public class PickUp : MonoBehaviour
         gachaLevelText.text = level.ToString();
         gachaExp.fillAmount = (float)exp / maxExp;
         gachaExpText.text = exp.ToString() + " / " + maxExp.ToString();
+        rewardText.text = rewardValue.ToString();
         if (maxExp == -1)
         {
             gachaExpText.text = exp.ToString() + " / MAX";
+            rewardText.text = string.Empty;
         }
-        rewardText.text = rewardValue.ToString(); 
     }
 
     private void OpenProbabilityGuidance()

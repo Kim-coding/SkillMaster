@@ -38,6 +38,7 @@ public class PlayerEnhance
     public int attackPowerLevel;
     public int attackPowerMaxLevel;
     public int attackPowerValue;
+    public int attackPowerIncrease;
     public BigInteger attackPowerCost;
 
     public int maxHealthLevel;
@@ -112,7 +113,8 @@ public class PlayerEnhance
 
         var attackPowerUpgradeData = DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10001);
         attackPowerMaxLevel = attackPowerUpgradeData.MaxLv;
-        attackPowerValue = (int)attackPowerUpgradeData.Increase;
+        attackPowerValue = GameMgr.Instance.CalculateAttackIncrease((int)attackPowerUpgradeData.Increase, attackPowerUpgradeData.DivValue, attackPowerLevel);
+        attackPowerIncrease = (int)attackPowerUpgradeData.Increase * ((attackPowerLevel + 1 / attackPowerUpgradeData.DivValue) + 1);
         attackPowerCost = new BigInteger(attackPowerUpgradeData.Gold)
             + new BigInteger(attackPowerUpgradeData.GoldRange) * attackPowerLevel;
 
@@ -234,11 +236,12 @@ public class PlayerEnhance
             return;
         }
         GameMgr.Instance.playerMgr.currency.RemoveGold(attackPowerCost);
-
+        var attackPowerUpgradeData = DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10001);
         attackPowerLevel++;
-        attackPowerCost = new BigInteger(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10001).Gold)
-            + new BigInteger(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10003).GoldRange) * attackPowerLevel;
-        // GameMgr.Instance.uiMgr.uiEnhance.TextUpdate(EnhanceType.AttackPower);
+        attackPowerCost = new BigInteger(attackPowerUpgradeData.Gold)
+            + new BigInteger(attackPowerUpgradeData.GoldRange) * attackPowerLevel;
+        attackPowerValue = GameMgr.Instance.CalculateAttackIncrease((int)attackPowerUpgradeData.Increase, attackPowerUpgradeData.DivValue, attackPowerLevel);
+        attackPowerIncrease = (int)attackPowerUpgradeData.Increase * (((attackPowerLevel + 1) / attackPowerUpgradeData.DivValue) + 1);
         GameMgr.Instance.playerMgr.playerStat.playerStatUpdate();
         GameMgr.Instance.soundMgr.PlaySFX("UpgradeButton");
         EventMgr.TriggerEvent(QuestType.AttackEnhance);
