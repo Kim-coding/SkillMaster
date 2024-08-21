@@ -6,13 +6,10 @@ public class SceneMgr : MonoBehaviour
     public MainScene mainScene;
     public DungeonScene dungeonScene;
     public DamageTextMgr damageTextMgr;
-    private Tutorial tutorial;
+    public Tutorial tutorial;
 
     public void Init()
     {
-        tutorial = new Tutorial();
-        tutorial.Init();
-
         if (mainScene != null)
         {
             mainScene.Init();
@@ -21,6 +18,17 @@ public class SceneMgr : MonoBehaviour
         if(dungeonScene != null)
         {
             dungeonScene.Init();
+        }
+
+        tutorial = new Tutorial();
+        tutorial.Init();
+    }
+
+    public void Start()
+    {
+        if (tutorial.tutorialID <= 120238)
+        {
+            tutorial.OnTutorial();
         }
     }
 }
