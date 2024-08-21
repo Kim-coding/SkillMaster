@@ -9,7 +9,6 @@ public class UpgradeData
     public int UpgradeID { get; set; }
     public int UpgradeDivision { get; set; }
     public float Increase { get; set; }
-    public float Increaserange { get; set; }
     public int DivValue { get; set; } 
     public int Gold { get; set; }
     public int GoldRange { get; set; }
