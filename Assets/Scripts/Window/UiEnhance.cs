@@ -30,45 +30,45 @@ public class UiEnhance : MonoBehaviour
     private void Start()
     {
         attackPowerUpgrade.button.buttonClick += GameMgr.Instance.playerMgr.playerEnhance.AddAttackPower;
-        attackPowerUpgrade.Init(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10001).GetStringID, 1);
+        attackPowerUpgrade.Init(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10001));
         defenceUpgrade.button.buttonClick += GameMgr.Instance.playerMgr.playerEnhance.AddDefence;
-        defenceUpgrade.Init(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10002).GetStringID, 1);
+        defenceUpgrade.Init(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10002));
         maxHealthUpgrade.button.buttonClick += GameMgr.Instance.playerMgr.playerEnhance.AddMaxHealth;
-        maxHealthUpgrade.Init(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10003).GetStringID, 1);
+        maxHealthUpgrade.Init(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10003));
         recoveryUpgrade.button.buttonClick += GameMgr.Instance.playerMgr.playerEnhance.AddRecovery;
-        recoveryUpgrade.Init(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10007).GetStringID, 1);
+        recoveryUpgrade.Init(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10007));
         criticalPercentUpgrade.button.buttonClick += GameMgr.Instance.playerMgr.playerEnhance.AddCriticalPercent;
-        criticalPercentUpgrade.Init(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10004).GetStringID, 1);
+        criticalPercentUpgrade.Init(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10004));
         criticalMultipleUpgrade.button.buttonClick += GameMgr.Instance.playerMgr.playerEnhance.AddCriticalMultiple;
-        criticalMultipleUpgrade.Init(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10005).GetStringID, 1);
+        criticalMultipleUpgrade.Init(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10005));
 
         goldUpgrade.button.buttonClick += GameMgr.Instance.playerMgr.playerEnhance.AddGoldIncrease;
-        goldUpgrade.Init(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10006).GetStringID,1);
+        goldUpgrade.Init(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10006));
 
         maxSkillCount.button.buttonClick += GameMgr.Instance.playerMgr.playerEnhance.AddMaxReserveSkillCount;
         maxSkillCount.button.buttonClick += MaxReserveSkillTextUpdate;
         var data = DataTableMgr.Get<CombinationUpgradeTable>(DataTableIds.cbnUpgrade).GetID(190001);
-        maxSkillCount.Init(data.GetCbnName, data.Pay);
+        maxSkillCount.Init(data);
 
         summonCooldown.button.buttonClick += GameMgr.Instance.playerMgr.playerEnhance.AddSkillSpawnCooldown;
         summonCooldown.button.buttonClick += SpawnSkillCooldownTextUpdate;
         data = DataTableMgr.Get<CombinationUpgradeTable>(DataTableIds.cbnUpgrade).GetID(190002);
-        summonCooldown.Init(data.GetCbnName, data.Pay);
+        summonCooldown.Init(data);
 
         minSummonLevel.button.buttonClick += GameMgr.Instance.playerMgr.playerEnhance.AddSpawnSkillLevel;
         minSummonLevel.button.buttonClick += MinSummonLvTextUpdate;
         data = DataTableMgr.Get<CombinationUpgradeTable>(DataTableIds.cbnUpgrade).GetID(190003);
-        minSummonLevel.Init(data.GetCbnName, data.Pay);
+        minSummonLevel.Init(data);
 
         autoSummonCooldown.button.buttonClick += GameMgr.Instance.playerMgr.playerEnhance.AddAutoSpawnCooldown;
         autoSummonCooldown.button.buttonClick += AUtoSpawnTextUpdate;
         data = DataTableMgr.Get<CombinationUpgradeTable>(DataTableIds.cbnUpgrade).GetID(190004);
-        autoSummonCooldown.Init(data.GetCbnName, data.Pay);
+        autoSummonCooldown.Init(data);
 
         autoMergeCooldown.button.buttonClick += GameMgr.Instance.playerMgr.playerEnhance.AddAutoMergeCooldown;
         autoMergeCooldown.button.buttonClick += AUtoMergeTextUpdate;
         data = DataTableMgr.Get<CombinationUpgradeTable>(DataTableIds.cbnUpgrade).GetID(190005);
-        autoMergeCooldown.Init(data.GetCbnName, data.Pay);
+        autoMergeCooldown.Init(data);
 
 
         foreach (var toggle in enhanceModes)

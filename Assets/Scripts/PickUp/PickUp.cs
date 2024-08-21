@@ -171,8 +171,6 @@ public class PickUp : MonoBehaviour
                 float randomOption = Random.Range(0.0f, 100.0f);
                 // 소수점 한 자리까지 반올림
                 randomOption = Mathf.Round(randomOption * 10f) / 10f;
-                Debug.Log(equipData.GetItemName);
-
                 if (randomOption <= optionData.option1_persent)
                 {
                     optionNumberData = optionData.GetOption1_value;

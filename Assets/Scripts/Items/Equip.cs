@@ -14,13 +14,10 @@ public class Equip : Item
         equipData = null;
         this.texture = texture;
         var Image = texture[0].texture;
-        icon = Sprite.Create(Image, new Rect(0, 0, Image.width, Image.height), new Vector2(0.5f, 0.5f));
+        //icon = Sprite.Create(Image, new Rect(0, 0, Image.width, Image.height), new Vector2(0.5f, 0.5f));
         itemName = Name;
         reinforceStoneValue = value;
-        if (Face)
-        {
-            icon = texture[0];
-        }
+        icon = texture[0];
 
     }
 

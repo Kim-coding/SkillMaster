@@ -101,6 +101,14 @@ public static class DataTableMgr
         EquipmentCPTable cPTable = new EquipmentCPTable();
         cPTable.Load(DataTableIds.CP);
         tables.Add(DataTableIds.CP, cPTable);
+
+        SkillBookTable skillBookTable = new SkillBookTable();
+        skillBookTable.Load(DataTableIds.skillBook);
+        tables.Add(DataTableIds.skillBook, skillBookTable);
+
+        EquipBookTable equipBookTable = new EquipBookTable();
+        equipBookTable.Load(DataTableIds.equipBook);
+        tables.Add(DataTableIds.equipBook, equipBookTable);
     }
 
     private static DataTable CreateDataTable(string id)

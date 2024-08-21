@@ -12,22 +12,33 @@ public class Enhance : MonoBehaviour
     public TextMeshProUGUI currentPercentText;
     public TextMeshProUGUI nextPercentText;
     public TextMeshProUGUI nextCostText;
-    public Image icon;
+    public Image costIcon;
+    public Image enhanceIcon;
 
     public EnhanceButton button;
 
-    public void Init(string name, int i)
+    public void Init(UpgradeData data)
     {
-        enhanceName.text = name;
-        if(i == 1)
+        enhanceName.text = data.GetStringID;
+        costIcon.sprite = Resources.Load<Sprite>("EnhanceIcon/Icon_Gold");
+        var image = data.UpgradeIcon;
+        enhanceIcon.sprite = Resources.Load<Sprite>($"EnhanceIcon/{image}");
+    }
+
+    public void Init(CombinationUpgradeData data)
+    {
+        enhanceName.text = data.GetCbnName;
+        if (data.Pay == 1)
         {
-            icon.sprite = Resources.Load<Sprite>("Icon_Money");
+            costIcon.sprite = Resources.Load<Sprite>($"EnhanceIcon/Icon_Gold");
         }
         else
         {
-            icon.sprite = Resources.Load<Sprite>("Icon_Gem03_Diamond_Blue");
+            costIcon.sprite = Resources.Load<Sprite>($"EnhanceIcon/Icon_Gem03_Diamond_Blue");
         }
+        var image = data.UpgradeIcon;
     }
+
 
     private void MaxLvCheck(int lv,int maxlv)
     {

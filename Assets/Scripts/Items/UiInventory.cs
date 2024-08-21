@@ -196,55 +196,111 @@ public class UiInventory : MonoBehaviour
                 break;
             case EquipType.Hair:
                 hairSlot.SetData(GameMgr.Instance.playerMgr.playerinventory.playerHair);
-                hairSlot.baseEquip = hairSlot.currentEquip == GameMgr.Instance.playerMgr.playerinventory.baseHair;
+                if (hairSlot.baseEquip = hairSlot.currentEquip == GameMgr.Instance.playerMgr.playerinventory.baseHair)
+                {
+                    invenSpriteList._hairList[0].sprite = hairSlot.currentEquip.texture[1];
+                    playerSpriteList._hairList[0].sprite = hairSlot.currentEquip.texture[1];
+                }
+                else
+                {
                 invenSpriteList._hairList[0].sprite = hairSlot.currentEquip.texture[0];
                 playerSpriteList._hairList[0].sprite = hairSlot.currentEquip.texture[0];
+                }
                 break;
             case EquipType.Face:
                 faceSlot.SetData(GameMgr.Instance.playerMgr.playerinventory.playerFace);
                 faceSlot.baseEquip = faceSlot.currentEquip == GameMgr.Instance.playerMgr.playerinventory.baseFace;
-                invenSpriteList._eyeList[0].sprite = faceSlot.currentEquip.texture[1];
-                invenSpriteList._eyeList[1].sprite = faceSlot.currentEquip.texture[1];
-                invenSpriteList._eyeList[2].sprite = faceSlot.currentEquip.texture[2];
-                invenSpriteList._eyeList[3].sprite = faceSlot.currentEquip.texture[2];
+                //{
+                //    invenSpriteList._eyeList[0].sprite = faceSlot.currentEquip.texture[2];
+                //    invenSpriteList._eyeList[1].sprite = faceSlot.currentEquip.texture[2];
+                //    invenSpriteList._eyeList[2].sprite = faceSlot.currentEquip.texture[3];
+                //    invenSpriteList._eyeList[3].sprite = faceSlot.currentEquip.texture[3];
 
-                playerSpriteList._eyeList[0].sprite = faceSlot.currentEquip.texture[1];
-                playerSpriteList._eyeList[1].sprite = faceSlot.currentEquip.texture[1];
-                playerSpriteList._eyeList[2].sprite = faceSlot.currentEquip.texture[2];
-                playerSpriteList._eyeList[3].sprite = faceSlot.currentEquip.texture[2];
+                //    playerSpriteList._eyeList[0].sprite = faceSlot.currentEquip.texture[2];
+                //    playerSpriteList._eyeList[1].sprite = faceSlot.currentEquip.texture[2];
+                //    playerSpriteList._eyeList[2].sprite = faceSlot.currentEquip.texture[3];
+                //    playerSpriteList._eyeList[3].sprite = faceSlot.currentEquip.texture[3];
+                //}
+                //else
+                //{
+                    invenSpriteList._eyeList[0].sprite = faceSlot.currentEquip.texture[1];
+                    invenSpriteList._eyeList[1].sprite = faceSlot.currentEquip.texture[1];
+                    invenSpriteList._eyeList[2].sprite = faceSlot.currentEquip.texture[2];
+                    invenSpriteList._eyeList[3].sprite = faceSlot.currentEquip.texture[2];
+
+                    playerSpriteList._eyeList[0].sprite = faceSlot.currentEquip.texture[1];
+                    playerSpriteList._eyeList[1].sprite = faceSlot.currentEquip.texture[1];
+                    playerSpriteList._eyeList[2].sprite = faceSlot.currentEquip.texture[2];
+                    playerSpriteList._eyeList[3].sprite = faceSlot.currentEquip.texture[2];
+                //}
                 break;
             case EquipType.Cloth:
                 clothSlot.SetData(GameMgr.Instance.playerMgr.playerinventory.playerCloth);
-                clothSlot.baseEquip = clothSlot.currentEquip == GameMgr.Instance.playerMgr.playerinventory.baseCloth;
-                invenSpriteList._clothList[0].sprite = clothSlot.currentEquip.texture[0];
-                invenSpriteList._clothList[1].sprite = clothSlot.currentEquip.texture[1];
-                invenSpriteList._clothList[2].sprite = clothSlot.currentEquip.texture[2];
+                if (clothSlot.baseEquip = clothSlot.currentEquip == GameMgr.Instance.playerMgr.playerinventory.baseCloth)
+                {
+                    invenSpriteList._clothList[0].sprite = clothSlot.currentEquip.texture[1];
+                    invenSpriteList._clothList[1].sprite = clothSlot.currentEquip.texture[2];
+                    invenSpriteList._clothList[2].sprite = clothSlot.currentEquip.texture[3];
 
-                playerSpriteList._clothList[0].sprite = clothSlot.currentEquip.texture[0];
-                playerSpriteList._clothList[1].sprite = clothSlot.currentEquip.texture[1];
-                playerSpriteList._clothList[2].sprite = clothSlot.currentEquip.texture[2];
+                    playerSpriteList._clothList[0].sprite = clothSlot.currentEquip.texture[1];
+                    playerSpriteList._clothList[1].sprite = clothSlot.currentEquip.texture[2];
+                    playerSpriteList._clothList[2].sprite = clothSlot.currentEquip.texture[3];
+                }
+                else
+                {
+                    invenSpriteList._clothList[0].sprite = clothSlot.currentEquip.texture[0];
+                    invenSpriteList._clothList[1].sprite = clothSlot.currentEquip.texture[1];
+                    invenSpriteList._clothList[2].sprite = clothSlot.currentEquip.texture[2];
+
+                    playerSpriteList._clothList[0].sprite = clothSlot.currentEquip.texture[0];
+                    playerSpriteList._clothList[1].sprite = clothSlot.currentEquip.texture[1];
+                    playerSpriteList._clothList[2].sprite = clothSlot.currentEquip.texture[2];
+                }
                 break;
             case EquipType.Pants:
                 pantSlot.SetData(GameMgr.Instance.playerMgr.playerinventory.playerPant);
-                pantSlot.baseEquip = pantSlot.currentEquip == GameMgr.Instance.playerMgr.playerinventory.basePant;
-                invenSpriteList._pantList[0].sprite = pantSlot.currentEquip.texture[0];
-                invenSpriteList._pantList[1].sprite = pantSlot.currentEquip.texture[1];
+                if (pantSlot.baseEquip = pantSlot.currentEquip == GameMgr.Instance.playerMgr.playerinventory.basePant)
+                {
+                    invenSpriteList._pantList[0].sprite = pantSlot.currentEquip.texture[1];
+                    invenSpriteList._pantList[1].sprite = pantSlot.currentEquip.texture[2];
 
-                playerSpriteList._pantList[0].sprite = pantSlot.currentEquip.texture[0];
-                playerSpriteList._pantList[1].sprite = pantSlot.currentEquip.texture[1];
+                    playerSpriteList._pantList[0].sprite = pantSlot.currentEquip.texture[1];
+                    playerSpriteList._pantList[1].sprite = pantSlot.currentEquip.texture[2];
+                }
+                else
+                {
+                    invenSpriteList._pantList[0].sprite = pantSlot.currentEquip.texture[0];
+                    invenSpriteList._pantList[1].sprite = pantSlot.currentEquip.texture[1];
+
+                    playerSpriteList._pantList[0].sprite = pantSlot.currentEquip.texture[0];
+                    playerSpriteList._pantList[1].sprite = pantSlot.currentEquip.texture[1];
+                }
                 break;
             case EquipType.Weapon:
                 weaponSlot.SetData(GameMgr.Instance.playerMgr.playerinventory.playerWeapon);
-                weaponSlot.baseEquip = weaponSlot.currentEquip == GameMgr.Instance.playerMgr.playerinventory.baseWeapon;
-                invenSpriteList._weaponList[0].sprite = weaponSlot.currentEquip.texture[0];
-
-                playerSpriteList._weaponList[0].sprite = weaponSlot.currentEquip.texture[0];
+                if (weaponSlot.baseEquip = weaponSlot.currentEquip == GameMgr.Instance.playerMgr.playerinventory.baseWeapon)
+                {
+                    invenSpriteList._weaponList[0].sprite = weaponSlot.currentEquip.texture[1];
+                    playerSpriteList._weaponList[0].sprite = weaponSlot.currentEquip.texture[1];
+                }
+                else
+                {
+                    invenSpriteList._weaponList[0].sprite = weaponSlot.currentEquip.texture[0];
+                    playerSpriteList._weaponList[0].sprite = weaponSlot.currentEquip.texture[0];
+                }
                 break;
             case EquipType.Cloak:
                 cloakSlot.SetData(GameMgr.Instance.playerMgr.playerinventory.playerCloak);
-                cloakSlot.baseEquip = cloakSlot.currentEquip == GameMgr.Instance.playerMgr.playerinventory.baseCloak;
-                invenSpriteList._backList[0].sprite = cloakSlot.currentEquip.texture[0];
-                playerSpriteList._backList[0].sprite = cloakSlot.currentEquip.texture[0];
+                if (cloakSlot.baseEquip = cloakSlot.currentEquip == GameMgr.Instance.playerMgr.playerinventory.baseCloak)
+                {
+                    invenSpriteList._backList[0].sprite = cloakSlot.currentEquip.texture[1];
+                    playerSpriteList._backList[0].sprite = cloakSlot.currentEquip.texture[1];
+                }
+                else
+                {
+                    invenSpriteList._backList[0].sprite = cloakSlot.currentEquip.texture[0];
+                    playerSpriteList._backList[0].sprite = cloakSlot.currentEquip.texture[0];
+                }
 
                 break;
         }
