@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SandBagStat : MonoBehaviour, IDamageable
 {
+    public bool invincible { get; set; }
+
     public BigInteger Health { get; set; }
     public bool Ondeath { get; set; }
     public float Defence { get; set; }

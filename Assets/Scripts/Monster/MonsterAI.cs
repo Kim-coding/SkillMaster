@@ -91,7 +91,6 @@ public class MonsterAI : MonoBehaviour, IAnimation
                 rb.bodyType = RigidbodyType2D.Dynamic;
                 Move();
                 Rotation();
-                attackTimer = 0;
             }
         }
         else

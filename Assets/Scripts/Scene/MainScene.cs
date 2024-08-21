@@ -115,7 +115,10 @@ public class MainScene : MonoBehaviour
     {
         clearPopup.gameObject.SetActive(true);
         EventMgr.TriggerEvent(QuestType.Stage);
+        if(stageId - 50000 != DataTableMgr.Get<StageTable>(DataTableIds.stage).stageDatas.Count)
+        {
         stageId++;
+        }
         stageData = DataTableMgr.Get<StageTable>(DataTableIds.stage).GetID(stageId);
         if(stageData != null)
         {

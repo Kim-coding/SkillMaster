@@ -109,7 +109,10 @@ public class DebugMode : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.P))
         {
-            GameMgr.Instance.playerMgr.characters[0].GetComponent<DamageTake>().enabled = false;
+            var invincible = GameMgr.Instance.playerMgr.characters[0].GetComponent<IDamageable>();
+
+            bool currentInvincible = invincible.invincible;
+            invincible.invincible = !currentInvincible;
         }
 
 

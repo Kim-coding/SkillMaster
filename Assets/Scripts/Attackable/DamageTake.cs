@@ -9,6 +9,12 @@ public class DamageTake : MonoBehaviour, IAttackable
     public void OnAttack(GameObject attacker, GameObject defender, Attack attack)
     {
         var characterHealth =  gameObject.GetComponent<IDamageable>();
+
+        if(characterHealth.invincible)
+        {
+            return;
+        }
+
         var defenceValue = 1 / ( 1 + characterHealth.Defence * 0.0002f);
         attack.Damage *= defenceValue;
         characterHealth.Health -= attack.Damage;
