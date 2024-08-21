@@ -21,9 +21,8 @@ public class Tutorial
         else
         {
             tutorialID = 120221;
+            OnTutorial();
         }
-        GameMgr.Instance.uiMgr.uiTutorial.init();
-        OnTutorial();
     }
 
     public void OnTutorial()
@@ -32,15 +31,22 @@ public class Tutorial
         {
             tutorialID = 120221;
             GameMgr.Instance.uiMgr.uiTutorial.currentTutorialID = tutorialID;
-            GameMgr.Instance.uiMgr.uiTutorial.UiUpdate();
+            GameMgr.Instance.uiMgr.uiTutorial.EndTutorialIndex = 120239;
+            GameMgr.Instance.uiMgr.uiTutorial.OnTutorial();
         }
         else if (tutorialID >= 120239 && tutorialID <= 120277)
         {
-
+            tutorialID = 120239;
+            GameMgr.Instance.uiMgr.uiTutorial.currentTutorialID = tutorialID;
+            GameMgr.Instance.uiMgr.uiTutorial.EndTutorialIndex = 120278;
+            GameMgr.Instance.uiMgr.uiTutorial.OnTutorial();
         }
         else
         {
-
+            tutorialID = 120278;
+            GameMgr.Instance.uiMgr.uiTutorial.currentTutorialID = tutorialID;
+            GameMgr.Instance.uiMgr.uiTutorial.EndTutorialIndex = 120284;
+            GameMgr.Instance.uiMgr.uiTutorial.OnTutorial();
         }
     }
 }

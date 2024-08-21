@@ -14,88 +14,147 @@ public enum TextPosition
 
 public class UiTutorial : MonoBehaviour
 {
-    public GameObject tutorialPanel;
+    public Transform tutorialPanel;
     public TextPosition[] textPositions;
     public GameObject[] targetUI;
-    public GameObject[] ui;
 
     public TextMeshProUGUI topText;
     public TextMeshProUGUI bottomText;
 
     public int currentTutorialID;
-    public int currentTutorial = 0;
+    public int currentTutorialIndex = 0;
+    public int EndTutorialIndex;
 
     private GameObject previousTarget = null;
-
-    public void init()
+    private Transform originalParent;
+    private GameObject currentTargetUI;
+    private Coroutine CheckCoroutine;
+    public void OnTutorial()
     {
-        CanvasGroup tutoriaCanvasGroup = tutorialPanel.GetComponent<CanvasGroup>();
-        tutoriaCanvasGroup.blocksRaycasts = false;
-        foreach(var i in ui)
+        if(!tutorialPanel.gameObject.activeSelf)
         {
-            i.GetComponent<CanvasGroup>().blocksRaycasts = false;
-        }
-    }
-
-    public void UiUpdate()
-    {
-        if (currentTutorialID > 120238)
-        {
-            return;
+            tutorialPanel.gameObject.SetActive(true);
         }
 
-        if (textPositions[currentTutorial] == TextPosition.Top)
+        if (previousTarget != null)
+        {
+            Button previousButton = previousTarget.GetComponent<Button>();
+            if (previousButton != null)
+            {
+                previousButton.onClick.RemoveListener(OnButton);
+            }
+
+            Vector3 originalPosition = previousTarget.transform.position;
+            previousTarget.transform.SetParent(originalParent, false);
+            previousTarget.transform.position = originalPosition;
+        }
+
+        if (textPositions[currentTutorialIndex] == TextPosition.Top)
         {
             bottomText.transform.parent.gameObject.SetActive(false);
             topText.transform.parent.gameObject.gameObject.SetActive(true);
             topText.text = DataTableMgr.Get<StringTable>(DataTableIds.String).GetID(currentTutorialID);
         }
-        else if (textPositions[currentTutorial] == TextPosition.Bottom)
+        else if (textPositions[currentTutorialIndex] == TextPosition.Bottom)
         {
             topText.transform.parent.gameObject.gameObject.SetActive(false);
             bottomText.transform.parent.gameObject.gameObject.SetActive(true);
             bottomText.text = DataTableMgr.Get<StringTable>(DataTableIds.String).GetID(currentTutorialID);
         }
 
-        if (previousTarget != null)
+        if (targetUI[currentTutorialIndex] != null)
         {
-            if(previousTarget.GetComponent<CanvasGroup>() == null)
+            currentTargetUI = targetUI[currentTutorialIndex];
+
+            Vector3 originalPosition = currentTargetUI.transform.position;
+
+            originalParent = currentTargetUI.transform.parent;
+            currentTargetUI.transform.SetParent(tutorialPanel, false);
+
+            currentTargetUI.transform.position = originalPosition;
+
+            if (currentTargetUI.name == "Merge")
             {
-                previousTarget.AddComponent<CanvasGroup>();
+                if (CheckCoroutine != null)
+                {
+                    StopCoroutine(CheckCoroutine);
+                }
+                CheckCoroutine = StartCoroutine(CheckMergeUIChildCount());
             }
-            CanvasGroup previousCanvasGroup = previousTarget.GetComponent<CanvasGroup>();
-            if (previousCanvasGroup != null)
+
+            Slider monsterSlider = currentTargetUI.GetComponent<Slider>();
+            if (monsterSlider != null && currentTargetUI.name == "MonsterSlider")
             {
-                previousCanvasGroup.blocksRaycasts = false;
-                previousCanvasGroup.interactable = false;
+                if (CheckCoroutine != null)
+                {
+                    StopCoroutine(CheckCoroutine);
+                }
+                CheckCoroutine = StartCoroutine(CheckMonsterSliderValue(monsterSlider));
+            }
+
+            Button currentButton = currentTargetUI.GetComponent<Button>();
+            if (currentButton != null)
+            {
+                currentButton.onClick.AddListener(OnButton);
+            }
+
+            Button tutorialButton = tutorialPanel.gameObject.GetComponent<Button>();
+            if (tutorialButton != null)
+            {
+                tutorialButton.onClick.RemoveListener(OnButton);
+            }
+        }
+        else
+        {
+            Button tutorialButton = tutorialPanel.gameObject.GetComponent<Button>();
+            if (tutorialButton != null)
+            {
+                tutorialButton.onClick.RemoveListener(OnButton);
+                tutorialButton.onClick.AddListener(OnButton);
             }
         }
 
-        if (targetUI[currentTutorial] != null)
-        {
-            GameObject currentTarget = targetUI[currentTutorial];
-            if(currentTarget.GetComponent<CanvasGroup>() == null)
-            {
-                currentTarget.AddComponent<CanvasGroup>();
-            }
-            CanvasGroup canvasGroup = currentTarget.GetComponent<CanvasGroup>();
-            if (canvasGroup != null)
-            {
-                canvasGroup.blocksRaycasts = true;
-                canvasGroup.interactable = true;
-            }
-
-            EventSystem.current.SetSelectedGameObject(currentTarget);
-            previousTarget = currentTarget;
-        }
-
-        currentTutorial++;
+        previousTarget = currentTargetUI;
+        currentTutorialIndex++;
         currentTutorialID++;
+    }
+
+    private IEnumerator CheckMonsterSliderValue(Slider slider)
+    {
+        while (true)
+        {
+            if (slider.value >= slider.maxValue)
+            {
+                NextTutorial();
+                yield break;
+            }
+
+            yield return null;
+        }
+    }
+
+    private IEnumerator CheckMergeUIChildCount()
+    {
+        while (true)
+        {
+            if (currentTargetUI != null && currentTargetUI.transform.childCount == 1)
+            {
+                NextTutorial();
+                yield break;
+            }
+
+            yield return new WaitForSeconds(0.5f);
+        }
     }
 
     public void NextTutorial()
     {
-        UiUpdate();
+        if(EndTutorialIndex <= currentTutorialID)
+        {
+            EndTutorial();
+            return;
+        }
+        OnTutorial();
     }
 
     private void Update()
@@ -104,5 +163,34 @@ public class UiTutorial : MonoBehaviour
         {
             NextTutorial();
         }
+        if (Input.GetKeyDown(KeyCode.Alpha9))
+        {
+            EndTutorial();
+        }
+    }
+
+    public void EndTutorial()
+    {
+        if(currentTargetUI != null && originalParent != null)
+        {
+            Vector3 originalPosition = currentTargetUI.transform.position;
+
+            currentTargetUI.transform.SetParent(originalParent, false);
+
+            currentTargetUI.transform.position = originalPosition;
+        }
+
+        if (CheckCoroutine != null)
+        {
+            StopCoroutine(CheckCoroutine);
+        }
+
+        tutorialPanel.gameObject.SetActive(false);
+        Time.timeScale = 1.0f;
+    }
+
+    public void OnButton()
+    {
+        NextTutorial();
     }
 }
