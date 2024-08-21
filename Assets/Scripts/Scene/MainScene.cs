@@ -79,6 +79,38 @@ public class MainScene : MonoBehaviour
         monster.RemoveMonsters(m);
     }
 
+    public void StageWarp(int i)
+    {
+        stageId = 50000 + i;
+        stageData = DataTableMgr.Get<StageTable>(DataTableIds.stage).GetID(stageId);
+        if (stageData == null)
+        {
+            return;
+        }
+
+        stageCount = stageData.StageLv;
+        appearBossMonster = stageData.appearBossMonster;
+        backgroundAsset = stageData.Asset;
+
+        var monsters = monster.GetMonsters();
+        foreach (GameObject monsterai in monsters)
+        {
+            if (monsterai.GetComponent<MonsterAI>() == null)
+            {
+                continue;
+            }
+            monsterai.GetComponent<MonsterAI>().monsterStat.SetID(stageData.appearMonster);
+            monsterai.GetComponent<MonsterAI>().monsterStat.Init();
+        }
+
+        background.sprite = Resources.Load<Sprite>($"Background/{backgroundAsset}");
+        GameMgr.Instance.uiMgr.StageUpdate(stageCount);
+        RestartStage();
+
+        SaveLoadSystem.DeleteSaveData();
+    }
+
+
     public void AddStage()
     {
         clearPopup.gameObject.SetActive(true);
