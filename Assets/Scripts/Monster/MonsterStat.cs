@@ -9,6 +9,9 @@ public class MonsterStat : Status ,IDamageable
     public string dropGold;
     public string asset1;
     public string asset2;
+
+    public bool invincible { get; set; }
+
     public BigInteger Health { get; set; }
     public bool Ondeath { get; set; }
     public float Defence { get; set; }

@@ -159,4 +159,38 @@ public class GameMgr : MonoBehaviour
     {
         webTimeMgr = GameObject.FindGameObjectWithTag("WebTime").GetComponent<WebTimeMgr>();
     }
+
+    public int CalculateAttackIncrease(int value, int range, int level)
+    {
+        int baseIncrease = value;
+        int increasePerLevel = 0;
+
+        for (int i = 1; i <= level; i++)
+        {
+            if (i % range == 0)
+            {
+                baseIncrease += value;
+            }
+            increasePerLevel += baseIncrease;
+        }
+
+        return increasePerLevel;
+    }
+
+    public BigInteger CalculateCost(int value , int range, int level)
+    {
+        int baseIncrease = value;
+        BigInteger increasePerLevel = new BigInteger(0);
+
+        for (int i = 1; i <= level; i++)
+        {
+            if (i % range == 0)
+            {
+                baseIncrease += 5;
+            }
+            increasePerLevel += baseIncrease;
+        }
+
+        return increasePerLevel;
+    }
 }

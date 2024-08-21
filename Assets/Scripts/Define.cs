@@ -115,6 +115,7 @@ public enum RarerityType
 }
 
 
+
 public static class DataTableIds
 {
     public static readonly string String = "StringTable";

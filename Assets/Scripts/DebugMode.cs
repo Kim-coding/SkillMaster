@@ -37,7 +37,11 @@ public class DebugMode : MonoBehaviour
     public Toggle[] typeToggle;
     public TMP_InputField idField;
     public TMP_InputField valueField;
-    public Button confirmButton;
+    public Button createConfirmButton;
+
+    public GameObject stagePanel;
+    public TMP_InputField stageIdField;
+    public Button stageConfirmButton;
 
     private void Awake()
     {
@@ -47,7 +51,8 @@ public class DebugMode : MonoBehaviour
         attackRangeSlider.value = playerStat.baseAttackRange;
         recoveryDurationSlider.value = playerStat.baseRecoveryDuration;
 
-        confirmButton.onClick.AddListener(OnclickButton);
+        createConfirmButton.onClick.AddListener(OnclickCreateButton);
+        stageConfirmButton.onClick.AddListener(OnclickStageButton);
     }
 
     void Update()
@@ -102,6 +107,13 @@ public class DebugMode : MonoBehaviour
         {
             GameMgr.Instance.playerMgr.playerInfo.GetGachaExp(2000);
         }
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            var invincible = GameMgr.Instance.playerMgr.characters[0].GetComponent<IDamageable>();
+
+            bool currentInvincible = invincible.invincible;
+            invincible.invincible = !currentInvincible;
+        }
 
 
         if (Input.GetKeyDown(KeyCode.X))
@@ -114,11 +126,16 @@ public class DebugMode : MonoBehaviour
             createPanel.gameObject.SetActive(true);
         }
 
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            stagePanel.gameObject.SetActive(true);
+        }
+
         GameMgr.Instance.playerMgr.playerStat.DebugStatSetting(speedValue, cooldownValue, attackSpeedValue ,attackRangeValue, recoveryDurationValue);
     }
 
 
-    public void OnclickButton()
+    public void OnclickCreateButton()
     {
         int id;
         int value;
@@ -160,4 +177,25 @@ public class DebugMode : MonoBehaviour
         createPanel.gameObject.SetActive(false);
         gameObject.SetActive(false);
     }
+
+    public void OnclickStageButton()
+    {
+        int id;
+        if (int.TryParse(stageIdField.text, out int result))
+        {
+            id = result;
+        }
+        else
+        {
+            createPanel.gameObject.SetActive(false);
+            gameObject.SetActive(false);
+            return;
+        }
+
+        GameMgr.Instance.sceneMgr.mainScene.StageWarp(id);
+
+        stagePanel.gameObject.SetActive(false);
+        gameObject.SetActive(false);
+    }
+
 }

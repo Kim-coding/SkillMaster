@@ -8,6 +8,7 @@ public class UiEnhance : MonoBehaviour
 {
     private PlayerEnhance p_E;
     private PlayerBaseStat p_BS;
+    private PlayerStat p_S;
 
     public Toggle[] enhanceModes;
     public GameObject statPanel;
@@ -85,6 +86,7 @@ public class UiEnhance : MonoBehaviour
     {
         p_E = GameMgr.Instance.playerMgr.playerEnhance;
         p_BS = GameMgr.Instance.playerMgr.playerBaseStat;
+        p_S = GameMgr.Instance.playerMgr.playerStat;
         EventMgr.StartListening(QuestType.AttackEnhance, AttackTextUpdate);
         EventMgr.StartListening(QuestType.DefenceEnhance, DefenceTextUpdate);
         EventMgr.StartListening(QuestType.MaxHealthEnhance, MaxHealthTextUpdate);
@@ -100,8 +102,8 @@ public class UiEnhance : MonoBehaviour
         attackPowerUpgrade.TextUpdate(
        p_E.attackPowerLevel,
        p_E.attackPowerMaxLevel,
-       p_BS.basePlayerAttackPower + p_E.attackPowerLevel * p_E.attackPowerValue,
-       p_BS.basePlayerAttackPower + (p_E.attackPowerLevel + 1) * p_E.attackPowerValue,
+       p_E.attackPowerValue,
+       p_E.attackPowerValue + p_E.attackPowerIncrease,
        p_E.attackPowerCost);
     }
 
@@ -256,4 +258,5 @@ public class UiEnhance : MonoBehaviour
             checkmark.color = color;
         }
     }
+
 }
