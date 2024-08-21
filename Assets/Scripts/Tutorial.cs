@@ -5,7 +5,8 @@ using UnityEngine;
 public class Tutorial
 {
     public int tutorialID;
-
+    public int tutorialIndex;
+    private UiTutorial UiTutorial;
     public void Init()
     {
         if (GameMgr.Instance.uiMgr.uiTutorial == null)
@@ -13,19 +14,17 @@ public class Tutorial
             return;
         }
 
+        UiTutorial = GameMgr.Instance.uiMgr.uiTutorial;
+
         if (SaveLoadSystem.CurrSaveData.savePlay != null)
         {
             var data = SaveLoadSystem.CurrSaveData.savePlay;
             tutorialID = data.tutorialID;
+            tutorialIndex = data.tutorialIndex;
         }
         else
         {
             tutorialID = 120221;
-        }
-
-        if (tutorialID <= 120238)
-        {
-            OnTutorial();
         }
 
     }
@@ -34,21 +33,26 @@ public class Tutorial
     {
         if(tutorialID <= 120238)
         {
-            GameMgr.Instance.uiMgr.uiTutorial.currentTutorialID = tutorialID;
-            GameMgr.Instance.uiMgr.uiTutorial.EndTutorialIndex = 120239;
-            GameMgr.Instance.uiMgr.uiTutorial.OnTutorial();
+            UiTutorial.EndTutorialIndex = 120239;
+            SetTutorial();
         }
         else if (tutorialID >= 120239 && tutorialID <= 120277)
         {
-            GameMgr.Instance.uiMgr.uiTutorial.currentTutorialID = tutorialID;
-            GameMgr.Instance.uiMgr.uiTutorial.EndTutorialIndex = 120278;
-            GameMgr.Instance.uiMgr.uiTutorial.OnTutorial();
+            UiTutorial.EndTutorialIndex = 120278;
+            SetTutorial();
+            
         }
         else
         {
-            GameMgr.Instance.uiMgr.uiTutorial.currentTutorialID = tutorialID;
-            GameMgr.Instance.uiMgr.uiTutorial.EndTutorialIndex = 120284;
-            GameMgr.Instance.uiMgr.uiTutorial.OnTutorial();
+            UiTutorial.EndTutorialIndex = 120284;
+            SetTutorial();
         }
+    }
+
+    private void SetTutorial()
+    {
+        UiTutorial.currentTutorialID = tutorialID;
+        UiTutorial.currentTutorialIndex = tutorialIndex;
+        UiTutorial.OnTutorial();
     }
 }

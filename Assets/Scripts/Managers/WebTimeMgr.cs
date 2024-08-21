@@ -59,8 +59,7 @@ public class WebTimeMgr : MonoBehaviour
     {
         if (network.CheckConnectInternet())
         {
-            //StartCoroutine(GetEndTime());
-            GetEndTime();
+            StartCoroutine(GetEndTime());
         }
         else
         {
@@ -68,7 +67,7 @@ public class WebTimeMgr : MonoBehaviour
         }
     }
 
-    private IEnumerator GetStartTime()  //시작 시간
+    public IEnumerator GetStartTime()  //시작 시간
     {
         UnityWebRequest request = UnityWebRequest.Get(SeoulTimeApiUrl);
         yield return request.SendWebRequest();
@@ -96,30 +95,50 @@ public class WebTimeMgr : MonoBehaviour
         }
     }
 
-    public void GetEndTime()    // 종료 시간
+    public IEnumerator GetEndTime()  // 종료 시간 비동기적으로 가져오기
     {
-        DateTime endTime = FetchEndTime();
-        Debug.Log("서버 시간 (마지막 시간): " + endTime);
-        SaveEndTime(endTime);
-    }
-    private DateTime FetchEndTime()
-    {
-        using (HttpClient client = new HttpClient())
-        {
-            HttpResponseMessage response = client.GetAsync(SeoulTimeApiUrl).Result;
+        UnityWebRequest request = UnityWebRequest.Get(SeoulTimeApiUrl);
+        yield return request.SendWebRequest();
 
-            if (response.IsSuccessStatusCode)
+        if (request.result != UnityWebRequest.Result.Success)
+        {
+            Debug.Log("시간 가져오기 실패: " + request.error);
+        }
+        else
+        {
+            var jsonResult = request.downloadHandler.text;
+            var worldTime = JsonUtility.FromJson<WorldTimeApiResponse>(jsonResult);
+
+            if (worldTime != null && !string.IsNullOrEmpty(worldTime.dateTime))
             {
-                string jsonResult = response.Content.ReadAsStringAsync().Result;
-                var worldTime = JsonUtility.FromJson<WorldTimeApiResponse>(jsonResult);
-                return DateTime.Parse(worldTime.dateTime);
+                DateTime endTime = DateTime.Parse(worldTime.dateTime);
+                Debug.Log("서버 시간 (마지막 시간): " + endTime);
+                SaveEndTime(endTime);
             }
             else
             {
-                throw new Exception("네트워크 요청 실패: " + response.ReasonPhrase);
+                Debug.LogError("서버 응답에서 dateTime 필드가 비어있음.");
             }
         }
     }
+    //private DateTime FetchEndTime()
+    //{
+    //    using (HttpClient client = new HttpClient())
+    //    {
+    //        HttpResponseMessage response = client.GetAsync(SeoulTimeApiUrl).Result;
+
+    //        if (response.IsSuccessStatusCode)
+    //        {
+    //            string jsonResult = response.Content.ReadAsStringAsync().Result;
+    //            var worldTime = JsonUtility.FromJson<WorldTimeApiResponse>(jsonResult);
+    //            return DateTime.Parse(worldTime.dateTime);
+    //        }
+    //        else
+    //        {
+    //            throw new Exception("네트워크 요청 실패: " + response.ReasonPhrase);
+    //        }
+    //    }
+    //}
 
     private void SaveStartTime(DateTime startTime)
     {

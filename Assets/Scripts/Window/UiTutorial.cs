@@ -35,7 +35,10 @@ public class UiTutorial : MonoBehaviour
 
     public void OnTutorial()
     {
-        if(!tutorialPanel.gameObject.activeSelf)
+        var invincible = GameMgr.Instance.playerMgr.characters[0].GetComponent<IDamageable>();
+        invincible.invincible = true;
+        
+        if (!tutorialPanel.gameObject.activeSelf)
         {
             tutorialPanel.gameObject.SetActive(true);
         }
@@ -170,6 +173,12 @@ public class UiTutorial : MonoBehaviour
         currentTutorialIndex++;
         currentTutorialID++;
 
+        if (currentTargetUI != null && currentTargetUI.name == "BossSpawnButton")
+        {
+            currentTargetUI.GetComponent<Button>().interactable = true;
+            currentTargetUI.gameObject.SetActive(false);
+        }
+
         if (EndTutorialIndex <= currentTutorialID)
         {
             EndTutorial();
@@ -192,7 +201,10 @@ public class UiTutorial : MonoBehaviour
 
     public void EndTutorial()
     {
-        if(currentTargetUI != null && originalParent != null)
+        var invincible = GameMgr.Instance.playerMgr.characters[0].GetComponent<IDamageable>();
+        invincible.invincible = false;
+
+        if (currentTargetUI != null && originalParent != null)
         {
             Vector3 originalPosition = currentTargetUI.transform.position;
 
@@ -208,6 +220,7 @@ public class UiTutorial : MonoBehaviour
 
         tutorialPanel.gameObject.SetActive(false);
         Time.timeScale = 1.0f;
+        SaveLoadSystem.Save();
     }
 
     public void OnButton()

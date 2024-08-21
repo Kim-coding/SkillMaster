@@ -78,6 +78,7 @@ public class GameMgr : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.S))
         {
             SaveLoadSystem.Save();
+            webTimeMgr.SaveTime();
             Debug.Log("save");
         }
         if (Input.GetKeyDown(KeyCode.L))
@@ -91,11 +92,15 @@ public class GameMgr : MonoBehaviour
         {
             SaveLoadSystem.DeleteSaveData();
         }
-
+        if (Input.GetKeyDown(KeyCode.Alpha8))
+        {
+            sceneMgr.tutorial.OnTutorial();
+        }
     }
     public void SaveAndQuit()
     {
-        webTimeMgr.GetEndTime();
+        SaveLoadSystem.Save();
+        StartCoroutine(webTimeMgr.GetEndTime());
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else
