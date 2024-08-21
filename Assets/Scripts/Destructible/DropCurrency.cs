@@ -20,7 +20,7 @@ public class DropCurrency : MonoBehaviour, IDestructible
             diaValue = gameObject.GetComponent<BossAI>().bossStat.dropDia;
             goldValue = gameObject.GetComponent<BossAI>().bossStat.dropGold;
             GameMgr.Instance.dropItemMgr.CreateAndMoveGold(uiPosition, moveDuration, goldValue);
-            if(goldValue != "-1")
+            if(diaValue != "-1")
             { 
                 GameMgr.Instance.dropItemMgr.CreateAndMoveDia(uiPosition, moveDuration, diaValue); 
             }

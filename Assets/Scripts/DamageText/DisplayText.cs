@@ -27,7 +27,7 @@ public class DisplayText : MonoBehaviour
     {
         timer += Time.deltaTime;
         var pos = transform.position;
-        pos.y += 0.001f;
+        pos.y += Time.deltaTime;
         transform.position = pos;
 
         if (timer > duration)

@@ -33,7 +33,9 @@ public class StringTable : DataTable
             var records = csvReader.GetRecords<StringData>();
             foreach (var record in records)
             {
-                stringTable.Add(record.StringID, record.Text);
+                string processedText = record.Text.Replace("\\n", "\n");
+                stringTable.TryAdd(record.StringID, processedText); // 변경: int에서 string으로 변경
+                //stringTable.Add(record.StringID, record.Text);
             }
         }
     }
