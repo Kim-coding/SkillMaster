@@ -11,6 +11,7 @@ public class UiWindow : MonoBehaviour
     public GameObject invenWindow;
     public GameObject dungeonWindow;
     public GameObject pickUpWindow;
+    public GameObject bookWindow;
     public CameraMove CameraMove;
     public GameObject option;
 
@@ -41,6 +42,7 @@ public class UiWindow : MonoBehaviour
     public AutoDecomposPanel autoDecomposSelectPanel;
     public EquipUpgradePanel equipUpgradePanel;
     public PickUpItemsPanel pickUpResultPanel;
+    public SkillBookPanel skillBookPanel;
     private void Start()
     {
         windows = new Dictionary<Windows, GameObject>()
@@ -49,6 +51,7 @@ public class UiWindow : MonoBehaviour
             {Windows.Inven, invenWindow },
             {Windows.Dungeon, dungeonWindow },
             {Windows.PickUp, pickUpWindow },
+            {Windows.Book, bookWindow },
         };
 
 
@@ -254,6 +257,11 @@ public class UiWindow : MonoBehaviour
     public void PickUpWindowOpen()
     {
         Open(Windows.PickUp);
+    }
+
+    public void BookWindowOpen()
+    {
+        Open(Windows.Book);
     }
     public void groundUISort(bool onUIopen)
     {

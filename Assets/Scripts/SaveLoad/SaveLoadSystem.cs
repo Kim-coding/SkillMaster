@@ -73,6 +73,11 @@ public class SaveLoadSystem
 
         CurrSaveData.savePlay.rewardID = GameMgr.Instance.rewardMgr.stageID;
 
+        //foreach (var data in GameMgr.Instance.playerMgr.playerInfo.skillBookDatas)
+        //{
+        //    CurrSaveData.savePlay.savePlayerInfomation.skillBookDatas.Add(data.Key,data.Value);
+        //}
+
 
         if (!Directory.Exists(SaveDirectory))
         {

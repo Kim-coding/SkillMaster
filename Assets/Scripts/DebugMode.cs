@@ -121,12 +121,12 @@ public class DebugMode : MonoBehaviour
           SaveLoadSystem.DeleteSaveData() ;
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetKeyDown(KeyCode.A))
         {
             createPanel.gameObject.SetActive(true);
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha2))
+        if (Input.GetKeyDown(KeyCode.Z))
         {
             stagePanel.gameObject.SetActive(true);
         }

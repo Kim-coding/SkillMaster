@@ -12,6 +12,7 @@ public class UIMgr : MonoBehaviour
     public UiGuideQuest uiGuideQuest;
     public UiInventory uiInventory;
     public UiTutorial uiTutorial;
+    public UIBook uiBook;
 
     /// <summary>
     /// 밑에것들 정리 필요
@@ -66,6 +67,7 @@ public class UIMgr : MonoBehaviour
             maxTime = DataTableMgr.Get<StageTable>(DataTableIds.stage).GetID(GameMgr.Instance.sceneMgr.mainScene.stageId).timelimit;
         }
 
+        uiBook.Init();
     }
 
     public void AllUIUpdate(BigInteger g, BigInteger d)

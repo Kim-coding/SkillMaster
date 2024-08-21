@@ -4,6 +4,7 @@ public enum Windows
     Inven,
     PickUp,
     Dungeon,
+    Book,
 }
 
 public enum Guide_Windows

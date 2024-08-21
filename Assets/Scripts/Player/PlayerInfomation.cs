@@ -19,6 +19,9 @@ public class PlayerInfomation
     public int goldDungeonLv;
     public int diaDungeonLv;
     public bool dungeonMode;
+
+    public Dictionary<int,SkillBookSaveData> skillBookDatas = new Dictionary<int,SkillBookSaveData>();
+
     public void Init()
     {
         if(SaveLoadSystem.CurrSaveData.savePlay != null)
@@ -35,13 +38,20 @@ public class PlayerInfomation
             goldDungeonLv = data.goldDungeonLv;
             diaDungeonLv = data.diaDungeonLv;
             dungeonMode = data.dungeonMode;
+
+            foreach (var item in data.skillBookDatas)
+            {
+                skillBookDatas.Add(item.Key,item.Value);
+            }
+
+
         }
         else
         {
             monsterKill = new BigInteger(0); //TO-DO저장한데서 들고오기 밑에전부
             getGold = new BigInteger(0);
             skillSpawnCount = 0;
-            maxSkillLevel = 1;
+            maxSkillLevel = 0;
             obtainedItem = 0;
             gachaLevel = 1;
             gachaExp = 0;
@@ -49,6 +59,17 @@ public class PlayerInfomation
             goldDungeonLv = 1;
             diaDungeonLv = 1;
             dungeonMode = true;
+
+            var data = DataTableMgr.Get<SkillBookTable>(DataTableIds.skillBook).skillBookDatas;
+
+            foreach (var item in data)
+            {
+                SkillBookSaveData savedata = new SkillBookSaveData();
+                savedata.skillID = item.skill_equipment_id;
+                savedata.state = ClearState.NotAcquired;
+                skillBookDatas.Add(item.skill_equipment_id, savedata);
+            }
+
         }
         //stageClear;
 
@@ -80,7 +101,16 @@ public class PlayerInfomation
             return;
 
         maxSkillLevel = SkillLevel;
+        AcquiredUpdate(SkillLevel + 40000, ClearState.Acquired);
         GameMgr.Instance.rewardMgr.guideQuest.MaxSkillComparisonCheck();
+    }
+
+    public void AcquiredUpdate(int skillLv, ClearState state)
+    {
+        var skillbookElement = skillBookDatas[skillLv];
+        skillbookElement.state = state;
+        GameMgr.Instance.uiMgr.uiBook.skillBookDic[skillbookElement.skillID].saveData.state = state;
+        GameMgr.Instance.uiMgr.uiBook.skillBookDic[skillbookElement.skillID].AcquiredCheck();
     }
 
     public void GetGachaExp(int i)

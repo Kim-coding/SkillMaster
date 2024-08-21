@@ -134,4 +134,11 @@ public class GuideWindow : MonoBehaviour
 #endif
         }
     }
+
+    public void DeleteData()
+    {
+        SaveLoadSystem.DeleteSaveData();
+    }
+
+
 }

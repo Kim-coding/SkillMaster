@@ -54,6 +54,27 @@ public class EquipData
 
     public string item_icon { get; set; }
 
+
+    public int GetSetId
+    {
+        get
+        {
+            var data = DataTableMgr.Get<EquipBookTable>(DataTableIds.equipBook).equipBookDatas;
+            foreach(var setOption in data)
+            {
+                if(setOption.equipment1_id == equipmentID || setOption.equipment2_id == equipmentID ||
+                    setOption.equipment3_id == equipmentID || setOption.equipment4_id == equipmentID
+                    || setOption.equipment5_id == equipmentID)
+                {
+                    return setOption.equipbook_id;
+                }
+            }
+
+            return -1;
+        }
+    }
+
+
 }
 
 
