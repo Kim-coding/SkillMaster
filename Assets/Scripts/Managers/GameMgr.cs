@@ -169,7 +169,7 @@ public class GameMgr : MonoBehaviour
         {
             if (i % range == 0)
             {
-                baseIncrease += 5;
+                baseIncrease += value;
             }
             increasePerLevel += baseIncrease;
         }
