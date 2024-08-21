@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -22,13 +23,16 @@ public class UiTutorial : MonoBehaviour
     public TextMeshProUGUI bottomText;
 
     public int currentTutorialID;
-    public int currentTutorialIndex = 0;
+    public int currentTutorialIndex;
     public int EndTutorialIndex;
 
     private GameObject previousTarget = null;
     private Transform originalParent;
     private GameObject currentTargetUI;
     private Coroutine CheckCoroutine;
+
+    private float typingSpeed = 0.01f;
+
     public void OnTutorial()
     {
         if(!tutorialPanel.gameObject.activeSelf)
@@ -53,13 +57,15 @@ public class UiTutorial : MonoBehaviour
         {
             bottomText.transform.parent.gameObject.SetActive(false);
             topText.transform.parent.gameObject.gameObject.SetActive(true);
-            topText.text = DataTableMgr.Get<StringTable>(DataTableIds.String).GetID(currentTutorialID);
+            var fullText = DataTableMgr.Get<StringTable>(DataTableIds.String).GetID(currentTutorialID);
+            TextAnimation(topText, fullText);
         }
         else if (textPositions[currentTutorialIndex] == TextPosition.Bottom)
         {
             topText.transform.parent.gameObject.gameObject.SetActive(false);
             bottomText.transform.parent.gameObject.gameObject.SetActive(true);
-            bottomText.text = DataTableMgr.Get<StringTable>(DataTableIds.String).GetID(currentTutorialID);
+            var fullText = DataTableMgr.Get<StringTable>(DataTableIds.String).GetID(currentTutorialID);
+            TextAnimation(bottomText, fullText);
         }
 
         if (targetUI[currentTutorialIndex] != null)
@@ -75,6 +81,7 @@ public class UiTutorial : MonoBehaviour
 
             if (currentTargetUI.name == "Merge")
             {
+                Time.timeScale = 0f;
                 if (CheckCoroutine != null)
                 {
                     StopCoroutine(CheckCoroutine);
@@ -85,6 +92,7 @@ public class UiTutorial : MonoBehaviour
             Slider monsterSlider = currentTargetUI.GetComponent<Slider>();
             if (monsterSlider != null && currentTargetUI.name == "MonsterSlider")
             {
+                Time.timeScale = 1f;
                 if (CheckCoroutine != null)
                 {
                     StopCoroutine(CheckCoroutine);
@@ -115,8 +123,6 @@ public class UiTutorial : MonoBehaviour
         }
 
         previousTarget = currentTargetUI;
-        currentTutorialIndex++;
-        currentTutorialID++;
     }
 
     private IEnumerator CheckMonsterSliderValue(Slider slider)
@@ -143,13 +149,16 @@ public class UiTutorial : MonoBehaviour
                 yield break;
             }
 
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSecondsRealtime(0.5f);
         }
     }
 
     public void NextTutorial()
     {
-        if(EndTutorialIndex <= currentTutorialID)
+        currentTutorialIndex++;
+        currentTutorialID++;
+
+        if (EndTutorialIndex <= currentTutorialID)
         {
             EndTutorial();
             return;
@@ -192,5 +201,24 @@ public class UiTutorial : MonoBehaviour
     public void OnButton()
     {
         NextTutorial();
+    }
+
+    public void TextAnimation(TextMeshProUGUI textMesh, string fullText)
+    {
+        textMesh.text = "";
+        Sequence typingSequence = DOTween.Sequence();
+
+        for (int i = 0; i < fullText.Length; i++)
+        {
+            string currentText = fullText.Substring(0, i + 1);
+            typingSequence.AppendCallback(() =>
+            {
+                textMesh.text = currentText;
+            });
+            typingSequence.AppendInterval(typingSpeed);
+        }
+
+        typingSequence.SetUpdate(true); //Time.timeScale이 0일때에도 작동
+        typingSequence.Play();
     }
 }

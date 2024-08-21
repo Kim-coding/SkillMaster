@@ -21,29 +21,31 @@ public class Tutorial
         else
         {
             tutorialID = 120221;
+        }
+
+        if (tutorialID <= 120238)
+        {
             OnTutorial();
         }
+
     }
 
     public void OnTutorial()
     {
         if(tutorialID <= 120238)
         {
-            tutorialID = 120221;
             GameMgr.Instance.uiMgr.uiTutorial.currentTutorialID = tutorialID;
             GameMgr.Instance.uiMgr.uiTutorial.EndTutorialIndex = 120239;
             GameMgr.Instance.uiMgr.uiTutorial.OnTutorial();
         }
         else if (tutorialID >= 120239 && tutorialID <= 120277)
         {
-            tutorialID = 120239;
             GameMgr.Instance.uiMgr.uiTutorial.currentTutorialID = tutorialID;
             GameMgr.Instance.uiMgr.uiTutorial.EndTutorialIndex = 120278;
             GameMgr.Instance.uiMgr.uiTutorial.OnTutorial();
         }
         else
         {
-            tutorialID = 120278;
             GameMgr.Instance.uiMgr.uiTutorial.currentTutorialID = tutorialID;
             GameMgr.Instance.uiMgr.uiTutorial.EndTutorialIndex = 120284;
             GameMgr.Instance.uiMgr.uiTutorial.OnTutorial();

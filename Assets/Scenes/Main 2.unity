@@ -1193,7 +1193,10 @@ MonoBehaviour:
   - {fileID: 1184442942}
   idField: {fileID: 962500420}
   valueField: {fileID: 622753186}
-  confirmButton: {fileID: 321664569}
+  createConfirmButton: {fileID: 0}
+  stagePanel: {fileID: 0}
+  stageIdField: {fileID: 0}
+  stageConfirmButton: {fileID: 0}
 --- !u!114 &18388299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5729,6 +5732,11 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!1 &125996811 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8767992319191353859, guid: bd3dc814b8a96d7498ecb68cf4cb2cd5, type: 3}
+  m_PrefabInstance: {fileID: 284071940}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &126789735
 GameObject:
   m_ObjectHideFlags: 0
@@ -13199,7 +13207,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: -1699753811446951266, guid: bd3dc814b8a96d7498ecb68cf4cb2cd5, type: 3}
   m_PrefabInstance: {fileID: 284071940}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2143534863}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6aa41d29c69424749b5ccf6dc1abb626, type: 3}
@@ -58022,7 +58030,7 @@ MonoBehaviour:
   - {fileID: 231454456}
   - {fileID: 2125335315}
   - {fileID: 0}
-  - {fileID: 2143534863}
+  - {fileID: 125996811}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -83214,11 +83222,6 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
---- !u!1 &2143534863 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2217660189518649433, guid: bd3dc814b8a96d7498ecb68cf4cb2cd5, type: 3}
-  m_PrefabInstance: {fileID: 284071940}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2146392279
 GameObject:
   m_ObjectHideFlags: 0
