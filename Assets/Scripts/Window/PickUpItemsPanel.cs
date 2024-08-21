@@ -58,7 +58,7 @@ public class PickUpItemsPanel : MonoBehaviour
             newSlot.SetData(pickUpitemEquips[0]);
             pickUpitemEquips.RemoveAt(0);
             slotList.Add(newSlot);
-            yield return new WaitForSeconds(duration); 
+            yield return new WaitForSecondsRealtime(duration); 
         }
 
         yield break;

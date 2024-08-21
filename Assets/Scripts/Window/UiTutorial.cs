@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -32,7 +33,7 @@ public class UiTutorial : MonoBehaviour
     private Coroutine CheckCoroutine;
 
     private float typingSpeed = 0.01f;
-
+    private UnityAction<bool> toggleListener;
     public void OnTutorial()
     {
         var invincible = GameMgr.Instance.playerMgr.characters[0].GetComponent<IDamageable>();
@@ -49,6 +50,11 @@ public class UiTutorial : MonoBehaviour
             if (previousButton != null)
             {
                 previousButton.onClick.RemoveListener(OnButton);
+            }
+            Toggle previousToggle = previousTarget.GetComponent<Toggle>();
+            if (previousToggle != null && toggleListener != null)
+            {
+                previousToggle.onValueChanged.RemoveListener(toggleListener);
             }
 
             Vector3 originalPosition = previousTarget.transform.position;
@@ -74,13 +80,6 @@ public class UiTutorial : MonoBehaviour
         if (targetUI[currentTutorialIndex] != null)
         {
             currentTargetUI = targetUI[currentTutorialIndex];
-
-            Vector3 originalPosition = currentTargetUI.transform.position;
-
-            originalParent = currentTargetUI.transform.parent;
-            currentTargetUI.transform.SetParent(tutorialPanel, false);
-
-            currentTargetUI.transform.position = originalPosition;
 
             if (currentTargetUI.name == "Merge")
             {
@@ -110,6 +109,8 @@ public class UiTutorial : MonoBehaviour
             }
 
             Button currentButton = currentTargetUI.GetComponent<Button>();
+            Toggle currentToggle = currentTargetUI.GetComponent<Toggle>();
+
             if (currentButton != null)
             {
                 if (currentTargetUI.name != "BossSpawnButton")
@@ -123,6 +124,54 @@ public class UiTutorial : MonoBehaviour
                     tutorialButton.onClick.AddListener(OnButton);
                 }
             }
+            else if (currentToggle != null)
+            {
+                toggleListener = (value) =>
+                {
+                    if (value)
+                    {
+                        NextTutorial();
+                    }
+                };
+
+                currentToggle.onValueChanged.AddListener(toggleListener);
+            }
+            else
+            {
+                if(currentTargetUI.name == "EquipContent")
+                {
+                    currentTargetUI = currentTargetUI.transform.GetChild(0).gameObject;
+                    Button childButton = currentTargetUI.GetComponent<Button>();
+
+                    if (childButton != null)
+                    {
+                        childButton.onClick.RemoveListener(OnButton);
+                        childButton.onClick.AddListener(OnButton);
+                    }
+                }
+                else if (currentTargetUI.name == "Decompos" || currentTargetUI.name == "AutoDecompos") 
+                {
+                    Button[] childButtons = currentTargetUI.GetComponentsInChildren<Button>();
+                    foreach (Button btn in childButtons)
+                    {
+                        btn.interactable = false;
+                    }
+                    tutorialButton.onClick.RemoveListener(OnButton);
+                    tutorialButton.onClick.AddListener(OnButton);
+                }
+                else
+                {
+                    tutorialButton.onClick.RemoveListener(OnButton);
+                    tutorialButton.onClick.AddListener(OnButton);
+                }
+
+            }
+            Vector3 originalPosition = currentTargetUI.transform.position;
+
+            originalParent = currentTargetUI.transform.parent;
+            currentTargetUI.transform.SetParent(tutorialPanel, false);
+
+            currentTargetUI.transform.position = originalPosition;
         }
         else
         {
@@ -179,6 +228,14 @@ public class UiTutorial : MonoBehaviour
         {
             currentTargetUI.GetComponent<Button>().interactable = true;
             currentTargetUI.gameObject.SetActive(false);
+        }
+        else if (currentTargetUI != null && (currentTargetUI.name == "Decompos" || currentTargetUI.name == "AutoDecomposPanel"))
+        {
+            Button[] childButtons = currentTargetUI.GetComponentsInChildren<Button>();
+            foreach (Button btn in childButtons)
+            {
+                btn.interactable = true;
+            }
         }
 
         if (EndTutorialIndex <= currentTutorialID)

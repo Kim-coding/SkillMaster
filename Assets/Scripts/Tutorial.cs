@@ -26,32 +26,33 @@ public class Tutorial
         {
             tutorialID = 120221;
         }
-
+        SetTutorial();
     }
 
     public void OnTutorial()
     {
         Time.timeScale = 0f;
-        if(tutorialID <= 120238)
+        var ID = UiTutorial.currentTutorialID;
+        if (ID <= 120238)
         {
-            if (tutorialID >= 120234 && tutorialID <= 120237)
+            if (ID >= 120234 && ID <= 120237)
             {
                 GameMgr.Instance.uiMgr.uiWindow.EnhanceWindowOpen();
             }
 
             UiTutorial.EndTutorialIndex = 120239;
-            SetTutorial();
+            UiTutorial.OnTutorial();
         }
-        else if (tutorialID >= 120239 && tutorialID <= 120277)
+        else if (ID >= 120239 && ID <= 120278)
         {
-            UiTutorial.EndTutorialIndex = 120278;
-            SetTutorial();
-            
+            UiTutorial.EndTutorialIndex = 120279;
+            UiTutorial.OnTutorial();
+
         }
         else
         {
-            UiTutorial.EndTutorialIndex = 120284;
-            SetTutorial();
+            UiTutorial.EndTutorialIndex = 120285;
+            UiTutorial.OnTutorial();
         }
     }
 
@@ -59,6 +60,5 @@ public class Tutorial
     {
         UiTutorial.currentTutorialID = tutorialID;
         UiTutorial.currentTutorialIndex = tutorialIndex;
-        UiTutorial.OnTutorial();
     }
 }
