@@ -34,11 +34,8 @@ public class SkillBook : MonoBehaviour
     private int rewardValue = 0;
 
 
-    public void Init(SkillBookSaveData SaveData)
+    public void Init()
     {
-        saveData.skillID = SaveData.skillID;
-        saveData.state = SaveData.state;
-
         var skillData = DataTableMgr.Get<SkillTable>(DataTableIds.skill).GetID(saveData.skillID);
         if(skillData == null )
         {
@@ -96,6 +93,6 @@ public class SkillBook : MonoBehaviour
         GameMgr.Instance.playerMgr.currency.AddDia(new BigInteger(rewardValue));
         saveData.state = ClearState.RewardAcquired;
         AcquiredCheck();
-        GameMgr.Instance.playerMgr.playerInfo.skillBookDatas[saveData.skillID].state = saveData.state;
+        //GameMgr.Instance.playerMgr.playerInfo.skillBookDatas[saveData.skillID].state = saveData.state;
     }
 }

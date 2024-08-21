@@ -8,6 +8,8 @@ public class UIBook : MonoBehaviour
     public SkillBook skillBookPrefab;
     public GameObject skillBookPanel;
 
+    
+
     public Dictionary<int, SkillBook> skillBookDic = new Dictionary<int, SkillBook>();
 
 
@@ -18,7 +20,8 @@ public class UIBook : MonoBehaviour
         foreach (var item in data)
         {
             var newBook = Instantiate(skillBookPrefab, skillBookPanel.transform);
-            newBook.Init(item.Value);
+            newBook.saveData = item.Value;
+            newBook.Init();
             skillBookDic.Add(item.Key, newBook);
             GameMgr.Instance.playerMgr.playerInfo.AcquiredUpdate(item.Key, item.Value.state);
         }
