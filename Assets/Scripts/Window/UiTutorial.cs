@@ -100,16 +100,25 @@ public class UiTutorial : MonoBehaviour
                 CheckCoroutine = StartCoroutine(CheckMonsterSliderValue(monsterSlider));
             }
 
-            Button currentButton = currentTargetUI.GetComponent<Button>();
-            if (currentButton != null)
-            {
-                currentButton.onClick.AddListener(OnButton);
-            }
-
             Button tutorialButton = tutorialPanel.gameObject.GetComponent<Button>();
             if (tutorialButton != null)
             {
                 tutorialButton.onClick.RemoveListener(OnButton);
+            }
+
+            Button currentButton = currentTargetUI.GetComponent<Button>();
+            if (currentButton != null)
+            {
+                if (currentTargetUI.name != "BossSpawnButton")
+                {
+                    currentButton.onClick.AddListener(OnButton);
+                }
+                else
+                {
+                    currentTargetUI.SetActive(true);
+                    currentButton.interactable = false;
+                    tutorialButton.onClick.AddListener(OnButton);
+                }
             }
         }
         else
@@ -131,7 +140,10 @@ public class UiTutorial : MonoBehaviour
         {
             if (slider.value >= slider.maxValue)
             {
+                Time.timeScale = 0f;
                 NextTutorial();
+                yield return new WaitForSecondsRealtime(0.1f);
+                Time.timeScale = 1f;
                 yield break;
             }
 
