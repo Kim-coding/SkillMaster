@@ -1,4 +1,4 @@
-﻿equipmentID,item_kind,equipmenttype,equipment_rating,equipment_esset,reinforcement_value,item_name_id,option_value,option_id,item_icon,explain_id
+equipmentID,item_kind,equipmenttype,equipment_rating,equipment_esset,reinforcement_value,item_name_id,option_value,option_id,item_icon,explain_id
 100001,1,1,C,Cloth_C_1,500,120019,2,80001,Cloth_C_1,120286
 100002,1,1,C,Cloth_C_2,500,120020,2,80001,Cloth_C_2,120287
 100003,1,1,C,Cloth_C_3,500,120021,2,80001,Cloth_C_3,120288
@@ -179,3 +179,9 @@
 100178,1,6,SSS,Back_SSS_3,3000,120196,4,80036,Back_SSS_3,120463
 100179,1,6,SSS,Back_SSS_4,3000,120197,4,80036,Back_SSS_4,120464
 100180,1,6,SSS,Back_SSS_5,3000,120198,4,80036,Back_SSS_5,120465
+100181,1,0,0,Cloth_Basic,1,120198,4,80036,Cloth_Basic,120198
+100182,1,0,0,Weapon_Basic,1,120198,4,80036,Weapon_Basic,120198
+100183,1,0,0,Pant_Basic,1,120198,4,80036,Pant_Basic,120198
+100184,1,0,0,Eye_Basic,1,120198,4,80036,Eye_Basic,120198
+100185,1,0,0,Hair_Basic,1,120198,4,80036,Hair_Basic,120198
+100186,1,0,0,Back_Basic,1,120198,4,80036,Back_Basic,120198
