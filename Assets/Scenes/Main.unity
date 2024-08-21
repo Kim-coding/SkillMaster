@@ -40039,6 +40039,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4983061023472248864, guid: 7fceba51a62506746922d0fc2b42f769, type: 3}
+      propertyPath: enhanceWindow
+      value: 
+      objectReference: {fileID: 18185118}
+    - target: {fileID: 4983061023472248864, guid: 7fceba51a62506746922d0fc2b42f769, type: 3}
       propertyPath: targetUI.Array.data[3]
       value: 
       objectReference: {fileID: 240821519}

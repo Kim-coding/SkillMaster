@@ -33,8 +33,6 @@ public class UiTutorial : MonoBehaviour
 
     private float typingSpeed = 0.01f;
 
-    public GameObject enhanceWindow;
-
     public void OnTutorial()
     {
         var invincible = GameMgr.Instance.playerMgr.characters[0].GetComponent<IDamageable>();
