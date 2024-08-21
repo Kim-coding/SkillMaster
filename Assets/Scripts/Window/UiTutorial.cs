@@ -33,6 +33,8 @@ public class UiTutorial : MonoBehaviour
 
     private float typingSpeed = 0.01f;
 
+    public GameObject enhanceWindow;
+
     public void OnTutorial()
     {
         var invincible = GameMgr.Instance.playerMgr.characters[0].GetComponent<IDamageable>();
@@ -133,7 +135,7 @@ public class UiTutorial : MonoBehaviour
                 tutorialButton.onClick.AddListener(OnButton);
             }
         }
-
+        
         previousTarget = currentTargetUI;
     }
 
@@ -143,10 +145,7 @@ public class UiTutorial : MonoBehaviour
         {
             if (slider.value >= slider.maxValue)
             {
-                Time.timeScale = 0f;
                 NextTutorial();
-                yield return new WaitForSecondsRealtime(0.1f);
-                Time.timeScale = 1f;
                 yield break;
             }
 
@@ -170,6 +169,11 @@ public class UiTutorial : MonoBehaviour
 
     public void NextTutorial()
     {
+        if(currentTutorialID == 120230 && Time.timeScale != 0f)
+        {
+            return;
+        }
+
         currentTutorialIndex++;
         currentTutorialID++;
 

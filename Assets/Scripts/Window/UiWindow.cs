@@ -43,7 +43,7 @@ public class UiWindow : MonoBehaviour
     public EquipUpgradePanel equipUpgradePanel;
     public PickUpItemsPanel pickUpResultPanel;
     public SkillBookPanel skillBookPanel;
-    private void Start()
+    private void Awake()
     {
         windows = new Dictionary<Windows, GameObject>()
         {
@@ -163,7 +163,7 @@ public class UiWindow : MonoBehaviour
         RectTransform rectTransform = windowObj.GetComponent<RectTransform>();
         windowObj.SetActive(true);
         rectTransform.anchoredPosition = new Vector2(0, -Screen.height);
-        rectTransform.DOAnchorPos(Vector2.zero, 0.3f).OnComplete(() =>
+        rectTransform.DOAnchorPos(Vector2.zero, 0.3f).SetUpdate(true).OnComplete(() =>
         {
             previousWindow = currentOpenWindow;
             currentOpenWindow = window;
@@ -179,7 +179,7 @@ public class UiWindow : MonoBehaviour
         groundUISort(false);
         RectTransform rectTransform = window.GetComponent<RectTransform>();
         var targetPos = new Vector2(0, -Screen.height);
-        rectTransform.DOAnchorPos(targetPos, 0.3f).OnComplete(() =>
+        rectTransform.DOAnchorPos(targetPos, 0.3f).SetUpdate(true).OnComplete(() =>
         {
             window.SetActive(false);
             isAnimating = false;
