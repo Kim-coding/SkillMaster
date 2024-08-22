@@ -54,6 +54,7 @@ public class SaveLoadSystem
             CurrSaveData.savePlay.stageId = GameMgr.Instance.sceneMgr.mainScene.stageId;
             CurrSaveData.savePlay.questID = GameMgr.Instance.rewardMgr.guideQuest.questID;
             CurrSaveData.savePlay.questValue = GameMgr.Instance.rewardMgr.guideQuest.currentTargetValue;
+            CurrSaveData.savePlay.rewardID = GameMgr.Instance.sceneMgr.mainScene.appearBossMonster;
         }
         else
         {
@@ -61,7 +62,9 @@ public class SaveLoadSystem
             CurrSaveData.savePlay.tutorialIndex = GameMgr.Instance.sceneMgr.dungeonScene.tutorialIndex;
             CurrSaveData.savePlay.stageId = GameMgr.Instance.sceneMgr.dungeonScene.stageId;
             CurrSaveData.savePlay.questID = GameMgr.Instance.sceneMgr.dungeonScene.questId;
+            CurrSaveData.savePlay.rewardID = GameMgr.Instance.sceneMgr.dungeonScene.rewardID;
             CurrSaveData.savePlay.questValue = GameMgr.Instance.sceneMgr.dungeonScene.questValue;
+
         }
         CurrSaveData.savePlay.saveCurrency = GameMgr.Instance.playerMgr.currency;
         CurrSaveData.savePlay.savePlayerEnhance = GameMgr.Instance.playerMgr.playerEnhance;
@@ -71,10 +74,7 @@ public class SaveLoadSystem
         foreach (var data in GameMgr.Instance.playerMgr.skillBallControllers)
         {
             CurrSaveData.savePlay.saveSkillBallControllers.Add(data);
-        }
-
-        CurrSaveData.savePlay.rewardID = GameMgr.Instance.rewardMgr.stageID;
-
+        }        
         //foreach (var data in GameMgr.Instance.playerMgr.playerInfo.skillBookDatas)
         //{
         //    CurrSaveData.savePlay.savePlayerInfomation.skillBookDatas.Add(data.Key,data.Value);

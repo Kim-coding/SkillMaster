@@ -17,7 +17,7 @@ public class MainScene : MonoBehaviour
     private StageData stageData;
 
     private string backgroundAsset;
-    private int appearBossMonster;
+    public int appearBossMonster;
     public int stageCount;
     public int stageId;
 
