@@ -1,5 +1,5 @@
 StageID,huntvalue,appearMonster,timelimit,appearBossMonster,MonsterMaxValue,StageLv,Asset
-50001,10,20001,30,30001,16,1,Background_1
+50001,5,20001,30,30001,16,1,Background_1
 50002,10,20002,30,30002,16,2,Background_1
 50003,10,20003,30,30003,16,3,Background_1
 50004,10,20004,30,30004,16,4,Background_1
