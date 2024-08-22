@@ -58,6 +58,11 @@ public class WebTimeMgr : MonoBehaviour
 
     public void SaveTime()  // 외부에서 (특정 시점 마다)주기적으로 현재 시간을 종료 시간으로 저장하기 위한 것
     {
+        if (GameMgr.Instance.uiMgr.uiTutorial != null && GameMgr.Instance.uiMgr.uiTutorial.gameObject.activeSelf)
+        {
+            return;
+        }
+
         if (network.CheckConnectInternet())
         {
             StartCoroutine(GetEndTime());
