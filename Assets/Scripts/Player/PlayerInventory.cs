@@ -474,6 +474,7 @@ public class PlayerInventory
                 return;
             }
             GameMgr.Instance.uiMgr.uiInventory.InstantiateSlot(item, itemValue);
+            GameMgr.Instance.uiMgr.uiWindow.pickUpWindow.GetComponent<PickUp>().TicketUpdate();
         }
     }
 

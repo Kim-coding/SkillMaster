@@ -20313,8 +20313,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 287.51492, y: -50.26004}
-  m_SizeDelta: {x: 575.02985, y: 100.52008}
+  m_AnchoredPosition: {x: 287.51492, y: -50.258934}
+  m_SizeDelta: {x: 575.02985, y: 100.51787}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &462217883
 MonoBehaviour:
@@ -25619,6 +25619,9 @@ MonoBehaviour:
   pickUpButton_1: {fileID: 880201670}
   pickUpButton_10: {fileID: 1216770699}
   pickUpButton_30: {fileID: 1679859806}
+  costImage_1: {fileID: 657443574}
+  costImage_10: {fileID: 1694566965}
+  costImage_30: {fileID: 688047010}
   probabilityGuidancePanel: {fileID: 688842356}
   gachaTicketText: {fileID: 402587476}
   gachaLevelText: {fileID: 90619088}
@@ -30832,8 +30835,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 287.51492, y: -50.26004}
-  m_SizeDelta: {x: 575.02985, y: 100.52008}
+  m_AnchoredPosition: {x: 287.51492, y: -50.258934}
+  m_SizeDelta: {x: 575.02985, y: 100.51787}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &747675466
 MonoBehaviour:
@@ -31223,8 +31226,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 450.02985, y: -1269.6306}
-  m_SizeDelta: {x: 900.0597, y: 201.04016}
+  m_AnchoredPosition: {x: 450.02985, y: -1267.6377}
+  m_SizeDelta: {x: 900.0597, y: 201.03574}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &762308522
 MonoBehaviour:
@@ -33823,8 +33826,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 450.02985, y: -735.0753}
-  m_SizeDelta: {x: 900.0597, y: 868.0703}
+  m_AnchoredPosition: {x: 450.02985, y: -734.07776}
+  m_SizeDelta: {x: 900.0597, y: 866.0841}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &822145020
 MonoBehaviour:
@@ -43090,6 +43093,9 @@ MonoBehaviour:
   pickUpButton_1: {fileID: 275673382}
   pickUpButton_10: {fileID: 203828360}
   pickUpButton_30: {fileID: 1675289105}
+  costImage_1: {fileID: 1342720451}
+  costImage_10: {fileID: 65813089}
+  costImage_30: {fileID: 26900357}
   prefabSlot: {fileID: 5013022946829195621, guid: 96256c9bd9215d24e85f83132ab32fc5, type: 3}
   pickUpPanel: {fileID: 1732430478}
 --- !u!1 &998540076
@@ -63008,8 +63014,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 737.5448, y: -50.26004}
-  m_SizeDelta: {x: 325.02985, y: 100.52008}
+  m_AnchoredPosition: {x: 737.5448, y: -50.258934}
+  m_SizeDelta: {x: 325.02985, y: 100.51787}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1458367351
 MonoBehaviour:
@@ -79253,8 +79259,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 450.02985, y: -200.78012}
-  m_SizeDelta: {x: 900.0597, y: 200.52008}
+  m_AnchoredPosition: {x: 450.02985, y: -200.7768}
+  m_SizeDelta: {x: 900.0597, y: 200.51787}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1895569367
 MonoBehaviour:
@@ -87850,8 +87856,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 450.02985, y: -50.26004}
-  m_SizeDelta: {x: 900.0597, y: 100.52008}
+  m_AnchoredPosition: {x: 450.02985, y: -50.258934}
+  m_SizeDelta: {x: 900.0597, y: 100.51787}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2115651969
 MonoBehaviour:
