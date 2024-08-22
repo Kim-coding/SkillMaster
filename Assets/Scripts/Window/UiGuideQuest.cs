@@ -38,10 +38,15 @@ public class UiGuideQuest : MonoBehaviour
             {
                 guideQuestButton.onClick.AddListener(() => { GameMgr.Instance.playerMgr.currency.AddGold(value); });
             }
-            if (currentQuest.reward == 220002)
+            else if (currentQuest.reward == 220002)
             {
                 guideQuestButton.onClick.AddListener(() => { GameMgr.Instance.playerMgr.currency.AddDia(value); });
             }
+            else
+            {
+                guideQuestButton.onClick.AddListener(() => { GameMgr.Instance.playerMgr.playerinventory.CreateItem(currentQuest.reward, 1, ItemType.misc); });
+            }
+
             guideQuestButton.onClick.AddListener(GameMgr.Instance.rewardMgr.guideQuest.NextQuest);
             clearText.SetActive(true);
         }

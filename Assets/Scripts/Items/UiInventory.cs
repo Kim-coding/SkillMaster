@@ -63,7 +63,7 @@ public class UiInventory : MonoBehaviour
     public GameObject normalInventoryPanel;
     public GameObject equipInventoryPanel;
     private List<EquipItemSlot> equipItemSlots = new List<EquipItemSlot>();
-    private List<NormalItemSlot> normalItemSlots = new List<NormalItemSlot>();
+    public List<NormalItemSlot> normalItemSlots = new List<NormalItemSlot>();
 
     public TMP_Dropdown sortDropDown;
     public TextMeshProUGUI equipItemSlotCountText;
@@ -439,10 +439,42 @@ public class UiInventory : MonoBehaviour
 
     public void NormalItemUpdate()
     {
+        List<NormalItemSlot> list = new List<NormalItemSlot>();
+
         foreach (var slot in normalItemSlots)
         {
             slot.itemCountUpdate();
+            if(slot.currentItem.itemValue == 0)
+            {
+                list.Add(slot);
+            }
         }
+
+        foreach (var item in list)
+        {
+            for (int i = 0; i < GameMgr.Instance.playerMgr.playerinventory.playerNormalItemList.Count; i++)
+            {
+                if (GameMgr.Instance.playerMgr.playerinventory.playerNormalItemList[i].itemNumber == item.currentItem.itemNumber)
+                {
+                    GameMgr.Instance.playerMgr.playerinventory.playerNormalItemList.RemoveAt(i);
+                }
+            }
+
+            for (int i = 0; i < GameMgr.Instance.uiMgr.uiInventory.normalItemSlots.Count; i++)
+            {
+                if (GameMgr.Instance.uiMgr.uiInventory.normalItemSlots[i] == item)
+                {
+                    GameMgr.Instance.uiMgr.uiInventory.normalItemSlots.RemoveAt(i);
+                }
+            }
+        }
+
+        while(list.Count > 0)
+        {
+            Destroy(list[0].gameObject);
+            list.RemoveAt(0);
+        }
+        list.Clear();
     }
 
     public void InstantiateSlot(NormalItem item, int value)
@@ -617,6 +649,7 @@ public class UiInventory : MonoBehaviour
 
     public void AutoEquip()
     {
+        OffDecomposMode();
         UnEquipAllSlot();
         int hairCP = 0;
         EquipItemSlot hair = null;

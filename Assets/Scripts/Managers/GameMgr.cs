@@ -48,7 +48,7 @@ public class GameMgr : MonoBehaviour
     {
 
         saveTimer += Time.deltaTime;
-        if(saveTimer > 300f)
+        if(saveTimer > 60f)
         {
             saveTimer = 0;
             SaveLoadSystem.Save();
