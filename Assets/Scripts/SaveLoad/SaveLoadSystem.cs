@@ -49,18 +49,20 @@ public class SaveLoadSystem
         CurrSaveData.savePlay = new SavePlayData();
         if(GameMgr.Instance.sceneMgr.mainScene != null)
         {
+            CurrSaveData.savePlay.tutorialID = GameMgr.Instance.uiMgr.uiTutorial.currentTutorialID;
+            CurrSaveData.savePlay.tutorialIndex = GameMgr.Instance.uiMgr.uiTutorial.currentTutorialIndex;
             CurrSaveData.savePlay.stageId = GameMgr.Instance.sceneMgr.mainScene.stageId;
             CurrSaveData.savePlay.questID = GameMgr.Instance.rewardMgr.guideQuest.questID;
             CurrSaveData.savePlay.questValue = GameMgr.Instance.rewardMgr.guideQuest.currentTargetValue;
         }
         else
         {
+            CurrSaveData.savePlay.tutorialID = GameMgr.Instance.sceneMgr.dungeonScene.tutorialId;
+            CurrSaveData.savePlay.tutorialIndex = GameMgr.Instance.sceneMgr.dungeonScene.tutorialIndex;
             CurrSaveData.savePlay.stageId = GameMgr.Instance.sceneMgr.dungeonScene.stageId;
             CurrSaveData.savePlay.questID = GameMgr.Instance.sceneMgr.dungeonScene.questId;
             CurrSaveData.savePlay.questValue = GameMgr.Instance.sceneMgr.dungeonScene.questValue;
         }
-        CurrSaveData.savePlay.tutorialID = GameMgr.Instance.uiMgr.uiTutorial.currentTutorialID;
-        CurrSaveData.savePlay.tutorialIndex = GameMgr.Instance.uiMgr.uiTutorial.currentTutorialIndex;
         CurrSaveData.savePlay.saveCurrency = GameMgr.Instance.playerMgr.currency;
         CurrSaveData.savePlay.savePlayerEnhance = GameMgr.Instance.playerMgr.playerEnhance;
         CurrSaveData.savePlay.savePlayerInfomation = GameMgr.Instance.playerMgr.playerInfo;

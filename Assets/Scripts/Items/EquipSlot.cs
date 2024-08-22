@@ -170,8 +170,9 @@ public class EquipSlot : MonoBehaviour
 
     public void SlotLevelUpdate()
     {
-        if (GameMgr.Instance.sceneMgr.mainScene != null)
+        if (GameMgr.Instance.sceneMgr.mainScene == null)
             return;
+
         var Lv = EquipRarityCheck(currentEquip.rarerityType);
         Color LvColor = new Color(128 / 255f, 128 / 255f, 128 / 255f);
         switch (currentEquip.equipType)

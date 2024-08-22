@@ -6050,7 +6050,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a3d0b771c3bde475a9365ef3bdd64d6a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 76ead86b9ec0d9f4882ba9425aebe1a7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7304,7 +7304,7 @@ PrefabInstance:
     - target: {fileID: 7910133343337564704, guid: 04cd82b079fad8741b801f088f055c7b, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 773782b9ca97aae42ae08d4d35d4ab6c, type: 3}
+      objectReference: {fileID: 21300000, guid: cdb6aec5ac4fd97409e0b6d1af11f96a, type: 3}
     - target: {fileID: 8108098395381095173, guid: 04cd82b079fad8741b801f088f055c7b, type: 3}
       propertyPath: m_text
       value: 'zo
@@ -51530,6 +51530,8 @@ MonoBehaviour:
   stageId: 0
   questId: 0
   questValue: 0
+  tutorialId: 0
+  tutorialIndex: 0
 --- !u!114 &1423913457
 MonoBehaviour:
   m_ObjectHideFlags: 0
