@@ -21,6 +21,7 @@ public class PlayerInfomation
     public bool dungeonMode;
 
     public Dictionary<int,SkillBookSaveData> skillBookDatas = new Dictionary<int,SkillBookSaveData>();
+    public Dictionary<int,EquipBookSaveData> equipBookDatas = new Dictionary<int, EquipBookSaveData>();
 
     public void Init()
     {
@@ -44,6 +45,10 @@ public class PlayerInfomation
                 skillBookDatas.Add(item.Key,item.Value);
             }
 
+            foreach (var item in data.equipBookDatas)
+            {
+                equipBookDatas.Add(item.Key, item.Value);
+            }
 
         }
         else
@@ -60,14 +65,32 @@ public class PlayerInfomation
             diaDungeonLv = 1;
             dungeonMode = true;
 
-            var data = DataTableMgr.Get<SkillBookTable>(DataTableIds.skillBook).skillBookDatas;
+            var skilldata = DataTableMgr.Get<SkillBookTable>(DataTableIds.skillBook).skillBookDatas;
 
-            foreach (var item in data)
+            foreach (var item in skilldata)
             {
                 SkillBookSaveData savedata = new SkillBookSaveData();
                 savedata.skillID = item.skill_equipment_id;
                 savedata.state = ClearState.NotAcquired;
                 skillBookDatas.Add(item.skill_equipment_id, savedata);
+            }
+
+            var equipdata = DataTableMgr.Get<EquipBookTable>(DataTableIds.equipBook).equipBookDatas;
+
+            foreach (var item in equipdata)
+            {
+                int[] equipmentIds = { item.equipment1_id, item.equipment2_id, item.equipment3_id, item.equipment4_id, item.equipment5_id };
+
+                foreach (int equipID in equipmentIds)
+                {
+                    EquipBookSaveData saveData = new EquipBookSaveData
+                    {
+                        equipID = equipID,
+                        state = ClearState.NotAcquired
+                    };
+
+                    equipBookDatas.Add(equipID, saveData);
+                }
             }
 
         }
