@@ -90,6 +90,10 @@ public enum QuestType
     CriticalMultipleEnhance,
     RecoveryEnhance,
     GoldEnhance,
+    GoldDungeon,
+    DiaDungeon,
+    PickUp,
+    MaxSkillCount,
 }
 
 public enum EquipType

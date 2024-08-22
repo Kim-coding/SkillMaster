@@ -401,7 +401,9 @@ public class PlayerInventory
                 {
                     return;
                 }
-                var equip = new Equip(equipData, ++GameMgr.Instance.playerMgr.playerInfo.obtainedItem);
+                GameMgr.Instance.playerMgr.playerInfo.ObtainedItemUpdate();
+                int obtainedNumber = GameMgr.Instance.playerMgr.playerInfo.obtainedItem;
+                var equip = new Equip(equipData, obtainedNumber);
                 int optionCount = equipData.option_value;
                 while (optionCount > 0)
                 {

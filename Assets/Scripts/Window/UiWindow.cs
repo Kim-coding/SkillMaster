@@ -290,12 +290,14 @@ public class UiWindow : MonoBehaviour
     public void SetGoldDungeon()
     {
         GameMgr.Instance.playerMgr.playerInfo.dungeonMode = true;
+        EventMgr.TriggerEvent(QuestType.GoldDungeon);
         Dungeon();
     }
 
     public void SetDiaDungeon()
     {
         GameMgr.Instance.playerMgr.playerInfo.dungeonMode = false;
+        EventMgr.TriggerEvent(QuestType.DiaDungeon);
         Dungeon();
     }
     public void OnOption()

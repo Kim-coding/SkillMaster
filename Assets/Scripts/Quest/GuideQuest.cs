@@ -123,6 +123,21 @@ public class GuideQuest
                 AddEvent(QuestType.GoldEnhance, currentEventHandler);
                 ComparisonValue(QuestType.GoldEnhance);
                 break;
+            case 12:
+                AddEvent(QuestType.GoldDungeon, QuestValueUpdate);
+                break;
+            case 13:
+                AddEvent(QuestType.DiaDungeon, QuestValueUpdate);
+                break;
+            case 14:
+                AddEvent(QuestType.PickUp, QuestValueUpdate);
+                break;
+            case 15:
+                currentEventHandler = () => ComparisonValue(QuestType.MaxSkillCount);
+                AddEvent(QuestType.MaxSkillCount, currentEventHandler);
+                ComparisonValue(QuestType.MaxSkillCount);
+                break;
+
         }
     }
 
@@ -181,6 +196,9 @@ public class GuideQuest
             case QuestType.GoldEnhance:
                 currentTargetValue = GameMgr.Instance.playerMgr.playerEnhance.goldLevel;
                 break;
+            case QuestType.MaxSkillCount:
+                currentTargetValue = GameMgr.Instance.playerMgr.playerEnhance.maxReserveSkillLevel;
+                break;
         }
         if (currentTargetValue >= currentQuest.Targetvalue)
         {
@@ -213,5 +231,9 @@ public class GuideQuest
         EventMgr.StopListening(QuestType.GoldEnhance, currentEventHandler);
         EventMgr.StopListening(QuestType.MonsterKill, QuestValueUpdate);
         EventMgr.StopListening(QuestType.MergeSkillCount, QuestValueUpdate);
+        EventMgr.StopListening(QuestType.GoldDungeon, currentEventHandler);
+        EventMgr.StopListening(QuestType.DiaDungeon, currentEventHandler);
+        EventMgr.StopListening(QuestType.PickUp, QuestValueUpdate);
+        EventMgr.StopListening(QuestType.MaxSkillCount, currentEventHandler);
     }
 }

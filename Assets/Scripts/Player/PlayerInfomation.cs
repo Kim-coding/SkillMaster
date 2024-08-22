@@ -76,11 +76,17 @@ public class PlayerInfomation
         EventMgr.StartListening(QuestType.Stage, StageUpdate);
         EventMgr.StartListening(QuestType.MonsterKill, MonsterKillUpdate);
         EventMgr.StartListening(QuestType.MergeSkillCount, SkillSpawnCountUpdate);
+        EventMgr.StartListening(QuestType.PickUp, ObtainedItemUpdate);
     }
     private void StageUpdate()
     {
         stageClear = GameMgr.Instance.sceneMgr.mainScene.stageCount;
         //TO-DO ui¿¡ ¿Ã·Á¾ßµÊ
+    }
+
+    public void ObtainedItemUpdate()
+    {
+        obtainedItem += 1;
     }
 
     private void MonsterKillUpdate()

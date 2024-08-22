@@ -47,7 +47,7 @@ public class UiEnhance : MonoBehaviour
         goldUpgrade.Init(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10006));
 
         maxSkillCount.button.buttonClick += GameMgr.Instance.playerMgr.playerEnhance.AddMaxReserveSkillCount;
-        maxSkillCount.button.buttonClick += MaxReserveSkillTextUpdate;
+        //maxSkillCount.button.buttonClick += MaxReserveSkillTextUpdate;
         var data = DataTableMgr.Get<CombinationUpgradeTable>(DataTableIds.cbnUpgrade).GetID(190001);
         maxSkillCount.Init(data);
 
@@ -94,6 +94,7 @@ public class UiEnhance : MonoBehaviour
         EventMgr.StartListening(QuestType.CriticalPercentEnhance, CriticalPercentTextUpdate);
         EventMgr.StartListening(QuestType.CriticalMultipleEnhance, CriticalMultipleTextUpdate);
         EventMgr.StartListening(QuestType.GoldEnhance, GoldIncreaseTextUpdate);
+        EventMgr.StartListening(QuestType.MaxSkillCount, MaxReserveSkillTextUpdate);
 
     }
 
@@ -214,7 +215,7 @@ public class UiEnhance : MonoBehaviour
     }
 
 
-    private void onToggleValueChange(bool isOn)
+    public void onToggleValueChange(bool isOn)
     {
         UpdateToggleColors();
         if (enhanceModes[0].isOn)

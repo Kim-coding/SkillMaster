@@ -187,7 +187,7 @@ public class DebugMode : MonoBehaviour
         }
         else
         {
-            createPanel.gameObject.SetActive(false);
+            stagePanel.gameObject.SetActive(false);
             gameObject.SetActive(false);
             return;
         }

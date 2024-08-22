@@ -65,10 +65,39 @@ public class UiGuideQuest : MonoBehaviour
                 case 9:
                 case 10:
                 case 11:
+                    guideQuestButton.onClick.AddListener(() => {
+                        if (GameMgr.Instance.uiMgr.uiWindow.CurrentOpenWindow == Windows.Enhance)
+                        { return; }
+                        GameMgr.Instance.uiMgr.uiWindow.EnhanceWindowOpen();
+                        GameMgr.Instance.uiMgr.uiEnhance.enhanceModes[0].isOn = true;
+                        GameMgr.Instance.uiMgr.uiEnhance.onToggleValueChange(true);
+                    });
+
+                    break;
+                case 15:
                     guideQuestButton.onClick.AddListener(() => {if(GameMgr.Instance.uiMgr.uiWindow.CurrentOpenWindow == Windows.Enhance)
                         { return; }
-                        GameMgr.Instance.uiMgr.uiWindow.EnhanceWindowOpen(); });
+                        GameMgr.Instance.uiMgr.uiWindow.EnhanceWindowOpen(); 
+                    GameMgr.Instance.uiMgr.uiEnhance.enhanceModes[1].isOn = true;
+                        GameMgr.Instance.uiMgr.uiEnhance.onToggleValueChange(true);
+                    });
                     break;
+                case 12:
+                case 13:
+                    guideQuestButton.onClick.AddListener(() => {
+                        if (GameMgr.Instance.uiMgr.uiWindow.CurrentOpenWindow == Windows.Dungeon)
+                        { return; }
+                        GameMgr.Instance.uiMgr.uiWindow.DungeonWindowOpen();
+                    });
+                    break;
+                case 14:
+                    guideQuestButton.onClick.AddListener(() => {
+                        if (GameMgr.Instance.uiMgr.uiWindow.CurrentOpenWindow == Windows.PickUp)
+                        { return; }
+                        GameMgr.Instance.uiMgr.uiWindow.PickUpWindowOpen();
+                    });
+                    break;
+
             }
         }
     }

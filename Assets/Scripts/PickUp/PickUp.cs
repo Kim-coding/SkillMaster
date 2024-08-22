@@ -159,7 +159,10 @@ public class PickUp : MonoBehaviour
                 equipData = DataTableMgr.Get<EquipmentTable>(DataTableIds.equipment).GetID(itemData.Gacha5_ID);
             }
 
-            var equip = new Equip(equipData, ++GameMgr.Instance.playerMgr.playerInfo.obtainedItem);
+            GameMgr.Instance.playerMgr.playerInfo.ObtainedItemUpdate();
+            EventMgr.TriggerEvent(QuestType.PickUp);
+            int obtainedNumber = GameMgr.Instance.playerMgr.playerInfo.obtainedItem;
+            var equip = new Equip(equipData, obtainedNumber);
             int optionCount = equipData.option_value;
             while (optionCount > 0)
             {

@@ -376,6 +376,7 @@ public class PlayerEnhance
         GameMgr.Instance.uiMgr.uiMerge.skillSpawner.maxReserveSkillCountUpdate();
         GameMgr.Instance.uiMgr.uiMerge.SkillCountUpdate();
 
+        EventMgr.TriggerEvent(QuestType.MaxSkillCount);
     }
     public void AddSkillSpawnCooldown()
     {
