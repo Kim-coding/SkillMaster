@@ -1,7 +1,9 @@
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Playables;
+using UnityEngine.U2D.Animation;
 using UnityEngine.UI;
 
 public class BossAI : MonoBehaviour, IAnimation
@@ -25,7 +27,34 @@ public class BossAI : MonoBehaviour, IAnimation
 
     private Animator animator;
     public Animator Animator { get => animator; }
+    public SpriteResolver spriteResolver;
+    private Coroutine CoAni;
 
+
+    public IEnumerator Coanimation()
+    {
+            ChangeSprite("Attack", "0");
+            yield return new WaitForSeconds(0.1f);
+            ChangeSprite("Attack", "1");
+            yield return new WaitForSeconds(0.1f);
+            ChangeSprite("Attack", "2");
+            yield return new WaitForSeconds(0.1f);
+            ChangeSprite("Attack", "3");
+            yield return new WaitForSeconds(0.1f);
+            ChangeSprite("Attack", "4");
+            yield return new WaitForSeconds(0.1f);
+            ChangeSprite("Attack", "5");
+            yield return new WaitForSeconds(0.1f);
+            ChangeSprite("Idle", "0");
+            yield break;
+
+    }
+
+    public void ChangeSprite(string category, string label)
+    {
+        spriteResolver.SetCategoryAndLabel(category, label);
+        spriteResolver.ResolveSpriteToSpriteRenderer(); // 스프라이트를 즉시 업데이트
+    }
     private void Awake()
     {
         players = GameObject.FindGameObjectsWithTag("Player");
@@ -101,8 +130,15 @@ public class BossAI : MonoBehaviour, IAnimation
                     gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
                     if (attackTimer >= bossStat.attackSpeed)
                     {
+                        if(spriteResolver != null)
+                    {
+                        CoAni = StartCoroutine(Coanimation());
+                    }
+                        else
+                    {
                         animator.SetTrigger("Attack");
-                        var attackables = target.GetComponents<IAttackable>();
+                    }
+                    var attackables = target.GetComponents<IAttackable>();
                         foreach (var attackable in attackables)
                         {
                             attackable.OnAttack(gameObject, target, bossAttack.CreateAttack(bossStat));

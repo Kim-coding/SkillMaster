@@ -122,6 +122,8 @@ GameObject:
   - component: {fileID: -4407290600039218660}
   - component: {fileID: -2263757533002577063}
   - component: {fileID: 7110322791205126742}
+  - component: {fileID: 1560623366408734477}
+  - component: {fileID: 2380175140830296699}
   m_Layer: 0
   m_Name: BlueTroll
   m_TagString: Monster
@@ -187,7 +189,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: -7008412969330441016, guid: 26378f24dd384051ae72381d2ac1aea8, type: 3}
+  m_Sprite: {fileID: 4723107735738678597, guid: 26378f24dd384051ae72381d2ac1aea8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -254,6 +256,7 @@ MonoBehaviour:
   bossStat: {fileID: 0}
   bossHp: {fileID: 7159401359290202191}
   onDeath: 0
+  spriteResolver: {fileID: 2380175140830296699}
 --- !u!114 &-2139755242599818989
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -351,7 +354,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1605052194642255169}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 065c5fb5e94c4130b013e82a4573a32a, type: 2}
   m_CullingMode: 0
@@ -364,6 +367,36 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1560623366408734477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1605052194642255169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c29cff538c195c249b69c6f2236de67b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Library: []
+  m_SpriteLibraryAsset: {fileID: 7108339969198208228, guid: c67dfc2388a936343b7b537c44f302f3, type: 3}
+--- !u!114 &2380175140830296699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1605052194642255169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed8b1ae4e4e52b34ea557c1c11e076fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_CategoryHash: 0
+  m_labelHash: 0
+  m_SpriteKey: 0
+  m_SpriteHash: 288431053
 --- !u!1 &6519325762441770429
 GameObject:
   m_ObjectHideFlags: 0
