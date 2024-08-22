@@ -97015,7 +97015,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   icon: {fileID: 6265888017888801574}
-  screenShot: {fileID: 0}
+  screenShot: {fileID: 2840954302631997969}
   exit: {fileID: 0}
   skillLv: {fileID: 6169317227144107828}
   skillInfo: {fileID: 801837498793002648}

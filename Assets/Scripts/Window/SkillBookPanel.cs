@@ -24,6 +24,7 @@ public class SkillBookPanel : MonoBehaviour
         skillLv.text = skillData.SkillLv + " ·¹º§";
         var skillBookData = DataTableMgr.Get<SkillBookTable>(DataTableIds.skillBook).GetID(SkillLv);
         skillInfo.text = DataTableMgr.Get<StringTable>(DataTableIds.String).GetID(skillBookData.text_id);
+        screenShot.sprite = Resources.Load<Sprite>($"skillscreenshot/{skillBookData.image}");
     }
 
     public void ClosePanel()
