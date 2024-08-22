@@ -44,7 +44,7 @@ public class UiGuideQuest : MonoBehaviour
             }
             else
             {
-                guideQuestButton.onClick.AddListener(() => { GameMgr.Instance.playerMgr.playerinventory.CreateItem(currentQuest.reward, 1, ItemType.misc); });
+                guideQuestButton.onClick.AddListener(() => { GameMgr.Instance.playerMgr.playerinventory.CreateItem(currentQuest.reward, currentQuest.rewardvalue, ItemType.misc); });
             }
 
             guideQuestButton.onClick.AddListener(GameMgr.Instance.rewardMgr.guideQuest.NextQuest);

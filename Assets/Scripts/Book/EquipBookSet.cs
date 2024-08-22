@@ -119,6 +119,31 @@ public class EquipBookSet : MonoBehaviour
         setNameText.text = rarity + part;
         setOptionType = setData.synergy_type;
         setOptionValue = setData.synergy_value;
+
+        string option = string.Empty;
+        switch (setOptionType)
+        {
+            case 1:
+                option = "공격력 ";
+                break;
+            case 2:
+                option = "치명타 확률 ";
+                break;
+            case 3:
+                option = "최대 체력 ";
+                break;
+            case 4:
+                option = "치명타 데미지 ";
+                break;
+            case 5:
+                option = "방어력 ";
+                break;
+            case 6:
+                option = "체력 회복 ";
+                break;
+        }
+
+        setOptionText.text = option + setOptionValue + "%";
     }
 
     public void EquipSetCheck()
