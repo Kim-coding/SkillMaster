@@ -552,7 +552,13 @@ MonoBehaviour:
   setNameText: {fileID: 3770376144606758873}
   setOptionText: {fileID: 3082197049814273092}
   rewardButton: {fileID: 5037031841990567382}
+  rewardButtonImage: {fileID: 2760788825317514030}
   rewardButtonText: {fileID: 6345021252377940253}
+  setOptionType: 0
+  setOptionValue: 0
+  setID: 0
+  setClear: 0
+  getReward: 0
 --- !u!1 &4761415656025860869
 GameObject:
   m_ObjectHideFlags: 0

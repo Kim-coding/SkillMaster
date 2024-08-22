@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Video;
 
 public class PlayerInfomation
 {
@@ -20,12 +21,20 @@ public class PlayerInfomation
     public int diaDungeonLv;
     public bool dungeonMode;
 
-    public Dictionary<int,SkillBookSaveData> skillBookDatas = new Dictionary<int,SkillBookSaveData>();
-    public Dictionary<int,EquipBookSaveData> equipBookDatas = new Dictionary<int, EquipBookSaveData>();
+    public Dictionary<int, SkillBookSaveData> skillBookDatas = new Dictionary<int, SkillBookSaveData>();
+    public Dictionary<int, EquipBookSaveData> equipBookDatas = new Dictionary<int, EquipBookSaveData>();
+    public Dictionary<int, bool> SetDatas = new Dictionary<int, bool>();
+
+    public float attackPowerSetOption;
+    public float criticalPercentSetOption;
+    public float maxHealthSetOption;
+    public float criticalMultipleSetOption;
+    public float deffenceSetOption;
+    public float recoverySetOption;
 
     public void Init()
     {
-        if(SaveLoadSystem.CurrSaveData.savePlay != null)
+        if (SaveLoadSystem.CurrSaveData.savePlay != null)
         {
             var data = SaveLoadSystem.CurrSaveData.savePlay.savePlayerInfomation;
             monsterKill = new BigInteger(data.monsterKill); //TO-DO저장한데서 들고오기 밑에전부
@@ -42,12 +51,17 @@ public class PlayerInfomation
 
             foreach (var item in data.skillBookDatas)
             {
-                skillBookDatas.Add(item.Key,item.Value);
+                skillBookDatas.Add(item.Key, item.Value);
             }
 
             foreach (var item in data.equipBookDatas)
             {
                 equipBookDatas.Add(item.Key, item.Value);
+            }
+
+            foreach (var item in data.SetDatas)
+            {
+                SetDatas.Add(item.Key, item.Value);
             }
 
         }
@@ -91,11 +105,13 @@ public class PlayerInfomation
 
                     equipBookDatas.Add(equipID, saveData);
                 }
+
+                SetDatas.Add(item.equipbook_id, false);
             }
 
         }
         //stageClear;
-
+        SetOptionUpdate();
         EventMgr.StartListening(QuestType.Stage, StageUpdate);
         EventMgr.StartListening(QuestType.MonsterKill, MonsterKillUpdate);
         EventMgr.StartListening(QuestType.MergeSkillCount, SkillSpawnCountUpdate);
@@ -145,7 +161,7 @@ public class PlayerInfomation
     public void GetGachaExp(int i)
     {
         gachaExp += i;
-        if(gachaExp >= gachaMaxExp && gachaMaxExp != -1)
+        if (gachaExp >= gachaMaxExp && gachaMaxExp != -1)
         {
             GameMgr.Instance.rewardMgr.SetReward(DataTableMgr.Get<GachaTable>(DataTableIds.gachaLevel).GetID(gachaLevel).gachaRequestValue);
             gachaLevel++;
@@ -154,5 +170,53 @@ public class PlayerInfomation
             gachaMaxExp = DataTableMgr.Get<GachaTable>(DataTableIds.gachaLevel).GetID(gachaLevel).gachaRequestValue;
         }
         GameMgr.Instance.uiMgr.uiWindow.pickUpWindow.GetComponent<PickUp>().UIUpdate(gachaLevel, gachaExp, gachaMaxExp, DataTableMgr.Get<GachaTable>(DataTableIds.gachaLevel).GetID(gachaLevel).gachaRequestValue);
+    }
+
+    public void SetOptionUpdate()
+    {
+        attackPowerSetOption = 0;
+        criticalPercentSetOption = 0;
+        maxHealthSetOption = 0;
+        criticalMultipleSetOption = 0;
+        deffenceSetOption = 0;
+        recoverySetOption = 0;
+
+        foreach (var item in GameMgr.Instance.uiMgr.uiBook.setDic)
+        {
+            if (!item.Value.setClear)
+            {
+                continue;
+            }
+
+            switch (item.Value.setOptionType)
+            {
+                case 1:
+                    attackPowerSetOption += item.Value.setOptionValue;
+                    break;
+                case 2:
+                    criticalPercentSetOption += item.Value.setOptionValue;
+                    break;
+                case 3:
+                    maxHealthSetOption += item.Value.setOptionValue;
+                    break;
+                case 4:
+                    criticalMultipleSetOption += item.Value.setOptionValue;
+                    break;
+                case 5:
+                    deffenceSetOption += item.Value.setOptionValue;
+                    break;
+                case 6:
+                    recoverySetOption += item.Value.setOptionValue;
+                    break;
+            }
+        }
+        attackPowerSetOption = 1 + (attackPowerSetOption / 100);
+        criticalPercentSetOption = 1 + (criticalPercentSetOption / 100);
+        maxHealthSetOption = 1 + (maxHealthSetOption / 100);
+        criticalMultipleSetOption = 1 + (criticalMultipleSetOption / 100);
+        deffenceSetOption = 1 + (deffenceSetOption / 100);
+        recoverySetOption = 1 + (recoverySetOption / 100);
+
+        GameMgr.Instance.playerMgr.playerStat.playerStatUpdate();
     }
 }

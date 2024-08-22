@@ -159,6 +159,13 @@ public class PickUp : MonoBehaviour
                 equipData = DataTableMgr.Get<EquipmentTable>(DataTableIds.equipment).GetID(itemData.Gacha5_ID);
             }
 
+            var equipbook = GameMgr.Instance.uiMgr.uiBook.equipBookDic[equipData.equipmentID];
+            if(equipbook.saveData.state == ClearState.NotAcquired)
+            {
+                equipbook.saveData.state = ClearState.Acquired;
+                equipbook.AcquiredCheck();
+                GameMgr.Instance.uiMgr.uiBook.setDic[equipData.GetSetId].EquipSetCheck();
+            }
             GameMgr.Instance.playerMgr.playerInfo.ObtainedItemUpdate();
             EventMgr.TriggerEvent(QuestType.PickUp);
             int obtainedNumber = GameMgr.Instance.playerMgr.playerInfo.obtainedItem;

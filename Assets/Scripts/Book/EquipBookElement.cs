@@ -34,7 +34,10 @@ public class EquipBookElement : MonoBehaviour
         }
 
         icon.sprite = equipData.Geticon;
-
+        if(equipData.equipmenttype == 4)
+        {
+            icon.sprite = equipData.GetTexture[0];
+        }
         Color newColor = Color.white;
         switch (equipData.equipment_rating)
         {
@@ -65,8 +68,9 @@ public class EquipBookElement : MonoBehaviour
 
         rewardValue = DataTableMgr.Get<EquipBookTable>(DataTableIds.equipBook).GetID(equipData.GetSetId).equipment_reward;
         reward.GetComponent<Button>().onClick.AddListener(GetReward);
-        //icon.GetComponent<Button>().onClick.AddListener(() => { GameMgr.Instance.uiMgr.uiWindow.skillBookPanel.SetSkillBookPanel(saveData.skillID); });
-        //blind.GetComponent<Button>().onClick.AddListener(() => { GameMgr.Instance.uiMgr.uiWindow.skillBookPanel.SetSkillBookPanel(saveData.skillID); });
+        icon.GetComponent<Button>().onClick.AddListener(() => { GameMgr.Instance.uiMgr.uiWindow.equipBookPanel.SetEquipBookPanel(saveData.equipID); });
+        blind.GetComponent<Button>().onClick.AddListener(() => { GameMgr.Instance.uiMgr.uiWindow.equipBookPanel.SetEquipBookPanel(saveData.equipID); });
+        AcquiredCheck();
     }
 
     public void AcquiredCheck()

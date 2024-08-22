@@ -43,6 +43,7 @@ public class UiWindow : MonoBehaviour
     public EquipUpgradePanel equipUpgradePanel;
     public PickUpItemsPanel pickUpResultPanel;
     public SkillBookPanel skillBookPanel;
+    public EquipBookPanel equipBookPanel;
     private void Awake()
     {
         windows = new Dictionary<Windows, GameObject>()

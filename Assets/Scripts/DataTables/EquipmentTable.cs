@@ -74,6 +74,7 @@ public class EquipData
         }
     }
 
+    public int explain_id { get; set; }
 
 }
 
