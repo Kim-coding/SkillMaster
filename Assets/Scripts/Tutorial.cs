@@ -35,11 +35,6 @@ public class Tutorial
         var ID = UiTutorial.currentTutorialID;
         if (ID <= 120238)
         {
-            if (ID >= 120234 && ID <= 120237)
-            {
-                GameMgr.Instance.uiMgr.uiWindow.EnhanceWindowOpen();
-            }
-
             UiTutorial.EndTutorialIndex = 120239;
             UiTutorial.OnTutorial();
         }

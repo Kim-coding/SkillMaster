@@ -1,11 +1,8 @@
 using DG.Tweening;
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public enum TextPosition
@@ -46,6 +43,8 @@ public class UiTutorial : MonoBehaviour
 
         if (previousTarget != null)
         {
+            RemoveHighlight(previousTarget);
+
             Button previousButton = previousTarget.GetComponent<Button>();
             if (previousButton != null)
             {
@@ -172,6 +171,7 @@ public class UiTutorial : MonoBehaviour
             currentTargetUI.transform.SetParent(tutorialPanel, false);
 
             currentTargetUI.transform.position = originalPosition;
+            HighlightTarget(currentTargetUI);
         }
         else
         {
@@ -182,7 +182,7 @@ public class UiTutorial : MonoBehaviour
                 tutorialButton.onClick.AddListener(OnButton);
             }
         }
-        
+
         previousTarget = currentTargetUI;
     }
 
@@ -304,5 +304,26 @@ public class UiTutorial : MonoBehaviour
 
         typingSequence.SetUpdate(true); //Time.timeScale이 0일때에도 작동
         typingSequence.Play();
+    }
+
+    public void HighlightTarget(GameObject target)
+    {
+        Outline outline = target.GetComponent<Outline>();
+        if (outline == null)
+        {
+            outline = target.AddComponent<Outline>();
+        }
+
+        outline.effectColor = Color.yellow;
+        outline.effectDistance = new Vector2(5, 5);
+    }
+
+    public void RemoveHighlight(GameObject target)
+    {
+        Outline outline = target.GetComponent<Outline>();
+        if (outline != null)
+        {
+            Destroy(outline);
+        }
     }
 }

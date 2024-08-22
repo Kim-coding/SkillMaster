@@ -134,7 +134,7 @@ public class DungeonScene : MonoBehaviour
             timer += Time.deltaTime;
             if (timer > endTime)
             {
-                EndDungeon(true, currentStage - 1);
+                EndDungeon(false, currentStage - 1);
             }
         }
         else
@@ -142,7 +142,7 @@ public class DungeonScene : MonoBehaviour
             timer += Time.deltaTime;
             if (timer > endTime)
             {
-                EndDungeon(true,currentStage);
+                EndDungeon(false, currentStage);
             }
         }
         GameMgr.Instance.uiMgr.TimeSliderUpdate();
@@ -209,8 +209,6 @@ public class DungeonScene : MonoBehaviour
             dungeonText.text = "다이아 던전";
             GameMgr.Instance.playerMgr.currency.AddDia(new BigInteger(reward)); // 다이아 추가
         }
-        //GameMgr.Instance.webTimeMgr.SaveTime(); //시간 저장
-        //메인 씬으로 넘겨야 하는 정보 : reward, dungeonClearStageText.text (클리어 보상, 클리어한 스테이지)
     }
 
     private void SpawnNextBoss()
