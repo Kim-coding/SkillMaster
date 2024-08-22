@@ -4666,19 +4666,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 89548998}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1458089214}
-        m_TargetAssemblyTypeName: UiWindow, Assembly-CSharp
-        m_MethodName: SetGoldDungeon
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &89548998
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9326,19 +9314,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 189205906}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1458089214}
-        m_TargetAssemblyTypeName: UiWindow, Assembly-CSharp
-        m_MethodName: SetDiaDungeon
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &189205906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49866,13 +49842,14 @@ GameObject:
   - component: {fileID: 1195710798}
   - component: {fileID: 1195710800}
   - component: {fileID: 1195710799}
+  - component: {fileID: 1195710801}
   m_Layer: 5
   m_Name: Dungeon Window
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1195710798
 RectTransform:
   m_ObjectHideFlags: 0
@@ -49932,6 +49909,30 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1195710797}
   m_CullTransparentMesh: 1
+--- !u!114 &1195710801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1195710797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c6eca54b2b39114d87125eef8b8d9cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goldText: {fileID: 133123402}
+  goldLvText: {fileID: 1159700347}
+  diaText: {fileID: 1121468857}
+  diaLvText: {fileID: 2043379165}
+  goldKeyText1: {fileID: 1395719911}
+  goldKeyText2: {fileID: 1560372796}
+  diaKeyText1: {fileID: 1420210052}
+  diaKeyText2: {fileID: 1364315626}
+  goldClearButton: {fileID: 1413579617}
+  goldDungeonButton: {fileID: 89548997}
+  diaClearButton: {fileID: 409996266}
+  diaDungeonButton: {fileID: 189205905}
 --- !u!1 &1199380926
 GameObject:
   m_ObjectHideFlags: 0
@@ -60092,6 +60093,7 @@ MonoBehaviour:
   uiInventory: {fileID: 1813656379}
   uiTutorial: {fileID: 954741437}
   uiBook: {fileID: 8940469093756343448}
+  uIDungeon: {fileID: 1195710801}
   monsterSlider: {fileID: 1102606861}
   bossSpawnButton: {fileID: 231454458}
   DungeonScoreSlider: {fileID: 0}
@@ -60103,10 +60105,6 @@ MonoBehaviour:
   stageUI: {fileID: 1603245744}
   skillcount: {fileID: 0}
   stageCount: 1
-  goldText: {fileID: 133123402}
-  goldLvText: {fileID: 1159700347}
-  diaText: {fileID: 1121468857}
-  diaLvText: {fileID: 2043379165}
 --- !u!114 &1423913464
 MonoBehaviour:
   m_ObjectHideFlags: 0

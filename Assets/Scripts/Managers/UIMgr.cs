@@ -13,6 +13,7 @@ public class UIMgr : MonoBehaviour
     public UiInventory uiInventory;
     public UiTutorial uiTutorial;
     public UIBook uiBook;
+    public UIDungeon uIDungeon;
 
     /// <summary>
     /// 밑에것들 정리 필요
@@ -37,11 +38,6 @@ public class UIMgr : MonoBehaviour
     public TextMeshProUGUI skillcount;
     public int stageCount = 1;
 
-    public TextMeshProUGUI goldText;
-    public TextMeshProUGUI goldLvText;
-    public TextMeshProUGUI diaText;
-    public TextMeshProUGUI diaLvText;
-
     public void Init()
     {
         uiInventory.Init();
@@ -51,14 +47,7 @@ public class UIMgr : MonoBehaviour
             bossSpawnButton.gameObject.SetActive(false);
         }
         var playerInfo = GameMgr.Instance.playerMgr.playerInfo;
-        if (goldText != null)
-        {
-            goldLvText.text = playerInfo.goldDungeonLv.ToString();
-            diaLvText.text = playerInfo.diaDungeonLv.ToString();
-            goldText.text = new BigInteger(DataTableMgr.Get<GoldDungeonTable>(DataTableIds.goldDungeon).GetID(playerInfo.goldDungeonLv).reward_value).ToStringShort();
-            diaText.text = DataTableMgr.Get<DiaDungeonTable>(DataTableIds.diaDungeon).GetID(playerInfo.diaDungeonLv).reward_value;
-        }
-        if(GameMgr.Instance.sceneMgr.dungeonScene != null)
+        if (GameMgr.Instance.sceneMgr.dungeonScene != null)
         {
             maxTime = DataTableMgr.Get<DiaDungeonTable>(DataTableIds.diaDungeon).GetID(playerInfo.diaDungeonLv).timelimt;
         }
@@ -68,6 +57,7 @@ public class UIMgr : MonoBehaviour
         }
         if(GameMgr.Instance.sceneMgr.mainScene != null)
         {
+            uIDungeon.Init();
             uiBook.Init();
         }
     }
