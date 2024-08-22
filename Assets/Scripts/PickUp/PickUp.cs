@@ -14,6 +14,11 @@ public class PickUp : MonoBehaviour
     public Button pickUpButton_1;
     public Button pickUpButton_10;
     public Button pickUpButton_30;
+
+    public Image costImage_1;
+    public Image costImage_10;
+    public Image costImage_30;
+
     GachaGradeData gachaData = new GachaGradeData();
 
     private float C_percent;
@@ -42,6 +47,7 @@ public class PickUp : MonoBehaviour
 
         var playerInfo = GameMgr.Instance.playerMgr.playerInfo;
         UIUpdate(playerInfo.gachaLevel, playerInfo.gachaExp, playerInfo.gachaMaxExp, DataTableMgr.Get<GachaTable>(DataTableIds.gachaLevel).GetID(playerInfo.gachaLevel).gachaRequestValue);
+        TicketUpdate();
     }
 
     public void PickUpItem(int i)
@@ -54,15 +60,34 @@ public class PickUp : MonoBehaviour
             return;
         }
 
-        BigInteger diaCost = new BigInteger(i * 100);
-        if (GameMgr.Instance.playerMgr.currency.diamond < diaCost)
+        NormalItem ticket = null;
+        foreach (var item in GameMgr.Instance.playerMgr.playerinventory.playerNormalItemList)
         {
-            GameMgr.Instance.uiMgr.uiWindow.popUpUI.gameObject.SetActive(true);
-            GameMgr.Instance.uiMgr.uiWindow.popUpUI.SetText("다이아가 부족합니다!");
-
-            return;
+            if (item.itemNumber == 220005)
+            {
+                ticket = item;
+                break;
+            }
         }
-        GameMgr.Instance.playerMgr.currency.RemoveDia(diaCost);
+        if (ticket == null || ticket.itemValue < i)
+        {
+            BigInteger diaCost = new BigInteger(i * 100);
+            if (GameMgr.Instance.playerMgr.currency.diamond < diaCost)
+            {
+                GameMgr.Instance.uiMgr.uiWindow.popUpUI.gameObject.SetActive(true);
+                GameMgr.Instance.uiMgr.uiWindow.popUpUI.SetText("다이아가 부족합니다!");
+
+                return;
+            }
+            GameMgr.Instance.playerMgr.currency.RemoveDia(diaCost);
+        }
+        else
+        {
+            ticket.itemValue -= i;
+        }
+        GameMgr.Instance.uiMgr.uiInventory.NormalItemUpdate();
+        TicketUpdate();
+        GameMgr.Instance.uiMgr.uiWindow.pickUpResultPanel.TicketUpdate();
         GameMgr.Instance.uiMgr.uiWindow.pickUpResultPanel.ResultListClear();
 
             SetGachaPercent();
@@ -261,6 +286,38 @@ public class PickUp : MonoBehaviour
         S_percent = gachaData.Gacha4_Odds;
         SS_percent = gachaData.Gacha5_Odds;
         SSS_percent = gachaData.Gacha6_Odds;
+    }
+
+    public void TicketUpdate()
+    {
+        int ticketValue = 0;
+        NormalItem ticket = null;
+        foreach (var item in GameMgr.Instance.playerMgr.playerinventory.playerNormalItemList)
+        {
+            if (item.itemNumber == 220005)
+            {
+                ticket = item;
+                ticketValue = ticket.itemValue;
+                break;
+            }
+        }
+        gachaTicketText.text = ticketValue + "개";
+
+        costImage_1.sprite = Resources.Load<Sprite>("EnhanceIcon/Icon_Gem03_Diamond_Blue");
+        costImage_10.sprite = Resources.Load<Sprite>("EnhanceIcon/Icon_Gem03_Diamond_Blue");
+        costImage_30.sprite = Resources.Load<Sprite>("EnhanceIcon/Icon_Gem03_Diamond_Blue");
+        if (ticketValue >= 1)
+        {
+            costImage_1.sprite = Resources.Load<Sprite>("ticket");
+        }
+        if (ticketValue >= 10)
+        {
+            costImage_10.sprite = Resources.Load<Sprite>("ticket");
+        }
+        if (ticketValue >= 30)
+        {
+            costImage_30.sprite = Resources.Load<Sprite>("ticket");
+        }
     }
 
     public void UIUpdate(int level, int exp, int maxExp, int rewardValue)

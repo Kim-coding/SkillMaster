@@ -12,6 +12,10 @@ public class PickUpItemsPanel : MonoBehaviour
     public Button pickUpButton_10;
     public Button pickUpButton_30;
 
+    public Image costImage_1;
+    public Image costImage_10;
+    public Image costImage_30;
+
     private List<Equip> pickUpitemEquips = new List<Equip>();
     private List<PickUpSlot> slotList = new List<PickUpSlot>();
     public PickUpSlot prefabSlot;
@@ -63,6 +67,38 @@ public class PickUpItemsPanel : MonoBehaviour
 
         yield break;
     }
+
+    public void TicketUpdate()
+    {
+        int ticketValue = 0;
+        NormalItem ticket = null;
+        foreach (var item in GameMgr.Instance.playerMgr.playerinventory.playerNormalItemList)
+        {
+            if (item.itemNumber == 220005)
+            {
+                ticket = item;
+                ticketValue = ticket.itemValue;
+                break;
+            }
+        }
+
+        costImage_1.sprite = Resources.Load<Sprite>("EnhanceIcon/Icon_Gem03_Diamond_Blue");
+        costImage_10.sprite = Resources.Load<Sprite>("EnhanceIcon/Icon_Gem03_Diamond_Blue");
+        costImage_30.sprite = Resources.Load<Sprite>("EnhanceIcon/Icon_Gem03_Diamond_Blue");
+        if (ticketValue >= 1)
+        {
+            costImage_1.sprite = Resources.Load<Sprite>("ticket");
+        }
+        if (ticketValue >= 10)
+        {
+            costImage_10.sprite = Resources.Load<Sprite>("ticket");
+        }
+        if (ticketValue >= 30)
+        {
+            costImage_30.sprite = Resources.Load<Sprite>("ticket");
+        }
+    }
+
 
     public void ClosePanel()
     {
