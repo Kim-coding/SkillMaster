@@ -45,6 +45,10 @@ public class SaveLoadSystem
 
     public static bool Save()
     {
+        if(GameMgr.Instance.uiMgr.uiTutorial.gameObject.activeSelf)
+        {
+            return false;
+        }
 
         CurrSaveData.savePlay = new SavePlayData();
         if(GameMgr.Instance.sceneMgr.mainScene != null)
