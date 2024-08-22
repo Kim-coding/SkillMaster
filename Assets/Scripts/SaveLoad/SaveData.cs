@@ -28,6 +28,8 @@ public class SavePlayData
     public int rewardID;
 
     //UI 세팅
+    public float bgm;
+    public float sfx;
 
     //튜토리얼
     public int tutorialID;

@@ -74,12 +74,14 @@ public class SaveLoadSystem
         foreach (var data in GameMgr.Instance.playerMgr.skillBallControllers)
         {
             CurrSaveData.savePlay.saveSkillBallControllers.Add(data);
-        }        
+        }
         //foreach (var data in GameMgr.Instance.playerMgr.playerInfo.skillBookDatas)
         //{
         //    CurrSaveData.savePlay.savePlayerInfomation.skillBookDatas.Add(data.Key,data.Value);
         //}
 
+        CurrSaveData.savePlay.bgm = GameMgr.Instance.soundMgr.bgmSlider.value;
+        CurrSaveData.savePlay.sfx = GameMgr.Instance.soundMgr.sfxSlider.value;
 
         if (!Directory.Exists(SaveDirectory))
         {

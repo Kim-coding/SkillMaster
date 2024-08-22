@@ -9,6 +9,10 @@ public class DamageDisplay : MonoBehaviour
 
     public void DisplayText(Attack attack)
     {
+        if(!GameMgr.Instance.soundMgr.damageTextToggle.isOn)
+        {
+            return;
+        }
         var damagePos = transform.position;
         damagePos.y += 1f;
         var characterHealth = gameObject.GetComponent<IDamageable>();
