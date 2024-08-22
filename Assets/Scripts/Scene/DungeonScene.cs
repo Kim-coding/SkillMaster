@@ -59,6 +59,7 @@ public class DungeonScene : MonoBehaviour
     public int questValue;
     public int tutorialId;
     public int tutorialIndex;
+    public int rewardID;
 
 
     public void Init()
@@ -71,6 +72,7 @@ public class DungeonScene : MonoBehaviour
         stageId = data.stageId;
         questId = data.questID;
         questValue = data.questValue;
+        rewardID = data.rewardID;
         dungeonMode = GameMgr.Instance.playerMgr.playerInfo.dungeonMode;
 
         var camera = GameObject.FindWithTag("MainCamera");
