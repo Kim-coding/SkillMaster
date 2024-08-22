@@ -43,7 +43,9 @@ public class DropItemMovement : MonoBehaviour
             {
                 if (uiWindow.invenWindow.activeSelf || 
                     uiWindow.dungeonWindow.activeSelf || 
-                    uiWindow.pickUpWindow.activeSelf)
+                    uiWindow.pickUpWindow.activeSelf ||
+                    uiWindow.bookWindow.activeSelf || 
+                    !GameMgr.Instance.soundMgr.dropEffectToggle.isOn)
                 {
                     gameObject.SetActive(false);
                 }
