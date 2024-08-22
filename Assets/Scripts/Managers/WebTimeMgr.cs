@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using System.Net.Http;
 using UnityEngine;
@@ -200,7 +201,7 @@ public class WebTimeMgr : MonoBehaviour
     public void OfflineDuration()
     {
         TimeData timeData = LoadTimeData();
-        if (timeData != null && !string.IsNullOrEmpty(timeData.endTime))
+        if (timeData != null && !string.IsNullOrEmpty(timeData.endTime))  // 오프라인 보상
         {
             DateTime lastEndTime;
             if (DateTime.TryParse(timeData.endTime, out lastEndTime))
@@ -212,6 +213,54 @@ public class WebTimeMgr : MonoBehaviour
                     GameMgr.Instance.rewardMgr.OfflineRewardPopUp(inactiveDuration);
                 }
             }
+        }
+        if (timeData != null && !string.IsNullOrEmpty(timeData.startTime) && !string.IsNullOrEmpty(timeData.endTime))  // 자정 보상
+        {
+            DateTime lastEndTime;
+            DateTime lastStartTime;
+            if (DateTime.TryParse(timeData.endTime, out lastEndTime) && DateTime.TryParse(timeData.startTime, out lastStartTime))
+            {
+                if (lastStartTime.Date != lastEndTime.Date)
+                {
+                    MidnightReward();
+                }
+            }
+        }
+    }
+
+    private void MidnightReward()
+    {
+        List<NormalItem> goldKeyItemList = new List<NormalItem> { };
+        List<NormalItem> diaKeyItemList = new List<NormalItem> { };
+
+        foreach (var item in GameMgr.Instance.playerMgr.playerinventory.playerNormalItemList)
+        {
+            if(item.itemName == "220003")
+            {
+                goldKeyItemList.Add(item);
+            }
+            if(item.itemName == "220004")
+            {
+                diaKeyItemList.Add(item);
+            }
+        }
+
+        if(goldKeyItemList.Count == 0)
+        {
+            GameMgr.Instance.playerMgr.playerinventory.CreateItem(220003, 2, ItemType.misc);
+        }
+        else if (goldKeyItemList.Count == 1)
+        {
+            GameMgr.Instance.playerMgr.playerinventory.CreateItem(220003, 1, ItemType.misc);
+        }
+
+        if(diaKeyItemList.Count == 0)
+        {
+            GameMgr.Instance.playerMgr.playerinventory.CreateItem(220004, 2, ItemType.misc);
+        }
+        else if (diaKeyItemList.Count == 1)
+        {
+            GameMgr.Instance.playerMgr.playerinventory.CreateItem(220004, 1, ItemType.misc);
         }
     }
 
