@@ -68,6 +68,8 @@ public class GuideQuest
         RegisterQuestEvents();
         CheckQuestCompletion();
         UiUpdate();
+
+        //if(questID)
     }
 
     public void RegisterQuestEvents()

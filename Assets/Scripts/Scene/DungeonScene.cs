@@ -57,12 +57,17 @@ public class DungeonScene : MonoBehaviour
     public int stageId;
     public int questId;
     public int questValue;
+    public int tutorialId;
+    public int tutorialIndex;
+
 
     public void Init()
     {
         //받아와야 하는 정보 : 도전 스테이지, 선택한 던전 (골드, 다이아)
 
         var data = SaveLoadSystem.CurrSaveData.savePlay;
+        tutorialId = data.tutorialID;
+        tutorialIndex = data.tutorialIndex;
         stageId = data.stageId;
         questId = data.questID;
         questValue = data.questValue;
