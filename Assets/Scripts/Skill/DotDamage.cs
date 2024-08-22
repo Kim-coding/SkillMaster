@@ -6,7 +6,7 @@ public class DotDamage : MonoBehaviour
 {
     public int DotID { get; set; }
     public float Duration = 1f;
-    public float TickInterval = 0.5f;
+    public float TickInterval = 0.5f; //TO-DO 테이블 연결
 
     public GameObject attacker {  get; set; }
     public Attack attack { get; set; }

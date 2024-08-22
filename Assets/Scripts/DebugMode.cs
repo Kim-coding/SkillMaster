@@ -171,7 +171,14 @@ public class DebugMode : MonoBehaviour
         }
         if (typeToggle[2].isOn)
         {
-            GameMgr.Instance.uiMgr.uiMerge.skillSpawner.SpawnSkill(id);
+
+                for (int i = 0; i < GameMgr.Instance.playerMgr.skillBallControllers.Count; i++)
+                {
+                    Destroy(GameMgr.Instance.playerMgr.skillBallControllers[i].gameObject);
+                }
+                GameMgr.Instance.playerMgr.skillBallControllers.Clear();
+                GameMgr.Instance.uiMgr.uiMerge.skillSpawner.SpawnSkill(id);
+
         }
 
         createPanel.gameObject.SetActive(false);

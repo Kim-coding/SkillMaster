@@ -14,19 +14,18 @@ public class SceneMgr : MonoBehaviour
         {
             mainScene.Init();
             GameMgr.Instance.rewardMgr.Init();
+            tutorial = new Tutorial();
+            tutorial.Init();
         }
         if(dungeonScene != null)
         {
             dungeonScene.Init();
         }
-
-        tutorial = new Tutorial();
-        tutorial.Init();
     }
 
     public void Start()
     {
-        if (tutorial.tutorialID <= 120238)
+        if (mainScene != null && tutorial.tutorialID <= 120238)
         {
             tutorial.OnTutorial();
         }

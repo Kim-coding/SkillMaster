@@ -108,12 +108,7 @@ public class GameMgr : MonoBehaviour
     public void SaveAndQuit()
     {
         SaveLoadSystem.Save();
-        StartCoroutine(webTimeMgr.GetEndTime());
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#else
-        Application.Quit();
-#endif
+        StartCoroutine(webTimeMgr.GetExitTime());
     }
     public MonsterPool GetMonsterPool()
     {

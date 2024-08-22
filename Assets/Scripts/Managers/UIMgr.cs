@@ -66,8 +66,10 @@ public class UIMgr : MonoBehaviour
         {
             maxTime = DataTableMgr.Get<StageTable>(DataTableIds.stage).GetID(GameMgr.Instance.sceneMgr.mainScene.stageId).timelimit;
         }
-
-        uiBook.Init();
+        if(GameMgr.Instance.sceneMgr.mainScene != null)
+        {
+            uiBook.Init();
+        }
     }
 
     public void AllUIUpdate(BigInteger g, BigInteger d)
