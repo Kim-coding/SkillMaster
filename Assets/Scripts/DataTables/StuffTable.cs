@@ -19,7 +19,7 @@ public class StuffData
     }
     public int stuff_type { get; set; }
     public int Itembundle { get; set; }
-    public int Itemmaxvalue { get; set; }
+    //public int Itemmaxvalue { get; set; }
     public string Itemicon { get; set; }
     public Sprite Geticon
     {
