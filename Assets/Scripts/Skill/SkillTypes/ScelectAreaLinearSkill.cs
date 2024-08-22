@@ -10,7 +10,7 @@ public class ScelectAreaLinearAttack : MonoBehaviour, ISkillComponent, ISkill
     public Attack attack;
     public DamageType damageType;
 
-    float duration = 0.5f;
+    float duration = 0.9f;
     float timer = 0f;
     float angle;
     private GameObject skillEffectObject;
