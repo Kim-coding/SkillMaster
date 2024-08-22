@@ -52,10 +52,14 @@ public class EquipSlot : MonoBehaviour
                     ColorUtility.TryParseHtmlString("#C74B46", out newColor);
                     break;
             }
-
-            rarityColor.color = newColor;
+            if(GameMgr.Instance.sceneMgr.mainScene != null)
+            {
+                rarityColor.color = newColor;
+            }
         }
+       
         SlotLevelUpdate();
+        
     }
 
     public void SetEmpty()
@@ -166,6 +170,8 @@ public class EquipSlot : MonoBehaviour
 
     public void SlotLevelUpdate()
     {
+        if (GameMgr.Instance.sceneMgr.mainScene != null)
+            return;
         var Lv = EquipRarityCheck(currentEquip.rarerityType);
         Color LvColor = new Color(128 / 255f, 128 / 255f, 128 / 255f);
         switch (currentEquip.equipType)

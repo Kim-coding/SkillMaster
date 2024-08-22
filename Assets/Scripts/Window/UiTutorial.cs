@@ -149,7 +149,7 @@ public class UiTutorial : MonoBehaviour
                         childButton.onClick.AddListener(OnButton);
                     }
                 }
-                else if (currentTargetUI.name == "Decompos" || currentTargetUI.name == "AutoDecompos" || currentTargetUI.name == "PickupScrollView") 
+                else if (currentTargetUI.name == "Decompos" || currentTargetUI.name == "AutoDecompos" || currentTargetUI.name == "PickupScrollView" || currentTargetUI.name == "GoldDungeonButtons") 
                 {
                     Button[] childButtons = currentTargetUI.GetComponentsInChildren<Button>();
                     foreach (Button btn in childButtons)
@@ -159,7 +159,7 @@ public class UiTutorial : MonoBehaviour
                     tutorialButton.onClick.RemoveListener(OnButton);
                     tutorialButton.onClick.AddListener(OnButton);
                 }
-                else if(currentTargetUI.name != "Merge" || currentTargetUI.name != "MonsterSlider")
+                else if(currentTargetUI.name != "Merge" && currentTargetUI.name != "MonsterSlider")
                 {
                     tutorialButton.onClick.RemoveListener(OnButton);
                     tutorialButton.onClick.AddListener(OnButton);
@@ -229,7 +229,7 @@ public class UiTutorial : MonoBehaviour
             currentTargetUI.GetComponent<Button>().interactable = true;
             currentTargetUI.gameObject.SetActive(false);
         }
-        else if (currentTargetUI != null && (currentTargetUI.name == "Decompos" || currentTargetUI.name == "AutoDecompos" || currentTargetUI.name == "PickupScrollView"))
+        else if (currentTargetUI != null && (currentTargetUI.name == "Decompos" || currentTargetUI.name == "AutoDecompos" || currentTargetUI.name == "PickupScrollView" || currentTargetUI.name == "GoldDungeonButtons"))
         {
             Button[] childButtons = currentTargetUI.GetComponentsInChildren<Button>();
             foreach (Button btn in childButtons)

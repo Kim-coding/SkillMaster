@@ -339,7 +339,8 @@ public class UiInventory : MonoBehaviour
         //≈∞ »£√‚
 
         AllSlotUpdate();
-        SlotLevelUpdate();
+        if (GameMgr.Instance.sceneMgr.mainScene != null)
+            SlotLevelUpdate();
     }
     private void OnFilteringToggleValueChanged(bool isOn)
     {
@@ -607,6 +608,7 @@ public class UiInventory : MonoBehaviour
         pantSlot.SlotLevelUpdate();
         weaponSlot.SlotLevelUpdate();
         cloakSlot.SlotLevelUpdate();
+        
     }
     public void OpenEquipUpgradePanel()
     {

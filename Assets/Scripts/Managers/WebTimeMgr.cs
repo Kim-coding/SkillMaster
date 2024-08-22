@@ -121,24 +121,43 @@ public class WebTimeMgr : MonoBehaviour
             }
         }
     }
-    //private DateTime FetchEndTime()
-    //{
-    //    using (HttpClient client = new HttpClient())
-    //    {
-    //        HttpResponseMessage response = client.GetAsync(SeoulTimeApiUrl).Result;
 
-    //        if (response.IsSuccessStatusCode)
-    //        {
-    //            string jsonResult = response.Content.ReadAsStringAsync().Result;
-    //            var worldTime = JsonUtility.FromJson<WorldTimeApiResponse>(jsonResult);
-    //            return DateTime.Parse(worldTime.dateTime);
-    //        }
-    //        else
-    //        {
-    //            throw new Exception("네트워크 요청 실패: " + response.ReasonPhrase);
-    //        }
-    //    }
-    //}
+    public IEnumerator GetExitTime()  // 종료 시간 비동기적으로 가져오기
+    {
+        UnityWebRequest request = UnityWebRequest.Get(SeoulTimeApiUrl);
+        yield return request.SendWebRequest();
+
+        if (request.result != UnityWebRequest.Result.Success)
+        {
+            Debug.Log("시간 가져오기 실패: " + request.error);
+        }
+        else
+        {
+            var jsonResult = request.downloadHandler.text;
+            var worldTime = JsonUtility.FromJson<WorldTimeApiResponse>(jsonResult);
+
+            if (worldTime != null && !string.IsNullOrEmpty(worldTime.dateTime))
+            {
+                DateTime endTime = DateTime.Parse(worldTime.dateTime);
+                Debug.Log("서버 시간 (마지막 시간): " + endTime);
+                SaveEndTime(endTime);
+            }
+            else
+            {
+                Debug.LogError("서버 응답에서 dateTime 필드가 비어있음.");
+            }
+        }
+        Exit();
+    }
+
+    private void Exit()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
+    }
 
     private void SaveStartTime(DateTime startTime)
     {
