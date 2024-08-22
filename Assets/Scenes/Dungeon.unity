@@ -18496,6 +18496,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skillBookPrefab: {fileID: 2455297195654691520, guid: d17cf690f9d962746bb035ac88ff038e, type: 3}
   skillBookPanel: {fileID: 1013140601}
+  skillBook: {fileID: 0}
+  equipBook: {fileID: 0}
+  equipBookSetPrefab: {fileID: 0}
+  equipBookPanels: []
+  equipBookContents: []
+  bookModes: {fileID: 0}
+  bookToggles: []
+  partSelectModes: {fileID: 0}
+  partSelectToggles: []
 --- !u!114 &475389783
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51622,7 +51631,7 @@ MonoBehaviour:
   uiGuideQuest: {fileID: 0}
   uiInventory: {fileID: 1813656379}
   uiTutorial: {fileID: 0}
-  uiBook: {fileID: 0}
+  uiBook: {fileID: 475389782}
   monsterSlider: {fileID: 0}
   bossSpawnButton: {fileID: 0}
   DungeonScoreSlider: {fileID: 1948932809}
@@ -52910,6 +52919,7 @@ MonoBehaviour:
   equipUpgradePanel: {fileID: 1329344252}
   pickUpResultPanel: {fileID: 994395934}
   skillBookPanel: {fileID: 0}
+  equipBookPanel: {fileID: 0}
 --- !u!114 &1458089215
 MonoBehaviour:
   m_ObjectHideFlags: 0
