@@ -23,7 +23,7 @@ public class GameMgr : MonoBehaviour
 
     private void Awake()
     {
-        if(Instance == null)
+        if (Instance == null)
         {
             Instance = this;
             //DontDestroyOnLoad(gameObject);
@@ -48,7 +48,7 @@ public class GameMgr : MonoBehaviour
     {
 
         saveTimer += Time.deltaTime;
-        if(saveTimer > 60f)
+        if (saveTimer > 60f)
         {
             saveTimer = 0;
             SaveLoadSystem.Save();
@@ -59,13 +59,13 @@ public class GameMgr : MonoBehaviour
         {
             debugMode.gameObject.SetActive(!debugMode.isActiveAndEnabled);
         }
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             SaveAndQuit();
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if(Time.timeScale == 1f)
+            if (Time.timeScale == 1f)
             {
                 Time.timeScale = 0f;
             }
@@ -117,11 +117,11 @@ public class GameMgr : MonoBehaviour
 
     public GameObject[] GetMonsters()
     {
-        if(sceneMgr.mainScene != null)
+        if (sceneMgr.mainScene != null)
         {
             return sceneMgr.mainScene.GetMonsters();
         }
-        if(sceneMgr.dungeonScene != null)
+        if (sceneMgr.dungeonScene != null)
         {
             return sceneMgr.dungeonScene.GetMonsters();
         }
@@ -185,7 +185,7 @@ public class GameMgr : MonoBehaviour
         return increasePerLevel;
     }
 
-    public BigInteger CalculateCost(int value , int range, int level)
+    public BigInteger CalculateCost(int value, int increaseValue, int range, int level)
     {
         int baseIncrease = value;
         BigInteger increasePerLevel = new BigInteger(0);
@@ -194,13 +194,28 @@ public class GameMgr : MonoBehaviour
         {
             if (i % range == 0)
             {
-                baseIncrease += 5;
+                baseIncrease += increaseValue;
             }
             increasePerLevel += baseIncrease;
         }
 
         return increasePerLevel;
     }
+
+    public BigInteger cbnCalculateCost(int defalutValue, int increase, int increaseValue, int level)
+    {
+        int baseIncrease = increase;
+        BigInteger increasePerLevel = new BigInteger(defalutValue);
+
+        for (int i = 0; i <= level; i++)
+        {
+            baseIncrease += increaseValue;
+            increasePerLevel += baseIncrease;
+        }
+
+        return increasePerLevel;
+    }
+
 
     void EnterPowerSavingMode()
     {
