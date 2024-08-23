@@ -68,16 +68,18 @@ public class UiWindow : MonoBehaviour
         buttonPosition = toggleWindowButton.GetComponent<RectTransform>().anchoredPosition;
 
         toggleWindowButton.onClick.AddListener(OnWindowButtonClick);
-
-        if(GameMgr.Instance.uiMgr.uiGuideQuest.currentQuest.QuestID < 60023)
+        if(GameMgr.Instance.sceneMgr.mainScene != null)
         {
-            uiPickupLockImage.gameObject.SetActive(true);
-            uiPickupLockImage.transform.parent.GetComponent<Button>().interactable = false;
-        }
-        if (GameMgr.Instance.uiMgr.uiGuideQuest.currentQuest.QuestID < 60050)
-        {
-            uiDungeonLockImage.gameObject.SetActive(true);
-            uiDungeonLockImage.transform.parent.GetComponent<Button>().interactable = false;
+            if (GameMgr.Instance.uiMgr.uiGuideQuest.currentQuest.QuestID < 60023)
+            {
+                uiPickupLockImage.gameObject.SetActive(true);
+                uiPickupLockImage.transform.parent.GetComponent<Button>().interactable = false;
+            }
+            if (GameMgr.Instance.uiMgr.uiGuideQuest.currentQuest.QuestID < 60050)
+            {
+                uiDungeonLockImage.gameObject.SetActive(true);
+                uiDungeonLockImage.transform.parent.GetComponent<Button>().interactable = false;
+            }
         }
     }
 

@@ -169,6 +169,12 @@ public class SkillSpawner : MonoBehaviour
         {
             return;
         }
+
+        if(GameMgr.Instance.uiMgr.uiTutorial != null && GameMgr.Instance.uiMgr.uiTutorial.gameObject.activeSelf)
+        {
+            skillId = 1; // 튜토리얼 중에는 1번 스킬만 들어가야 한다.
+        }
+
         if (playerMgr.skillBallControllers.Count != 0)
         { 
             GameMgr.Instance.soundMgr.PlaySFX("Button"); 
