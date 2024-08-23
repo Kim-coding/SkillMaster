@@ -203,9 +203,10 @@ public class UiWindow : MonoBehaviour
         {
             GameMgr.Instance.sceneMgr.tutorial.OnTutorial();
         }
-        if (GameMgr.Instance.uiMgr.uiGuideQuest.currentQuest.QuestID == 60051 && window == Windows.Dungeon)
+        if (GameMgr.Instance.uiMgr.uiGuideQuest.currentQuest.QuestID == 60051 && window == Windows.Dungeon && !GameMgr.Instance.uiMgr.uiTutorial.isDungeonOpen)
         {
             GameMgr.Instance.sceneMgr.tutorial.OnTutorial();
+            GameMgr.Instance.uiMgr.uiTutorial.isDungeonOpen = true;
         }
     }
 

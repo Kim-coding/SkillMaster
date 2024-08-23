@@ -55,6 +55,7 @@ public class SaveLoadSystem
         {
             CurrSaveData.savePlay.tutorialID = GameMgr.Instance.uiMgr.uiTutorial.currentTutorialID;
             CurrSaveData.savePlay.tutorialIndex = GameMgr.Instance.uiMgr.uiTutorial.currentTutorialIndex;
+            CurrSaveData.savePlay.isDungeonOpen = GameMgr.Instance.uiMgr.uiTutorial.isDungeonOpen;
             CurrSaveData.savePlay.stageId = GameMgr.Instance.sceneMgr.mainScene.stageId;
             CurrSaveData.savePlay.questID = GameMgr.Instance.rewardMgr.guideQuest.questID;
             CurrSaveData.savePlay.questValue = GameMgr.Instance.rewardMgr.guideQuest.currentTargetValue;
@@ -64,6 +65,7 @@ public class SaveLoadSystem
         {
             CurrSaveData.savePlay.tutorialID = GameMgr.Instance.sceneMgr.dungeonScene.tutorialId;
             CurrSaveData.savePlay.tutorialIndex = GameMgr.Instance.sceneMgr.dungeonScene.tutorialIndex;
+            CurrSaveData.savePlay.isDungeonOpen = GameMgr.Instance.sceneMgr.dungeonScene.isDungeonOpen;
             CurrSaveData.savePlay.stageId = GameMgr.Instance.sceneMgr.dungeonScene.stageId;
             CurrSaveData.savePlay.questID = GameMgr.Instance.sceneMgr.dungeonScene.questId;
             CurrSaveData.savePlay.rewardID = GameMgr.Instance.sceneMgr.dungeonScene.rewardID;

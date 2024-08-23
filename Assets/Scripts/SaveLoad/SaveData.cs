@@ -34,6 +34,7 @@ public class SavePlayData
     //Æ©Åä¸®¾ó
     public int tutorialID;
     public int tutorialIndex;
+    public bool isDungeonOpen;
 }
 
 public abstract class SaveData

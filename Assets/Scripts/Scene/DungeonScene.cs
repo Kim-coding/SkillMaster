@@ -57,6 +57,7 @@ public class DungeonScene : MonoBehaviour
     public int questValue;
     public int tutorialId;
     public int tutorialIndex;
+    public bool isDungeonOpen;
     public int rewardID;
 
 
@@ -67,6 +68,7 @@ public class DungeonScene : MonoBehaviour
         var data = SaveLoadSystem.CurrSaveData.savePlay;
         tutorialId = data.tutorialID;
         tutorialIndex = data.tutorialIndex;
+        isDungeonOpen = data.isDungeonOpen;
         stageId = data.stageId;
         questId = data.questID;
         questValue = data.questValue;

@@ -7,6 +7,8 @@ public class Tutorial
     public int tutorialID;
     public int tutorialIndex;
     private UiTutorial UiTutorial;
+    public bool isDungeonOpen;
+
     public void Init()
     {
         if (GameMgr.Instance.uiMgr.uiTutorial == null)
@@ -21,9 +23,11 @@ public class Tutorial
             var data = SaveLoadSystem.CurrSaveData.savePlay;
             tutorialID = data.tutorialID;
             tutorialIndex = data.tutorialIndex;
+            isDungeonOpen = data.isDungeonOpen;
         }
         else
         {
+            isDungeonOpen = false;
             tutorialID = 120221;
         }
         SetTutorial();

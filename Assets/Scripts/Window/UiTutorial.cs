@@ -22,6 +22,7 @@ public class UiTutorial : MonoBehaviour
 
     public int currentTutorialID;
     public int currentTutorialIndex;
+    public bool isDungeonOpen;
     public int EndTutorialIndex;
 
     private GameObject previousTarget = null;
