@@ -163,7 +163,8 @@ public class PlayerInfomation
         gachaExp += i;
         if (gachaExp >= gachaMaxExp && gachaMaxExp != -1)
         {
-            GameMgr.Instance.rewardMgr.SetReward(DataTableMgr.Get<GachaTable>(DataTableIds.gachaLevel).GetID(gachaLevel).gachaRequestValue);
+            GameMgr.Instance.rewardMgr.SetReward(DataTableMgr.Get<GachaTable>(DataTableIds.gachaLevel).GetID(gachaLevel).gachaRequestValue.ToString());
+            GameMgr.Instance.playerMgr.currency.AddDia(new BigInteger(DataTableMgr.Get<GachaTable>(DataTableIds.gachaLevel).GetID(gachaLevel).gachaRequestValue));
             gachaLevel++;
             gachaExp -= gachaMaxExp;
 

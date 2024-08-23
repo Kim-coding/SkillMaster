@@ -11,10 +11,17 @@ public class RewardMgr : MonoBehaviour
     public GameObject offlineRewardPopUp;
     public Button offlineRewardButton;
     public TextMeshProUGUI offlinDurationText;
+    public TextMeshProUGUI offLineGoldRewardText;
+    public TextMeshProUGUI offLineDiaRewardText;
+
+
+    public GameObject rewardPopUp;
+    public GameObject rewardGoldIcon;
+    public GameObject rewardDiaIcon;
     public TextMeshProUGUI goldRewardText;
     public TextMeshProUGUI diaRewardText;
-    public GameObject rewardPopUp;
-    public TextMeshProUGUI rewardText;
+
+
     private int rewardDiaValue;
 
 
@@ -90,8 +97,8 @@ public class RewardMgr : MonoBehaviour
             }
         }
 
-        goldRewardText.text = $"{new BigInteger(goldReward).ToStringShort()}";
-        diaRewardText.text = $"{new BigInteger(totalDia)}";
+        offLineGoldRewardText.text = $"{new BigInteger(goldReward).ToStringShort()}";
+        offLineDiaRewardText.text = $"{new BigInteger(totalDia)}";
 
         GameMgr.Instance.playerMgr.currency.AddGold(new BigInteger(goldReward));
         GameMgr.Instance.playerMgr.currency.AddDia(new BigInteger(totalDia));
@@ -104,16 +111,18 @@ public class RewardMgr : MonoBehaviour
 
 
 
-    public void SetReward(int value)
+    public void SetReward(string value, bool gold = false)
     {
+        rewardGoldIcon.SetActive(gold);
+        rewardDiaIcon.SetActive(!gold);
+
         rewardPopUp.gameObject.SetActive(true);
-        rewardDiaValue = value;
-        rewardText.text = value.ToString();
+        diaRewardText.text = value;
+        goldRewardText.text = value;
     }
 
     public void GetReward()
     {
-        GameMgr.Instance.playerMgr.currency.AddDia(new BigInteger(rewardDiaValue));
         rewardPopUp.gameObject.SetActive(false);
     }
 }
