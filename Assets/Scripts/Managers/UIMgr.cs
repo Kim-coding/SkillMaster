@@ -160,6 +160,7 @@ public class UIMgr : MonoBehaviour
                 }
             }
             dungeonScoreText.text = $"{i} ·¹º§";
+            GameMgr.Instance.sceneMgr.dungeonScene.currentStage = i;
         }
         BigInteger curdamage = new BigInteger(currentDamage);
         BigInteger maxScore = new BigInteger(new BigInteger(cutLine) - new BigInteger(preCutLine));
