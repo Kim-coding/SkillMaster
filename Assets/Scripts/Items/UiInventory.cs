@@ -369,7 +369,7 @@ public class UiInventory : MonoBehaviour
         SortItemSlots();
     }
 
-    private void OnInventoryModeToggleValueChanged(bool isOn)
+    public void OnInventoryModeToggleValueChanged(bool isOn)
     {
         bool mode = true;
         UpdateToggleColors();

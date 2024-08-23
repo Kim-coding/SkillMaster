@@ -1,4 +1,5 @@
 using DG.Tweening;
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -108,6 +109,15 @@ public class UiTutorial : MonoBehaviour
                 tutorialButton.onClick.RemoveListener(OnButton);
             }
 
+            if(currentTargetUI.name == "AutoSelect")
+            {
+                GameMgr.Instance.uiMgr.uiInventory.OnDecomposMode();
+            }
+            if(currentTargetUI.name == "Inven Button")
+            {
+                GameMgr.Instance.uiMgr.uiInventory.inventoryModeToggles[0].isOn = true;
+                GameMgr.Instance.uiMgr.uiInventory.OnInventoryModeToggleValueChanged(true);
+            }
             Button currentButton = currentTargetUI.GetComponent<Button>();
             Toggle currentToggle = currentTargetUI.GetComponent<Toggle>();
 
@@ -268,14 +278,14 @@ public class UiTutorial : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Alpha0))
-        {
-            NextTutorial();
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha9))
-        {
-            EndTutorial();
-        }
+        //if(Input.GetKeyDown(KeyCode.Alpha0))
+        //{
+        //    NextTutorial();
+        //}
+        //if (Input.GetKeyDown(KeyCode.Alpha9))
+        //{
+        //    EndTutorial();
+        //}
     }
 
     public void EndTutorial()

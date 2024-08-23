@@ -55,55 +55,55 @@ public class GameMgr : MonoBehaviour
             webTimeMgr.SaveTime();
         }
 
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            debugMode.gameObject.SetActive(!debugMode.isActiveAndEnabled);
-        }
+        //if (Input.GetKeyDown(KeyCode.D))
+        //{
+        //    debugMode.gameObject.SetActive(!debugMode.isActiveAndEnabled);
+        //}
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             SaveAndQuit();
         }
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            if (Time.timeScale == 1f)
-            {
-                Time.timeScale = 0f;
-            }
-            else
-            {
-                Time.timeScale = 1f;
-            }
-        }
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    if (Time.timeScale == 1f)
+        //    {
+        //        Time.timeScale = 0f;
+        //    }
+        //    else
+        //    {
+        //        Time.timeScale = 1f;
+        //    }
+        //}
 
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            SaveLoadSystem.Save();
-            webTimeMgr.SaveTime();
-            Debug.Log("save");
-        }
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            SaveLoadSystem.Load();
-            Instance.playerMgr.currency = SaveLoadSystem.CurrSaveData.savePlay.saveCurrency;
-            Instance.playerMgr.currency.Init();
-            Debug.Log("load");
-        }
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            SaveLoadSystem.DeleteSaveData();
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha8))
-        {
-            sceneMgr.tutorial.OnTutorial();
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha7))
-        {
-            EnterPowerSavingMode();
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha6))
-        {
-            ExitPowerSavingMode();
-        }
+        //if (Input.GetKeyDown(KeyCode.S))
+        //{
+        //    SaveLoadSystem.Save();
+        //    webTimeMgr.SaveTime();
+        //    Debug.Log("save");
+        //}
+        //if (Input.GetKeyDown(KeyCode.L))
+        //{
+        //    SaveLoadSystem.Load();
+        //    Instance.playerMgr.currency = SaveLoadSystem.CurrSaveData.savePlay.saveCurrency;
+        //    Instance.playerMgr.currency.Init();
+        //    Debug.Log("load");
+        //}
+        //if (Input.GetKeyDown(KeyCode.F))
+        //{
+        //    SaveLoadSystem.DeleteSaveData();
+        //}
+        //if (Input.GetKeyDown(KeyCode.Alpha8))
+        //{
+        //    sceneMgr.tutorial.OnTutorial();
+        //}
+        //if (Input.GetKeyDown(KeyCode.Alpha7))
+        //{
+        //    EnterPowerSavingMode();
+        //}
+        //if (Input.GetKeyDown(KeyCode.Alpha6))
+        //{
+        //    ExitPowerSavingMode();
+        //}
     }
     public void SaveAndQuit()
     {
