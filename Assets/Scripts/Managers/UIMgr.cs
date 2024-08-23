@@ -37,6 +37,10 @@ public class UIMgr : MonoBehaviour
 
     public TextMeshProUGUI skillcount;
     public int stageCount = 1;
+    public bool goldLvMax = false;
+    private BigInteger last;
+    private BigInteger cutLine;
+    private BigInteger preCutLine;
 
     public void Init()
     {
@@ -60,6 +64,11 @@ public class UIMgr : MonoBehaviour
             uIDungeon.Init();
             uiBook.Init();
         }
+        var dungeonData = DataTableMgr.Get<GoldDungeonTable>(DataTableIds.goldDungeon).goldDungeonDatas;
+        last = new BigInteger(dungeonData[dungeonData.Count - 1].request_damage);
+        cutLine = new BigInteger(0);
+        preCutLine = new BigInteger(0);
+
     }
 
     public void AllUIUpdate(BigInteger g, BigInteger d)
@@ -120,34 +129,63 @@ public class UIMgr : MonoBehaviour
     {
         bossSpawnButton.gameObject.SetActive(false);
     }
-    public void ScoreSliderUpdate(BigInteger currentDamage, BigInteger maxDamage)
+    public void ScoreSliderUpdate(BigInteger currentDamage)
     {
-        if (currentDamage > maxDamage)
+        var dungeonData = DataTableMgr.Get<GoldDungeonTable>(DataTableIds.goldDungeon).goldDungeonDatas;
+
+        if(goldLvMax)
         {
-            currentDamage = new BigInteger(maxDamage);
+            DungeonScoreSlider.value = 0;
+            return;
         }
+
+        if (currentDamage > cutLine)
+        {
+            int i = 0;
+            foreach (var dungeon in dungeonData)
+            {
+                if (cutLine < currentDamage)
+                {
+                    i++;
+                    preCutLine = new BigInteger(cutLine);
+                    cutLine = new BigInteger(dungeon.request_damage);
+                    if (cutLine >= last)
+                    {
+                        goldLvMax = true;
+                    }
+                }
+                else
+                {
+                    break;
+                }
+            }
+            dungeonScoreText.text = $"{i} ·¹º§";
+        }
+
+        BigInteger maxScore = new BigInteger(cutLine - preCutLine);
+        BigInteger curScore = new BigInteger(currentDamage - preCutLine);
 
         float percent = 0f;
 
-        if (maxDamage.factor - 1 > currentDamage.factor)
+        if (maxScore.factor > curScore.factor)
         {
             percent = 0f;
         }
-        else if (maxDamage.factor > currentDamage.factor)
+        else if (maxScore.factor == curScore.factor)
         {
-            float max = maxDamage.numberList[maxDamage.factor - 1] * 1000 + maxDamage.numberList[maxDamage.factor - 2];
-            float damage = currentDamage.numberList[currentDamage.factor - 1];
+            float max = maxScore.numberList[maxScore.factor - 1] * 1000 + maxScore.numberList[maxScore.factor - 2];
+            float damage = curScore.numberList[curScore.factor - 1];
             percent = damage / max;
         }
-        else if (maxDamage.factor < currentDamage.factor)
+        else if (maxScore.factor < curScore.factor)
         {
             percent = 1f;
         }
         else
         {
             percent = 
-            (float)currentDamage.numberList[currentDamage.factor - 1] 
-            / maxDamage.numberList[maxDamage.factor - 1];
+            (float)curScore.numberList[curScore.factor - 1] 
+            / maxScore.numberList[maxScore.factor - 1];
         }
 
         DungeonScoreSlider.value = percent;
