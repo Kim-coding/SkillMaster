@@ -33,7 +33,7 @@ public class UiMerge : MonoBehaviour
         autoMergeButton.onClick.AddListener(ToggleAutoMerge);
         autoMergeButtonText = autoMergeButton.GetComponentInChildren<TextMeshProUGUI>();
 
-        if(GameMgr.Instance.uiMgr.uiGuideQuest.currentQuest.QuestID < 60066)
+        if(GameMgr.Instance.sceneMgr.mainScene != null && GameMgr.Instance.uiMgr.uiGuideQuest.currentQuest.QuestID < 60066)
         {
             autoMergeButton.interactable = false;
             autoSpawnButton.interactable = false;
