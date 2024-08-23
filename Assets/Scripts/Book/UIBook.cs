@@ -86,7 +86,7 @@ public class UIBook : MonoBehaviour
         {
             if (toggle.isOn)
             {
-                SetToggleColor(toggle, new Color(0, 0, 0, 0));
+                SetToggleColor(toggle, new Color(0, 0, 0, 1));
             }
             else
             {
