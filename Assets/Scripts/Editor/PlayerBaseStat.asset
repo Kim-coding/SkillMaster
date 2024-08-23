@@ -15,7 +15,7 @@ MonoBehaviour:
   baseSpeed: 3
   baseCooldown: 1
   baseAttackRange: 2
-  baseAttackSpeed: 1.5
+  baseAttackSpeed: 0.5
   baseRecoveryDuration: 5
   basePlayerAttackPower: 1
   basePlayerDefence: 0
