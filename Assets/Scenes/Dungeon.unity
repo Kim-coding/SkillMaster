@@ -13715,10 +13715,12 @@ MonoBehaviour:
   spawnButton: {fileID: 240821522}
   sortButton: {fileID: 2046850667}
   autoMergeButton: {fileID: 321616692}
+  autoSpawnButton: {fileID: 0}
   autoMergeButtonText: {fileID: 0}
   merge: {fileID: 2091457409}
   autoMergeDuration: 0
   baseAutoMergeDuration: 0
+  autoLockImages: []
 --- !u!1 &334876690
 GameObject:
   m_ObjectHideFlags: 0
@@ -16328,7 +16330,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uB2E4\uC74C \uB2E8\uACC4"
+  m_text: (Soon)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4a4cb5ff1460d3847bfaf1bedca9c15e, type: 2}
   m_sharedMaterial: {fileID: -8394872773446215976, guid: 4a4cb5ff1460d3847bfaf1bedca9c15e, type: 2}
@@ -16929,6 +16931,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 717005747}
+  fadeOutTime: 2
+  canvasGroup: {fileID: 0}
 --- !u!114 &450711732
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21043,7 +21047,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 570502711}
   m_OnClick:
     m_PersistentCalls:
@@ -51553,6 +51557,7 @@ MonoBehaviour:
   questValue: 0
   tutorialId: 0
   tutorialIndex: 0
+  isDungeonOpen: 0
   rewardID: 0
 --- !u!114 &1423913457
 MonoBehaviour:
@@ -51657,6 +51662,7 @@ MonoBehaviour:
   stageUI: {fileID: 0}
   skillcount: {fileID: 0}
   stageCount: 1
+  goldLvMax: 0
 --- !u!114 &1423913464
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51702,10 +51708,13 @@ MonoBehaviour:
   offlineRewardPopUp: {fileID: 777801421}
   offlineRewardButton: {fileID: 451800360}
   offlinDurationText: {fileID: 1128200823}
+  offLineGoldRewardText: {fileID: 0}
+  offLineDiaRewardText: {fileID: 0}
+  rewardPopUp: {fileID: 0}
+  rewardGoldIcon: {fileID: 0}
+  rewardDiaIcon: {fileID: 0}
   goldRewardText: {fileID: 529067888}
   diaRewardText: {fileID: 1704580869}
-  rewardPopUp: {fileID: 0}
-  rewardText: {fileID: 0}
   stageID: 0
 --- !u!114 &1423913468
 MonoBehaviour:
@@ -52916,6 +52925,8 @@ MonoBehaviour:
   - {fileID: 1925551849}
   - {fileID: 119644760}
   - {fileID: 1147213737}
+  uiPickupLockImage: {fileID: 0}
+  uiDungeonLockImage: {fileID: 0}
   UIGuideQuest: {fileID: 0}
   UIMonsterSlider: {fileID: 0}
   UICameraButton: {fileID: 1847649537}
