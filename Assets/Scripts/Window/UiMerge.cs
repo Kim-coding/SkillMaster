@@ -14,6 +14,7 @@ public class UiMerge : MonoBehaviour
     public Button spawnButton;
     public Button sortButton;
     public Button autoMergeButton;
+    public Button autoSpawnButton;
 
     public TextMeshProUGUI autoMergeButtonText;
 
@@ -24,11 +25,38 @@ public class UiMerge : MonoBehaviour
     public float autoMergeDuration;
     public float baseAutoMergeDuration;
 
+    public GameObject[] autoLockImages;
+
     private void Start()
     {
         sortButton.onClick.AddListener(SortingSkills);
         autoMergeButton.onClick.AddListener(ToggleAutoMerge);
         autoMergeButtonText = autoMergeButton.GetComponentInChildren<TextMeshProUGUI>();
+
+        if(GameMgr.Instance.uiMgr.uiGuideQuest.currentQuest.QuestID < 60066)
+        {
+            autoMergeButton.interactable = false;
+            autoSpawnButton.interactable = false;
+            foreach (var lockimage in autoLockImages)
+            {
+                lockimage.SetActive(true);
+            }
+
+        }
+    }
+
+    public void UnLockAutoButton()
+    {
+        if (GameMgr.Instance.uiMgr.uiGuideQuest.currentQuest.QuestID == 60066)
+        {
+            autoMergeButton.interactable = true;
+            autoSpawnButton.interactable = true;
+            foreach (var lockimage in autoLockImages)
+            {
+                lockimage.SetActive(false);
+            }
+
+        }
     }
 
     public void SetBase(float duration)

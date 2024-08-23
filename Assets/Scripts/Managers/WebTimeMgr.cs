@@ -110,7 +110,7 @@ public class WebTimeMgr : MonoBehaviour
         {
             Debug.Log("시간 가져오기 실패: " + request.error);
         }
-        else if (GameMgr.Instance.uiMgr.uiTutorial != null && GameMgr.Instance.uiMgr.uiTutorial.gameObject.activeSelf)
+        else
         {
             var jsonResult = request.downloadHandler.text;
             var worldTime = JsonUtility.FromJson<WorldTimeApiResponse>(jsonResult);

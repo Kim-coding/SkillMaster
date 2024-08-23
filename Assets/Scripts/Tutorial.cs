@@ -44,7 +44,7 @@ public class Tutorial
             UiTutorial.OnTutorial();
 
         }
-        else
+        else if (ID >= 120279 && ID <= 120284)
         {
             UiTutorial.EndTutorialIndex = 120285;
             UiTutorial.OnTutorial();

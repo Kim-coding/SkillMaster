@@ -216,7 +216,7 @@ public class PlayerInfomation
         criticalMultipleSetOption = 1 + (criticalMultipleSetOption / 100);
         deffenceSetOption = 1 + (deffenceSetOption / 100);
         recoverySetOption = 1 + (recoverySetOption / 100);
-
+        Debug.Log(recoverySetOption);
         GameMgr.Instance.playerMgr.playerStat.playerStatUpdate();
     }
 }
