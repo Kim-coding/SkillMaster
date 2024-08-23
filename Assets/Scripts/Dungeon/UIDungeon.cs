@@ -102,6 +102,7 @@ public class UIDungeon : MonoBehaviour
         GameMgr.Instance.rewardMgr.SetReward(gold.ToStringShort(),true);
         GameMgr.Instance.playerMgr.currency.AddGold(gold);
         GameMgr.Instance.uiMgr.uiInventory.NormalItemUpdate();
+        EventMgr.TriggerEvent(QuestType.GoldDungeon);
         DungeonUIUpdate();
         SaveLoadSystem.Save();
     }
@@ -152,6 +153,7 @@ public class UIDungeon : MonoBehaviour
         GameMgr.Instance.rewardMgr.SetReward(dia.ToString());
         GameMgr.Instance.playerMgr.currency.AddDia(dia);
         GameMgr.Instance.uiMgr.uiInventory.NormalItemUpdate();
+        EventMgr.TriggerEvent(QuestType.DiaDungeon);
         DungeonUIUpdate();
         SaveLoadSystem.Save();
     }
