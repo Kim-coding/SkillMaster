@@ -13,8 +13,6 @@ public class DungeonScene : MonoBehaviour
     public GameObject startPanel;
 
     public int currentStage; //저장된 정보를 받아 오기.
-    public BigInteger currentScore = new BigInteger(0);
-
     private bool dungeonMode;
 
     //골드 던전
