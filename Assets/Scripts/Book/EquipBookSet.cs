@@ -185,5 +185,7 @@ public class EquipBookSet : MonoBehaviour
         rewardButtonText.text = "È¹µæ\n¿Ï·á";
         rewardButtonText.color = Color.white;
         rewardButtonImage.color = Color.yellow;
+
+        GameMgr.Instance.playerMgr.playerInfo.SetOptionUpdate();
     }
 }

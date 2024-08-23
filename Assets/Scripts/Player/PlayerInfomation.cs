@@ -183,7 +183,7 @@ public class PlayerInfomation
 
         foreach (var item in GameMgr.Instance.uiMgr.uiBook.setDic)
         {
-            if (!item.Value.setClear)
+            if (!item.Value.getReward)
             {
                 continue;
             }
@@ -210,13 +210,12 @@ public class PlayerInfomation
                     break;
             }
         }
-        attackPowerSetOption = 1 + (attackPowerSetOption / 100);
-        criticalPercentSetOption = 1 + (criticalPercentSetOption / 100);
-        maxHealthSetOption = 1 + (maxHealthSetOption / 100);
-        criticalMultipleSetOption = 1 + (criticalMultipleSetOption / 100);
-        deffenceSetOption = 1 + (deffenceSetOption / 100);
-        recoverySetOption = 1 + (recoverySetOption / 100);
-        Debug.Log(recoverySetOption);
+        attackPowerSetOption = 1 + (attackPowerSetOption / 100f);
+        criticalPercentSetOption = 1 + (criticalPercentSetOption / 100f);
+        maxHealthSetOption = 1 + (maxHealthSetOption / 100f);
+        criticalMultipleSetOption = 1 + (criticalMultipleSetOption / 100f);
+        deffenceSetOption = 1 + (deffenceSetOption / 100f);
+        recoverySetOption = 1 + (recoverySetOption / 100f);
         GameMgr.Instance.playerMgr.playerStat.playerStatUpdate();
     }
 }

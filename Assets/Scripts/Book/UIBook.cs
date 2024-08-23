@@ -65,7 +65,7 @@ public class UIBook : MonoBehaviour
             equipSet.EquipSetCheck();
         }
 
-
+        GameMgr.Instance.playerMgr.playerInfo.SetOptionUpdate();
     }
 
     private void UpdateToggleColors()
