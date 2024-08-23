@@ -84,6 +84,7 @@ public class UIDungeon : MonoBehaviour
         }
         if (key == null || key.itemValue == 0)
         {
+            GameMgr.Instance.uiMgr.uiWindow.popUpUI.SetText("열쇠가 부족합니다!");
             return;
         }
 
@@ -108,6 +109,7 @@ public class UIDungeon : MonoBehaviour
         }
         if( key == null  || key.itemValue == 0)
         {
+            GameMgr.Instance.uiMgr.uiWindow.popUpUI.SetText("열쇠가 부족합니다!");
             return;
         }
 
@@ -132,6 +134,7 @@ public class UIDungeon : MonoBehaviour
         }
         if (key == null || key.itemValue == 0)
         {
+            GameMgr.Instance.uiMgr.uiWindow.popUpUI.SetText("열쇠가 부족합니다!");
             return;
         }
 
@@ -156,6 +159,7 @@ public class UIDungeon : MonoBehaviour
         }
         if (key == null || key.itemValue == 0)
         {
+            GameMgr.Instance.uiMgr.uiWindow.popUpUI.SetText("열쇠가 부족합니다!");
             return;
         }
 

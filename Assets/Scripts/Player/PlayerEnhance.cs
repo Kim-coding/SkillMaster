@@ -196,9 +196,9 @@ public class PlayerEnhance
         baseMaxReserveSkillCount = baseMaxSkill;
         maxReserveSkillCount = baseMaxReserveSkillCount += maxReserveSkillLevel * maxReserveSkillValue;
         maxSpawnSkillCount = 14;
-        if(SaveLoadSystem.CurrSaveData.savePlay == null)
+        if (SaveLoadSystem.CurrSaveData.savePlay == null)
         {
-            currentSpawnSkillCount = maxSpawnSkillCount; 
+            currentSpawnSkillCount = maxSpawnSkillCount;
 
         }
         else
@@ -233,6 +233,7 @@ public class PlayerEnhance
     {
         if (attackPowerCost > GameMgr.Instance.playerMgr.currency.gold)
         {
+            GameMgr.Instance.uiMgr.uiWindow.popUpUI.SetText("재화가 부족합니다!");
             return;
         }
         GameMgr.Instance.playerMgr.currency.RemoveGold(attackPowerCost);
@@ -252,6 +253,7 @@ public class PlayerEnhance
     {
         if (defenceCost > GameMgr.Instance.playerMgr.currency.gold)
         {
+            GameMgr.Instance.uiMgr.uiWindow.popUpUI.SetText("재화가 부족합니다!");
             return;
         }
         GameMgr.Instance.playerMgr.currency.RemoveGold(defenceCost);
@@ -268,6 +270,7 @@ public class PlayerEnhance
     {
         if (maxHealthCost > GameMgr.Instance.playerMgr.currency.gold)
         {
+            GameMgr.Instance.uiMgr.uiWindow.popUpUI.SetText("재화가 부족합니다!");
             return;
         }
         GameMgr.Instance.playerMgr.currency.RemoveGold(maxHealthCost);
@@ -286,6 +289,7 @@ public class PlayerEnhance
     {
         if (recoveryCost > GameMgr.Instance.playerMgr.currency.gold)
         {
+            GameMgr.Instance.uiMgr.uiWindow.popUpUI.SetText("재화가 부족합니다!");
             return;
         }
         GameMgr.Instance.playerMgr.currency.RemoveGold(recoveryCost);
@@ -302,6 +306,7 @@ public class PlayerEnhance
     {
         if (criticalPercentCost > GameMgr.Instance.playerMgr.currency.gold)
         {
+            GameMgr.Instance.uiMgr.uiWindow.popUpUI.SetText("재화가 부족합니다!");
             return;
         }
         GameMgr.Instance.playerMgr.currency.RemoveGold(criticalPercentCost);
@@ -318,6 +323,7 @@ public class PlayerEnhance
     {
         if (criticalMultipleCost > GameMgr.Instance.playerMgr.currency.gold)
         {
+            GameMgr.Instance.uiMgr.uiWindow.popUpUI.SetText("재화가 부족합니다!");
             return;
         }
         GameMgr.Instance.playerMgr.currency.RemoveGold(criticalMultipleCost);
@@ -334,6 +340,7 @@ public class PlayerEnhance
     {
         if (goldCost > GameMgr.Instance.playerMgr.currency.gold)
         {
+            GameMgr.Instance.uiMgr.uiWindow.popUpUI.SetText("재화가 부족합니다!");
             return;
         }
         GameMgr.Instance.playerMgr.currency.RemoveGold(goldCost);
@@ -349,10 +356,11 @@ public class PlayerEnhance
     public void AddMaxReserveSkillCount()
     {
         var maxReserveSkillData = DataTableMgr.Get<CombinationUpgradeTable>(DataTableIds.cbnUpgrade).GetID(190001);
-        if(maxReserveSkillData.Pay == 1)
+        if (maxReserveSkillData.Pay == 1)
         {
             if (maxReserveSkillCost > GameMgr.Instance.playerMgr.currency.gold)
             {
+                GameMgr.Instance.uiMgr.uiWindow.popUpUI.SetText("재화가 부족합니다!");
                 return;
             }
             GameMgr.Instance.playerMgr.currency.RemoveGold(maxReserveSkillCost);
@@ -361,6 +369,7 @@ public class PlayerEnhance
         {
             if (maxReserveSkillCost > GameMgr.Instance.playerMgr.currency.diamond)
             {
+                GameMgr.Instance.uiMgr.uiWindow.popUpUI.SetText("재화가 부족합니다!");
                 return;
             }
             GameMgr.Instance.playerMgr.currency.RemoveDia(maxReserveSkillCost);
@@ -386,6 +395,7 @@ public class PlayerEnhance
         {
             if (SkillSpawnCooldownCost > GameMgr.Instance.playerMgr.currency.gold)
             {
+                GameMgr.Instance.uiMgr.uiWindow.popUpUI.SetText("재화가 부족합니다!");
                 return;
             }
             GameMgr.Instance.playerMgr.currency.RemoveGold(SkillSpawnCooldownCost);
@@ -394,6 +404,7 @@ public class PlayerEnhance
         {
             if (SkillSpawnCooldownCost > GameMgr.Instance.playerMgr.currency.diamond)
             {
+                GameMgr.Instance.uiMgr.uiWindow.popUpUI.SetText("재화가 부족합니다!");
                 return;
             }
             GameMgr.Instance.playerMgr.currency.RemoveDia(SkillSpawnCooldownCost);
@@ -415,6 +426,7 @@ public class PlayerEnhance
         {
             if (SpawnSkillLvCost > GameMgr.Instance.playerMgr.currency.gold)
             {
+                GameMgr.Instance.uiMgr.uiWindow.popUpUI.SetText("재화가 부족합니다!");
                 return;
             }
             GameMgr.Instance.playerMgr.currency.RemoveGold(SpawnSkillLvCost);
@@ -423,6 +435,7 @@ public class PlayerEnhance
         {
             if (SpawnSkillLvCost > GameMgr.Instance.playerMgr.currency.diamond)
             {
+                GameMgr.Instance.uiMgr.uiWindow.popUpUI.SetText("재화가 부족합니다!");
                 return;
             }
             GameMgr.Instance.playerMgr.currency.RemoveDia(SpawnSkillLvCost);
@@ -447,6 +460,7 @@ public class PlayerEnhance
         {
             if (autoSpawnCost > GameMgr.Instance.playerMgr.currency.gold)
             {
+                GameMgr.Instance.uiMgr.uiWindow.popUpUI.SetText("재화가 부족합니다!");
                 return;
             }
             GameMgr.Instance.playerMgr.currency.RemoveGold(autoSpawnCost);
@@ -455,6 +469,7 @@ public class PlayerEnhance
         {
             if (autoSpawnCost > GameMgr.Instance.playerMgr.currency.diamond)
             {
+                GameMgr.Instance.uiMgr.uiWindow.popUpUI.SetText("재화가 부족합니다!");
                 return;
             }
             GameMgr.Instance.playerMgr.currency.RemoveDia(autoSpawnCost);
@@ -476,6 +491,7 @@ public class PlayerEnhance
         {
             if (autoMergeCost > GameMgr.Instance.playerMgr.currency.gold)
             {
+                GameMgr.Instance.uiMgr.uiWindow.popUpUI.SetText("재화가 부족합니다!");
                 return;
             }
             GameMgr.Instance.playerMgr.currency.RemoveGold(autoMergeCost);
@@ -484,6 +500,7 @@ public class PlayerEnhance
         {
             if (autoMergeCost > GameMgr.Instance.playerMgr.currency.diamond)
             {
+                GameMgr.Instance.uiMgr.uiWindow.popUpUI.SetText("재화가 부족합니다!");
                 return;
             }
             GameMgr.Instance.playerMgr.currency.RemoveDia(autoMergeCost);
