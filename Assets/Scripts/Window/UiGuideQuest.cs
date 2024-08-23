@@ -53,6 +53,7 @@ public class UiGuideQuest : MonoBehaviour
         }
         else
         {
+            GameMgr.Instance.uiMgr.uiWindow.UnLock();
             clearText.SetActive(false);
             switch (currentQuest.Division)
             {

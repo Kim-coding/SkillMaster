@@ -157,6 +157,16 @@ public class UiTutorial : MonoBehaviour
                     }
                     tutorialButton.onClick.RemoveListener(OnButton);
                     tutorialButton.onClick.AddListener(OnButton);
+
+                    if(currentTargetUI.name == "AutoDecompos")
+                    {
+                        Toggle[] childToggles = currentTargetUI.GetComponentsInChildren<Toggle>();
+
+                        foreach (Toggle toggle in childToggles)
+                        {
+                            toggle.interactable = false;
+                        }
+                    }
                 }
                 else if(currentTargetUI.name != "Merge" && currentTargetUI.name != "MonsterSlider")
                 {
@@ -236,6 +246,15 @@ public class UiTutorial : MonoBehaviour
             {
                 btn.interactable = true;
             }
+            if (currentTargetUI.name == "AutoDecompos")
+            {
+                Toggle[] childToggles = currentTargetUI.GetComponentsInChildren<Toggle>();
+
+                foreach (Toggle toggle in childToggles)
+                {
+                    toggle.interactable = true;
+                }
+            }
         }
 
         if (EndTutorialIndex <= currentTutorialID)
@@ -279,6 +298,7 @@ public class UiTutorial : MonoBehaviour
 
         tutorialPanel.gameObject.SetActive(false);
         Time.timeScale = 1.0f;
+        GameMgr.Instance.webTimeMgr.SaveTime();
         SaveLoadSystem.Save();
     }
 

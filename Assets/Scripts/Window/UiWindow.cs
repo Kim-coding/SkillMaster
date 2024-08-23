@@ -4,6 +4,7 @@ using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using DG.Tweening.Core.Easing;
 public class UiWindow : MonoBehaviour
 {
     public GameObject mergeWindow;
@@ -18,6 +19,8 @@ public class UiWindow : MonoBehaviour
     public Button toggleWindowButton;
 
     public Image[] uiButtonCloseImages;
+    public Image uiPickupLockImage;
+    public Image uiDungeonLockImage;
 
     private Dictionary<Windows, GameObject> windows;
     private Windows? currentOpenWindow = null;
@@ -65,8 +68,32 @@ public class UiWindow : MonoBehaviour
         buttonPosition = toggleWindowButton.GetComponent<RectTransform>().anchoredPosition;
 
         toggleWindowButton.onClick.AddListener(OnWindowButtonClick);
+
+        if(GameMgr.Instance.uiMgr.uiGuideQuest.currentQuest.QuestID < 60023)
+        {
+            uiPickupLockImage.gameObject.SetActive(true);
+            uiPickupLockImage.transform.parent.GetComponent<Button>().interactable = false;
+        }
+        if (GameMgr.Instance.uiMgr.uiGuideQuest.currentQuest.QuestID < 60050)
+        {
+            uiDungeonLockImage.gameObject.SetActive(true);
+            uiDungeonLockImage.transform.parent.GetComponent<Button>().interactable = false;
+        }
     }
 
+    public void UnLock()
+    {
+        if (GameMgr.Instance.uiMgr.uiGuideQuest.currentQuest.QuestID == 60023)
+        {
+            uiPickupLockImage.gameObject.SetActive(false);
+            uiPickupLockImage.transform.parent.GetComponent<Button>().interactable = true;
+        }
+        if (GameMgr.Instance.uiMgr.uiGuideQuest.currentQuest.QuestID == 60050)
+        {
+            uiDungeonLockImage.gameObject.SetActive(false);
+            uiDungeonLockImage.transform.parent.GetComponent<Button>().interactable = true;
+        }
+    }
 
     public void OnGameWindowClick()
     {
@@ -170,6 +197,14 @@ public class UiWindow : MonoBehaviour
             currentOpenWindow = window;
             isAnimating = false;
         });
+        if (GameMgr.Instance.uiMgr.uiGuideQuest.currentQuest.QuestID != 60023 && window == Windows.PickUp)
+        {
+            GameMgr.Instance.sceneMgr.tutorial.OnTutorial();
+        }
+        if (GameMgr.Instance.uiMgr.uiGuideQuest.currentQuest.QuestID != 60050 && window == Windows.Dungeon)
+        {
+            GameMgr.Instance.sceneMgr.tutorial.OnTutorial();
+        }
     }
 
 
