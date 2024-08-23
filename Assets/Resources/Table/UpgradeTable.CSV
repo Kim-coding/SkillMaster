@@ -1,5 +1,5 @@
 UpgradeID,UpgradeDivision,Increase,DivValue,Gold,GoldRange,GoldincreaseValue,MaxLv,UpgradeIcon,StringID
-10001,2,5,3,100,50,10,6000,Pictoicon_Attack,120012
+10001,2,1,5,100,50,10,6000,Pictoicon_Attack,120012
 10002,1,1,-1,100,70,10,3000,Pictoicon_Armor,120013
 10003,1,5,-1,200,70,10,5000,Pictoicon_Life,120014
 10004,2,0.01,-1,300,50,10,5000,Pictoicon_Critical,120015
