@@ -387,20 +387,14 @@ public struct BigInteger
         }
 
 
-        for (int j = factor - 1; j >= 0; j--)
+        while (numberList[factor-1] == 0)
         {
-            if (numberList[j] == 0)
+            numberList.Remove(numberList[factor - 1]);
+            factor -= 1;
+            if (numberList.Count == 0)
             {
-                numberList.Remove(numberList[j]);
-                if (numberList.Count == 0)
-                {
-                    Clear();
-                    return;
-                }
-            }
-            else
-            {
-                break;
+                Clear();
+                return;
             }
         }
         factor = numberList.Count;

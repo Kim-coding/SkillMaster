@@ -162,8 +162,8 @@ public class UIMgr : MonoBehaviour
             dungeonScoreText.text = $"{i} ·¹º§";
         }
         BigInteger curdamage = new BigInteger(currentDamage);
-        BigInteger maxScore = new BigInteger(cutLine - preCutLine);
-        BigInteger curScore = new BigInteger(curdamage - preCutLine);
+        BigInteger maxScore = new BigInteger(new BigInteger(cutLine) - new BigInteger(preCutLine));
+        BigInteger curScore = new BigInteger(new BigInteger(curdamage) - new BigInteger(preCutLine));
 
         float percent = 0f;
 
