@@ -161,25 +161,21 @@ public class UIMgr : MonoBehaviour
             }
             dungeonScoreText.text = $"{i} ·¹º§";
         }
-
+        BigInteger curdamage = new BigInteger(currentDamage);
         BigInteger maxScore = new BigInteger(cutLine - preCutLine);
-        BigInteger curScore = new BigInteger(currentDamage - preCutLine);
+        BigInteger curScore = new BigInteger(curdamage - preCutLine);
 
         float percent = 0f;
 
-        if (maxScore.factor > curScore.factor)
+        if (maxScore.factor >= curScore.factor + 2)
         {
             percent = 0f;
         }
-        else if (maxScore.factor == curScore.factor)
+        else if(maxScore.factor > curScore.factor)
         {
             float max = maxScore.numberList[maxScore.factor - 1] * 1000 + maxScore.numberList[maxScore.factor - 2];
             float damage = curScore.numberList[curScore.factor - 1];
             percent = damage / max;
-        }
-        else if (maxScore.factor < curScore.factor)
-        {
-            percent = 1f;
         }
         else
         {
