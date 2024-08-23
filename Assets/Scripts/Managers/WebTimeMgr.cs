@@ -231,6 +231,7 @@ public class WebTimeMgr : MonoBehaviour
                 }
             }
         }
+        SaveTime();
     }
 
     private void MidnightReward()
