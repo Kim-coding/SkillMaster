@@ -99,6 +99,7 @@ public class UIDungeon : MonoBehaviour
 
         key.itemValue--;
         BigInteger gold = new BigInteger(DataTableMgr.Get<GoldDungeonTable>(DataTableIds.goldDungeon).GetID(GameMgr.Instance.playerMgr.playerInfo.goldDungeonLv).reward_value);
+        GameMgr.Instance.rewardMgr.SetReward(gold.ToStringShort(),true);
         GameMgr.Instance.playerMgr.currency.AddGold(gold);
         GameMgr.Instance.uiMgr.uiInventory.NormalItemUpdate();
         DungeonUIUpdate();
@@ -148,6 +149,7 @@ public class UIDungeon : MonoBehaviour
 
         key.itemValue--;
         BigInteger dia = new BigInteger(DataTableMgr.Get<DiaDungeonTable>(DataTableIds.diaDungeon).GetID(GameMgr.Instance.playerMgr.playerInfo.diaDungeonLv - 1).reward_value);
+        GameMgr.Instance.rewardMgr.SetReward(dia.ToString());
         GameMgr.Instance.playerMgr.currency.AddDia(dia);
         GameMgr.Instance.uiMgr.uiInventory.NormalItemUpdate();
         DungeonUIUpdate();
