@@ -157,40 +157,37 @@ public class PlayerEnhance
         var maxReserveSkillData = DataTableMgr.Get<CombinationUpgradeTable>(DataTableIds.cbnUpgrade).GetID(190001);
         maxReserveSkillMaxLevel = maxReserveSkillData.MaxLv;
         maxReserveSkillValue = (int)maxReserveSkillData.Increase;
-        maxReserveSkillCost = new BigInteger(
-            (maxReserveSkillLevel / maxReserveSkillData.PayRange) * maxReserveSkillData.PayIncrease + maxReserveSkillData.PayDefault
-            );
+        maxReserveSkillCost = new BigInteger
+            (GameMgr.Instance.cbnCalculateCost(maxReserveSkillData.PayDefault, maxReserveSkillData.PayIncrease, maxReserveSkillData.PayRange, maxReserveSkillLevel));
 
         var skillCooldownData = DataTableMgr.Get<CombinationUpgradeTable>(DataTableIds.cbnUpgrade).GetID(190002);
         GameMgr.Instance.playerMgr.SetBase(baseskillSpawnDuration);
         SkillSpawnCooldownMaxLevel = skillCooldownData.MaxLv;
         SkillSpawnCooldownValue = skillCooldownData.Increase;
-        SkillSpawnCooldownCost = new BigInteger(
-            (SkillSpawnCooldownLevel / skillCooldownData.PayRange) * skillCooldownData.PayIncrease + skillCooldownData.PayDefault
-            );
+        SkillSpawnCooldownCost = new BigInteger
+            (GameMgr.Instance.cbnCalculateCost(skillCooldownData.PayDefault, skillCooldownData.PayIncrease, skillCooldownData.PayRange, SkillSpawnCooldownLevel));
 
         var spawnSkillLvData = DataTableMgr.Get<CombinationUpgradeTable>(DataTableIds.cbnUpgrade).GetID(190003);
         SpawnSkillLvMaxLevel = spawnSkillLvData.MaxLv;
         SpawnSkillLvValue = (int)spawnSkillLvData.Increase;
-        SpawnSkillLvCost = new BigInteger(
-            (cbnUpgradeLv / spawnSkillLvData.PayRange) * spawnSkillLvData.PayIncrease + spawnSkillLvData.PayDefault
-            );
+        SpawnSkillLvCost = new BigInteger
+            (GameMgr.Instance.cbnCalculateCost(spawnSkillLvData.PayDefault, spawnSkillLvData.PayIncrease, spawnSkillLvData.PayRange, cbnUpgradeLv));
 
         var autoSpawnData = DataTableMgr.Get<CombinationUpgradeTable>(DataTableIds.cbnUpgrade).GetID(190004);
         GameMgr.Instance.uiMgr.uiMerge.skillSpawner.SetBase(baseAutoSpawnDuration);
         autoSpawnMaxLevel = autoSpawnData.MaxLv;
         autoSpawnValue = autoSpawnData.Increase;
-        autoSpawnCost = new BigInteger(
-            (autoSpawnLevel / autoSpawnData.PayRange) * autoSpawnData.PayIncrease + autoSpawnData.PayDefault
-            );
+        autoSpawnCost = new BigInteger
+            (GameMgr.Instance.cbnCalculateCost(autoSpawnData.PayDefault, autoSpawnData.PayIncrease, autoSpawnData.PayRange, autoSpawnLevel));
+
 
         var autoMergeData = DataTableMgr.Get<CombinationUpgradeTable>(DataTableIds.cbnUpgrade).GetID(190005);
         GameMgr.Instance.uiMgr.uiMerge.SetBase(baseAutoMergeDuration);
         autoMergeMaxLevel = autoMergeData.MaxLv;
         autoMergeValue = autoMergeData.Increase;
-        autoMergeCost = new BigInteger(
-            (autoMergeLevel / autoMergeData.PayRange) * autoMergeData.PayIncrease + autoMergeData.PayDefault
-            );
+        autoMergeCost = new BigInteger
+            (GameMgr.Instance.cbnCalculateCost(autoMergeData.PayDefault, autoMergeData.PayIncrease, autoMergeData.PayRange, autoMergeLevel));
+
 
 
         baseMaxReserveSkillCount = baseMaxSkill;
@@ -378,9 +375,8 @@ public class PlayerEnhance
 
         maxReserveSkillLevel++;
         maxReserveSkillCount = baseMaxReserveSkillCount + maxReserveSkillLevel * maxReserveSkillValue;
-        maxReserveSkillCost = new BigInteger(
-    (maxReserveSkillLevel / maxReserveSkillData.PayRange) * maxReserveSkillData.PayIncrease + maxReserveSkillData.PayDefault
-    );
+        maxReserveSkillCost = new BigInteger
+                    (GameMgr.Instance.cbnCalculateCost(maxReserveSkillData.PayDefault, maxReserveSkillData.PayIncrease, maxReserveSkillData.PayRange, maxReserveSkillLevel));
         GameMgr.Instance.soundMgr.PlaySFX("UpgradeButton");
         GameMgr.Instance.uiMgr.uiMerge.skillSpawner.maxReserveSkillCountUpdate();
         GameMgr.Instance.uiMgr.uiMerge.SkillCountUpdate();
@@ -411,9 +407,8 @@ public class PlayerEnhance
         }
 
         SkillSpawnCooldownLevel++;
-        SkillSpawnCooldownCost = new BigInteger(
-    (SkillSpawnCooldownLevel / SkillSpawnCooldownData.PayRange) * SkillSpawnCooldownData.PayIncrease + SkillSpawnCooldownData.PayDefault
-    );
+        SkillSpawnCooldownCost = new BigInteger
+            (GameMgr.Instance.cbnCalculateCost(SkillSpawnCooldownData.PayDefault, SkillSpawnCooldownData.PayIncrease, SkillSpawnCooldownData.PayRange, SkillSpawnCooldownLevel));
         GameMgr.Instance.soundMgr.PlaySFX("UpgradeButton");
         GameMgr.Instance.playerMgr.AddSpawnSkillCooldown(SkillSpawnCooldownLevel, SkillSpawnCooldownValue);
     }
@@ -443,9 +438,8 @@ public class PlayerEnhance
 
 
         cbnUpgradeLv++;
-        SpawnSkillLvCost = new BigInteger(
-    (cbnUpgradeLv / SpawnSkillLvData.PayRange) * SpawnSkillLvData.PayIncrease + SpawnSkillLvData.PayDefault
-    );
+        SpawnSkillLvCost = new BigInteger
+            (GameMgr.Instance.cbnCalculateCost(SpawnSkillLvData.PayDefault, SpawnSkillLvData.PayIncrease, SpawnSkillLvData.PayRange, cbnUpgradeLv));
 
         GameMgr.Instance.soundMgr.PlaySFX("UpgradeButton");
 
@@ -476,9 +470,8 @@ public class PlayerEnhance
         }
 
         autoSpawnLevel++;
-        autoSpawnCost = new BigInteger(
-    (autoSpawnLevel / autoSpawnCooldownData.PayRange) * autoSpawnCooldownData.PayIncrease + autoSpawnCooldownData.PayDefault
-    );
+        autoSpawnCost = new BigInteger
+    (GameMgr.Instance.cbnCalculateCost(autoSpawnCooldownData.PayDefault, autoSpawnCooldownData.PayIncrease, autoSpawnCooldownData.PayRange, autoSpawnLevel));
         GameMgr.Instance.soundMgr.PlaySFX("UpgradeButton");
         GameMgr.Instance.uiMgr.uiMerge.skillSpawner.SetSpawnDuration(autoSpawnCooldownData.Increase * autoSpawnLevel);
     }
@@ -507,9 +500,8 @@ public class PlayerEnhance
         }
 
         autoMergeLevel++;
-        autoMergeCost = new BigInteger(
-    (autoMergeLevel / autoMergeData.PayRange) * autoMergeData.PayIncrease + autoMergeData.PayDefault
-    );
+        autoMergeCost = new BigInteger
+    (GameMgr.Instance.cbnCalculateCost(autoMergeData.PayDefault, autoMergeData.PayIncrease, autoMergeData.PayRange, autoMergeLevel));
         GameMgr.Instance.soundMgr.PlaySFX("UpgradeButton");
         GameMgr.Instance.uiMgr.uiMerge.SetAutoMergeDuration(autoMergeData.Increase * autoMergeLevel);
 
