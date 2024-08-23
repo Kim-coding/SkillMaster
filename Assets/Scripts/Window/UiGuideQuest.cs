@@ -54,6 +54,7 @@ public class UiGuideQuest : MonoBehaviour
         else
         {
             GameMgr.Instance.uiMgr.uiWindow.UnLock();
+            GameMgr.Instance.uiMgr.uiMerge.UnLockAutoButton();
             clearText.SetActive(false);
             switch (currentQuest.Division)
             {

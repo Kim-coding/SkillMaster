@@ -25,7 +25,7 @@ public class SandBagDamageTake : MonoBehaviour, IAttackable
     {
         var score = gameObject.GetComponent<IDamageable>();
 
-        if (nextRequestDamage != null && nextLv)
+        if (nextRequestDamage != null/* && nextLv*/)
         {
             maxDamage = new BigInteger(nextRequestDamage) - new BigInteger(currentRequestDamage);
             currentRequestDamage = nextRequestDamage;
