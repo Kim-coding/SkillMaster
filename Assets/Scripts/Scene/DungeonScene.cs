@@ -134,7 +134,7 @@ public class DungeonScene : MonoBehaviour
             timer += Time.deltaTime;
             if (timer > endTime)
             {
-                EndDungeon(false, currentStage - 1);
+                EndDungeon(true, currentStage - 1);
             }
         }
         else
@@ -158,6 +158,26 @@ public class DungeonScene : MonoBehaviour
         isCleared = cleared;
         clearedStage = stage;
 
+        if(isCleared)
+        {
+            NormalItem key = null;
+            foreach (var item in GameMgr.Instance.playerMgr.playerinventory.playerNormalItemList)
+            {
+                if (item.itemNumber == 220003 && dungeonMode)
+                {
+                    key = item;
+                    key.itemValue--;
+                    break;
+                }
+
+                if (item.itemNumber == 220004 && !dungeonMode)
+                {
+                    key = item;
+                    key.itemValue--;
+                    break;
+                }
+            }
+        }
         ShowEndPopup();
     }
 
@@ -180,13 +200,13 @@ public class DungeonScene : MonoBehaviour
                 {
                     reward = DataTableMgr.Get<GoldDungeonTable>(DataTableIds.goldDungeon).GetID(clearedStage).reward_value;
                     clearRewardText.text = new BigInteger(reward).ToStringShort();
-                    GameMgr.Instance.playerMgr.playerInfo.goldDungeonLv = clearedStage++;
+                    GameMgr.Instance.playerMgr.playerInfo.goldDungeonLv = clearedStage;
                 }
                 else
                 {
                     reward = DataTableMgr.Get<DiaDungeonTable>(DataTableIds.diaDungeon).GetID(clearedStage).reward_value;
                     clearRewardText.text = reward;
-                    GameMgr.Instance.playerMgr.playerInfo.diaDungeonLv = clearedStage++;
+                    GameMgr.Instance.playerMgr.playerInfo.diaDungeonLv = ++clearedStage;
                 }
             }
         }

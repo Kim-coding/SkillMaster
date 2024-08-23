@@ -47,6 +47,15 @@ public class UIDungeon : MonoBehaviour
         diaKeyText1.text = "0";
         diaKeyText2.text = "0";
 
+        if(playerInfo.diaDungeonLv == 1)
+        {
+            diaClearButton.interactable = false;
+        }
+        else
+        {
+            diaClearButton.interactable = true;
+        }
+
         foreach (var item in GameMgr.Instance.playerMgr.playerinventory.playerNormalItemList)
         {
             if (item.itemNumber == 220003)
@@ -113,7 +122,6 @@ public class UIDungeon : MonoBehaviour
             return;
         }
 
-        key.itemValue--;
         GameMgr.Instance.uiMgr.uiInventory.NormalItemUpdate();
         GameMgr.Instance.playerMgr.playerInfo.dungeonMode = true;
         EventMgr.TriggerEvent(QuestType.GoldDungeon);
@@ -139,7 +147,7 @@ public class UIDungeon : MonoBehaviour
         }
 
         key.itemValue--;
-        BigInteger dia = new BigInteger(DataTableMgr.Get<DiaDungeonTable>(DataTableIds.diaDungeon).GetID(GameMgr.Instance.playerMgr.playerInfo.diaDungeonLv).reward_value);
+        BigInteger dia = new BigInteger(DataTableMgr.Get<DiaDungeonTable>(DataTableIds.diaDungeon).GetID(GameMgr.Instance.playerMgr.playerInfo.diaDungeonLv - 1).reward_value);
         GameMgr.Instance.playerMgr.currency.AddDia(dia);
         GameMgr.Instance.uiMgr.uiInventory.NormalItemUpdate();
         DungeonUIUpdate();
@@ -163,7 +171,6 @@ public class UIDungeon : MonoBehaviour
             return;
         }
 
-        key.itemValue--;
         GameMgr.Instance.uiMgr.uiInventory.NormalItemUpdate();
         GameMgr.Instance.playerMgr.playerInfo.dungeonMode = false;
         EventMgr.TriggerEvent(QuestType.DiaDungeon);
