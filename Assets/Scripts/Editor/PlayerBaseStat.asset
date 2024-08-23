@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: PlayerBaseStat
   m_EditorClassIdentifier: 
   baseSpeed: 3
-  baseCooldown: 0.5
+  baseCooldown: 1
   baseAttackRange: 2
-  baseAttackSpeed: 1
+  baseAttackSpeed: 1.5
   baseRecoveryDuration: 5
   basePlayerAttackPower: 1
   basePlayerDefence: 0
