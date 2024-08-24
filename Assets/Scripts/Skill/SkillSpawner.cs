@@ -78,6 +78,7 @@ public class SkillSpawner : MonoBehaviour
         }
 
         GameMgr.Instance.uiMgr.uiMerge.SkillCountUpdate();
+        AutoSkillSpawn();
     }
 
     private void Update()
@@ -108,12 +109,12 @@ public class SkillSpawner : MonoBehaviour
         if(autoSpawn)
         {
             autoSpawn = false;
-            autoSkillSpownButtonText.text = "荐悼 积己";
+            autoSkillSpownButtonText.text = "磊悼 积己 \n <color=#ff0000>OFF</color>";
         }
         else
         {
             autoSpawn = true;
-            autoSkillSpownButtonText.text = "磊悼 积己";
+            autoSkillSpownButtonText.text = "磊悼 积己 \n <color=#0000ff>ON</color>";
         }
     }
 
