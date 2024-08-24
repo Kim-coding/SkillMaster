@@ -7,7 +7,7 @@ public class RingCollider : MonoBehaviour
     //private CircleCollider2D innerCollider;
     //private DonutDotSkill skill;
 
-    //public void Initialize(CircleCollider2D innerCollider, DonutDotSkill skill)
+    //public void Init(CircleCollider2D innerCollider, DonutDotSkill skill)
     //{
     //    this.innerCollider = innerCollider;
     //    this.skill = skill;

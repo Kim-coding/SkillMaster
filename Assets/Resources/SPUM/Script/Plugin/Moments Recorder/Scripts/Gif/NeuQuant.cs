@@ -76,7 +76,7 @@ namespace Moments.Encoder
 		protected int[] freq = new int[netsize];
 		protected int[] radpower = new int[initrad]; // Radpower for precomputation
 
-		// Initialize network in range (0,0,0) to (255,255,255) and set parameters
+		// Init network in range (0,0,0) to (255,255,255) and set parameters
 		public NeuQuant(byte[] thepic, int len, int sample)
 		{
 			int i;

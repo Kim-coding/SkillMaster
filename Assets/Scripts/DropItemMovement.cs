@@ -10,13 +10,16 @@ public class DropItemMovement : MonoBehaviour
     private float moveDuration;
     private UiWindow uiWindow;
     public Vector2 targetPosition;
+    private DropItemPool dropItemPool;
+
     void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
     }
 
-    public void Initialize(RectTransform target, float duration, string value, bool isGold)
+    public void Init(DropItemPool dropItemPool, RectTransform target, float duration, string value, bool isGold)
     {
+        this.dropItemPool = dropItemPool;
         uiWindow = GameMgr.Instance.uiMgr.uiWindow;
         dropItem = new BigInteger(value);
         this.isGold = isGold;
@@ -60,7 +63,7 @@ public class DropItemMovement : MonoBehaviour
                 {
                     GameMgr.Instance.playerMgr.currency.AddDia(dropItem);
                 }
-                Destroy(gameObject);
+                dropItemPool.ReturnItem(this);
             });
     }
 }

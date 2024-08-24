@@ -117,7 +117,7 @@ public class MainScene : MonoBehaviour
         EventMgr.TriggerEvent(QuestType.Stage);
         if(stageId - 50000 != DataTableMgr.Get<StageTable>(DataTableIds.stage).stageDatas.Count)
         {
-        stageId++;
+            stageId++;
         }
         stageData = DataTableMgr.Get<StageTable>(DataTableIds.stage).GetID(stageId);
         if(stageData != null)
@@ -192,8 +192,8 @@ public class MainScene : MonoBehaviour
 
     public void RestartStage() //스테이지 재시작
     {
-        GameMgr.Instance.uiMgr.ResetMonsterSlider();
         RemoveAllMonsters();
+        GameMgr.Instance.uiMgr.ResetMonsterSlider();
         if(currentBoss != null)
         {
             Destroy(currentBoss);

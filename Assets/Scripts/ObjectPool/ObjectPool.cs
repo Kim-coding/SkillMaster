@@ -4,7 +4,7 @@ using UnityEngine;
 public class ObjectPool<T> where T : MonoBehaviour
 {
     private readonly T prefab;
-    private readonly Transform parentTransform;
+    protected readonly Transform parentTransform;
     public readonly Queue<T> pool;
     private readonly int maxCapacity;
     public int MaxCapacity { get { return maxCapacity; } }

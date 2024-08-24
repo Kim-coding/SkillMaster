@@ -118,7 +118,6 @@ public class WebTimeMgr : MonoBehaviour
             if (worldTime != null && !string.IsNullOrEmpty(worldTime.dateTime))
             {
                 DateTime endTime = DateTime.Parse(worldTime.dateTime);
-                Debug.Log("서버 시간 (마지막 시간): " + endTime);
                 SaveEndTime(endTime);
             }
             else

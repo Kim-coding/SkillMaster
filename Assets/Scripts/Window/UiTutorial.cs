@@ -307,6 +307,11 @@ public class UiTutorial : MonoBehaviour
             StopCoroutine(CheckCoroutine);
         }
 
+        if(currentTutorialID == 120286)
+        {
+            isDungeonOpen = true;
+        }
+
         tutorialPanel.gameObject.SetActive(false);
         Time.timeScale = 1.0f;
         GameMgr.Instance.webTimeMgr.SaveTime();

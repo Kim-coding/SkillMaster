@@ -11,10 +11,10 @@ public class Monster : MonoBehaviour
 
     private void Awake()
     {
-        InitializeMonsterPool();
+        init();
     }
 
-    private void InitializeMonsterPool()
+    private void init()
     {
         monsterPool = new MonsterPool(monsterPrefabs[0], poolParent);
     }

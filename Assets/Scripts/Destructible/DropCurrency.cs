@@ -13,7 +13,7 @@ public class DropCurrency : MonoBehaviour, IDestructible
         deathPosition = gameObject.transform.position;
         Vector3 screenPosition = Camera.main.WorldToScreenPoint(deathPosition);
 
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(GameMgr.Instance.dropItemMgr.uiCanvas.transform as RectTransform, screenPosition, null, out Vector2 uiPosition);
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(GameMgr.Instance.dropItemMgr.parent as RectTransform, screenPosition, null, out Vector2 uiPosition);
 
         if (gameObject.GetComponent<BossAI>() != null)
         {
