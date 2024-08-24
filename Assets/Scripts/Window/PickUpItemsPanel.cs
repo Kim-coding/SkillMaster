@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,6 +16,9 @@ public class PickUpItemsPanel : MonoBehaviour
     public Image costImage_1;
     public Image costImage_10;
     public Image costImage_30;
+    public TextMeshProUGUI costText_1;
+    public TextMeshProUGUI costText_10;
+    public TextMeshProUGUI costText_30;
 
     private List<Equip> pickUpitemEquips = new List<Equip>();
     private List<PickUpSlot> slotList = new List<PickUpSlot>();
@@ -85,17 +89,23 @@ public class PickUpItemsPanel : MonoBehaviour
         costImage_1.sprite = Resources.Load<Sprite>("EnhanceIcon/Icon_Gem03_Diamond_Blue");
         costImage_10.sprite = Resources.Load<Sprite>("EnhanceIcon/Icon_Gem03_Diamond_Blue");
         costImage_30.sprite = Resources.Load<Sprite>("EnhanceIcon/Icon_Gem03_Diamond_Blue");
+        costText_1.text = "100개";
+        costText_10.text = "1000개";
+        costText_30.text = "3000개";
         if (ticketValue >= 1)
         {
             costImage_1.sprite = Resources.Load<Sprite>("ticket");
+            costText_1.text = "1개";
         }
         if (ticketValue >= 10)
         {
             costImage_10.sprite = Resources.Load<Sprite>("ticket");
+            costText_10.text = "10개";
         }
         if (ticketValue >= 30)
         {
             costImage_30.sprite = Resources.Load<Sprite>("ticket");
+            costText_30.text = "30개";
         }
     }
 

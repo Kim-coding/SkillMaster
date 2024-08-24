@@ -53,7 +53,13 @@ public class EquipmentInfoPanel : MonoBehaviour
         gameObject.SetActive(true);
     }
 
-
+    public void DecomposPanel()
+    {
+        GameMgr.Instance.uiMgr.uiInventory.OnDecomposMode();
+        GameMgr.Instance.uiMgr.uiInventory.DecomposSelect(newItemSlot);
+        GameMgr.Instance.uiMgr.uiInventory.OpenDecomposPanel();
+        ClosePanel();
+    }
 
     public void ClosePanel()
     {

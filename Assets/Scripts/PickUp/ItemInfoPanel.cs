@@ -89,11 +89,11 @@ public class ItemInfoPanel : MonoBehaviour
                 break;
         }
 
-        itemType.text = "Type : " + typeName;
-        itemRarity.text = "Rarity : " + equip.rarerityType;
+        itemType.text = "부위 : " + typeName;
+        itemRarity.text = "등급 : " + equip.rarerityType;
         if(equip.rarerityType == RarerityType.None)
         {
-            itemRarity.text = "Rarity : " + "기본";
+            itemRarity.text = "등급 : " + "기본";
         }
         int optioncount = 0;
         foreach (var option in equip.EquipOption.currentOptions)
@@ -146,6 +146,14 @@ public class ItemInfoPanel : MonoBehaviour
         itemName.text = item.itemName;
         OptionTexts[0].gameObject.SetActive(true);
         OptionTexts[0].text = item.itemExplain;
+    }
+
+    public void EquipUpgradePanel()
+    {
+        ClosePanel();
+        GameMgr.Instance.uiMgr.uiWindow.equipUpgradePanel.gameObject.SetActive(true);
+        GameMgr.Instance.uiMgr.uiWindow.equipUpgradePanel.partsToggles[(int)currentEquip.currentEquip.equipType - 1].isOn = true;
+        GameMgr.Instance.uiMgr.uiWindow.equipUpgradePanel.EquipUpgradePanelUpdate();
     }
 
     public void ClosePanel()

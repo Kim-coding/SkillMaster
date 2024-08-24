@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -18,6 +19,9 @@ public class GameMgr : MonoBehaviour
     public SoundMgr soundMgr;
     public WebTimeMgr webTimeMgr;
     public NetworkConnect networkConnect;
+
+    public Camera mainCam;
+    public GameObject savingPowerPanel;
 
     private float saveTimer;
 
@@ -217,13 +221,24 @@ public class GameMgr : MonoBehaviour
     }
 
 
-    void EnterPowerSavingMode()
+    public void EnterPowerSavingMode()
     {
-        Camera.main.enabled = false;  // 메인 카메라 비활성화 (렌더링 중지)
+        savingPowerPanel.gameObject.SetActive(true);
+        savingPowerPanel.GetComponent<CanvasGroup>().DOFade(1f, 0.5f)
+    .OnComplete(() =>
+    {
+        mainCam.enabled = false;  // 메인 카메라 비활성화 (렌더링 중지)
+    });
     }
 
-    void ExitPowerSavingMode()
+    public void ExitPowerSavingMode()
     {
-        Camera.main.enabled = true;  // 메인 카메라 활성화 (렌더링 재개)
+        mainCam.enabled = true;  // 메인 카메라 활성화 (렌더링 재개)
+        savingPowerPanel.GetComponent<CanvasGroup>().DOFade(0f, 0.5f)
+.OnComplete(() =>
+{
+    savingPowerPanel.gameObject.SetActive(false);
+
+});
     }
 }

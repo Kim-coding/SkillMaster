@@ -18,6 +18,12 @@ public class EquipSlot : MonoBehaviour
     {
         TryGetComponent<Button>(out button);
         button.onClick.AddListener(OnbuttonClick);
+
+        var newMaterial = Instantiate(slotLevel.fontSharedMaterial);
+        newMaterial.SetFloat(ShaderUtilities.ID_OutlineWidth, 0.5f);
+        newMaterial.SetColor(ShaderUtilities.ID_OutlineColor, Color.black);
+
+        slotLevel.fontSharedMaterial = newMaterial;
     }
 
     public void SetData(Equip equipData)
@@ -174,7 +180,9 @@ public class EquipSlot : MonoBehaviour
             return;
 
         var Lv = EquipRarityCheck(currentEquip.rarerityType);
-        Color LvColor = new Color(128 / 255f, 128 / 255f, 128 / 255f);
+        //Color LvColor = new Color(128 / 255f, 128 / 255f, 128 / 255f);
+        Color LvColor = Color.white;
+        
         switch (currentEquip.equipType)
         {
 

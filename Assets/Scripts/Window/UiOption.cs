@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UiOption : MonoBehaviour
@@ -70,5 +72,10 @@ public class UiOption : MonoBehaviour
     public void CloseButton()
     {
         gameObject.SetActive(false);
+    }
+
+    public void QuitDungeon()
+    {
+        Addressables.LoadSceneAsync("MainScene", LoadSceneMode.Single);
     }
 }

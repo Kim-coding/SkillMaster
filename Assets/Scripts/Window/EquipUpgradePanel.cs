@@ -74,7 +74,7 @@ public class EquipUpgradePanel : MonoBehaviour
     }
 
 
-    private void EquipUpgradePanelUpdate()
+    public void EquipUpgradePanelUpdate()
     {
         toggleCheck();
         LimitCheck();
@@ -304,7 +304,7 @@ public class EquipUpgradePanel : MonoBehaviour
         {
             if (toggle.isOn)
             {
-                SetToggleColor(toggle, Color.blue);
+                SetToggleColor(toggle, Color.black);
             }
             else
             {

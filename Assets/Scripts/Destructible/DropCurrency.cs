@@ -11,7 +11,15 @@ public class DropCurrency : MonoBehaviour, IDestructible
     public void OnDestruction(GameObject attacker)
     {
         deathPosition = gameObject.transform.position;
-        Vector3 screenPosition = Camera.main.WorldToScreenPoint(deathPosition);
+        Vector3 screenPosition = Vector3.zero;
+        if (Camera.main != null)
+        {
+            screenPosition = Camera.main.WorldToScreenPoint(deathPosition);
+        }
+        else
+        {
+            screenPosition = new Vector2(Screen.width / 2f, Screen.height / 2f);
+        }
 
         RectTransformUtility.ScreenPointToLocalPointInRectangle(GameMgr.Instance.dropItemMgr.parent as RectTransform, screenPosition, null, out Vector2 uiPosition);
 

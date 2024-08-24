@@ -150,7 +150,7 @@ public class UiInventory : MonoBehaviour
         {
             if (toggle.isOn)
             {
-                SetToggleColor(toggle, Color.blue);
+                SetToggleColor(toggle, Color.black);
             }
             else
             {
@@ -396,7 +396,11 @@ public class UiInventory : MonoBehaviour
     {
         equipButtons.gameObject.SetActive(mode);
         equipSlotPanel.gameObject.SetActive(mode);
-        equipTogglePanel.gameObject.SetActive(mode);
+        foreach(var toggle in filteringToggles)
+        {
+            toggle.gameObject.SetActive(mode);
+        }
+        //equipTogglePanel.gameObject.SetActive(mode);
         itemButtons.gameObject.SetActive(!mode);
         itemSlotPanel.gameObject.SetActive(!mode);
     }
