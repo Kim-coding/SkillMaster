@@ -404,6 +404,7 @@ public class UiInventory : MonoBehaviour
     public void Init()
     {
         AllSlotUpdate();
+        NormalItemUpdate();
     }
 
     public void AllSlotUpdate()
@@ -444,7 +445,7 @@ public class UiInventory : MonoBehaviour
         foreach (var slot in normalItemSlots)
         {
             slot.itemCountUpdate();
-            if(slot.currentItem.itemValue == 0)
+            if(slot.currentItem.itemValue <= 0)
             {
                 list.Add(slot);
             }

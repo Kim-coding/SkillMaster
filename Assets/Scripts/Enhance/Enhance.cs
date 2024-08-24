@@ -17,6 +17,9 @@ public class Enhance : MonoBehaviour
 
     public EnhanceButton button;
 
+    public Image closePanel;
+    public TextMeshProUGUI panelText;
+
     public void Init(UpgradeData data)
     {
         enhanceName.text = data.GetStringID;

@@ -42,10 +42,10 @@ public class UIDungeon : MonoBehaviour
         goldText.text = new BigInteger(DataTableMgr.Get<GoldDungeonTable>(DataTableIds.goldDungeon).GetID(playerInfo.goldDungeonLv).reward_value).ToStringShort();
         diaText.text = DataTableMgr.Get<DiaDungeonTable>(DataTableIds.diaDungeon).GetID(playerInfo.diaDungeonLv).reward_value;
 
-        goldKeyText1.text = "0";
-        goldKeyText2.text = "0";
-        diaKeyText1.text = "0";
-        diaKeyText2.text = "0";
+        goldKeyText1.text = "0 / 1";
+        goldKeyText2.text = "0 / 1";
+        diaKeyText1.text = "0 / 1";
+        diaKeyText2.text = "0 / 1";
 
         if(playerInfo.diaDungeonLv == 1)
         {
@@ -60,13 +60,13 @@ public class UIDungeon : MonoBehaviour
         {
             if (item.itemNumber == 220003)
             {
-                goldKeyText1.text = item.itemValue.ToString();
-                goldKeyText2.text = item.itemValue.ToString();
+                goldKeyText1.text = item.itemValue + " / 1";
+                goldKeyText2.text = item.itemValue + " / 1";
             }
             if (item.itemNumber == 220004)
             {
-                diaKeyText1.text = item.itemValue.ToString();
-                diaKeyText2.text = item.itemValue.ToString();
+                diaKeyText1.text = item.itemValue + " / 1";
+                diaKeyText2.text = item.itemValue + " / 1";
             }
         }
 

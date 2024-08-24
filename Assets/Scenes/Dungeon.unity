@@ -16330,7 +16330,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: (Soon)
+  m_text: "\uB2E4\uC74C \uB2E8\uACC4 \uB3C4\uC804"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4a4cb5ff1460d3847bfaf1bedca9c15e, type: 2}
   m_sharedMaterial: {fileID: -8394872773446215976, guid: 4a4cb5ff1460d3847bfaf1bedca9c15e, type: 2}
@@ -21047,7 +21047,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 570502711}
   m_OnClick:
     m_PersistentCalls:
@@ -25020,9 +25020,9 @@ RectTransform:
   - {fileID: 1964705133}
   - {fileID: 1388504974}
   - {fileID: 1329344248}
+  - {fileID: 890133514}
   - {fileID: 450711730}
   - {fileID: 5050234922843022184}
-  - {fileID: 890133514}
   - {fileID: 1234475770}
   m_Father: {fileID: 235621903}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -51399,7 +51399,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uD655\uC778"
+  m_text: "\uB3CC\uC544\uAC00\uAE30"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4a4cb5ff1460d3847bfaf1bedca9c15e, type: 2}
   m_sharedMaterial: {fileID: -8394872773446215976, guid: 4a4cb5ff1460d3847bfaf1bedca9c15e, type: 2}
@@ -65216,7 +65216,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uD655\uC778"
+  m_text: "\uB3CC\uC544\uAC00\uAE30"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4a4cb5ff1460d3847bfaf1bedca9c15e, type: 2}
   m_sharedMaterial: {fileID: -8394872773446215976, guid: 4a4cb5ff1460d3847bfaf1bedca9c15e, type: 2}

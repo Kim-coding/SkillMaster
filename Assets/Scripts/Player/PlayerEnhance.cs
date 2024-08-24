@@ -440,7 +440,14 @@ public class PlayerEnhance
         cbnUpgradeLv++;
         SpawnSkillLvCost = new BigInteger
             (GameMgr.Instance.cbnCalculateCost(SpawnSkillLvData.PayDefault, SpawnSkillLvData.PayIncrease, SpawnSkillLvData.PayRange, cbnUpgradeLv));
-
+        GameMgr.Instance.uiMgr.uiEnhance.EnhanceSlotUpdate();
+        foreach (var skillball in GameMgr.Instance.playerMgr.skillBallControllers)
+        {
+            if (skillball.tier < cbnUpgradeLv + 1)
+            {
+                skillball.Set(40000 + cbnUpgradeLv + 1);
+            }
+        }
         GameMgr.Instance.soundMgr.PlaySFX("UpgradeButton");
 
         //TO-DO 업데이트 해줘야함 스킬 스포너
@@ -506,6 +513,5 @@ public class PlayerEnhance
         GameMgr.Instance.uiMgr.uiMerge.SetAutoMergeDuration(autoMergeData.Increase * autoMergeLevel);
 
     }
-
 
 }
