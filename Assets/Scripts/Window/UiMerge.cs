@@ -43,6 +43,7 @@ public class UiMerge : MonoBehaviour
             }
 
         }
+        ToggleAutoMerge();
     }
 
     public void UnLockAutoButton()
@@ -89,12 +90,12 @@ public class UiMerge : MonoBehaviour
         if(isAutoMerging)
         {
             isAutoMerging = !isAutoMerging;
-            autoMergeButtonText.text = "수동 조합";
+            autoMergeButtonText.text = "자동 조합 \n <color=#ff0000>OFF</color>";
         }
         else
         {
             isAutoMerging = !isAutoMerging;
-            autoMergeButtonText.text = "자동 조합";
+            autoMergeButtonText.text = "자동 조합 \n <color=#0000ff>ON</color>";
         }
     }
 
