@@ -360,11 +360,11 @@ public class UiInventory : MonoBehaviour
     {
         if(ascendingToggle.isOn)
         {
-            ascendingToggleText.text = "오름차순";
+            ascendingToggleText.text = "▲";
         }
         else
         {
-            ascendingToggleText.text = "내림차순";
+            ascendingToggleText.text = "▼";
         }
         SortItemSlots();
     }
@@ -520,7 +520,7 @@ public class UiInventory : MonoBehaviour
 
     public void NormalSlotCountUpdate()
     {
-        normalItemSlotCountText.text = GameMgr.Instance.playerMgr.playerinventory.playerNormalItemList.Count.ToString() + " / " + GameMgr.Instance.playerMgr.playerinventory.maxSlots.ToString();
+        //normalItemSlotCountText.text = GameMgr.Instance.playerMgr.playerinventory.playerNormalItemList.Count.ToString() + " / " + GameMgr.Instance.playerMgr.playerinventory.maxSlots.ToString();
     }
 
     public void OnDecomposMode()
