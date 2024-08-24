@@ -10677,6 +10677,7 @@ GameObject:
   - component: {fileID: 231454460}
   - component: {fileID: 231454459}
   - component: {fileID: 231454458}
+  - component: {fileID: 231454461}
   m_Layer: 5
   m_Name: BossSpawnButton
   m_TagString: Untagged
@@ -10697,7 +10698,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2082556711}
-  m_Father: {fileID: 1102606860}
+  m_Father: {fileID: 1256834202}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -10786,6 +10787,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 231454456}
   m_CullTransparentMesh: 1
+--- !u!114 &231454461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 231454456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreLayout: 1
+  m_MinWidth: -1
+  m_MinHeight: -1
+  m_PreferredWidth: -1
+  m_PreferredHeight: -1
+  m_FlexibleWidth: -1
+  m_FlexibleHeight: -1
+  m_LayoutPriority: 1
 --- !u!1 &233269252
 GameObject:
   m_ObjectHideFlags: 0
@@ -46329,7 +46350,6 @@ RectTransform:
   - {fileID: 1175904676}
   - {fileID: 1603245743}
   - {fileID: 773535291}
-  - {fileID: 231454457}
   m_Father: {fileID: 1256834202}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -53424,6 +53444,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1102606860}
+  - {fileID: 231454457}
   m_Father: {fileID: 688339761}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
