@@ -73,10 +73,10 @@ public class PlayerMgr : MonoBehaviour
         playerEnhance = new PlayerEnhance();
         playerInfo = new PlayerInfomation();
         playerinventory = new PlayerInventory();
+        playerInfo.Init();
         currency.Init();
         StatSetting();
         EnhanceSetting();
-        playerInfo.Init();
         playerinventory.Init();
 
         playerBaseStat.onSettingChange += StatSetting;

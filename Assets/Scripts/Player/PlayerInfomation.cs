@@ -143,11 +143,13 @@ public class PlayerInfomation
     public void MaxSkillLevelUpdate(int SkillLevel)
     {
         if (SkillLevel <= maxSkillLevel || GameMgr.Instance.rewardMgr.guideQuest == null)
+        {
             return;
-
+        }
         maxSkillLevel = SkillLevel;
         AcquiredUpdate(SkillLevel + 40000, ClearState.Acquired);
         GameMgr.Instance.rewardMgr.guideQuest.MaxSkillComparisonCheck();
+        GameMgr.Instance.uiMgr.uiEnhance.EnhanceSlotUpdate();
     }
 
     public void AcquiredUpdate(int skillLv, ClearState state)

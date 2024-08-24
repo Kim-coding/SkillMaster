@@ -55,10 +55,10 @@ public class GameMgr : MonoBehaviour
             webTimeMgr.SaveTime();
         }
 
-        //if (Input.GetKeyDown(KeyCode.D))
-        //{
-        //    debugMode.gameObject.SetActive(!debugMode.isActiveAndEnabled);
-        //}
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            debugMode.gameObject.SetActive(!debugMode.isActiveAndEnabled);
+        }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             SaveAndQuit();

@@ -95,7 +95,7 @@ public class UiEnhance : MonoBehaviour
         EventMgr.StartListening(QuestType.CriticalMultipleEnhance, CriticalMultipleTextUpdate);
         EventMgr.StartListening(QuestType.GoldEnhance, GoldIncreaseTextUpdate);
         EventMgr.StartListening(QuestType.MaxSkillCount, MaxReserveSkillTextUpdate);
-
+        EnhanceSlotUpdate();
     }
 
     public void AttackTextUpdate()
@@ -257,6 +257,19 @@ public class UiEnhance : MonoBehaviour
         if (checkmark != null)
         {
             checkmark.color = color;
+        }
+    }
+
+    public void EnhanceSlotUpdate()
+    {
+        if(GameMgr.Instance.playerMgr.playerInfo.maxSkillLevel <= GameMgr.Instance.playerMgr.playerEnhance.cbnUpgradeLv + 4)
+        {
+            minSummonLevel.panelText.text = $"최고 스킬 레벨 ({GameMgr.Instance.playerMgr.playerEnhance.cbnUpgradeLv + 5})를 달성해야 합니다 ";
+            minSummonLevel.closePanel.gameObject.SetActive (true);
+        }
+        else
+        {
+            minSummonLevel.closePanel.gameObject.SetActive(false);
         }
     }
 

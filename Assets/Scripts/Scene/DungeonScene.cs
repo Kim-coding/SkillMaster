@@ -261,6 +261,20 @@ public class DungeonScene : MonoBehaviour
 
     private void NextDiaDungeon()
     {
+        NormalItem key = null;
+        foreach (var item in GameMgr.Instance.playerMgr.playerinventory.playerNormalItemList)
+        {
+            if (item.itemNumber == 220004 && !dungeonMode)
+            {
+                key = item;
+                break;
+            }
+        }
+        if( key == null || key.itemValue <= 0)
+        {
+            GameMgr.Instance.uiMgr.uiWindow.popUpUI.SetText("열쇠가 부족합니다!");
+            return;
+        }
         dungeonClearPopUp.SetActive(false);
 
         Time.timeScale =1f;
