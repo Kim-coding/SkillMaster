@@ -10697,7 +10697,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2082556711}
-  m_Father: {fileID: 1102606860}
+  m_Father: {fileID: 1256834202}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -46597,7 +46597,6 @@ RectTransform:
   - {fileID: 1175904676}
   - {fileID: 1603245743}
   - {fileID: 773535291}
-  - {fileID: 231454457}
   m_Father: {fileID: 1256834202}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -53692,6 +53691,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1102606860}
+  - {fileID: 231454457}
   m_Father: {fileID: 688339761}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
@@ -60857,9 +60857,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiGoldTarget: {fileID: 5086342}
   uiDiaTarget: {fileID: 256428875}
-  goldPrefab: {fileID: 7860945450302306057, guid: ab32a3a1ca25d324991065a4b3edd9d6, type: 3}
-  diaPrefab: {fileID: 3175760012841235517, guid: 5a94636751cf58b499b88126db3e0beb, type: 3}
-  uiCanvas: {fileID: 360789204}
+  goldPrefab: {fileID: 6995989985204792504, guid: ab32a3a1ca25d324991065a4b3edd9d6, type: 3}
+  diaPrefab: {fileID: 7768802766920121693, guid: 5a94636751cf58b499b88126db3e0beb, type: 3}
+  parent: {fileID: 1283635483}
 --- !u!114 &1423913466
 MonoBehaviour:
   m_ObjectHideFlags: 0
