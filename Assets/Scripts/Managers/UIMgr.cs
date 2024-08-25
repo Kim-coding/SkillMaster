@@ -43,6 +43,10 @@ public class UIMgr : MonoBehaviour
     private BigInteger cutLine;
     private BigInteger preCutLine;
 
+    public InputField playerNameInputField;
+    public GameObject nameInputPanel;
+    public Button nameSubmitButton;
+
     public void Init()
     {
         uiInventory.Init();

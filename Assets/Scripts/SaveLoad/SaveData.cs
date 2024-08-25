@@ -6,6 +6,7 @@ using System.Collections.Generic;
 public class SavePlayData
 {
     public int instanceId;
+    public string playerName;
 
     // 메인 씬 - 스테이지 관련
     public int stageId; // stageCount는 데이터에서 가져옴

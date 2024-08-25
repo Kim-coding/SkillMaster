@@ -93,7 +93,7 @@ public class AreaDotSkill : MonoBehaviour, ISkillComponent, ISkill //원형 범위 �
                 }
             }
 
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.4f);
         }
     }
 
