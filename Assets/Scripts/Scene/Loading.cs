@@ -48,7 +48,6 @@ public class Loading : MonoBehaviour
                             if (iconLoadHandle.Status == AsyncOperationStatus.Succeeded)
                             {
                                 loadedIcons.Add(iconLoadHandle);
-                                Debug.Log($"Successfully loaded icon: {iconKey}");
                             }
                             else
                             {
@@ -84,18 +83,18 @@ public class Loading : MonoBehaviour
     void LoadMainScene()
     {
         loadingText.text = "Loading main scene...";
-        Addressables.LoadSceneAsync(mainSceneAddress, LoadSceneMode.Single).Completed += OnSceneLoaded;
+        Addressables.LoadSceneAsync(mainSceneAddress, LoadSceneMode.Single);
     }
 
-    void OnSceneLoaded(AsyncOperationHandle<SceneInstance> obj)
-    {
-        if (obj.Status == AsyncOperationStatus.Succeeded)
-        {
-            Debug.Log("Main scene loaded successfully.");
-        }
-        else
-        {
-            Debug.LogError($"Failed to load main scene: {obj.OperationException}");
-        }
-    }
+    //void OnSceneLoaded(AsyncOperationHandle<SceneInstance> obj)
+    //{
+    //    if (obj.Status == AsyncOperationStatus.Succeeded)
+    //    {
+    //        Debug.Log("Main scene loaded successfully.");
+    //    }
+    //    else
+    //    {
+    //        Debug.LogError($"Failed to load main scene: {obj.OperationException}");
+    //    }
+    //}
 }

@@ -1421,9 +1421,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GuideWindow, Assembly-CSharp
-        m_MethodName: CheckNetworkConnet
+      - m_Target: {fileID: 1644421949}
+        m_TargetAssemblyTypeName: TitleScene, Assembly-CSharp
+        m_MethodName: ClosePanel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1484,7 +1484,7 @@ GameObject:
   - component: {fileID: 1644421949}
   - component: {fileID: 1644421948}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

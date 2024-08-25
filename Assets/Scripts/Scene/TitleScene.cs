@@ -21,20 +21,26 @@ public class TitleScene : MonoBehaviour
         }
     }
 
-    public void CheckNetworkConnet()
+    public void ClosePanel()
     {
-        if (network.CheckConnectInternet())
+        if (!network.CheckConnectInternet())
         {
             networkPanel.SetActive(false);
+            return;
         }
         else
         {
+            SceneManager.LoadScene("Loading");
+        }
+    }
+
+    public void Exit()
+    {
 #if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
+        UnityEditor.EditorApplication.isPlaying = false;
 #else
             Application.Quit();
 #endif
-        }
     }
 
     public void DeleteData()

@@ -43,7 +43,7 @@ public class UiMerge : MonoBehaviour
             }
 
         }
-        ToggleAutoMerge();
+        //ToggleAutoMerge();
     }
 
     public void UnLockAutoButton()

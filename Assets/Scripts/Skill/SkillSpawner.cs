@@ -78,7 +78,7 @@ public class SkillSpawner : MonoBehaviour
         }
 
         GameMgr.Instance.uiMgr.uiMerge.SkillCountUpdate();
-        AutoSkillSpawn();
+        //AutoSkillSpawn();
     }
 
     private void Update()

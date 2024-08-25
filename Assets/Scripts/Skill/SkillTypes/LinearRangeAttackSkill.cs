@@ -36,7 +36,7 @@ public class LinearRangeAttackSkill : MonoBehaviour, ISkillComponent, ISkill
 
         angle = Mathf.Atan2(rot.y, rot.x) * Mathf.Rad2Deg;
         skillObject.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
-        skillObject.transform.position = launchPoint + rot * (x);
+        skillObject.transform.position = launchPoint + rot * (x / 1.5f);
 
         skillEffectAngle = (-angle + 90);
     }
