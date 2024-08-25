@@ -342,7 +342,7 @@ public class UiInventory : MonoBehaviour
         if (GameMgr.Instance.sceneMgr.mainScene != null)
             SlotLevelUpdate();
     }
-    private void OnFilteringToggleValueChanged(bool isOn)
+    public void OnFilteringToggleValueChanged(bool isOn)
     {
         UpdateToggleColors();
         for (int i = 0; i < filteringToggles.Length; i++)

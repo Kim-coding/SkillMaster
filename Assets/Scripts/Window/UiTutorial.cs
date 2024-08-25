@@ -117,6 +117,8 @@ public class UiTutorial : MonoBehaviour
             {
                 GameMgr.Instance.uiMgr.uiInventory.inventoryModeToggles[0].isOn = true;
                 GameMgr.Instance.uiMgr.uiInventory.OnInventoryModeToggleValueChanged(true);
+                GameMgr.Instance.uiMgr.uiInventory.filteringToggles[0].isOn = true;
+                GameMgr.Instance.uiMgr.uiInventory.OnFilteringToggleValueChanged(true);
             }
             Button currentButton = currentTargetUI.GetComponent<Button>();
             Toggle currentToggle = currentTargetUI.GetComponent<Toggle>();
