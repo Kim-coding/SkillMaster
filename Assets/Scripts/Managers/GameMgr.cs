@@ -157,6 +157,7 @@ public class GameMgr : MonoBehaviour
         HideBossSpawnButton();
         sceneMgr.mainScene.RemoveAllMonsters();
         sceneMgr.mainScene.SpawnBoss();
+        uiMgr.ShowBossHpBar();
     }
     public void ShowBossSpawnButton()
     {

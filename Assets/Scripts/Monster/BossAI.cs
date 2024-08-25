@@ -78,10 +78,9 @@ public class BossAI : MonoBehaviour, IAnimation
         {
             bossHp.fillAmount = f;
         }
-        if(GameMgr.Instance.uiMgr.monsterSlider != null)
+        if(GameMgr.Instance.uiMgr.bossHpBar != null)
         {
-            GameMgr.Instance.uiMgr.monsterSlider.maxValue = 1f;
-            GameMgr.Instance.uiMgr.monsterSlider.value = f;
+            GameMgr.Instance.uiMgr.bossHpBar.value = f;
         }
     }
 

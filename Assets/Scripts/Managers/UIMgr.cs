@@ -21,6 +21,7 @@ public class UIMgr : MonoBehaviour
 
     public Slider monsterSlider;
     public Button bossSpawnButton;
+    public Slider bossHpBar;
 
     public Slider DungeonScoreSlider;
     public Slider DungeonTimeSlider;
@@ -104,9 +105,18 @@ public class UIMgr : MonoBehaviour
         }
     }
 
+    public void ShowBossHpBar()
+    {
+        monsterSlider.gameObject.SetActive(false);
+        bossHpBar.gameObject.SetActive(true);
+        bossHpBar.value = 1f;
+    }
+
     public void ResetMonsterSlider()
     {
+        bossHpBar.gameObject.SetActive(false);
         DungeonTimeSlider.gameObject.SetActive(false);
+        monsterSlider.gameObject.SetActive(true);
         monsterSlider.maxValue = DataTableMgr.Get<StageTable>(DataTableIds.stage).GetID(GameMgr.Instance.sceneMgr.mainScene.stageId).huntvalue;
         monsterSlider.value = 0;
     }
