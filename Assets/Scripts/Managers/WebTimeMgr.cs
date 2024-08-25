@@ -90,7 +90,6 @@ public class WebTimeMgr : MonoBehaviour
             if (worldTime != null && !string.IsNullOrEmpty(worldTime.dateTime))
             {
                 startTime = DateTime.Parse(worldTime.dateTime);
-                Debug.Log("서버 시간 (시작 시간): " + startTime);
                 SaveStartTime(startTime);
                 OfflineDuration();
             }
@@ -210,7 +209,6 @@ public class WebTimeMgr : MonoBehaviour
             DateTime lastEndTime;
             if (DateTime.TryParse(timeData.endTime, out lastEndTime))
             {
-                Debug.Log("마지막 종료 시간" + timeData.endTime);
                 TimeSpan inactiveDuration = startTime - lastEndTime;
                 if(inactiveDuration.Minutes > 0)
                 {
