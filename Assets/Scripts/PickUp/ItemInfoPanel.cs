@@ -11,7 +11,7 @@ public class ItemInfoPanel : MonoBehaviour
     public TextMeshProUGUI itemRarity;
     public TextMeshProUGUI[] OptionTexts;
     public TextMeshProUGUI CPText;
-
+    public TextMeshProUGUI[] plusOptionTexts;
     private EquipSlot currentEquip;
 
     public Button unEquipButton;
@@ -35,6 +35,11 @@ public class ItemInfoPanel : MonoBehaviour
         {
             optiontexts.gameObject.SetActive(false);
         }
+        foreach (var optiontexts in plusOptionTexts)
+        {
+            optiontexts.gameObject.SetActive(false);
+        }
+
         icon.sprite = equip.icon;
         Color newColor = Color.white;
         switch (equip.rarerityType)
@@ -95,6 +100,8 @@ public class ItemInfoPanel : MonoBehaviour
         {
             itemRarity.text = "등급 : " + "기본";
         }
+
+
         int optioncount = 0;
         foreach (var option in equip.EquipOption.currentOptions)
         {
@@ -134,8 +141,47 @@ public class ItemInfoPanel : MonoBehaviour
                     break;
             }
             OptionTexts[optioncount].text = optiontext + " : " + option.Item2;
+
+
+
+            if (plusOptionTexts.Length > 0)
+            {
+                plusOptionTexts[optioncount].gameObject.SetActive(true);
+                int upgrade = 0;
+                int limit = EquipRarityCheck(equip.rarerityType);
+                switch(equip.equipType)
+                {
+                    case EquipType.Hair:
+                        upgrade = Mathf.Min(GameMgr.Instance.playerMgr.playerinventory.hairSlotUpgrade, limit);
+                        break;
+                    case EquipType.Face:
+                        upgrade = Mathf.Min(GameMgr.Instance.playerMgr.playerinventory.faceSlotUpgrade, limit);
+                        break;
+                    case EquipType.Cloth:
+                        upgrade = Mathf.Min(GameMgr.Instance.playerMgr.playerinventory.clothSlotUpgrade, limit);
+                        break;
+                    case EquipType.Pants:
+                        upgrade = Mathf.Min(GameMgr.Instance.playerMgr.playerinventory.pantSlotUpgrade, limit);
+                        break;
+                    case EquipType.Weapon:
+                        upgrade = Mathf.Min(GameMgr.Instance.playerMgr.playerinventory.weaponSlotUpgrade, limit);
+                        break;
+                    case EquipType.Cloak:
+                        upgrade = Mathf.Min(GameMgr.Instance.playerMgr.playerinventory.cloakSlotUpgrade, limit);
+                        break;
+                }
+                var UpgradeData = DataTableMgr.Get<EquipUpgradeTable>(DataTableIds.equipmentUpgrade).GetID(upgrade);
+                var option_raise = UpgradeData.option_raise;
+                float optionValue = option.Item2 * option_raise - option.Item2;
+                plusOptionTexts[optioncount].text = "(+" + optionValue.ToString("F3") + ")";
+            }
+
             optioncount++;
         }
+
+
+
+
 
         CPText.text = "전투력 : " + equip.CP;
     }
@@ -166,4 +212,25 @@ public class ItemInfoPanel : MonoBehaviour
         currentEquip.RemoveEquip();
         ClosePanel();
     }
+
+    private int EquipRarityCheck(RarerityType rarerity)
+    {
+        switch (rarerity)
+        {
+            case RarerityType.C:
+                return 10;
+            case RarerityType.B:
+                return 20;
+            case RarerityType.A:
+                return 30;
+            case RarerityType.S:
+                return 40;
+            case RarerityType.SS:
+                return 50;
+            case RarerityType.SSS:
+                return 60;
+        }
+        return int.MaxValue;
+    }
+
 }

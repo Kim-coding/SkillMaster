@@ -437,7 +437,7 @@ public class EquipUpgradePanel : MonoBehaviour
         else
         {
             currentLevels[0].text = "Lv " + hairLv;
-            currentLevels[0].color = Color.black;
+            currentLevels[0].color = Color.white;
             limits[0] = false;
         }
 
@@ -452,7 +452,7 @@ public class EquipUpgradePanel : MonoBehaviour
         else
         {
             currentLevels[1].text = "Lv " + faceLv;
-            currentLevels[1].color = Color.black;
+            currentLevels[1].color = Color.white;
             limits[1] = false;
         }
 
@@ -468,7 +468,7 @@ public class EquipUpgradePanel : MonoBehaviour
         else
         {
             currentLevels[2].text = "Lv " + clothLv;
-            currentLevels[2].color = Color.black;
+            currentLevels[2].color = Color.white;
             limits[2] = false;
         }
 
@@ -483,7 +483,7 @@ public class EquipUpgradePanel : MonoBehaviour
         else
         {
             currentLevels[3].text = "Lv " + pantsLv;
-            currentLevels[3].color = Color.black;
+            currentLevels[3].color = Color.white;
             limits[3] = false;
         }
 
@@ -498,7 +498,7 @@ public class EquipUpgradePanel : MonoBehaviour
         else
         {
             currentLevels[4].text = "Lv " + weaponLv;
-            currentLevels[4].color = Color.black;
+            currentLevels[4].color = Color.white;
             limits[4] = false;
         }
 
@@ -513,7 +513,7 @@ public class EquipUpgradePanel : MonoBehaviour
         else
         {
             currentLevels[5].text = "Lv " + cloakLv;
-            currentLevels[5].color = Color.black;
+            currentLevels[5].color = Color.white;
             limits[5] = false;
         }
     }
