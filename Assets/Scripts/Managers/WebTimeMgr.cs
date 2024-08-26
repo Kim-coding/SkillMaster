@@ -41,6 +41,12 @@ public class WebTimeMgr : MonoBehaviour
 
     public void Start()
     {
+        TimeData timeData = LoadTimeData();
+        if (timeData == null)
+        {
+            GameMgr.Instance.playerMgr.playerinventory.CreateItem(220003, 2, ItemType.misc);
+            GameMgr.Instance.playerMgr.playerinventory.CreateItem(220004, 2, ItemType.misc);
+        }
         if (network == null)
         {
             network = GameMgr.Instance.networkConnect;
@@ -204,6 +210,12 @@ public class WebTimeMgr : MonoBehaviour
     public void OfflineDuration()
     {
         TimeData timeData = LoadTimeData();
+        if(timeData == null)
+        {
+            GameMgr.Instance.playerMgr.playerinventory.CreateItem(220003, 2, ItemType.misc);
+            GameMgr.Instance.playerMgr.playerinventory.CreateItem(220004, 2, ItemType.misc);
+        }
+
         if (timeData != null && !string.IsNullOrEmpty(timeData.endTime))  // 오프라인 보상
         {
             DateTime lastEndTime;
