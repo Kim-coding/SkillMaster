@@ -14067,6 +14067,7 @@ MonoBehaviour:
   OptionTexts:
   - {fileID: 766840689}
   CPText: {fileID: 0}
+  plusOptionTexts: []
   unEquipButton: {fileID: 0}
 --- !u!114 &339150875
 MonoBehaviour:
@@ -25734,6 +25735,7 @@ MonoBehaviour:
   - {fileID: 2132214299}
   - {fileID: 842855847}
   CPText: {fileID: 0}
+  plusOptionTexts: []
   unEquipButton: {fileID: 1319034293}
 --- !u!114 &708723578
 MonoBehaviour:
@@ -41991,6 +41993,7 @@ MonoBehaviour:
   - {fileID: 1399892799}
   - {fileID: 980672175}
   CPText: {fileID: 0}
+  plusOptionTexts: []
   unEquipButton: {fileID: 0}
 --- !u!1 &1178794953
 GameObject:
@@ -51447,6 +51450,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startPanel: {fileID: 1234475769}
   currentStage: 1
+  background: {fileID: 1718466859}
   goldDungeonMonster: {fileID: 1605052194642255169, guid: 259421fe8b6bea244bf707800f29a70a, type: 3}
   goldDungeonSpawnPoint: {fileID: 18118072}
   diaDungeonMonsters:
@@ -51587,6 +51591,7 @@ MonoBehaviour:
   uIDungeon: {fileID: 0}
   monsterSlider: {fileID: 0}
   bossSpawnButton: {fileID: 0}
+  bossHpBar: {fileID: 0}
   DungeonScoreSlider: {fileID: 1948932809}
   DungeonTimeSlider: {fileID: 377149477}
   timeText: {fileID: 1661356775}
@@ -51597,6 +51602,9 @@ MonoBehaviour:
   skillcount: {fileID: 0}
   stageCount: 1
   goldLvMax: 0
+  playerNameInputField: {fileID: 0}
+  nameInputPanel: {fileID: 0}
+  nameSubmitButton: {fileID: 0}
 --- !u!114 &1423913464
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60845,6 +60853,7 @@ MonoBehaviour:
   - {fileID: 2048368127}
   - {fileID: 30971748}
   CPText: {fileID: 0}
+  plusOptionTexts: []
   unEquipButton: {fileID: 0}
 --- !u!1 &1717855900
 GameObject:
@@ -69734,6 +69743,7 @@ MonoBehaviour:
   - {fileID: 1336599747}
   - {fileID: 1408454598}
   CPText: {fileID: 0}
+  plusOptionTexts: []
   unEquipButton: {fileID: 0}
 --- !u!1 &1959833540
 GameObject:

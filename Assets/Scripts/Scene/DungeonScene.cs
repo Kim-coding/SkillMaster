@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class DungeonScene : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class DungeonScene : MonoBehaviour
 
     public int currentStage; //저장된 정보를 받아 오기.
     private bool dungeonMode;
+
+    public SpriteRenderer background;
 
     //골드 던전
     public GameObject goldDungeonMonster;
@@ -46,9 +49,9 @@ public class DungeonScene : MonoBehaviour
     public GameObject dungeonClearPopUp;
     public GameObject goldImage;
     public GameObject diaImage;
-    public Button goldEndButton;
-    public Button diaEndButton;
-    public Button diaNextButton;
+    public UnityEngine.UI.Button goldEndButton;
+    public UnityEngine.UI.Button diaEndButton;
+    public UnityEngine.UI.Button diaNextButton;
 
     private GameObject currentBoss;
 
@@ -80,6 +83,7 @@ public class DungeonScene : MonoBehaviour
 
         if (dungeonMode)
         {
+            background.sprite = Resources.Load<Sprite>("Background/Gold_Dungeon");
             currentStage = 1;
             goldDungeonData = DataTableMgr.Get<GoldDungeonTable>(DataTableIds.goldDungeon).GetID(currentStage);
             goldEndButton.gameObject.SetActive(true);
@@ -87,6 +91,7 @@ public class DungeonScene : MonoBehaviour
         }
         else
         {
+            background.sprite = Resources.Load<Sprite>("Background/Dia_Dungeon");
             currentStage = GameMgr.Instance.playerMgr.playerInfo.diaDungeonLv;
             foreach (var monster in diaDungeonMonsters)
             {
