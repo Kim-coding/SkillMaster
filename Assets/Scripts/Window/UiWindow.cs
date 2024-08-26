@@ -201,10 +201,12 @@ public class UiWindow : MonoBehaviour
         });
         if (GameMgr.Instance.uiMgr.uiGuideQuest.currentQuest.QuestID == 60024 && window == Windows.PickUp)
         {
+            SaveLoadSystem.Save();
             GameMgr.Instance.sceneMgr.tutorial.OnTutorial();
         }
         if (GameMgr.Instance.uiMgr.uiGuideQuest.currentQuest.QuestID == 60051 && window == Windows.Dungeon && !GameMgr.Instance.uiMgr.uiTutorial.isDungeonOpen)
         {
+            SaveLoadSystem.Save();
             GameMgr.Instance.sceneMgr.tutorial.OnTutorial();
             GameMgr.Instance.uiMgr.uiTutorial.isDungeonOpen = true;
         }

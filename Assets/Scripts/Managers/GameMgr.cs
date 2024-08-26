@@ -24,6 +24,7 @@ public class GameMgr : MonoBehaviour
     public GameObject savingPowerPanel;
 
     private float saveTimer;
+    private float saveWebTimer;
 
     private void Awake()
     {
@@ -50,12 +51,17 @@ public class GameMgr : MonoBehaviour
 
     private void Update()
     {
-
         saveTimer += Time.deltaTime;
         if (saveTimer > 60f)
         {
             saveTimer = 0;
             SaveLoadSystem.Save();
+        }
+
+        saveWebTimer += Time.deltaTime;
+        if ( saveTimer > 300f)
+        {
+            saveWebTimer = 0;
             webTimeMgr.SaveTime();
         }
 

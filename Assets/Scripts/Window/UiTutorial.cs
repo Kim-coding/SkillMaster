@@ -33,6 +33,10 @@ public class UiTutorial : MonoBehaviour
 
     private float typingSpeed = 0.01f;
     private UnityAction<bool> toggleListener;
+
+    private Sequence typingSequence;
+    private bool isTyping = false;
+
     public void OnTutorial()
     {
         var invincible = GameMgr.Instance.playerMgr.characters[0].GetComponent<IDamageable>();
@@ -290,14 +294,29 @@ public class UiTutorial : MonoBehaviour
 
     private void Update()
     {
-        //if(Input.GetKeyDown(KeyCode.Alpha0))
-        //{
-        //    NextTutorial();
-        //}
-        //if (Input.GetKeyDown(KeyCode.Alpha9))
-        //{
-        //    EndTutorial();
-        //}
+        if (Input.touchCount > 0)
+        {
+            if (isTyping)
+            {
+                typingSequence.Kill();
+                CompleteText();
+            }
+        }
+    }
+
+    private void CompleteText()
+    {
+        // 타이핑 중인 텍스트를 모두 출력
+        if (topText.gameObject.activeSelf)
+        {
+            topText.text = DataTableMgr.Get<StringTable>(DataTableIds.String).GetID(currentTutorialID);
+        }
+        else if (bottomText.gameObject.activeSelf)
+        {
+            bottomText.text = DataTableMgr.Get<StringTable>(DataTableIds.String).GetID(currentTutorialID);
+        }
+
+        isTyping = false;
     }
 
     public void EndTutorial()
@@ -338,19 +357,42 @@ public class UiTutorial : MonoBehaviour
     public void TextAnimation(TextMeshProUGUI textMesh, string fullText)
     {
         textMesh.text = "";
+        isTyping = true;
         Sequence typingSequence = DOTween.Sequence();
+
+        string currentText = "";
+        bool insideTag = false;
 
         for (int i = 0; i < fullText.Length; i++)
         {
-            string currentText = fullText.Substring(0, i + 1);
-            typingSequence.AppendCallback(() =>
+            char currentChar = fullText[i];
+
+            if (currentChar == '<')
             {
-                textMesh.text = currentText;
-            });
-            typingSequence.AppendInterval(typingSpeed);
+                insideTag = true;
+            }
+
+            currentText += currentChar;
+
+            if (currentChar == '>')
+            {
+                insideTag = false;
+            }
+
+            if (!insideTag)
+            {
+                string textToDisplay = currentText;
+                typingSequence.AppendCallback(() =>
+                {
+                    textMesh.text = textToDisplay;
+                });
+
+                typingSequence.AppendInterval(typingSpeed);
+            }
         }
 
         typingSequence.SetUpdate(true); //Time.timeScale이 0일때에도 작동
+        typingSequence.OnComplete(() => isTyping = false);
         typingSequence.Play();
     }
 

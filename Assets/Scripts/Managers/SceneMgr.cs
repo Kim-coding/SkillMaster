@@ -27,6 +27,7 @@ public class SceneMgr : MonoBehaviour
     {
         if (mainScene != null && tutorial.tutorialID <= 120238)
         {
+            SaveLoadSystem.Save();
             tutorial.OnTutorial();
         }
     }

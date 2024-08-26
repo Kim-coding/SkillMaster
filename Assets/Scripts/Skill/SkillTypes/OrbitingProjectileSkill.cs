@@ -150,4 +150,12 @@ public class OrbitingProjectileSkill : MonoBehaviour, ISkillComponent, ISkill
             Destroy(skillEffectObject);
         }
     }
+
+    private void Update()
+    {
+        if (target != null)
+        {
+            gameObject.transform.position = attacker.transform.position;
+        }
+    }
 }
