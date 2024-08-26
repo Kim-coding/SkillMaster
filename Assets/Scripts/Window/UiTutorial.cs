@@ -38,6 +38,11 @@ public class UiTutorial : MonoBehaviour
         var invincible = GameMgr.Instance.playerMgr.characters[0].GetComponent<IDamageable>();
         invincible.invincible = true;
         
+        if(currentTutorialID == 120274)
+        {
+            GameMgr.Instance.playerMgr.playerinventory.CreateItem(220003, 2, ItemType.misc);
+        }
+
         if (!tutorialPanel.gameObject.activeSelf)
         {
             tutorialPanel.gameObject.SetActive(true);
@@ -117,15 +122,13 @@ public class UiTutorial : MonoBehaviour
             {
                 GameMgr.Instance.uiMgr.uiInventory.inventoryModeToggles[0].isOn = true;
                 GameMgr.Instance.uiMgr.uiInventory.OnInventoryModeToggleValueChanged(true);
-                GameMgr.Instance.uiMgr.uiInventory.filteringToggles[0].isOn = true;
-                GameMgr.Instance.uiMgr.uiInventory.OnFilteringToggleValueChanged(true);
             }
             Button currentButton = currentTargetUI.GetComponent<Button>();
             Toggle currentToggle = currentTargetUI.GetComponent<Toggle>();
 
             if (currentButton != null)
             {
-                if (currentTargetUI.name != "BossSpawnButton")
+                if (currentTargetUI.name != "BossSpawnButton" && currentTargetUI.name != "UpgradeButton")
                 {
                     currentButton.onClick.AddListener(OnButton);
                 }
@@ -198,6 +201,11 @@ public class UiTutorial : MonoBehaviour
         }
         else
         {
+            if (currentTutorialID == 120248)
+            {
+                GameMgr.Instance.uiMgr.uiInventory.filteringToggles[0].isOn = true;
+                GameMgr.Instance.uiMgr.uiInventory.OnFilteringToggleValueChanged(true);
+            }
             Button tutorialButton = tutorialPanel.gameObject.GetComponent<Button>();
             if (tutorialButton != null)
             {
