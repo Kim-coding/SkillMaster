@@ -190,10 +190,10 @@ public class GameMgr : MonoBehaviour
         return increasePerLevel;
     }
 
-    public BigInteger CalculateCost(int value, int increaseValue, int range, int level)
+    public BigInteger CalculateCost(int defalutValue, int increase, int increaseValue, int range, int level)
     {
-        int baseIncrease = value;
-        BigInteger increasePerLevel = new BigInteger(0);
+        BigInteger baseIncrease = new BigInteger(increase);
+        BigInteger increasePerLevel = new BigInteger(defalutValue);
 
         for (int i = 1; i <= level; i++)
         {
