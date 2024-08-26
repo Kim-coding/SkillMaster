@@ -39,6 +39,7 @@ public class PlayerInfomation
             var data = SaveLoadSystem.CurrSaveData.savePlay.savePlayerInfomation;
             monsterKill = new BigInteger(data.monsterKill); //TO-DO저장한데서 들고오기 밑에전부
             getGold = new BigInteger(data.getGold);
+            stageClear = data.stageClear;
             skillSpawnCount = data.skillSpawnCount;
             maxSkillLevel = data.maxSkillLevel;
             obtainedItem = data.obtainedItem;
@@ -69,6 +70,7 @@ public class PlayerInfomation
         {
             monsterKill = new BigInteger(0); //TO-DO저장한데서 들고오기 밑에전부
             getGold = new BigInteger(0);
+            stageClear = 0;
             skillSpawnCount = 0;
             maxSkillLevel = 0;
             obtainedItem = 0;

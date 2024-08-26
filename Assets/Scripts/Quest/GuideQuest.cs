@@ -204,6 +204,7 @@ public class GuideQuest
         {
             currentTargetValue = currentQuest.Targetvalue;
         }
+
         CheckQuestCompletion();
         UiUpdate();
     }
