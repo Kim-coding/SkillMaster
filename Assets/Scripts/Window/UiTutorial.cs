@@ -128,7 +128,7 @@ public class UiTutorial : MonoBehaviour
 
             if (currentButton != null)
             {
-                if (currentTargetUI.name != "BossSpawnButton" && currentTargetUI.name != "UpgradeButton")
+                if (currentTargetUI.name != "BossSpawnButton")
                 {
                     currentButton.onClick.AddListener(OnButton);
                 }
