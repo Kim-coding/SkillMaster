@@ -16,7 +16,7 @@ public class CameraMove : MonoBehaviour
     public float[] distances;
     public Button CameraButton;
 
-    private int currentDistanceIndex = 0;
+    private int currentDistanceIndex = 1;
     [HideInInspector]
     public bool isToggle = true;
 
