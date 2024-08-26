@@ -115,44 +115,37 @@ public class PlayerEnhance
         attackPowerMaxLevel = attackPowerUpgradeData.MaxLv;
         attackPowerValue = GameMgr.Instance.CalculateAttackIncrease((int)attackPowerUpgradeData.Increase, attackPowerUpgradeData.DivValue, attackPowerLevel);
         attackPowerIncrease = (int)attackPowerUpgradeData.Increase * ((attackPowerLevel + 1 / attackPowerUpgradeData.DivValue) + 1);
-        attackPowerCost = new BigInteger(attackPowerUpgradeData.Gold)
-            + new BigInteger(attackPowerUpgradeData.GoldRange) * attackPowerLevel;
+        attackPowerCost = GameMgr.Instance.CalculateCost(attackPowerUpgradeData.Gold, attackPowerUpgradeData.Gold, attackPowerUpgradeData.GoldincreaseValue, attackPowerUpgradeData.GoldRange, attackPowerLevel);
 
         var maxHealthUpgradeData = DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10003);
         maxHealthMaxLevel = maxHealthUpgradeData.MaxLv;
         maxHealthValue = (int)maxHealthUpgradeData.Increase;
-        maxHealthCost = new BigInteger(attackPowerUpgradeData.Gold)
-            + new BigInteger(attackPowerUpgradeData.GoldRange) * maxHealthLevel;
+        maxHealthCost = GameMgr.Instance.CalculateCost(maxHealthUpgradeData.Gold, maxHealthUpgradeData.Gold, maxHealthUpgradeData.GoldincreaseValue, maxHealthUpgradeData.GoldRange, maxHealthLevel);
 
         var defenceUpgradeData = DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10002);
         defenceMaxLevel = defenceUpgradeData.MaxLv;
         defenceValue = defenceUpgradeData.Increase;
-        defenceCost = new BigInteger(defenceUpgradeData.Gold)
-            + new BigInteger(defenceUpgradeData.GoldRange) * defenceLevel;
+        defenceCost = GameMgr.Instance.CalculateCost(defenceUpgradeData.Gold, defenceUpgradeData.Gold, defenceUpgradeData.GoldincreaseValue, defenceUpgradeData.GoldRange, defenceLevel);
 
         var criticalPercentUpgradeData = DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10004);
         criticalPercentMaxLevel = criticalPercentUpgradeData.MaxLv;
         criticalPercentValue = criticalPercentUpgradeData.Increase;
-        criticalPercentCost = new BigInteger(criticalPercentUpgradeData.Gold)
-            + new BigInteger(criticalPercentUpgradeData.GoldRange) * criticalPercentLevel;
+        criticalPercentCost = GameMgr.Instance.CalculateCost(criticalPercentUpgradeData.Gold, criticalPercentUpgradeData.Gold, criticalPercentUpgradeData.GoldincreaseValue, criticalPercentUpgradeData.GoldRange, criticalPercentLevel);
 
         var criticalMultipleUpgradeData = DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10005);
         criticalMultipleMaxLevel = criticalMultipleUpgradeData.MaxLv;
         criticalMultipleValue = criticalMultipleUpgradeData.Increase;
-        criticalMultipleCost = new BigInteger(criticalMultipleUpgradeData.Gold)
-            + new BigInteger(criticalMultipleUpgradeData.GoldRange) * criticalMultipleLevel;
+        criticalMultipleCost = GameMgr.Instance.CalculateCost(criticalMultipleUpgradeData.Gold, criticalMultipleUpgradeData.Gold, criticalMultipleUpgradeData.GoldincreaseValue, criticalMultipleUpgradeData.GoldRange, criticalMultipleLevel);
 
         var recoveryUpgradeData = DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10007);
         recoveryMaxLevel = recoveryUpgradeData.MaxLv;
         recoveryValue = (int)recoveryUpgradeData.Increase;
-        recoveryCost = new BigInteger(recoveryUpgradeData.Gold)
-           + new BigInteger(recoveryUpgradeData.GoldRange) * recoveryLevel;
+        recoveryCost = GameMgr.Instance.CalculateCost(recoveryUpgradeData.Gold, recoveryUpgradeData.Gold, recoveryUpgradeData.GoldincreaseValue, recoveryUpgradeData.GoldRange, recoveryLevel);
 
         var goldUpgradeData = DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10006);
         goldMaxLevel = goldUpgradeData.MaxLv;
         goldValue = goldUpgradeData.Increase;
-        goldCost = new BigInteger(goldUpgradeData.Gold)
-           + new BigInteger(goldUpgradeData.GoldRange) * goldLevel;
+        goldCost = GameMgr.Instance.CalculateCost(goldUpgradeData.Gold, goldUpgradeData.Gold, goldUpgradeData.GoldincreaseValue, goldUpgradeData.GoldRange, goldLevel);
 
         var maxReserveSkillData = DataTableMgr.Get<CombinationUpgradeTable>(DataTableIds.cbnUpgrade).GetID(190001);
         maxReserveSkillMaxLevel = maxReserveSkillData.MaxLv;
@@ -236,8 +229,7 @@ public class PlayerEnhance
         GameMgr.Instance.playerMgr.currency.RemoveGold(attackPowerCost);
         var attackPowerUpgradeData = DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10001);
         attackPowerLevel++;
-        attackPowerCost = new BigInteger(attackPowerUpgradeData.Gold)
-            + new BigInteger(attackPowerUpgradeData.GoldRange) * attackPowerLevel;
+        attackPowerCost = GameMgr.Instance.CalculateCost(attackPowerUpgradeData.Gold, attackPowerUpgradeData.Gold, attackPowerUpgradeData.GoldincreaseValue, attackPowerUpgradeData.GoldRange, attackPowerLevel);
         attackPowerValue = GameMgr.Instance.CalculateAttackIncrease((int)attackPowerUpgradeData.Increase, attackPowerUpgradeData.DivValue, attackPowerLevel);
         attackPowerIncrease = (int)attackPowerUpgradeData.Increase * (((attackPowerLevel + 1) / attackPowerUpgradeData.DivValue) + 1);
         GameMgr.Instance.playerMgr.playerStat.playerStatUpdate();
@@ -254,10 +246,10 @@ public class PlayerEnhance
             return;
         }
         GameMgr.Instance.playerMgr.currency.RemoveGold(defenceCost);
+        var defenceUpgradeData = DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10002);
 
         defenceLevel++;
-        defenceCost = new BigInteger(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10002).Gold)
-           + new BigInteger(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10002).GoldRange) * defenceLevel;
+        defenceCost = GameMgr.Instance.CalculateCost(defenceUpgradeData.Gold, defenceUpgradeData.Gold, defenceUpgradeData.GoldincreaseValue, defenceUpgradeData.GoldRange, defenceLevel);
         GameMgr.Instance.playerMgr.playerStat.playerStatUpdate();
         GameMgr.Instance.soundMgr.PlaySFX("UpgradeButton");
         EventMgr.TriggerEvent(QuestType.DefenceEnhance);
@@ -271,10 +263,9 @@ public class PlayerEnhance
             return;
         }
         GameMgr.Instance.playerMgr.currency.RemoveGold(maxHealthCost);
-
+        var maxHealthUpgradeData = DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10003);
         maxHealthLevel++;
-        maxHealthCost = new BigInteger(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10003).Gold)
-          + new BigInteger(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10003).GoldRange) * maxHealthLevel;
+        maxHealthCost = GameMgr.Instance.CalculateCost(maxHealthUpgradeData.Gold, maxHealthUpgradeData.Gold, maxHealthUpgradeData.GoldincreaseValue, maxHealthUpgradeData.GoldRange, maxHealthLevel);
         GameMgr.Instance.playerMgr.playerStat.playerStatUpdate();
         GameMgr.Instance.playerMgr.characters[0].UpdateHpBar();
         GameMgr.Instance.soundMgr.PlaySFX("UpgradeButton");
@@ -290,10 +281,9 @@ public class PlayerEnhance
             return;
         }
         GameMgr.Instance.playerMgr.currency.RemoveGold(recoveryCost);
-
+        var recoveryUpgradeData = DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10007);
         recoveryLevel++;
-        recoveryCost = new BigInteger(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10007).Gold)
-         + new BigInteger(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10007).GoldRange) * recoveryLevel;
+        recoveryCost = GameMgr.Instance.CalculateCost(recoveryUpgradeData.Gold, recoveryUpgradeData.Gold, recoveryUpgradeData.GoldincreaseValue, recoveryUpgradeData.GoldRange, recoveryLevel);
         GameMgr.Instance.playerMgr.playerStat.playerStatUpdate();
         GameMgr.Instance.soundMgr.PlaySFX("UpgradeButton");
         EventMgr.TriggerEvent(QuestType.RecoveryEnhance);
@@ -307,10 +297,9 @@ public class PlayerEnhance
             return;
         }
         GameMgr.Instance.playerMgr.currency.RemoveGold(criticalPercentCost);
-
+        var criticalPercentUpgradeData = DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10004);
         criticalPercentLevel++;
-        criticalPercentCost = new BigInteger(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10004).Gold)
-          + new BigInteger(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10004).GoldRange) * criticalPercentLevel;
+        criticalPercentCost = GameMgr.Instance.CalculateCost(criticalPercentUpgradeData.Gold, criticalPercentUpgradeData.Gold, criticalPercentUpgradeData.GoldincreaseValue, criticalPercentUpgradeData.GoldRange, criticalPercentLevel);
         GameMgr.Instance.playerMgr.playerStat.playerStatUpdate();
         GameMgr.Instance.soundMgr.PlaySFX("UpgradeButton");
         EventMgr.TriggerEvent(QuestType.CriticalPercentEnhance);
@@ -324,10 +313,9 @@ public class PlayerEnhance
             return;
         }
         GameMgr.Instance.playerMgr.currency.RemoveGold(criticalMultipleCost);
-
+        var criticalMultipleUpgradeData = DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10005);
         criticalMultipleLevel++;
-        criticalMultipleCost = new BigInteger(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10005).Gold)
-           + new BigInteger(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10005).GoldRange) * criticalMultipleLevel;
+        criticalMultipleCost = GameMgr.Instance.CalculateCost(criticalMultipleUpgradeData.Gold, criticalMultipleUpgradeData.Gold, criticalMultipleUpgradeData.GoldincreaseValue, criticalMultipleUpgradeData.GoldRange, criticalMultipleLevel);
         GameMgr.Instance.playerMgr.playerStat.playerStatUpdate();
         GameMgr.Instance.soundMgr.PlaySFX("UpgradeButton");
         EventMgr.TriggerEvent(QuestType.CriticalMultipleEnhance);
@@ -341,10 +329,9 @@ public class PlayerEnhance
             return;
         }
         GameMgr.Instance.playerMgr.currency.RemoveGold(goldCost);
-
+        var goldUpgradeData = DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10006);
         goldLevel++;
-        goldCost = new BigInteger(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10006).Gold)
-         + new BigInteger(DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10006).GoldRange) * goldLevel;
+        goldCost = GameMgr.Instance.CalculateCost(goldUpgradeData.Gold, goldUpgradeData.Gold, goldUpgradeData.GoldincreaseValue, goldUpgradeData.GoldRange, goldLevel);
         GameMgr.Instance.soundMgr.PlaySFX("UpgradeButton");
         EventMgr.TriggerEvent(QuestType.GoldEnhance);
 
