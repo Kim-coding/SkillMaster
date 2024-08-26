@@ -100,12 +100,24 @@ public class UiEnhance : MonoBehaviour
 
     public void AttackTextUpdate()
     {
-        attackPowerUpgrade.TextUpdate(
-       p_E.attackPowerLevel,
-       p_E.attackPowerMaxLevel,
-       p_E.attackPowerValue,
-       p_E.attackPowerValue + p_E.attackPowerIncrease,
-       p_E.attackPowerCost);
+        if (p_E.attackPowerLevel < p_E.attackPowerMaxLevel)
+        {
+            attackPowerUpgrade.TextUpdate(
+           p_E.attackPowerLevel,
+           p_E.attackPowerMaxLevel,
+           p_E.attackPowerValue,
+           DataTableMgr.Get<AtUpgradeTable>(DataTableIds.atUpgrade).GetID(p_E.attackPowerLevel + 1).damage,
+           p_E.attackPowerCost);
+        }
+        else
+        {
+            attackPowerUpgrade.TextUpdate(
+p_E.attackPowerLevel,
+p_E.attackPowerMaxLevel,
+p_E.attackPowerValue,
+"max",
+p_E.attackPowerCost);
+        }
     }
 
     public void DefenceTextUpdate()
@@ -114,7 +126,7 @@ public class UiEnhance : MonoBehaviour
             p_E.defenceLevel,
             p_E.defenceMaxLevel,
             p_BS.basePlayerDefence + p_E.defenceLevel * p_E.defenceValue,
-           p_BS.basePlayerDefence +( p_E.defenceLevel + 1) * p_E.defenceValue,
+           p_BS.basePlayerDefence + (p_E.defenceLevel + 1) * p_E.defenceValue,
             p_E.defenceCost);
     }
     public void MaxHealthTextUpdate()
@@ -171,7 +183,7 @@ public class UiEnhance : MonoBehaviour
             p_E.maxReserveSkillMaxLevel,
             p_E.maxReserveSkillCount,
             p_E.maxReserveSkillCount + p_E.maxReserveSkillValue,
-            p_E.maxReserveSkillCost);;
+            p_E.maxReserveSkillCost); ;
     }
 
     public void SpawnSkillCooldownTextUpdate()
@@ -262,10 +274,10 @@ public class UiEnhance : MonoBehaviour
 
     public void EnhanceSlotUpdate()
     {
-        if(GameMgr.Instance.playerMgr.playerInfo.maxSkillLevel <= GameMgr.Instance.playerMgr.playerEnhance.cbnUpgradeLv + 4)
+        if (GameMgr.Instance.playerMgr.playerInfo.maxSkillLevel <= GameMgr.Instance.playerMgr.playerEnhance.cbnUpgradeLv + 4)
         {
             minSummonLevel.panelText.text = $"최고 스킬 레벨 ({GameMgr.Instance.playerMgr.playerEnhance.cbnUpgradeLv + 5})를 달성해야 합니다 ";
-            minSummonLevel.closePanel.gameObject.SetActive (true);
+            minSummonLevel.closePanel.gameObject.SetActive(true);
         }
         else
         {

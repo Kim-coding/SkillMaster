@@ -307,11 +307,13 @@ public class UiWindow : MonoBehaviour
         if (onUIopen)
         {
             UIGuideQuest.transform.SetAsFirstSibling();
+            UIMonsterSlider.transform.SetAsFirstSibling();
             UICameraButton.transform.SetAsFirstSibling();
         }
         else
         {
             UIGuideQuest.transform.SetAsLastSibling();
+            UIMonsterSlider.transform.SetAsLastSibling();
             UICameraButton.transform.SetAsLastSibling();
 
         }

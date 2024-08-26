@@ -37,8 +37,7 @@ public class PlayerEnhance
     //Level / Value / Cost 세트로 있어야 함
     public int attackPowerLevel;
     public int attackPowerMaxLevel;
-    public int attackPowerValue;
-    public int attackPowerIncrease;
+    public string attackPowerValue = "0";
     public BigInteger attackPowerCost;
 
     public int maxHealthLevel;
@@ -111,10 +110,10 @@ public class PlayerEnhance
 
         }
 
+        var atUpgradeData = DataTableMgr.Get<AtUpgradeTable>(DataTableIds.atUpgrade).GetID(attackPowerLevel);
         var attackPowerUpgradeData = DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10001);
-        attackPowerMaxLevel = attackPowerUpgradeData.MaxLv;
-        attackPowerValue = GameMgr.Instance.CalculateAttackIncrease((int)attackPowerUpgradeData.Increase, attackPowerUpgradeData.DivValue, attackPowerLevel);
-        attackPowerIncrease = (int)attackPowerUpgradeData.Increase * ((attackPowerLevel + 1 / attackPowerUpgradeData.DivValue) + 1);
+        attackPowerMaxLevel = DataTableMgr.Get<AtUpgradeTable>(DataTableIds.atUpgrade).atUpgradeDatas.Count - 1;
+        attackPowerValue = atUpgradeData.damage;
         attackPowerCost = GameMgr.Instance.CalculateCost(attackPowerUpgradeData.Gold, attackPowerUpgradeData.Gold, attackPowerUpgradeData.GoldincreaseValue, attackPowerUpgradeData.GoldRange, attackPowerLevel);
 
         var maxHealthUpgradeData = DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10003);
@@ -227,11 +226,12 @@ public class PlayerEnhance
             return;
         }
         GameMgr.Instance.playerMgr.currency.RemoveGold(attackPowerCost);
+
         var attackPowerUpgradeData = DataTableMgr.Get<UpgradeTable>(DataTableIds.upgrade).GetID(10001);
         attackPowerLevel++;
+        var atUpgradeData = DataTableMgr.Get<AtUpgradeTable>(DataTableIds.atUpgrade).GetID(attackPowerLevel);
         attackPowerCost = GameMgr.Instance.CalculateCost(attackPowerUpgradeData.Gold, attackPowerUpgradeData.Gold, attackPowerUpgradeData.GoldincreaseValue, attackPowerUpgradeData.GoldRange, attackPowerLevel);
-        attackPowerValue = GameMgr.Instance.CalculateAttackIncrease((int)attackPowerUpgradeData.Increase, attackPowerUpgradeData.DivValue, attackPowerLevel);
-        attackPowerIncrease = (int)attackPowerUpgradeData.Increase * (((attackPowerLevel + 1) / attackPowerUpgradeData.DivValue) + 1);
+        attackPowerValue = atUpgradeData.damage;
         GameMgr.Instance.playerMgr.playerStat.playerStatUpdate();
         GameMgr.Instance.soundMgr.PlaySFX("UpgradeButton");
         EventMgr.TriggerEvent(QuestType.AttackEnhance);
