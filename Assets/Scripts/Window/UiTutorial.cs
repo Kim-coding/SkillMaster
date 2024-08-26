@@ -40,7 +40,9 @@ public class UiTutorial : MonoBehaviour
         
         if(currentTutorialID == 120274)
         {
-            GameMgr.Instance.playerMgr.playerinventory.CreateItem(220003, 2, ItemType.misc);
+            GameMgr.Instance.playerMgr.playerinventory.CreateItem(220006, 500, ItemType.misc);
+            GameMgr.Instance.uiMgr.uiWindow.equipUpgradePanel.reinforceText.text = $"500개 소모 / 보유 : 500";
+            GameMgr.Instance.uiMgr.uiWindow.equipUpgradePanel.upgradeButton.interactable = true;
         }
 
         if (!tutorialPanel.gameObject.activeSelf)
