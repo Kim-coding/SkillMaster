@@ -64,6 +64,16 @@ public class Enhance : MonoBehaviour
         MaxLvCheck(Level, maxLevel);
     }
 
+    public void TextUpdate(int Level, int maxLevel, string currentPercent, string nextPercent, BigInteger cost)
+    {
+        levelText.text = "Lv." + Level.ToString();
+        maxLevelText.text = "(maxLv." + maxLevel.ToString() + ")";
+        currentPercentText.text = currentPercent;
+        nextPercentText.text = nextPercent;
+        nextCostText.text = cost.ToStringShort();
+        MaxLvCheck(Level, maxLevel);
+    }
+
     public void TextUpdate(int Level, int maxLevel, float currentPercent, float nextPercent, BigInteger cost)
     {
         levelText.text = "Lv." + Level.ToString();

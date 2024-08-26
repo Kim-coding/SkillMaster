@@ -109,6 +109,10 @@ public static class DataTableMgr
         EquipBookTable equipBookTable = new EquipBookTable();
         equipBookTable.Load(DataTableIds.equipBook);
         tables.Add(DataTableIds.equipBook, equipBookTable);
+
+        AtUpgradeTable atUpgradeTable = new AtUpgradeTable();
+        atUpgradeTable.Load(DataTableIds.atUpgrade);
+        tables.Add(DataTableIds.atUpgrade, atUpgradeTable);
     }
 
     private static DataTable CreateDataTable(string id)

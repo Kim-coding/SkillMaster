@@ -70,11 +70,12 @@ public class PlayerStat
 
     public void playerStatUpdate()
     {
-        playerAttackPower = (((new BigInteger(basePlayerAttackPower) + 
-            new BigInteger(GameMgr.Instance.playerMgr.playerEnhance.attackPowerValue)
-            * (1 + GameMgr.Instance.playerMgr.playerinventory.itemAttackPower / 100f)))
-            * GameMgr.Instance.playerMgr.playerInfo.attackPowerSetOption)
-            .ToString();
+        var at = new BigInteger(basePlayerAttackPower);
+        at += new BigInteger(GameMgr.Instance.playerMgr.playerEnhance.attackPowerValue);
+        at *= (1 + GameMgr.Instance.playerMgr.playerinventory.itemAttackPower / 100f);
+        at *= GameMgr.Instance.playerMgr.playerInfo.attackPowerSetOption;
+
+        playerAttackPower = at.ToString();
         
         playerMaxHealth = (((new BigInteger(basePlayerMaxHealth) +
             (new BigInteger(GameMgr.Instance.playerMgr.playerEnhance.maxHealthValue) *
