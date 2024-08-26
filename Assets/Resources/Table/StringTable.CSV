@@ -1,6 +1,4 @@
-﻿스트링 ID,적용 테이블,텍스트 내용
-StringID,ApplyTable,Text
-int,int,String
+﻿StringID,ApplyTable,Text
 120001,1,스테이지 클리어
 120002,1,몬스터 처치
 120003,1,최대 스킬 레벨
