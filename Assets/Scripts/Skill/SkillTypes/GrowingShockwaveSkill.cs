@@ -31,7 +31,7 @@ public class GrowingShockwaveSkill : MonoBehaviour, ISkillComponent, ISkill  //Ã
     {
         this.skillObject = skillObject;
         this.skillEffect = skillEffect;
-        growingSpeed = speed;
+        growingSpeed = 2f;
         Sprite circleSprite = Resources.Load<Sprite>("OuterCircleSprite");
         if (circleSprite != null)
         {
