@@ -10,22 +10,22 @@ public class ScelectAreaLinearAttack : MonoBehaviour, ISkillComponent, ISkill
     public Attack attack;
     public DamageType damageType;
 
-    float duration = 0.9f;
-    float timer = 0f;
-    float angle;
+    private float duration = 0.9f;
+    private float timer = 0f;
+    private float angle;
     private GameObject skillEffectObject;
     private string skillEffect;
-    float atkArangeX;
-    float atkArangeY;
+    private float atkArangeX;
+    private float atkArangeY;
+
+    private GameObject skillEffectPrefab;
     public void Initialize()
     {
         timer = 0f;
-        //skillID = 0;
         skillObject = null;
-        //초기화 시 필요한 나머지 작업
     }
 
-    public void ApplyShape(GameObject skillObject, Vector3 launchPoint, GameObject target, float speed, float range, float width, int skillPropertyID, string skillEffect) //스킬의 형태와 위치를 설정
+    public void ApplyShape(GameObject skillObject, Vector3 launchPoint, GameObject target, float speed, float range, float width, int skillPropertyID, string skillEffect)
     {
         this.skillObject = skillObject;
         this.skillEffect = skillEffect;
@@ -53,7 +53,7 @@ public class ScelectAreaLinearAttack : MonoBehaviour, ISkillComponent, ISkill
         this.attack = attack;
         this.damageType = damageType;
 
-        GameObject skillEffectPrefab = Resources.Load<GameObject>($"SkillEffects/{skillEffect}");
+        skillEffectPrefab = Resources.Load<GameObject>($"SkillEffects/{skillEffect}");
         if (skillEffectPrefab != null)
         {
             skillEffectObject = Instantiate(skillEffectPrefab, skillObject.transform.position, Quaternion.identity);
@@ -89,6 +89,7 @@ public class ScelectAreaLinearAttack : MonoBehaviour, ISkillComponent, ISkill
         if (timer >= duration)
         {
             timer = 0;
+            //Destroy(skillEffectPrefab);
             GameMgr.Instance.playerMgr.characters[0].GetComponent<PlayerSkills>().skillPool.Return(gameObject.GetComponent<BaseSkill>());
         }
     }

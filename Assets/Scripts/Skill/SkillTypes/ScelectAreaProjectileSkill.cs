@@ -26,6 +26,7 @@ public class ScelectAreaProjectileSkill : MonoBehaviour, ISkillComponent, ISkill
     private float stayDuration = 0.2f;
 
     private GameObject skillEffectObject;
+    private GameObject skillEffectPrefab;
     private string skillEffect;
 
     public void Initialize()
@@ -78,7 +79,7 @@ public class ScelectAreaProjectileSkill : MonoBehaviour, ISkillComponent, ISkill
 
         }
 
-        GameObject skillEffectPrefab = Resources.Load<GameObject>($"SkillEffects/{skillEffect}");
+        skillEffectPrefab = Resources.Load<GameObject>($"SkillEffects/{skillEffect}");
         if (skillEffectPrefab != null)
         {
             skillEffectObject = Instantiate(skillEffectPrefab, skillObject.transform.position, Quaternion.identity);

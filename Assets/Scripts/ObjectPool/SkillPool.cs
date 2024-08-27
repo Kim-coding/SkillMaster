@@ -17,6 +17,12 @@ public class SkillPool : ObjectPool<BaseSkill>
 
     protected override void OnReturn(BaseSkill baseSkill)
     {
+        for (int i = baseSkill.transform.childCount - 1; i >= 0; i--)
+        {
+            Transform child = baseSkill.transform.GetChild(i);
+            UnityEngine.Object.Destroy(child.gameObject);
+        }
+
         baseSkill.gameObject.SetActive(false);
         baseSkill.Reset();
     }
