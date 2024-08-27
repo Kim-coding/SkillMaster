@@ -197,6 +197,7 @@ public class DungeonScene : MonoBehaviour
 
         if(isCleared)
         {
+            GameMgr.Instance.soundMgr.PlaySFX("DungeonClear");
             clearText.text = "VICTORY";
             diaNextButton.interactable = true;
             if (clearedStage != 0)
@@ -217,6 +218,7 @@ public class DungeonScene : MonoBehaviour
         }
         else
         {
+            GameMgr.Instance.soundMgr.PlaySFX("DungeonFail");
             clearText.text = "DEFEAT";
             reward = "0";
             diaNextButton.interactable = false;
