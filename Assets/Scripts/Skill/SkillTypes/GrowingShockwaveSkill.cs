@@ -92,7 +92,7 @@ public class GrowingShockwaveSkill : MonoBehaviour, ISkillComponent, ISkill  //Ã
         if(currentRadius > endRadius)
         {
             attackedMonsters.Clear();
-            Destroy(gameObject);
+            GameMgr.Instance.playerMgr.characters[0].GetComponent<PlayerSkills>().skillPool.Return(gameObject.GetComponent<BaseSkill>());
         }
         else
         {

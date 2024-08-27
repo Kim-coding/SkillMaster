@@ -89,7 +89,7 @@ public class ScelectAreaLinearAttack : MonoBehaviour, ISkillComponent, ISkill
         if (timer >= duration)
         {
             timer = 0;
-            Destroy(gameObject);
+            GameMgr.Instance.playerMgr.characters[0].GetComponent<PlayerSkills>().skillPool.Return(gameObject.GetComponent<BaseSkill>());
         }
     }
 }

@@ -145,9 +145,7 @@ public class OrbitingProjectileSkill : MonoBehaviour, ISkillComponent, ISkill
         Destroy(projectile);
         if (projectiles.Count == 0)
         {
-            //Destroy(skillObject);
-            //GameMgr.Instance.playerMgr.characters[0].GetComponent<PlayerSkills>().skillPool();
-            Destroy(gameObject);
+            GameMgr.Instance.playerMgr.characters[0].GetComponent<PlayerSkills>().skillPool.Return(gameObject.GetComponent<BaseSkill>());
             Destroy(skillEffectObject);
         }
     }

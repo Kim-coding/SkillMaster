@@ -12,8 +12,6 @@ GameObject:
   - component: {fileID: 2220612888770625698}
   - component: {fileID: 2167458884425323415}
   - component: {fileID: -1825090964165695470}
-  - component: {fileID: 1292047966330304535}
-  - component: {fileID: -7445402422283076938}
   m_Layer: 0
   m_Name: BaseSkill
   m_TagString: Untagged
@@ -197,35 +195,3 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1292047966330304535
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7542266623136808606}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71aab487376c1d244934ec2a88a22c0e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skillID: OrbitingProjectileSkill
-  skillObject: {fileID: 7542266623136808606}
-  attacker: {fileID: 0}
-  damageType: 1
---- !u!114 &-7445402422283076938
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7542266623136808606}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71aab487376c1d244934ec2a88a22c0e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skillID: OrbitingProjectileSkill
-  skillObject: {fileID: 7542266623136808606}
-  attacker: {fileID: 0}
-  damageType: 1

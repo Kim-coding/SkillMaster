@@ -117,7 +117,7 @@ public class LinearProjectileSkill : MonoBehaviour, ISkillComponent, ISkill //Á÷
         if (timer >= duration)
         {
             timer = 0f;
-            Destroy(gameObject);
+            GameMgr.Instance.playerMgr.characters[0].GetComponent<PlayerSkills>().skillPool.Return(gameObject.GetComponent<BaseSkill>());
         }
     }
 }

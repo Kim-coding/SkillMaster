@@ -87,7 +87,7 @@ public class LinearRangeAttackSkill : MonoBehaviour, ISkillComponent, ISkill
         {
             timer = 0;
             Destroy(skillEffectObject);
-            Destroy(gameObject);
+            GameMgr.Instance.playerMgr.characters[0].GetComponent<PlayerSkills>().skillPool.Return(gameObject.GetComponent<BaseSkill>());
         }
     }
 }

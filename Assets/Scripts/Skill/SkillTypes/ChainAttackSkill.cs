@@ -234,7 +234,7 @@ public class ChainAttackSkill : MonoBehaviour, ISkillComponent, ISkill, ISpecial
             StopCoroutine(chainCoroutine);
         }
 
-        Destroy(gameObject);
+        GameMgr.Instance.playerMgr.characters[0].GetComponent<PlayerSkills>().skillPool.Return(gameObject.GetComponent<BaseSkill>());
     }
 
     private void Update()
@@ -242,7 +242,7 @@ public class ChainAttackSkill : MonoBehaviour, ISkillComponent, ISkill, ISpecial
         timer += Time.deltaTime;
         if( timer > duration )
         {
-            Destroy(gameObject);
+            GameMgr.Instance.playerMgr.characters[0].GetComponent<PlayerSkills>().skillPool.Return(gameObject.GetComponent<BaseSkill>());
         }
     }
 

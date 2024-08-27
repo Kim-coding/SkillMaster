@@ -18,6 +18,6 @@ public class SkillPool : ObjectPool<BaseSkill>
     protected override void OnReturn(BaseSkill baseSkill)
     {
         baseSkill.gameObject.SetActive(false);
-        baseSkill.ResetComponents();
+        baseSkill.Reset();
     }
 }

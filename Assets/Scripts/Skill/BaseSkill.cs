@@ -7,9 +7,17 @@ public class BaseSkill : MonoBehaviour
 {
     public AudioSource audioSource;
 
+    private Vector3 initialPosition;
+    private Quaternion initialRotation;
+    private Vector3 initialScale;
+
     void Awake()
     {
         audioSource = GetComponent<AudioSource>();
+
+        initialPosition = transform.position;
+        initialRotation = transform.rotation;
+        initialScale = transform.localScale;
     }
 
     public void PlaySound()
@@ -20,8 +28,12 @@ public class BaseSkill : MonoBehaviour
         }
     }
 
-    public void ResetComponents()
+    public void Reset()
     {
+        transform.position = initialPosition;
+        transform.rotation = initialRotation;
+        transform.localScale = initialScale;
+
         MonoBehaviour[] components = GetComponents<MonoBehaviour>();
         foreach (var component in components)
         {
@@ -29,6 +41,18 @@ public class BaseSkill : MonoBehaviour
             {
                 Destroy(component);
             }
+        }
+
+        Collider[] colliders = GetComponents<Collider>();
+        foreach (var collider in colliders)
+        {
+            Destroy(collider);
+        }
+
+        Collider2D[] colliders2D = GetComponents<Collider2D>();
+        foreach (var collider2D in colliders2D)
+        {
+            Destroy(collider2D);
         }
     }
 }
