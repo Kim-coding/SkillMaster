@@ -268,6 +268,7 @@ public class DungeonScene : MonoBehaviour
 
     private void NextDiaDungeon()
     {
+        GameMgr.Instance.soundMgr.PlaySFX("Button");
         NormalItem key = null;
         foreach (var item in GameMgr.Instance.playerMgr.playerinventory.playerNormalItemList)
         {
@@ -318,6 +319,7 @@ public class DungeonScene : MonoBehaviour
 
     private void LoadMainScene()
     {
+        GameMgr.Instance.soundMgr.PlaySFX("Button");
         SaveLoadSystem.Save();
         Addressables.LoadSceneAsync("MainScene", LoadSceneMode.Single);
     }
