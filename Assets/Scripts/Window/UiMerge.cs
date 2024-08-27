@@ -15,6 +15,7 @@ public class UiMerge : MonoBehaviour
     public Button sortButton;
     public Button autoMergeButton;
     public Button autoSpawnButton;
+    public Toggle skillUpgradeToggle;
 
     public TextMeshProUGUI autoMergeButtonText;
 
@@ -35,6 +36,7 @@ public class UiMerge : MonoBehaviour
 
         if(GameMgr.Instance.sceneMgr.mainScene != null && GameMgr.Instance.uiMgr.uiGuideQuest.currentQuest.QuestID < 60066)
         {
+            skillUpgradeToggle.interactable = false;
             autoMergeButton.interactable = false;
             autoSpawnButton.interactable = false;
             foreach (var lockimage in autoLockImages)
@@ -50,6 +52,7 @@ public class UiMerge : MonoBehaviour
     {
         if (GameMgr.Instance.uiMgr.uiGuideQuest.currentQuest.QuestID == 60066)
         {
+            skillUpgradeToggle.interactable = false;
             autoMergeButton.interactable = true;
             autoSpawnButton.interactable = true;
             foreach (var lockimage in autoLockImages)
