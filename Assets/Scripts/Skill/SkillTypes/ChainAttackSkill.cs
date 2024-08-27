@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//풀 다시 생각해보기
 public class ChainAttackSkill : MonoBehaviour, ISkillComponent, ISkill, ISpecialEffect
 {
     public string skillID = "ChainAttackSkill";
@@ -234,7 +234,7 @@ public class ChainAttackSkill : MonoBehaviour, ISkillComponent, ISkill, ISpecial
             StopCoroutine(chainCoroutine);
         }
 
-        GameMgr.Instance.playerMgr.characters[0].GetComponent<PlayerSkills>().skillPool.Return(gameObject.GetComponent<BaseSkill>());
+        Destroy(gameObject);
     }
 
     private void Update()
@@ -242,7 +242,7 @@ public class ChainAttackSkill : MonoBehaviour, ISkillComponent, ISkill, ISpecial
         timer += Time.deltaTime;
         if( timer > duration )
         {
-            GameMgr.Instance.playerMgr.characters[0].GetComponent<PlayerSkills>().skillPool.Return(gameObject.GetComponent<BaseSkill>());
+            Destroy(gameObject);
         }
     }
 
