@@ -28,7 +28,8 @@ public class UiInventory : MonoBehaviour
                              return equipTypeComparison;
                          }
                              return x.currentEquip.itemNumber.CompareTo(y.currentEquip.itemNumber);
-        }
+        },
+        (x, y) => x.currentEquip.CP.CompareTo(y.currentEquip.CP),
     };
 
     private readonly System.Func<EquipItemSlot, bool>[] filter =
