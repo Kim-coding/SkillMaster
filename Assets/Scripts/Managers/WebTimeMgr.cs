@@ -41,18 +41,18 @@ public class WebTimeMgr : MonoBehaviour
 
     public void Start()
     {
-        TimeData timeData = LoadTimeData();
-        if (timeData == null)
-        {
-            GameMgr.Instance.playerMgr.playerinventory.CreateItem(220003, 2, ItemType.misc);
-            GameMgr.Instance.playerMgr.playerinventory.CreateItem(220004, 2, ItemType.misc);
-        }
         if (network == null)
         {
             network = GameMgr.Instance.networkConnect;
             if (network.CheckConnectInternet())
             {
                 dataPath = Path.Combine(Application.persistentDataPath, "timeData.json");
+                TimeData timeData = LoadTimeData();
+                if (timeData == null)
+                {
+                    GameMgr.Instance.playerMgr.playerinventory.CreateItem(220003, 2, ItemType.misc);
+                    GameMgr.Instance.playerMgr.playerinventory.CreateItem(220004, 2, ItemType.misc);
+                }
                 StartCoroutine(GetStartTime());
             }
             else
@@ -210,11 +210,6 @@ public class WebTimeMgr : MonoBehaviour
     public void OfflineDuration()
     {
         TimeData timeData = LoadTimeData();
-        if(timeData == null)
-        {
-            GameMgr.Instance.playerMgr.playerinventory.CreateItem(220003, 2, ItemType.misc);
-            GameMgr.Instance.playerMgr.playerinventory.CreateItem(220004, 2, ItemType.misc);
-        }
 
         if (timeData != null && !string.IsNullOrEmpty(timeData.endTime))  // 오프라인 보상
         {
