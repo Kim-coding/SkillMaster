@@ -59,7 +59,6 @@ public class GuideQuest
 
     public void NextQuest()
     {
-        SaveLoadSystem.Save();
         GameMgr.Instance.uiMgr.uiGuideQuest.UiButtonUpdate(false);
         GameMgr.Instance.soundMgr.PlaySFX("QuestClear");
         questID = currentQuest.Next_Quest;
@@ -69,6 +68,7 @@ public class GuideQuest
         RegisterQuestEvents();
         CheckQuestCompletion();
         UiUpdate();
+        SaveLoadSystem.Save();
     }
 
     public void RegisterQuestEvents()
