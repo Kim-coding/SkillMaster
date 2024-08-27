@@ -741,5 +741,7 @@ public class UiInventory : MonoBehaviour
         {
             ChangeEquip(cloak);
         }
+        SortItemSlots();
+        FilteringItemSlots();
     }
 }

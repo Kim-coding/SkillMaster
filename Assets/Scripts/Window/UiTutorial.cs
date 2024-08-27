@@ -294,14 +294,14 @@ public class UiTutorial : MonoBehaviour
 
     private void Update()
     {
-        if (Input.touchCount > 0)
-        {
-            if (isTyping)
-            {
-                typingSequence.Kill();
-                CompleteText();
-            }
-        }
+        //if (Input.touchCount > 0)
+        //{
+        //    if (isTyping)
+        //    {
+        //        typingSequence.Kill();
+        //        CompleteText();
+        //    }
+        //}
     }
 
     private void CompleteText()

@@ -23,7 +23,7 @@ public class UiGuideQuest : MonoBehaviour
             gameObject.SetActive(false);
         }
         var questData = DataTableMgr.Get<QuestTable>(DataTableIds.quest).GetID(currentQuest.QuestID);
-        questName.text = $"Äù½ºÆ®{questData.Level}. {questData.GetStringID}";
+        questName.text = $"{questData.Level}. {questData.GetStringID}";
         questCount.text = $"{currentValue.ToString()} / {currentQuest.Targetvalue.ToString()}";
         rewardImage.sprite = DataTableMgr.Get<StuffTable>(DataTableIds.stuff).GetID(currentQuest.reward).Geticon;
         rewardCount.text = currentQuest.rewardvalue.ToString();
