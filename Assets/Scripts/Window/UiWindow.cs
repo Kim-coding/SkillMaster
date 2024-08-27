@@ -87,11 +87,15 @@ public class UiWindow : MonoBehaviour
     {
         if (GameMgr.Instance.uiMgr.uiGuideQuest.currentQuest.QuestID == 60024)
         {
+            GameMgr.Instance.uiMgr.UnlistedListPanel.SetActive(true);
+            GameMgr.Instance.uiMgr.UnlistedList.text = DataTableMgr.Get<StringTable>(DataTableIds.String).GetID(120556);
             uiPickupLockImage.gameObject.SetActive(false);
             uiPickupLockImage.transform.parent.GetComponent<Button>().interactable = true;
         }
         if (GameMgr.Instance.uiMgr.uiGuideQuest.currentQuest.QuestID == 60050)
         {
+            GameMgr.Instance.uiMgr.UnlistedListPanel.SetActive(true);
+            GameMgr.Instance.uiMgr.UnlistedList.text = DataTableMgr.Get<StringTable>(DataTableIds.String).GetID(120557);
             uiDungeonLockImage.gameObject.SetActive(false);
             uiDungeonLockImage.transform.parent.GetComponent<Button>().interactable = true;
         }

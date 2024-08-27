@@ -47,6 +47,9 @@ public class UIMgr : MonoBehaviour
     public GameObject nameInputPanel;
     public Button nameSubmitButton;
 
+    public GameObject UnlistedListPanel;
+    public TextMeshProUGUI UnlistedList;
+
     public void Init()
     {
         uiInventory.Init();
@@ -233,18 +236,10 @@ public class UIMgr : MonoBehaviour
             timeText.text = "0.0s";
             DungeonTimeSlider.value = 0;
         }
+    }
 
-        if(timer == 0)
-        {
-            //보스전 타임 아웃 : 플레이어 패배 처리
-            if(GameMgr.Instance.sceneMgr.mainScene != null)
-            {
-
-            }
-            else if (GameMgr.Instance.sceneMgr.dungeonScene != null)
-            {
-
-            }
-        }
+    public void CloseUnlistedListPanel()  //패널과 버튼
+    {
+        UnlistedListPanel.SetActive(false);
     }
 }

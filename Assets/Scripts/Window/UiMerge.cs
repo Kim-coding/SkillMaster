@@ -16,7 +16,7 @@ public class UiMerge : MonoBehaviour
     public Button autoMergeButton;
     public Button autoSpawnButton;
     public Toggle skillUpgradeToggle;
-
+    
     public TextMeshProUGUI autoMergeButtonText;
 
     public GameObject merge;
@@ -52,6 +52,8 @@ public class UiMerge : MonoBehaviour
     {
         if (GameMgr.Instance.uiMgr.uiGuideQuest.currentQuest.QuestID == 60066)
         {
+            GameMgr.Instance.uiMgr.UnlistedListPanel.SetActive(true);
+            GameMgr.Instance.uiMgr.UnlistedList.text = DataTableMgr.Get<StringTable>(DataTableIds.String).GetID(120558);
             skillUpgradeToggle.interactable = false;
             autoMergeButton.interactable = true;
             autoSpawnButton.interactable = true;
