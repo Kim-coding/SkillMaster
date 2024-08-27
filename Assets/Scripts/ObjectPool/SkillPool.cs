@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SkillPool : ObjectPool<BaseSkill>
 {
-    public SkillPool(BaseSkill skillPrefab, Transform parentTransform, int initialCapacity = 10, int maxCapacity = 50)
+    public SkillPool(BaseSkill skillPrefab, Transform parentTransform, int initialCapacity = 20, int maxCapacity = 50)
         : base(skillPrefab, parentTransform, initialCapacity, maxCapacity) 
     { 
 
