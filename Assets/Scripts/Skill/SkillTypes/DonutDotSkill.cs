@@ -118,7 +118,7 @@ public class DonutDotSkill : MonoBehaviour, ISkillComponent, ISkill
                 StopCoroutine(dotDamageCoroutine);
                 dotDamageCoroutine = null;
             }
-            GameMgr.Instance.playerMgr.characters[0].GetComponent<PlayerSkills>().skillPool.Return(gameObject.GetComponent<BaseSkill>());
+            Destroy(gameObject);
         }
         else
         {

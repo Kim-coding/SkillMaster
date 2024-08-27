@@ -129,7 +129,7 @@ public class AreaDotSkill : MonoBehaviour, ISkillComponent, ISkill //원형 범위 �
                 StopCoroutine(dotDamageCoroutine);
                 dotDamageCoroutine = null;
             }
-            GameMgr.Instance.playerMgr.characters[0].GetComponent<PlayerSkills>().skillPool.Return(gameObject.GetComponent<BaseSkill>());
+            Destroy(gameObject);
         }
     }
 

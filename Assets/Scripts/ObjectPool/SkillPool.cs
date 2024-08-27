@@ -17,10 +17,16 @@ public class SkillPool : ObjectPool<BaseSkill>
 
     protected override void OnReturn(BaseSkill baseSkill)
     {
+        List<GameObject> list = new List<GameObject>();
         for (int i = baseSkill.transform.childCount - 1; i >= 0; i--)
         {
             Transform child = baseSkill.transform.GetChild(i);
-            UnityEngine.Object.Destroy(child.gameObject);
+            list.Add(child.gameObject);
+        }
+
+        foreach(var child in list)
+        {
+            GameObject.Destroy(child);
         }
 
         baseSkill.gameObject.SetActive(false);

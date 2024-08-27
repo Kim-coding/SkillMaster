@@ -401,8 +401,12 @@ public struct BigInteger
     }
     public void Multiple(float f)
     {
+        if(numberList == null)
+        {
+            return;
+        }
         int lastIndex = numberList.Count - 1;
-
+        
         var newFirstFloat = numberList[lastIndex] * f;
 
         if (f >= 1)

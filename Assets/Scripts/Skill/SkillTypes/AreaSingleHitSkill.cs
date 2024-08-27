@@ -74,7 +74,7 @@ public class AreaSingleHitSkill : MonoBehaviour, ISkillComponent, ISkill
         if (timer >= duration)
         {
             timer = 0;
-            GameMgr.Instance.playerMgr.characters[0].GetComponent<PlayerSkills>().skillPool.Return(gameObject.GetComponent<BaseSkill>());
+            Destroy(gameObject);
         }
     }
 }

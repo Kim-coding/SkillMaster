@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerSkills : MonoBehaviour
@@ -23,7 +24,7 @@ public class PlayerSkills : MonoBehaviour
 
     private void Start()
     {
-        skillPool = new SkillPool(baseSkill, skillParent);
+        //skillPool = new SkillPool(baseSkill, skillParent);
     }
 
     public void UseSkill(int skillType, GameObject launchPoint, GameObject target, float speed, float range, float width, string skillDamage, int skillPropertyID, string skillEffect)
@@ -35,62 +36,67 @@ public class PlayerSkills : MonoBehaviour
 
     public GameObject CreateSkill(int type, GameObject launchPoint, GameObject target, float speed, float range, float width, Attack attack, int skillPropertyID, string skillEffect)
     {
-        BaseSkill skillObject = skillPool.Get();
+        BaseSkill skillObject = Instantiate(baseSkill);
         Renderer renderer = skillObject.gameObject.GetComponent<Renderer>();
         if (renderer != null)
         {
             renderer.enabled = false;
         }
 
-        ISkillComponent skillComponent = null;
+        ISkillComponent skillComponent = skillObject.GetComponent<ISkillComponent>();
+
+        if(skillComponent != null)
+        {
+            return skillObject.gameObject;
+        }
         switch (type)
         {
             case 1:
-                skillComponent = skillObject.gameObject.AddComponent<LinearRangeAttackSkill>();
+                skillComponent = skillObject.gameObject.GetOrAddComponent<LinearRangeAttackSkill>();
                 skillShapeType = SkillShapeType.Linear;
                 damageType = DamageType.OneShot;
                 break;
             case 2:
-                skillComponent = skillObject.gameObject.AddComponent<LinearProjectileSkill>();
+                skillComponent = skillObject.gameObject.GetOrAddComponent<LinearProjectileSkill>();
                 skillShapeType = SkillShapeType.Linear;
                 damageType = DamageType.Penetrate;
                 break;
             case 3:
-                skillComponent = skillObject.gameObject.AddComponent<AreaDotSkill>();
+                skillComponent = skillObject.gameObject.GetOrAddComponent<AreaDotSkill>();
                 skillShapeType = SkillShapeType.Circular;
                 damageType = DamageType.Dot;
                 break;
             case 4:
-                skillComponent = skillObject.gameObject.AddComponent<AreaSingleHitSkill>();
+                skillComponent = skillObject.gameObject.GetOrAddComponent<AreaSingleHitSkill>();
                 skillShapeType = SkillShapeType.Circular;
                 damageType = DamageType.OneShot;
                 break;
             case 5:
-                skillComponent = skillObject.gameObject.AddComponent<ScelectAreaLinearAttack>();
+                skillComponent = skillObject.gameObject.GetOrAddComponent<ScelectAreaLinearAttack>();
                 skillShapeType = SkillShapeType.Linear;
                 damageType = DamageType.OneShot;
                 break;
             case 6:
-                skillComponent = skillObject.gameObject.AddComponent<ScelectAreaProjectileSkill>();
+                skillComponent = skillObject.gameObject.GetOrAddComponent<ScelectAreaProjectileSkill>();
                 skillShapeType = SkillShapeType.Circular;
                 damageType = DamageType.OneShot;
                 break;
             case 7:
-                skillComponent = skillObject.gameObject.AddComponent<OrbitingProjectileSkill>();
+                skillComponent = skillObject.gameObject.GetOrAddComponent<OrbitingProjectileSkill>();
                 skillShapeType = SkillShapeType.Circular;
                 damageType = DamageType.Penetrate;
                 break;
             case 8:
-                skillComponent = skillObject.gameObject.AddComponent<ChainAttackSkill>();
+                skillComponent = skillObject.gameObject.GetOrAddComponent<ChainAttackSkill>();
                 skillShapeType = SkillShapeType.Linear;
                 break;
             case 9:
-                skillComponent = skillObject.gameObject.AddComponent<DonutDotSkill>();
+                skillComponent = skillObject.gameObject.GetOrAddComponent<DonutDotSkill>();
                 skillShapeType = SkillShapeType.Circular;
                 damageType = DamageType.Dot;
                 break;
             case 10:
-                skillComponent = skillObject.gameObject.AddComponent<GrowingShockwaveSkill>();
+                skillComponent = skillObject.gameObject.GetOrAddComponent<GrowingShockwaveSkill>();
                 skillShapeType = SkillShapeType.Circular;
                 damageType = DamageType.OneShot;
                 break;
@@ -118,5 +124,10 @@ public class PlayerSkills : MonoBehaviour
         castingList = GameMgr.Instance.playerMgr.skillBallControllers
             .OrderByDescending(skill => skill.tier)
             .ToList();
+    }
+
+    private void ResetSkill(BaseSkill skillObject)
+    {
+        skillObject.gameObject.GetComponent<BaseSkill>().Reset();
     }
 }

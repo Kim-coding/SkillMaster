@@ -123,12 +123,12 @@ public class ScelectAreaProjectileSkill : MonoBehaviour, ISkillComponent, ISkill
                     }
                     else
                     {
-                        GameMgr.Instance.playerMgr.characters[0].GetComponent<PlayerSkills>().skillPool.Return(gameObject.GetComponent<BaseSkill>());
+                        Destroy(gameObject);
                     }
                 }
                 else
                 {
-                    GameMgr.Instance.playerMgr.characters[0].GetComponent<PlayerSkills>().skillPool.Return(gameObject.GetComponent<BaseSkill>());
+                    Destroy(gameObject);
                 }
             }
         }
@@ -183,6 +183,6 @@ public class ScelectAreaProjectileSkill : MonoBehaviour, ISkillComponent, ISkill
                 }
             }
         }
-        GameMgr.Instance.playerMgr.characters[0].GetComponent<PlayerSkills>().skillPool.Return(gameObject.GetComponent<BaseSkill>());
+        Destroy(gameObject);
     }
 }
