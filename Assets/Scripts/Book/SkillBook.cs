@@ -94,5 +94,7 @@ public class SkillBook : MonoBehaviour
         saveData.state = ClearState.RewardAcquired;
         AcquiredCheck();
         //GameMgr.Instance.playerMgr.playerInfo.skillBookDatas[saveData.skillID].state = saveData.state;
+
+        GameMgr.Instance.uiMgr.uiBook.OnRewardCollected();
     }
 }

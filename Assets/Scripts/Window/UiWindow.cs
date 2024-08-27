@@ -47,6 +47,10 @@ public class UiWindow : MonoBehaviour
     public PickUpItemsPanel pickUpResultPanel;
     public SkillBookPanel skillBookPanel;
     public EquipBookPanel equipBookPanel;
+    private bool hasShownPickupMessage = false;
+    private bool hasShownDungeonMessage = false;
+
+    private UIMgr uIMgr;
     private void Awake()
     {
         windows = new Dictionary<Windows, GameObject>()
@@ -68,14 +72,17 @@ public class UiWindow : MonoBehaviour
         buttonPosition = toggleWindowButton.GetComponent<RectTransform>().anchoredPosition;
 
         toggleWindowButton.onClick.AddListener(OnWindowButtonClick);
-        if(GameMgr.Instance.sceneMgr.mainScene != null)
+
+        uIMgr = GameMgr.Instance.uiMgr;
+
+        if (GameMgr.Instance.sceneMgr.mainScene != null)
         {
-            if (GameMgr.Instance.uiMgr.uiGuideQuest.currentQuest.QuestID < 60023)
+            if (uIMgr.uiGuideQuest.currentQuest.QuestID < 60023)
             {
                 uiPickupLockImage.gameObject.SetActive(true);
                 uiPickupLockImage.transform.parent.GetComponent<Button>().interactable = false;
             }
-            if (GameMgr.Instance.uiMgr.uiGuideQuest.currentQuest.QuestID < 60050)
+            if (uIMgr.uiGuideQuest.currentQuest.QuestID < 60050)
             {
                 uiDungeonLockImage.gameObject.SetActive(true);
                 uiDungeonLockImage.transform.parent.GetComponent<Button>().interactable = false;
@@ -87,15 +94,24 @@ public class UiWindow : MonoBehaviour
     {
         if (GameMgr.Instance.uiMgr.uiGuideQuest.currentQuest.QuestID == 60024)
         {
-            GameMgr.Instance.uiMgr.UnlistedListPanel.SetActive(true);
-            GameMgr.Instance.uiMgr.UnlistedList.text = DataTableMgr.Get<StringTable>(DataTableIds.String).GetID(120556);
+            if(!hasShownPickupMessage)
+            {
+                GameMgr.Instance.uiMgr.UnlistedListPanel.SetActive(true);
+                GameMgr.Instance.uiMgr.UnlistedList.text = DataTableMgr.Get<StringTable>(DataTableIds.String).GetID(120556);
+                hasShownPickupMessage = true;
+            }
+            
             uiPickupLockImage.gameObject.SetActive(false);
             uiPickupLockImage.transform.parent.GetComponent<Button>().interactable = true;
         }
         if (GameMgr.Instance.uiMgr.uiGuideQuest.currentQuest.QuestID == 60050)
         {
-            GameMgr.Instance.uiMgr.UnlistedListPanel.SetActive(true);
-            GameMgr.Instance.uiMgr.UnlistedList.text = DataTableMgr.Get<StringTable>(DataTableIds.String).GetID(120557);
+            if (!hasShownDungeonMessage)
+            {
+                GameMgr.Instance.uiMgr.UnlistedListPanel.SetActive(true);
+                GameMgr.Instance.uiMgr.UnlistedList.text = DataTableMgr.Get<StringTable>(DataTableIds.String).GetID(120557);
+                hasShownDungeonMessage = true;
+            }
             uiDungeonLockImage.gameObject.SetActive(false);
             uiDungeonLockImage.transform.parent.GetComponent<Button>().interactable = true;
         }
@@ -203,16 +219,16 @@ public class UiWindow : MonoBehaviour
             currentOpenWindow = window;
             isAnimating = false;
         });
-        if (GameMgr.Instance.uiMgr.uiGuideQuest.currentQuest.QuestID == 60024 && window == Windows.PickUp)
+        if (uIMgr.uiGuideQuest.currentQuest.QuestID == 60024 && window == Windows.PickUp)
         {
             SaveLoadSystem.Save();
             GameMgr.Instance.sceneMgr.tutorial.OnTutorial();
         }
-        if (GameMgr.Instance.uiMgr.uiGuideQuest.currentQuest.QuestID == 60051 && window == Windows.Dungeon && !GameMgr.Instance.uiMgr.uiTutorial.isDungeonOpen)
+        if (uIMgr.uiGuideQuest.currentQuest.QuestID == 60051 && window == Windows.Dungeon && !uIMgr.uiTutorial.isDungeonOpen)
         {
             SaveLoadSystem.Save();
             GameMgr.Instance.sceneMgr.tutorial.OnTutorial();
-            GameMgr.Instance.uiMgr.uiTutorial.isDungeonOpen = true;
+            uIMgr.uiTutorial.isDungeonOpen = true;
         }
     }
 

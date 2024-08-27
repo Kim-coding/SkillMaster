@@ -19,8 +19,16 @@ public class DamageDisplay : MonoBehaviour
         var defenceValue = 1 / (1 + characterHealth.Defence * 0.005f);
         attack.Damage *= defenceValue;
         string text = attack.Damage.ToStringShort();
-        Color color = attack.Critical ? Color.yellow : Color.white;
-        float fontSize = 5f;
+        Color color = Color.red;
+        if (gameObject.tag == "Player")
+        {
+            color = Color.red;
+        }
+        else
+        {
+            color = attack.Critical ? Color.yellow : Color.white;
+        }
+        float fontSize = 20f;
 
         if (attack.Critical)
         {

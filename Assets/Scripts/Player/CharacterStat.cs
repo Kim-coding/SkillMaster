@@ -56,7 +56,7 @@ public class CharacterStat : Status, IDamageable
 
             string text = recoveryValue.ToStringShort();
             Color color = Color.green;
-            float fontSize = 10f;
+            float fontSize = 18f;
 
             GameMgr.Instance.sceneMgr.damageTextMgr.ShowDamageText(displayPos, text, color, fontSize);
 

@@ -30,6 +30,10 @@ public class UIBook : MonoBehaviour
 
     public Dictionary<int, EquipBookSet> setDic = new Dictionary<int, EquipBookSet>();
 
+    public Image rewardAvailable;
+    public Image skillRewardAvailable;
+    public Image equipRewardAvailable;
+
     private void Awake()
     {
         foreach (Toggle toggle in partSelectToggles)
@@ -66,6 +70,8 @@ public class UIBook : MonoBehaviour
         }
 
         GameMgr.Instance.playerMgr.playerInfo.SetOptionUpdate();
+
+        UpdateRewardAvailability();
     }
 
     private void UpdateToggleColors()
@@ -136,5 +142,48 @@ public class UIBook : MonoBehaviour
         UpdateToggleColors();
         skillBook.gameObject.SetActive(bookToggles[0].isOn);
         equipBook.gameObject.SetActive(bookToggles[1].isOn);
+    }
+
+    public void OnRewardCollected()
+    {
+        UpdateRewardAvailability();
+    }
+
+    private void UpdateRewardAvailability()
+    {
+        skillRewardAvailable.gameObject.SetActive(IsSkillRewardAvailable());
+        equipRewardAvailable.gameObject.SetActive(IsEquipRewardAvailable());
+        if(skillRewardAvailable.gameObject.activeSelf || equipRewardAvailable.gameObject.activeSelf)
+        {
+            rewardAvailable.gameObject.SetActive(true);
+        }
+        else
+        {
+            rewardAvailable.gameObject.SetActive(false);
+        }
+    }
+
+    private bool IsSkillRewardAvailable()
+    {
+        foreach (var skillBook in skillBookDic.Values)
+        {
+            if (skillBook.saveData.state == ClearState.Acquired)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private bool IsEquipRewardAvailable()
+    {
+        foreach (var equipBookSet in setDic.Values)
+        {
+            if (equipBookSet.setClear && !equipBookSet.getReward)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }

@@ -152,7 +152,7 @@ public class LeapAttackSkill : MonoBehaviour, ISkillComponent, ISkill
     private void Stop()
     {
         StartCoroutine(Leap());
-        GameMgr.Instance.playerMgr.characters[0].GetComponent<PlayerSkills>().skillPool.Return(gameObject.GetComponent<BaseSkill>());
+        Destroy(gameObject);
     }
 
     //void Update()

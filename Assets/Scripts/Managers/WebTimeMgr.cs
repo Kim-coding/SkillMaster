@@ -134,6 +134,11 @@ public class WebTimeMgr : MonoBehaviour
 
     public IEnumerator GetExitTime()  // 종료 시간 비동기적으로 가져오기
     {
+        if (GameMgr.Instance.uiMgr.uiTutorial != null && GameMgr.Instance.uiMgr.uiTutorial.gameObject.activeSelf)
+        {
+            Exit();
+        }
+
         UnityWebRequest request = UnityWebRequest.Get(SeoulTimeApiUrl);
         yield return request.SendWebRequest();
 

@@ -26,6 +26,9 @@ public class GameMgr : MonoBehaviour
     private float saveTimer;
     private float saveWebTimer;
 
+    private float bgmValue;
+    private float sfxValue;
+
     private void Awake()
     {
         if (Instance == null)
@@ -59,7 +62,7 @@ public class GameMgr : MonoBehaviour
         }
 
         saveWebTimer += Time.deltaTime;
-        if ( saveTimer > 300f)
+        if (saveWebTimer > 300f)
         {
             saveWebTimer = 0;
             webTimeMgr.SaveTime();
@@ -230,22 +233,29 @@ public class GameMgr : MonoBehaviour
 
     public void EnterPowerSavingMode()
     {
+        bgmValue = soundMgr.bgmSlider.value;
+        sfxValue = soundMgr.sfxSlider.value;
+
         savingPowerPanel.gameObject.SetActive(true);
         savingPowerPanel.GetComponent<CanvasGroup>().DOFade(1f, 0.5f)
-    .OnComplete(() =>
-    {
-        mainCam.enabled = false;  // 메인 카메라 비활성화 (렌더링 중지)
-    });
+        .OnComplete(() =>
+        {
+            soundMgr.bgmSlider.value = 0f;
+            soundMgr.sfxSlider.value = 0f;
+            mainCam.enabled = false;  // 메인 카메라 비활성화 (렌더링 중지)
+        });
     }
 
     public void ExitPowerSavingMode()
     {
         mainCam.enabled = true;  // 메인 카메라 활성화 (렌더링 재개)
         savingPowerPanel.GetComponent<CanvasGroup>().DOFade(0f, 0.5f)
-.OnComplete(() =>
-{
-    savingPowerPanel.gameObject.SetActive(false);
+        .OnComplete(() =>
+        {
+            soundMgr.bgmSlider.value = bgmValue;
+            soundMgr.sfxSlider.value = sfxValue;
+            savingPowerPanel.gameObject.SetActive(false);
 
-});
+        });
     }
 }

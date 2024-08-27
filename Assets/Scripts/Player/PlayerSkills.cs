@@ -14,17 +14,10 @@ public class PlayerSkills : MonoBehaviour
     private DamageType damageType;
     private SkillShapeType skillShapeType;
 
-    public SkillPool skillPool;
-
     private void Awake()
     {
         fireMagic = new FireMagic();
         playerAI = GetComponent<PlayerAI>();
-    }
-
-    private void Start()
-    {
-        //skillPool = new SkillPool(baseSkill, skillParent);
     }
 
     public void UseSkill(int skillType, GameObject launchPoint, GameObject target, float speed, float range, float width, string skillDamage, int skillPropertyID, string skillEffect)

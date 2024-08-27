@@ -89,7 +89,6 @@ public class ScelectAreaLinearAttack : MonoBehaviour, ISkillComponent, ISkill
         if (timer >= duration)
         {
             timer = 0;
-            Destroy(skillEffectPrefab);
             Destroy(gameObject);
         }
     }

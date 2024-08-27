@@ -99,5 +99,7 @@ public class EquipBookElement : MonoBehaviour
         GameMgr.Instance.playerMgr.currency.AddDia(new BigInteger(rewardValue));
         saveData.state = ClearState.RewardAcquired;
         AcquiredCheck();
+
+        GameMgr.Instance.uiMgr.uiBook.OnRewardCollected();
     }
 }
