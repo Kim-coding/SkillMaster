@@ -56,6 +56,15 @@ public class UIDungeon : MonoBehaviour
             diaClearButton.interactable = true;
         }
 
+        if(playerInfo.goldDungeonLv == 1)
+        {
+            goldClearButton.interactable = false;
+        }
+        else
+        {
+            goldClearButton.interactable = true;
+        }
+
         foreach (var item in GameMgr.Instance.playerMgr.playerinventory.playerNormalItemList)
         {
             if (item.itemNumber == 220003)
