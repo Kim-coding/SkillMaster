@@ -78,7 +78,7 @@ public class BattleState : IState
 
     public void OnAttackAnimationComplete()
     {
-        player.OnAttack(player.playerSkills.skills[0]);
+        player.OnAttack(player.playerSkills.baseSkill.gameObject);
         //player.playerAI.castingList.RemoveAt(0); // 첫 번째 스킬만 애니메이션에 맞춰 시전하기 위함
     }
 }

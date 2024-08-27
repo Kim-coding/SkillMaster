@@ -5,12 +5,15 @@ using UnityEngine;
 
 public class PlayerSkills : MonoBehaviour
 {
-    public List<GameObject> skills;  // 프리팹 (이펙트)
+    public BaseSkill baseSkill;
+    public Transform skillParent;
     public List<SkillBallController> castingList;
     public FireMagic fireMagic;
     private PlayerAI playerAI;
+    private DamageType damageType;
+    private SkillShapeType skillShapeType;
 
-    private GameObject skill;
+    public SkillPool skillPool;
 
     private void Awake()
     {
@@ -18,18 +21,22 @@ public class PlayerSkills : MonoBehaviour
         playerAI = GetComponent<PlayerAI>();
     }
 
-    public void UseSkill(GameObject skill, int skillType, GameObject launchPoint, GameObject target, float speed, float range, float width, string skillDamage, int skillPropertyID, string skillEffect)
+    private void Start()
     {
-        this.skill = skill;
-        fireMagic.SetDamage(skillDamage);
-        var attack = fireMagic.CreateAttack(playerAI.characterStat);
-        CreateSkill(skill, skillType, launchPoint, target, speed, range, width, attack, skillPropertyID, skillEffect);
+        skillPool = new SkillPool(baseSkill, skillParent);
     }
 
-    public GameObject CreateSkill(GameObject skillPrefab, int type, GameObject launchPoint, GameObject target, float speed, float range, float width, Attack attack, int skillPropertyID, string skillEffect)
+    public void UseSkill(int skillType, GameObject launchPoint, GameObject target, float speed, float range, float width, string skillDamage, int skillPropertyID, string skillEffect)
     {
-        GameObject skillObject = Instantiate(skillPrefab);
-        Renderer renderer = skillObject.GetComponent<Renderer>();
+        fireMagic.SetDamage(skillDamage);
+        var attack = fireMagic.CreateAttack(playerAI.characterStat);
+        CreateSkill(skillType, launchPoint, target, speed, range, width, attack, skillPropertyID, skillEffect);
+    }
+
+    public GameObject CreateSkill(int type, GameObject launchPoint, GameObject target, float speed, float range, float width, Attack attack, int skillPropertyID, string skillEffect)
+    {
+        BaseSkill skillObject = skillPool.Get();
+        Renderer renderer = skillObject.gameObject.GetComponent<Renderer>();
         if (renderer != null)
         {
             renderer.enabled = false;
@@ -39,52 +46,72 @@ public class PlayerSkills : MonoBehaviour
         switch (type)
         {
             case 1:
-                skillComponent = skillObject.AddComponent<LinearRangeAttackSkill>();
+                skillComponent = skillObject.gameObject.AddComponent<LinearRangeAttackSkill>();
+                skillShapeType = SkillShapeType.Linear;
+                damageType = DamageType.OneShot;
                 break;
             case 2:
-                skillComponent = skillObject.AddComponent<LinearProjectileSkill>();
+                skillComponent = skillObject.gameObject.AddComponent<LinearProjectileSkill>();
+                skillShapeType = SkillShapeType.Linear;
+                damageType = DamageType.Penetrate;
                 break;
             case 3:
-                skillComponent = skillObject.AddComponent<AreaDotSkill>();
+                skillComponent = skillObject.gameObject.AddComponent<AreaDotSkill>();
+                skillShapeType = SkillShapeType.Circular;
+                damageType = DamageType.Dot;
                 break;
             case 4:
-                skillComponent = skillObject.AddComponent<AreaSingleHitSkill>();
+                skillComponent = skillObject.gameObject.AddComponent<AreaSingleHitSkill>();
+                skillShapeType = SkillShapeType.Circular;
+                damageType = DamageType.OneShot;
                 break;
             case 5:
-                skillComponent = skillObject.AddComponent<ScelectAreaLinearAttack>();
+                skillComponent = skillObject.gameObject.AddComponent<ScelectAreaLinearAttack>();
+                skillShapeType = SkillShapeType.Linear;
+                damageType = DamageType.OneShot;
                 break;
             case 6:
-                skillComponent = skillObject.AddComponent<ScelectAreaProjectileSkill>();
+                skillComponent = skillObject.gameObject.AddComponent<ScelectAreaProjectileSkill>();
+                skillShapeType = SkillShapeType.Circular;
+                damageType = DamageType.OneShot;
                 break;
             case 7:
-                skillComponent = skillObject.AddComponent<OrbitingProjectileSkill>();
+                skillComponent = skillObject.gameObject.AddComponent<OrbitingProjectileSkill>();
+                skillShapeType = SkillShapeType.Circular;
+                damageType = DamageType.Penetrate;
                 break;
             case 8:
-                skillComponent = skillObject.AddComponent<ChainAttackSkill>();
+                skillComponent = skillObject.gameObject.AddComponent<ChainAttackSkill>();
+                skillShapeType = SkillShapeType.Linear;
                 break;
             case 9:
-                skillComponent = skillObject.AddComponent<DonutDotSkill>();
+                skillComponent = skillObject.gameObject.AddComponent<DonutDotSkill>();
+                skillShapeType = SkillShapeType.Circular;
+                damageType = DamageType.Dot;
                 break;
             case 10:
-                skillComponent = skillObject.AddComponent<GrowingShockwaveSkill>();
+                skillComponent = skillObject.gameObject.AddComponent<GrowingShockwaveSkill>();
+                skillShapeType = SkillShapeType.Circular;
+                damageType = DamageType.OneShot;
                 break;
-            case 11:
-                skillComponent = skillObject.AddComponent<LeapAttackSkill>();
-                break;
+            //case 11:
+            //    skillComponent = skillObject.AddComponent<LeapAttackSkill>();
+            //    skillShapeType = SkillShapeType.Circular;
+            //    break;
                 // 기타 스킬 타입 생성
         }
         if (skillComponent != null)
         {
-            InitializeSkill(skillComponent, skillObject, launchPoint, target, speed, range, width, attack, skillPropertyID, skillEffect);
+            InitializeSkill(skillComponent, skillObject.gameObject, launchPoint, target, speed, range, width, attack, skillPropertyID, skillEffect);
         }
 
-        return skillObject;
+        return skillObject.gameObject;
     }
 
     private void InitializeSkill(ISkillComponent skillComponent, GameObject skillObject, GameObject launchPoint, GameObject target, float speed, float range, float width, Attack attack, int skillPropertyID, string skillEffect)
     {
         skillComponent.ApplyShape(skillObject, launchPoint.transform.position, target, speed, range, width, skillPropertyID, skillEffect);
-        skillComponent.ApplyDamageType(launchPoint, attack, DamageType.OneShot, SkillShapeType.Linear);
+        skillComponent.ApplyDamageType(launchPoint, attack, damageType, skillShapeType);
     }
     public void SetList()
     {

@@ -89,6 +89,11 @@ public class UiTutorial : MonoBehaviour
             TextAnimation(bottomText, fullText);
         }
 
+        if(currentTutorialID >= 120228 && currentTutorialID <= 120230)
+        {
+            tutorialPanel.GetComponent<Image>().color = new Vector4(0,0,0,0);
+        }
+
         if (targetUI[currentTutorialIndex] != null)
         {
             currentTargetUI = targetUI[currentTutorialIndex];
@@ -256,6 +261,11 @@ public class UiTutorial : MonoBehaviour
         if(currentTutorialID == 120230 && Time.timeScale != 0f)
         {
             return;
+        }
+
+        if (currentTutorialID == 120230)
+        {
+            tutorialPanel.GetComponent<Image>().color = new Vector4(0, 0, 0, 203f/255f);
         }
 
         currentTutorialIndex++;

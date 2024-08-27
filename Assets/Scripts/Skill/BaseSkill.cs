@@ -1,38 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
-public abstract class BaseSkill : MonoBehaviour, ISkill
+public class BaseSkill : MonoBehaviour
 {
-    public GameObject skillObject;
-    public GameObject attacker;
-    public Attack attack;
-    public DamageType damageType;
+    public AudioSource audioSource;
 
-    protected float timer = 0f;
-    protected float duration = 1.5f;
-
-    public abstract void Initialize();
-
-    public virtual void ApplyShape(GameObject skillObject, Vector3 launchPoint, GameObject target, float range, float width)
+    void Awake()
     {
-        this.skillObject = skillObject;
-        this.skillObject.transform.position = launchPoint;
+        audioSource = GetComponent<AudioSource>();
     }
 
-    public virtual void ApplyDamageType(GameObject attacker, Attack attack, DamageType damageType, SkillShapeType shapeType)
+    public void PlaySound()
     {
-        this.attacker = attacker;
-        this.attack = attack;
-        this.damageType = damageType;
-    }
-
-    protected virtual void Update()
-    {
-        timer += Time.deltaTime;
-        if (timer > duration)
+        if (audioSource != null && audioSource.clip != null)
         {
-            Destroy(skillObject);
+            audioSource.Play();
+        }
+    }
+
+    public void ResetComponents()
+    {
+        MonoBehaviour[] components = GetComponents<MonoBehaviour>();
+        foreach (var component in components)
+        {
+            if(component is ISkillComponent)
+            {
+                Destroy(component);
+            }
         }
     }
 }

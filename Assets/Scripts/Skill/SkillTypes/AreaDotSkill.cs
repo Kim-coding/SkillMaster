@@ -15,7 +15,7 @@ public class AreaDotSkill : MonoBehaviour, ISkillComponent, ISkill //¿øÇü ¹üÀ§ µ
 
     private GameObject skillEffectObject;
     private string skillEffect;
-
+    private DotDamage dotDamage;
     float duration = 1.0f;
     float timer = 0f;
 
@@ -53,7 +53,17 @@ public class AreaDotSkill : MonoBehaviour, ISkillComponent, ISkill //¿øÇü ¹üÀ§ µ
     {
         this.attacker = attacker;
         this.attack = attack;
-        this.damageType = damageType;
+        if(damageType == DamageType.Dot)
+        {
+            if (gameObject.GetComponent<DotDamage>() == null)
+            {
+                dotDamage = gameObject.AddComponent<DotDamage>();
+            }
+            else
+            {
+                dotDamage = gameObject.GetComponent<DotDamage>();
+            }
+        }
 
         GameObject skillEffectPrefab = Resources.Load<GameObject>($"SkillEffects/{skillEffect}");
         if (skillEffectPrefab != null)
@@ -72,24 +82,12 @@ public class AreaDotSkill : MonoBehaviour, ISkillComponent, ISkill //¿øÇü ¹üÀ§ µ
             UpdateMonsterList();
             foreach (var monster in monsters)
             {
-                if (monster != null)
+                if (monster != null && dotDamage != null)
                 {
-                    if (gameObject.GetComponent<DotDamage>() == null)
-                    {
-                        var dotDamage = gameObject.AddComponent<DotDamage>();
-                        dotDamage.attacker = attacker;
-                        dotDamage.attack = attack;
-                        dotDamage.SetMonsters(monsters);
-                        dotDamageCoroutine = StartCoroutine(dotDamage.Apply(monster));
-                    }
-                    else
-                    {
-                        var dotDamage = gameObject.GetComponent<DotDamage>();
-                        dotDamage.attacker = attacker;
-                        dotDamage.attack = attack;
-                        dotDamage.SetMonsters(monsters);
-                        dotDamageCoroutine = StartCoroutine(dotDamage.Apply(monster));
-                    }
+                    dotDamage.attacker = attacker;
+                    dotDamage.attack = attack;
+                    dotDamage.SetMonsters(monsters);
+                    dotDamageCoroutine = StartCoroutine(dotDamage.Apply(monster));
                 }
             }
 
