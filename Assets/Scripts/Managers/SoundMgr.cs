@@ -69,7 +69,8 @@ public class SoundMgr : MonoBehaviour
             {
                 var sfxSource = sfxPool.Get();
                 sfxSource.volume = sfxVolume;
-                sfxSource.PlayOneShot(clip);
+                sfxSource.clip = clip;
+                sfxSource.Play();
                 sfxPool.Return(sfxSource);
                 break;
             }
