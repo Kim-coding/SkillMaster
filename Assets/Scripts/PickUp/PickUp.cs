@@ -269,6 +269,7 @@ public class PickUp : MonoBehaviour
         GameMgr.Instance.uiMgr.uiInventory.SortItemSlots();
         GameMgr.Instance.uiMgr.uiInventory.FilteringItemSlots();
 
+        GameMgr.Instance.uiMgr.uiBook.OnRewardCollected();
         SaveLoadSystem.Save();
     }
 

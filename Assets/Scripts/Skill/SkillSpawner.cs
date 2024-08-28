@@ -221,6 +221,7 @@ public class SkillSpawner : MonoBehaviour
             EventMgr.TriggerEvent(QuestType.MergeSkillCount);
         }
         playerMgr.playerInfo.MaxSkillLevelUpdate(t);
+        GameMgr.Instance.uiMgr.uiBook.OnRewardCollected();
     }
 
     private Vector3 RandomVector()
