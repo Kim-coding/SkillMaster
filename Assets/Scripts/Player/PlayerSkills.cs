@@ -14,15 +14,16 @@ public class PlayerSkills : MonoBehaviour
     private DamageType damageType;
     private SkillShapeType skillShapeType;
     private int skillLv;
-
+    private bool soundOn;
     private void Awake()
     {
         fireMagic = new FireMagic();
         playerAI = GetComponent<PlayerAI>();
     }
 
-    public void UseSkill(int skillType, GameObject launchPoint, GameObject target, float speed, float range, float width, string skillDamage, int skillPropertyID, string skillEffect, int skillLv)
+    public void UseSkill(int skillType, GameObject launchPoint, GameObject target, float speed, float range, float width, string skillDamage, int skillPropertyID, string skillEffect, int skillLv, bool soundOn = false)
     {
+        this.soundOn = soundOn;
         this.skillLv = skillLv;
         fireMagic.SetDamage(skillDamage);
         var attack = fireMagic.CreateAttack(playerAI.characterStat);
@@ -113,7 +114,10 @@ public class PlayerSkills : MonoBehaviour
     {
         skillComponent.ApplyShape(skillObject, launchPoint.transform.position, target, speed, range, width, skillPropertyID, skillEffect);
         skillComponent.ApplyDamageType(launchPoint, attack, damageType, skillShapeType);
-        GameMgr.Instance.soundMgr.PlaySFX($"Skill{skillLv}");
+        if (soundOn)
+        {
+            GameMgr.Instance.soundMgr.PlaySFX($"Skill{skillLv}");
+        }
     }
     public void SetList()
     {
