@@ -32,7 +32,8 @@ public class DamageDisplay : MonoBehaviour
 
         if (attack.Critical)
         {
-            text += "\nCRITICAl";
+            fontSize = 7f;
+            text += "!!";
         }
 
         GameMgr.Instance.sceneMgr.damageTextMgr.ShowDamageText(damagePos, text, color, fontSize, true);

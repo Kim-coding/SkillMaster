@@ -39,7 +39,9 @@ public class Enhance : MonoBehaviour
         {
             costIcon.sprite = Resources.Load<Sprite>($"EnhanceIcon/Icon_Gem03_Diamond_Blue");
         }
+
         var image = data.UpgradeIcon;
+        enhanceIcon.sprite = Resources.Load<Sprite>($"EnhanceIcon/{image}");
     }
 
 
