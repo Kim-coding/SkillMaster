@@ -62,6 +62,7 @@ public class PickUpItemsPanel : MonoBehaviour
     {
         while(pickUpitemEquips.Count > 0)
         {
+            GameMgr.Instance.soundMgr.PlaySFX("GachaResult");
             var newSlot = Instantiate(prefabSlot, pickUpPanel.transform);
             newSlot.SetData(pickUpitemEquips[0]);
             pickUpitemEquips.RemoveAt(0);

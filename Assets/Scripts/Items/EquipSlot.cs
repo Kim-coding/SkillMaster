@@ -77,6 +77,7 @@ public class EquipSlot : MonoBehaviour
 
     public void OnbuttonClick()
     {
+        GameMgr.Instance.soundMgr.PlaySFX("Button");
         if (baseEquip)
         {
             return;

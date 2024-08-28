@@ -136,6 +136,7 @@ public class UiWindow : MonoBehaviour
 
     private void OnWindowButtonClick()
     {
+        GameMgr.Instance.soundMgr.PlaySFX("Button");
         if (OnMergeWindow)
         {
             AnimateCloseMergeWindow();
@@ -343,6 +344,7 @@ public class UiWindow : MonoBehaviour
 
     public void OnOption()
     {
+        GameMgr.Instance.soundMgr.PlaySFX("Button");
         option.SetActive(true);
     }
 }

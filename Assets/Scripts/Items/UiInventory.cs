@@ -345,6 +345,7 @@ public class UiInventory : MonoBehaviour
     }
     public void OnFilteringToggleValueChanged(bool isOn)
     {
+        GameMgr.Instance.soundMgr.PlaySFX("Button");
         UpdateToggleColors();
         for (int i = 0; i < filteringToggles.Length; i++)
         {
@@ -359,7 +360,8 @@ public class UiInventory : MonoBehaviour
 
     private void AscendingValueChange(bool isOn)
     {
-        if(ascendingToggle.isOn)
+        GameMgr.Instance.soundMgr.PlaySFX("Button");
+        if (ascendingToggle.isOn)
         {
             ascendingToggleText.text = "бу";
         }
@@ -372,6 +374,7 @@ public class UiInventory : MonoBehaviour
 
     public void OnInventoryModeToggleValueChanged(bool isOn)
     {
+        GameMgr.Instance.soundMgr.PlaySFX("Button");
         bool mode = true;
         UpdateToggleColors();
         for (int i = 0; i < inventoryModeToggles.Length; i++)
@@ -424,6 +427,7 @@ public class UiInventory : MonoBehaviour
 
     public void UnEquipAllSlot()
     {
+        GameMgr.Instance.soundMgr.PlaySFX("Button");
         hairSlot.RemoveEquip();
         faceSlot.RemoveEquip();
         clothSlot.RemoveEquip();
@@ -530,6 +534,7 @@ public class UiInventory : MonoBehaviour
 
     public void OnDecomposMode()
     {
+        GameMgr.Instance.soundMgr.PlaySFX("Button");
         decomposMode = true;
         sortPanel.gameObject.SetActive(false);
         decomposPanel.gameObject.SetActive(true);
@@ -551,6 +556,7 @@ public class UiInventory : MonoBehaviour
 
     public void OffDecomposMode()
     {
+        GameMgr.Instance.soundMgr.PlaySFX("Button");
         foreach (var item in selectedSlot)
         {
             item.OnSelected(false);
@@ -565,6 +571,7 @@ public class UiInventory : MonoBehaviour
 
     public void OpenDecomposPanel()
     {
+        GameMgr.Instance.soundMgr.PlaySFX("Button");
         GameMgr.Instance.uiMgr.uiWindow.decomposPanel.gameObject.SetActive(true);
         GameMgr.Instance.uiMgr.uiWindow.decomposPanel.SetDecompos(selectedSlot);
 
@@ -588,6 +595,7 @@ public class UiInventory : MonoBehaviour
 
     public void OpenAutoDecomposPanel()
     {
+        GameMgr.Instance.soundMgr.PlaySFX("Button");
         GameMgr.Instance.uiMgr.uiWindow.autoDecomposSelectPanel.gameObject.SetActive(true);
         GameMgr.Instance.uiMgr.uiWindow.autoDecomposSelectPanel.AutoComposInit();
     }
@@ -650,11 +658,13 @@ public class UiInventory : MonoBehaviour
     }
     public void OpenEquipUpgradePanel()
     {
+        GameMgr.Instance.soundMgr.PlaySFX("Button"); 
         GameMgr.Instance.uiMgr.uiWindow.equipUpgradePanel.gameObject.SetActive(true);
     }
 
     public void AutoEquip()
     {
+        GameMgr.Instance.soundMgr.PlaySFX("Button");
         OffDecomposMode();
         UnEquipAllSlot();
         int hairCP = 0;

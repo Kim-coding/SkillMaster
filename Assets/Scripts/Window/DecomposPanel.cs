@@ -51,6 +51,7 @@ public class DecomposPanel : MonoBehaviour
 
     public void OnConfirmButtonClick()
     {
+        GameMgr.Instance.soundMgr.PlaySFX("EquipmentBreak");
         GameMgr.Instance.uiMgr.uiInventory.Decompos(reinforeceCount);
         ClosePanel();
     }

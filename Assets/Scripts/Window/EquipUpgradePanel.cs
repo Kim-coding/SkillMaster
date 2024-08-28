@@ -339,6 +339,7 @@ public class EquipUpgradePanel : MonoBehaviour
 
     public void EquipUpgrade()
     {
+        GameMgr.Instance.soundMgr.PlaySFX("Button");
         var currentUpgradeData = DataTableMgr.Get<EquipUpgradeTable>(DataTableIds.equipmentUpgrade).GetID(currentLv);
         BigInteger goldValue = new BigInteger(currentUpgradeData.gold_usevalue);
         GameMgr.Instance.playerMgr.currency.RemoveGold(goldValue);
@@ -358,6 +359,7 @@ public class EquipUpgradePanel : MonoBehaviour
         if (upgradeNum <= successPercent)
         {
             //강화 성공
+            GameMgr.Instance.soundMgr.PlaySFX("EquipmentUpgrade");
             GameMgr.Instance.uiMgr.uiWindow.popUpUI.gameObject.SetActive(true);
             GameMgr.Instance.uiMgr.uiWindow.popUpUI.SetText("강화 성공");
             switch (currentToggleNumber)
@@ -389,6 +391,7 @@ public class EquipUpgradePanel : MonoBehaviour
         else
         {
             //강화 실패
+            GameMgr.Instance.soundMgr.PlaySFX("EquipmentUpgradeFail");
             GameMgr.Instance.uiMgr.uiWindow.popUpUI.gameObject.SetActive(true);
             GameMgr.Instance.uiMgr.uiWindow.popUpUI.SetText("강화 실패");
             GameMgr.Instance.playerMgr.playerinventory.upgradeFailCount[currentToggleNumber]++;

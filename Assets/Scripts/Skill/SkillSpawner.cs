@@ -106,7 +106,8 @@ public class SkillSpawner : MonoBehaviour
 
     public void AutoSkillSpawn()
     {
-        if(autoSpawn)
+        GameMgr.Instance.soundMgr.PlaySFX("Button");
+        if (autoSpawn)
         {
             autoSpawn = false;
             autoSkillSpownButtonText.text = "자동 생성 \n <color=#ff0000>OFF</color>";
@@ -171,7 +172,7 @@ public class SkillSpawner : MonoBehaviour
             return;
         }
 
-        if(GameMgr.Instance.uiMgr.uiTutorial != null && GameMgr.Instance.uiMgr.uiTutorial.gameObject.activeSelf)
+        if (GameMgr.Instance.uiMgr.uiTutorial != null && GameMgr.Instance.uiMgr.uiTutorial.gameObject.activeSelf)
         {
             skillId = 1; // 튜토리얼 중에는 1번 스킬만 들어가야 한다.
         }
@@ -209,6 +210,7 @@ public class SkillSpawner : MonoBehaviour
 
     public void MergeSkill(int skill_ID, Vector3 pos, int t)
     {
+        GameMgr.Instance.soundMgr.PlaySFX("SkillMerge");
         var newSkill = Instantiate(prefabSkillBall, pos, Quaternion.identity, parentTransform);
         var newSkillControler = newSkill.GetComponent<SkillBallController>();
         newSkillControler.Set(skill_ID);
