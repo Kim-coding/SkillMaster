@@ -58,7 +58,7 @@ public class CharacterStat : Status, IDamageable
             Color color = Color.green;
             float fontSize = 4f;
 
-            GameMgr.Instance.sceneMgr.damageTextMgr.ShowDamageText(displayPos, text, color, fontSize);
+            GameMgr.Instance.sceneMgr.damageTextMgr.ShowDamageText(displayPos, text, color, fontSize, true);
 
             UpdateHpBar();
 

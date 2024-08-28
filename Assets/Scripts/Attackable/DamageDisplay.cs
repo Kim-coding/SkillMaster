@@ -35,6 +35,6 @@ public class DamageDisplay : MonoBehaviour
             text += "\nCRITICAl";
         }
 
-        GameMgr.Instance.sceneMgr.damageTextMgr.ShowDamageText(damagePos, text, color, fontSize);
+        GameMgr.Instance.sceneMgr.damageTextMgr.ShowDamageText(damagePos, text, color, fontSize, true);
     }
 }

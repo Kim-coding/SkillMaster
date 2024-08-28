@@ -12,11 +12,11 @@ public class DamageTextMgr : MonoBehaviour
         damageTextPool = new DamageTextPool(damageTextPrefab, transform);
     }
 
-    public void ShowDamageText(Vector3 position, string text, Color color, float fontSize)
+    public void ShowDamageText(Vector3 position, string text, Color color, float fontSize, bool applyOutline)
     {
         DisplayText damageText = damageTextPool.Get();
         damageText.transform.position = position;
-        damageText.Initialize(text, color, fontSize);
+        damageText.Initialize(text, color, fontSize, applyOutline);
     }
 
     public void ReturnDamageText(DisplayText damageText)

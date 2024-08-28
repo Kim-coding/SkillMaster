@@ -15,12 +15,22 @@ public class DisplayText : MonoBehaviour
             Debug.LogError("TextMeshProUGUI component is missing on DamageText prefab.");
         }
     }
-    public void Initialize(string text, Color color, float fontSize)
+    public void Initialize(string text, Color color, float fontSize, bool applyOutline)
     {
         timer = 0f;
         textMesh.text = text;
         textMesh.color = color;
         textMesh.fontSize = fontSize;
+
+        if (applyOutline)
+        {
+            var newMaterial = Instantiate(textMesh.fontSharedMaterial);
+            newMaterial.SetFloat(ShaderUtilities.ID_OutlineWidth, 0.25f);
+            newMaterial.SetColor(ShaderUtilities.ID_OutlineColor, Color.black);
+
+            textMesh.fontSharedMaterial = newMaterial;
+        }
+
     }
 
     void Update()
