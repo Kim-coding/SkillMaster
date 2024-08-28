@@ -172,12 +172,12 @@ public class SkillBallController : MonoBehaviour, IPointerDownHandler, IPointerU
                 Vector3 mergePosition = (gameObject.transform.position + other.gameObject.transform.position) / 2;
                 skillSpawner.MergeSkill(skill_ID + 1, mergePosition, tier + 1);
 
-                //합쳐지는 이펙트
                 GameMgr.Instance.playerMgr.skillBallControllers.Remove(gameObject.GetComponent<SkillBallController>());
                 GameMgr.Instance.playerMgr.skillBallControllers.Remove(other.gameObject.GetComponent<SkillBallController>());
                 GameMgr.Instance.uiMgr.uiMerge.SkillCountUpdate();
                 Destroy(gameObject);
                 Destroy(other.gameObject);
+                GameMgr.Instance.soundMgr.PlaySFX("SkillMerge");
                 break;
             }
         }

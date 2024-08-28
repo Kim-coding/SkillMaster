@@ -233,6 +233,7 @@ public class GameMgr : MonoBehaviour
 
     public void EnterPowerSavingMode()
     {
+        GameMgr.Instance.soundMgr.PlaySFX("Button");
         bgmValue = soundMgr.bgmSlider.value;
         sfxValue = soundMgr.sfxSlider.value;
 

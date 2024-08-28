@@ -48,6 +48,7 @@ public class UiOption : MonoBehaviour
 
     public void OnConfiguration()
     {
+        GameMgr.Instance.soundMgr.PlaySFX("Button");
         foreach (var win in windows)
         {
             win.Value.SetActive(false);
@@ -71,6 +72,7 @@ public class UiOption : MonoBehaviour
 
     public void CloseButton()
     {
+        GameMgr.Instance.soundMgr.PlaySFX("Button");
         gameObject.SetActive(false);
     }
 

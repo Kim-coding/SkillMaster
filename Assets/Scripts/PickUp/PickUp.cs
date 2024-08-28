@@ -55,7 +55,8 @@ public class PickUp : MonoBehaviour
 
     public void PickUpItem(int i)
     {
-        if(i + GameMgr.Instance.playerMgr.playerinventory.playerEquipItemList.Count > GameMgr.Instance.playerMgr.playerinventory.maxSlots)
+        GameMgr.Instance.soundMgr.PlaySFX("Button");
+        if (i + GameMgr.Instance.playerMgr.playerinventory.playerEquipItemList.Count > GameMgr.Instance.playerMgr.playerinventory.maxSlots)
         {
             GameMgr.Instance.uiMgr.uiWindow.popUpUI.gameObject.SetActive(true);
             GameMgr.Instance.uiMgr.uiWindow.popUpUI.SetText("인벤토리가 가득 찼습니다!");
@@ -345,11 +346,13 @@ public class PickUp : MonoBehaviour
 
     private void OpenProbabilityGuidance()
     {
+        GameMgr.Instance.soundMgr.PlaySFX("Button");
         probabilityGuidancePanel.SetActive(true);
     }
 
     private void CloseProbabilityGuidance()
     {
+        GameMgr.Instance.soundMgr.PlaySFX("Button");
         probabilityGuidancePanel.SetActive(false);
     }
 }

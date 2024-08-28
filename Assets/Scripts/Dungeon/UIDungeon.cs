@@ -91,6 +91,7 @@ public class UIDungeon : MonoBehaviour
 
     public void ClearGoldDungeon()
     {
+        GameMgr.Instance.soundMgr.PlaySFX("Button");
         NormalItem key = null;
         foreach (var item in GameMgr.Instance.playerMgr.playerinventory.playerNormalItemList)
         {
@@ -118,6 +119,7 @@ public class UIDungeon : MonoBehaviour
 
     public void SetGoldDungeon()
     {
+        GameMgr.Instance.soundMgr.PlaySFX("Button");
         NormalItem key = null;
         foreach(var item in GameMgr.Instance.playerMgr.playerinventory.playerNormalItemList)
         {
@@ -142,6 +144,7 @@ public class UIDungeon : MonoBehaviour
 
     public void ClearDiaDungeon()
     {
+        GameMgr.Instance.soundMgr.PlaySFX("Button");
         NormalItem key = null;
         foreach (var item in GameMgr.Instance.playerMgr.playerinventory.playerNormalItemList)
         {
@@ -169,6 +172,7 @@ public class UIDungeon : MonoBehaviour
 
     public void SetDiaDungeon()
     {
+        GameMgr.Instance.soundMgr.PlaySFX("Button");
         NormalItem key = null;
         foreach (var item in GameMgr.Instance.playerMgr.playerinventory.playerNormalItemList)
         {

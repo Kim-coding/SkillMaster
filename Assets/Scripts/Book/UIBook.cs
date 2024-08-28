@@ -120,6 +120,7 @@ public class UIBook : MonoBehaviour
 
     private void OnPartsToggleValueChanged(bool isOn)
     {
+        GameMgr.Instance.soundMgr.PlaySFX("Button");
         UpdateToggleColors();
         for (int i = 0; i < partSelectToggles.Length; i++)
         {
@@ -139,6 +140,7 @@ public class UIBook : MonoBehaviour
 
     private void OnBookToggleValueChanged(bool isOn)
     {
+        GameMgr.Instance.soundMgr.PlaySFX("Button");
         UpdateToggleColors();
         skillBook.gameObject.SetActive(bookToggles[0].isOn);
         equipBook.gameObject.SetActive(bookToggles[1].isOn);

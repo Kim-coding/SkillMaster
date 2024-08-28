@@ -45,7 +45,6 @@ public class UiMerge : MonoBehaviour
             }
 
         }
-        //ToggleAutoMerge();
     }
 
     public void UnLockAutoButton()
@@ -84,7 +83,8 @@ public class UiMerge : MonoBehaviour
     private void SortingSkills()
     {
         SortSkillBall sortSkillBall = merge.gameObject.GetComponent<SortSkillBall>();
-        if(sortSkillBall != null )
+        GameMgr.Instance.soundMgr.PlaySFX("Button");
+        if (sortSkillBall != null )
         {
             sortSkillBall.Sort();
         }
@@ -92,7 +92,8 @@ public class UiMerge : MonoBehaviour
 
     private void ToggleAutoMerge()
     {
-        if(isAutoMerging)
+        GameMgr.Instance.soundMgr.PlaySFX("Button");
+        if (isAutoMerging)
         {
             isAutoMerging = !isAutoMerging;
             autoMergeButtonText.text = "자동 조합 \n <color=#ff0000>OFF</color>";
