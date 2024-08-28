@@ -210,7 +210,6 @@ public class SkillSpawner : MonoBehaviour
 
     public void MergeSkill(int skill_ID, Vector3 pos, int t)
     {
-        GameMgr.Instance.soundMgr.PlaySFX("SkillMerge");
         var newSkill = Instantiate(prefabSkillBall, pos, Quaternion.identity, parentTransform);
         var newSkillControler = newSkill.GetComponent<SkillBallController>();
         newSkillControler.Set(skill_ID);
