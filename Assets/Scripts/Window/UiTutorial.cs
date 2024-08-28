@@ -268,6 +268,11 @@ public class UiTutorial : MonoBehaviour
             tutorialPanel.GetComponent<Image>().color = new Vector4(0, 0, 0, 203f/255f);
         }
 
+        if(currentTutorialID == 120264)
+        {
+            GameMgr.Instance.uiMgr.uiInventory.OffDecomposMode();
+        }
+
         currentTutorialIndex++;
         currentTutorialID++;
 
