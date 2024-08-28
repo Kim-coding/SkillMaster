@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class SoundMgr : MonoBehaviour
 {
-    public AudioSource sfxSource;
+    //public AudioSource sfxSource;
     public AudioSource bgmSource;
 
     public List<AudioClip> clips;
@@ -15,6 +15,14 @@ public class SoundMgr : MonoBehaviour
 
     public Toggle damageTextToggle;
     public Toggle dropEffectToggle;
+
+    private SoundPool sfxPool;
+    private float sfxVolume = 1f;
+
+    private void Awake()
+    {
+        sfxPool = new SoundPool(gameObject);
+    }
 
     void Start()
     {
@@ -34,13 +42,18 @@ public class SoundMgr : MonoBehaviour
         else
         {
             bgmSlider.value = bgmSource.volume;
-            sfxSlider.value = sfxSource.volume;
+            sfxSlider.value = sfxVolume;
         }
     }
 
     public void SetSFXVolume(float volume)
     {
-        sfxSource.volume = volume;
+        sfxVolume = volume;
+
+        foreach (var source in sfxPool.pool)
+        {
+            source.volume = sfxVolume;
+        }
     }
 
     public void SetBGMVolume(float volume)
@@ -54,16 +67,27 @@ public class SoundMgr : MonoBehaviour
         {
             if (clip.name == clipName)
             {
+                var sfxSource = sfxPool.Get();
+                sfxSource.volume = sfxVolume;
                 sfxSource.PlayOneShot(clip);
+                sfxPool.Return(sfxSource);
                 break;
             }
         }
     }
     public void PlaySFX(AudioClip clip)
     {
-
+        var sfxSource = sfxPool.Get();
+        sfxSource.volume = sfxVolume;
         sfxSource.PlayOneShot(clip);
-
+        sfxPool.Return(sfxSource);
     }
 
+    public void StopSFX()
+    {
+        foreach (var source in sfxPool.pool)
+        {
+            source.Stop();
+        }
+    }
 }

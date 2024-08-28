@@ -197,7 +197,8 @@ public class PlayerAI : MonoBehaviour , IAnimation
         var skillPropertyID = playerSkills.castingList[0].skillPropertyID;
         string skillEffect = playerSkills.castingList[0].SkillEffect;
         float speed = playerSkills.castingList[0].attackSpeed;
-        playerSkills.UseSkill(skillType, gameObject, currentTarget.gameObject, speed, skillX, skillY, skillDamage, skillPropertyID, skillEffect);
+        int skillLv = playerSkills.castingList[0].tier;
+        playerSkills.UseSkill(skillType, gameObject, currentTarget.gameObject, speed, skillX, skillY, skillDamage, skillPropertyID, skillEffect, skillLv);
     
     }
 
@@ -238,7 +239,8 @@ public class PlayerAI : MonoBehaviour , IAnimation
         var skillPropertyID = skillBall.skillPropertyID;
         string skillEffect = skillBall.SkillEffect;
         float speed = skillBall.attackSpeed;
+        int skillLv = skillBall.tier;
 
-        playerSkills.UseSkill(skillType, gameObject, currentTarget.gameObject, speed, skillX, skillY, skillDamage, skillPropertyID, skillEffect);
+        playerSkills.UseSkill(skillType, gameObject, currentTarget.gameObject, speed, skillX, skillY, skillDamage, skillPropertyID, skillEffect, skillLv);
     }
 }

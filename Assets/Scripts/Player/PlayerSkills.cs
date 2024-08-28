@@ -20,14 +20,14 @@ public class PlayerSkills : MonoBehaviour
         playerAI = GetComponent<PlayerAI>();
     }
 
-    public void UseSkill(int skillType, GameObject launchPoint, GameObject target, float speed, float range, float width, string skillDamage, int skillPropertyID, string skillEffect)
+    public void UseSkill(int skillType, GameObject launchPoint, GameObject target, float speed, float range, float width, string skillDamage, int skillPropertyID, string skillEffect, int skillLv)
     {
         fireMagic.SetDamage(skillDamage);
         var attack = fireMagic.CreateAttack(playerAI.characterStat);
-        CreateSkill(skillType, launchPoint, target, speed, range, width, attack, skillPropertyID, skillEffect);
+        CreateSkill(skillType, launchPoint, target, speed, range, width, attack, skillPropertyID, skillEffect, skillLv);
     }
 
-    public GameObject CreateSkill(int type, GameObject launchPoint, GameObject target, float speed, float range, float width, Attack attack, int skillPropertyID, string skillEffect)
+    public GameObject CreateSkill(int type, GameObject launchPoint, GameObject target, float speed, float range, float width, Attack attack, int skillPropertyID, string skillEffect, int skillLv)
     {
         BaseSkill skillObject = Instantiate(baseSkill);
         Renderer renderer = skillObject.gameObject.GetComponent<Renderer>();
@@ -102,6 +102,7 @@ public class PlayerSkills : MonoBehaviour
         if (skillComponent != null)
         {
             InitializeSkill(skillComponent, skillObject.gameObject, launchPoint, target, speed, range, width, attack, skillPropertyID, skillEffect);
+            GameMgr.Instance.soundMgr.PlaySFX($"Skill{skillLv}");
         }
 
         return skillObject.gameObject;
