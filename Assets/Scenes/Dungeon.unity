@@ -608,7 +608,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7008a6d95cf02a7458644974d74961e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sfxSource: {fileID: 7924898}
   bgmSource: {fileID: 0}
   clips:
   - {fileID: 8300000, guid: 6998523a4f56aff42abe38cdd74a2c9a, type: 3}
@@ -18442,6 +18441,9 @@ MonoBehaviour:
   bookToggles: []
   partSelectModes: {fileID: 0}
   partSelectToggles: []
+  rewardAvailable: {fileID: 0}
+  skillRewardAvailable: {fileID: 0}
+  equipRewardAvailable: {fileID: 0}
 --- !u!114 &475389783
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51449,6 +51451,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a5b7c134861bb54484970e40902409b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DungeonBgm: {fileID: 1460805580}
+  audioClips:
+  - {fileID: 8300000, guid: 00ec45a5789812c40bd41116e143c43c, type: 3}
+  - {fileID: 8300000, guid: 58247ce6ce737aa46846f3eed2a4af7e, type: 3}
   startPanel: {fileID: 1234475769}
   currentStage: 1
   background: {fileID: 1718466859}
@@ -51606,6 +51612,8 @@ MonoBehaviour:
   playerNameInputField: {fileID: 0}
   nameInputPanel: {fileID: 0}
   nameSubmitButton: {fileID: 0}
+  UnlistedListPanel: {fileID: 0}
+  UnlistedList: {fileID: 0}
 --- !u!114 &1423913464
 MonoBehaviour:
   m_ObjectHideFlags: 0
