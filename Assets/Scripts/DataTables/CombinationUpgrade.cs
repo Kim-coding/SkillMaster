@@ -25,7 +25,7 @@ public class CombinationUpgradeData
     {
         get
         {
-            return Resources.Load<Sprite>("UpgradeIcon");
+            return Resources.Load<Sprite>(UpgradeIcon);
         }
     }
 
