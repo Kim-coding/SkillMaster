@@ -23,6 +23,8 @@ public class WebTimeMgr : MonoBehaviour
     private string dataPath;
     private DateTime startTime;
 
+    public GameObject panel;
+
     private static WebTimeMgr instance;
     void Awake()
     {
@@ -37,6 +39,7 @@ public class WebTimeMgr : MonoBehaviour
             GameMgr.Instance.FindWebTime();
             return;
         }
+        panel.SetActive(true);
     }
 
     public void Start()
@@ -225,6 +228,7 @@ public class WebTimeMgr : MonoBehaviour
                 if(inactiveDuration.Minutes > 0)
                 {
                     GameMgr.Instance.rewardMgr.OfflineRewardPopUp(inactiveDuration);
+                    panel.SetActive(false);
                 }
             }
         }
