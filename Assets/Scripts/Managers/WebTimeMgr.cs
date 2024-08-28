@@ -228,7 +228,6 @@ public class WebTimeMgr : MonoBehaviour
                 if(inactiveDuration.Minutes > 0)
                 {
                     GameMgr.Instance.rewardMgr.OfflineRewardPopUp(inactiveDuration);
-                    panel.SetActive(false);
                 }
             }
         }
@@ -244,6 +243,7 @@ public class WebTimeMgr : MonoBehaviour
                 }
             }
         }
+        panel.SetActive(false);
         SaveTime();
     }
 

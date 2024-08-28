@@ -77211,7 +77211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 847c856391b74ac46bec1978dfbf17e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panel: {fileID: 0}
+  panel: {fileID: 34115487}
 --- !u!4 &1752705535
 Transform:
   m_ObjectHideFlags: 0
