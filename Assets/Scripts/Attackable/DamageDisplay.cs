@@ -28,7 +28,7 @@ public class DamageDisplay : MonoBehaviour
         {
             color = attack.Critical ? Color.yellow : Color.white;
         }
-        float fontSize = 20f;
+        float fontSize = 5f;
 
         if (attack.Critical)
         {
