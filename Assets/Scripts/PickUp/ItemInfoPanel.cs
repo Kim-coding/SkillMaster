@@ -140,7 +140,17 @@ public class ItemInfoPanel : MonoBehaviour
                     optiontext = "°ñµå È¹µæ·®";
                     break;
             }
-            OptionTexts[optioncount].text = optiontext + " : " + option.Item2;
+            if(option.Item1 == OptionType.attackPower || 
+                option.Item1 == OptionType.maxHealth ||
+                option.Item1 == OptionType.deffence || 
+                option.Item1 == OptionType.recovery)
+            {
+                OptionTexts[optioncount].text = optiontext + " : " + option.Item2 + "%";
+            }
+            else
+            {
+                OptionTexts[optioncount].text = optiontext + " : " + option.Item2;
+            }
 
 
 

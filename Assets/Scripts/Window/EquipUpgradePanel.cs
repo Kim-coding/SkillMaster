@@ -177,7 +177,7 @@ public class EquipUpgradePanel : MonoBehaviour
                 }
                 optionNames[i].text = optiontext;
                 var option_raise = currentUpgradeData.option_raise;
-                currentPercent[i].text = (selectedEquip.EquipOption.currentOptions[i].Item2 * option_raise).ToString("F3") + "%";
+                currentPercent[i].text = (selectedEquip.EquipOption.currentOptions[i].Item2 * option_raise).ToString("F3");
 
                 if (currentLv == 60)
                 {
@@ -208,13 +208,13 @@ public class EquipUpgradePanel : MonoBehaviour
                             break;
                     }
                     var limitOption_raise = DataTableMgr.Get<EquipUpgradeTable>(DataTableIds.equipmentUpgrade).GetID(lv).option_raise;
-                    currentPercent[i].text = (selectedEquip.EquipOption.currentOptions[i].Item2 * limitOption_raise).ToString("F3") + "%";
+                    currentPercent[i].text = (selectedEquip.EquipOption.currentOptions[i].Item2 * limitOption_raise).ToString("F3");
                     nextPercent[i].text = currentPercent[i].text;
                 }
                 else
                 {
                     var nextOption_raise = DataTableMgr.Get<EquipUpgradeTable>(DataTableIds.equipmentUpgrade).GetID(currentLv + 1).option_raise;
-                    nextPercent[i].text = (selectedEquip.EquipOption.currentOptions[i].Item2 * nextOption_raise).ToString("F3") + "%";
+                    nextPercent[i].text = (selectedEquip.EquipOption.currentOptions[i].Item2 * nextOption_raise).ToString("F3");
                 }
             }
             int upgradeCount = GameMgr.Instance.playerMgr.playerinventory.upgradeFailCount[currentToggleNumber];
