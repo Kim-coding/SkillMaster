@@ -248,7 +248,7 @@ p_E.attackPowerCost);
         {
             if (toggle.isOn)
             {
-                SetToggleColor(toggle, Color.blue);
+                SetToggleColor(toggle, Color.red);
             }
             else
             {

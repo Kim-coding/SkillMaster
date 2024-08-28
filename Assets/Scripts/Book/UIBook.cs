@@ -76,6 +76,7 @@ public class UIBook : MonoBehaviour
 
     private void UpdateToggleColors()
     {
+        Color customColor;
         foreach (var toggle in partSelectToggles)
         {
             if (toggle.isOn)
@@ -92,11 +93,13 @@ public class UIBook : MonoBehaviour
         {
             if (toggle.isOn)
             {
-                SetToggleColor(toggle, new Color(0, 0, 0, 1));
+                ColorUtility.TryParseHtmlString("#9E5B51", out customColor);
+                SetToggleColor(toggle, customColor);
             }
             else
             {
-                SetToggleColor(toggle, new Color(0f, 107f / 255f, 255f / 255f, 255f / 255f));
+                ColorUtility.TryParseHtmlString("#DDCCB3", out customColor);
+                SetToggleColor(toggle, customColor);
             }
         }
 

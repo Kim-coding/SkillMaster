@@ -11,6 +11,9 @@ using UnityEngine.UIElements;
 
 public class DungeonScene : MonoBehaviour
 {
+    public AudioSource DungeonBgm;
+    public AudioClip[] audioClips;
+
     public GameObject startPanel;
 
     public int currentStage; //저장된 정보를 받아 오기.
@@ -83,6 +86,7 @@ public class DungeonScene : MonoBehaviour
 
         if (dungeonMode)
         {
+            DungeonBgm.clip = audioClips[0];
             background.sprite = Resources.Load<Sprite>("Background/Gold_Dungeon");
             currentStage = 1;
             goldDungeonData = DataTableMgr.Get<GoldDungeonTable>(DataTableIds.goldDungeon).GetID(currentStage);
@@ -91,6 +95,7 @@ public class DungeonScene : MonoBehaviour
         }
         else
         {
+            DungeonBgm.clip = audioClips[1];
             background.sprite = Resources.Load<Sprite>("Background/Dia_Dungeon");
             currentStage = GameMgr.Instance.playerMgr.playerInfo.diaDungeonLv;
             foreach (var monster in diaDungeonMonsters)
@@ -114,6 +119,7 @@ public class DungeonScene : MonoBehaviour
             diaNextButton.onClick.AddListener(NextDiaDungeon);
             GameMgr.Instance.uiMgr.InitializeNextStageSlider(currentStage);
         }
+        DungeonBgm.Play();
         startPanel.SetActive(true);
     }
 

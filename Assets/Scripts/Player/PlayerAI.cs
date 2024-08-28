@@ -198,7 +198,7 @@ public class PlayerAI : MonoBehaviour , IAnimation
         string skillEffect = playerSkills.castingList[0].SkillEffect;
         float speed = playerSkills.castingList[0].attackSpeed;
         int skillLv = playerSkills.castingList[0].tier;
-        playerSkills.UseSkill(skillType, gameObject, currentTarget.gameObject, speed, skillX, skillY, skillDamage, skillPropertyID, skillEffect, skillLv);
+        playerSkills.UseSkill(skillType, gameObject, currentTarget.gameObject, speed, skillX, skillY, skillDamage, skillPropertyID, skillEffect, skillLv,true);
     
     }
 

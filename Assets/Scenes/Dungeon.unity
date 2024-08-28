@@ -51603,6 +51603,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a5b7c134861bb54484970e40902409b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DungeonBgm: {fileID: 1460805580}
+  audioClips:
+  - {fileID: 8300000, guid: 00ec45a5789812c40bd41116e143c43c, type: 3}
+  - {fileID: 8300000, guid: 58247ce6ce737aa46846f3eed2a4af7e, type: 3}
   startPanel: {fileID: 1234475769}
   currentStage: 1
   background: {fileID: 1718466859}
