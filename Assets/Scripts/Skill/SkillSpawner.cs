@@ -236,11 +236,11 @@ public class SkillSpawner : MonoBehaviour
         if (int.TryParse(input, out int level))
         {
             skillLV = 40000 + level;
-            Debug.Log("Skill Level set to: " + skillLV);
+            //Debug.Log("Skill Level set to: " + skillLV);
         }
         else
         {
-            Debug.LogError("Invalid input for skill level.");
+            //Debug.LogError("Invalid input for skill level.");
         }
     }
 
