@@ -33,8 +33,13 @@ public class UserName : MonoBehaviour
     }
     public void Open()
     {
-        panel.SetActive(true);
-        myName.text = inputName.text;
+        var input = inputName.text;
+
+        if (IsValidName(input))
+        {
+            panel.SetActive(true);
+            myName.text = inputName.text;
+        }
     }
 
     public void OpenPanel()
