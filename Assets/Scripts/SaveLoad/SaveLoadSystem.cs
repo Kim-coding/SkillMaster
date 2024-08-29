@@ -63,7 +63,7 @@ public class SaveLoadSystem
             CurrSaveData.savePlay.questValue = GameMgr.Instance.rewardMgr.guideQuest.currentTargetValue;
             CurrSaveData.savePlay.rewardID = GameMgr.Instance.sceneMgr.mainScene.appearBossMonster;
             CurrSaveData.savePlay.isStory = GameMgr.Instance.uiMgr.isStory;
-            CurrSaveData.savePlay.userName = GameMgr.Instance.userName.userName;
+            CurrSaveData.savePlay.userName = GameMgr.Instance.uiMgr.userNameText.text;
         }
         else
         {
