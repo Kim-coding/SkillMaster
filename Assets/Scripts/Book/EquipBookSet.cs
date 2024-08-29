@@ -147,27 +147,28 @@ public class EquipBookSet : MonoBehaviour
 
     public void EquipSetCheck()
     {
-        if(getReward)
+        Color customColor = Color.white;
+        if (getReward)
         {
             GetSetOption();
             return;
         }
-        if(setClear)
+        if (setClear)
         {
             return;
         }
 
-        if(element1.saveData.state != ClearState.NotAcquired &&
+        if (element1.saveData.state != ClearState.NotAcquired &&
            element2.saveData.state != ClearState.NotAcquired &&
            element3.saveData.state != ClearState.NotAcquired &&
            element4.saveData.state != ClearState.NotAcquired &&
            element5.saveData.state != ClearState.NotAcquired)
         {
+            ColorUtility.TryParseHtmlString("#9E5B51", out customColor);
             setClear = true;
             rewardButton.interactable = true;
             rewardButtonText.text = "È¹µæ\n°¡´É";
-            rewardButtonText.color = Color.black;
-            rewardButtonImage.color = Color.yellow;
+            rewardButtonImage.color = customColor;
         }
 
         else
@@ -179,12 +180,13 @@ public class EquipBookSet : MonoBehaviour
 
     private void GetSetOption()
     {
+        Color customColor = Color.white;
+        ColorUtility.TryParseHtmlString("#EFA74D", out customColor);
         getReward = true;
         GameMgr.Instance.playerMgr.playerInfo.SetDatas[setID] = getReward;
         rewardButton.interactable = false;
         rewardButtonText.text = "È¹µæ\n¿Ï·á";
-        rewardButtonText.color = Color.white;
-        rewardButtonImage.color = Color.yellow;
+        rewardButtonImage.color = customColor;
 
         GameMgr.Instance.playerMgr.playerInfo.SetOptionUpdate();
     }
