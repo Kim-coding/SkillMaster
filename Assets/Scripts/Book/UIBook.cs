@@ -81,11 +81,13 @@ public class UIBook : MonoBehaviour
         {
             if (toggle.isOn)
             {
-                SetToggleColor(toggle, Color.blue);
+                ColorUtility.TryParseHtmlString("#9E5B51", out customColor);
+                SetToggleColor(toggle, customColor);
             }
             else
             {
-                SetToggleColor(toggle, Color.white);
+                ColorUtility.TryParseHtmlString("#DDCCB3", out customColor);
+                SetToggleColor(toggle, customColor);
             }
         }
 
