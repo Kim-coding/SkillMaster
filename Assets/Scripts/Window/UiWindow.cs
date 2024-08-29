@@ -92,7 +92,7 @@ public class UiWindow : MonoBehaviour
 
     public void UnLock()
     {
-        if (GameMgr.Instance.uiMgr.uiGuideQuest.currentQuest.QuestID == 60024)
+        if (GameMgr.Instance.uiMgr.uiGuideQuest.currentQuest.QuestID == 60023)
         {
             if(!hasShownPickupMessage)
             {
