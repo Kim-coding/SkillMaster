@@ -290,8 +290,8 @@ public class UIMgr : MonoBehaviour
         else
         {
             isStory = true;
-            storyPanel.SetActive(false);
             SaveLoadSystem.Save();
+            storyPanel.SetActive(false);
         }
     }
 

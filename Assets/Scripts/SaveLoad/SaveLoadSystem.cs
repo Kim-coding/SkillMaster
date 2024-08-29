@@ -45,7 +45,7 @@ public class SaveLoadSystem
 
     public static bool Save()
     {
-        if(GameMgr.Instance.uiMgr.uiTutorial != null && GameMgr.Instance.uiMgr.uiTutorial.gameObject.activeSelf)
+        if(!GameMgr.Instance.uiMgr.storyPanel.activeSelf && GameMgr.Instance.uiMgr.uiTutorial != null && GameMgr.Instance.uiMgr.uiTutorial.gameObject.activeSelf)
         {
             return false;
         }
