@@ -36,7 +36,7 @@ public class UiTutorial : MonoBehaviour
 
     private Sequence typingSequence;
     private bool isTyping = false;
-
+    private bool Complete = true;
     public void OnTutorial()
     {
         var invincible = GameMgr.Instance.playerMgr.characters[0].GetComponent<IDamageable>();
@@ -309,14 +309,15 @@ public class UiTutorial : MonoBehaviour
 
     private void Update()
     {
-        //if (Input.touchCount > 0)
-        //{
-        //    if (isTyping)
-        //    {
-        //        typingSequence.Kill();
-        //        CompleteText();
-        //    }
-        //}
+        if (Input.touchCount > 0)
+        {
+            if (isTyping)
+            {
+                Complete = false;
+                typingSequence.Kill();
+                CompleteText();
+            }
+        }
     }
 
     private void CompleteText()
@@ -332,6 +333,7 @@ public class UiTutorial : MonoBehaviour
         }
 
         isTyping = false;
+        Complete = true;
     }
 
     public void EndTutorial()
@@ -366,7 +368,11 @@ public class UiTutorial : MonoBehaviour
 
     public void OnButton()
     {
-        NextTutorial();
+        if (Complete)
+        {
+            Complete = false;
+            NextTutorial();
+        }
     }
 
     public void TextAnimation(TextMeshProUGUI textMesh, string fullText)
@@ -406,9 +412,10 @@ public class UiTutorial : MonoBehaviour
             }
         }
 
-        typingSequence.SetUpdate(true); //Time.timeScale이 0일때에도 작동
+        typingSequence.SetUpdate(true);
         typingSequence.OnComplete(() => isTyping = false);
         typingSequence.Play();
+        Complete = true;
     }
 
     public void HighlightTarget(GameObject target)

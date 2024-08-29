@@ -27,6 +27,7 @@ public class UiMerge : MonoBehaviour
     public float baseAutoMergeDuration;
 
     public GameObject[] autoLockImages;
+    private bool hasShownAutoMessage = false;
 
     private void Start()
     {
@@ -51,9 +52,14 @@ public class UiMerge : MonoBehaviour
     {
         if (GameMgr.Instance.uiMgr.uiGuideQuest.currentQuest.QuestID == 60085)
         {
-            GameMgr.Instance.uiMgr.UnlistedListPanel.SetActive(true);
-            GameMgr.Instance.uiMgr.UnlistedList.text = DataTableMgr.Get<StringTable>(DataTableIds.String).GetID(120558);
-            skillUpgradeToggle.interactable = false;
+            if(!hasShownAutoMessage)
+            {
+                GameMgr.Instance.uiMgr.UnlistedListPanel.SetActive(true);
+                GameMgr.Instance.uiMgr.UnlistedList.text = DataTableMgr.Get<StringTable>(DataTableIds.String).GetID(120558);
+                hasShownAutoMessage = true;
+            }
+            
+            skillUpgradeToggle.interactable = true;
             autoMergeButton.interactable = true;
             autoSpawnButton.interactable = true;
             foreach (var lockimage in autoLockImages)
