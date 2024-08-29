@@ -42,8 +42,8 @@ public class AreaDotSkill : MonoBehaviour, ISkillComponent, ISkill //¿øÇü ¹üÀ§ µ
         {
             this.skillObject.GetComponent<SpriteRenderer>().sprite = circleSprite;
         }
-        radius = range * 2;
-        this.skillObject.transform.localScale = new Vector2(radius, radius);
+        radius = range;
+        this.skillObject.transform.localScale = new Vector2(radius * 2, radius * 2);
 
         this.skillObject.AddComponent<CircleCollider2D>().isTrigger = true;
         this.skillObject.transform.position = launchPoint;
@@ -70,7 +70,7 @@ public class AreaDotSkill : MonoBehaviour, ISkillComponent, ISkill //¿øÇü ¹üÀ§ µ
         {
             skillEffectObject = Instantiate(skillEffectPrefab, attacker.transform.position, Quaternion.identity);
             skillEffectObject.transform.SetParent(skillObject.transform);
-            skillEffectObject.transform.localScale = new Vector2(0.4f, 0.4f);
+            skillEffectObject.transform.localScale = new Vector2(0.6f, 0.6f);
 
         }
     }
@@ -104,8 +104,8 @@ public class AreaDotSkill : MonoBehaviour, ISkillComponent, ISkill //¿øÇü ¹üÀ§ µ
         {
             if (monster != null)
             {
-                float distance = Vector2.Distance(attacker.transform.position, monster.transform.position);
-                if (distance < radius)
+                float distance = Vector2.Distance(gameObject.transform.position, monster.transform.position);
+                if (distance < radius * 1.35)
                 {
                     monsters.Add(monster);
                 }
