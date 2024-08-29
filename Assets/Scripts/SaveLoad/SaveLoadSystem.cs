@@ -63,6 +63,7 @@ public class SaveLoadSystem
             CurrSaveData.savePlay.questValue = GameMgr.Instance.rewardMgr.guideQuest.currentTargetValue;
             CurrSaveData.savePlay.rewardID = GameMgr.Instance.sceneMgr.mainScene.appearBossMonster;
             CurrSaveData.savePlay.isStory = GameMgr.Instance.uiMgr.isStory;
+            CurrSaveData.savePlay.userName = GameMgr.Instance.userName.userName;
         }
         else
         {
@@ -74,6 +75,7 @@ public class SaveLoadSystem
             CurrSaveData.savePlay.rewardID = GameMgr.Instance.sceneMgr.dungeonScene.rewardID;
             CurrSaveData.savePlay.questValue = GameMgr.Instance.sceneMgr.dungeonScene.questValue;
             CurrSaveData.savePlay.isStory = GameMgr.Instance.sceneMgr.dungeonScene.isStory;
+            CurrSaveData.savePlay.userName = GameMgr.Instance.sceneMgr.dungeonScene.userName;
         }
         CurrSaveData.savePlay.saveCurrency = GameMgr.Instance.playerMgr.currency;
         CurrSaveData.savePlay.savePlayerEnhance = GameMgr.Instance.playerMgr.playerEnhance;

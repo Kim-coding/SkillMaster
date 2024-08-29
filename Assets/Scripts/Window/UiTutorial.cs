@@ -362,6 +362,11 @@ public class UiTutorial : MonoBehaviour
         Time.timeScale = 1.0f;
         GameMgr.Instance.webTimeMgr.SaveTime();
         SaveLoadSystem.Save();
+
+        if(currentTutorialID == 120239)
+        {
+            GameMgr.Instance.userName.OpenPanel();
+        }
     }
 
     public void OnButton()

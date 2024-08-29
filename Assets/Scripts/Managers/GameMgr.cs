@@ -19,7 +19,7 @@ public class GameMgr : MonoBehaviour
     public SoundMgr soundMgr;
     public WebTimeMgr webTimeMgr;
     public NetworkConnect networkConnect;
-
+    public UserName userName;
     public Camera mainCam;
     public GameObject savingPowerPanel;
 

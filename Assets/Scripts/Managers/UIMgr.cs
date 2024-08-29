@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class UIMgr : MonoBehaviour
 {
+    public TextMeshProUGUI userNameText;
+
     public UiWindow uiWindow;
     public UiMerge uiMerge;
     public UiEnhance uiEnhance;
@@ -87,10 +89,12 @@ public class UIMgr : MonoBehaviour
         if(data != null)
         {
             isStory = data.isStory;
+            userNameText.text = data.userName;
         }
         else
         {
             isStory = false;
+            userNameText.text = "¹æ¶ûÀÚ";
         }
 
     }

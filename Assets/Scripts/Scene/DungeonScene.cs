@@ -66,7 +66,7 @@ public class DungeonScene : MonoBehaviour
     public bool isDungeonOpen;
     public int rewardID;
     public bool isStory;
-
+    public string userName;
 
     public void Init()
     {

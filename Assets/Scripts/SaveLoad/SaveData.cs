@@ -39,6 +39,9 @@ public class SavePlayData
 
     //스토리
     public bool isStory;
+
+    //유저 이름
+    public string userName;
 }
 
 public abstract class SaveData
