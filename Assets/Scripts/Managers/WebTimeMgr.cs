@@ -244,6 +244,7 @@ public class WebTimeMgr : MonoBehaviour
             }
         }
         panel.SetActive(false);
+        SaveLoadSystem.Save();
         SaveTime();
     }
 

@@ -379,7 +379,8 @@ public class UiTutorial : MonoBehaviour
     {
         textMesh.text = "";
         isTyping = true;
-        Sequence typingSequence = DOTween.Sequence();
+        Complete = false;
+        typingSequence = DOTween.Sequence();
 
         string currentText = "";
         bool insideTag = false;
