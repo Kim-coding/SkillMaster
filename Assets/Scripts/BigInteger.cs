@@ -69,7 +69,7 @@ public struct BigInteger
                 element = 0;
                 factor = 0;
                 Clear();
-                Debug.Log("Fail Int Parsing!!");
+                //Debug.Log("Fail Int Parsing!!");
                 return;
             }
 
@@ -268,7 +268,7 @@ public struct BigInteger
             if (!int.TryParse(s.Substring(startIndex, substringLength), out element))
             {
                 Clear();
-                Debug.Log("Fail Int Parsing!!");
+                //Debug.Log("Fail Int Parsing!!");
                 return;
             }
 

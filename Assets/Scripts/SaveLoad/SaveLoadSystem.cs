@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Security.Cryptography;
+using Unity.VisualScripting;
 using UnityEngine;
 using static SavePlayDataConverter;
 
@@ -45,7 +46,10 @@ public class SaveLoadSystem
 
     public static bool Save()
     {
-        if(!GameMgr.Instance.uiMgr.storyPanel.activeSelf && GameMgr.Instance.uiMgr.uiTutorial != null && GameMgr.Instance.uiMgr.uiTutorial.gameObject.activeSelf)
+        if(GameMgr.Instance.uiMgr.storyPanel != null && 
+            !GameMgr.Instance.uiMgr.storyPanel.activeSelf && 
+            GameMgr.Instance.uiMgr.uiTutorial != null && 
+            GameMgr.Instance.uiMgr.uiTutorial.gameObject.activeSelf)
         {
             return false;
         }

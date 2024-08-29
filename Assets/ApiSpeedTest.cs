@@ -14,11 +14,11 @@ public class ApiSpeedTest : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P) && !isTesting)
-        {
-            isTesting = true;
-            StartApiSpeedTest();
-        }
+        //if (Input.GetKeyDown(KeyCode.P) && !isTesting)
+        //{
+        //    isTesting = true;
+        //    StartApiSpeedTest();
+        //}
     }
 
     async void StartApiSpeedTest()

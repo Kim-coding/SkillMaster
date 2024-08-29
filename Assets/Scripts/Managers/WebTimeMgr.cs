@@ -58,10 +58,10 @@ public class WebTimeMgr : MonoBehaviour
                 }
                 StartCoroutine(GetStartTime());
             }
-            else
-            {
-                Debug.Log("인터넷을 연결 해 주세요.");
-            }
+            //else
+            //{
+            //    Debug.Log("인터넷을 연결 해 주세요.");
+            //}
         }
     }
 
@@ -76,10 +76,10 @@ public class WebTimeMgr : MonoBehaviour
         {
             StartCoroutine(GetEndTime());
         }
-        else
-        {
-            Debug.Log("인터넷을 연결 해 주세요.");
-        }
+        //else
+        //{
+        //    Debug.Log("인터넷을 연결 해 주세요.");
+        //}
     }
 
     public IEnumerator GetStartTime()  //시작 시간
@@ -89,7 +89,7 @@ public class WebTimeMgr : MonoBehaviour
 
         if (request.result != UnityWebRequest.Result.Success)
         {
-            Debug.Log("시간 가져오기 실패: " + request.error);
+            //Debug.Log("시간 가져오기 실패: " + request.error);
         }
         else
         {
@@ -104,7 +104,7 @@ public class WebTimeMgr : MonoBehaviour
             }
             else
             {
-                Debug.LogError("서버 응답에서 dateTime 필드가 비어있음.");
+                //Debug.LogError("서버 응답에서 dateTime 필드가 비어있음.");
             }
         }
     }
@@ -116,7 +116,7 @@ public class WebTimeMgr : MonoBehaviour
 
         if (request.result != UnityWebRequest.Result.Success)
         {
-            Debug.Log("시간 가져오기 실패: " + request.error);
+            //Debug.Log("시간 가져오기 실패: " + request.error);
         }
         else
         {
@@ -130,7 +130,7 @@ public class WebTimeMgr : MonoBehaviour
             }
             else
             {
-                Debug.LogError("서버 응답에서 dateTime 필드가 비어있음.");
+                //Debug.LogError("서버 응답에서 dateTime 필드가 비어있음.");
             }
         }
     }
@@ -147,7 +147,7 @@ public class WebTimeMgr : MonoBehaviour
 
         if (request.result != UnityWebRequest.Result.Success)
         {
-            Debug.Log("시간 가져오기 실패: " + request.error);
+            //Debug.Log("시간 가져오기 실패: " + request.error);
         }
         else
         {
@@ -157,12 +157,12 @@ public class WebTimeMgr : MonoBehaviour
             if (worldTime != null && !string.IsNullOrEmpty(worldTime.dateTime))
             {
                 DateTime endTime = DateTime.Parse(worldTime.dateTime);
-                Debug.Log("서버 시간 (마지막 시간): " + endTime);
+                //Debug.Log("서버 시간 (마지막 시간): " + endTime);
                 SaveEndTime(endTime);
             }
             else
             {
-                Debug.LogError("서버 응답에서 dateTime 필드가 비어있음.");
+                //Debug.LogError("서버 응답에서 dateTime 필드가 비어있음.");
             }
         }
         Exit();
