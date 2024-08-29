@@ -54,7 +54,7 @@ public class UIMgr : MonoBehaviour
     public GameObject[] stroyImages;
     private int storyIndex = 0;
 
-    public bool isStory = false;
+    public bool isStory;
 
     public void Init()
     {
@@ -82,6 +82,16 @@ public class UIMgr : MonoBehaviour
         last = new BigInteger(dungeonData[dungeonData.Count - 1].request_damage);
         cutLine = new BigInteger(0);
         preCutLine = new BigInteger(0);
+
+        var data = SaveLoadSystem.CurrSaveData.savePlay;
+        if(data != null)
+        {
+            isStory = data.isStory;
+        }
+        else
+        {
+            isStory = false;
+        }
 
     }
 
@@ -251,7 +261,7 @@ public class UIMgr : MonoBehaviour
 
     public void OnStory()
     {
-        if(!isStory)
+        if(isStory)
         {
             return;
         }
@@ -279,7 +289,9 @@ public class UIMgr : MonoBehaviour
         }
         else
         {
+            isStory = true;
             storyPanel.SetActive(false);
+            SaveLoadSystem.Save();
         }
     }
 

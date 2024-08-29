@@ -39,6 +39,11 @@ public class Tutorial
         var ID = UiTutorial.currentTutorialID;
         if (ID <= 120238)
         {
+            if (!GameMgr.Instance.uiMgr.isStory)
+            {
+                GameMgr.Instance.uiMgr.OnStory();
+            }
+
             UiTutorial.EndTutorialIndex = 120239;
             UiTutorial.OnTutorial();
         }
