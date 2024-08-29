@@ -23959,7 +23959,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f40123790c306304cb54f6738724aaec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 0.5
+  duration: 1.5
   player: {fileID: 1822135372}
 --- !u!114 &518146151
 MonoBehaviour:

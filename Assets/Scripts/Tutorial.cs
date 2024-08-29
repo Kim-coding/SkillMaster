@@ -53,9 +53,9 @@ public class Tutorial
             UiTutorial.OnTutorial();
 
         }
-        else if (ID >= 120279 && ID <= 120284)
+        else if (ID >= 120279 && ID <= 120285)
         {
-            UiTutorial.EndTutorialIndex = 120285;
+            UiTutorial.EndTutorialIndex = 120286;
             UiTutorial.OnTutorial();
         }
     }

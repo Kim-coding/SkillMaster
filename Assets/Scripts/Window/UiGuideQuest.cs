@@ -29,7 +29,7 @@ public class UiGuideQuest : MonoBehaviour
         {
             rewardImage.sprite = DataTableMgr.Get<StuffTable>(DataTableIds.stuff).GetID(currentQuest.reward).Geticon;
         }
-        rewardCount.text = currentQuest.rewardvalue.ToString();
+        rewardCount.text = new BigInteger(currentQuest.rewardvalue).ToStringShort();
     }
 
     public void UiButtonUpdate(bool a)
