@@ -145,7 +145,7 @@ public class DungeonScene : MonoBehaviour
             timer += Time.deltaTime;
             if (timer > endTime)
             {
-                EndDungeon(true, currentStage - 1);
+                EndDungeon(true, currentStage);
             }
         }
         else
