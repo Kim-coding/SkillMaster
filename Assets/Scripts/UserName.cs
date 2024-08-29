@@ -66,7 +66,7 @@ public class UserName : MonoBehaviour
         {
             return false;
         }
-        if (name.Length >= 1 && name.Length <= 6)
+        if (name.Length >= 1 && name.Length <= 3)
         {
             return true;
         }

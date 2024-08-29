@@ -177,7 +177,6 @@ public class SkillBallController : MonoBehaviour, IPointerDownHandler, IPointerU
                 GameMgr.Instance.uiMgr.uiMerge.SkillCountUpdate();
                 Destroy(gameObject);
                 Destroy(other.gameObject);
-                GameMgr.Instance.soundMgr.PlaySFX("SkillMerge");
                 break;
             }
         }

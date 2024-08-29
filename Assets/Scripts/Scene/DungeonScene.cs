@@ -81,6 +81,7 @@ public class DungeonScene : MonoBehaviour
         questValue = data.questValue;
         rewardID = data.rewardID;
         isStory = data.isStory;
+        userName = data.userName;
         dungeonMode = GameMgr.Instance.playerMgr.playerInfo.dungeonMode;
 
         var camera = GameObject.FindWithTag("MainCamera");
