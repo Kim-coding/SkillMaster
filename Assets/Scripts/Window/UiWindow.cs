@@ -220,12 +220,12 @@ public class UiWindow : MonoBehaviour
             currentOpenWindow = window;
             isAnimating = false;
         });
-        if (uIMgr.uiGuideQuest.currentQuest.QuestID == 60024 && window == Windows.PickUp)
+        if (uIMgr.uiGuideQuest.currentQuest.QuestID == 60023 && window == Windows.PickUp)
         {
             SaveLoadSystem.Save();
             GameMgr.Instance.sceneMgr.tutorial.OnTutorial();
         }
-        if (uIMgr.uiGuideQuest.currentQuest.QuestID == 60051 && window == Windows.Dungeon && !uIMgr.uiTutorial.isDungeonOpen)
+        if (uIMgr.uiGuideQuest.currentQuest.QuestID == 60050 && window == Windows.Dungeon && !uIMgr.uiTutorial.isDungeonOpen)
         {
             SaveLoadSystem.Save();
             GameMgr.Instance.sceneMgr.tutorial.OnTutorial();

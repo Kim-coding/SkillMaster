@@ -35,7 +35,7 @@ public class UiMerge : MonoBehaviour
         autoMergeButton.onClick.AddListener(ToggleAutoMerge);
         autoMergeButtonText = autoMergeButton.GetComponentInChildren<TextMeshProUGUI>();
 
-        if(GameMgr.Instance.sceneMgr.mainScene != null && GameMgr.Instance.uiMgr.uiGuideQuest.currentQuest.QuestID < 60085)
+        if(GameMgr.Instance.sceneMgr.mainScene != null && GameMgr.Instance.uiMgr.uiGuideQuest.currentQuest.QuestID < 60084)
         {
             skillUpgradeToggle.interactable = false;
             autoMergeButton.interactable = false;
@@ -50,7 +50,7 @@ public class UiMerge : MonoBehaviour
 
     public void UnLockAutoButton()
     {
-        if (GameMgr.Instance.uiMgr.uiGuideQuest.currentQuest.QuestID == 60085)
+        if (GameMgr.Instance.uiMgr.uiGuideQuest.currentQuest.QuestID == 60084)
         {
             if(!hasShownAutoMessage)
             {

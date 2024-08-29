@@ -36,6 +36,9 @@ public class SavePlayData
     public int tutorialID;
     public int tutorialIndex;
     public bool isDungeonOpen;
+
+    //Ω∫≈‰∏Æ
+    public bool isStory;
 }
 
 public abstract class SaveData

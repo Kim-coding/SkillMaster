@@ -50,6 +50,12 @@ public class UIMgr : MonoBehaviour
     public GameObject UnlistedListPanel;
     public TextMeshProUGUI UnlistedList;
 
+    public GameObject storyPanel;
+    public GameObject[] stroyImages;
+    private int storyIndex = 0;
+
+    public bool isStory = false;
+
     public void Init()
     {
         uiInventory.Init();
@@ -241,5 +247,47 @@ public class UIMgr : MonoBehaviour
     public void CloseUnlistedListPanel()  //패널과 버튼
     {
         UnlistedListPanel.SetActive(false);
+    }
+
+    public void OnStory()
+    {
+        if(!isStory)
+        {
+            return;
+        }
+
+        storyPanel.SetActive(true);
+        if (stroyImages.Length > 0)
+        {
+            storyIndex = 0;
+            ShowStoryImage(storyIndex);
+        }
+    }
+
+    public void NextStory()
+    {
+        if (storyIndex < stroyImages.Length)
+        {
+            stroyImages[storyIndex].gameObject.SetActive(false);
+        }
+
+        storyIndex++;
+
+        if (storyIndex < stroyImages.Length)
+        {
+            ShowStoryImage(storyIndex);
+        }
+        else
+        {
+            storyPanel.SetActive(false);
+        }
+    }
+
+    private void ShowStoryImage(int index)
+    {
+        if (index >= 0 && index < stroyImages.Length)
+        {
+            stroyImages[index].gameObject.SetActive(true);
+        }
     }
 }
