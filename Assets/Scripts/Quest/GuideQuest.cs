@@ -46,6 +46,11 @@ public class GuideQuest
 
     public void CheckQuestCompletion()
     {
+        //if(questID == 60750)
+        //{
+        //    return;
+        //}
+
         if (currentQuest.Targetvalue > currentTargetValue)
         {
             GameMgr.Instance.uiMgr.uiGuideQuest.UiButtonUpdate(false);
@@ -59,6 +64,11 @@ public class GuideQuest
 
     public void NextQuest()
     {
+        //if (questID == 60750)
+        //{
+        //    return;
+        //}
+
         GameMgr.Instance.uiMgr.uiGuideQuest.UiButtonUpdate(false);
         GameMgr.Instance.soundMgr.PlaySFX("QuestClear");
         questID = currentQuest.Next_Quest;
