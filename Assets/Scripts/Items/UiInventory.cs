@@ -147,6 +147,7 @@ public class UiInventory : MonoBehaviour
 
     private void UpdateToggleColors()
     {
+        Color customColor;
         foreach (var toggle in filteringToggles)
         {
             if (toggle.isOn)
@@ -163,11 +164,13 @@ public class UiInventory : MonoBehaviour
         {
             if (toggle.isOn)
             {
-                SetToggleColor(toggle, new Color(0, 0, 0, 1));
+                UnityEngine.ColorUtility.TryParseHtmlString("#730000", out customColor);
+                SetToggleColor(toggle, customColor);
             }
             else
             {
-                SetToggleColor(toggle, new Color(0f, 107f / 255f, 255f / 255f, 255f / 255f));
+                UnityEngine.ColorUtility.TryParseHtmlString("#252425", out customColor);
+                SetToggleColor(toggle, customColor);
             }
         }
 
