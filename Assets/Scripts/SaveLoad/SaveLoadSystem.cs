@@ -46,14 +46,14 @@ public class SaveLoadSystem
 
     public static bool Save()
     {
-        if(GameMgr.Instance.uiMgr.uiTutorial != null && 
+        if (GameMgr.Instance.uiMgr.uiTutorial != null &&
             GameMgr.Instance.uiMgr.uiTutorial.gameObject.activeSelf)
         {
             return false;
         }
 
         CurrSaveData.savePlay = new SavePlayData();
-        if(GameMgr.Instance.sceneMgr.mainScene != null)
+        if (GameMgr.Instance.sceneMgr.mainScene != null)
         {
             CurrSaveData.savePlay.tutorialID = GameMgr.Instance.uiMgr.uiTutorial.currentTutorialID;
             CurrSaveData.savePlay.tutorialIndex = GameMgr.Instance.uiMgr.uiTutorial.currentTutorialIndex;
@@ -102,26 +102,33 @@ public class SaveLoadSystem
         var path = Path.Combine(SaveDirectory, SaveFileName);
         // FileMode 분기
 
-        using (var writer = new JsonTextWriter(new StreamWriter(path)))
-        {
-            var serializer = new JsonSerializer();
-            serializer.Formatting = Formatting.Indented;
-            serializer.TypeNameHandling = TypeNameHandling.All;
-            serializer.Converters.Add(new EquipDataConverter());
-            serializer.Converters.Add(new Vector3Converter());
-            serializer.Converters.Add(new NormalItemDataConverter());
-            serializer.Converters.Add(new SkillBallConverter());
-
-            serializer.Serialize(writer, CurrSaveData);
-        }
-
-        //string jsonData = JsonConvert.SerializeObject(CurrSaveData, new JsonSerializerSettings
+        //using (var writer = new JsonTextWriter(new StreamWriter(path)))
         //{
-        //    Formatting = Formatting.Indented,
-        //    TypeNameHandling = TypeNameHandling.All
-        //});
-        //byte[] encryptedData = EncryptStringToBytes_Aes(jsonData, Key, IV);
-        //File.WriteAllBytes(path, encryptedData);
+        //    var serializer = new JsonSerializer();
+        //    serializer.Formatting = Formatting.Indented;
+        //    serializer.TypeNameHandling = TypeNameHandling.All;
+        //    serializer.Converters.Add(new EquipDataConverter());
+        //    serializer.Converters.Add(new Vector3Converter());
+        //    serializer.Converters.Add(new NormalItemDataConverter());
+        //    serializer.Converters.Add(new SkillBallConverter());
+
+        //    serializer.Serialize(writer, CurrSaveData);
+        //}
+
+        var serializerSettings = new JsonSerializerSettings
+        {
+            Formatting = Formatting.Indented,
+            TypeNameHandling = TypeNameHandling.All
+        };
+        serializerSettings.Converters.Add(new EquipDataConverter());
+        serializerSettings.Converters.Add(new Vector3Converter());
+        serializerSettings.Converters.Add(new NormalItemDataConverter());
+        serializerSettings.Converters.Add(new SkillBallConverter());
+
+
+        string jsonData = JsonConvert.SerializeObject(CurrSaveData, serializerSettings);
+        byte[] encryptedData = EncryptStringToBytes_Aes(jsonData, Key, IV);
+        File.WriteAllBytes(path, encryptedData);
 
         return true;
     }
@@ -204,14 +211,58 @@ public class SaveLoadSystem
         // 파일에서 암호화된 데이터를 읽음
         byte[] encryptedData = File.ReadAllBytes(path);
 
-        // 데이터를 복호화
-        string jsonData = DecryptStringFromBytes_Aes(encryptedData, Key, IV);
+        string jsonData = null;
+        bool decryptionFailed = false;
 
-        // JSON 데이터를 객체로 역직렬화하여 반환
-        return JsonConvert.DeserializeObject(jsonData, new JsonSerializerSettings
+        try
+        {
+            // 데이터를 복호화
+            jsonData = DecryptStringFromBytes_Aes(encryptedData, Key, IV);
+        }
+        catch (CryptographicException)
+        {
+            decryptionFailed = true;
+        }
+        catch (Exception ex)
+        {
+            Application.Quit();
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+#endif
+        }
+
+        if (decryptionFailed)
+        {
+            SaveData savedata = null;
+            using (var reader = new JsonTextReader(new StreamReader(path)))
+            {
+                var serializer = new JsonSerializer();
+                serializer.Formatting = Formatting.Indented;
+                serializer.TypeNameHandling = TypeNameHandling.All;
+                serializer.Converters.Add(new EquipDataConverter());
+                serializer.Converters.Add(new Vector3Converter());
+                serializer.Converters.Add(new NormalItemDataConverter());
+                serializer.Converters.Add(new SkillBallConverter());
+                savedata = serializer.Deserialize<SaveData>(reader);
+            }
+
+            return savedata as SaveDataV1;
+        }
+
+
+        var serializerSettings = new JsonSerializerSettings
         {
             TypeNameHandling = TypeNameHandling.All
-        });
+        };
+        serializerSettings.Converters.Add(new EquipDataConverter());
+        serializerSettings.Converters.Add(new Vector3Converter());
+        serializerSettings.Converters.Add(new NormalItemDataConverter());
+        serializerSettings.Converters.Add(new SkillBallConverter());
+
+        SaveData data = JsonConvert.DeserializeObject<SaveData>(jsonData, serializerSettings);
+
+        // JSON 데이터를 객체로 역직렬화하여 반환
+        return data;
     }
 
 
@@ -223,27 +274,27 @@ public class SaveLoadSystem
             return false;
         }
 
-        //CurrSaveData = (SaveDataV1)LoadData();
+        CurrSaveData = (SaveDataV1)LoadData();
 
-        SaveData data = null;
-        using (var reader = new JsonTextReader(new StreamReader(path)))
-        {
-            var serializer = new JsonSerializer();
-            serializer.Formatting = Formatting.Indented;
-            serializer.TypeNameHandling = TypeNameHandling.All;
-            serializer.Converters.Add(new EquipDataConverter());
-            serializer.Converters.Add(new Vector3Converter());
-            serializer.Converters.Add(new NormalItemDataConverter());
-            serializer.Converters.Add(new SkillBallConverter());
-            data = serializer.Deserialize<SaveData>(reader);
-        }
+        //SaveData data = null;
+        //using (var reader = new JsonTextReader(new StreamReader(path)))
+        //{
+        //    var serializer = new JsonSerializer();
+        //    serializer.Formatting = Formatting.Indented;
+        //    serializer.TypeNameHandling = TypeNameHandling.All;
+        //    serializer.Converters.Add(new EquipDataConverter());
+        //    serializer.Converters.Add(new Vector3Converter());
+        //    serializer.Converters.Add(new NormalItemDataConverter());
+        //    serializer.Converters.Add(new SkillBallConverter());
+        //    data = serializer.Deserialize<SaveData>(reader);
+        //}
 
-        while (data.Version < SaveDataVersion)
-        {
-            data = data.VersionUp();
-        }
+        //while (data.Version < SaveDataVersion)
+        //{
+        //    data = data.VersionUp();
+        //}
 
-        CurrSaveData = data as SaveDataV1;
+        //CurrSaveData = data as SaveDataV1;
 
         return true;
     }
