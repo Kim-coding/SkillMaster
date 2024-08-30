@@ -89,7 +89,15 @@ public class UIMgr : MonoBehaviour
         if(data != null)
         {
             isStory = data.isStory;
-            userNameText.text = data.userName;
+            if (data.userName == null)
+            {
+                userNameText.text = null;
+                GameMgr.Instance.userName.OpenPanel();
+            }
+            else
+            {
+                userNameText.text = data.userName;
+            }
         }
         else
         {
