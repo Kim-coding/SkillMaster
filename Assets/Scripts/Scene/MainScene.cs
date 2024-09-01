@@ -1,4 +1,5 @@
 
+using UnityEditor.PackageManager.UI;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -33,10 +34,12 @@ public class MainScene : MonoBehaviour
         if(data != null)
         {
             stageId = data.stageId;
+            GameMgr.Instance.uiMgr.uiWindow.hasShownDungeonMessage = data.hasShownDungeonMessage;
         }
         else
         {
             stageId = 50001;
+            GameMgr.Instance.uiMgr.uiWindow.hasShownDungeonMessage = false;
         }
         stageData = DataTableMgr.Get<StageTable>(DataTableIds.stage).GetID(stageId);
         if(stageData != null)

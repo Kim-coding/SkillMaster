@@ -67,6 +67,7 @@ public class DungeonScene : MonoBehaviour
     public int rewardID;
     public bool isStory;
     public string userName;
+    public bool hasShownDungeonMessage;
 
     public void Init()
     {
@@ -82,6 +83,7 @@ public class DungeonScene : MonoBehaviour
         rewardID = data.rewardID;
         isStory = data.isStory;
         userName = data.userName;
+        hasShownDungeonMessage = data.hasShownDungeonMessage;
         dungeonMode = GameMgr.Instance.playerMgr.playerInfo.dungeonMode;
 
         var camera = GameObject.FindWithTag("MainCamera");

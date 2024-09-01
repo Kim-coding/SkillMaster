@@ -41,6 +41,9 @@ public class SavePlayData
 
     //유저 이름
     public string userName;
+
+    //던전 해제 팝업 확인 여부
+    public bool hasShownDungeonMessage;
 }
 
 public abstract class SaveData

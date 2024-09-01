@@ -559,7 +559,6 @@ public class UiInventory : MonoBehaviour
 
     public void OffDecomposMode()
     {
-        GameMgr.Instance.soundMgr.PlaySFX("Button");
         foreach (var item in selectedSlot)
         {
             item.OnSelected(false);

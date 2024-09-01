@@ -48,7 +48,7 @@ public class UiWindow : MonoBehaviour
     public SkillBookPanel skillBookPanel;
     public EquipBookPanel equipBookPanel;
     private bool hasShownPickupMessage = false;
-    private bool hasShownDungeonMessage = false;
+    public bool hasShownDungeonMessage;
 
     private UIMgr uIMgr;
     private void Awake()
