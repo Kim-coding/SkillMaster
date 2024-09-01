@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class EnhanceButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
+    public ScrollRect scrollRect;
 
     private float clickTime;
     private float holdInterval = 0.1f;
@@ -21,7 +23,7 @@ public class EnhanceButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
         {
             return;
         }
-
+        scrollRect.enabled = false;
         isClick = true;
         lonkClick = false;
         clickTime = 0f;
@@ -33,7 +35,7 @@ public class EnhanceButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
         {
             return;
         }
-
+        scrollRect.enabled = true;
         isClick = false;
         if (lonkClick == false)
         {
