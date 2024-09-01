@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text.RegularExpressions;
 using TMPro;
+using UnityEditor.PackageManager.UI;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -45,6 +46,7 @@ public class UserName : MonoBehaviour
     public void OpenPanel()
     {
         namePanel.SetActive(true);
+        GameMgr.Instance.uiMgr.uiWindow.Open(Windows.Enhance);
     }
 
     private void SaveName()
