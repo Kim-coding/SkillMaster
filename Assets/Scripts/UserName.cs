@@ -12,7 +12,7 @@ public class UserName : MonoBehaviour
     public TMP_InputField inputName;
     public Button OkButton;
 
-    public string userName = "방랑자";
+    public string userName = "이름없음";
 
     public GameObject panel;
     public Button yesButton;

@@ -89,7 +89,7 @@ public class UIMgr : MonoBehaviour
         if(data != null)
         {
             isStory = data.isStory;
-            if (data.userName == null)
+            if (data.userName == null || data.userName == "이름없음")
             {
                 userNameText.text = null;
                 GameMgr.Instance.userName.OpenPanel();
@@ -102,7 +102,7 @@ public class UIMgr : MonoBehaviour
         else
         {
             isStory = false;
-            userNameText.text = "방랑자";
+            userNameText.text = "이름없음";
         }
 
     }
