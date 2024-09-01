@@ -172,9 +172,9 @@ public class UIBook : MonoBehaviour
 
     private bool IsSkillRewardAvailable()
     {
-        foreach (var skillBook in skillBookDic.Values)
+        foreach (var skillBook in GameMgr.Instance.playerMgr.playerInfo.skillBookDatas.Values)
         {
-            if (skillBook.saveData.state == ClearState.Acquired)
+            if (skillBook.state == ClearState.Acquired)
             {
                 return true;
             }
@@ -184,9 +184,9 @@ public class UIBook : MonoBehaviour
 
     private bool IsEquipRewardAvailable()
     {
-        foreach (var equipBookSet in setDic.Values)
+        foreach (var equipBookSet in GameMgr.Instance.playerMgr.playerInfo.equipBookDatas.Values)
         {
-            if (equipBookSet.setClear && !equipBookSet.getReward)
+            if (equipBookSet.state == ClearState.Acquired)
             {
                 return true;
             }
