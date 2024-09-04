@@ -35,7 +35,6 @@ public class Tutorial
 
     public void OnTutorial()
     {
-        Time.timeScale = 0f;
         var ID = UiTutorial.currentTutorialID;
         if (ID <= 120238)
         {

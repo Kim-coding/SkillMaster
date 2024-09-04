@@ -39,6 +39,8 @@ public class UiTutorial : MonoBehaviour
 
     public void OnTutorial()
     {
+        Time.timeScale = 0f;
+
         var invincible = GameMgr.Instance.playerMgr.characters[0].GetComponent<IDamageable>();
         invincible.invincible = true;
         
@@ -91,6 +93,7 @@ public class UiTutorial : MonoBehaviour
 
         if(currentTutorialID >= 120228 && currentTutorialID <= 120230)
         {
+            Time.timeScale = 1f;
             tutorialPanel.GetComponent<Image>().color = new Vector4(0,0,0,0);
         }
 
