@@ -1,9 +1,5 @@
 using DG.Tweening;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class GameMgr : MonoBehaviour
 {
@@ -28,7 +24,6 @@ public class GameMgr : MonoBehaviour
 
     private float bgmValue;
     private float sfxValue;
-
     private void Awake()
     {
         if (Instance == null)
@@ -43,7 +38,6 @@ public class GameMgr : MonoBehaviour
 
         InitGame();
     }
-
     private void InitGame()
     {
         Time.timeScale = 1f;

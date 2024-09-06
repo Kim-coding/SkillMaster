@@ -1,7 +1,5 @@
 
-using UnityEditor.PackageManager.UI;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class MainScene : MonoBehaviour
 {

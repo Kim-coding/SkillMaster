@@ -1,9 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.IO;
 using System.Text.RegularExpressions;
 using TMPro;
-using UnityEditor.PackageManager.UI;
 using UnityEngine;
 using UnityEngine.UI;
 
